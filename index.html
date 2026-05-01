@@ -639,6 +639,8 @@
     @media (max-width: 480px) {
       .portrait-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
     }
+  
+    .portrait-card--george-washington { --card-accent: #C49A3C; }
   </style>
 </head>
 <body>
@@ -841,7 +843,17 @@
       </a>
 
     </div>
-    <!-- PORTRAIT_CARDS_END -->
+    
+  <a class="portrait-card portrait-card--george-washington" href="https://jimmyardis.github.io/george-washington/" target="_blank">
+    <div class="portrait-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/800px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg')"></div>
+    <div class="portrait-info">
+      <div class="portrait-initial">GW</div>
+      <div class="portrait-name">George Washington</div>
+      <div class="portrait-dates">1732 — 1799</div>
+      <p class="portrait-desc">Commander of the Continental Army, first President, and the only man in history who held ultimate power and chose to relinquish it — twice.</p>
+    </div>
+  </a>
+  <!-- PORTRAIT_CARDS_END -->
   </section>
   <section class="arena-section">
     <div class="arena-inner">
@@ -864,7 +876,9 @@
         <span class="figure-chip">John Taylor of Caroline</span>
         <span class="figure-chip">Adam Smith</span>
         <span class="figure-chip">William Moultrie</span>
-      <!-- ARENA_CHIPS_END -->
+      
+          <button class="figure-chip" data-persona="george-washington"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/800px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg" alt="George Washington"><span>George Washington</span></button>
+          <!-- ARENA_CHIPS_END -->
       </div>
       <a href="https://jimmyardis.github.io/debate/" class="arena-btn"><span>Open the Arena</span></a>
     </div>
