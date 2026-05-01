@@ -913,7 +913,6 @@
 
     function rand(a,b){ return a + Math.random()*(b-a); }
 
-    // Historical fragments — very faint, spread across full width
     const FRAGMENTS = [
       '1776', '1787', '1804', '1723', '1875', '1916', '1730',
       'Federalist №15', 'Wealth of Nations', 'June 28, 1776',
@@ -925,30 +924,31 @@
       'vide Federalist №10', '∫Sympathy dt', 'n=435 defenders',
     ];
 
-    let stars=[], constLines=[], floaters=[], t=0;
+    let stars=[], constLines=[], floaters=[], bulbs=[], t=0;
 
     function init() {
       const W=canvas.width, H=canvas.height;
 
-      // Stars — dense, fine, spread fully across canvas
       stars = [];
       const count = Math.floor((W * H) / 3200);
       for(let i=0;i<count;i++) {
+        const isTwinkling = Math.random() < 0.12;
         stars.push({
           x: rand(0,W), y: rand(0,H),
           r: rand(0.5,2.6),
-          a: rand(0.25,0.85),
+          a: rand(0.28,0.88),
           twinkle: rand(0,Math.PI*2),
           speed: rand(0.004,0.018),
+          isTwinkling,
+          flickerSpeed:  isTwinkling ? rand(0.08, 0.22) : rand(0.004, 0.018),
+          flickerPhase:  rand(0, Math.PI*2),
+          flickerDepth:  isTwinkling ? rand(0.55, 0.95) : rand(0.15, 0.38),
         });
       }
 
-      // Constellation lines — connect nearby stars to form loose schematic
       constLines = [];
-      // Pick a subset of stars and connect nearby pairs
       const anchors = stars.filter((_,i) => i % 4 === 0);
       anchors.forEach(a => {
-        // Find closest 1-2 anchors
         const nearby = anchors
           .filter(b => b !== a)
           .map(b => ({ b, d: Math.hypot(b.x-a.x, b.y-a.y) }))
@@ -956,7 +956,6 @@
           .sort((x,y) => x.d - y.d)
           .slice(0, Math.random() < 0.4 ? 2 : 1);
         nearby.forEach(({b}) => {
-          // Avoid duplicates
           const exists = constLines.some(l =>
             (l.a===a&&l.b===b)||(l.a===b&&l.b===a)
           );
@@ -964,69 +963,162 @@
         });
       });
 
-      // Floating text fragments — very faint, very slow
+      // Light bulbs — upper-left and lower-right quadrants
+      bulbs = [
+        {
+          x: rand(W*0.08, W*0.26), y: rand(H*0.08, H*0.30),
+          r: 5.5, state: 'on', brightness: 1.0,
+          nextFlicker: rand(1.5, 4.0), flickerTimer: 0,
+          flickerDuration: 0.6, phase: rand(0, Math.PI*2),
+        },
+        {
+          x: rand(W*0.74, W*0.92), y: rand(H*0.64, H*0.88),
+          r: 5.5, state: 'on', brightness: 1.0,
+          nextFlicker: rand(2.0, 5.5), flickerTimer: 0,
+          flickerDuration: 0.6, phase: rand(0, Math.PI*2),
+        },
+      ];
+
       floaters = FRAGMENTS.map(f => ({
         txt: f,
-        x: rand(0, W),
-        y: rand(0, H),
-        vx: rand(-0.04, 0.04),
-        vy: rand(-0.03, 0.03),
-        alpha: rand(0.06, 0.14),
-        sz: rand(8, 13),
+        x: rand(0, W), y: rand(0, H),
+        vx: rand(-0.04, 0.04), vy: rand(-0.03, 0.03),
+        alpha: rand(0.10, 0.22),
+        sz: rand(9, 14),
       }));
+    }
+
+    function drawBulb(b) {
+      const br = b.brightness;
+      if(br < 0.02) return;
+      const warmG = Math.floor(210 + 35*br);
+      const warmB = Math.floor(80 + 40*br);
+      const col = `rgba(255,${warmG},${warmB},`;
+
+      // Outer glow
+      const og = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r * 9);
+      og.addColorStop(0,   col + (0.22 * br) + ')');
+      og.addColorStop(0.4, col + (0.08 * br) + ')');
+      og.addColorStop(1,   col + '0)');
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r * 9, 0, Math.PI*2);
+      ctx.fillStyle = og; ctx.fill();
+
+      // Mid glow
+      const mg = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r * 4);
+      mg.addColorStop(0,   col + (0.55 * br) + ')');
+      mg.addColorStop(0.5, col + (0.2  * br) + ')');
+      mg.addColorStop(1,   col + '0)');
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r * 4, 0, Math.PI*2);
+      ctx.fillStyle = mg; ctx.fill();
+
+      // Bulb glass
+      ctx.beginPath();
+      ctx.arc(b.x, b.y - 1, b.r, 0, Math.PI*2);
+      ctx.fillStyle   = col + (0.15 + 0.5 * br) + ')';
+      ctx.fill();
+      ctx.strokeStyle = col + (0.6 * br) + ')';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+
+      // Filament
+      ctx.strokeStyle = col + (0.9 * br) + ')';
+      ctx.lineWidth = 0.7;
+      ctx.beginPath();
+      ctx.moveTo(b.x - 2, b.y - 3); ctx.lineTo(b.x, b.y + 2);
+      ctx.moveTo(b.x + 2, b.y - 3); ctx.lineTo(b.x, b.y + 2);
+      ctx.stroke();
+
+      // Base cap
+      ctx.fillStyle = col + (0.45 * br) + ')';
+      ctx.fillRect(b.x - 2.5, b.y + b.r - 1, 5, 4);
+      ctx.strokeStyle = col + (0.3 * br) + ')';
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(b.x - 2.5, b.y + b.r + 0.5); ctx.lineTo(b.x + 2.5, b.y + b.r + 0.5);
+      ctx.moveTo(b.x - 2.5, b.y + b.r + 2);   ctx.lineTo(b.x + 2.5, b.y + b.r + 2);
+      ctx.stroke();
+    }
+
+    function updateBulb(b, dt) {
+      b.flickerTimer += dt;
+      if(b.state === 'on') {
+        b.brightness = 0.82 + 0.18 * Math.sin(t * 1.2 + b.phase);
+        if(b.flickerTimer >= b.nextFlicker) {
+          b.flickerTimer = 0;
+          if(Math.random() < 0.55) {
+            b.state = 'flicker';
+            b.flickerDuration = rand(0.3, 1.2);
+            b.nextFlicker = rand(3.0, 8.0);
+          } else {
+            b.state = 'off'; b.brightness = 0;
+            b.nextFlicker = rand(0.4, 1.8);
+          }
+        }
+      } else if(b.state === 'off') {
+        b.brightness = 0;
+        if(b.flickerTimer >= b.nextFlicker) {
+          b.flickerTimer = 0; b.state = 'on';
+          b.nextFlicker = rand(2.5, 7.0);
+        }
+      } else if(b.state === 'flicker') {
+        const n = Math.sin(t * 28 + b.phase) * Math.sin(t * 43 + b.phase * 2);
+        b.brightness = Math.max(0.05, 0.5 + 0.5 * n);
+        if(b.flickerTimer >= b.flickerDuration) {
+          b.flickerTimer = 0;
+          b.state = Math.random() < 0.7 ? 'on' : 'off';
+          b.nextFlicker = b.state === 'on' ? rand(2.0, 6.0) : rand(0.2, 0.8);
+          if(b.state === 'on') b.brightness = 1.0;
+        }
+      }
     }
 
     function frame() {
       const W=canvas.width, H=canvas.height;
+      const dt=0.016;
       ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#0C0C0E'; ctx.fillRect(0,0,W,H);
 
-      // Pure black void
-      ctx.fillStyle='#0C0C0E';
-      ctx.fillRect(0,0,W,H);
-
-      // Constellation lines — very faint grey
+      // Constellation lines
       constLines.forEach(l => {
-        ctx.beginPath();
-        ctx.moveTo(l.a.x, l.a.y);
-        ctx.lineTo(l.b.x, l.b.y);
+        ctx.beginPath(); ctx.moveTo(l.a.x,l.a.y); ctx.lineTo(l.b.x,l.b.y);
         ctx.strokeStyle=`rgba(220,215,205,${l.a_alpha})`;
-        ctx.lineWidth=0.5;
-        ctx.stroke();
+        ctx.lineWidth=0.5; ctx.stroke();
       });
 
-      // Stars — white/silver with gentle twinkle
+      // Stars with twinkling
       stars.forEach(s => {
-        const tw = s.a * (0.6 + 0.4*Math.sin(t*s.speed*60 + s.twinkle));
-
-        // Tiny glow for larger stars
-        if(s.r > 1.4) {
+        let tw;
+        if(s.isTwinkling) {
+          const flick = Math.sin(t * s.flickerSpeed * 60 + s.flickerPhase);
+          tw = s.a * (1 - s.flickerDepth + s.flickerDepth * Math.max(0, flick));
+        } else {
+          tw = s.a * (0.65 + 0.35 * Math.sin(t * s.speed * 60 + s.twinkle));
+        }
+        if(s.r > 1.4 || s.isTwinkling) {
           const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*5);
-          g.addColorStop(0,`rgba(240,235,220,${tw*0.35})`);
+          g.addColorStop(0,`rgba(240,235,220,${tw*0.38})`);
           g.addColorStop(1,'rgba(0,0,0,0)');
           ctx.beginPath(); ctx.arc(s.x,s.y,s.r*5,0,Math.PI*2);
           ctx.fillStyle=g; ctx.fill();
         }
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        ctx.fillStyle=`rgba(245,242,232,${tw})`;
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(248,244,234,${tw})`; ctx.fill();
       });
 
-      // Floating historical text — ghostly, barely visible
+      // Light bulbs
+      bulbs.forEach(b => { updateBulb(b, dt); drawBulb(b); });
+
+      // Floating text
       floaters.forEach(f => {
-        ctx.fillStyle=`rgba(210,200,180,${f.alpha})`;
+        ctx.fillStyle=`rgba(215,205,185,${f.alpha})`;
         ctx.font=`italic ${f.sz}px Cormorant Garamond,serif`;
-        ctx.textAlign='left';
-        ctx.fillText(f.txt, f.x, f.y);
+        ctx.textAlign='left'; ctx.fillText(f.txt, f.x, f.y);
         f.x+=f.vx; f.y+=f.vy;
-        if(f.x>W+200) f.x=-200;
-        if(f.x<-300)  f.x=W+200;
-        if(f.y>H+20)  f.y=-20;
-        if(f.y<-20)   f.y=H+20;
+        if(f.x>W+200) f.x=-200; if(f.x<-300) f.x=W+200;
+        if(f.y>H+20)  f.y=-20;  if(f.y<-20)  f.y=H+20;
       });
 
-      t+=0.016;
+      t+=dt;
       requestAnimationFrame(frame);
     }
 
