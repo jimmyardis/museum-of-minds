@@ -640,6 +640,8 @@
     @media (max-width: 480px) {
       .portrait-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
     }
+  
+    .portrait-card--thomas-paine { --card-accent: #C49A3C; }
   </style>
 </head>
 <body>
@@ -861,7 +863,17 @@
       </a>
 
     </div>
-    <!-- PORTRAIT_CARDS_END -->
+    
+  <a class="portrait-card portrait-card--thomas-paine" href="https://jimmyardis.github.io/thomas-paine/" target="_blank">
+    <div class="portrait-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Thomas_Paine.jpg/1280px-Thomas_Paine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail')"></div>
+    <div class="portrait-info">
+      <div class="portrait-initial">TP</div>
+      <div class="portrait-name">Thomas Paine</div>
+      <div class="portrait-dates">1737–1809</div>
+      <p class="portrait-desc">Revolutionary pamphleteer and author of Common Sense</p>
+    </div>
+  </a>
+  <!-- PORTRAIT_CARDS_END -->
   </section>
   <section class="arena-section">
     <div class="arena-inner">
@@ -885,7 +897,9 @@
         <span class="figure-chip">Adam Smith</span>
         <span class="figure-chip">William Moultrie</span>
         <span class="figure-chip">George Washington</span>
-      <!-- ARENA_CHIPS_END -->
+      
+          <button class="figure-chip" data-persona="thomas-paine"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Thomas_Paine.jpg/1280px-Thomas_Paine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Thomas Paine"><span>Thomas Paine</span></button>
+          <!-- ARENA_CHIPS_END -->
       </div>
       <a href="https://jimmyardis.github.io/debate/" class="arena-btn"><span>Open the Arena</span></a>
     </div>
