@@ -462,6 +462,7 @@
     .card-taylor   { --card-wash: #802018; --card-accent: #A85038; --card-plate: #180E08; --card-glow: rgba(128,32,24,0.12); }
     .card-smith    { --card-wash: #1A4040; --card-accent: #C88820; --card-plate: #101A1A; --card-glow: rgba(26,64,64,0.12); }
     .card-moultrie { --card-wash: #002868; --card-accent: #C4A84C; --card-plate: #000E20; --card-glow: rgba(0,40,104,0.20); }
+    .card-washington{ --card-wash: #1A2E4A; --card-accent: #C4A84C; --card-plate: #0E1A2E; --card-glow: rgba(26,46,74,0.20); }
 
     /* ── ARENA ── */
     .arena-section {
@@ -639,8 +640,6 @@
     @media (max-width: 480px) {
       .portrait-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
     }
-  
-    .portrait-card--george-washington { --card-accent: #C49A3C; }
   </style>
 </head>
 <body>
@@ -695,7 +694,7 @@
         <div class="card-light"></div>
         <div class="card-frame">
           <div class="card-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Jane_Jacobs.jpg"
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/9b/Jane_Jacobs.jpg"
                  alt="Jane Jacobs"
                  onerror="this.style.background='#2A2A22'" />
           </div>
@@ -842,18 +841,27 @@
         </div>
       </a>
 
+      <!-- George Washington -->
+      <a href="https://jimmyardis.github.io/george-washington/" class="portrait-card card-washington">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/800px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg"
+                 alt="George Washington"
+                 onerror="this.style.background='#0E1A2E'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">George Washington</div>
+            <div class="nameplate-dates">1732 — 1799</div>
+            <div class="nameplate-desc">Commander, first President, and the only man in history who held ultimate power and chose to relinquish it — twice.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
     </div>
-    
-  <a class="portrait-card portrait-card--george-washington" href="https://jimmyardis.github.io/george-washington/" target="_blank">
-    <div class="portrait-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/800px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg')"></div>
-    <div class="portrait-info">
-      <div class="portrait-initial">GW</div>
-      <div class="portrait-name">George Washington</div>
-      <div class="portrait-dates">1732 — 1799</div>
-      <p class="portrait-desc">Commander of the Continental Army, first President, and the only man in history who held ultimate power and chose to relinquish it — twice.</p>
-    </div>
-  </a>
-  <!-- PORTRAIT_CARDS_END -->
+    <!-- PORTRAIT_CARDS_END -->
   </section>
   <section class="arena-section">
     <div class="arena-inner">
@@ -876,9 +884,8 @@
         <span class="figure-chip">John Taylor of Caroline</span>
         <span class="figure-chip">Adam Smith</span>
         <span class="figure-chip">William Moultrie</span>
-      
-          <button class="figure-chip" data-persona="george-washington"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/800px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg" alt="George Washington"><span>George Washington</span></button>
-          <!-- ARENA_CHIPS_END -->
+        <span class="figure-chip">George Washington</span>
+      <!-- ARENA_CHIPS_END -->
       </div>
       <a href="https://jimmyardis.github.io/debate/" class="arena-btn"><span>Open the Arena</span></a>
     </div>
