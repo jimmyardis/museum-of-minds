@@ -178,7 +178,7 @@
 
     .portal-door {
       position: relative;
-      height: 370px;
+      height: 280px;
       border: 2px solid var(--df, #7A6830);
       overflow: hidden;
       transition:
@@ -188,14 +188,15 @@
       transform-origin: left center;
       background: var(--void);
     }
-    /* Dark gradient overlay for text legibility over portrait */
+    /* Dark gradient — clear at top (faces), heavy at bottom (text over clothing) */
     .portal-door::before {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(12,12,14,0.60) 0%,
-        rgba(12,12,14,0.28) 38%,
-        rgba(12,12,14,0.72) 100%
+        rgba(12,12,14,0.10) 0%,
+        rgba(12,12,14,0.08) 35%,
+        rgba(12,12,14,0.72) 62%,
+        rgba(12,12,14,0.93) 100%
       );
       z-index: 1; pointer-events: none;
       transition: background 0.5s ease;
@@ -223,8 +224,8 @@
     .door-portrait {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: top center;
-      filter: grayscale(100%) brightness(0.55) contrast(1.15);
+      object-fit: cover; object-position: center 15%;
+      filter: grayscale(100%) brightness(0.65) contrast(1.1);
       transition: filter 0.55s ease, transform 0.55s ease;
       z-index: 0;
     }
@@ -243,56 +244,49 @@
     .portal-link:hover .portal-door::after { background: var(--da, #C4A84C); }
     .portal-link:hover .door-frame { border-color: var(--da-dim, rgba(196,168,76,0.25)); }
     .portal-link:hover .door-portrait {
-      filter: grayscale(40%) brightness(0.65) contrast(1.1);
+      filter: grayscale(30%) brightness(0.70) contrast(1.05);
       transform: scale(1.04);
     }
     .door-inner {
       position: relative; z-index: 3; height: 100%;
       display: flex; flex-direction: column;
-      align-items: center; justify-content: space-evenly;
-      padding: 2rem 1.8rem 2rem; text-align: center;
+      align-items: center; justify-content: flex-end;
+      padding: 0 1.4rem 1.4rem; text-align: center;
+      gap: 0.3rem;
     }
-    .door-num {
-      font-family: 'Cinzel', serif; font-size: 0.44rem; letter-spacing: 0.55em;
-      color: var(--da, #C4A84C); opacity: 0.55; text-transform: uppercase;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
-    }
+    .door-num { display: none; }
+    .door-era { display: none; }
     .door-name {
-      font-family: 'Cinzel', serif; font-size: clamp(0.68rem, 1.05vw, 0.84rem);
+      font-family: 'Cinzel', serif; font-size: clamp(0.72rem, 1.1vw, 0.9rem);
       font-weight: 600; color: var(--cream); letter-spacing: 0.06em;
-      line-height: 1.35; transition: color 0.4s ease;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+      line-height: 1.3; transition: color 0.4s ease;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.95);
     }
     .portal-link:hover .door-name { color: var(--brass-pale); }
     .door-rule {
       width: 22px; height: 1px; background: var(--da, #C4A84C);
-      opacity: 0.4; transition: width 0.4s ease, opacity 0.4s ease; flex-shrink: 0;
+      opacity: 0.5; transition: width 0.4s ease, opacity 0.4s ease; flex-shrink: 0;
     }
-    .portal-link:hover .door-rule { width: 44px; opacity: 0.8; }
-    .door-era {
-      font-family: 'Cinzel', serif; font-size: 0.4rem; letter-spacing: 0.3em;
-      color: var(--da, #C4A84C); opacity: 0.5;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
-    }
+    .portal-link:hover .door-rule { width: 44px; opacity: 0.9; }
     .door-tagline {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 0.78rem; line-height: 1.65; color: var(--cream-dim);
+      font-size: 0.74rem; line-height: 1.5; color: rgba(240,234,216,0.82);
       font-weight: 300; transition: color 0.4s ease;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.98);
     }
     .portal-link:hover .door-tagline { color: var(--cream); }
     .door-count {
-      font-family: 'Cinzel', serif; font-size: 0.4rem; letter-spacing: 0.35em;
-      color: var(--da, #C4A84C); opacity: 0.42; text-transform: uppercase;
-      transition: opacity 0.4s ease; text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      font-family: 'Cinzel', serif; font-size: 0.38rem; letter-spacing: 0.35em;
+      color: var(--da, #C4A84C); opacity: 0.55; text-transform: uppercase;
+      transition: opacity 0.4s ease; text-shadow: 0 1px 4px rgba(0,0,0,0.9);
     }
-    .portal-link:hover .door-count { opacity: 0.85; }
+    .portal-link:hover .door-count { opacity: 0.9; }
     .door-cta {
-      font-family: 'Cinzel', serif; font-size: 0.4rem; letter-spacing: 0.35em;
+      font-family: 'Cinzel', serif; font-size: 0.38rem; letter-spacing: 0.35em;
       color: var(--da, #C4A84C); text-transform: uppercase;
       opacity: 0; transform: translateY(6px);
       transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
     }
     .door-cta::after { content: ' →'; }
     .portal-link:hover .door-cta { opacity: 1; transform: translateY(0); }
@@ -367,7 +361,7 @@
     @media (max-width: 1050px) { .halls-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 700px) {
       .halls-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
-      .portal-door { height: 300px; }
+      .portal-door { height: 240px; }
       .halls-section, .arena-section { padding: 4rem 1.5rem; }
       footer { grid-template-columns: 1fr; text-align: center; gap: 0.5rem; }
       .footer-right { text-align: center; }
@@ -468,7 +462,7 @@
       <a href="/halls/observatory/" class="portal-link">
         <div class="portal-door door-observatory">
           <img class="door-portrait"
-               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Albert_Einstein_%28LOC%29.jpg/800px-Albert_Einstein_%28LOC%29.jpg"
+               src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Albert_Einstein_%28LOC%29.jpg"
                alt="Albert Einstein"
                onerror="this.style.display='none'" />
           <div class="door-wash"></div>
@@ -489,7 +483,7 @@
       <a href="/halls/press-room/" class="portal-link">
         <div class="portal-door door-press">
           <img class="door-portrait"
-               src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/H._L._Mencken%2C_1913_%28cropped%29.jpg/800px-H._L._Mencken%2C_1913_%28cropped%29.jpg"
+               src="https://upload.wikimedia.org/wikipedia/commons/7/74/H._L._Mencken%2C_1913_%28cropped%29.jpg"
                alt="H.L. Mencken"
                onerror="this.style.display='none'" />
           <div class="door-wash"></div>
@@ -510,7 +504,7 @@
       <a href="/halls/trailblazers/" class="portal-link">
         <div class="portal-door door-trailblazers">
           <img class="door-portrait"
-               src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/The_Fun_of_It-frontispiece-Amelia_Earhart.jpg/800px-The_Fun_of_It-frontispiece-Amelia_Earhart.jpg"
+               src="https://upload.wikimedia.org/wikipedia/commons/4/42/The_Fun_of_It-frontispiece-Amelia_Earhart.jpg"
                alt="Amelia Earhart"
                onerror="this.style.display='none'" />
           <div class="door-wash"></div>
