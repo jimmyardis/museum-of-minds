@@ -227,6 +227,10 @@
       .back-link { top: 1.2rem; left: 1.5rem; }
       .hall-hero { padding: 4rem 1.5rem 3rem; min-height: 44vh; }
     }
+  
+    .card-ae { --card-wash: #1B3A5C; --card-accent: #C4922A; --card-plate: #1A1F2E; --card-glow: rgba(27,58,92,0.15); }
+  
+    .card-cj { --card-wash: #6b1c23; --card-accent: #C49A3C; --card-plate: #2a2a2a; --card-glow: rgba(107,28,35,0.15); }
   </style>
 </head>
 <body>
@@ -284,6 +288,44 @@
         <span class="room-tag" style="display:inline-block;margin:0">Collection Growing</span>
         <p>Additional voices are being prepared for this hall. Each new figure requires months of corpus ingestion and persona research before joining the collection.</p>
   
+      
+      <a href="https://museumofminds.com/albert-einstein/" class="portrait-card card-ae">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Albert_Einstein_%28LOC%29.jpg/1280px-Albert_Einstein_%28LOC%29.jpg"
+                 alt="Albert Einstein"
+                 onerror="this.style.background='#1A1F2E'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Albert Einstein</div>
+            <div class="nameplate-dates">1879 — 1955</div>
+            <div class="nameplate-desc">Albert Einstein was the German-born theoretical physicist who rewrote the laws of the universe with his special and general theories of relativity, and whose famous equation E=mc² unlocked the terrify…</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="https://museumofminds.com/carl-jung/" class="portrait-card card-cj">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif/lossy-page1-1280px-ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif.jpg"
+                 alt="Carl Jung"
+                 onerror="this.style.background='#2a2a2a'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Carl Jung</div>
+            <div class="nameplate-dates">1875 — 1961</div>
+            <div class="nameplate-desc">The founder of analytical psychology and explorer of the collective unconscious</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
       <!-- PORTRAIT_CARDS_END -->
     </div>
   </section>
