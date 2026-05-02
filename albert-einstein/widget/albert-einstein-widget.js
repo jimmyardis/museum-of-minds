@@ -14,7 +14,7 @@
     // Configuration from script tag
     const script = document.currentScript;
     const API_URL = script.getAttribute('data-api-url') || 'http://localhost:8000';
-    const PERSONA_ID = script.getAttribute('data-persona-id') || 'jane-jacobs';
+    const PERSONA_ID = script.getAttribute('data-persona-id') || 'albert-einstein';
 
     let conversationId = null;
     let isOpen = false;
