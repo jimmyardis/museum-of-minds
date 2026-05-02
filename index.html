@@ -640,10 +640,8 @@
     @media (max-width: 480px) {
       .portrait-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
     }
-  
-    .portrait-card--thomas-paine { --card-accent: #C49A3C; }
-  
-    .portrait-card--thomas-paine { --card-accent: #C49A3C; }
+    
+      .card-paine { --card-wash: #6B1A1A; --card-accent: #C49A3C; --card-plate: #1F1B18; --card-glow: rgba(107,26,26,0.15); }
   </style>
 </head>
 <body>
@@ -864,28 +862,28 @@
         </div>
       </a>
 
-    </div>
     
-  <a class="portrait-card portrait-card--thomas-paine" href="https://jimmyardis.github.io/thomas-paine/" target="_blank">
-    <div class="portrait-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Thomas_Paine.jpg/1280px-Thomas_Paine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail')"></div>
-    <div class="portrait-info">
-      <div class="portrait-initial">TP</div>
-      <div class="portrait-name">Thomas Paine</div>
-      <div class="portrait-dates">1737–1809</div>
-      <p class="portrait-desc">Revolutionary pamphleteer and author of Common Sense</p>
+      <!-- Thomas Paine -->
+      <a href="https://jimmyardis.github.io/thomas-paine/" class="portrait-card card-paine">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Thomas_Paine.jpg/440px-Thomas_Paine.jpg"
+                 alt="Thomas Paine"
+                 onerror="this.style.background='#1F1B18'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Thomas Paine</div>
+            <div class="nameplate-dates">1737 — 1809</div>
+            <div class="nameplate-desc">Revolutionary pamphleteer, author of Common Sense — the man who told plain people that a king was unnecessary.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- PORTRAIT_CARDS_END -->
     </div>
-  </a>
-  
-  <a class="portrait-card portrait-card--thomas-paine" href="https://jimmyardis.github.io/thomas-paine/" target="_blank">
-    <div class="portrait-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Thomas_Paine.jpg/1280px-Thomas_Paine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail')"></div>
-    <div class="portrait-info">
-      <div class="portrait-initial">TP</div>
-      <div class="portrait-name">Thomas Paine</div>
-      <div class="portrait-dates">1737–1809</div>
-      <p class="portrait-desc">Revolutionary pamphleteer and author of Common Sense</p>
-    </div>
-  </a>
-  <!-- PORTRAIT_CARDS_END -->
   </section>
   <section class="arena-section">
     <div class="arena-inner">
