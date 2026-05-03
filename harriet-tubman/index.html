@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harriet Tubman — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest-deep:    #1E3320;
+    --forest-mid:     #2C4A2E;
+    --forest-light:   #3D6342;
+    --amber-deep:     #7A4A18;
+    --amber-mid:      #B5732A;
+    --amber-light:    #D4943E;
+    --amber-pale:     #E8C07A;
+    --parchment:      #F5EFE0;
+    --parchment-warm: #EDE4CC;
+    --parchment-dark: #D6C9A8;
+    --star-white:     #F8F4E8;
+    --night-sky:      #0D1A10;
+    --text-dark:      #1A1208;
+    --text-mid:       #3A2E1A;
+    --text-muted:     #6A5A3A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--text-dark);
+    font-family: 'EB Garamond', Georgia, serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+
+  @keyframes lanternGlow {
+    0%, 100% { opacity: 0.75; }
+    50%       { opacity: 1; }
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 3rem;
+    background-color: var(--forest-deep);
+    border-bottom: 2px solid var(--amber-mid);
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header-left {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--parchment-dark);
+  }
+
+  .header-left span {
+    color: var(--amber-light);
+  }
+
+  .header-right {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber-mid);
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.28fr 0.72fr;
+    min-height: 92vh;
+    animation: fadeIn 1s ease 0.2s both;
+  }
+
+  /* Left: SVG panel */
+  .hero-art {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--night-sky);
+  }
+
+  .hero-art svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Right: Bio panel */
+  .hero-bio {
+    background-color: var(--parchment);
+    border-left: 3px solid var(--amber-mid);
+    padding: 3rem 2.6rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+
+  .museum-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.54rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+  }
+
+  .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 3.8vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--forest-deep);
+    letter-spacing: 0.02em;
+  }
+
+  .persona-dates {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.05rem;
+    color: var(--amber-deep);
+    letter-spacing: 0.18em;
+    margin-top: 0.3rem;
+  }
+
+  .tagline {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--text-mid);
+    border-left: 3px solid var(--amber-mid);
+    padding-left: 0.9rem;
+    line-height: 1.55;
+  }
+
+  /* Photo frame */
+  .photo-frame {
+    position: relative;
+    max-width: 270px;
+    align-self: center;
+    margin: 0 auto;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid var(--amber-mid);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid var(--amber-pale);
+    opacity: 0.55;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(30%) sepia(28%) contrast(1.08) brightness(0.88);
+  }
+
+  /* Placard */
+  .placard {
+    background-color: var(--forest-deep);
+    color: var(--parchment);
+    padding: 1.2rem 1.4rem;
+    border-left: 4px solid var(--amber-mid);
+  }
+
+  .placard-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .placard p {
+    font-size: 0.87rem;
+    line-height: 1.68;
+    color: var(--parchment-dark);
+  }
+
+  /* ─── TRANSITION BAND ─────────────────────────────────── */
+  .transition-band {
+    background-color: var(--forest-deep);
+    padding: 0.9rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    border-top: 2px solid var(--amber-mid);
+    border-bottom: 2px solid var(--amber-mid);
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber-mid), transparent);
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─────────────────────────────────── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background-color: var(--parchment-warm);
+  }
+
+  .chatbot-intro {
+    padding: 3.8rem 3rem 3.8rem 3.5rem;
+    border-right: 1px solid var(--parchment-dark);
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.38rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.3rem;
+    text-transform: uppercase;
+  }
+
+  .chatbot-intro p {
+    font-size: 0.94rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+  }
+
+  .featured-quote {
+    margin: 1.8rem 0;
+    padding: 1.2rem 1.5rem;
+    background-color: var(--forest-deep);
+    border-left: 4px solid var(--amber-mid);
+    color: var(--parchment);
+  }
+
+  .featured-quote p {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--parchment);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .featured-quote cite {
+    display: block;
+    margin-top: 0.7rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    font-style: normal;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+  }
+
+  .domain-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--forest-deep);
+    border: 1px solid var(--forest-mid);
+    padding: 0.35rem 0.75rem;
+    background: transparent;
+  }
+
+  .chatbot-embed {
+    padding: 3.8rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 520px;
+    background-color: var(--parchment);
+  }
+
+  /* ─── PULL QUOTE ──────────────────────────────────────── */
+  .pull-quote {
+    background-color: var(--forest-mid);
+    padding: 4.5rem 6rem;
+    text-align: center;
+    border-top: 2px solid var(--amber-mid);
+    border-bottom: 2px solid var(--amber-mid);
+  }
+
+  .pull-quote blockquote {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.65;
+    color: var(--parchment);
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .pull-quote blockquote::before {
+    content: '\201C';
+    font-size: 5rem;
+    line-height: 0;
+    position: absolute;
+    top: 1.2rem;
+    left: -2.5rem;
+    color: var(--amber-mid);
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 1.4rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+    font-style: normal;
+  }
+
+  /* ─── CORPUS STRIP ────────────────────────────────────── */
+  .corpus-strip {
+    background-color: var(--night-sky);
+    padding: 2.2rem 3.5rem;
+    border-top: 1px solid var(--forest-mid);
+  }
+
+  .corpus-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.54rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--amber-mid);
+    margin-bottom: 1rem;
+  }
+
+  .corpus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2.2rem;
+    list-style: none;
+  }
+
+  .corpus-list li {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.83rem;
+    color: var(--parchment-dark);
+    opacity: 0.82;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .corpus-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--amber-mid);
+    font-size: 0.55rem;
+    top: 0.18rem;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background-color: var(--forest-deep);
+    padding: 1.8rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    border-top: 2px solid var(--amber-deep);
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--parchment);
+    letter-spacing: 0.12em;
+  }
+
+  .footer-name span {
+    display: block;
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--amber-mid);
+    letter-spacing: 0.15em;
+    margin-top: 0.2rem;
+  }
+
+  .footer-credit {
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.78rem;
+    color: var(--parchment-dark);
+    opacity: 0.65;
+  }
+
+  .footer-powered {
+    text-align: right;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    header { padding: 1rem 1.5rem; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+
+    .hero-art { height: 55vw; min-height: 320px; max-height: 480px; }
+
+    .hero-bio {
+      border-left: none;
+      border-top: 3px solid var(--amber-mid);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section { grid-template-columns: 1fr; }
+
+    .chatbot-intro { padding: 2.2rem 1.5rem; border-right: none; border-bottom: 1px solid var(--parchment-dark); }
+
+    .chatbot-embed { padding: 2.2rem 1.5rem; min-height: 400px; }
+
+    .pull-quote { padding: 2.8rem 1.8rem; }
+
+    .pull-quote blockquote::before { display: none; }
+
+    .corpus-strip { padding: 1.8rem 1.5rem; }
+
+    footer {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-powered { text-align: center; }
+
+    .transition-band { padding: 0.9rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────────────── -->
+<header>
+  <div class="header-left">
+    <span>Museum of Minds</span> &nbsp;/&nbsp; In Conversation With
+  </div>
+  <div class="header-right">Accession No. &nbsp;HT–1822–2026</div>
+</header>
+
+<!-- ─── HERO ────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- LEFT: SVG — The North Star and the Path Through the Maryland Marsh -->
+  <div class="hero-art">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg" aria-label="A path through a night marsh toward the North Star, evoking Harriet Tubman's Underground Railroad routes">
+
+      <defs>
+        <!-- Night sky gradient -->
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#050D07"/>
+          <stop offset="55%"  stop-color="#0D1A10"/>
+          <stop offset="100%" stop-color="#1A2E1C"/>
+        </linearGradient>
+
+        <!-- Ground/marsh gradient -->
+        <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#1A2E1C"/>
+          <stop offset="40%"  stop-color="#0E1A0F"/>
+          <stop offset="100%" stop-color="#060C07"/>
+        </linearGradient>
+
+        <!-- Water reflection gradient -->
+        <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#1A2E2A" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#060C08" stop-opacity="1"/>
+        </linearGradient>
+
+        <!-- Lantern glow radial -->
+        <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#E8C07A" stop-opacity="0.9"/>
+          <stop offset="40%"  stop-color="#B5732A" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#7A4A18" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- North star glow -->
+        <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#F8F4E8" stop-opacity="1"/>
+          <stop offset="35%"  stop-color="#E8D890" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#F8F4E8" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Fog filter -->
+        <filter id="fog" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.018 0.025"
+                        numOctaves="3" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise"
+                             scale="18" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+
+        <!-- Soft blur for glow effects -->
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+
+        <!-- Tree shadow blur -->
+        <filter id="treeShadow">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- === BACKGROUND SKY === -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- === STARS — scattered field === -->
+      <!-- Major stars -->
+      <circle cx="105" cy="60"  r="1.4" fill="#F8F4E8" opacity="0.9"/>
+      <circle cx="210" cy="42"  r="1.1" fill="#F8F4E8" opacity="0.75"/>
+      <circle cx="320" cy="78"  r="0.9" fill="#F8F4E8" opacity="0.7"/>
+      <circle cx="440" cy="38"  r="1.3" fill="#F8F4E8" opacity="0.85"/>
+      <circle cx="555" cy="65"  r="1.0" fill="#F8F4E8" opacity="0.72"/>
+      <circle cx="620" cy="45"  r="0.8" fill="#F8F4E8" opacity="0.68"/>
+      <circle cx="78"  cy="130" r="0.8" fill="#F8F4E8" opacity="0.6"/>
+      <circle cx="165" cy="110" r="1.1" fill="#E8E0C8" opacity="0.65"/>
+      <circle cx="260" cy="95"  r="0.7" fill="#F8F4E8" opacity="0.58"/>
+      <circle cx="390" cy="112" r="1.0" fill="#F8F4E8" opacity="0.7"/>
+      <circle cx="490" cy="88"  r="0.9" fill="#F8F4E8" opacity="0.62"/>
+      <circle cx="580" cy="108" r="0.7" fill="#F8F4E8" opacity="0.55"/>
+      <circle cx="640" cy="92"  r="1.0" fill="#F8F4E8" opacity="0.7"/>
+      <circle cx="50"  cy="90"  r="0.7" fill="#F8F4E8" opacity="0.55"/>
+      <circle cx="145" cy="155" r="0.6" fill="#F8F4E8" opacity="0.52"/>
+      <circle cx="475" cy="142" r="0.8" fill="#F8F4E8" opacity="0.6"/>
+      <circle cx="530" cy="128" r="0.6" fill="#F8F4E8" opacity="0.5"/>
+      <circle cx="672" cy="138" r="0.7" fill="#F8F4E8" opacity="0.55"/>
+      <circle cx="35"  cy="168" r="0.6" fill="#F8F4E8" opacity="0.48"/>
+      <circle cx="225" cy="170" r="0.7" fill="#F8F4E8" opacity="0.55"/>
+      <circle cx="350" cy="148" r="0.6" fill="#F8F4E8" opacity="0.5"/>
+      <circle cx="610" cy="170" r="0.8" fill="#F8F4E8" opacity="0.6"/>
+      <!-- Faint scattered -->
+      <circle cx="90"  cy="195" r="0.5" fill="#F8F4E8" opacity="0.4"/>
+      <circle cx="190" cy="215" r="0.5" fill="#F8F4E8" opacity="0.38"/>
+      <circle cx="305" cy="188" r="0.5" fill="#F8F4E8" opacity="0.42"/>
+      <circle cx="418" cy="200" r="0.5" fill="#F8F4E8" opacity="0.4"/>
+      <circle cx="510" cy="185" r="0.6" fill="#F8F4E8" opacity="0.44"/>
+      <circle cx="658" cy="198" r="0.5" fill="#F8F4E8" opacity="0.38"/>
+
+      <!-- === BIG DIPPER constellation (upper left) pointing to North Star === -->
+      <!-- Cup bottom-right -->
+      <circle cx="145" cy="240" r="1.6" fill="#E8D890" opacity="0.95"/>
+      <circle cx="185" cy="228" r="1.5" fill="#E8D890" opacity="0.9"/>
+      <!-- Cup top -->
+      <circle cx="148" cy="204" r="1.5" fill="#E8D890" opacity="0.9"/>
+      <circle cx="190" cy="200" r="1.6" fill="#E8D890" opacity="0.95"/>
+      <!-- Handle -->
+      <circle cx="232" cy="218" r="1.4" fill="#E8D890" opacity="0.85"/>
+      <circle cx="268" cy="228" r="1.3" fill="#E8D890" opacity="0.8"/>
+      <circle cx="305" cy="242" r="1.2" fill="#E8D890" opacity="0.75"/>
+
+      <!-- Dipper connecting lines -->
+      <line x1="145" y1="240" x2="185" y2="228" stroke="#E8D890" stroke-width="0.6" opacity="0.45"/>
+      <line x1="185" y1="228" x2="190" y2="200" stroke="#E8D890" stroke-width="0.6" opacity="0.45"/>
+      <line x1="190" y1="200" x2="148" y2="204" stroke="#E8D890" stroke-width="0.6" opacity="0.45"/>
+      <line x1="148" y1="204" x2="145" y2="240" stroke="#E8D890" stroke-width="0.6" opacity="0.45"/>
+      <line x1="190" y1="200" x2="232" y2="218" stroke="#E8D890" stroke-width="0.6" opacity="0.4"/>
+      <line x1="232" y1="218" x2="268" y2="228" stroke="#E8D890" stroke-width="0.6" opacity="0.38"/>
+      <line x1="268" y1="228" x2="305" y2="242" stroke="#E8D890" stroke-width="0.6" opacity="0.35"/>
+
+      <!-- Dashed pointer line from cup lip to North Star -->
+      <line x1="148" y1="204" x2="350" y2="68"
+            stroke="#E8D890" stroke-width="0.5"
+            stroke-dasharray="6,8" opacity="0.28"/>
+      <line x1="190" y1="200" x2="350" y2="68"
+            stroke="#E8D890" stroke-width="0.5"
+            stroke-dasharray="6,8" opacity="0.28"/>
+
+      <!-- === NORTH STAR — Polaris === -->
+      <!-- Outer glow halo -->
+      <circle cx="350" cy="68" r="30" fill="url(#starGlow)" opacity="0.55"/>
+      <circle cx="350" cy="68" r="18" fill="url(#starGlow)" opacity="0.45"/>
+      <!-- Star spike (4-point) -->
+      <polygon points="350,52 353.5,65 367,68 353.5,71 350,85 346.5,71 333,68 346.5,65"
+               fill="#F8F4E8" opacity="0.96"/>
+      <!-- Star core -->
+      <circle cx="350" cy="68" r="4.5" fill="white" opacity="1"/>
+      <!-- Label -->
+      <text x="368" y="63" font-family="EB Garamond, serif" font-style="italic"
+            font-size="9" fill="#E8D890" opacity="0.7">Polaris</text>
+
+      <!-- === MISTY HORIZON LINE === -->
+      <!-- Fog band across horizon -->
+      <ellipse cx="350" cy="500" rx="420" ry="38"
+               fill="#1A2E1C" opacity="0.7" filter="url(#fog)"/>
+      <ellipse cx="350" cy="510" rx="380" ry="28"
+               fill="#253E28" opacity="0.4" filter="url(#fog)"/>
+
+      <!-- === TREELINE — dense dark silhouettes === -->
+      <!-- Far left trees -->
+      <polygon points="0,460 18,380 36,460" fill="#0A120B" opacity="0.95"/>
+      <polygon points="15,470 38,370 62,470" fill="#0C150C" opacity="0.98"/>
+      <polygon points="40,465 68,355 95,465" fill="#0A120B" opacity="0.95"/>
+      <polygon points="70,468 95,362 122,468" fill="#0D180D" opacity="0.98"/>
+      <polygon points="98,460 125,368 152,460" fill="#0A120B" opacity="0.92"/>
+
+      <!-- Left-mid trees -->
+      <polygon points="130,475 158,345 186,475" fill="#0C150C" opacity="0.97"/>
+      <polygon points="162,480 188,358 215,480" fill="#0A120B" opacity="0.95"/>
+      <polygon points="195,472 220,352 248,472" fill="#0D180D" opacity="0.98"/>
+
+      <!-- Right-mid trees -->
+      <polygon points="448,480 472,352 498,480" fill="#0D180D" opacity="0.98"/>
+      <polygon points="478,472 505,345 532,472" fill="#0A120B" opacity="0.95"/>
+      <polygon points="508,468 538,356 565,468" fill="#0C150C" opacity="0.97"/>
+      <polygon points="540,475 568,360 595,475" fill="#0A120B" opacity="0.95"/>
+
+      <!-- Far right trees -->
+      <polygon points="572,462 600,355 628,462" fill="#0D180D" opacity="0.98"/>
+      <polygon points="602,470 625,368 650,470" fill="#0A120B" opacity="0.95"/>
+      <polygon points="632,465 655,375 680,465" fill="#0C150C" opacity="0.97"/>
+      <polygon points="660,460 680,380 700,460" fill="#0A120B" opacity="0.95"/>
+
+      <!-- Second layer of trees (taller, gaps for path) -->
+      <polygon points="-10,490 12,395 35,490" fill="#060C07" opacity="0.99"/>
+      <polygon points="22,488 48,380 75,488" fill="#060C07" opacity="0.99"/>
+      <polygon points="58,485 88,370 118,485" fill="#060C07" opacity="0.99"/>
+      <polygon points="108,490 140,362 170,490" fill="#060C07" opacity="0.99"/>
+      <polygon points="152,488 185,350 218,488" fill="#060C07" opacity="0.99"/>
+      <!-- Gap for path 220–480 — no tall trees here -->
+      <polygon points="480,490 512,368 542,490" fill="#060C07" opacity="0.99"/>
+      <polygon points="522,485 558,355 590,485" fill="#060C07" opacity="0.99"/>
+      <polygon points="562,488 598,365 632,488" fill="#060C07" opacity="0.99"/>
+      <polygon points="610,490 642,372 672,490" fill="#060C07" opacity="0.99"/>
+      <polygon points="655,495 680,385 705,495" fill="#060C07" opacity="0.99"/>
+
+      <!-- === MARSH / WATER PATCHES === -->
+      <!-- Water pool left -->
+      <ellipse cx="165" cy="560" rx="88" ry="18" fill="#1A2E2A" opacity="0.75"/>
+      <ellipse cx="148" cy="558" rx="55" ry="10" fill="#253E38" opacity="0.5"/>
+
+      <!-- Water pool right -->
+      <ellipse cx="540" cy="548" rx="95" ry="20" fill="#1A2E2A" opacity="0.72"/>
+      <ellipse cx="558" cy="546" rx="60" ry="12" fill="#253E38" opacity="0.5"/>
+
+      <!-- Water pool center-far -->
+      <ellipse cx="340" cy="620" rx="70" ry="14" fill="#162622" opacity="0.65"/>
+
+      <!-- North Star water reflection (thin vertical shimmer) -->
+      <line x1="350" y1="500" x2="350" y2="680"
+            stroke="#E8D890" stroke-width="1.2" opacity="0.18"/>
+      <line x1="348" y1="510" x2="352" y2="650"
+            stroke="#E8D890" stroke-width="0.6" opacity="0.1"/>
+
+      <!-- === MARSH GRASSES (foreground) === -->
+      <!-- Left marsh grass clumps -->
+      <line x1="62"  y1="540" x2="55"  y2="490" stroke="#1A2C1A" stroke-width="1.5" opacity="0.9"/>
+      <line x1="68"  y1="545" x2="72"  y2="492" stroke="#1A2C1A" stroke-width="1.5" opacity="0.85"/>
+      <line x1="75"  y1="540" x2="65"  y2="488" stroke="#243424" stroke-width="1.3" opacity="0.8"/>
+      <line x1="82"  y1="548" x2="88"  y2="495" stroke="#1A2C1A" stroke-width="1.4" opacity="0.88"/>
+      <line x1="58"  y1="555" x2="50"  y2="502" stroke="#1E301E" stroke-width="1.2" opacity="0.75"/>
+
+      <!-- Right marsh grass clumps -->
+      <line x1="620" y1="535" x2="612" y2="482" stroke="#1A2C1A" stroke-width="1.5" opacity="0.9"/>
+      <line x1="628" y1="540" x2="632" y2="488" stroke="#1A2C1A" stroke-width="1.4" opacity="0.85"/>
+      <line x1="638" y1="538" x2="628" y2="485" stroke="#243424" stroke-width="1.3" opacity="0.8"/>
+      <line x1="612" y1="548" x2="608" y2="496" stroke="#1E301E" stroke-width="1.2" opacity="0.78"/>
+
+      <!-- More foreground grasses near path edges -->
+      <line x1="218" y1="565" x2="212" y2="518" stroke="#1A2C1A" stroke-width="1.4" opacity="0.85"/>
+      <line x1="228" y1="560" x2="234" y2="512" stroke="#243424" stroke-width="1.3" opacity="0.8"/>
+      <line x1="240" y1="568" x2="235" y2="520" stroke="#1A2C1A" stroke-width="1.2" opacity="0.78"/>
+      <line x1="462" y1="562" x2="455" y2="515" stroke="#1A2C1A" stroke-width="1.4" opacity="0.85"/>
+      <line x1="472" y1="558" x2="478" y2="510" stroke="#243424" stroke-width="1.3" opacity="0.8"/>
+      <line x1="482" y1="565" x2="476" y2="518" stroke="#1A2C1A" stroke-width="1.2" opacity="0.78"/>
+
+      <!-- === GROUND / EARTH === -->
+      <rect x="0" y="490" width="700" height="410" fill="url(#groundGrad)"/>
+
+      <!-- Path dirt color variation -->
+      <ellipse cx="350" cy="750" rx="100" ry="250" fill="#142016" opacity="0.6"/>
+
+      <!-- === WINDING PATH toward North === -->
+      <!-- Path is a tapered channel from bottom center receding toward horizon -->
+      <!-- Far path (near horizon, narrow) -->
+      <polygon points="328,498 372,498 365,510 335,510"
+               fill="#1E3220" opacity="0.7"/>
+      <!-- Mid path sections — widens as it comes forward -->
+      <polygon points="322,510 378,510 372,535 328,535"
+               fill="#1E3520" opacity="0.72"/>
+      <polygon points="314,535 386,535 380,565 320,565"
+               fill="#1F3621" opacity="0.75"/>
+      <polygon points="305,565 395,565 385,602 315,602"
+               fill="#203722" opacity="0.78"/>
+      <polygon points="295,602 405,602 392,645 308,645"
+               fill="#1E3420" opacity="0.8"/>
+      <polygon points="283,645 417,645 400,698 300,698"
+               fill="#1D3220" opacity="0.82"/>
+      <polygon points="268,698 432,698 410,762 290,762"
+               fill="#1C3020" opacity="0.83"/>
+      <polygon points="250,762 450,762 425,838 275,838"
+               fill="#1B2E1E" opacity="0.82"/>
+      <!-- Near foreground (very wide) -->
+      <polygon points="230,838 470,838 470,900 230,900"
+               fill="#192C1C" opacity="0.85"/>
+
+      <!-- Path edge highlights (pale soil) -->
+      <line x1="335" y1="498" x2="268" y2="698" stroke="#2E4A2E" stroke-width="1.8" opacity="0.5"/>
+      <line x1="365" y1="498" x2="432" y2="698" stroke="#2E4A2E" stroke-width="1.8" opacity="0.5"/>
+
+      <!-- === FIGURE — silhouette of woman with lantern, walking away === -->
+      <!-- She is near the mid-ground, walking north up the path -->
+      <!-- Body shadow/glow behind figure -->
+      <ellipse cx="350" cy="642" rx="22" ry="8" fill="#B5732A" opacity="0.12"/>
+
+      <!-- Skirt / lower body -->
+      <ellipse cx="349" cy="618" rx="14" ry="20" fill="#0A120A" opacity="0.98"/>
+      <!-- Torso -->
+      <rect x="342" y="585" width="15" height="32" rx="3" fill="#0A120A" opacity="0.98"/>
+      <!-- Arm raised — holding lantern to the right -->
+      <line x1="357" y1="590" x2="375" y2="578" stroke="#0A120A" stroke-width="4" stroke-linecap="round"/>
+      <!-- Left arm natural hang -->
+      <line x1="342" y1="592" x2="335" y2="610" stroke="#0A120A" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Head with headwrap -->
+      <circle cx="349" cy="578" r="9" fill="#0A120A" opacity="0.98"/>
+      <!-- Head wrap bump on top -->
+      <ellipse cx="349" cy="571" rx="7" ry="5" fill="#0A120A" opacity="0.98"/>
+
+      <!-- === LANTERN === -->
+      <!-- Lantern glow radius -->
+      <circle cx="378" cy="574" r="38" fill="url(#lanternGlow)" opacity="0.75"/>
+      <circle cx="378" cy="574" r="22" fill="url(#lanternGlow)" opacity="0.55"/>
+      <!-- Lantern body -->
+      <rect x="372" y="568" width="12" height="14" rx="2" fill="#D4943E" opacity="0.92"/>
+      <!-- Lantern flame core -->
+      <ellipse cx="378" cy="572" rx="3.5" ry="5" fill="#F8F4E8" opacity="0.95"/>
+      <!-- Lantern handle -->
+      <line x1="378" y1="568" x2="376" y2="562" stroke="#B5732A" stroke-width="1.5"/>
+      <!-- Lantern grate lines -->
+      <line x1="372" y1="573" x2="384" y2="573" stroke="#7A4A18" stroke-width="0.8" opacity="0.7"/>
+      <line x1="374" y1="568" x2="374" y2="582" stroke="#7A4A18" stroke-width="0.8" opacity="0.7"/>
+      <line x1="382" y1="568" x2="382" y2="582" stroke="#7A4A18" stroke-width="0.8" opacity="0.7"/>
+
+      <!-- Lantern light cast on path in front of figure -->
+      <ellipse cx="355" cy="608" rx="28" ry="10" fill="#B5732A" opacity="0.13"/>
+      <ellipse cx="352" cy="600" rx="18" ry="7" fill="#D4943E" opacity="0.1"/>
+
+      <!-- === FOREGROUND EARTH DETAILS === -->
+      <!-- Roots / ground texture strokes -->
+      <line x1="90"  y1="720" x2="160" y2="740" stroke="#142016" stroke-width="2" opacity="0.5"/>
+      <line x1="112" y1="760" x2="195" y2="772" stroke="#142016" stroke-width="1.5" opacity="0.4"/>
+      <line x1="550" y1="718" x2="620" y2="738" stroke="#142016" stroke-width="2" opacity="0.5"/>
+      <line x1="530" y1="758" x2="610" y2="768" stroke="#142016" stroke-width="1.5" opacity="0.4"/>
+
+      <!-- Foreground marsh grass (closest to viewer) -->
+      <line x1="30"  y1="820" x2="18"  y2="750" stroke="#1E301E" stroke-width="2.2" opacity="0.8"/>
+      <line x1="42"  y1="830" x2="50"  y2="755" stroke="#243424" stroke-width="2"   opacity="0.75"/>
+      <line x1="18"  y1="840" x2="8"   y2="768" stroke="#1A2C1A" stroke-width="1.8" opacity="0.7"/>
+      <line x1="52"  y1="845" x2="38"  y2="772" stroke="#1E301E" stroke-width="2"   opacity="0.72"/>
+
+      <line x1="652" y1="822" x2="640" y2="752" stroke="#1E301E" stroke-width="2.2" opacity="0.8"/>
+      <line x1="666" y1="832" x2="675" y2="758" stroke="#243424" stroke-width="2"   opacity="0.75"/>
+      <line x1="678" y1="840" x2="688" y2="770" stroke="#1A2C1A" stroke-width="1.8" opacity="0.7"/>
+      <line x1="642" y1="848" x2="628" y2="775" stroke="#1E301E" stroke-width="2"   opacity="0.72"/>
+
+      <!-- === ANNOTATION / TITLE BLOCK (bottom strip) === -->
+      <rect x="0" y="852" width="700" height="48" fill="#060C07" opacity="0.88"/>
+      <line x1="0" y1="852" x2="700" y2="852" stroke="#B5732A" stroke-width="1" opacity="0.7"/>
+
+      <!-- Title block text -->
+      <text x="22" y="870" font-family="EB Garamond, serif" font-style="italic"
+            font-size="10.5" fill="#D4943E" opacity="0.85">The Path North — Maryland to Pennsylvania, 1849</text>
+      <text x="22" y="888" font-family="EB Garamond, serif"
+            font-size="8.5" fill="#8AAE8A" opacity="0.65">"Follow the Drinking Gourd"</text>
+
+      <!-- Right annotation: compass rose -->
+      <text x="605" y="868" font-family="EB Garamond, serif" font-size="10"
+            fill="#D4943E" opacity="0.72">N</text>
+      <line x1="616" y1="858" x2="616" y2="874" stroke="#D4943E" stroke-width="1" opacity="0.6"/>
+      <line x1="610" y1="866" x2="622" y2="866" stroke="#D4943E" stroke-width="1" opacity="0.55"/>
+      <polygon points="616,856 613.5,863 618.5,863" fill="#D4943E" opacity="0.7"/>
+
+      <!-- Accession text far right -->
+      <text x="634" y="870" font-family="EB Garamond, serif"
+            font-size="8" fill="#8AAE8A" opacity="0.55">HT–1822–2026</text>
+      <text x="634" y="884" font-family="EB Garamond, serif"
+            font-size="7.5" fill="#8AAE8A" opacity="0.45">Museum of Minds</text>
+
+      <!-- === ATMOSPHERIC FOG LAYER === -->
+      <!-- Low fog at treeline -->
+      <rect x="0" y="478" width="700" height="40" fill="#1A2E1C" opacity="0.35" filter="url(#fog)"/>
+      <rect x="0" y="488" width="700" height="25" fill="#253E28" opacity="0.2" filter="url(#fog)"/>
+
+    </svg>
+  </div>
+
+  <!-- RIGHT: Bio panel -->
+  <div class="hero-bio">
+    <div class="museum-eyebrow">Museum of Minds &nbsp;·&nbsp; Primary Collection</div>
+
+    <div>
+      <h1 class="persona-name">Harriet<br>Tubman</h1>
+      <div class="persona-dates">c. 1822 &mdash; 1913</div>
+    </div>
+
+    <p class="tagline">Moses of her people — conductor, soldier, and the most dangerous woman in America</p>
+
+    <div class="photo-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Carte-de-visite_portrait_of_Harriet_Tubman.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+           alt="Portrait of Harriet Tubman, c. 1868–1869"
+           onerror="this.style.display='none'"/>
+    </div>
+
+    <div class="placard">
+      <div class="placard-label">Field Notes — Curator</div>
+      <p>Born Araminta Ross on a Maryland plantation, she suffered a traumatic head injury at thirteen — a wound that brought on visions she understood as divine guidance. She escaped north in 1849, then returned south nineteen times, conducting more than seventy enslaved people to freedom. During the Civil War she served the Union Army as a spy, scout, and nurse, leading the Combahee River Raid that liberated over seven hundred people. She spent the last decades of her life fighting for women's suffrage and caring for the elderly poor — and spent thirty years petitioning Congress for a veteran's pension that arrived only months before her death.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── TRANSITION BAND ─────────────────────────────────── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-ornament">✦ &nbsp; Enter the Conversation &nbsp; ✦</div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ─────────────────────────────────── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>Speak With Harriet Tubman</h2>
+
+    <p>This exhibit invites you into direct conversation with one of the most consequential figures in American history. The intelligence behind this dialogue draws from Tubman's own documented words — interviews, letters, and the oral testimonies recorded by those who knew her — reconstructed with care and scholarly restraint.</p>
+
+    <p>Ask her about the mechanics of the Underground Railroad, about the theology of freedom that sustained her, about the revolver she carried and was prepared to use. Ask her about the pension Congress withheld for thirty years. Ask her what it means to be called a hero by a nation that treated her as property.</p>
+
+    <div class="featured-quote">
+      <p>"I never ran my train off the track and I never lost a passenger."</p>
+      <cite>— Harriet Tubman, as quoted by Kate Clifford Larson, Bound for the Promised Land, 2004</cite>
+    </div>
+
+    <p>Tubman spoke in a voice shaped by the Eastern Shore of Maryland — direct, spare, unflinching. She was a woman of deep faith and practical genius. She did not theorize liberation; she enacted it, repeatedly, at mortal risk. Come prepared with serious questions.</p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Underground Railroad</span>
+      <span class="domain-tag">Civil War</span>
+      <span class="domain-tag">Abolition</span>
+      <span class="domain-tag">Military Intelligence</span>
+      <span class="domain-tag">Women's Suffrage</span>
+      <span class="domain-tag">Theology of Freedom</span>
+      <span class="domain-tag">Reconstruction</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/harriet-tubman/widget/harriet-tubman-widget.css">
+      <script src="https://museumofminds.com/harriet-tubman/widget/harriet-tubman-widget.js"
+              data-api-url="https://harriet-tubman-production.up.railway.app"
+              data-persona-id="harriet-tubman"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ──────────────────────────────────────── -->
+<section class="pull-quote">
+  <blockquote>
+    I was the conductor of the Underground Railroad for eight years, and I can say what most conductors can't say — I never ran my train off the track, and I never lost a passenger. When I found that I had crossed that line, I looked at my hands to see if I was the same person. There was such a glory over everything; the sun came like gold through the trees, and over the fields, and I felt like I was in Heaven.
+  </blockquote>
+  <cite>— Harriet Tubman, as recorded by Franklin Sanborn, The Commonwealth, July 17, 1863</cite>
+</section>
+
+<!-- ─── CORPUS STRIP ────────────────────────────────────── */
+<div class="corpus-strip">
+  <div class="corpus-label">Corpus &nbsp;·&nbsp; Sources Informing This Exhibit</div>
+  <ul class="corpus-list">
+    <li>Kate Clifford Larson, <em>Bound for the Promised Land</em> (2004)</li>
+    <li>Catherine Clinton, <em>Harriet Tubman: The Road to Freedom</em> (2004)</li>
+    <li>Sarah Bradford, <em>Scenes in the Life of Harriet Tubman</em> (1869)</li>
+    <li>Sarah Bradford, <em>Harriet Tubman: The Moses of Her People</em> (1886)</li>
+    <li>Franklin Sanborn interviews, <em>The Commonwealth</em> (1863)</li>
+    <li>Harriet Tubman's Congressional pension testimony (1898)</li>
+    <li>Combahee River Raid dispatches, Union Army records (1863)</li>
+    <li>Frederick Douglass, letter to Harriet Tubman (1868)</li>
+    <li>National Archives: Civil War pension files, Harriet Tubman Davis</li>
+    <li>Earl Conrad, <em>Harriet Tubman</em> (1943)</li>
+    <li>Mary Beth Norton et al., <em>A People and a Nation</em>, 9th ed.</li>
+  </ul>
+</div>
+
+<!-- ─── FOOTER ──────────────────────────────────────────── -->
+<footer>
+  <div class="footer-name">
+    Harriet Tubman
+    <span>c. 1822 &mdash; 1913 &nbsp;·&nbsp; Dorchester County, Maryland</span>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds &nbsp;·&nbsp; An Exhibit of Recovered Voices<br>
+    <span style="opacity:0.5; font-size:0.72rem;">Historical intelligence reconstructed for educational dialogue</span>
+  </div>
+  <div class="footer-powered">
+    Powered by Her Own Words
+  </div>
+</footer>
+
+</body>
+</html>
