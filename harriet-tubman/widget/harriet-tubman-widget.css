@@ -4,24 +4,24 @@
  */
 
 :root {
-    /* Default theme colors (Jane Jacobs - 1960s Greenwich Village aesthetic) */
-    --jj-brick-red: #b8554a;
-    --jj-cream: #f7f3e9;
-    --jj-charcoal: #2a2a2a;
-    --jj-warm-gray: #c4bfb3;
-    --jj-dark-cream: #ebe5d6;
-    --jj-text-gray: #5a5a5a;
-    --jj-shadow: rgba(42, 42, 42, 0.15);
+    /* Harriet Tubman theme colors */
+    --jj-brick-red: #2C4A2E;
+    --jj-cream: #F5EFE0;
+    --jj-charcoal: #1A2B1B;
+    --jj-warm-gray: #8A9E8B;
+    --jj-dark-cream: #E8DFCA;
+    --jj-text-gray: #4A5E4B;
+    --jj-shadow: rgba(26, 43, 27, 0.18);
 
-    /* Runtime-injectable persona variables (override defaults) */
-    --persona-primary-color: var(--persona-primary-color);
-    --persona-cream: var(--persona-cream);
-    --persona-charcoal: var(--persona-charcoal);
-    --persona-warm-gray: var(--persona-warm-gray);
-    --persona-dark-cream: var(--persona-dark-cream);
-    --persona-text-gray: var(--persona-text-gray);
-    --persona-font-primary: 'Courier New', 'Courier', monospace;
-    --persona-font-secondary: 'Georgia', 'Times New Roman', serif;
+    /* Persona theme variables — Tubman defaults; overridden at runtime by /persona/config */
+    --persona-primary-color: #2C4A2E;
+    --persona-cream: #F5EFE0;
+    --persona-charcoal: #1A2B1B;
+    --persona-warm-gray: #8A9E8B;
+    --persona-dark-cream: #E8DFCA;
+    --persona-text-gray: #4A5E4B;
+    --persona-font-primary: 'Lora', 'Georgia', serif;
+    --persona-font-secondary: 'Playfair Display', 'Times New Roman', serif;
 }
 
 /* Container */
