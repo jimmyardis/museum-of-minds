@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charles Darwin — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --forest-deep:     #1E2E22;
+  --forest-mid:      #2E4635;
+  --forest-sage:     #3B5E45;
+  --forest-light:    #4E7A5A;
+  --moss:            #5A6E4A;
+  --ochre-dark:      #6B4E12;
+  --ochre-mid:       #8B6914;
+  --ochre-warm:      #B8921A;
+  --ochre-pale:      #C9A84C;
+  --parchment:       #F5F0E8;
+  --parchment-warm:  #EDE5D0;
+  --parchment-deep:  #D8CEBC;
+  --ink:             #1A1E18;
+  --ink-soft:        #2E3328;
+  --text-body:       #2A2E24;
+  --text-muted:      #5A5E52;
+  --text-light:      #8A8E80;
+  --accent-gold:     #C9A84C;
+  --accent-green:    #3B5E45;
+  --white-soft:      #FAF8F3;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background-color: var(--parchment);
+  color: var(--text-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.07;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 3rem;
+  background-color: var(--forest-deep);
+  border-bottom: 1px solid var(--forest-mid);
+  animation: fadeDown 0.7s ease both;
+}
+
+.header-left {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.32em;
+  color: var(--ochre-pale);
+  text-transform: uppercase;
+}
+
+.header-museum {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--parchment-warm);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.header-right {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1.28fr 0.72fr;
+  min-height: 92vh;
+  animation: fadeIn 1s ease 0.2s both;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--forest-deep);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── BIO PANEL ───────────────────────────────────────────── */
+.hero-bio {
+  background-color: var(--parchment);
+  border-left: 1px solid var(--parchment-deep);
+  padding: 3.5rem 2.8rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+  animation: fadeUp 1s ease 0.4s both;
+  overflow-y: auto;
+}
+
+.bio-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--ochre-mid);
+  margin-bottom: 0.5rem;
+}
+
+.bio-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.9rem, 3.2vw, 3.4rem);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.bio-dates {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+/* ─── PHOTO FRAME ─────────────────────────────────────────── */
+.photo-frame {
+  position: relative;
+  max-width: 280px;
+  margin: 0 auto 1.8rem;
+  display: block;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--ochre-mid);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -13px;
+  border: 1px solid var(--parchment-deep);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(35%) sepia(28%) contrast(1.06) brightness(0.91);
+}
+
+/* ─── PLACARD ─────────────────────────────────────────────── */
+.placard {
+  border-top: 1px solid var(--parchment-deep);
+  padding-top: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.placard-tagline {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.96rem;
+  font-style: italic;
+  color: var(--forest-sage);
+  line-height: 1.55;
+  margin-bottom: 1.1rem;
+}
+
+.placard-body {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.72;
+  margin-bottom: 1rem;
+}
+
+.placard-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--ochre-mid);
+  margin: 1rem 0;
+}
+
+.placard-detail {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 2;
+}
+
+.placard-detail span {
+  color: var(--ochre-dark);
+}
+
+/* ─── TRANSITION BAND ─────────────────────────────────────── */
+.transition-band {
+  background-color: var(--forest-deep);
+  padding: 1.1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  border-top: 2px solid var(--ochre-mid);
+  border-bottom: 2px solid var(--ochre-mid);
+}
+
+.band-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--forest-sage), transparent);
+}
+
+.band-ornament {
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ochre-pale);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.band-diamond {
+  color: var(--ochre-mid);
+  font-size: 0.9rem;
+}
+
+/* ─── CHATBOT SECTION ─────────────────────────────────────── */
+.chatbot-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  background-color: var(--white-soft);
+}
+
+.chatbot-intro {
+  padding: 3.8rem 3rem 3.8rem 3.5rem;
+  border-right: 1px solid var(--parchment-deep);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--ochre-mid);
+  margin-bottom: 0.2rem;
+}
+
+.chatbot-intro h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.95rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.chatbot-intro p {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.74;
+}
+
+.featured-quote {
+  border-left: 3px solid var(--forest-sage);
+  padding: 0.9rem 1.3rem;
+  background: var(--parchment-warm);
+  margin: 0.5rem 0;
+}
+
+.featured-quote p {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--forest-deep);
+  line-height: 1.6;
+  margin-bottom: 0.3rem;
+}
+
+.featured-quote cite {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.domain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.domain-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--forest-sage);
+  border: 1px solid var(--forest-sage);
+  padding: 0.3rem 0.75rem;
+  background: transparent;
+}
+
+/* ─── CHATBOT EMBED ───────────────────────────────────────── */
+.chatbot-embed {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  background: var(--parchment);
+  min-height: 520px;
+}
+
+/* ─── PULL QUOTE ──────────────────────────────────────────── */
+.pull-quote {
+  background-color: var(--forest-deep);
+  padding: 5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18rem;
+  color: var(--forest-mid);
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.pull-quote blockquote {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.pull-quote blockquote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parchment);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.pull-quote blockquote cite {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ochre-pale);
+  display: block;
+}
+
+/* ─── CORPUS STRIP ────────────────────────────────────────── */
+.corpus-strip {
+  background-color: var(--ink);
+  padding: 2.5rem 3rem;
+  border-top: 1px solid var(--forest-mid);
+}
+
+.corpus-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ochre-pale);
+  margin-bottom: 1.3rem;
+  display: block;
+}
+
+.corpus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.6rem 2rem;
+}
+
+.corpus-item {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--ink-soft);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.corpus-item::before {
+  content: '—';
+  color: var(--ochre-mid);
+  font-style: normal;
+  flex-shrink: 0;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background-color: var(--forest-deep);
+  padding: 2rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  border-top: 2px solid var(--ochre-mid);
+}
+
+.footer-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--parchment-warm);
+}
+
+.footer-name span {
+  display: block;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  color: var(--text-light);
+  margin-top: 0.2rem;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+}
+
+.footer-credit {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.footer-powered {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--ochre-pale);
+  text-align: right;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  header {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .header-museum { order: -1; width: 100%; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-svg-panel {
+    height: 55vw;
+    min-height: 320px;
+    max-height: 480px;
+    position: relative;
+  }
+  .hero-bio {
+    border-left: none;
+    border-top: 3px solid var(--ochre-mid);
+    padding: 2rem 1.5rem;
+  }
+
+  .chatbot-section {
+    grid-template-columns: 1fr;
+  }
+  .chatbot-intro {
+    border-right: none;
+    border-bottom: 1px solid var(--parchment-deep);
+    padding: 2.5rem 1.5rem;
+  }
+  .chatbot-embed {
+    padding: 2rem 1.5rem;
+    min-height: 360px;
+  }
+
+  .transition-band {
+    padding: 1rem 1.5rem;
+  }
+
+  .pull-quote {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .corpus-strip {
+    padding: 2rem 1.5rem;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  .footer-powered { text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────────────── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-museum">Museum of Minds</div>
+  <div class="header-right">Acc. No. CD–1809–2026</div>
+</header>
+
+<!-- ─── HERO ───────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- LEFT PANEL: SVG — Tropical field notebook spread with Galapagos specimens -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg" aria-label="Naturalist field study: Galápagos specimens, branching tree of life, and Beagle voyage chart">
+
+      <defs>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0E1A12"/>
+          <stop offset="55%" stop-color="#1E2E22"/>
+          <stop offset="100%" stop-color="#162318"/>
+        </linearGradient>
+        <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3B5E45"/>
+          <stop offset="100%" stop-color="#2A4530"/>
+        </linearGradient>
+        <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#EDE5D0"/>
+          <stop offset="100%" stop-color="#D8CEBC"/>
+        </linearGradient>
+        <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softBlur">
+          <feGaussianBlur stdDeviation="2.2"/>
+        </filter>
+      </defs>
+
+      <!-- Deep forest background -->
+      <rect width="700" height="900" fill="url(#bgGrad)"/>
+
+      <!-- Ambient foliage silhouettes — far layer -->
+      <ellipse cx="80" cy="820" rx="160" ry="110" fill="#0E1A12" opacity="0.9"/>
+      <ellipse cx="620" cy="840" rx="140" ry="95" fill="#0E1A12" opacity="0.9"/>
+      <ellipse cx="350" cy="870" rx="200" ry="80" fill="#111D14" opacity="0.85"/>
+
+      <!-- Background fern fronds left -->
+      <path d="M 20 500 Q 80 440 60 360 Q 55 430 110 400 Q 60 450 70 380 Q 65 440 120 420"
+            stroke="#1E3528" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <path d="M 15 520 Q 90 450 75 350" stroke="#1E3528" stroke-width="1" fill="none" opacity="0.5"/>
+
+      <!-- Large tropical leaves — background -->
+      <path d="M 650 600 Q 600 480 520 440 Q 600 470 640 380 Q 590 490 610 530 Q 570 480 580 560"
+            stroke="#243D2C" stroke-width="2" fill="none" opacity="0.6"/>
+      <path d="M 680 650 Q 620 500 540 460" stroke="#243D2C" stroke-width="1.5" fill="none" opacity="0.45"/>
+
+      <!-- Lantern glow center -->
+      <ellipse cx="350" cy="420" rx="200" ry="180" fill="url(#lanternGlow)"/>
+
+      <!-- ── FIELD NOTEBOOK — left page ── -->
+      <rect x="55" y="110" width="270" height="360" rx="2" fill="url(#pageGrad)" opacity="0.96"/>
+      <!-- Page shadow -->
+      <rect x="55" y="110" width="270" height="360" rx="2" fill="none" stroke="#8A7A60" stroke-width="0.8" opacity="0.6"/>
+      <!-- Page ruled lines -->
+      <line x1="72" y1="150" x2="308" y2="150" stroke="#C4B898" stroke-width="0.5" opacity="0.6"/>
+      <line x1="72" y1="163" x2="308" y2="163" stroke="#C4B898" stroke-width="0.5" opacity="0.6"/>
+      <line x1="72" y1="176" x2="308" y2="176" stroke="#C4B898" stroke-width="0.5" opacity="0.6"/>
+      <line x1="72" y1="189" x2="308" y2="189" stroke="#C4B898" stroke-width="0.5" opacity="0.6"/>
+      <line x1="72" y1="202" x2="308" y2="202" stroke="#C4B898" stroke-width="0.5" opacity="0.6"/>
+      <!-- Notebook header rule -->
+      <line x1="68" y1="138" x2="308" y2="138" stroke="#8B6914" stroke-width="1.2" opacity="0.5"/>
+      <!-- Page number corner -->
+      <text x="298" y="127" font-family="IM Fell English, Georgia, serif" font-size="9" fill="#8B6914" opacity="0.7" text-anchor="middle" font-style="italic">p. 47</text>
+
+      <!-- Notebook heading text -->
+      <text x="190" y="133" font-family="IM Fell English, Georgia, serif" font-size="9.5"
+            fill="#3A2E1A" text-anchor="middle" font-style="italic" opacity="0.9">Galápagos — Sept. 1835</text>
+
+      <!-- Handwritten field notes (simulated) -->
+      <text x="73" y="153" font-family="IM Fell English, Georgia, serif" font-size="7.2"
+            fill="#2E2618" opacity="0.75" font-style="italic">Specimens collected at James Island — remarkable</text>
+      <text x="73" y="166" font-family="IM Fell English, Georgia, serif" font-size="7.2"
+            fill="#2E2618" opacity="0.75" font-style="italic">variation in beak form among the finches.</text>
+      <text x="73" y="179" font-family="IM Fell English, Georgia, serif" font-size="7.2"
+            fill="#2E2618" opacity="0.75" font-style="italic">Each island appears to sustain its own variety —</text>
+      <text x="73" y="192" font-family="IM Fell English, Georgia, serif" font-size="7.2"
+            fill="#2E2618" opacity="0.75" font-style="italic">this fact undermines the notion of fixed creation.</text>
+      <text x="73" y="205" font-family="IM Fell English, Georgia, serif" font-size="7.2"
+            fill="#2E2618" opacity="0.75" font-style="italic">See drawings overleaf — tortoises likewise vary.</text>
+
+      <!-- Finch 1 — large ground finch -->
+      <g transform="translate(85, 230)">
+        <!-- Body -->
+        <ellipse cx="0" cy="0" rx="24" ry="16" fill="#3A3020" opacity="0.88"/>
+        <!-- Head -->
+        <circle cx="22" cy="-10" r="13" fill="#2E2618" opacity="0.9"/>
+        <!-- Eye -->
+        <circle cx="26" cy="-12" r="2.5" fill="#F5F0E8" opacity="0.9"/>
+        <circle cx="26.5" cy="-12.2" r="1.2" fill="#0A0A08"/>
+        <!-- Large beak — seed-cracking -->
+        <path d="M 33 -10 L 46 -8 L 35 -5 Z" fill="#8B6914" opacity="0.9"/>
+        <!-- Tail -->
+        <path d="M -20 0 Q -38 -5 -42 2 Q -38 4 -20 4 Z" fill="#2A2010"/>
+        <!-- Wing detail -->
+        <path d="M 0 -8 Q 5 0 0 12" stroke="#5A4A30" stroke-width="1" fill="none" opacity="0.6"/>
+        <!-- Feet -->
+        <line x1="-5" y1="14" x2="-10" y2="24" stroke="#8B6914" stroke-width="1.5"/>
+        <line x1="5" y1="14" x2="0" y2="24" stroke="#8B6914" stroke-width="1.5"/>
+        <!-- Label -->
+        <text x="-15" y="38" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" font-style="italic">G. magnirostris</text>
+        <!-- Annotation line -->
+        <line x1="48" y1="-8" x2="65" y2="-18" stroke="#8B6914" stroke-width="0.8" opacity="0.6"/>
+        <text x="67" y="-20" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#5A4A20" font-style="italic">crushing beak</text>
+      </g>
+
+      <!-- Finch 2 — warbler finch, slender beak -->
+      <g transform="translate(195, 242)">
+        <ellipse cx="0" cy="0" rx="18" ry="11" fill="#5A5040" opacity="0.85"/>
+        <circle cx="17" cy="-8" r="10" fill="#4A4032" opacity="0.88"/>
+        <circle cx="21" cy="-10" r="2" fill="#F5F0E8" opacity="0.9"/>
+        <circle cx="21.4" cy="-10.2" r="1" fill="#0A0A08"/>
+        <!-- Slender insect-catching beak -->
+        <path d="M 25 -8 L 41 -7 L 26 -5 Z" fill="#C9A84C" opacity="0.85"/>
+        <path d="M -16 0 Q -28 -3 -32 2 Q -28 3 -16 3 Z" fill="#3A3020"/>
+        <line x1="-4" y1="10" x2="-8" y2="19" stroke="#8B6914" stroke-width="1.2"/>
+        <line x1="3" y1="10" x2="-1" y2="19" stroke="#8B6914" stroke-width="1.2"/>
+        <text x="-20" y="30" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" font-style="italic">C. olivacea</text>
+        <line x1="43" y1="-7" x2="58" y2="-16" stroke="#8B6914" stroke-width="0.8" opacity="0.6"/>
+        <text x="59" y="-18" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#5A4A20" font-style="italic">probing beak</text>
+      </g>
+
+      <!-- Decorative bracket annotation on notebook -->
+      <path d="M 68 222 L 60 222 L 60 285 L 68 285" stroke="#8B6914" stroke-width="0.9" fill="none" opacity="0.5"/>
+      <text x="56" y="257" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#8B6914" font-style="italic"
+            text-anchor="middle" transform="rotate(-90 56 257)">adaptive forms</text>
+
+      <!-- Galapagos tortoise sketch -->
+      <g transform="translate(120, 355)">
+        <!-- Shell dome -->
+        <path d="M 0 0 Q -35 -45 -10 -55 Q 20 -65 45 -50 Q 70 -38 60 0 Z"
+              fill="#4A5A38" stroke="#2E3A20" stroke-width="1.2" opacity="0.85"/>
+        <!-- Shell scutes pattern -->
+        <path d="M 5 -5 Q 0 -30 10 -45 Q 20 -50 30 -42" stroke="#3A4A28" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M -5 -2 Q -18 -25 -5 -42" stroke="#3A4A28" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M 20 -3 Q 35 -28 40 -42" stroke="#3A4A28" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M -20 -20 Q 5 -52 35 -45" stroke="#3A4A28" stroke-width="0.7" fill="none" opacity="0.5"/>
+        <!-- Head -->
+        <ellipse cx="-28" cy="2" rx="12" ry="8" fill="#5A5A40" opacity="0.85"/>
+        <circle cx="-34" cy="-1" r="2.5" fill="#2E2E20" opacity="0.8"/>
+        <!-- Legs -->
+        <path d="M -10 0 Q -18 12 -15 20" stroke="#4A4A30" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M 10 0 Q 5 15 8 22" stroke="#4A4A30" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M 30 -2 Q 38 12 35 20" stroke="#4A4A30" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M 48 -8 Q 55 5 52 16" stroke="#4A4A30" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        <!-- Label -->
+        <text x="10" y="35" font-family="IM Fell English, Georgia, serif" font-size="7.5" fill="#3A2E1A" font-style="italic" text-anchor="middle">Geochelone niger</text>
+        <text x="10" y="46" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#5A4A28" font-style="italic" text-anchor="middle">— saddleback form, Isabela I.</text>
+      </g>
+
+      <!-- ── RIGHT NOTEBOOK PAGE ── -->
+      <rect x="370" y="110" width="265" height="360" rx="2" fill="url(#pageGrad)" opacity="0.94"/>
+      <rect x="370" y="110" width="265" height="360" rx="2" fill="none" stroke="#8A7A60" stroke-width="0.8" opacity="0.6"/>
+      <!-- Page binding shadow -->
+      <rect x="370" y="110" width="6" height="360" fill="#C4B898" opacity="0.3"/>
+
+      <!-- Tree of Life diagram — right page -->
+      <text x="502" y="133" font-family="IM Fell English, Georgia, serif" font-size="9.5"
+            fill="#3A2E1A" text-anchor="middle" font-style="italic" opacity="0.9">I think —</text>
+      <line x1="387" y1="138" x2="627" y2="138" stroke="#8B6914" stroke-width="1.2" opacity="0.4"/>
+
+      <!-- Tree of descent diagram -->
+      <g transform="translate(502, 310)" opacity="0.88">
+        <!-- Root trunk -->
+        <line x1="0" y1="100" x2="0" y2="55" stroke="#3A2E1A" stroke-width="2.2"/>
+        <!-- First branch level -->
+        <line x1="0" y1="55" x2="-80" y2="20" stroke="#3A2E1A" stroke-width="1.8"/>
+        <line x1="0" y1="55" x2="80" y2="20" stroke="#3A2E1A" stroke-width="1.8"/>
+        <!-- Second branch level left -->
+        <line x1="-80" y1="20" x2="-110" y2="-20" stroke="#3A2E1A" stroke-width="1.4"/>
+        <line x1="-80" y1="20" x2="-52" y2="-22" stroke="#3A2E1A" stroke-width="1.4"/>
+        <!-- Second branch level right -->
+        <line x1="80" y1="20" x2="50" y2="-22" stroke="#3A2E1A" stroke-width="1.4"/>
+        <line x1="80" y1="20" x2="110" y2="-20" stroke="#3A2E1A" stroke-width="1.4"/>
+        <!-- Third level left-left -->
+        <line x1="-110" y1="-20" x2="-120" y2="-55" stroke="#5A4A2E" stroke-width="1"/>
+        <line x1="-110" y1="-20" x2="-95" y2="-58" stroke="#5A4A2E" stroke-width="1"/>
+        <!-- Third level left-right -->
+        <line x1="-52" y1="-22" x2="-62" y2="-58" stroke="#5A4A2E" stroke-width="1"/>
+        <line x1="-52" y1="-22" x2="-38" y2="-56" stroke="#5A4A2E" stroke-width="1"/>
+        <!-- Third level right-left -->
+        <line x1="50" y1="-22" x2="36" y2="-56" stroke="#5A4A2E" stroke-width="1"/>
+        <line x1="50" y1="-22" x2="58" y2="-58" stroke="#5A4A2E" stroke-width="1"/>
+        <!-- Third level right-right -->
+        <line x1="110" y1="-20" x2="92" y2="-55" stroke="#5A4A2E" stroke-width="1"/>
+        <line x1="110" y1="-20" x2="120" y2="-55" stroke="#5A4A2E" stroke-width="1"/>
+
+        <!-- Terminal nodes -->
+        <circle cx="-120" cy="-58" r="3.5" fill="#3B5E45"/>
+        <circle cx="-95" cy="-61" r="3.5" fill="#3B5E45"/>
+        <circle cx="-62" cy="-61" r="3.5" fill="#3B5E45"/>
+        <circle cx="-38" cy="-59" r="3.5" fill="#3B5E45"/>
+        <circle cx="36" cy="-59" r="3.5" fill="#3B5E45"/>
+        <circle cx="58" cy="-61" r="3.5" fill="#3B5E45"/>
+        <circle cx="92" cy="-58" r="3.5" fill="#3B5E45"/>
+        <circle cx="120" cy="-58" r="3.5" fill="#3B5E45"/>
+        <!-- Root node -->
+        <circle cx="0" cy="104" r="4.5" fill="#8B6914"/>
+        <!-- Vertical baseline -->
+        <line x1="-130" y1="108" x2="130" y2="108" stroke="#8B6914" stroke-width="0.8" opacity="0.5"/>
+
+        <!-- Annotation: deep time axis -->
+        <line x1="-135" y1="108" x2="-135" y2="-68" stroke="#8B6914" stroke-width="0.8" opacity="0.5"/>
+        <text x="-148" y="25" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#6A5020" font-style="italic"
+              text-anchor="middle" transform="rotate(-90 -148 25)">geological time</text>
+        <!-- Arrow up -->
+        <polygon points="-135,-72 -138,-62 -132,-62" fill="#8B6914" opacity="0.6"/>
+
+        <!-- Node labels -->
+        <text x="-120" y="-66" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">A</text>
+        <text x="-95" y="-68" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">B</text>
+        <text x="-62" y="-68" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">C</text>
+        <text x="-38" y="-66" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">D</text>
+        <text x="36" y="-66" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">E</text>
+        <text x="58" y="-68" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">F</text>
+        <text x="92" y="-66" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">G</text>
+        <text x="120" y="-66" font-family="IM Fell English, Georgia, serif" font-size="5.8" fill="#2E2618" text-anchor="middle" font-style="italic">H</text>
+      </g>
+
+      <!-- Marginal annotation right page -->
+      <text x="628" y="180" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#5A4A20" font-style="italic"
+            text-anchor="end" opacity="0.7">Thus from</text>
+      <text x="628" y="191" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#5A4A20" font-style="italic"
+            text-anchor="end" opacity="0.7">so simple a</text>
+      <text x="628" y="202" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#5A4A20" font-style="italic"
+            text-anchor="end" opacity="0.7">beginning...</text>
+
+      <!-- ── HMS BEAGLE ROUTE MAP — lower section ── -->
+      <rect x="55" y="495" width="580" height="230" rx="2" fill="#D8CEBC" opacity="0.88"/>
+      <rect x="55" y="495" width="580" height="230" rx="2" fill="none" stroke="#8A7A60" stroke-width="0.8" opacity="0.5"/>
+
+      <!-- Map title block -->
+      <rect x="55" y="495" width="580" height="22" fill="#C4B498" opacity="0.6"/>
+      <text x="345" y="510" font-family="Cinzel, serif" font-size="9" fill="#2E2618" text-anchor="middle" letter-spacing="3">CHART OF THE VOYAGE OF H.M.S. BEAGLE  ·  1831–1836</text>
+
+      <!-- Simplified world map outline — Atlantic/Pacific coastlines -->
+      <!-- South America west coast -->
+      <path d="M 130 560 Q 125 580 128 610 Q 130 640 125 670 Q 120 695 135 710"
+            stroke="#8A7A60" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <!-- South America east coast -->
+      <path d="M 200 545 Q 210 570 205 600 Q 200 630 208 660 Q 215 685 205 708"
+            stroke="#8A7A60" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <!-- South America fill -->
+      <path d="M 130 560 Q 125 580 128 610 Q 130 640 125 670 Q 120 695 135 710 Q 165 720 205 708 Q 215 685 208 660 Q 200 630 205 600 Q 210 570 200 545 Q 165 535 130 560 Z"
+            fill="#C8B89A" opacity="0.5"/>
+      <!-- Tip of Cape Horn -->
+      <path d="M 135 710 Q 148 720 155 715 Q 158 718 162 714 Q 170 720 175 712 Q 188 720 205 708"
+            stroke="#8A7A60" stroke-width="1" fill="#C8B89A" opacity="0.5"/>
+
+      <!-- Africa outline (simplified) -->
+      <path d="M 360 530 Q 380 545 390 570 Q 395 600 385 640 Q 375 670 380 690 Q 390 710 370 715 Q 355 718 345 700 Q 335 680 340 650 Q 345 620 338 590 Q 330 560 340 535 Q 350 525 360 530 Z"
+            fill="#C8B89A" stroke="#8A7A60" stroke-width="1" opacity="0.5"/>
+
+      <!-- England dot -->
+      <circle cx="295" cy="527" r="4" fill="#8B6914" opacity="0.8"/>
+      <text x="295" y="522" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" text-anchor="middle" font-style="italic">Plymouth</text>
+
+      <!-- Galápagos dot -->
+      <circle cx="95" cy="620" r="4.5" fill="#3B5E45" opacity="0.9"/>
+      <text x="85" y="613" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#1E3528" font-style="italic">Galápagos</text>
+
+      <!-- Cape Horn dot -->
+      <circle cx="157" cy="715" r="3.5" fill="#8B6914" opacity="0.75"/>
+
+      <!-- Beagle route line — simplified great circle -->
+      <path d="M 295 527 Q 260 540 220 550 Q 200 545 175 560 Q 155 580 157 715
+               Q 130 640 95 620 Q 80 610 75 595 Q 72 575 80 555 Q 130 530 155 527
+               Q 200 520 240 522 Q 270 524 295 527"
+            stroke="#8B6914" stroke-width="1.5" fill="none" stroke-dasharray="6,3" opacity="0.8"/>
+
+      <!-- Outbound route arrow -->
+      <polygon points="220,551 215,544 225,543" fill="#8B6914" opacity="0.8"/>
+
+      <!-- Date labels on route -->
+      <text x="238" y="530" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#5A4A20" font-style="italic" opacity="0.8">Jan. 1832</text>
+      <text x="152" y="595" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#5A4A20" font-style="italic" opacity="0.8">Valparaíso</text>
+
+      <!-- Compass rose — bottom right of map -->
+      <g transform="translate(595, 685)" opacity="0.7">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#8A7A60" stroke-width="0.8"/>
+        <line x1="0" y1="-18" x2="0" y2="18" stroke="#5A4A30" stroke-width="1"/>
+        <line x1="-18" y1="0" x2="18" y2="0" stroke="#5A4A30" stroke-width="1"/>
+        <polygon points="0,-18 -4,-8 4,-8" fill="#8B6914"/>
+        <polygon points="0,18 -3,10 3,10" fill="#8A7A60"/>
+        <text x="0" y="-22" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" text-anchor="middle">N</text>
+        <text x="22" y="3" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" text-anchor="start">E</text>
+        <text x="-22" y="3" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" text-anchor="end">W</text>
+        <text x="0" y="28" font-family="IM Fell English, Georgia, serif" font-size="7" fill="#3A2E1A" text-anchor="middle">S</text>
+      </g>
+
+      <!-- Legend box -->
+      <rect x="440" y="690" width="140" height="30" fill="#C4B498" opacity="0.5" rx="1"/>
+      <line x1="448" y1="701" x2="468" y2="701" stroke="#8B6914" stroke-width="1.5" stroke-dasharray="5,2"/>
+      <text x="472" y="704" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#3A2E1A" font-style="italic">Outbound route</text>
+      <circle cx="450" cy="713" r="3" fill="#3B5E45"/>
+      <text x="457" y="716" font-family="IM Fell English, Georgia, serif" font-size="6.5" fill="#3A2E1A" font-style="italic">Key landfall</text>
+
+      <!-- ── DECORATIVE FERN OVERLAYS ── -->
+      <!-- Left large fern -->
+      <g opacity="0.55">
+        <path d="M 30 150 Q 15 250 25 380 Q 28 420 20 480"
+              stroke="#1E3528" stroke-width="2" fill="none"/>
+        <!-- Fronds -->
+        <path d="M 25 280 Q -20 260 -30 240" stroke="#1E3528" stroke-width="1.5" fill="none"/>
+        <path d="M 23 300 Q -15 275 -22 255" stroke="#1E3528" stroke-width="1.3" fill="none"/>
+        <path d="M 24 320 Q 5 300 -5 280" stroke="#1E3528" stroke-width="1.2" fill="none"/>
+        <path d="M 22 340 Q 45 310 55 290" stroke="#1E3528" stroke-width="1.3" fill="none"/>
+        <path d="M 25 360 Q 50 340 58 318" stroke="#1E3528" stroke-width="1.2" fill="none"/>
+      </g>
+
+      <!-- Right large fern -->
+      <g opacity="0.5">
+        <path d="M 680 180 Q 695 290 685 420 Q 682 460 690 510"
+              stroke="#1E3528" stroke-width="2" fill="none"/>
+        <path d="M 685 300 Q 720 280 730 260" stroke="#1E3528" stroke-width="1.5" fill="none"/>
+        <path d="M 684 325 Q 718 300 726 278" stroke="#1E3528" stroke-width="1.3" fill="none"/>
+        <path d="M 682 350 Q 660 325 650 308" stroke="#1E3528" stroke-width="1.3" fill="none"/>
+        <path d="M 683 375 Q 655 355 648 335" stroke="#1E3528" stroke-width="1.2" fill="none"/>
+      </g>
+
+      <!-- ── TITLE BLOCK — bottom ── -->
+      <rect x="55" y="748" width="580" height="100" rx="2" fill="#0E1A12" opacity="0.75"/>
+      <line x1="72" y1="762" x2="617" y2="762" stroke="#8B6914" stroke-width="0.8" opacity="0.5"/>
+      <line x1="72" y1="838" x2="617" y2="838" stroke="#8B6914" stroke-width="0.8" opacity="0.5"/>
+
+      <text x="345" y="790" font-family="Cinzel, serif" font-size="13"
+            fill="#EDE5D0" text-anchor="middle" letter-spacing="5" opacity="0.95">CHARLES DARWIN</text>
+      <text x="345" y="810" font-family="IM Fell English, Georgia, serif" font-size="9.5"
+            fill="#C9A84C" text-anchor="middle" font-style="italic" opacity="0.85">Naturalist · F.R.S. · F.G.S. · Author of On the Origin of Species</text>
+      <text x="345" y="830" font-family="Cinzel, serif" font-size="7.5"
+            fill="#8A9A80" text-anchor="middle" letter-spacing="3" opacity="0.7">SHREWSBURY 1809 — DOWN HOUSE 1882</text>
+
+      <!-- Corner ornaments on title block -->
+      <text x="72" y="758" font-family="IM Fell English, Georgia, serif" font-size="10" fill="#8B6914" opacity="0.6">✦</text>
+      <text x="608" y="758" font-family="IM Fell English, Georgia, serif" font-size="10" fill="#8B6914" opacity="0.6">✦</text>
+      <text x="72" y="844" font-family="IM Fell English, Georgia, serif" font-size="10" fill="#8B6914" opacity="0.6">✦</text>
+      <text x="608" y="844" font-family="IM Fell English, Georgia, serif" font-size="10" fill="#8B6914" opacity="0.6">✦</text>
+
+      <!-- ── MUSEUM SPECIMEN TAG ── -->
+      <g transform="translate(510, 50)">
+        <rect x="0" y="0" width="145" height="48" rx="1" fill="#EDE5D0" stroke="#8B6914" stroke-width="0.8"/>
+        <line x1="10" y1="14" x2="135" y2="14" stroke="#C4B498" stroke-width="0.5"/>
+        <text x="72" y="11" font-family="Cinzel, serif" font-size="5.5" fill="#8B6914" text-anchor="middle" letter-spacing="2">MUSEUM OF MINDS</text>
+        <text x="72" y="26" font-family="IM Fell English, Georgia, serif" font-size="8.5" fill="#2E2618" text-anchor="middle" font-style="italic">Collection: Natural Philosophy</text>
+        <text x="72" y="38" font-family="Cinzel, serif" font-size="6" fill="#5A4A20" text-anchor="middle" letter-spacing="1.5">Acc. No. CD–1809–2026</text>
+        <!-- String hole -->
+        <circle cx="10" cy="7" r="2.5" fill="none" stroke="#8B6914" stroke-width="0.8"/>
+      </g>
+
+      <!-- ── SCATTERED SPECIMEN LABELS ── -->
+      <text x="58" y="100" font-family="IM Fell English, Georgia, serif" font-size="7.5"
+            fill="#C9A84C" font-style="italic" opacity="0.6" transform="rotate(-3 58 100)">Specimen No. 47</text>
+      <text x="400" y="94" font-family="IM Fell English, Georgia, serif" font-size="7"
+            fill="#C9A84C" font-style="italic" opacity="0.5" transform="rotate(2 400 94)">Var. insularis — Sept. 1835</text>
+
+    </svg>
+  </div>
+
+  <!-- RIGHT PANEL: Bio -->
+  <div class="hero-bio">
+    <div class="bio-label">Natural Philosophy &amp; Evolutionary Science</div>
+    <div class="bio-name">Charles Darwin</div>
+    <div class="bio-dates">Shrewsbury, 1809 — Down House, 1882</div>
+
+    <div class="photo-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Charles_Darwin_in_1881.jpg/1280px-Charles_Darwin_in_1881.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+           alt="Portrait of Charles Darwin, 1881"
+           onerror="this.style.display='none'"/>
+    </div>
+
+    <div class="placard">
+      <p class="placard-tagline">The naturalist who unmade the centre of the universe — and replaced it with deep time and common descent.</p>
+
+      <div class="placard-rule"></div>
+
+      <p class="placard-body">
+        Charles Darwin sailed from Plymouth Sound in December 1831 aboard HMS Beagle as a young gentleman-naturalist with a taste for beetles and a copy of Lyell's <em>Principles of Geology</em>. What he returned with, five years later, was a revolution he would spend two more decades refusing to detonate — cataloguing barnacles, corresponding with every naturalist in Europe, and watching his own faith quietly dissolve alongside his eldest daughter's death.
+      </p>
+      <p class="placard-body">
+        The idea that emerged in 1859 was simultaneously simple and devastating: all life shares common ancestry, shaped across immeasurable time by the impersonal pressure of natural selection. No design, no directed purpose, no privileged centre. It was the most consequential intellectual act of the nineteenth century — and Darwin performed it with the meticulous courtesy of a Victorian country squire.
+      </p>
+
+      <div class="placard-rule"></div>
+
+      <div class="placard-detail">
+        <div>Nationality <span>British</span></div>
+        <div>Discipline <span>Natural History · Geology · Evolutionary Biology</span></div>
+        <div>Key Work <span>On the Origin of Species, 1859</span></div>
+        <div>Voyage <span>HMS Beagle, 1831–1836</span></div>
+        <div>Fellowship <span>F.R.S. 1839 · Royal Medal 1853</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ─────────────────────────────────── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <span class="band-diamond">✦</span>
+  <div class="band-ornament">Engage the Mind of Darwin</div>
+  <span class="band-diamond">✦</span>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ──────────────────────────────────── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>In Conversation</h2>
+    <h3>Ask Darwin what he actually believed — about God, about time, about what comes next</h3>
+
+    <p>
+      This is not the Darwin of legend — the beard, the bombshell, the beard again. This is a man who experienced the world's coral reefs, Andean earthquakes, the faces of the Fuegians, and the death of his beloved daughter Annie before committing his idea to print. He was terrified of what he was doing, and he did it anyway.
+    </p>
+
+    <div class="featured-quote">
+      <p>"I am almost convinced (quite contrary to the opinion I started with) that species are not (it is like confessing a murder) immutable."</p>
+      <cite>Letter to Joseph Dalton Hooker · January 1844</cite>
+    </div>
+
+    <p>
+      Put your hardest questions to him. Ask about faith, about DNA, about whether twenty years of delay was cowardice or method. Ask whether natural selection is compatible with meaning. He will answer with the precision of a man who has spent forty years looking very carefully at very small things — and the unease of one who knows exactly what he found.
+    </p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Evolution</span>
+      <span class="domain-tag">Natural Selection</span>
+      <span class="domain-tag">Geology</span>
+      <span class="domain-tag">Faith &amp; Doubt</span>
+      <span class="domain-tag">Beagle Voyage</span>
+      <span class="domain-tag">Galápagos</span>
+      <span class="domain-tag">Species &amp; Variation</span>
+      <span class="domain-tag">Deep Time</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/charles-darwin/widget/charles-darwin-widget.css">
+      <script src="https://museumofminds.com/charles-darwin/widget/charles-darwin-widget.js"
+              data-api-url="https://charles-darwin-production.up.railway.app"
+              data-persona-id="charles-darwin"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ───────────────────────────────────────── -->
+<section class="pull-quote">
+  <blockquote>
+    <p>There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.</p>
+    <cite>On the Origin of Species · Charles Darwin · 1859 — Closing Lines</cite>
+  </blockquote>
+</section>
+
+<!-- ─── CORPUS STRIP ─────────────────────────────────────── -->
+<div class="corpus-strip">
+  <span class="corpus-label">Primary Corpus — Sources Informing This Conversation</span>
+  <div class="corpus-grid">
+    <div class="corpus-item">On the Origin of Species (1859, 6 editions)</div>
+    <div class="corpus-item">The Descent of Man, and Selection in Relation to Sex (1871)</div>
+    <div class="corpus-item">The Voyage of the Beagle (1839)</div>
+    <div class="corpus-item">The Expression of the Emotions in Man and Animals (1872)</div>
+    <div class="corpus-item">Autobiography (1876, unpublished in full until 1958)</div>
+    <div class="corpus-item">The Formation of Vegetable Mould through the Action of Worms (1881)</div>
+    <div class="corpus-item">Correspondence, Vol. 1–30 (Darwin Correspondence Project)</div>
+    <div class="corpus-item">Notebook B: Transmutation of Species (c. 1837–1838)</div>
+    <div class="corpus-item">Notebook C: Transmutation of Species (c. 1838)</div>
+    <div class="corpus-item">The Structure and Distribution of Coral Reefs (1842)</div>
+    <div class="corpus-item">Geological Observations on Volcanic Islands (1844)</div>
+    <div class="corpus-item">A Monograph on the Sub-Class Cirripedia (1851–1854)</div>
+    <div class="corpus-item">The Variation of Animals and Plants Under Domestication (1868)</div>
+    <div class="corpus-item">Essay of 1844 (private manuscript, unpublished in life)</div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ───────────────────────────────────────────── -->
+<footer>
+  <div class="footer-name">
+    Charles Darwin
+    <span>1809 — 1882 · Naturalist &amp; Geologist</span>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds<br>
+    <span style="font-family:'IM Fell English',serif; font-style:italic; font-size:0.7rem; letter-spacing:0.05em; text-transform:none;">A living archive of foundational thought</span>
+  </div>
+  <div class="footer-powered">Powered by His Own Words</div>
+</footer>
+
+</body>
+</html>
