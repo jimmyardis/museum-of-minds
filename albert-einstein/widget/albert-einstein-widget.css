@@ -25,7 +25,7 @@
 }
 
 /* Container */
-#jane-jacobs-widget {
+#albert-einstein-widget {
     font-family: var(--persona-font-primary);
     position: fixed;
     bottom: 24px;
@@ -65,7 +65,6 @@
     right: 24px;
     width: 400px;
     height: 620px;
-    max-height: calc(100vh - 120px);
     background: var(--persona-cream);
     border-radius: 2px;
     box-shadow:
@@ -83,6 +82,24 @@
     opacity: 0;
     pointer-events: none;
     transform: translateY(20px);
+}
+
+/* ── Size modes ── */
+/* Compact is the default (400×620px defined above). */
+
+.jj-chat-window.jj-size-medium {
+    width: 580px;
+    height: 760px;
+}
+
+.jj-chat-window.jj-size-full {
+    width: 100vw;
+    height: 100vh;
+    bottom: 0 !important;
+    right: 0 !important;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
 }
 
 /* Header */
@@ -133,6 +150,35 @@
     line-height: 1.5;
     font-family: var(--persona-font-secondary);
     font-style: italic;
+}
+
+.jj-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.jj-size-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.55);
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.jj-size-btn:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .jj-close-btn {
@@ -457,12 +503,10 @@
 /* Mobile Responsiveness */
 @media (max-width: 480px) {
     .jj-chat-window {
-        width: calc(100vw - 24px);
-        /* 65vh avoids iOS Safari 100vh bug (includes browser chrome) */
-        height: 65vh;
-        max-height: 520px;
-        right: 12px;
-        bottom: 75px;
+        width: calc(100vw - 32px);
+        height: calc(100vh - 140px);
+        right: 16px;
+        bottom: 96px;
     }
 
     .jj-trigger {
@@ -472,7 +516,7 @@
         right: 20px;
     }
 
-    #jane-jacobs-widget {
+    #albert-einstein-widget {
         bottom: 20px;
         right: 20px;
     }
@@ -489,7 +533,7 @@
 
 /* Print styles - hide widget */
 @media print {
-    #jane-jacobs-widget {
+    #albert-einstein-widget {
         display: none !important;
     }
 }
@@ -509,426 +553,4 @@
 .jj-loading {
     pointer-events: none;
     opacity: 0.7;
-}
-
-/* ── Settings panel ──────────────────────────────────────────────────────── */
-
-/* Header buttons container (gear + close stacked vertically) */
-.jj-header-btns {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    flex-shrink: 0;
-    margin-left: 12px;
-}
-
-/* Gear icon settings button */
-.jj-settings-btn {
-    background: none;
-    border: none;
-    color: var(--persona-cream);
-    cursor: pointer;
-    padding: 2px;
-    opacity: 0.55;
-    transition: opacity 0.2s, color 0.2s;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.jj-settings-btn:hover {
-    opacity: 0.9;
-}
-
-.jj-settings-btn.jj-settings-active {
-    opacity: 1;
-    color: var(--persona-primary-color);
-}
-
-/* Settings panel sits between header and messages, hidden by default */
-.jj-settings-panel {
-    background: #1c1c1c;
-    border-bottom: 2px solid var(--persona-primary-color);
-    padding: 12px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-.jj-settings-panel.jj-hidden {
-    display: none;
-}
-
-.jj-settings-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.jj-settings-label {
-    font-family: var(--persona-font-primary);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: rgba(255, 255, 255, 0.4);
-    white-space: nowrap;
-    width: 78px;
-    flex-shrink: 0;
-}
-
-.jj-pill-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.jj-pill {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: rgba(255, 255, 255, 0.5);
-    font-family: var(--persona-font-secondary);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-    line-height: 1.6;
-}
-
-.jj-pill:hover {
-    border-color: rgba(255, 255, 255, 0.45);
-    color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.jj-pill.jj-pill-active {
-    background: var(--persona-primary-color);
-    border-color: var(--persona-primary-color);
-    color: var(--persona-cream);
-}
-
-.jj-pill.jj-pill-active:hover {
-    opacity: 0.9;
-}
-
-.jj-settings-btn:focus,
-.jj-pill:focus {
-    outline: 3px solid var(--persona-primary-color);
-    outline-offset: 2px;
-}
-/* ── Trust Score Badge (widget header) ───────────────────────────────────── */
-
-.jj-trust-badge {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 3px;
-    margin-top: 10px;
-    padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    cursor: default;
-    transition: background 0.2s;
-}
-
-.jj-trust-badge:hover {
-    background: rgba(255, 255, 255, 0.13);
-}
-
-.jj-trust-label {
-    font-family: var(--persona-font-primary);
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: rgba(255, 255, 255, 0.45);
-}
-
-.jj-trust-score {
-    font-family: var(--persona-font-primary);
-    font-size: 15px;
-    font-weight: bold;
-    color: var(--persona-cream);
-    line-height: 1;
-}
-
-.jj-trust-max {
-    font-family: var(--persona-font-primary);
-    font-size: 9px;
-    color: rgba(255, 255, 255, 0.35);
-}
-
-.jj-trust-lbl {
-    font-family: var(--persona-font-secondary);
-    font-size: 9px;
-    font-style: italic;
-    color: var(--persona-primary-color);
-    margin-left: 2px;
-}
-
-/* ── Per-response metadata row ───────────────────────────────────────────── */
-
-.jj-message-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-    padding: 0 2px;
-    flex-wrap: wrap;
-}
-
-/* Confidence badge */
-.jj-confidence {
-    font-family: var(--persona-font-primary);
-    font-size: 10px;
-    letter-spacing: 0.3px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    cursor: default;
-    white-space: nowrap;
-}
-
-.jj-confidence-high {
-    color: #2d7a4a;
-    background: rgba(45, 122, 74, 0.1);
-    border-color: rgba(45, 122, 74, 0.25);
-}
-
-.jj-confidence-medium {
-    color: #9a6e1a;
-    background: rgba(154, 110, 26, 0.1);
-    border-color: rgba(154, 110, 26, 0.25);
-}
-
-.jj-confidence-low {
-    color: #8a3030;
-    background: rgba(138, 48, 48, 0.1);
-    border-color: rgba(138, 48, 48, 0.25);
-}
-
-/* Sources toggle button */
-.jj-sources-toggle {
-    background: none;
-    border: none;
-    font-family: var(--persona-font-secondary);
-    font-size: 11px;
-    font-style: italic;
-    color: var(--persona-text-gray);
-    cursor: pointer;
-    padding: 2px 4px;
-    transition: color 0.15s;
-}
-
-.jj-sources-toggle:hover,
-.jj-sources-toggle.jj-sources-active {
-    color: var(--persona-primary-color);
-}
-
-/* Sources panel */
-.jj-sources-panel {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 4px;
-    padding: 8px 10px;
-    background: var(--persona-dark-cream);
-    border-left: 3px solid var(--persona-warm-gray);
-    border-radius: 0 2px 2px 0;
-}
-
-.jj-sources-panel.jj-hidden {
-    display: none;
-}
-
-.jj-source-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.jj-source-type {
-    font-family: var(--persona-font-primary);
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 2px 6px;
-    border-radius: 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.jj-source-own {
-    background: rgba(45, 122, 74, 0.12);
-    color: #2d7a4a;
-    border: 1px solid rgba(45, 122, 74, 0.2);
-}
-
-.jj-source-discourse {
-    background: rgba(154, 110, 26, 0.12);
-    color: #9a6e1a;
-    border: 1px solid rgba(154, 110, 26, 0.2);
-}
-
-.jj-source-title {
-    font-family: var(--persona-font-secondary);
-    font-size: 11px;
-    font-style: italic;
-    color: var(--persona-text-gray);
-    line-height: 1.4;
-}
-
-/* ── Educator Toolbar & Panel ────────────────────────────────────────────── */
-
-.jj-educator-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: var(--persona-charcoal);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    flex-shrink: 0;
-}
-
-.jj-edu-btn {
-    background: transparent;
-    border: 1px solid rgba(196, 163, 90, 0.45);
-    color: rgba(196, 163, 90, 0.75);
-    font-family: 'Cinzel', var(--persona-font-secondary), Georgia, serif;
-    font-size: 9px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    line-height: 1.6;
-}
-
-.jj-edu-btn:hover:not(:disabled) {
-    background: rgba(196, 163, 90, 0.1);
-    border-color: rgba(196, 163, 90, 0.75);
-    color: rgba(196, 163, 90, 1);
-}
-
-.jj-edu-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.jj-edu-btn:focus {
-    outline: 2px solid rgba(196, 163, 90, 0.6);
-    outline-offset: 2px;
-}
-
-/* Educator result panel — sits below educator bar, above bottom edge */
-.jj-edu-panel {
-    background: var(--persona-cream);
-    border-top: 2px solid rgba(196, 163, 90, 0.6);
-    padding: 12px 16px;
-    max-height: 260px;
-    overflow-y: auto;
-    flex-shrink: 0;
-}
-
-.jj-edu-panel.jj-hidden {
-    display: none;
-}
-
-.jj-edu-panel::-webkit-scrollbar {
-    width: 6px;
-}
-
-.jj-edu-panel::-webkit-scrollbar-track {
-    background: var(--persona-dark-cream);
-}
-
-.jj-edu-panel::-webkit-scrollbar-thumb {
-    background: var(--persona-warm-gray);
-}
-
-.jj-edu-panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.jj-edu-panel-title {
-    font-family: 'Cinzel', var(--persona-font-secondary), Georgia, serif;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: rgba(196, 163, 90, 0.85);
-}
-
-.jj-edu-close {
-    background: none;
-    border: none;
-    color: var(--persona-text-gray);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0 2px;
-    line-height: 1;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.jj-edu-close:hover {
-    opacity: 1;
-}
-
-/* Markdown typography inside educator panel */
-.jj-edu-panel-body {
-    font-family: var(--persona-font-secondary);
-    font-size: 12px;
-    color: var(--persona-charcoal);
-    line-height: 1.7;
-}
-
-.jj-edu-panel-body h1,
-.jj-edu-panel-body h2,
-.jj-edu-panel-body h3 {
-    font-family: var(--persona-font-primary);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--persona-charcoal);
-    margin: 10px 0 4px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--persona-dark-cream);
-}
-
-.jj-edu-panel-body h1 { font-size: 12px; }
-.jj-edu-panel-body h2 { font-size: 11px; }
-.jj-edu-panel-body h3 { font-size: 10px; }
-
-.jj-edu-panel-body p {
-    margin: 6px 0;
-}
-
-.jj-edu-panel-body ul,
-.jj-edu-panel-body ol {
-    margin: 6px 0;
-    padding-left: 18px;
-}
-
-.jj-edu-panel-body li {
-    margin-bottom: 4px;
-    line-height: 1.6;
-}
-
-.jj-edu-panel-body strong {
-    font-weight: bold;
-    color: var(--persona-charcoal);
-}
-
-.jj-edu-panel-body em {
-    font-style: italic;
-    color: var(--persona-text-gray);
 }
