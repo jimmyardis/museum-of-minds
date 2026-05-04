@@ -4,23 +4,23 @@
  */
 
 :root {
-    /* Default theme colors (Jane Jacobs - 1960s Greenwich Village aesthetic) */
-    --jj-brick-red: #b8554a;
-    --jj-cream: #f7f3e9;
-    --jj-charcoal: #2a2a2a;
-    --jj-warm-gray: #c4bfb3;
-    --jj-dark-cream: #ebe5d6;
-    --jj-text-gray: #5a5a5a;
-    --jj-shadow: rgba(42, 42, 42, 0.15);
+    /* William Moultrie theme colors */
+    --jj-brick-red: #1B2E4E;
+    --jj-cream: #F4EEE2;
+    --jj-charcoal: #1A1812;
+    --jj-warm-gray: #7A6E5A;
+    --jj-dark-cream: #E8DEC8;
+    --jj-text-gray: #332C1E;
+    --jj-shadow: rgba(26, 24, 18, 0.18);
 
-    /* Runtime-injectable persona variables (override defaults) */
-    --persona-primary-color: var(--persona-primary-color);
-    --persona-cream: var(--persona-cream);
-    --persona-charcoal: var(--persona-charcoal);
-    --persona-warm-gray: var(--persona-warm-gray);
-    --persona-dark-cream: var(--persona-dark-cream);
-    --persona-text-gray: var(--persona-text-gray);
-    --persona-font-primary: 'Courier New', 'Courier', monospace;
+    /* Persona theme variables — Moultrie defaults; overridden at runtime by /persona/config */
+    --persona-primary-color: #1B2E4E;
+    --persona-cream: #F4EEE2;
+    --persona-charcoal: #1A1812;
+    --persona-warm-gray: #7A6E5A;
+    --persona-dark-cream: #E8DEC8;
+    --persona-text-gray: #332C1E;
+    --persona-font-primary: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
     --persona-font-secondary: 'Georgia', 'Times New Roman', serif;
 }
 
