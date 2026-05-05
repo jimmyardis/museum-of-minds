@@ -1,1 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Smith — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cinzel:wght@400;600;900&family=Cormorant+Upright:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --stone:        #2E2E32;
+      --stone-mid:    #3A3A40;
+      --stone-light:  #4E4E58;
+      --stone-pale:   #6A6A78;
+      --teal:         #1A3A3A;
+      --teal-mid:     #224848;
+      --teal-light:   #2E6060;
+      --teal-pale:    #4A8888;
+      --amber:        #C88820;
+      --amber-bright: #E8B040;
+      --amber-dim:    #7A5010;
+      --amber-pale:   #F0D090;
+      --wool:         #C8B898;
+      --wool-dark:    #8A7858;
+      --cream:        #EEE8D8;
+      --cream-mid:    #D8D0BC;
+      --text:         #E8E0D0;
+      --text-mid:     #A09880;
+      --text-dim:     #706858;
+      --ink:          #1A1A1E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--stone);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* Stone texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='stone'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23stone)' opacity='0.055'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--teal);
+      border-bottom: 2px solid var(--amber-dim);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      color: rgba(200,136,32,0.55);
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: rgba(200,136,32,0.3);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      border-bottom: 2px solid var(--teal-mid);
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    /* Left: Edinburgh study panel */
+    .study-panel {
+      position: relative;
+      background: var(--stone-mid);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .study-panel svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title .city-tag {
+      font-family: 'Cormorant Upright', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--teal-pale);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.0;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title h1 em {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+      display: block;
+      font-size: 0.72em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      color: var(--amber-dim);
+      margin-top: 0.8rem;
+      display: block;
+      opacity: 0.7;
+    }
+
+    /* Right: Bio panel */
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 2.2rem;
+      border-left: 2px solid var(--teal-mid);
+      background: var(--stone-mid);
+      position: relative;
+    }
+
+    /* Teal margin stripe */
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--teal);
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.35em;
+      color: var(--amber);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 265px;
+      margin: 0 auto 2rem;
+      border: 1px solid var(--stone-light);
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(200,136,32,0.2);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(200,136,32,0.07);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      filter: grayscale(100%) sepia(10%) contrast(1.1) brightness(0.88);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--stone-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder span {
+      font-style: italic;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .placard {
+      border-top: 2px solid var(--teal-mid);
+      padding-top: 1.5rem;
+      margin-top: auto;
+    }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.15rem;
+    }
+
+    .placard-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--amber);
+      margin-bottom: 0.3rem;
+      opacity: 0.7;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .placard-bio {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+    }
+
+    .placard-bio strong { color: var(--text); font-weight: 500; }
+    .placard-bio em { font-style: italic; color: var(--amber-pale); }
+
+    /* ── SECTION RULE ── */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.8rem 3rem;
+      background: var(--teal);
+      border-bottom: 2px solid var(--amber-dim);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.4em;
+      color: rgba(200,136,32,0.4);
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .section-rule::before,
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(200,136,32,0.15);
+    }
+
+    /* ── CHATBOT SECTION ── */
+    .chatbot-section {
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      border-bottom: 2px solid var(--teal-mid);
+      background: var(--stone);
+      animation: fadeIn 1s ease 0.4s both;
+      position: relative;
+    }
+
+    /* Subtle bookshelf lines */
+    .chatbot-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 44px,
+        rgba(74,136,136,0.04) 44px,
+        rgba(74,136,136,0.04) 46px
+      );
+      pointer-events: none;
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+    }
+
+    .chatbot-intro p {
+      font-size: 0.98rem;
+      line-height: 1.92;
+      color: var(--text-mid);
+      margin-bottom: 1rem;
+    }
+
+    .chatbot-intro .correction-note {
+      margin-top: 2rem;
+      padding: 1.2rem 1.5rem;
+      border-left: 3px solid var(--teal-light);
+      background: rgba(26,58,58,0.3);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .correction-note strong {
+      color: var(--amber-pale);
+      font-style: normal;
+      font-size: 0.75rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .domain-tags {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.46rem;
+      letter-spacing: 0.18em;
+      color: var(--teal-pale);
+      border: 1px solid rgba(74,136,136,0.25);
+      padding: 0.28rem 0.7rem;
+      opacity: 0.65;
+    }
+
+    /* Chatbot embed */
+    .chatbot-embed {
+      border: 1px solid var(--stone-light);
+      min-height: 560px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--stone-mid);
+      box-shadow: 4px 4px 0 var(--teal), 8px 8px 0 rgba(26,58,58,0.3);
+      overflow: hidden;
+    }
+
+    .chatbot-embed::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(200,136,32,0.06);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chatbot-embed .library-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.22;
+    }
+
+    .panel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem;
+      background: var(--teal);
+      border-top: 1px solid var(--amber-dim);
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      color: rgba(200,136,32,0.35);
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      padding: 6rem 3rem;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      border-bottom: 2px solid var(--teal-mid);
+    }
+
+    .quote-ornament {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.5em;
+      color: var(--amber);
+      opacity: 0.65;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.28em;
+      font-style: normal;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    /* ── CORPUS STRIP ── */
+    .corpus-strip {
+      background: var(--teal);
+      padding: 2.5rem 3rem;
+      border-bottom: 2px solid var(--amber-dim);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .corpus-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: rgba(200,136,32,0.5);
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      min-width: 100px;
+      text-transform: uppercase;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.8rem;
+    }
+
+    .corpus-item {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: rgba(238,232,216,0.45);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.8rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--teal);
+      border-top: 2px solid var(--amber-dim);
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.22em;
+      color: rgba(200,136,32,0.3);
+      text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .study-panel { min-height: 360px; }
+      .bio-panel { border-left: none; border-top: 2px solid var(--teal-mid); padding: 2rem 1.5rem; }
+      .chatbot-section { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      header { padding: 1rem 1.5rem; }
+      .hero-title { left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+      .corpus-strip { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .section-rule { padding: 1.5rem; }
+      .pull-quote { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <span class="header-label">In Conversation With</span>
+    <span class="header-right">Accession No. &nbsp;AS–1723–2026</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Left: Edinburgh Study Panel -->
+    <div class="study-panel">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="candleGlow" cx="52%" cy="58%" r="45%">
+            <stop offset="0%"   stop-color="rgba(200,136,32,0.35)"/>
+            <stop offset="40%"  stop-color="rgba(200,136,32,0.08)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+          </radialGradient>
+          <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="rgba(26,58,58,0.6)"/>
+            <stop offset="100%" stop-color="rgba(26,58,58,0)"/>
+          </radialGradient>
+          <linearGradient id="spineGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="rgba(0,0,0,0.4)"/>
+            <stop offset="30%"  stop-color="rgba(0,0,0,0)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,0.2)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Room background — stone wall -->
+        <rect width="700" height="900" fill="#2A2A30"/>
+
+        <!-- Stone block pattern -->
+        <g stroke="rgba(80,80,90,0.3)" stroke-width="0.5" fill="none">
+          <!-- Horizontal mortar lines -->
+          <line x1="0" y1="100" x2="700" y2="100"/>
+          <line x1="0" y1="160" x2="700" y2="160"/>
+          <line x1="0" y1="220" x2="700" y2="220"/>
+          <line x1="0" y1="280" x2="700" y2="280"/>
+          <line x1="0" y1="340" x2="700" y2="340"/>
+          <line x1="0" y1="400" x2="700" y2="400"/>
+          <!-- Vertical mortar lines — staggered -->
+          <line x1="120" y1="0"   x2="120" y2="100"/>
+          <line x1="280" y1="0"   x2="280" y2="100"/>
+          <line x1="460" y1="0"   x2="460" y2="100"/>
+          <line x1="600" y1="0"   x2="600" y2="100"/>
+          <line x1="60"  y1="100" x2="60"  y2="160"/>
+          <line x1="200" y1="100" x2="200" y2="160"/>
+          <line x1="370" y1="100" x2="370" y2="160"/>
+          <line x1="530" y1="100" x2="530" y2="160"/>
+          <line x1="130" y1="160" x2="130" y2="220"/>
+          <line x1="290" y1="160" x2="290" y2="220"/>
+          <line x1="450" y1="160" x2="450" y2="220"/>
+          <line x1="620" y1="160" x2="620" y2="220"/>
+          <line x1="80"  y1="220" x2="80"  y2="280"/>
+          <line x1="240" y1="220" x2="240" y2="280"/>
+          <line x1="420" y1="220" x2="420" y2="280"/>
+          <line x1="580" y1="220" x2="580" y2="280"/>
+        </g>
+
+        <!-- Wainscoting panel -->
+        <rect x="0" y="680" width="700" height="220" fill="rgba(22,40,40,0.8)"/>
+        <line x1="0" y1="680" x2="700" y2="680" stroke="rgba(200,136,32,0.2)" stroke-width="1.5"/>
+        <line x1="0" y1="700" x2="700" y2="700" stroke="rgba(200,136,32,0.08)" stroke-width="0.7"/>
+        <!-- Panel divisions -->
+        <rect x="40"  y="710" width="180" height="150" fill="none" stroke="rgba(200,136,32,0.1)" stroke-width="1"/>
+        <rect x="260" y="710" width="180" height="150" fill="none" stroke="rgba(200,136,32,0.1)" stroke-width="1"/>
+        <rect x="480" y="710" width="180" height="150" fill="none" stroke="rgba(200,136,32,0.1)" stroke-width="1"/>
+
+        <!-- Floor -->
+        <rect x="0" y="860" width="700" height="40" fill="rgba(30,25,18,0.9)"/>
+        <g stroke="rgba(200,136,32,0.08)" stroke-width="0.6">
+          <line x1="0"   y1="870" x2="700" y2="870"/>
+          <line x1="100" y1="860" x2="100" y2="900"/>
+          <line x1="200" y1="860" x2="200" y2="900"/>
+          <line x1="300" y1="860" x2="300" y2="900"/>
+          <line x1="400" y1="860" x2="400" y2="900"/>
+          <line x1="500" y1="860" x2="500" y2="900"/>
+          <line x1="600" y1="860" x2="600" y2="900"/>
+        </g>
+
+        <!-- ═══ TALL BOOKCASE — left ═══ -->
+        <rect x="30" y="80" width="180" height="600" fill="rgba(30,25,20,0.9)" stroke="rgba(200,136,32,0.15)" stroke-width="1"/>
+        <!-- Shelf lines -->
+        <g stroke="rgba(200,136,32,0.2)" stroke-width="1">
+          <line x1="30" y1="160" x2="210" y2="160"/>
+          <line x1="30" y1="240" x2="210" y2="240"/>
+          <line x1="30" y1="320" x2="210" y2="320"/>
+          <line x1="30" y1="400" x2="210" y2="400"/>
+          <line x1="30" y1="480" x2="210" y2="480"/>
+          <line x1="30" y1="560" x2="210" y2="560"/>
+          <line x1="30" y1="640" x2="210" y2="640"/>
+        </g>
+        <!-- Books on shelves — left case -->
+        <!-- Row 1: 80-160 -->
+        <g>
+          <rect x="35"  y="90"  width="18" height="68" fill="#1A3A3A" stroke="rgba(200,136,32,0.2)" stroke-width="0.5"/>
+          <rect x="55"  y="95"  width="14" height="63" fill="#2A3020" stroke="rgba(100,120,80,0.2)" stroke-width="0.5"/>
+          <rect x="71"  y="88"  width="20" height="70" fill="#3A2010" stroke="rgba(160,100,40,0.2)" stroke-width="0.5"/>
+          <rect x="93"  y="92"  width="15" height="66" fill="#1E3030" stroke="rgba(100,160,160,0.15)" stroke-width="0.5"/>
+          <rect x="110" y="86"  width="22" height="72" fill="#2C1A10" stroke="rgba(180,120,40,0.2)" stroke-width="0.5"/>
+          <rect x="134" y="94"  width="16" height="64" fill="#243028" stroke="rgba(80,140,80,0.15)" stroke-width="0.5"/>
+          <rect x="152" y="90"  width="18" height="68" fill="#1A2A3A" stroke="rgba(80,120,180,0.15)" stroke-width="0.5"/>
+          <rect x="172" y="93"  width="14" height="65" fill="#302010" stroke="rgba(160,120,40,0.2)" stroke-width="0.5"/>
+          <!-- Spine gradients -->
+          <rect x="35"  y="90"  width="18" height="68" fill="url(#spineGrad)"/>
+          <rect x="71"  y="88"  width="20" height="70" fill="url(#spineGrad)"/>
+          <rect x="110" y="86"  width="22" height="72" fill="url(#spineGrad)"/>
+        </g>
+        <!-- Row 2: 160-240 -->
+        <g>
+          <rect x="38"  y="168" width="22" height="70" fill="#2A1810" stroke="rgba(180,100,30,0.2)" stroke-width="0.5"/>
+          <rect x="62"  y="172" width="15" height="66" fill="#1A3830" stroke="rgba(60,150,120,0.15)" stroke-width="0.5"/>
+          <rect x="79"  y="165" width="19" height="73" fill="#38200C" stroke="rgba(200,140,40,0.2)" stroke-width="0.5"/>
+          <rect x="100" y="170" width="16" height="68" fill="#202A38" stroke="rgba(80,120,180,0.15)" stroke-width="0.5"/>
+          <rect x="118" y="164" width="24" height="74" fill="#1C3A1C" stroke="rgba(80,160,80,0.15)" stroke-width="0.5"/>
+          <rect x="144" y="169" width="17" height="69" fill="#2A1A08" stroke="rgba(180,120,40,0.2)" stroke-width="0.5"/>
+          <rect x="163" y="166" width="20" height="72" fill="#1A2838" stroke="rgba(100,130,180,0.15)" stroke-width="0.5"/>
+          <rect x="185" y="172" width="14" height="66" fill="#301808" stroke="rgba(200,120,30,0.2)" stroke-width="0.5"/>
+        </g>
+        <!-- Row 3: 240-320 — Wealth of Nations prominent -->
+        <g>
+          <rect x="35"  y="248" width="16" height="70" fill="#1E3828" stroke="rgba(80,150,100,0.15)" stroke-width="0.5"/>
+          <rect x="53"  y="244" width="28" height="74" fill="#8B6820" stroke="rgba(220,180,60,0.35)" stroke-width="1"/>
+          <text x="67"  y="282" font-family="serif" font-size="5" fill="rgba(240,200,100,0.7)" transform="rotate(90 67 282)" text-anchor="middle">Wealth of Nations</text>
+          <rect x="83"  y="250" width="16" height="68" fill="#1A2A3A"/>
+          <rect x="101" y="246" width="22" height="72" fill="#7A5818" stroke="rgba(200,160,40,0.3)" stroke-width="0.8"/>
+          <text x="112" y="280" font-family="serif" font-size="4.5" fill="rgba(230,190,80,0.6)" transform="rotate(90 112 280)" text-anchor="middle">Moral Sentiments</text>
+          <rect x="125" y="250" width="18" height="70" fill="#242014"/>
+          <rect x="145" y="247" width="14" height="71" fill="#1E3020"/>
+          <rect x="161" y="244" width="20" height="74" fill="#6A4A14" stroke="rgba(180,140,30,0.25)" stroke-width="0.5"/>
+          <rect x="183" y="251" width="16" height="67" fill="#1A1E30"/>
+        </g>
+        <!-- Rows 4-7 abbreviated -->
+        <g fill="rgba(30,25,20,0.5)" stroke="rgba(200,136,32,0.08)" stroke-width="0.3">
+          <rect x="35" y="328" width="172" height="70"/>
+          <rect x="35" y="408" width="172" height="70"/>
+          <rect x="35" y="488" width="172" height="70"/>
+          <rect x="35" y="568" width="172" height="70"/>
+        </g>
+        <!-- Some individual books visible in lower rows -->
+        <g>
+          <rect x="40"  y="332" width="18" height="64" fill="#1A3028" stroke="rgba(60,140,100,0.12)" stroke-width="0.4"/>
+          <rect x="80"  y="328" width="24" height="68" fill="#2C1808" stroke="rgba(180,100,30,0.15)" stroke-width="0.4"/>
+          <rect x="130" y="334" width="16" height="62" fill="#182030" stroke="rgba(60,100,160,0.12)" stroke-width="0.4"/>
+          <rect x="42"  y="415" width="20" height="62" fill="#1E2A18" stroke="rgba(80,130,60,0.12)" stroke-width="0.4"/>
+          <rect x="90"  y="410" width="28" height="67" fill="#6A5010" stroke="rgba(200,160,30,0.2)" stroke-width="0.5"/>
+          <rect x="150" y="416" width="18" height="61" fill="#1A1A28" stroke="rgba(80,80,140,0.12)" stroke-width="0.4"/>
+        </g>
+
+        <!-- ═══ BOOKCASE RIGHT ═══ -->
+        <rect x="490" y="80" width="180" height="600" fill="rgba(30,25,20,0.9)" stroke="rgba(200,136,32,0.15)" stroke-width="1"/>
+        <g stroke="rgba(200,136,32,0.2)" stroke-width="1">
+          <line x1="490" y1="160" x2="670" y2="160"/>
+          <line x1="490" y1="240" x2="670" y2="240"/>
+          <line x1="490" y1="320" x2="670" y2="320"/>
+          <line x1="490" y1="400" x2="670" y2="400"/>
+          <line x1="490" y1="480" x2="670" y2="480"/>
+          <line x1="490" y1="560" x2="670" y2="560"/>
+          <line x1="490" y1="640" x2="670" y2="640"/>
+        </g>
+        <!-- Books right case rows 1-3 -->
+        <g>
+          <rect x="495" y="90"  width="20" height="68" fill="#2A1808" stroke="rgba(180,110,30,0.2)" stroke-width="0.5"/>
+          <rect x="517" y="94"  width="15" height="64" fill="#1A3830" stroke="rgba(60,150,120,0.15)" stroke-width="0.5"/>
+          <rect x="534" y="88"  width="22" height="70" fill="#1E2A38" stroke="rgba(80,110,180,0.15)" stroke-width="0.5"/>
+          <rect x="558" y="92"  width="17" height="66" fill="#2C1A10" stroke="rgba(170,100,30,0.2)" stroke-width="0.5"/>
+          <rect x="577" y="86"  width="20" height="72" fill="#1C3020" stroke="rgba(80,150,80,0.15)" stroke-width="0.5"/>
+          <rect x="599" y="91"  width="16" height="67" fill="#382010" stroke="rgba(200,120,40,0.2)" stroke-width="0.5"/>
+          <rect x="617" y="88"  width="24" height="70" fill="#1A2A38" stroke="rgba(80,120,180,0.15)" stroke-width="0.5"/>
+          <rect x="643" y="93"  width="18" height="65" fill="#2A1A08" stroke="rgba(180,120,40,0.2)" stroke-width="0.5"/>
+          <!-- Row 2 right -->
+          <rect x="497" y="168" width="18" height="70" fill="#1E3A28"/>
+          <rect x="517" y="164" width="26" height="74" fill="#7A5818" stroke="rgba(200,160,40,0.25)" stroke-width="0.5"/>
+          <rect x="545" y="170" width="16" height="68" fill="#1A1E2A"/>
+          <rect x="563" y="165" width="22" height="73" fill="#2A1808"/>
+          <rect x="587" y="169" width="18" height="69" fill="#1C3028"/>
+          <rect x="607" y="164" width="20" height="74" fill="#301808" stroke="rgba(200,120,30,0.2)" stroke-width="0.5"/>
+          <rect x="629" y="168" width="15" height="70" fill="#182030"/>
+          <rect x="646" y="165" width="17" height="73" fill="#242014"/>
+          <!-- Row 3 right -->
+          <rect x="495" y="248" width="24" height="70" fill="#6A4A14" stroke="rgba(180,140,30,0.2)" stroke-width="0.5"/>
+          <rect x="521" y="250" width="16" height="68" fill="#1A3020"/>
+          <rect x="539" y="244" width="20" height="74" fill="#2C1A10" stroke="rgba(180,110,30,0.18)" stroke-width="0.5"/>
+          <rect x="561" y="249" width="18" height="69" fill="#1E2838"/>
+          <rect x="581" y="246" width="14" height="72" fill="#1C3818"/>
+          <rect x="597" y="248" width="22" height="70" fill="#381A08" stroke="rgba(200,120,30,0.18)" stroke-width="0.5"/>
+          <rect x="621" y="250" width="18" height="68" fill="#20181A"/>
+          <rect x="641" y="244" width="20" height="74" fill="#1A2A30"/>
+        </g>
+        <!-- Lower rows right abbreviated -->
+        <g fill="rgba(30,25,20,0.5)" stroke="rgba(200,136,32,0.06)" stroke-width="0.3">
+          <rect x="493" y="328" width="172" height="70"/>
+          <rect x="493" y="408" width="172" height="70"/>
+          <rect x="493" y="488" width="172" height="70"/>
+          <rect x="493" y="568" width="172" height="70"/>
+        </g>
+
+        <!-- ═══ WRITING DESK ═══ -->
+        <g transform="translate(230,560)">
+          <!-- Desk surface -->
+          <rect x="0" y="0" width="240" height="12" fill="rgba(50,35,18,0.95)" stroke="rgba(200,136,32,0.25)" stroke-width="1"/>
+          <!-- Desk legs -->
+          <rect x="10"  y="12" width="12" height="120" fill="rgba(40,28,14,0.9)"/>
+          <rect x="218" y="12" width="12" height="120" fill="rgba(40,28,14,0.9)"/>
+          <rect x="60"  y="12" width="10" height="118" fill="rgba(40,28,14,0.8)"/>
+          <rect x="170" y="12" width="10" height="118" fill="rgba(40,28,14,0.8)"/>
+          <!-- Cross stretcher -->
+          <rect x="10" y="80" width="220" height="6" fill="rgba(40,28,14,0.7)"/>
+
+          <!-- Papers on desk -->
+          <rect x="40"  y="-18" width="80" height="18" fill="rgba(238,232,216,0.7)" transform="rotate(-3 80 -9)"/>
+          <rect x="120" y="-20" width="70" height="18" fill="rgba(232,224,205,0.6)" transform="rotate(2 155 -11)"/>
+          <!-- Text lines on paper -->
+          <g stroke="rgba(30,20,10,0.3)" stroke-width="0.6" fill="none">
+            <line x1="45"  y1="-14" x2="110" y2="-14"/>
+            <line x1="45"  y1="-10" x2="112" y2="-10"/>
+            <line x1="45"  y1="-6"  x2="108" y2="-6"/>
+            <line x1="45"  y1="-2"  x2="114" y2="-2"/>
+          </g>
+
+          <!-- Ink well -->
+          <ellipse cx="160" cy="-5" rx="10" ry="8" fill="rgba(15,12,10,0.9)" stroke="rgba(200,136,32,0.3)" stroke-width="1"/>
+          <ellipse cx="160" cy="-7" rx="8"  ry="4" fill="rgba(8,8,12,0.95)"/>
+
+          <!-- Quill pen -->
+          <line x1="150" y1="-3" x2="195" y2="-40" stroke="rgba(238,232,216,0.6)" stroke-width="1.5"/>
+          <path d="M195,-40 Q200,-50 192,-45 Q188,-38 195,-40" fill="rgba(238,232,216,0.5)" stroke="none"/>
+
+          <!-- Candle and holder -->
+          <rect x="195" y="-25" width="12" height="30" fill="rgba(220,200,140,0.7)" stroke="rgba(200,160,60,0.3)" stroke-width="0.5"/>
+          <ellipse cx="201" cy="-25" rx="6" ry="3" fill="rgba(200,180,120,0.6)"/>
+          <!-- Flame -->
+          <path d="M199,-25 Q200,-40 201,-25" fill="rgba(255,200,60,0.8)"/>
+          <path d="M198,-26 Q201,-42 203,-26" fill="rgba(255,170,30,0.6)"/>
+          <!-- Candle holder base -->
+          <ellipse cx="201" cy="5"  rx="10" ry="4" fill="rgba(180,140,50,0.5)" stroke="rgba(200,160,60,0.3)" stroke-width="0.5"/>
+          <rect x="196" y="2" width="10" height="5" fill="rgba(160,120,40,0.6)"/>
+
+          <!-- Open book on desk -->
+          <rect x="60" y="-22" width="90" height="22" fill="rgba(52,38,20,0.9)" rx="1"/>
+          <line x1="105" y1="-22" x2="105" y2="0" stroke="rgba(200,136,32,0.2)" stroke-width="0.8"/>
+          <!-- Page text lines -->
+          <g stroke="rgba(200,180,140,0.2)" stroke-width="0.5" fill="none">
+            <line x1="65" y1="-17" x2="102" y2="-17"/>
+            <line x1="65" y1="-13" x2="103" y2="-13"/>
+            <line x1="65" y1="-9"  x2="101" y2="-9"/>
+            <line x1="65" y1="-5"  x2="103" y2="-5"/>
+            <line x1="109" y1="-17" x2="143" y2="-17"/>
+            <line x1="109" y1="-13" x2="144" y2="-13"/>
+            <line x1="109" y1="-9"  x2="142" y2="-9"/>
+            <line x1="109" y1="-5"  x2="143" y2="-5"/>
+          </g>
+        </g>
+
+        <!-- ═══ WINDOW — Edinburgh view ═══ -->
+        <g transform="translate(260,80)">
+          <!-- Window frame -->
+          <rect x="0" y="0" width="180" height="240" fill="rgba(26,58,58,0.3)" stroke="rgba(200,136,32,0.3)" stroke-width="2"/>
+          <!-- Panes -->
+          <line x1="90" y1="0" x2="90" y2="240" stroke="rgba(200,136,32,0.3)" stroke-width="2"/>
+          <line x1="0" y1="120" x2="180" y2="120" stroke="rgba(200,136,32,0.3)" stroke-width="2"/>
+          <!-- Edinburgh rooftops visible through window -->
+          <rect x="2" y="2" width="86" height="116" fill="rgba(26,58,58,0.2)"/>
+          <rect x="92" y="2" width="86" height="116" fill="rgba(26,58,58,0.2)"/>
+          <rect x="2" y="122" width="86" height="116" fill="rgba(26,58,58,0.15)"/>
+          <rect x="92" y="122" width="86" height="116" fill="rgba(26,58,58,0.15)"/>
+          <!-- Rooftop silhouettes -->
+          <g fill="rgba(15,25,25,0.8)">
+            <rect x="5"   y="60"  width="30" height="56"/>
+            <polygon points="5,60 20,45 35,60"/>
+            <rect x="40"  y="70"  width="25" height="46"/>
+            <polygon points="40,70 52,55 65,70"/>
+            <rect x="70"  y="55"  width="18" height="61"/>
+            <polygon points="70,55 79,42 88,55"/>
+            <!-- Right panes -->
+            <rect x="95"  y="65"  width="28" height="51"/>
+            <polygon points="95,65 109,48 123,65"/>
+            <rect x="128" y="58"  width="22" height="58"/>
+            <polygon points="128,58 139,44 150,58"/>
+            <rect x="155" y="70"  width="20" height="46"/>
+            <polygon points="155,70 165,56 175,70"/>
+          </g>
+          <!-- Grey Edinburgh sky -->
+          <rect x="2" y="2" width="86" height="58" fill="rgba(48,54,70,0.7)"/>
+          <rect x="92" y="2" width="86" height="58" fill="rgba(48,54,70,0.7)"/>
+          <!-- Overcast cloud suggestion -->
+          <ellipse cx="44"  cy="25" rx="30" ry="12" fill="rgba(70,75,90,0.4)"/>
+          <ellipse cx="138" cy="20" rx="35" ry="10" fill="rgba(70,75,90,0.35)"/>
+          <!-- Rain on lower panes -->
+          <g stroke="rgba(100,130,150,0.15)" stroke-width="0.5">
+            <line x1="20"  y1="130" x2="18"  y2="160"/>
+            <line x1="40"  y1="135" x2="38"  y2="165"/>
+            <line x1="60"  y1="128" x2="58"  y2="158"/>
+            <line x1="75"  y1="132" x2="73"  y2="162"/>
+            <line x1="110" y1="130" x2="108" y2="160"/>
+            <line x1="130" y1="126" x2="128" y2="156"/>
+            <line x1="150" y1="133" x2="148" y2="163"/>
+            <line x1="168" y1="128" x2="166" y2="158"/>
+          </g>
+          <!-- Window glow from inside -->
+          <rect x="0" y="0" width="180" height="240" fill="url(#windowGlow)"/>
+        </g>
+
+        <!-- Candle glow overlay -->
+        <rect width="700" height="900" fill="url(#candleGlow)"/>
+
+        <!-- Chair suggestion -->
+        <g transform="translate(310,650)">
+          <rect x="0" y="0" width="80" height="8" fill="rgba(40,28,14,0.85)" rx="2"/>
+          <rect x="5" y="8" width="15" height="70" fill="rgba(35,24,12,0.8)"/>
+          <rect x="60" y="8" width="15" height="70" fill="rgba(35,24,12,0.8)"/>
+          <rect x="0" y="0" width="15" height="-80" fill="rgba(38,26,14,0.8)" transform="translate(0,0)"/>
+          <rect x="0" y="-80" width="80" height="80" fill="rgba(38,26,14,0.8)" rx="2"/>
+          <rect x="5" y="-78" width="70" height="70" fill="rgba(60,42,20,0.6)" rx="2"/>
+        </g>
+
+        <!-- Title block -->
+        <rect x="40" y="800" width="210" height="55" fill="rgba(22,40,40,0.85)" stroke="rgba(200,136,32,0.18)" stroke-width="0.8"/>
+        <line x1="40" y1="818" x2="250" y2="818" stroke="rgba(200,136,32,0.12)" stroke-width="0.4"/>
+        <text x="50" y="813" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(200,136,32,0.45)" letter-spacing="1">STUDY · KIRKCALDY, FIFE</text>
+        <text x="50" y="832" font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="rgba(238,232,216,0.55)">Adam Smith, Esq.</text>
+        <text x="50" y="846" font-family="Cormorant Garamond, serif" font-size="7" fill="rgba(200,136,32,0.3)">Professor of Moral Philosophy</text>
+        <text x="50" y="858" font-family="Cormorant Garamond, serif" font-size="6" fill="rgba(200,136,32,0.2)">University of Glasgow · c. 1776</text>
+
+        <!-- Compass -->
+        <g transform="translate(635,55)" stroke="rgba(200,136,32,0.3)" stroke-width="0.7" fill="none">
+          <circle cx="0" cy="0" r="18"/>
+          <line x1="0" y1="-18" x2="0" y2="18"/>
+          <line x1="-18" y1="0" x2="18" y2="0"/>
+          <polygon points="0,-18 -4,-6 0,-10 4,-6" fill="rgba(200,136,32,0.4)" stroke="none"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(200,136,32,0.4)" stroke="none">N</text>
+        </g>
+
+      </svg>
+
+      <div class="hero-title">
+        <span class="city-tag">Kirkcaldy, Fife &nbsp;·&nbsp; Scotland</span>
+        <h1>Adam<br/><em>Smith</em></h1>
+        <span class="years">1723 &nbsp;—&nbsp; 1790</span>
+      </div>
+    </div>
+
+    <!-- Right: Bio Panel -->
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <!--
+          ADD SMITH PHOTO HERE when available.
+          Good source: James Tassie medallion portrait, widely reproduced.
+          https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/AdamSmith.jpg/440px-AdamSmith.jpg
+        -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Adam_Smith_The_Muir_portrait.jpg/1280px-Adam_Smith_The_Muir_portrait.jpg" alt="Adam Smith" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">Adam Smith</div>
+        <div class="placard-sub">Moral Philosopher &amp; Economist</div>
+        <div class="placard-dates">Kirkcaldy, Fife, 1723 &nbsp;·&nbsp; Edinburgh, 1790</div>
+        <p class="placard-bio">
+          <strong>The founding theorist of modern economics — and one of the most systematically misquoted men in history.</strong>
+          Smith was a moral philosopher first. He spent more of his career writing about sympathy, conscience, and the foundations of human society than about markets. The <em>Wealth of Nations</em> was the second book; the first was a theory of ethics.
+          <br/><br/>
+          He was suspicious of merchants, of monopoly power, and of any arrangement where concentrated commercial interests could corrupt government. He used the phrase "invisible hand" exactly once. He did not intend it as a governing philosophy.
+          <br/><br/>
+          He is alive in 2026, has watched what has been done in his name, and <em>has some corrections to offer.</em>
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule">
+    <span>Consultation</span>
+  </div>
+
+  <!-- CHATBOT SECTION -->
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Reason with<br/><em>the Philosopher.</em></h2>
+      <p>
+        Smith speaks from the Wealth of Nations, the Theory of Moral Sentiments, his Lectures on Jurisprudence, and his philosophical essays — the full body of a mind that took nothing for granted and qualified everything.
+      </p>
+      <p>
+        He has complicated views on supply chain capitalism, on financial derivatives, on the concentration of corporate power, and on what the market mechanism actually requires to function well. Most of it will surprise you.
+      </p>
+
+      <div class="correction-note">
+        <strong>A Note on Misattribution</strong>
+        "The market is not a force of nature. It is a human institution, and like all human institutions it requires conditions, constraints, and the active maintenance of justice to function as theorized. I said this quite clearly. I said it repeatedly. Nevertheless."
+      </div>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Free Markets</span>
+        <span class="domain-tag">Moral Philosophy</span>
+        <span class="domain-tag">Labor &amp; Value</span>
+        <span class="domain-tag">Monopoly Power</span>
+        <span class="domain-tag">The Invisible Hand</span>
+        <span class="domain-tag">Division of Labour</span>
+        <span class="domain-tag">Political Economy</span>
+        <span class="domain-tag">Sympathy &amp; Ethics</span>
+        <span class="domain-tag">Trade Policy</span>
+        <span class="domain-tag">Economics in 2026</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+
+      <!-- Library bookshelf background -->
+      <svg class="library-bg" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="580" fill="rgba(30,25,20,0.95)"/>
+        <!-- Shelves -->
+        <g stroke="rgba(200,136,32,0.3)" stroke-width="1.5" fill="none">
+          <line x1="0" y1="100" x2="500" y2="100"/>
+          <line x1="0" y1="200" x2="500" y2="200"/>
+          <line x1="0" y1="300" x2="500" y2="300"/>
+          <line x1="0" y1="400" x2="500" y2="400"/>
+          <line x1="0" y1="500" x2="500" y2="500"/>
+        </g>
+        <!-- Books row 1 -->
+        <g>
+          <rect x="10"  y="15"  width="22" height="83" fill="#1A3030"/>
+          <rect x="34"  y="20"  width="16" height="78" fill="#2A1808"/>
+          <rect x="52"  y="12"  width="28" height="86" fill="#8B6820" stroke="rgba(220,180,60,0.4)" stroke-width="1"/>
+          <text x="66"  y="56"  font-family="serif" font-size="6" fill="rgba(240,200,80,0.8)" transform="rotate(90 66 56)" text-anchor="middle">Wealth of Nations</text>
+          <rect x="82"  y="18"  width="20" height="80" fill="#1E3820"/>
+          <rect x="104" y="14"  width="24" height="84" fill="#7A5010" stroke="rgba(200,150,30,0.3)" stroke-width="0.8"/>
+          <text x="116" y="54"  font-family="serif" font-size="5.5" fill="rgba(220,180,60,0.7)" transform="rotate(90 116 54)" text-anchor="middle">Moral Sentiments</text>
+          <rect x="130" y="20"  width="18" height="78" fill="#1A2030"/>
+          <rect x="150" y="16"  width="22" height="82" fill="#2C1A10"/>
+          <rect x="174" y="18"  width="16" height="80" fill="#1C3028"/>
+          <rect x="192" y="13"  width="26" height="85" fill="#382010" stroke="rgba(190,120,30,0.25)" stroke-width="0.5"/>
+          <rect x="220" y="19"  width="18" height="79" fill="#18202A"/>
+          <rect x="240" y="15"  width="20" height="83" fill="#1E3A18"/>
+          <rect x="262" y="20"  width="15" height="78" fill="#2A1808"/>
+          <rect x="279" y="12"  width="24" height="86" fill="#6A4A10" stroke="rgba(180,140,30,0.2)" stroke-width="0.5"/>
+          <rect x="305" y="18"  width="18" height="80" fill="#1A2838"/>
+          <rect x="325" y="15"  width="22" height="83" fill="#201808"/>
+          <rect x="349" y="19"  width="16" height="79" fill="#1C3020"/>
+          <rect x="367" y="13"  width="28" height="85" fill="#7A5818" stroke="rgba(200,160,40,0.25)" stroke-width="0.5"/>
+          <rect x="397" y="18"  width="20" height="80" fill="#18202A"/>
+          <rect x="419" y="15"  width="16" height="83" fill="#2C1A10"/>
+          <rect x="437" y="20"  width="22" height="78" fill="#1A3028"/>
+          <rect x="461" y="14"  width="18" height="84" fill="#201808"/>
+          <rect x="481" y="18"  width="16" height="80" fill="#1E2A38"/>
+        </g>
+        <!-- Rows 2-5 abbreviated but colored -->
+        <g opacity="0.6">
+          <rect x="0"   y="108" width="500" height="88" fill="rgba(25,20,14,0.7)"/>
+          <rect x="0"   y="208" width="500" height="88" fill="rgba(22,18,12,0.7)"/>
+          <rect x="0"   y="308" width="500" height="88" fill="rgba(25,20,14,0.7)"/>
+          <rect x="0"   y="408" width="500" height="88" fill="rgba(22,18,12,0.7)"/>
+        </g>
+        <!-- Some individual spines visible in lower rows -->
+        <g>
+          <rect x="40"  y="115" width="26" height="80" fill="#7A5010" stroke="rgba(200,150,30,0.2)" stroke-width="0.5"/>
+          <rect x="120" y="118" width="20" height="76" fill="#1A3828"/>
+          <rect x="220" y="112" width="28" height="82" fill="#6A4814" stroke="rgba(180,130,30,0.2)" stroke-width="0.5"/>
+          <rect x="340" y="116" width="22" height="78" fill="#1E2A38"/>
+          <rect x="440" y="113" width="24" height="81" fill="#382010" stroke="rgba(190,110,30,0.2)" stroke-width="0.5"/>
+        </g>
+        <!-- Centre label -->
+        <text x="250" y="540" text-anchor="middle" font-family="EB Garamond, serif" font-style="italic" font-size="11" fill="rgba(200,136,32,0.5)" letter-spacing="2">University of Glasgow Library</text>
+        <text x="250" y="558" text-anchor="middle" font-family="EB Garamond, serif" font-size="9" fill="rgba(200,136,32,0.3)" letter-spacing="1">c. 1776</text>
+      </svg>
+
+      <div class="panel-caption">University of Glasgow Library &nbsp;·&nbsp; The Smith Collection &nbsp;·&nbsp; c. 1776</div>
+
+      <link rel="stylesheet" href="https://museumofminds.com/adam-smith/widget/adam-smith-widget.css">
+      <script src="https://museumofminds.com/adam-smith/widget/adam-smith-widget.js"
+              data-api-url="https://stunning-nourishment-production.up.railway.app"
+              data-persona-id="adam-smith"></script>
+
+    </div>
+
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <span class="quote-ornament">— ✦ —</span>
+    <blockquote>
+      "People of the same trade seldom meet together, even for merriment and diversion, but the conversation ends in a conspiracy against the public, or in some contrivance to raise prices."
+    </blockquote>
+    <cite>— Adam Smith &nbsp;·&nbsp; An Inquiry into the Nature and Causes of the Wealth of Nations &nbsp;·&nbsp; 1776</cite>
+  </div>
+
+  <!-- CORPUS STRIP -->
+  <div class="corpus-strip">
+    <div class="corpus-label">Corpus Sources</div>
+    <div class="corpus-list">
+      <span class="corpus-item">The Wealth of Nations · 1776</span>
+      <span class="corpus-item">The Theory of Moral Sentiments · 1759</span>
+      <span class="corpus-item">Lectures on Jurisprudence · 1762–63</span>
+      <span class="corpus-item">Essays on Philosophical Subjects · 1795</span>
+      <span class="corpus-item">Correspondence &amp; Letters</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">Adam Smith &nbsp;·&nbsp; 1723 – 1790</span>
+    <span class="footer-text">Powered by His Own Words</span>
+    <span class="footer-text">Accession No. AS–1723–2026</span>
+  </footer>
+
+</body>
+</html>
