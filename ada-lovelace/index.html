@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada Lovelace — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --void:         #120D2A;
+    --deep-indigo:  #1C1640;
+    --mid-indigo:   #2C1F5E;
+    --violet:       #3D2878;
+    --amethyst:     #6B3A8F;
+    --orchid:       #8B3A8F;
+    --rose-mist:    #C47AB8;
+    --parchment:    #F5F0E8;
+    --warm-white:   #EDE7D8;
+    --gold:         #C9A84C;
+    --gold-light:   #E2C97A;
+    --copper:       #A0622A;
+    --text-dark:    #1C1640;
+    --text-light:   #F5F0E8;
+    --accent:       #8B3A8F;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--void);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slowRotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.55; }
+    50%       { opacity: 0.85; }
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 3rem;
+    background: rgba(12, 9, 30, 0.92);
+    border-bottom: 1px solid rgba(139, 58, 143, 0.30);
+    position: relative;
+    z-index: 100;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--parchment);
+    opacity: 0.72;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    color: var(--rose-mist);
+    opacity: 0.70;
+    text-transform: uppercase;
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    min-height: 92vh;
+    position: relative;
+    animation: fadeIn 1.2s ease 0.3s both;
+  }
+
+  .hero-svg-panel {
+    position: relative;
+    overflow: hidden;
+    background: var(--void);
+  }
+
+  .hero-svg-panel svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-bio-panel {
+    background: linear-gradient(175deg, #1C1640 0%, #120D2A 100%);
+    border-left: 1px solid rgba(139, 58, 143, 0.35);
+    padding: 3.5rem 2.8rem 3rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bio-panel::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,58,143,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .museum-eyebrow {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--rose-mist);
+    opacity: 0.72;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--parchment);
+    line-height: 1.08;
+    letter-spacing: 0.04em;
+  }
+
+  .persona-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-light);
+    opacity: 0.78;
+    margin-top: 0.3rem;
+  }
+
+  .persona-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--warm-white);
+    opacity: 0.87;
+    line-height: 1.5;
+    border-left: 2px solid var(--orchid);
+    padding-left: 0.9rem;
+    margin-top: 0.2rem;
+  }
+
+  /* ─── PHOTO FRAME ─────────────────────────────────────── */
+  .photo-frame {
+    position: relative;
+    max-width: 260px;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid rgba(139, 58, 143, 0.55);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid rgba(201, 168, 76, 0.30);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    filter: grayscale(30%) sepia(40%) contrast(1.05) brightness(0.88) hue-rotate(270deg);
+  }
+
+  /* ─── PLACARD ─────────────────────────────────────────── */
+  .placard {
+    background: rgba(44, 31, 94, 0.35);
+    border: 1px solid rgba(139, 58, 143, 0.28);
+    border-top: 2px solid var(--orchid);
+    padding: 1.2rem 1.4rem;
+    position: relative;
+  }
+
+  .placard-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.30em;
+    color: var(--rose-mist);
+    opacity: 0.72;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .placard-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    line-height: 1.72;
+    color: var(--parchment);
+    opacity: 0.88;
+  }
+
+  /* ─── TRANSITION BAND ─────────────────────────────────── */
+  .transition-band {
+    background: linear-gradient(90deg, var(--mid-indigo) 0%, var(--orchid) 35%, var(--amethyst) 65%, var(--mid-indigo) 100%);
+    padding: 0.9rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transition-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 9, 30, 0.45);
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(245, 240, 232, 0.35);
+    position: relative;
+    z-index: 1;
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.42em;
+    color: var(--parchment);
+    opacity: 0.82;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─────────────────────────────────── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--deep-indigo);
+    animation: fadeIn 1s ease 0.5s both;
+  }
+
+  .chatbot-intro {
+    padding: 3.5rem 3rem 3.5rem 3.5rem;
+    border-right: 1px solid rgba(139, 58, 143, 0.28);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .section-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--rose-mist);
+    opacity: 0.70;
+    text-transform: uppercase;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-weight: 600;
+    color: var(--parchment);
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+  }
+
+  .chatbot-intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.96rem;
+    line-height: 1.82;
+    color: var(--warm-white);
+    opacity: 0.87;
+  }
+
+  .featured-quote {
+    background: rgba(44, 31, 94, 0.45);
+    border-left: 3px solid var(--gold);
+    padding: 1.1rem 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--gold-light);
+    opacity: 0.90;
+    position: relative;
+  }
+
+  .featured-quote::before {
+    content: '\201C';
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.35;
+    position: absolute;
+    top: -0.4rem;
+    left: 0.6rem;
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .domain-tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    color: var(--rose-mist);
+    opacity: 0.72;
+    border: 1px solid rgba(139, 58, 143, 0.40);
+    padding: 0.28rem 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .chatbot-embed {
+    background: linear-gradient(160deg, #1C1640 0%, #120D2A 100%);
+    min-height: 520px;
+    position: relative;
+  }
+
+  /* ─── PULL QUOTE ──────────────────────────────────────── */
+  .pull-quote {
+    background: var(--void);
+    border-top: 1px solid rgba(139, 58, 143, 0.28);
+    border-bottom: 1px solid rgba(139, 58, 143, 0.28);
+    padding: 4.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\2736';
+    position: absolute;
+    font-size: 22rem;
+    color: rgba(107, 58, 143, 0.055);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .pull-quote blockquote {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pull-quote blockquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--parchment);
+    opacity: 0.90;
+    margin-bottom: 1.4rem;
+  }
+
+  .pull-quote blockquote cite {
+    font-family: 'IM Fell English SC', serif;
+    font-style: normal;
+    font-size: 0.58rem;
+    letter-spacing: 0.30em;
+    color: var(--gold-light);
+    opacity: 0.70;
+    text-transform: uppercase;
+  }
+
+  /* ─── CORPUS STRIP ────────────────────────────────────── */
+  .corpus-strip {
+    background: #0D0A1E;
+    border-top: 2px solid rgba(139, 58, 143, 0.35);
+    padding: 2.5rem 3.5rem;
+  }
+
+  .corpus-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    color: var(--rose-mist);
+    opacity: 0.70;
+    text-transform: uppercase;
+    margin-bottom: 1.3rem;
+  }
+
+  .corpus-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.2rem;
+  }
+
+  .corpus-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--parchment);
+    opacity: 0.68;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .corpus-item::before {
+    content: '◆';
+    font-size: 0.4rem;
+    color: var(--orchid);
+    opacity: 0.75;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: #0A0818;
+    border-top: 1px solid rgba(139, 58, 143, 0.25);
+    padding: 2.2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-left {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    color: var(--parchment);
+    opacity: 0.70;
+    letter-spacing: 0.10em;
+  }
+
+  .footer-left span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    opacity: 0.65;
+    letter-spacing: 0.15em;
+    margin-top: 0.25rem;
+  }
+
+  .footer-center {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.30em;
+    color: var(--rose-mist);
+    opacity: 0.52;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  .footer-right {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-light);
+    opacity: 0.68;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    header { padding: 1rem 1.5rem; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+
+    .hero-svg-panel { height: 60vw; min-height: 320px; position: relative; }
+
+    .hero-bio-panel {
+      border-left: none;
+      border-top: 1px solid rgba(139, 58, 143, 0.35);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section { grid-template-columns: 1fr; }
+
+    .chatbot-intro {
+      padding: 2.5rem 1.5rem;
+      border-right: none;
+      border-bottom: 1px solid rgba(139, 58, 143, 0.28);
+    }
+
+    .chatbot-embed { min-height: 420px; }
+
+    .pull-quote { padding: 3rem 1.5rem; }
+
+    .corpus-strip { padding: 2rem 1.5rem; }
+
+    footer {
+      grid-template-columns: 1fr;
+      padding: 1.8rem 1.5rem;
+      gap: 0.8rem;
+      text-align: center;
+    }
+
+    .footer-right { text-align: center; }
+
+    .transition-band { padding: 0.8rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ────────────────────────────────────────────── -->
+<header>
+  <div class="header-left">Museum of Minds &nbsp;·&nbsp; In Conversation With</div>
+  <div class="header-right">AL–1815–2026</div>
+</header>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- LEFT: SVG ILLUSTRATION — Analytical Engine Study by Candlelight -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg" aria-label="Analytical Engine diagram with celestial notation">
+      <defs>
+        <!-- Deep indigo background gradient -->
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0D0A1E"/>
+          <stop offset="55%" stop-color="#1C1640"/>
+          <stop offset="100%" stop-color="#2C1F5E"/>
+        </linearGradient>
+        <!-- Glow for mechanical elements -->
+        <radialGradient id="engineGlow" cx="50%" cy="52%" r="42%">
+          <stop offset="0%" stop-color="#6B3A8F" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#120D2A" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Candlelight glow upper-right -->
+        <radialGradient id="candleGlow" cx="78%" cy="18%" r="30%">
+          <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#120D2A" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Star radial -->
+        <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#E2C97A" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#E2C97A" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Gear highlight -->
+        <radialGradient id="gearGrad" cx="30%" cy="30%" r="60%">
+          <stop offset="0%" stop-color="#8B3A8F" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#2C1F5E" stop-opacity="0.6"/>
+        </radialGradient>
+        <!-- Soft blur filter for glows -->
+        <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+        </filter>
+      </defs>
+
+      <!-- ── BACKGROUND ── -->
+      <rect width="700" height="900" fill="url(#bgGrad)"/>
+      <rect width="700" height="900" fill="url(#candleGlow)"/>
+      <rect width="700" height="900" fill="url(#engineGlow)"/>
+
+      <!-- ── CELESTIAL STAR FIELD (scattered small stars) ── -->
+      <!-- Row 1 -->
+      <circle cx="42"  cy="38"  r="0.9" fill="#E2C97A" opacity="0.65"/>
+      <circle cx="118" cy="22"  r="0.7" fill="#F5F0E8" opacity="0.50"/>
+      <circle cx="195" cy="55"  r="1.1" fill="#E2C97A" opacity="0.70"/>
+      <circle cx="260" cy="19"  r="0.8" fill="#F5F0E8" opacity="0.45"/>
+      <circle cx="330" cy="44"  r="0.6" fill="#C47AB8" opacity="0.55"/>
+      <circle cx="410" cy="28"  r="0.9" fill="#E2C97A" opacity="0.60"/>
+      <circle cx="488" cy="62"  r="0.7" fill="#F5F0E8" opacity="0.48"/>
+      <circle cx="565" cy="31"  r="1.0" fill="#E2C97A" opacity="0.58"/>
+      <circle cx="638" cy="50"  r="0.7" fill="#C47AB8" opacity="0.45"/>
+      <!-- Row 2 -->
+      <circle cx="68"  cy="90"  r="0.7" fill="#F5F0E8" opacity="0.42"/>
+      <circle cx="144" cy="76"  r="1.0" fill="#C47AB8" opacity="0.55"/>
+      <circle cx="218" cy="100" r="0.6" fill="#E2C97A" opacity="0.48"/>
+      <circle cx="295" cy="82"  r="0.8" fill="#F5F0E8" opacity="0.52"/>
+      <circle cx="372" cy="70"  r="0.7" fill="#E2C97A" opacity="0.60"/>
+      <circle cx="450" cy="95"  r="1.2" fill="#F5F0E8" opacity="0.55"/>
+      <circle cx="522" cy="78"  r="0.7" fill="#C47AB8" opacity="0.50"/>
+      <circle cx="598" cy="88"  r="0.8" fill="#E2C97A" opacity="0.58"/>
+      <circle cx="672" cy="72"  r="0.6" fill="#F5F0E8" opacity="0.42"/>
+
+      <!-- ── DECORATIVE CONSTELLATION LINES ── -->
+      <line x1="42"  y1="38"  x2="118" y2="22"  stroke="#C47AB8" stroke-width="0.35" opacity="0.22"/>
+      <line x1="118" y1="22"  x2="195" y2="55"  stroke="#C47AB8" stroke-width="0.35" opacity="0.22"/>
+      <line x1="195" y1="55"  x2="260" y2="19"  stroke="#C47AB8" stroke-width="0.35" opacity="0.22"/>
+      <line x1="450" y1="95"  x2="522" y2="78"  stroke="#C47AB8" stroke-width="0.35" opacity="0.22"/>
+      <line x1="522" y1="78"  x2="598" y2="88"  stroke="#C47AB8" stroke-width="0.35" opacity="0.22"/>
+
+      <!-- ── DESK SURFACE ── -->
+      <rect x="40" y="640" width="620" height="16" rx="2" fill="#2C1F5E" opacity="0.85"/>
+      <rect x="40" y="654" width="620" height="200" fill="#1C1640" opacity="0.95"/>
+      <!-- Desk edge highlight -->
+      <line x1="40" y1="640" x2="660" y2="640" stroke="#8B3A8F" stroke-width="0.8" opacity="0.40"/>
+
+      <!-- ── ENGINE DIAGRAM — central tower of gears and columns ── -->
+
+      <!-- Base platform -->
+      <rect x="180" y="590" width="340" height="52" rx="3" fill="#2C1F5E" stroke="#6B3A8F" stroke-width="1" opacity="0.9"/>
+      <rect x="190" y="597" width="320" height="6"  rx="1" fill="#8B3A8F" opacity="0.30"/>
+
+      <!-- Columns left and right -->
+      <rect x="193" y="300" width="22" height="292" rx="2" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.8" opacity="0.90"/>
+      <rect x="485" y="300" width="22" height="292" rx="2" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.8" opacity="0.90"/>
+      <!-- Column detail lines -->
+      <line x1="204" y1="310" x2="204" y2="588" stroke="#6B3A8F" stroke-width="0.5" opacity="0.45"/>
+      <line x1="496" y1="310" x2="496" y2="588" stroke="#6B3A8F" stroke-width="0.5" opacity="0.45"/>
+
+      <!-- ── GEAR SYSTEM — left cluster ── -->
+      <!-- Large gear L -->
+      <circle cx="248" cy="430" r="62" fill="none" stroke="#6B3A8F" stroke-width="1.8" opacity="0.75"/>
+      <circle cx="248" cy="430" r="54" fill="url(#gearGrad)" stroke="#4A2878" stroke-width="0.8" opacity="0.70"/>
+      <circle cx="248" cy="430" r="46" fill="none" stroke="#8B3A8F" stroke-width="0.6" opacity="0.55"/>
+      <circle cx="248" cy="430" r="10" fill="#3D2878" stroke="#8B3A8F" stroke-width="1.2" opacity="0.85"/>
+      <!-- Gear teeth L (24 teeth) -->
+      <g stroke="#8B3A8F" stroke-width="1.5" opacity="0.68">
+        <line x1="248" y1="365" x2="248" y2="373"/>
+        <line x1="263" y1="366" x2="261" y2="374"/>
+        <line x1="277" y1="370" x2="273" y2="377"/>
+        <line x1="289" y1="378" x2="284" y2="383"/>
+        <line x1="298" y1="388" x2="292" y2="392"/>
+        <line x1="304" y1="401" x2="298" y2="403"/>
+        <line x1="307" y1="415" x2="301" y2="415"/>
+        <line x1="306" y1="429" x2="300" y2="430"/>
+        <line x1="302" y1="443" x2="296" y2="445"/>
+        <line x1="294" y1="456" x2="289" y2="460"/>
+        <line x1="283" y1="466" x2="279" y2="472"/>
+        <line x1="270" y1="472" x2="267" y2="479"/>
+        <line x1="256" y1="474" x2="255" y2="481"/>
+        <line x1="242" y1="473" x2="242" y2="480"/>
+        <line x1="228" y1="469" x2="229" y2="476"/>
+        <line x1="215" y1="461" x2="218" y2="468"/>
+        <line x1="204" y1="451" x2="208" y2="457"/>
+        <line x1="197" y1="438" x2="202" y2="442"/>
+        <line x1="193" y1="424" x2="199" y2="425"/>
+        <line x1="192" y1="410" x2="198" y2="412"/>
+        <line x1="196" y1="396" x2="202" y2="400"/>
+        <line x1="204" y1="384" x2="210" y2="389"/>
+        <line x1="215" y1="374" x2="220" y2="381"/>
+        <line x1="229" y1="366" x2="233" y2="373"/>
+      </g>
+      <!-- Spoke lines L -->
+      <line x1="248" y1="376" x2="248" y2="420" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="248" y1="440" x2="248" y2="484" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="194" y1="430" x2="238" y2="430" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="258" y1="430" x2="302" y2="430" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="204" y1="386" x2="237" y2="419" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="259" y1="441" x2="292" y2="474" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="292" y1="386" x2="259" y2="419" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="237" y1="441" x2="204" y2="474" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+
+      <!-- Small gear upper-left of big gear -->
+      <circle cx="248" cy="358" r="24" fill="none" stroke="#6B3A8F" stroke-width="1.2" opacity="0.65"/>
+      <circle cx="248" cy="358" r="19" fill="#1C1640" stroke="#4A2878" stroke-width="0.7" opacity="0.80"/>
+      <circle cx="248" cy="358" r="5"  fill="#3D2878" stroke="#8B3A8F" stroke-width="0.9" opacity="0.85"/>
+      <g stroke="#8B3A8F" stroke-width="1.2" opacity="0.60">
+        <line x1="248" y1="333" x2="248" y2="338"/>
+        <line x1="261" y1="337" x2="258" y2="341"/>
+        <line x1="270" y1="347" x2="266" y2="349"/>
+        <line x1="272" y1="359" x2="267" y2="359"/>
+        <line x1="269" y1="370" x2="265" y2="368"/>
+        <line x1="260" y1="378" x2="257" y2="374"/>
+        <line x1="248" y1="382" x2="248" y2="377"/>
+        <line x1="236" y1="378" x2="239" y2="374"/>
+        <line x1="227" y1="370" x2="231" y2="368"/>
+        <line x1="224" y1="358" x2="229" y2="358"/>
+        <line x1="227" y1="347" x2="231" y2="349"/>
+        <line x1="236" y1="337" x2="239" y2="341"/>
+      </g>
+
+      <!-- ── GEAR SYSTEM — right cluster ── -->
+      <!-- Large gear R -->
+      <circle cx="452" cy="430" r="62" fill="none" stroke="#6B3A8F" stroke-width="1.8" opacity="0.75"/>
+      <circle cx="452" cy="430" r="54" fill="url(#gearGrad)" stroke="#4A2878" stroke-width="0.8" opacity="0.70"/>
+      <circle cx="452" cy="430" r="46" fill="none" stroke="#8B3A8F" stroke-width="0.6" opacity="0.55"/>
+      <circle cx="452" cy="430" r="10" fill="#3D2878" stroke="#8B3A8F" stroke-width="1.2" opacity="0.85"/>
+      <!-- Gear teeth R -->
+      <g stroke="#8B3A8F" stroke-width="1.5" opacity="0.68">
+        <line x1="452" y1="365" x2="452" y2="373"/>
+        <line x1="467" y1="366" x2="465" y2="374"/>
+        <line x1="481" y1="370" x2="477" y2="377"/>
+        <line x1="493" y1="378" x2="488" y2="383"/>
+        <line x1="502" y1="388" x2="496" y2="392"/>
+        <line x1="508" y1="401" x2="502" y2="403"/>
+        <line x1="511" y1="415" x2="505" y2="415"/>
+        <line x1="510" y1="429" x2="504" y2="430"/>
+        <line x1="506" y1="443" x2="500" y2="445"/>
+        <line x1="498" y1="456" x2="493" y2="460"/>
+        <line x1="487" y1="466" x2="483" y2="472"/>
+        <line x1="474" y1="472" x2="471" y2="479"/>
+        <line x1="460" y1="474" x2="459" y2="481"/>
+        <line x1="446" y1="473" x2="446" y2="480"/>
+        <line x1="432" y1="469" x2="433" y2="476"/>
+        <line x1="419" y1="461" x2="422" y2="468"/>
+        <line x1="408" y1="451" x2="412" y2="457"/>
+        <line x1="401" y1="438" x2="406" y2="442"/>
+        <line x1="397" y1="424" x2="403" y2="425"/>
+        <line x1="396" y1="410" x2="402" y2="412"/>
+        <line x1="400" y1="396" x2="406" y2="400"/>
+        <line x1="408" y1="384" x2="414" y2="389"/>
+        <line x1="419" y1="374" x2="424" y2="381"/>
+        <line x1="433" y1="366" x2="437" y2="373"/>
+      </g>
+      <!-- Spoke lines R -->
+      <line x1="452" y1="376" x2="452" y2="420" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="452" y1="440" x2="452" y2="484" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="398" y1="430" x2="442" y2="430" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="462" y1="430" x2="506" y2="430" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="408" y1="386" x2="441" y2="419" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="463" y1="441" x2="496" y2="474" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="496" y1="386" x2="463" y2="419" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+      <line x1="441" y1="441" x2="408" y2="474" stroke="#A070C8" stroke-width="0.7" opacity="0.50"/>
+
+      <!-- Small gear upper-right cluster -->
+      <circle cx="452" cy="358" r="24" fill="none" stroke="#6B3A8F" stroke-width="1.2" opacity="0.65"/>
+      <circle cx="452" cy="358" r="19" fill="#1C1640" stroke="#4A2878" stroke-width="0.7" opacity="0.80"/>
+      <circle cx="452" cy="358" r="5"  fill="#3D2878" stroke="#8B3A8F" stroke-width="0.9" opacity="0.85"/>
+      <g stroke="#8B3A8F" stroke-width="1.2" opacity="0.60">
+        <line x1="452" y1="333" x2="452" y2="338"/>
+        <line x1="465" y1="337" x2="462" y2="341"/>
+        <line x1="474" y1="347" x2="470" y2="349"/>
+        <line x1="476" y1="359" x2="471" y2="359"/>
+        <line x1="473" y1="370" x2="469" y2="368"/>
+        <line x1="464" y1="378" x2="461" y2="374"/>
+        <line x1="452" y1="382" x2="452" y2="377"/>
+        <line x1="440" y1="378" x2="443" y2="374"/>
+        <line x1="431" y1="370" x2="435" y2="368"/>
+        <line x1="428" y1="358" x2="433" y2="358"/>
+        <line x1="431" y1="347" x2="435" y2="349"/>
+        <line x1="440" y1="337" x2="443" y2="341"/>
+      </g>
+
+      <!-- ── CONNECTING SHAFT between gears ── -->
+      <rect x="310" y="425" width="80" height="10" rx="2" fill="#2C1F5E" stroke="#6B3A8F" stroke-width="0.8" opacity="0.80"/>
+      <line x1="310" y1="430" x2="390" y2="430" stroke="#A070C8" stroke-width="0.5" opacity="0.40"/>
+
+      <!-- ── CENTRAL VERTICAL TOWER ── -->
+      <rect x="325" y="200" width="50" height="392" rx="3" fill="#1C1640" stroke="#6B3A8F" stroke-width="1" opacity="0.85"/>
+      <!-- Tower detail panels -->
+      <rect x="332" y="215" width="36" height="30" rx="1" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.6" opacity="0.70"/>
+      <rect x="332" y="255" width="36" height="30" rx="1" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.6" opacity="0.70"/>
+      <rect x="332" y="295" width="36" height="30" rx="1" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.6" opacity="0.70"/>
+      <rect x="332" y="335" width="36" height="30" rx="1" fill="#2C1F5E" stroke="#4A2878" stroke-width="0.6" opacity="0.70"/>
+      <!-- Number wheels in tower panels -->
+      <text x="350" y="235" font-family="'Cormorant Garamond', serif" font-size="11" fill="#C47AB8" text-anchor="middle" opacity="0.65">7</text>
+      <text x="350" y="275" font-family="'Cormorant Garamond', serif" font-size="11" fill="#C47AB8" text-anchor="middle" opacity="0.65">4</text>
+      <text x="350" y="315" font-family="'Cormorant Garamond', serif" font-size="11" fill="#C47AB8" text-anchor="middle" opacity="0.65">1</text>
+      <text x="350" y="355" font-family="'Cormorant Garamond', serif" font-size="11" fill="#C47AB8" text-anchor="middle" opacity="0.65">9</text>
+
+      <!-- Tower top ornament -->
+      <polygon points="350,168 330,200 370,200" fill="#2C1F5E" stroke="#8B3A8F" stroke-width="1" opacity="0.85"/>
+      <circle cx="350" cy="158" r="10" fill="#1C1640" stroke="#8B3A8F" stroke-width="1.2" opacity="0.90"/>
+      <circle cx="350" cy="158" r="5"  fill="#6B3A8F" opacity="0.75"/>
+
+      <!-- ── MATHEMATICAL NOTATION OVERLAY ── -->
+      <!-- Left side annotations -->
+      <text x="62" y="218" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="13" fill="#C47AB8" opacity="0.52">f(x) = ∑ aₙxⁿ</text>
+      <text x="62" y="240" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#E2C97A" opacity="0.40">n = 0, 1, 2…</text>
+      <line x1="60" y1="248" x2="170" y2="248" stroke="#6B3A8F" stroke-width="0.5" opacity="0.35"/>
+
+      <text x="68" y="290" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#C47AB8" opacity="0.48">v₀ = cos θ · r</text>
+      <text x="68" y="310" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#E2C97A" opacity="0.38">Δ² = const.</text>
+
+      <!-- Right side annotations -->
+      <text x="530" y="218" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="13" fill="#C47AB8" opacity="0.52">B₇ = −1⁄6</text>
+      <text x="530" y="238" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#E2C97A" opacity="0.40">Bernoulli</text>
+      <line x1="527" y1="246" x2="640" y2="246" stroke="#6B3A8F" stroke-width="0.5" opacity="0.35"/>
+
+      <text x="535" y="288" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#C47AB8" opacity="0.48">p · q ≡ 0</text>
+      <text x="535" y="308" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#E2C97A" opacity="0.38">(mod n)</text>
+
+      <!-- ── PUNCH CARD STRIP — bottom foreground ── -->
+      <rect x="80" y="670" width="540" height="55" rx="2" fill="#2C1F5E" stroke="#6B3A8F" stroke-width="0.8" opacity="0.85"/>
+      <!-- Punch card holes row 1 -->
+      <g fill="#120D2A" opacity="0.90">
+        <rect x="98"  y="678" width="9" height="6" rx="1"/>
+        <rect x="114" y="678" width="9" height="6" rx="1"/>
+        <rect x="146" y="678" width="9" height="6" rx="1"/>
+        <rect x="162" y="678" width="9" height="6" rx="1"/>
+        <rect x="178" y="678" width="9" height="6" rx="1"/>
+        <rect x="210" y="678" width="9" height="6" rx="1"/>
+        <rect x="242" y="678" width="9" height="6" rx="1"/>
+        <rect x="258" y="678" width="9" height="6" rx="1"/>
+        <rect x="290" y="678" width="9" height="6" rx="1"/>
+        <rect x="322" y="678" width="9" height="6" rx="1"/>
+        <rect x="354" y="678" width="9" height="6" rx="1"/>
+        <rect x="370" y="678" width="9" height="6" rx="1"/>
+        <rect x="402" y="678" width="9" height="6" rx="1"/>
+        <rect x="434" y="678" width="9" height="6" rx="1"/>
+        <rect x="466" y="678" width="9" height="6" rx="1"/>
+        <rect x="482" y="678" width="9" height="6" rx="1"/>
+        <rect x="514" y="678" width="9" height="6" rx="1"/>
+        <rect x="546" y="678" width="9" height="6" rx="1"/>
+        <rect x="578" y="678" width="9" height="6" rx="1"/>
+        <rect x="594" y="678" width="9" height="6" rx="1"/>
+      </g>
+      <!-- Punch card holes row 2 -->
+      <g fill="#120D2A" opacity="0.90">
+        <rect x="98"  y="691" width="9" height="6" rx="1"/>
+        <rect x="130" y="691" width="9" height="6" rx="1"/>
+        <rect x="162" y="691" width="9" height="6" rx="1"/>
+        <rect x="194" y="691" width="9" height="6" rx="1"/>
+        <rect x="226" y="691" width="9" height="6" rx="1"/>
+        <rect x="274" y="691" width="9" height="6" rx="1"/>
+        <rect x="306" y="691" width="9" height="6" rx="1"/>
+        <rect x="338" y="691" width="9" height="6" rx="1"/>
+        <rect x="386" y="691" width="9" height="6" rx="1"/>
+        <rect x="418" y="691" width="9" height="6" rx="1"/>
+        <rect x="450" y="691" width="9" height="6" rx="1"/>
+        <rect x="482" y="691" width="9" height="6" rx="1"/>
+        <rect x="530" y="691" width="9" height="6" rx="1"/>
+        <rect x="562" y="691" width="9" height="6" rx="1"/>
+        <rect x="594" y="691" width="9" height="6" rx="1"/>
+      </g>
+      <!-- Punch card holes row 3 -->
+      <g fill="#120D2A" opacity="0.90">
+        <rect x="114" y="704" width="9" height="6" rx="1"/>
+        <rect x="146" y="704" width="9" height="6" rx="1"/>
+        <rect x="178" y="704" width="9" height="6" rx="1"/>
+        <rect x="226" y="704" width="9" height="6" rx="1"/>
+        <rect x="258" y="704" width="9" height="6" rx="1"/>
+        <rect x="290" y="704" width="9" height="6" rx="1"/>
+        <rect x="322" y="704" width="9" height="6" rx="1"/>
+        <rect x="370" y="704" width="9" height="6" rx="1"/>
+        <rect x="402" y="704" width="9" height="6" rx="1"/>
+        <rect x="450" y="704" width="9" height="6" rx="1"/>
+        <rect x="498" y="704" width="9" height="6" rx="1"/>
+        <rect x="546" y="704" width="9" height="6" rx="1"/>
+        <rect x="578" y="704" width="9" height="6" rx="1"/>
+        <rect x="610" y="704" width="9" height="6" rx="1"/>
+      </g>
+      <!-- Punch card label -->
+      <text x="350" y="742" font-family="'IM Fell English SC', serif" font-size="8" fill="#C47AB8" opacity="0.48" text-anchor="middle" letter-spacing="3">Operation Card No. 1 — Analytical Engine</text>
+
+      <!-- ── CANDLE top right ── -->
+      <!-- Flame -->
+      <ellipse cx="618" cy="138" rx="7" ry="14" fill="#E2C97A" opacity="0.80"/>
+      <ellipse cx="618" cy="132" rx="4" ry="8"  fill="#F5F0E8" opacity="0.65"/>
+      <!-- Flame glow soft -->
+      <ellipse cx="618" cy="138" rx="22" ry="28" fill="#C9A84C" opacity="0.12" filter="url(#softBlur)"/>
+      <!-- Wick -->
+      <line x1="618" y1="152" x2="618" y2="157" stroke="#1C1640" stroke-width="1.5" opacity="0.80"/>
+      <!-- Candle body -->
+      <rect x="609" y="156" width="18" height="62" rx="2" fill="#F5F0E8" stroke="#C9A84C" stroke-width="0.6" opacity="0.75"/>
+      <!-- Wax drip -->
+      <path d="M609,172 Q606,180 608,188 L609,188 Z" fill="#EDE7D8" opacity="0.55"/>
+      <!-- Candle holder -->
+      <ellipse cx="618" cy="220" rx="16" ry="5" fill="#C9A84C" stroke="#A0622A" stroke-width="0.8" opacity="0.70"/>
+      <rect x="606" y="218" width="24" height="8" rx="1" fill="#A0622A" opacity="0.65"/>
+
+      <!-- ── TITLE BLOCK — lower left annotation ── -->
+      <rect x="58" y="760" width="200" height="82" fill="#120D2A" stroke="#6B3A8F" stroke-width="0.8" opacity="0.75"/>
+      <line x1="58" y1="776" x2="258" y2="776" stroke="#6B3A8F" stroke-width="0.5" opacity="0.55"/>
+      <text x="158" y="772" font-family="'IM Fell English SC', serif" font-size="7" fill="#C47AB8" text-anchor="middle" opacity="0.68" letter-spacing="2">Analytical Engine</text>
+      <text x="158" y="790" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="8.5" fill="#E2C97A" text-anchor="middle" opacity="0.58">Mill &amp; Store Apparatus</text>
+      <text x="158" y="806" font-family="'IM Fell English SC', serif" font-size="7" fill="#F5F0E8" text-anchor="middle" opacity="0.48" letter-spacing="1">C. Babbage &amp; A. A. Lovelace</text>
+      <text x="158" y="820" font-family="'Cormorant Garamond', serif" font-size="7.5" fill="#C47AB8" text-anchor="middle" opacity="0.42">Diagram · 1843</text>
+      <line x1="58" y1="814" x2="258" y2="814" stroke="#4A2878" stroke-width="0.4" opacity="0.40"/>
+
+      <!-- ── DIMENSION LINES ── -->
+      <!-- Horizontal dimension -->
+      <line x1="193" y1="860" x2="507" y2="860" stroke="#6B3A8F" stroke-width="0.6" opacity="0.38"/>
+      <line x1="193" y1="855" x2="193" y2="865" stroke="#6B3A8F" stroke-width="0.6" opacity="0.38"/>
+      <line x1="507" y1="855" x2="507" y2="865" stroke="#6B3A8F" stroke-width="0.6" opacity="0.38"/>
+      <text x="350" y="856" font-family="'Cormorant Garamond', serif" font-size="7.5" fill="#C47AB8" text-anchor="middle" opacity="0.40">← Engine Width →</text>
+      <!-- Vertical dimension -->
+      <line x1="648" y1="200" x2="648" y2="592" stroke="#6B3A8F" stroke-width="0.6" opacity="0.35"/>
+      <line x1="643" y1="200" x2="653" y2="200" stroke="#6B3A8F" stroke-width="0.6" opacity="0.35"/>
+      <line x1="643" y1="592" x2="653" y2="592" stroke="#6B3A8F" stroke-width="0.6" opacity="0.35"/>
+      <text x="650" y="400" font-family="'Cormorant Garamond', serif" font-size="7.5" fill="#C47AB8" text-anchor="start" opacity="0.38" transform="rotate(90 650 400)">Engine Height</text>
+
+      <!-- ── COMPASS ROSE — lower right ── -->
+      <g transform="translate(598,780)">
+        <circle cx="0" cy="0" r="26" fill="none" stroke="#6B3A8F" stroke-width="0.7" opacity="0.38"/>
+        <circle cx="0" cy="0" r="3"  fill="#6B3A8F" opacity="0.55"/>
+        <polygon points="0,-22 -3,-4 3,-4"  fill="#C47AB8" opacity="0.55"/>
+        <polygon points="0,22  3,4  -3,4"   fill="#4A2878" opacity="0.45"/>
+        <polygon points="-22,0 -4,3 -4,-3"  fill="#4A2878" opacity="0.38"/>
+        <polygon points="22,0   4,-3  4,3"  fill="#4A2878" opacity="0.38"/>
+        <text x="0" y="-26" font-family="'Cormorant Garamond', serif" font-size="7" fill="#C47AB8" text-anchor="middle" opacity="0.52">N</text>
+        <text x="0" y="33"  font-family="'Cormorant Garamond', serif" font-size="7" fill="#C47AB8" text-anchor="middle" opacity="0.45">S</text>
+        <text x="-32" y="3" font-family="'Cormorant Garamond', serif" font-size="7" fill="#C47AB8" text-anchor="middle" opacity="0.45">W</text>
+        <text x="32"  y="3" font-family="'Cormorant Garamond', serif" font-size="7" fill="#C47AB8" text-anchor="middle" opacity="0.45">E</text>
+      </g>
+
+      <!-- ── FOREGROUND GLOW OVERLAY on gears ── -->
+      <circle cx="248" cy="430" r="70" fill="url(#starGlow)" opacity="0.06"/>
+      <circle cx="452" cy="430" r="70" fill="url(#starGlow)" opacity="0.06"/>
+
+      <!-- ── MARGINALIA italic text ── -->
+      <text x="62" y="492" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="9" fill="#C47AB8" opacity="0.42">*The engine weaves algebraical patterns</text>
+      <text x="62" y="507" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="9" fill="#C47AB8" opacity="0.38"> just as the Jacquard loom weaves flowers.</text>
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio-panel">
+
+    <div>
+      <div class="museum-eyebrow">Mathematician &amp; Visionary</div>
+      <div class="persona-name">Ada<br>Lovelace</div>
+      <div class="persona-dates">1815 — 1852</div>
+      <div class="persona-tagline">The mathematician who saw what machines could dream</div>
+    </div>
+
+    <div class="photo-frame">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/8/87/Ada_Lovelace.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        alt="Portrait of Ada Lovelace"
+        onerror="this.style.display='none'"
+      />
+    </div>
+
+    <div class="placard">
+      <div class="placard-label">About this Mind</div>
+      <p class="placard-text">
+        Ada Lovelace was the daughter of Lord Byron and a pioneering mathematician
+        who wrote the world's first published algorithm, intended for Charles Babbage's
+        unbuilt Analytical Engine. She possessed a defining contradiction: trained by
+        her mother in rigorous mathematics precisely to suppress any hint of her father's
+        dangerous romanticism, she became the one person who fused poetic imagination
+        with computational logic — seeing, a full century before anyone else, that
+        a machine of numbers might compose music, generate graphics, and transform
+        every domain of human thought.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ───────────────────────────────────── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-ornament">&#x2736; &nbsp; Enter Conversation &nbsp; &#x2736;</div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ───────────────────────────────────── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <div class="section-label">Converse with Ada Lovelace</div>
+    <h2>She imagined the computer before it existed. Now she will speak with you.</h2>
+
+    <p>
+      Ada Lovelace occupies a singular position in history: she saw the future of
+      computing while standing beside a machine that was never even built. Her
+      published Notes on Babbage's Analytical Engine — longer and more theoretically
+      ambitious than the original paper she was translating — contain not only the
+      world's first algorithm but a philosophical framework that still defines
+      debates about artificial intelligence today.
+    </p>
+
+    <p>
+      Ask her about the limits of machine thought, or the tension her mother
+      deliberately engineered between mathematics and poetry. Ask her why she
+      believed the Analytical Engine could weave algebraic patterns as the
+      Jacquard loom weaves flowers — and what that metaphor truly meant to her.
+      She answers from her own writings: her letters, her Notes, her correspondence
+      with Babbage and De Morgan and Faraday.
+    </p>
+
+    <div class="featured-quote">
+      The Analytical Engine has no power of originating anything. It can only do
+      what we know how to order it to perform. It can do whatever we know how to
+      order it to perform.
+    </div>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Mathematics</span>
+      <span class="domain-tag">Computing</span>
+      <span class="domain-tag">Algorithm Theory</span>
+      <span class="domain-tag">Analytical Engine</span>
+      <span class="domain-tag">Philosophy of Mind</span>
+      <span class="domain-tag">Victorian Science</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/ada-lovelace/widget/ada-lovelace-widget.css">
+      <script src="https://museumofminds.com/ada-lovelace/widget/ada-lovelace-widget.js"
+              data-api-url="https://ada-lovelace-production.up.railway.app"
+              data-persona-id="ada-lovelace"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ────────────────────────────────────────── -->
+<section class="pull-quote">
+  <blockquote>
+    <p>
+      "The engine might compose elaborate and scientific pieces of music of any
+      degree of complexity or extent. It might do all this — in that beautiful union
+      of the mathematical with the imaginative — which the highest human intellect
+      alone has hitherto accomplished."
+    </p>
+    <cite>Notes on the Analytical Engine &nbsp;·&nbsp; Note A &nbsp;·&nbsp; 1843</cite>
+  </blockquote>
+</section>
+
+<!-- ─── CORPUS STRIP ──────────────────────────────────────── -->
+<div class="corpus-strip">
+  <div class="corpus-label">Knowledge Corpus — Primary Sources</div>
+  <div class="corpus-grid">
+    <span class="corpus-item">Notes on Menabrea's Memoir on the Analytical Engine (1843)</span>
+    <span class="corpus-item">Correspondence with Charles Babbage (1835–1852)</span>
+    <span class="corpus-item">Letters to Augustus De Morgan (1840–1841)</span>
+    <span class="corpus-item">Personal Journals and Diaries (1832–1852)</span>
+    <span class="corpus-item">Letters to Michael Faraday (1844)</span>
+    <span class="corpus-item">Correspondence with Mary Somerville (1833–1840)</span>
+    <span class="corpus-item">Sketch of the Analytical Engine by L. F. Menabrea (1842, original)</span>
+    <span class="corpus-item">Letters to Lord Lovelace (1835–1852)</span>
+    <span class="corpus-item">Childhood Mathematical Notebooks (1828–1834)</span>
+    <span class="corpus-item">De Morgan's Teaching Correspondence (1840–1841)</span>
+  </div>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-left">
+    Ada Lovelace
+    <span>1815 — 1852 &nbsp;·&nbsp; London, England</span>
+  </div>
+
+  <div class="footer-center">
+    Museum of Minds<br>
+    A Project in Digital Humanities<br>
+    AL–1815–2026
+  </div>
+
+  <div class="footer-right">
+    Powered by Her Own Words
+  </div>
+</footer>
+
+</body>
+</html>
