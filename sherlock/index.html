@@ -771,6 +771,11 @@ nav a:hover { color: var(--amber); }
 .illus-quote{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:var(--ivory);line-height:1.4;}
 .illus-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text);line-height:1.8;font-style:italic;font-weight:300;}
 .illus-note{font-family:'Inter',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);line-height:1.7;opacity:0.7;}
+.corpus-work{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text);line-height:1.5;}
+.corpus-year{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;color:var(--amber);opacity:0.7;margin-right:0.8rem;font-style:normal;}
+.corpus-count{font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:0.5rem;font-style:normal;}
+.canon-quote{border-left:2px solid rgba(196,154,60,0.3);padding-left:1.2rem;}
+.quote-cite{font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);opacity:0.55;display:block;margin-top:0.4rem;font-style:normal;}
 @media(max-width:800px){.illustration-section{grid-template-columns:1fr;}.illus-svg-col{min-height:280px;border-right:none;border-bottom:1px solid rgba(196,154,60,0.12);}}
 </style>
 </head>
@@ -791,36 +796,76 @@ nav a:hover { color: var(--amber); }
 <!-- HERO -->
 <section class="hero">
 
-  <!-- LEFT: PORTRAIT PANEL — atmospheric background, name at bottom-left, no SVG illustration -->
+  <!-- LEFT: PORTRAIT PANEL — Holmes figure illustration -->
   <div class="hero-portrait">
-    <!-- Atmospheric background SVG: radial glow + fog lines only -->
+    <!-- Figure SVG — pulled from illustration section -->
     <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
       <defs>
-        <radialGradient id="heroAtmGrad" cx="50%" cy="38%" r="70%">
-          <stop offset="0%" stop-color="#1C1828"/>
+        <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+          <stop offset="0%" stop-color="#1A1520"/>
           <stop offset="100%" stop-color="#0A090C"/>
         </radialGradient>
-        <radialGradient id="heroLampGlow" cx="72%" cy="22%" r="45%">
-          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.13"/>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.18"/>
           <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="heroFootGlow" cx="50%" cy="100%" r="50%">
-          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.06"/>
-          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
-        </radialGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <rect width="560" height="720" fill="url(#heroAtmGrad)"/>
-      <ellipse cx="400" cy="140" rx="260" ry="200" fill="url(#heroLampGlow)"/>
-      <ellipse cx="280" cy="720" rx="280" ry="160" fill="url(#heroFootGlow)"/>
-      <!-- subtle fog lines -->
-      <line x1="0" y1="320" x2="560" y2="290" stroke="rgba(196,154,60,0.025)" stroke-width="1"/>
-      <line x1="0" y1="400" x2="560" y2="370" stroke="rgba(196,154,60,0.02)" stroke-width="1"/>
-      <line x1="0" y1="480" x2="560" y2="460" stroke="rgba(196,154,60,0.018)" stroke-width="0.8"/>
-      <!-- decorative corner marks -->
-      <path d="M30,30 L30,55 M30,30 L55,30" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
-      <path d="M530,30 L530,55 M530,30 L505,30" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
-      <path d="M30,560 L30,535 M30,560 L55,560" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
-      <path d="M530,560 L530,535 M530,560 L505,560" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
+      <rect width="560" height="720" fill="url(#bgGrad)"/>
+      <ellipse cx="440" cy="120" rx="180" ry="160" fill="url(#lampGlow)"/>
+      <line x1="0" y1="0" x2="0" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="560" y1="0" x2="560" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="0" y1="580" x2="560" y2="580" stroke="rgba(196,154,60,0.08)" stroke-width="0.5"/>
+      <rect x="20" y="20" width="520" height="540" fill="none" stroke="rgba(196,154,60,0.05)" stroke-width="0.5"/>
+      <g filter="url(#softGlow)" opacity="0.85">
+        <path d="M480,60 Q500,60 500,90 L500,130" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="rgba(196,154,60,0.08)"/>
+        <ellipse cx="500" cy="145" rx="8" ry="10" fill="rgba(232,201,106,0.25)"/>
+        <line x1="500" y1="167" x2="500" y2="178" stroke="#C49A3C" stroke-width="1.2"/>
+        <path d="M492,178 L508,178" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+      <g filter="url(#glow)" opacity="0.7">
+        <path d="M310,560 Q330,545 355,542 Q365,541 368,548 Q371,555 360,558 Q345,562 320,570" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/>
+        <path d="M355,542 Q368,536 375,540 Q380,544 375,550 Q368,554 360,553" fill="none" stroke="#C49A3C" stroke-width="1.5"/>
+        <path d="M362,537 Q366,528 370,525" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <path d="M367,536 Q373,526 376,523" stroke="#C49A3C" stroke-width="0.8" stroke-linecap="round" opacity="0.35"/>
+      </g>
+      <g opacity="0.35">
+        <path d="M140,580 L140,480 Q140,460 160,460 L400,460 Q420,460 420,480 L420,580 Z" fill="#1A1520" stroke="rgba(196,154,60,0.15)" stroke-width="1"/>
+        <path d="M130,460 Q130,440 150,440 L160,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <path d="M430,460 Q430,440 410,440 L400,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <rect x="120" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+        <rect x="410" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+      </g>
+      <g stroke="#C49A3C" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M240,155 Q238,120 248,102 Q258,82 280,78 Q302,74 316,90 Q330,106 328,135 Q326,158 318,172" stroke-width="1.8" opacity="0.9"/>
+        <path d="M240,155 Q236,170 238,182 Q240,192 248,196" stroke-width="1.6" opacity="0.85"/>
+        <path d="M318,172 Q322,185 318,196 Q312,206 300,210 Q285,215 270,212 Q255,208 248,196" stroke-width="1.6" opacity="0.85"/>
+        <path d="M272,115 Q270,128 268,138 Q266,145 272,148 Q278,150 284,146 Q286,143 285,138" stroke-width="1.4" opacity="0.8"/>
+        <path d="M288,108 Q294,105 300,108 Q294,114 288,111 Z" stroke-width="1.2" opacity="0.75" fill="rgba(196,154,60,0.1)"/>
+        <path d="M265,110 Q270,107 275,110 Q270,115 265,112 Z" stroke-width="1.1" opacity="0.65" fill="rgba(196,154,60,0.08)"/>
+        <path d="M262,103 Q268,98 276,101" stroke-width="1.4" opacity="0.7"/>
+        <path d="M286,101 Q294,97 303,100" stroke-width="1.4" opacity="0.7"/>
+        <path d="M240,130 Q232,135 233,148 Q234,158 240,160" stroke-width="1.3" opacity="0.65"/>
+        <path d="M245,90 Q248,76 260,72 Q275,66 290,68 Q308,70 318,82" stroke-width="1.4" opacity="0.7"/>
+        <path d="M256,200 Q265,208 280,210 Q295,210 304,200" stroke-width="1.5" opacity="0.75"/>
+        <path d="M262,210 L258,235" stroke-width="1.4" opacity="0.75"/>
+        <path d="M300,208 L304,233" stroke-width="1.4" opacity="0.75"/>
+        <path d="M250,232 Q248,240 255,245 Q265,250 280,248 Q295,246 305,240 Q310,235 308,230" stroke-width="1.5" opacity="0.8"/>
+        <path d="M255,245 Q238,260 230,290 Q222,320 220,360" stroke-width="1.6" opacity="0.8"/>
+        <path d="M305,242 Q322,256 330,286 Q338,316 340,360" stroke-width="1.6" opacity="0.8"/>
+        <path d="M220,360 Q218,400 222,440 Q226,465 235,475" stroke-width="1.5" opacity="0.75"/>
+        <path d="M340,360 Q342,400 338,440 Q334,465 325,475" stroke-width="1.5" opacity="0.75"/>
+        <path d="M235,475 Q258,488 280,490 Q302,488 325,475" stroke-width="1.4" opacity="0.65"/>
+      </g>
     </svg>
 
     <!-- Name / dates overlay -->
@@ -839,7 +884,7 @@ nav a:hover { color: var(--amber); }
     <div class="photo-frame">
       <div class="frame-corner tl"></div><div class="frame-corner tr"></div>
       <div class="frame-corner bl"></div><div class="frame-corner br"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Portrait_at_221B_Baker_Street.jpg" alt="Sherlock Holmes — Sidney Paget, 1891">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Sherlock_Holmes_Portrait_Paget.jpg" alt="Sherlock Holmes — Sidney Paget, 1891">
     </div>
     <p class="photo-caption">Sidney Paget, 1891 — The Strand Magazine</p>
 
@@ -876,10 +921,65 @@ nav a:hover { color: var(--amber); }
   </div>
 </section>
 
-<!-- ILLUSTRATION SECTION -->
+<!-- CORPUS + QUOTES SECTION -->
 <section class="illustration-section">
 
-  <div class="illus-svg-col">
+  <div class="illus-svg-col" style="padding:3.5rem 3rem;flex-direction:column;align-items:flex-start;justify-content:center;gap:2rem;">
+    <span class="hero-eyebrow">The Canon</span>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.55rem;">
+      <li class="corpus-work"><span class="corpus-year">1887</span>A Study in Scarlet</li>
+      <li class="corpus-work"><span class="corpus-year">1890</span>The Sign of Four</li>
+      <li class="corpus-work"><span class="corpus-year">1892</span>The Adventures of Sherlock Holmes <span class="corpus-count">12 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1894</span>The Memoirs of Sherlock Holmes <span class="corpus-count">12 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1902</span>The Hound of the Baskervilles</li>
+      <li class="corpus-work"><span class="corpus-year">1905</span>The Return of Sherlock Holmes <span class="corpus-count">13 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1915</span>The Valley of Fear</li>
+      <li class="corpus-work"><span class="corpus-year">1917</span>His Last Bow <span class="corpus-count">8 stories</span></li>
+    </ul>
+    <p class="illus-note" style="margin-top:0.5rem;">All 8 works are unambiguous US public domain. The Casebook (1921–1927) is excluded pending IP review.</p>
+    <div style="display:flex;gap:2rem;margin-top:0.5rem;">
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">1,814</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Passages</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">92</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Trust Score</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">60</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Works</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="illus-text-col" style="border-left:1px solid rgba(196,154,60,0.12);">
+    <span class="hero-eyebrow">From the Canon</span>
+
+    <div class="canon-quote">
+      <p class="illus-quote">"When you have eliminated the impossible, whatever remains, however improbable, must be the truth."</p>
+      <cite class="quote-cite">The Sign of Four, 1890</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.2rem;">"You see, but you do not observe. The distinction is clear."</p>
+      <cite class="quote-cite">A Scandal in Bohemia, 1891</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.15rem;">"The game is afoot."</p>
+      <cite class="quote-cite">The Adventure of the Abbey Grange, 1904</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.1rem;">"I am not the whole of myself when there is no work to engage me."</p>
+      <cite class="quote-cite">The Adventure of the Devil's Foot, 1910</cite>
+    </div>
+
+  </div>
+
+  <!-- Closing out the old duplicate SVG block below — replaced with above -->
+  <div style="display:none">
     <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       <defs>
         <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
@@ -1031,9 +1131,7 @@ nav a:hover { color: var(--amber); }
   <div class="illus-text-col">
     <span class="hero-eyebrow">The Science of Observation</span>
     <p class="illus-quote">"You see, but you do not observe."</p>
-    <p class="illus-body">Holmes is the master of observation and deductive inference, capable of reading a man's profession, history, and character from the calluses on his hands and the mud on his boots.</p>
-    <p class="illus-note">Grounded in 1,814 passages from the complete public-domain canon: 4 novels and 56 short stories, 1887–1917.</p>
-  </div>
+  </div><!-- end hidden old SVG block -->
 
 </section>
 
