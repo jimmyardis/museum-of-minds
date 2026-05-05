@@ -11,7 +11,6 @@
 (function() {
     'use strict';
 
-    // Configuration from script tag
     const script = document.currentScript;
     const API_URL = script.getAttribute('data-api-url') || 'http://localhost:8000';
     const PERSONA_ID = script.getAttribute('data-persona-id') || 'jane-jacobs';
@@ -21,12 +20,25 @@
     let isTyping = false;
     let personaConfig = null;
     let voiceEnabled = false;
-    let currentMode = 'modern';
-    let currentLength = 'detailed';
-    let currentReadingLevel = 'general';
-    let settingsOpen = false;
+    let eduPanelOpen = false;
+    let html2pdfLoaded = false;
 
-    // Load persona configuration and initialize widget
+    // Size mode: 'compact' | 'medium' | 'full'
+    const SIZE_MODES = ['compact', 'medium', 'full'];
+    const SIZE_KEY = 'jj-widget-size';
+    let currentSize = localStorage.getItem(SIZE_KEY) || 'compact';
+
+    const SIZE_ICONS = {
+        compact: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`,
+        medium:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"></rect><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`,
+        full:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="10" y1="14" x2="3" y2="21"></line><line x1="21" y1="3" x2="14" y2="10"></line></svg>`,
+    };
+    const SIZE_TITLES = {
+        compact: 'Expand to medium',
+        medium:  'Expand to full screen',
+        full:    'Collapse to compact',
+    };
+
     async function init() {
         try {
             personaConfig = await loadPersonaConfig();
@@ -34,91 +46,62 @@
             createWidget(personaConfig);
         } catch (error) {
             console.error('Failed to load persona config:', error);
-            // Fallback to Jane Jacobs defaults if config fails
             createWidget(getDefaultConfig());
         }
     }
 
-    // Fetch persona configuration from API
     async function loadPersonaConfig() {
         const response = await fetch(`${API_URL}/persona/${PERSONA_ID}/config`);
-        if (!response.ok) {
-            throw new Error(`Failed to load persona config: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Failed to load persona config: ${response.status}`);
         const config = await response.json();
         console.log(`✓ Loaded persona: ${config.metadata.name}`);
         return config;
     }
 
-    // Apply persona theme colors as CSS variables
     function applyPersonaTheme(config) {
         if (!config.widget.theme) return;
-
         const root = document.documentElement;
         const theme = config.widget.theme;
-
-        // Map config keys to CSS variable names
         const colorMap = {
             'primary_color': '--persona-primary-color',
-            'cream': '--persona-cream',
-            'charcoal': '--persona-charcoal',
-            'warm_gray': '--persona-warm-gray',
-            'dark_cream': '--persona-dark-cream',
-            'text_gray': '--persona-text-gray'
+            'cream':         '--persona-cream',
+            'charcoal':      '--persona-charcoal',
+            'warm_gray':     '--persona-warm-gray',
+            'dark_cream':    '--persona-dark-cream',
+            'text_gray':     '--persona-text-gray',
         };
-
-        Object.entries(colorMap).forEach(([configKey, cssVar]) => {
-            if (theme[configKey]) {
-                root.style.setProperty(cssVar, theme[configKey]);
-            }
-        });
-
-        // Apply fonts
-        if (theme.font_primary) {
-            root.style.setProperty('--persona-font-primary', theme.font_primary);
-        }
-        if (theme.font_secondary) {
-            root.style.setProperty('--persona-font-secondary', theme.font_secondary);
-        }
+        Object.entries(colorMap).forEach(([k, v]) => { if (theme[k]) root.style.setProperty(v, theme[k]); });
+        if (theme.font_primary)   root.style.setProperty('--persona-font-primary',   theme.font_primary);
+        if (theme.font_secondary) root.style.setProperty('--persona-font-secondary', theme.font_secondary);
     }
 
-    // Get default config (Jane Jacobs fallback)
     function getDefaultConfig() {
+        // Derive a display name from the persona ID (e.g. "friedrich-hayek" → "Friedrich Hayek")
+        const displayName = PERSONA_ID
+            .split('-')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ');
         return {
-            metadata: { name: 'Jane Jacobs' },
+            metadata: { name: displayName },
             widget: {
-                conversation_starters: [
-                    "What do you think about remote work killing downtowns?",
-                    "Are 15-minute cities a real idea or just branding?",
-                    "What would you say to a city planner today?",
-                    "What are cities still getting wrong?"
-                ],
+                conversation_starters: [],
                 ui: {
-                    header_title: 'Jane Jacobs',
-                    header_subtitle: '(1916 – )',
-                    header_tagline: 'Ask her anything about cities, neighborhoods, or what we keep getting wrong',
-                    input_placeholder: 'Ask Jane a question...',
-                    error_message: 'Sorry, I encountered an error. Please try again.'
+                    header_title: displayName,
+                    header_subtitle: '',
+                    header_tagline: 'Service temporarily unavailable — please try again later.',
+                    input_placeholder: 'Service unavailable…',
+                    error_message: 'The service is temporarily unavailable. Please try again in a few moments.',
                 }
             }
         };
     }
 
-    // Create widget HTML with persona-specific content
     function createWidget(config) {
         const ui = config.widget.ui;
         const starters = config.widget.conversation_starters;
-        const trust = config.trust_score || {};
-        const trustBadgeHtml = trust.score != null
-            ? `<div class="jj-trust-badge" title="Source grounding: ${trust.score}/100 — ${(trust.corpus_chunks||0).toLocaleString()} corpus chunks from ${trust.distinct_works||0} works${trust.has_discourse ? ', with critical discourse' : ''}">`
-              + `<span class="jj-trust-label">Grounded</span>`
-              + `<span class="jj-trust-score">${trust.score}</span>`
-              + `<span class="jj-trust-max">/100</span>`
-              + `<span class="jj-trust-lbl">${trust.label||''}</span></div>`
-            : '';
 
         const container = document.createElement('div');
-        container.id = 'susan-b-anthony-widget';
+        container.id = 'jane-jacobs-widget';
         container.innerHTML = `
             <div id="jj-trigger" class="jj-trigger">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -135,46 +118,39 @@
                         <h3>${ui.header_title}</h3>
                         <p class="jj-subtitle">${ui.header_subtitle}</p>
                         <p class="jj-tagline">${ui.header_tagline}</p>
-                        ${trustBadgeHtml}
                     </div>
-                    <div class="jj-header-btns">
-                        <button id="jj-settings-btn" class="jj-settings-btn" title="Conversation settings" aria-label="Settings">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <div class="jj-header-actions">
+                        <button id="jj-download" class="jj-download-btn" title="Download conversation as PDF" disabled>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
                         </button>
+                        <button id="jj-size" class="jj-size-btn" title="${SIZE_TITLES[currentSize]}">${SIZE_ICONS[currentSize]}</button>
                         <button id="jj-close" class="jj-close-btn">&times;</button>
-                    </div>
-                </div>
-
-                <div id="jj-settings-panel" class="jj-settings-panel jj-hidden">
-                    <div class="jj-settings-row">
-                        <span class="jj-settings-label">Era</span>
-                        <div class="jj-pill-group" id="jj-mode-pills">
-                            <button class="jj-pill" data-group="mode" data-value="modern">Modern</button>
-                            <button class="jj-pill" data-group="mode" data-value="historical">Historical only</button>
-                        </div>
-                    </div>
-                    <div class="jj-settings-row">
-                        <span class="jj-settings-label">Length</span>
-                        <div class="jj-pill-group" id="jj-length-pills">
-                            <button class="jj-pill" data-group="length" data-value="brief">Brief</button>
-                            <button class="jj-pill" data-group="length" data-value="conversational">Conversational</button>
-                            <button class="jj-pill" data-group="length" data-value="detailed">Detailed</button>
-                        </div>
-                    </div>
-                    <div class="jj-settings-row">
-                        <span class="jj-settings-label">Reading level</span>
-                        <div class="jj-pill-group" id="jj-level-pills">
-                            <button class="jj-pill" data-group="reading_level" data-value="general">Standard</button>
-                            <button class="jj-pill" data-group="reading_level" data-value="middle_school">Student (6–8th grade)</button>
-                        </div>
                     </div>
                 </div>
 
                 <div id="jj-messages" class="jj-messages">
                     <div class="jj-starters">
-                        ${starters.map((starter, i) =>
-                            `<button class="jj-starter-btn" data-index="${i}">${starter}</button>`
-                        ).join('')}
+                        ${starters.map((s, i) => `<button class="jj-starter-btn" data-index="${i}">${s}</button>`).join('')}
+                    </div>
+                </div>
+
+                <div id="jj-edu-panel" class="jj-edu-panel jj-hidden">
+                    <div class="jj-edu-header">Educator Tools</div>
+                    <div class="jj-edu-grade">
+                        <span class="jj-edu-label">Grade level</span>
+                        <select id="jj-grade" class="jj-grade-select">
+                            <option value="middle-school">Middle School</option>
+                            <option value="high-school" selected>High School</option>
+                            <option value="college">College / University</option>
+                        </select>
+                    </div>
+                    <div class="jj-edu-btns">
+                        <button id="jj-lesson-btn" class="jj-edu-btn">Lesson Plan</button>
+                        <button id="jj-questions-btn" class="jj-edu-btn">Discussion Questions</button>
                     </div>
                 </div>
 
@@ -186,36 +162,19 @@
                             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                         </svg>
                     </button>
-                    <input
-                        type="text"
-                        id="jj-input"
-                        class="jj-input"
-                        placeholder="${ui.input_placeholder}"
-                        disabled
-                    />
+                    <input type="text" id="jj-input" class="jj-input" placeholder="${ui.input_placeholder}" disabled />
+                    <button id="jj-edu-toggle" class="jj-edu-toggle-btn" title="Educator tools">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </button>
                     <button id="jj-send" class="jj-send-btn" disabled>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
                             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                         </svg>
                     </button>
-                </div>
-
-                <div class="jj-educator-bar">
-                    <button id="jj-lesson-plan" class="jj-edu-btn" disabled title="Generate a lesson plan featuring this figure">
-                        Lesson Plan
-                    </button>
-                    <button id="jj-discussion" class="jj-edu-btn" disabled title="Generate discussion questions">
-                        Discussion Questions
-                    </button>
-                </div>
-
-                <div id="jj-edu-panel" class="jj-edu-panel jj-hidden">
-                    <div class="jj-edu-panel-header">
-                        <span id="jj-edu-panel-title" class="jj-edu-panel-title"></span>
-                        <button id="jj-edu-close" class="jj-edu-close" title="Close">&times;</button>
-                    </div>
-                    <div id="jj-edu-panel-body" class="jj-edu-panel-body"></div>
                 </div>
             </div>
         `;
@@ -224,108 +183,90 @@
         attachEventListeners(config);
     }
 
-    // Attach event listeners
     function attachEventListeners(config) {
-        const trigger = document.getElementById('jj-trigger');
-        const closeBtn = document.getElementById('jj-close');
-        const sendBtn = document.getElementById('jj-send');
-        const input = document.getElementById('jj-input');
-
-        const voiceBtn = document.getElementById('jj-voice');
-        const settingsBtn = document.getElementById('jj-settings-btn');
-
-        trigger.addEventListener('click', toggleChat);
-        settingsBtn.addEventListener('click', toggleSettings);
-        closeBtn.addEventListener('click', closeChat);
-        sendBtn.addEventListener('click', sendMessage);
-        voiceBtn.addEventListener('click', toggleVoice);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
+        document.getElementById('jj-trigger').addEventListener('click', toggleChat);
+        document.getElementById('jj-close').addEventListener('click', closeChat);
+        document.getElementById('jj-send').addEventListener('click', sendMessage);
+        document.getElementById('jj-size').addEventListener('click', cycleSize);
+        document.getElementById('jj-voice').addEventListener('click', toggleVoice);
+        document.getElementById('jj-download').addEventListener('click', exportChat);
+        document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
+        document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
+        document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
+        document.getElementById('jj-input').addEventListener('keypress', e => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
         });
 
-        // Settings pill buttons
-        document.querySelectorAll('.jj-pill').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const group = btn.getAttribute('data-group');
-                const value = btn.getAttribute('data-value');
-                if (group === 'mode') currentMode = value;
-                else if (group === 'length') currentLength = value;
-                else if (group === 'reading_level') currentReadingLevel = value;
-                syncPills(group, value);
-            });
-        });
-        syncPills('mode', currentMode);
-        syncPills('length', currentLength);
-        syncPills('reading_level', currentReadingLevel);
+        applySizeMode(currentSize, false);
 
-        // Starter buttons
         const starters = config.widget.conversation_starters;
         document.querySelectorAll('.jj-starter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const index = parseInt(btn.getAttribute('data-index'));
-                const message = starters[index];
+                const msg = starters[parseInt(btn.getAttribute('data-index'))];
                 hideStarters();
-                sendMessageWithText(message);
+                sendMessageWithText(msg);
             });
         });
-
-        // Educator toolbar buttons
-        const lessonPlanBtn = document.getElementById('jj-lesson-plan');
-        const discussionBtn = document.getElementById('jj-discussion');
-        const eduClose = document.getElementById('jj-edu-close');
-
-        lessonPlanBtn.addEventListener('click', () => fetchEducatorContent('lesson-plan', 'Lesson Plan'));
-        discussionBtn.addEventListener('click', () => fetchEducatorContent('discussion-questions', 'Discussion Questions'));
-        eduClose.addEventListener('click', closeEduPanel);
     }
 
-    // Toggle chat window
-    function toggleChat() {
-        const chatWindow = document.getElementById('jj-chat-window');
-        const trigger = document.getElementById('jj-trigger');
+    // ── Size modes ──────────────────────────────────────────────────────────
 
+    function applySizeMode(size, animate = true) {
+        const win = document.getElementById('jj-chat-window');
+        const btn = document.getElementById('jj-size');
+        if (!win) return;
+        if (!animate) win.style.transition = 'none';
+        win.classList.remove('jj-size-medium', 'jj-size-full');
+        if (size === 'medium') win.classList.add('jj-size-medium');
+        if (size === 'full')   win.classList.add('jj-size-full');
+        if (!animate) { win.offsetHeight; win.style.transition = ''; }
+        if (btn) { btn.innerHTML = SIZE_ICONS[size]; btn.title = SIZE_TITLES[size]; }
+    }
+
+    function cycleSize() {
+        currentSize = SIZE_MODES[(SIZE_MODES.indexOf(currentSize) + 1) % SIZE_MODES.length];
+        localStorage.setItem(SIZE_KEY, currentSize);
+        applySizeMode(currentSize);
+    }
+
+    // ── Chat open/close ──────────────────────────────────────────────────────
+
+    function toggleChat() {
+        const win = document.getElementById('jj-chat-window');
+        const trigger = document.getElementById('jj-trigger');
         if (isOpen) {
-            chatWindow.classList.add('jj-hidden');
+            win.classList.add('jj-hidden');
             trigger.classList.remove('jj-active');
             isOpen = false;
         } else {
-            chatWindow.classList.remove('jj-hidden');
+            win.classList.remove('jj-hidden');
             trigger.classList.add('jj-active');
             isOpen = true;
             enableInput();
         }
     }
 
-    // Close chat window
     function closeChat() {
-        const chatWindow = document.getElementById('jj-chat-window');
-        const trigger = document.getElementById('jj-trigger');
-        chatWindow.classList.add('jj-hidden');
-        trigger.classList.remove('jj-active');
+        document.getElementById('jj-chat-window').classList.add('jj-hidden');
+        document.getElementById('jj-trigger').classList.remove('jj-active');
         isOpen = false;
     }
 
-    // Enable input after initial open
     function enableInput() {
         const input = document.getElementById('jj-input');
-        const sendBtn = document.getElementById('jj-send');
+        const send  = document.getElementById('jj-send');
         input.disabled = false;
-        sendBtn.disabled = false;
+        send.disabled  = false;
         input.focus();
     }
 
-    // Hide conversation starters
     function hideStarters() {
-        const starters = document.querySelector('.jj-starters');
-        if (starters) {
-            starters.style.display = 'none';
-        }
+        const el = document.querySelector('.jj-starters');
+        if (el) el.style.display = 'none';
     }
 
-    // Toggle voice output on/off for this session
+    // ── Voice ────────────────────────────────────────────────────────────────
+
     function toggleVoice() {
         voiceEnabled = !voiceEnabled;
         const btn = document.getElementById('jj-voice');
@@ -333,123 +274,136 @@
         btn.title = voiceEnabled ? 'Voice on — click to mute' : 'Enable voice';
     }
 
-    // Toggle settings panel
-    function toggleSettings() {
-        settingsOpen = !settingsOpen;
-        const panel = document.getElementById('jj-settings-panel');
-        const btn = document.getElementById('jj-settings-btn');
-        panel.classList.toggle('jj-hidden', !settingsOpen);
-        btn.classList.toggle('jj-settings-active', settingsOpen);
-    }
-
-    // Sync pill active state
-    function syncPills(group, activeValue) {
-        document.querySelectorAll(`.jj-pill[data-group="${group}"]`).forEach(btn => {
-            btn.classList.toggle('jj-pill-active', btn.getAttribute('data-value') === activeValue);
-        });
-    }
-
-    // Play base64-encoded MP3 audio
-    function playAudio(base64) {
-        const audio = new Audio(`data:audio/mpeg;base64,${base64}`);
+    function playAudio(b64) {
+        const audio = new Audio(`data:audio/mpeg;base64,${b64}`);
         audio.play().catch(err => console.warn('Audio playback blocked:', err));
     }
 
-    // Send message (from input)
+    // ── Educator panel ───────────────────────────────────────────────────────
+
+    function toggleEduPanel() {
+        eduPanelOpen = !eduPanelOpen;
+        document.getElementById('jj-edu-panel').classList.toggle('jj-hidden', !eduPanelOpen);
+        document.getElementById('jj-edu-toggle').classList.toggle('jj-edu-active', eduPanelOpen);
+    }
+
+    async function fetchEduContent(type) {
+        const grade = document.getElementById('jj-grade').value;
+        const lastUserMsg = [...document.querySelectorAll('.jj-message-user .jj-message-content')]
+            .map(el => el.textContent).pop() || '';
+
+        // Close panel + show loading in chat
+        toggleEduPanel();
+        addSystemMessage(`Generating ${type === 'lesson-plan' ? 'lesson plan' : 'discussion questions'} for ${grade}…`);
+
+        try {
+            const resp = await fetch(`${API_URL}/educator/${type}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    persona_id:  PERSONA_ID,
+                    topic:       lastUserMsg || null,
+                    grade_level: grade,
+                }),
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const data = await resp.json();
+            const content = data.lesson_plan || data.questions || '';
+            addMessage('assistant', content, true);
+            enableDownload();
+            appendEduExportBtn(type, content);
+        } catch (err) {
+            console.error('Educator fetch error:', err);
+            addMessage('assistant', 'Could not generate educator content. Please try again.');
+        }
+    }
+
+    function appendEduExportBtn(type, content) {
+        const container = document.getElementById('jj-messages');
+        const label = type === 'lesson-plan' ? 'lesson plan' : 'discussion questions';
+        const filename = `${PERSONA_ID}-${type}.pdf`;
+        const btn = document.createElement('button');
+        btn.className = 'jj-edu-export-btn';
+        btn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download ${label} as PDF`;
+        btn.addEventListener('click', () => exportEduContent(content, filename, label));
+        container.appendChild(btn);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // ── Messaging ────────────────────────────────────────────────────────────
+
     function sendMessage() {
         const input = document.getElementById('jj-input');
-        const message = input.value.trim();
-
-        if (!message || isTyping) return;
-
-        sendMessageWithText(message);
+        const msg = input.value.trim();
+        if (!msg || isTyping) return;
+        sendMessageWithText(msg);
         input.value = '';
     }
 
-    // Show three-dot loading indicator while bot is preparing a response
     function showTypingIndicator() {
-        const messagesContainer = document.getElementById('jj-messages');
+        const container = document.getElementById('jj-messages');
         const el = document.createElement('div');
         el.id = 'jj-typing-bubble';
         el.className = 'jj-message jj-message-assistant';
-        el.innerHTML = `
-            <div class="jj-message-content">
-                <div class="jj-typing-indicator">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>`;
-        messagesContainer.appendChild(el);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        el.innerHTML = `<div class="jj-message-content"><div class="jj-typing-indicator"><span></span><span></span><span></span></div></div>`;
+        container.appendChild(el);
+        container.scrollTop = container.scrollHeight;
     }
 
-    // Remove the typing indicator before inserting the real response
     function removeTypingIndicator() {
         const el = document.getElementById('jj-typing-bubble');
         if (el) el.remove();
     }
 
-    // Send message with specific text
     async function sendMessageWithText(message) {
         hideStarters();
         addMessage('user', message);
-
         isTyping = true;
         showTypingIndicator();
 
         try {
             const endpoint = voiceEnabled ? '/chat/voice' : '/chat';
-            const response = await fetch(`${API_URL}${endpoint}`, {
+            const resp = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: message,
-                    conversation_id: conversationId,
-                    mode: currentMode,
-                    length: currentLength,
-                    reading_level: currentReadingLevel
-                })
+                body: JSON.stringify({ message, conversation_id: conversationId }),
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const data = await resp.json();
             conversationId = data.conversation_id;
 
-            // Unlock educator buttons once a conversation is established
-            enableEducatorButtons();
-
-            // Add assistant response with typewriter effect
             removeTypingIndicator();
             addMessage('assistant', data.response, true, {
-                confidence: data.confidence,
-                confidence_score: data.confidence_score,
-                sources: data.sources || [],
+                sources:          data.sources || [],
+                confidence:       data.confidence || 'medium',
+                confidence_score: data.confidence_score || 50,
             });
+            enableDownload();
 
-            // Play audio if voice is enabled and API returned it
-            if (voiceEnabled && data.audio_base64) {
-                playAudio(data.audio_base64);
-            }
+            if (voiceEnabled && data.audio_base64) playAudio(data.audio_base64);
 
-        } catch (error) {
-            console.error('Error sending message:', error);
-            const errorMsg = personaConfig?.widget?.ui?.error_message ||
-                           'Sorry, I encountered an error. Please try again.';
+        } catch (err) {
+            console.error('Chat error:', err);
             removeTypingIndicator();
-            addMessage('assistant', errorMsg);
+            addMessage('assistant', personaConfig?.widget?.ui?.error_message || 'Sorry, I encountered an error. Please try again.');
         } finally {
             isTyping = false;
         }
     }
 
-    // Add message to chat
-    function addMessage(role, content, useTypewriter = false, meta = null) {
-        const messagesContainer = document.getElementById('jj-messages');
+    function addSystemMessage(text) {
+        const container = document.getElementById('jj-messages');
+        const el = document.createElement('div');
+        el.className = 'jj-message jj-message-system';
+        el.innerHTML = `<div class="jj-message-content">${text}</div>`;
+        container.appendChild(el);
+        container.scrollTop = container.scrollHeight;
+    }
 
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `jj-message jj-message-${role}`;
+    function addMessage(role, content, useTypewriter = false, meta = {}) {
+        const container = document.getElementById('jj-messages');
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `jj-message jj-message-${role}`;
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'jj-message-content';
@@ -460,185 +414,197 @@
             contentDiv.textContent = content;
         }
 
-        messageDiv.appendChild(contentDiv);
+        msgDiv.appendChild(contentDiv);
 
-        if (role === 'assistant' && meta) {
-            messageDiv.appendChild(buildMessageMeta(meta));
+        // Trust meter + sources for assistant messages
+        if (role === 'assistant' && (meta.sources?.length || meta.confidence)) {
+            msgDiv.appendChild(buildMessageMeta(meta));
         }
 
-        messagesContainer.appendChild(messageDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        container.appendChild(msgDiv);
+        container.scrollTop = container.scrollHeight;
     }
 
-    // Build confidence badge + sources panel for an assistant message
     function buildMessageMeta(meta) {
-        const { confidence, confidence_score, sources } = meta;
         const wrap = document.createElement('div');
         wrap.className = 'jj-message-meta';
 
-        if (confidence) {
+        // Confidence badge (pill with dots)
+        if (meta.confidence) {
             const dots = { high: '●●●', medium: '●●○', low: '●○○' };
             const badge = document.createElement('span');
-            badge.className = `jj-confidence jj-confidence-${confidence}`;
-            badge.textContent = `${dots[confidence] || '●○○'} ${confidence.charAt(0).toUpperCase() + confidence.slice(1)}`;
-            badge.title = `Source confidence: ${confidence_score || 0}/100`;
+            badge.className = `jj-confidence jj-confidence-${meta.confidence}`;
+            badge.textContent = `${dots[meta.confidence] || '●○○'} ${meta.confidence.charAt(0).toUpperCase() + meta.confidence.slice(1)}`;
+            badge.title = `Source confidence: ${meta.confidence_score || 0}/100`;
             wrap.appendChild(badge);
         }
 
-        if (sources && sources.length > 0) {
-            const toggle = document.createElement('button');
-            toggle.className = 'jj-sources-toggle';
-            toggle.textContent = `§ ${sources.length} source${sources.length !== 1 ? 's' : ''}`;
+        // Sources toggle
+        if (meta.sources && meta.sources.length > 0) {
+            const srcBtn = document.createElement('button');
+            srcBtn.className = 'jj-sources-toggle';
+            srcBtn.textContent = `§ ${meta.sources.length} source${meta.sources.length !== 1 ? 's' : ''}`;
 
             const panel = document.createElement('div');
             panel.className = 'jj-sources-panel jj-hidden';
 
-            sources.forEach(src => {
+            meta.sources.forEach(s => {
                 const item = document.createElement('div');
                 item.className = 'jj-source-item';
-
+                const isOwn = s.knowledge_type === 'own words';
                 const typeSpan = document.createElement('span');
-                const isOwn = src.knowledge_type === 'own words';
                 typeSpan.className = `jj-source-type ${isOwn ? 'jj-source-own' : 'jj-source-discourse'}`;
                 typeSpan.textContent = isOwn ? 'own writings' : 'discourse';
-
                 const titleSpan = document.createElement('span');
                 titleSpan.className = 'jj-source-title';
-                const yr = src.year && src.year !== 'Unknown' ? ` · ${src.year}` : '';
-                titleSpan.textContent = (src.title || 'Unknown') + yr;
-
+                const yr = s.year && s.year !== 'Unknown' ? ` · ${s.year}` : '';
+                titleSpan.textContent = (s.title || 'Unknown') + yr;
                 item.appendChild(typeSpan);
                 item.appendChild(titleSpan);
                 panel.appendChild(item);
             });
 
-            toggle.addEventListener('click', () => {
+            srcBtn.addEventListener('click', () => {
                 panel.classList.toggle('jj-hidden');
-                toggle.classList.toggle('jj-sources-active');
+                srcBtn.classList.toggle('jj-sources-active');
             });
 
-            wrap.appendChild(toggle);
+            wrap.appendChild(srcBtn);
             wrap.appendChild(panel);
         }
 
         return wrap;
     }
 
-    // Typewriter effect with variable speed
+    // ── Typewriter ───────────────────────────────────────────────────────────
+
     function typewriterEffect(element, text) {
         let i = 0;
-        const baseSpeed = 15; // milliseconds per character
+        const base = 15;
 
         function typeChar() {
-            if (i < text.length) {
-                const char = text.charAt(i);
-                element.textContent += char;
+            if (i >= text.length) return;
+            const ch = text.charAt(i++);
+            element.textContent += ch;
 
-                // Variable speed based on punctuation
-                let speed = baseSpeed;
-                if (char === '.' || char === '!' || char === '?') {
-                    speed = baseSpeed * 15; // Long pause at sentence end
-                } else if (char === ',' || char === ';' || char === ':') {
-                    speed = baseSpeed * 8; // Medium pause at punctuation
-                } else if (char === '\n') {
-                    speed = baseSpeed * 10; // Pause at line breaks
-                }
+            let speed = base;
+            if ('.!?'.includes(ch))  speed = base * 15;
+            else if (',;:'.includes(ch)) speed = base * 8;
+            else if (ch === '\n')    speed = base * 10;
+            speed *= 0.8 + Math.random() * 0.4;
 
-                // Add slight randomness for natural feel
-                speed *= (0.8 + Math.random() * 0.4);
-
-                i++;
-
-                // Auto-scroll as text appears
-                const messagesContainer = document.getElementById('jj-messages');
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-                setTimeout(typeChar, speed);
-            }
+            const msgs = document.getElementById('jj-messages');
+            if (msgs) msgs.scrollTop = msgs.scrollHeight;
+            setTimeout(typeChar, speed);
         }
-
         typeChar();
     }
 
-    // Enable educator buttons once a conversation starts
-    function enableEducatorButtons() {
-        const lessonBtn = document.getElementById('jj-lesson-plan');
-        const discussBtn = document.getElementById('jj-discussion');
-        if (lessonBtn) lessonBtn.disabled = false;
-        if (discussBtn) discussBtn.disabled = false;
+    // ── PDF Export ───────────────────────────────────────────────────────────
+
+    function enableDownload() {
+        const btn = document.getElementById('jj-download');
+        if (btn) btn.disabled = false;
     }
 
-    // Fetch educator content from API and display in panel
-    async function fetchEducatorContent(endpoint, title) {
-        const lessonBtn = document.getElementById('jj-lesson-plan');
-        const discussBtn = document.getElementById('jj-discussion');
-        const panel = document.getElementById('jj-edu-panel');
-        const panelTitle = document.getElementById('jj-edu-panel-title');
-        const panelBody = document.getElementById('jj-edu-panel-body');
+    function loadHtml2Pdf() {
+        if (html2pdfLoaded || window.html2pdf) { html2pdfLoaded = true; return Promise.resolve(); }
+        return new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+            s.onload = () => { html2pdfLoaded = true; resolve(); };
+            s.onerror = reject;
+            document.head.appendChild(s);
+        });
+    }
 
-        // Disable buttons, show loading
-        if (lessonBtn) lessonBtn.disabled = true;
-        if (discussBtn) discussBtn.disabled = true;
-        panelTitle.textContent = title;
-        panelBody.textContent = 'Generating…';
-        panel.classList.remove('jj-hidden');
+    function buildPdfStyles() {
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const primary = personaConfig?.widget?.theme?.primary_color || '#2a2a2a';
+        return `
+            body { font-family: Georgia, serif; color: #222; margin: 0; padding: 0; }
+            .pdf-header { border-bottom: 2px solid ${primary}; padding-bottom: 10px; margin-bottom: 24px; }
+            .pdf-title { font-size: 22px; font-weight: bold; color: ${primary}; margin: 0 0 4px; }
+            .pdf-meta { font-size: 11px; color: #888; font-style: italic; }
+            .pdf-msg { margin-bottom: 18px; }
+            .pdf-msg-user { background: #f5f5f5; border-left: 3px solid #aaa; padding: 10px 14px; border-radius: 2px; }
+            .pdf-msg-assistant { border-left: 4px solid ${primary}; padding: 10px 14px; }
+            .pdf-speaker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: #888; margin-bottom: 5px; }
+            .pdf-text { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
+            .pdf-confidence { font-size: 9px; color: #888; font-style: italic; margin-top: 5px; }
+            .pdf-footer { border-top: 1px solid #ddd; margin-top: 30px; padding-top: 8px; font-size: 9px; color: #aaa; text-align: center; }
+        `;
+    }
 
+    async function exportChat() {
+        const messages = [...document.querySelectorAll('#jj-messages .jj-message:not(.jj-message-system)')];
+        if (!messages.length) return;
+
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>${buildPdfStyles()}</style></head><body>`;
+        html += `<div class="pdf-header"><div class="pdf-title">Conversation with ${name}</div><div class="pdf-meta">Museum of Minds · ${date}</div></div>`;
+
+        messages.forEach(msg => {
+            const isUser = msg.classList.contains('jj-message-user');
+            const contentEl = msg.querySelector('.jj-message-content');
+            const text = contentEl ? contentEl.textContent.trim() : '';
+            if (!text) return;
+            const speaker = isUser ? 'You' : name;
+            const cls = isUser ? 'pdf-msg-user' : 'pdf-msg-assistant';
+            const confEl = msg.querySelector('.jj-confidence');
+            const confNote = (!isUser && confEl) ? `<div class="pdf-confidence">${confEl.textContent.trim()}</div>` : '';
+            html += `<div class="pdf-msg"><div class="${cls}"><div class="pdf-speaker">${speaker}</div><div class="pdf-text">${escapeHtml(text)}</div>${confNote}</div></div>`;
+        });
+
+        html += `<div class="pdf-footer">Generated from Museum of Minds · museumofminds.com</div></body></html>`;
+
+        await renderPdf(html, `${PERSONA_ID}-conversation.pdf`);
+    }
+
+    async function exportEduContent(content, filename, label) {
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>${buildPdfStyles()}</style></head><body>`;
+        html += `<div class="pdf-header"><div class="pdf-title">${name} — ${label.replace(/^\w/, c => c.toUpperCase())}</div><div class="pdf-meta">Museum of Minds · ${date}</div></div>`;
+        html += `<div style="font-family:Georgia,serif;font-size:13px;line-height:1.7;white-space:pre-wrap;color:#222;">${escapeHtml(content)}</div>`;
+        html += `<div class="pdf-footer">Generated from Museum of Minds · museumofminds.com</div></body></html>`;
+
+        await renderPdf(html, filename);
+    }
+
+    async function renderPdf(html, filename) {
         try {
-            const response = await fetch(`${API_URL}/educator/${endpoint}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ persona_id: PERSONA_ID }),
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const data = await response.json();
-            const content = data.lesson_plan || data.questions || '';
-            panelBody.innerHTML = markdownToHtml(content);
-        } catch (err) {
-            console.error('Educator fetch error:', err);
-            panelBody.textContent = 'Sorry, could not generate content. Please try again.';
-        } finally {
-            // Re-enable if conversation is active
-            if (conversationId) {
-                if (lessonBtn) lessonBtn.disabled = false;
-                if (discussBtn) discussBtn.disabled = false;
-            }
+            await loadHtml2Pdf();
+            const el = document.createElement('div');
+            el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:750px;';
+            el.innerHTML = html;
+            document.body.appendChild(el);
+            await window.html2pdf().set({
+                margin: 15,
+                filename,
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            }).from(el).save();
+            document.body.removeChild(el);
+        } catch (e) {
+            console.error('PDF export failed:', e);
+            alert('PDF export failed. Please try again.');
         }
     }
 
-    // Close educator panel
-    function closeEduPanel() {
-        const panel = document.getElementById('jj-edu-panel');
-        if (panel) panel.classList.add('jj-hidden');
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    // Minimal markdown-to-HTML converter for lesson plan / questions content
-    function markdownToHtml(text) {
-        return text
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-            .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-            .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.+?)\*/g, '<em>$1</em>')
-            .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
-            .replace(/^- (.+)$/gm, '<li>$1</li>')
-            .replace(/(<li>[\s\S]+?<\/li>)\n(?!<li>)/g, '$1</ul>\n')
-            .replace(/(?:^|\n)(<li>)/g, '\n<ul>$1')
-            .replace(/\n\n/g, '</p><p>')
-            .replace(/^(?!<[hul]|<\/[hul])(.+)$/gm, '$1')
-            .replace(/<p><\/p>/g, '')
-            || text;
-    }
+    // ── Boot ─────────────────────────────────────────────────────────────────
 
-    // Initialize widget when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 })();
-
