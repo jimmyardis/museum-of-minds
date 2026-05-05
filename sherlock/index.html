@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherlock Holmes — Museum of Minds</title>
+<meta name="description" content="Converse with Sherlock Holmes as written by Arthur Conan Doyle — a RAG-powered chatbot grounded in the complete canonical corpus of four novels and fifty-six stories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:        #0A090C;
+  --deep:        #111018;
+  --surface:     #1A1825;
+  --surface-mid: #232135;
+  --amber:       #C49A3C;
+  --amber-dim:   #7A5E20;
+  --amber-pale:  #E8C96A;
+  --brass:       #8B7035;
+  --ivory:       #EDE8D8;
+  --ivory-dim:   #A09880;
+  --text:        #D4CEB8;
+  --text-dim:    #6B6455;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+  position: sticky;
+  top: 0;
+  background: var(--void);
+  z-index: 100;
+  animation: fadeDown 0.5s ease both;
+}
+
+.site-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  color: var(--amber);
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.site-label:hover { opacity: 1; color: var(--amber-pale); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-hall {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  opacity: 0.7;
+}
+
+nav { display: flex; gap: 1.8rem; }
+nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--amber); }
+
+/* HERO SECTION */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+  animation: fadeIn 0.8s ease 0.1s both;
+}
+
+.hero-portrait {
+  background: var(--void);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(196,154,60,0.2);
+  overflow: hidden;
+  min-height: 560px;
+}
+
+.hero-portrait svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.portrait-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 2rem 1.6rem;
+  background: linear-gradient(transparent, rgba(10,9,12,0.92));
+  z-index: 2;
+}
+
+.portrait-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  display: block;
+}
+
+.portrait-dates {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  color: var(--amber);
+  opacity: 0.8;
+  margin-top: 0.3rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.hero-info {
+  background: var(--surface);
+  padding: 3rem 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-left: 1px solid rgba(196,154,60,0.1);
+  box-shadow: inset 4px 0 0 rgba(196,154,60,0.06);
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.65;
+}
+
+.hero-attribution {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+  letter-spacing: 0.04em;
+  border-left: 3px solid var(--amber-dim);
+  padding-left: 1rem;
+}
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--deep);
+  border: 1px solid rgba(196,154,60,0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.trust-score-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--amber-pale);
+  line-height: 1;
+}
+
+.trust-score-divider {
+  width: 1px;
+  height: 1.2rem;
+  background: rgba(196,154,60,0.3);
+}
+
+.trust-label-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.8;
+}
+
+.trust-detail {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.hero-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.starters-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+
+.starters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.starter-btn {
+  background: transparent;
+  border: 1px solid rgba(196,154,60,0.3);
+  color: var(--ivory-dim);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+  transition: all 0.2s;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+}
+.starter-btn:hover {
+  background: rgba(196,154,60,0.08);
+  border-color: rgba(196,154,60,0.6);
+  color: var(--ivory);
+  box-shadow: 0 0 16px rgba(196,154,60,0.06), inset 4px 4px 0 rgba(196,154,60,0.06);
+}
+
+/* CHAT SECTION */
+.chat-section {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  background: var(--deep);
+}
+
+.chat-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.chat-widget {
+  border: 1px solid rgba(196,154,60,0.25);
+  background: var(--deep);
+  overflow: hidden;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+}
+
+.chat-header {
+  background: var(--surface);
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.chat-persona-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.chat-persona-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+.chat-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.status-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+}
+
+.messages-area {
+  min-height: 380px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--amber-dim) var(--deep);
+}
+.messages-area::-webkit-scrollbar { width: 4px; }
+.messages-area::-webkit-scrollbar-track { background: var(--deep); }
+.messages-area::-webkit-scrollbar-thumb { background: var(--amber-dim); }
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: fadeUp 0.3s ease both;
+}
+
+.message.user { align-items: flex-end; }
+.message.persona { align-items: flex-start; }
+
+.message-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0 0.1rem;
+}
+
+.message-bubble {
+  max-width: 78%;
+  padding: 0.9rem 1.1rem;
+  line-height: 1.75;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message.user .message-bubble {
+  background: var(--surface-mid);
+  color: var(--ivory);
+  border: 1px solid rgba(196,154,60,0.1);
+}
+
+.message.persona .message-bubble {
+  background: var(--deep);
+  color: var(--text);
+  border-left: 3px solid var(--amber);
+  border-top: 1px solid rgba(196,154,60,0.1);
+  border-right: 1px solid rgba(196,154,60,0.1);
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+
+.sources-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+  padding: 0.2rem 0;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+.sources-toggle:hover { opacity: 1; }
+
+.sources-panel {
+  display: none;
+  background: var(--surface);
+  border: 1px solid rgba(196,154,60,0.15);
+  padding: 0.8rem 1rem;
+  max-width: 78%;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.sources-panel.open { display: flex; }
+
+.source-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.source-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+}
+
+.source-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+/* TYPING INDICATOR */
+.typing-indicator {
+  display: none;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.7rem 1rem;
+  background: var(--deep);
+  border-left: 3px solid var(--amber);
+  width: fit-content;
+  border-top: 1px solid rgba(196,154,60,0.1);
+  border-right: 1px solid rgba(196,154,60,0.1);
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+.typing-indicator.visible { display: flex; }
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: typingBounce 1.2s ease infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* INPUT AREA */
+.input-area {
+  background: var(--deep);
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ivory);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  resize: none;
+  min-height: 2.4rem;
+  max-height: 8rem;
+  line-height: 1.6;
+  padding: 0.4rem 0;
+}
+
+.chat-input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+.send-btn {
+  background: var(--amber);
+  color: var(--void);
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+  align-self: flex-end;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+.send-btn:hover { background: var(--amber-pale); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.chat-footer-note {
+  padding: 0.7rem 1.2rem;
+  background: var(--surface);
+  border-top: 1px solid rgba(196,154,60,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.corpus-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.corpus-note span {
+  color: var(--amber-dim);
+}
+
+/* INFO GRID */
+.info-section {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 4rem 3rem;
+  background: var(--void);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.info-card {
+  background: var(--surface);
+  border: 1px solid rgba(196,154,60,0.2);
+  padding: 2rem 2rem 2rem;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.info-card:hover {
+  border-color: rgba(196,154,60,0.35);
+  box-shadow: 0 0 20px rgba(196,154,60,0.05), inset 4px 4px 0 rgba(196,154,60,0.06);
+}
+
+.info-card-header {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+}
+
+.corpus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.corpus-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.corpus-list li::before {
+  content: '◆';
+  font-size: 0.4rem;
+  color: var(--amber);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.corpus-list li em {
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+.corpus-stat {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196,154,60,0.12);
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--amber-pale);
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editorial-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(196,154,60,0.08);
+}
+.editorial-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.editorial-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+}
+
+.editorial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--void);
+}
+
+.footer-left {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-dim);
+}
+
+.footer-right { display: flex; gap: 1.8rem; }
+.footer-right a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-right a:hover { color: var(--amber); }
+
+/* ANIMATIONS */
+@keyframes fadeDown { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeUp   { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .site-header { padding: 1rem 1.2rem; }
+  .header-hall { display: none; }
+  nav { gap: 1rem; }
+
+  .hero { grid-template-columns: 1fr; }
+  .hero-portrait {
+    min-height: 380px;
+    border-right: none;
+    border-bottom: 1px solid rgba(196,154,60,0.2);
+  }
+  .hero-info { padding: 2rem 1.5rem; }
+
+  .starters-grid { grid-template-columns: 1fr; }
+
+  .info-grid { grid-template-columns: 1fr; }
+  .info-section { padding: 2.5rem 1.2rem; }
+
+  .chat-container { padding: 1.5rem 0.8rem; }
+
+  .site-footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-right { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://museumofminds.com" class="site-label">Museum of Minds</a>
+  <div class="header-right">
+    <span class="header-hall">The Library</span>
+    <nav>
+      <a href="https://museumofminds.com">The Museum</a>
+      <a href="https://museumofminds.com/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- PORTRAIT PANEL -->
+  <div class="hero-portrait">
+    <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+          <stop offset="0%" stop-color="#1A1520"/>
+          <stop offset="100%" stop-color="#0A090C"/>
+        </radialGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background -->
+      <rect width="560" height="720" fill="url(#bgGrad)"/>
+
+      <!-- Ambient lamp glow top-right -->
+      <ellipse cx="440" cy="120" rx="180" ry="160" fill="url(#lampGlow)"/>
+
+      <!-- Wall panelling lines -->
+      <line x1="0" y1="0" x2="0" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="560" y1="0" x2="560" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="0" y1="580" x2="560" y2="580" stroke="rgba(196,154,60,0.08)" stroke-width="0.5"/>
+      <rect x="20" y="20" width="520" height="540" fill="none" stroke="rgba(196,154,60,0.05)" stroke-width="0.5"/>
+
+      <!-- Gas lamp on wall (right) -->
+      <g filter="url(#softGlow)" opacity="0.85">
+        <!-- lamp bracket -->
+        <path d="M480,60 Q500,60 500,90 L500,130" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- lamp globe -->
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="rgba(196,154,60,0.08)"/>
+        <!-- flame glow -->
+        <ellipse cx="500" cy="145" rx="8" ry="10" fill="rgba(232,201,106,0.25)"/>
+        <line x1="500" y1="167" x2="500" y2="178" stroke="#C49A3C" stroke-width="1.2"/>
+        <path d="M492,178 L508,178" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Pipe — resting on armchair suggestion -->
+      <g filter="url(#glow)" opacity="0.7">
+        <path d="M310,560 Q330,545 355,542 Q365,541 368,548 Q371,555 360,558 Q345,562 320,570" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/>
+        <!-- bowl of pipe -->
+        <path d="M355,542 Q368,536 375,540 Q380,544 375,550 Q368,554 360,553" fill="none" stroke="#C49A3C" stroke-width="1.5"/>
+        <path d="M362,537 Q366,528 370,525" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <path d="M367,536 Q373,526 376,523" stroke="#C49A3C" stroke-width="0.8" stroke-linecap="round" opacity="0.35"/>
+      </g>
+
+      <!-- FIGURE — Sherlock Holmes seated, facing slightly left -->
+      <!-- Armchair silhouette -->
+      <g opacity="0.35">
+        <path d="M140,580 L140,480 Q140,460 160,460 L400,460 Q420,460 420,480 L420,580 Z" fill="#1A1520" stroke="rgba(196,154,60,0.15)" stroke-width="1"/>
+        <path d="M130,460 Q130,440 150,440 L160,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <path d="M430,460 Q430,440 410,440 L400,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <rect x="120" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+        <rect x="410" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+      </g>
+
+      <!-- FIGURE LINE ART — amber strokes -->
+      <g filter="url(--glow)" stroke="#C49A3C" stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+        <!-- Head shape -->
+        <path d="M240,155 Q238,120 248,102 Q258,82 280,78 Q302,74 316,90 Q330,106 328,135 Q326,158 318,172" stroke-width="1.8" opacity="0.9"/>
+        <path d="M240,155 Q236,170 238,182 Q240,192 248,196" stroke-width="1.6" opacity="0.85"/>
+        <path d="M318,172 Q322,185 318,196 Q312,206 300,210 Q285,215 270,212 Q255,208 248,196" stroke-width="1.6" opacity="0.85"/>
+
+        <!-- Distinctive aquiline nose -->
+        <path d="M272,115 Q270,128 268,138 Q266,145 272,148 Q278,150 284,146 Q286,143 285,138" stroke-width="1.4" opacity="0.8"/>
+
+        <!-- Eye (right, visible) -->
+        <path d="M288,108 Q294,105 300,108 Q294,114 288,111 Z" stroke-width="1.2" opacity="0.75" fill="rgba(196,154,60,0.1)"/>
+        <!-- Eye (left, partial) -->
+        <path d="M265,110 Q270,107 275,110 Q270,115 265,112 Z" stroke-width="1.1" opacity="0.65" fill="rgba(196,154,60,0.08)"/>
+
+        <!-- Eyebrows — sharp, arched -->
+        <path d="M262,103 Q268,98 276,101" stroke-width="1.4" opacity="0.7"/>
+        <path d="M286,101 Q294,97 303,100" stroke-width="1.4" opacity="0.7"/>
+
+        <!-- Ear -->
+        <path d="M240,130 Q232,135 233,148 Q234,158 240,160" stroke-width="1.3" opacity="0.65"/>
+
+        <!-- Hair — swept back, thinning at temples -->
+        <path d="M245,90 Q248,76 260,72 Q275,66 290,68 Q308,70 318,82" stroke-width="1.4" opacity="0.7"/>
+        <path d="M245,90 Q238,88 236,82 Q238,74 245,72" stroke-width="1.1" opacity="0.5"/>
+        <path d="M250,80 Q258,74 268,72" stroke-width="0.9" opacity="0.4"/>
+        <path d="M300,70 Q308,68 316,72 Q320,78 318,86" stroke-width="0.9" opacity="0.4"/>
+
+        <!-- Cheekbones — angular, sharp -->
+        <path d="M240,155 Q238,165 242,172 Q248,178 256,180" stroke-width="1.2" opacity="0.55"/>
+        <path d="M318,160 Q322,170 320,178 Q314,184 306,186" stroke-width="1.2" opacity="0.55"/>
+
+        <!-- Jaw — angular, lean -->
+        <path d="M256,200 Q265,208 280,210 Q295,210 304,200" stroke-width="1.5" opacity="0.75"/>
+
+        <!-- Neck -->
+        <path d="M262,210 L258,235" stroke-width="1.4" opacity="0.75"/>
+        <path d="M300,208 L304,233" stroke-width="1.4" opacity="0.75"/>
+
+        <!-- High collar, cravat -->
+        <path d="M250,232 Q248,240 255,245 Q265,250 280,248 Q295,246 305,240 Q310,235 308,230" stroke-width="1.5" opacity="0.8"/>
+        <!-- Cravat knot -->
+        <path d="M270,248 Q278,258 285,248" stroke-width="1.3" opacity="0.75"/>
+        <path d="M276,258 L278,280" stroke-width="1.2" opacity="0.65"/>
+
+        <!-- Jacket lapels -->
+        <path d="M255,245 Q238,260 230,290 Q222,320 220,360" stroke-width="1.6" opacity="0.8"/>
+        <path d="M305,242 Q322,256 330,286 Q338,316 340,360" stroke-width="1.6" opacity="0.8"/>
+        <!-- Lapel detail -->
+        <path d="M255,245 Q265,268 275,280" stroke-width="1.2" opacity="0.6"/>
+        <path d="M305,242 Q296,265 286,278" stroke-width="1.2" opacity="0.6"/>
+        <!-- Button line -->
+        <path d="M278,282 L280,380" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="308" r="2" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="330" r="2" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="352" r="2" stroke-width="1" opacity="0.5"/>
+
+        <!-- Jacket body -->
+        <path d="M220,360 Q218,400 222,440 Q226,465 235,475" stroke-width="1.5" opacity="0.75"/>
+        <path d="M340,360 Q342,400 338,440 Q334,465 325,475" stroke-width="1.5" opacity="0.75"/>
+        <!-- Bottom of jacket -->
+        <path d="M235,475 Q258,488 280,490 Q302,488 325,475" stroke-width="1.4" opacity="0.65"/>
+
+        <!-- Waistcoat -->
+        <path d="M260,280 Q252,320 250,360 Q248,395 252,425" stroke-width="1.1" opacity="0.55"/>
+        <path d="M300,280 Q308,320 310,360 Q312,395 308,425" stroke-width="1.1" opacity="0.55"/>
+        <path d="M252,425 Q266,432 280,433 Q294,432 308,425" stroke-width="1.1" opacity="0.55"/>
+        <!-- Watch chain -->
+        <path d="M286,340 Q296,342 302,350 Q306,358 304,365" stroke-width="0.9" opacity="0.5" stroke-dasharray="3,2"/>
+
+        <!-- Left arm resting on armchair -->
+        <path d="M220,360 Q210,370 198,378 Q188,384 182,395 Q178,408 180,430 Q182,450 188,462" stroke-width="1.5" opacity="0.75"/>
+        <!-- Left hand, fingertips steepled suggestion -->
+        <path d="M188,462 Q192,470 200,474 Q208,476 214,470" stroke-width="1.3" opacity="0.65"/>
+        <!-- Fingers -->
+        <path d="M194,472 L196,485" stroke-width="1" opacity="0.5"/>
+        <path d="M200,475 L202,488" stroke-width="1" opacity="0.5"/>
+        <path d="M206,473 L208,486" stroke-width="1" opacity="0.5"/>
+
+        <!-- Right arm -->
+        <path d="M340,360 Q352,370 362,382 Q372,396 374,418 Q374,440 368,455" stroke-width="1.5" opacity="0.75"/>
+        <!-- Right hand resting -->
+        <path d="M368,455 Q364,468 356,474 Q348,478 342,472" stroke-width="1.3" opacity="0.65"/>
+        <path d="M360,472 L358,485" stroke-width="1" opacity="0.5"/>
+        <path d="M354,475 L352,488" stroke-width="1" opacity="0.5"/>
+        <path d="M348,473 L346,485" stroke-width="1" opacity="0.5"/>
+
+        <!-- Trousers -->
+        <path d="M250,490 Q248,520 252,555 Q256,575 260,590" stroke-width="1.4" opacity="0.65"/>
+        <path d="M310,490 Q312,520 308,555 Q304,575 300,590" stroke-width="1.4" opacity="0.65"/>
+        <!-- Crease -->
+        <path d="M265,490 L268,590" stroke-width="0.8" opacity="0.35"/>
+        <path d="M295,490 L292,590" stroke-width="0.8" opacity="0.35"/>
+
+        <!-- Deerstalker hat (iconic) -->
+        <path d="M238,88 Q240,72 245,62 Q252,50 268,46 Q282,42 296,46 Q312,52 318,64 Q324,76 322,90" stroke-width="1.8" opacity="0.85"/>
+        <!-- Hat brim front -->
+        <path d="M236,88 Q230,84 228,80 Q228,74 234,72 Q240,70 245,74" stroke-width="1.4" opacity="0.75"/>
+        <!-- Hat brim back -->
+        <path d="M322,88 Q328,84 330,78 Q330,72 324,70 Q318,68 313,73" stroke-width="1.4" opacity="0.75"/>
+        <!-- Hat band -->
+        <path d="M238,88 Q245,86 256,85 Q270,84 284,85 Q298,86 310,88 L322,88" stroke-width="1" opacity="0.55"/>
+        <!-- Hat flaps (deerstalker ear flaps, tied up) -->
+        <path d="M240,76 Q234,68 235,58 Q238,50 244,52 Q248,56 246,66" stroke-width="1.1" opacity="0.55"/>
+        <path d="M320,76 Q326,68 325,58 Q322,50 316,52 Q312,56 314,66" stroke-width="1.1" opacity="0.55"/>
+        <!-- Tied flap bow top -->
+        <path d="M246,62 Q280,55 314,62" stroke-width="0.9" opacity="0.45"/>
+        <circle cx="280" cy="58" r="3" stroke-width="1.1" opacity="0.55"/>
+
+        <!-- Magnifying glass in lap (subtle) -->
+        <circle cx="245" cy="510" r="22" stroke-width="1.3" opacity="0.4"/>
+        <line x1="260" y1="526" x2="278" y2="545" stroke-width="1.8" opacity="0.45"/>
+        <!-- lens highlight -->
+        <path d="M234,498 Q238,494 244,496" stroke-width="0.9" opacity="0.3"/>
+
+      </g>
+
+      <!-- Subtle smoke wisps from pipe area -->
+      <g opacity="0.25" stroke="#C49A3C" fill="none" stroke-width="0.8">
+        <path d="M370,525 Q365,512 372,500 Q378,488 374,475" stroke-linecap="round"/>
+        <path d="M374,522 Q380,508 376,494 Q372,480 378,468" stroke-linecap="round" opacity="0.6"/>
+      </g>
+
+      <!-- Decorative corner ornaments -->
+      <g stroke="rgba(196,154,60,0.2)" stroke-width="0.8" fill="none">
+        <path d="M30,30 L30,55 M30,30 L55,30"/>
+        <path d="M530,30 L530,55 M530,30 L505,30"/>
+        <path d="M30,560 L30,535 M30,560 L55,560"/>
+        <path d="M530,560 L530,535 M530,560 L505,560"/>
+      </g>
+
+      <!-- 221B Baker Street address plaque -->
+      <g opacity="0.5">
+        <rect x="178" y="600" width="204" height="38" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="0.8"/>
+        <text x="280" y="614" font-family="'Cinzel', serif" font-size="6" fill="#C49A3C" text-anchor="middle" letter-spacing="4">221B BAKER STREET</text>
+        <text x="280" y="630" font-family="'Cinzel', serif" font-size="5" fill="rgba(196,154,60,0.6)" text-anchor="middle" letter-spacing="3">LONDON</text>
+      </g>
+    </svg>
+
+    <!-- Caption overlay -->
+    <div class="portrait-caption">
+      <span class="portrait-name">Sherlock Holmes</span>
+      <span class="portrait-dates">1854 — The Game Is Afoot</span>
+    </div>
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="hero-info">
+    <div>
+      <div class="hero-eyebrow">Consulting Detective · 221B Baker Street</div>
+    </div>
+
+    <div class="hero-attribution">As written by Arthur Conan Doyle, 1887–1917</div>
+
+    <div>
+      <div class="trust-badge">
+        <span class="trust-score-num">92</span>
+        <div class="trust-score-divider"></div>
+        <div>
+          <div class="trust-label-text">Foundational</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.45rem;letter-spacing:0.2em;color:var(--text-dim);margin-top:0.15rem;text-transform:uppercase;">Trust Score</div>
+        </div>
+      </div>
+      <div class="trust-detail" style="margin-top:0.7rem;">
+        Complete canon: 4 novels · 56 stories · ~600,000 words · 8 works · 1,814 corpus chunks · All US public-domain verified
+      </div>
+    </div>
+
+    <div class="hero-description">
+      Sherlock Holmes is the consulting detective of 221B Baker Street — the master of observation and deductive inference who can read a man's profession, history, and character from the calluses on his hands and the mud on his boots. What makes him endure is not his triumphs but his tensions: the cocaine-dulled ennui between cases, the restless intellect that burns without stimulus, the loyalty to Watson that his arrogance perpetually tests.
+    </div>
+
+    <div>
+      <div class="starters-label">Begin a conversation</div>
+      <div class="starters-grid">
+        <button class="starter-btn" data-starter="Show me your method. Where do most amateurs go wrong?">Show me your method. Where do most amateurs go wrong?</button>
+        <button class="starter-btn" data-starter="What can you make of me, just from this conversation?">What can you make of me, just from this conversation?</button>
+        <button class="starter-btn" data-starter="Tell me about Reichenbach. Did you expect to survive?">Tell me about Reichenbach. Did you expect to survive?</button>
+        <button class="starter-btn" data-starter="Why Watson, of all men?">Why Watson, of all men?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT SECTION -->
+<section class="chat-section">
+  <div class="chat-container">
+    <div class="chat-widget">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <span class="chat-persona-name">Sherlock Holmes</span>
+          <span class="chat-persona-sub">(1854 – ?) — the world's only consulting detective</span>
+        </div>
+        <div class="chat-header-right">
+          <div class="status-dot"></div>
+          <span class="status-text">221B Baker Street</span>
+        </div>
+      </div>
+
+      <!-- Messages Area -->
+      <div class="messages-area" id="messagesArea">
+        <!-- Initial greeting injected by JS -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div style="padding: 0 1.5rem 0.5rem; display:flex;" id="typingWrapper">
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <textarea
+          class="chat-input"
+          id="chatInput"
+          placeholder="Lay your case before Mr. Holmes…"
+          rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+
+      <!-- Footer Note -->
+      <div class="chat-footer-note">
+        <span class="corpus-note">
+          RAG-grounded · <span>4 novels · 56 stories</span> · Arthur Conan Doyle · Public domain
+        </span>
+        <span class="corpus-note" style="color:var(--amber-dim);">Sources cited on each response</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO GRID -->
+<section class="info-section">
+  <div class="info-grid">
+    <!-- Corpus Works -->
+    <div class="info-card">
+      <div class="info-card-header">Corpus — Canonical Works</div>
+      <ul class="corpus-list">
+        <li><em>A Study in Scarlet</em> — 1887</li>
+        <li><em>The Sign of the Four</em> — 1890</li>
+        <li><em>The Adventures of Sherlock Holmes</em> — 1892</li>
+        <li><em>The Memoirs of Sherlock Holmes</em> — 1894</li>
+        <li><em>The Hound of the Baskervilles</em> — 1902</li>
+        <li><em>The Return of Sherlock Holmes</em> — 1905</li>
+        <li><em>The Valley of Fear</em> — 1915</li>
+        <li><em>His Last Bow</em> — 1917</li>
+      </ul>
+      <div class="corpus-stat">
+        <div class="stat-item">
+          <span class="stat-num">1,814</span>
+          <span class="stat-label">Corpus Chunks</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Distinct Works</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">~600k</span>
+          <span class="stat-label">Words Indexed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Standard -->
+    <div class="info-card">
+      <div class="info-card-header">Editorial Standard</div>
+      <div class="editorial-list">
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Do</span>
+          <span class="editorial-text">Discuss any case in the canonical corpus, demonstrate his method of observation and deductive inference, speak in authentic late-Victorian educated English.</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Do</span>
+          <span class="editorial-text">Acknowledge the cocaine, the periodic despair, the difficulty with ordinary sentiment — honestly, without dramatizing or denial.</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Not</span>
+          <span class="editorial-text">Invent cases Doyle did not write. Extend the canon. Speak to events after 1917, when Watson last published.</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Not</span>
+          <span class="editorial-text">Opine on contemporary figures or current events: "You are asking me to read faces I have never observed."</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Note</span>
+          <span class="editorial-text"><em>The Casebook of Sherlock Holmes</em> (1921–27) excluded pending IP review. All 8 included works have unambiguous US public-domain status.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="footer-left">Sherlock Holmes — Museum of Minds</span>
+  <div class="footer-right">
+    <a href="https://museumofminds.com">The Museum</a>
+    <a href="https://museumofminds.com/about">About</a>
+    <a href="https://museumofminds.com">museumofminds.com</a>
+  </div>
+</footer>
+
+<script>
+  const API_BASE = 'https://sherlock-holmes-production-5185.up.railway.app';
+  let conversationId = null;
+  let isLoading = false;
+
+  const messagesArea = document.getElementById('messagesArea');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const typingIndicator = document.getElementById('typingIndicator');
+
+  // Initial greeting
+  const GREETING = `You have found me between cases, which is — I confess — the less comfortable position. The mind requires occupation. Come, then. What is it you want to lay before me? Observation, method, the Baskerville affair, Reichenbach, Watson — name your interest, and I shall give you my complete attention.`;
+
+  function scrollToBottom() {
+    messagesArea.scrollTop = messagesArea.scrollHeight;
+  }
+
+  function appendMessage(role, text, sources) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', role);
+
+    const roleLabel = document.createElement('div');
+    roleLabel.classList.add('message-role');
+    roleLabel.textContent = role === 'user' ? 'You' : 'Sherlock Holmes';
+    msgDiv.appendChild(roleLabel);
+
+    const bubble = document.createElement('div');
+    bubble.classList.add('message-bubble');
+    bubble.textContent = text;
+    msgDiv.appendChild(bubble);
+
+    // Sources toggle for persona messages
+    if (role === 'persona' && sources && sources.length > 0) {
+      const toggle = document.createElement('button');
+      toggle.classList.add('sources-toggle');
+      toggle.textContent = `▾ sources (${sources.length})`;
+
+      const panel = document.createElement('div');
+      panel.classList.add('sources-panel');
+
+      sources.forEach(function(src) {
+        const item = document.createElement('div');
+        item.classList.add('source-item');
+
+        const typeEl = document.createElement('div');
+        typeEl.classList.add('source-type');
+        const ktype = (src.knowledge_type || 'canon').toLowerCase();
+        typeEl.textContent = ktype === 'discourse' ? 'Discourse' : 'Canon';
+
+        const titleEl = document.createElement('div');
+        titleEl.classList.add('source-title');
+        titleEl.textContent = src.title || src.source || 'Arthur Conan Doyle';
+
+        item.appendChild(typeEl);
+        item.appendChild(titleEl);
+        panel.appendChild(item);
+      });
+
+      toggle.addEventListener('click', function() {
+        panel.classList.toggle('open');
+        toggle.textContent = panel.classList.contains('open')
+          ? `▴ sources (${sources.length})`
+          : `▾ sources (${sources.length})`;
+      });
+
+      msgDiv.appendChild(toggle);
+      msgDiv.appendChild(panel);
+    }
+
+    messagesArea.appendChild(msgDiv);
+    scrollToBottom();
+  }
+
+  function showTyping() {
+    typingIndicator.classList.add('visible');
+    scrollToBottom();
+  }
+
+  function hideTyping() {
+    typingIndicator.classList.remove('visible');
+  }
+
+  async function sendMessage(text) {
+    if (!text || !text.trim() || isLoading) return;
+
+    const message = text.trim();
+    isLoading = true;
+    sendBtn.disabled = true;
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+
+    appendMessage('user', message, null);
+    showTyping();
+
+    try {
+      const response = await fetch(API_BASE + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: message,
+          conversation_id: conversationId,
+          mode: 'historical',
+          length: 'detailed',
+          reading_level: 'general'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.status);
+      }
+
+      const data = await response.json();
+      hideTyping();
+
+      if (data.conversation_id) {
+        conversationId = data.conversation_id;
+      }
+
+      const replyText = data.response || 'I find my faculties temporarily obstructed. Extraordinary. Please try again.';
+      const sources = data.sources || [];
+
+      appendMessage('persona', replyText, sources);
+
+    } catch (error) {
+      hideTyping();
+      appendMessage('persona', 'I find my faculties temporarily obstructed. Extraordinary. Please try again.', null);
+      console.error('Chat error:', error);
+    } finally {
+      isLoading = false;
+      sendBtn.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  // Send button click
+  sendBtn.addEventListener('click', function() {
+    sendMessage(chatInput.value);
+  });
+
+  // Enter key to send (Shift+Enter = newline)
+  chatInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(chatInput.value);
+    }
+  });
+
+  // Auto-resize textarea
+  chatInput.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 128) + 'px';
+  });
+
+  // Starter buttons
+  document.querySelectorAll('.starter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const starterText = btn.getAttribute('data-starter');
+      if (starterText && !isLoading) {
+        sendMessage(starterText);
+        // Scroll to chat widget
+        document.querySelector('.chat-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Initialize with greeting
+  (function init() {
+    appendMessage('persona', GREETING, null);
+  })();
+</script>
+</body>
+</html>
