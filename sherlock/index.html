@@ -1566,7 +1566,7 @@ nav a:hover { color: var(--amber); }
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
     try {
-      const resp = await fetch(API_BASE + '/chat', {
+      const resp = await fetch(API_BASE + '/persona/sherlock-holmes/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
