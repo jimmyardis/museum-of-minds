@@ -1,1 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherlock Holmes — Museum of Minds</title>
+<meta name="description" content="Converse with Sherlock Holmes as written by Arthur Conan Doyle — a RAG-powered chatbot grounded in the complete canonical corpus of four novels and fifty-six stories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:        #0A090C;
+  --deep:        #111018;
+  --surface:     #1A1825;
+  --surface-mid: #232135;
+  --amber:       #C49A3C;
+  --amber-dim:   #7A5E20;
+  --amber-pale:  #E8C96A;
+  --brass:       #8B7035;
+  --ivory:       #EDE8D8;
+  --ivory-dim:   #A09880;
+  --text:        #D4CEB8;
+  --text-dim:    #6B6455;
+}
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+  position: sticky;
+  top: 0;
+  background: var(--void);
+  z-index: 100;
+  animation: fadeDown 0.5s ease both;
+}
+
+.site-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  color: var(--amber);
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.site-label:hover { opacity: 1; color: var(--amber-pale); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-hall {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  opacity: 0.7;
+}
+
+nav { display: flex; gap: 1.8rem; }
+nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--amber); }
+
+/* HERO SECTION */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease 0.1s both;
+}
+
+.hero-portrait {
+  background: var(--void);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  border-right: 1px solid rgba(196,154,60,0.2);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.portrait-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 2rem 1.8rem;
+  background: linear-gradient(transparent, rgba(10,9,12,0.95));
+  z-index: 2;
+}
+
+.portrait-name {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--ivory);
+  display: block;
+  line-height: 1.05;
+}
+
+.portrait-dates {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--amber);
+  opacity: 0.85;
+  margin-top: 0.5rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.portrait-location {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.35em;
+  color: var(--amber);
+  opacity: 0.5;
+  margin-top: 0.3rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.hero-info {
+  background: var(--surface);
+  padding: 3rem 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-left: 1px solid rgba(196,154,60,0.1);
+  box-shadow: inset 4px 0 0 rgba(196,154,60,0.06);
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.65;
+}
+
+.hero-attribution {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+  letter-spacing: 0.04em;
+  border-left: 3px solid var(--amber-dim);
+  padding-left: 1rem;
+}
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--deep);
+  border: 1px solid rgba(196,154,60,0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.trust-score-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--amber-pale);
+  line-height: 1;
+}
+
+.trust-score-divider {
+  width: 1px;
+  height: 1.2rem;
+  background: rgba(196,154,60,0.3);
+}
+
+.trust-label-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.8;
+}
+
+.trust-detail {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.hero-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.starters-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+
+.starters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.starter-btn {
+  background: transparent;
+  border: 1px solid rgba(196,154,60,0.3);
+  color: var(--ivory-dim);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+  transition: all 0.2s;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+}
+.starter-btn:hover {
+  background: rgba(196,154,60,0.08);
+  border-color: rgba(196,154,60,0.6);
+  color: var(--ivory);
+  box-shadow: 0 0 16px rgba(196,154,60,0.06), inset 4px 4px 0 rgba(196,154,60,0.06);
+}
+
+/* CHAT SECTION */
+.chat-section {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  background: var(--deep);
+}
+
+.chat-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.chat-widget {
+  border: 1px solid rgba(196,154,60,0.25);
+  background: var(--deep);
+  overflow: hidden;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+}
+
+.chat-header {
+  background: var(--surface);
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.chat-persona-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.chat-persona-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+.chat-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.status-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+}
+
+.messages-area {
+  min-height: 380px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--amber-dim) var(--deep);
+}
+.messages-area::-webkit-scrollbar { width: 4px; }
+.messages-area::-webkit-scrollbar-track { background: var(--deep); }
+.messages-area::-webkit-scrollbar-thumb { background: var(--amber-dim); }
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: fadeUp 0.3s ease both;
+}
+
+.message.user { align-items: flex-end; }
+.message.persona { align-items: flex-start; }
+
+.message-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0 0.1rem;
+}
+
+.message-bubble {
+  max-width: 78%;
+  padding: 0.9rem 1.1rem;
+  line-height: 1.75;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message.user .message-bubble {
+  background: var(--surface-mid);
+  color: var(--ivory);
+  border: 1px solid rgba(196,154,60,0.1);
+}
+
+.message.persona .message-bubble {
+  background: var(--deep);
+  color: var(--text);
+  border-left: 3px solid var(--amber);
+  border-top: 1px solid rgba(196,154,60,0.1);
+  border-right: 1px solid rgba(196,154,60,0.1);
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+
+.sources-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+  padding: 0.2rem 0;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+.sources-toggle:hover { opacity: 1; }
+
+.sources-panel {
+  display: none;
+  background: var(--surface);
+  border: 1px solid rgba(196,154,60,0.15);
+  padding: 0.8rem 1rem;
+  max-width: 78%;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.sources-panel.open { display: flex; }
+
+.source-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.source-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+}
+
+.source-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+/* TYPING INDICATOR */
+.typing-indicator {
+  display: none;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.7rem 1rem;
+  background: var(--deep);
+  border-left: 3px solid var(--amber);
+  width: fit-content;
+  border-top: 1px solid rgba(196,154,60,0.1);
+  border-right: 1px solid rgba(196,154,60,0.1);
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+.typing-indicator.visible { display: flex; }
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  animation: typingBounce 1.2s ease infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* INPUT AREA */
+.input-area {
+  background: var(--deep);
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ivory);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  resize: none;
+  min-height: 2.4rem;
+  max-height: 8rem;
+  line-height: 1.6;
+  padding: 0.4rem 0;
+}
+
+.chat-input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+.send-btn {
+  background: var(--amber);
+  color: var(--void);
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+  align-self: flex-end;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+.send-btn:hover { background: var(--amber-pale); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.chat-footer-note {
+  padding: 0.7rem 1.2rem;
+  background: var(--surface);
+  border-top: 1px solid rgba(196,154,60,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.corpus-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.corpus-note span {
+  color: var(--amber-dim);
+}
+
+/* INFO GRID */
+.info-section {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 4rem 3rem;
+  background: var(--void);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.info-card {
+  background: var(--surface);
+  border: 1px solid rgba(196,154,60,0.2);
+  padding: 2rem 2rem 2rem;
+  box-shadow: inset 4px 4px 0 rgba(196,154,60,0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.info-card:hover {
+  border-color: rgba(196,154,60,0.35);
+  box-shadow: 0 0 20px rgba(196,154,60,0.05), inset 4px 4px 0 rgba(196,154,60,0.06);
+}
+
+.info-card-header {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.7;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(196,154,60,0.2);
+}
+
+.corpus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.corpus-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.corpus-list li::before {
+  content: '◆';
+  font-size: 0.4rem;
+  color: var(--amber);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.corpus-list li em {
+  font-style: italic;
+  color: var(--ivory-dim);
+}
+
+.corpus-stat {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196,154,60,0.12);
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--amber-pale);
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editorial-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(196,154,60,0.08);
+}
+.editorial-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.editorial-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+}
+
+.editorial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--void);
+}
+
+.footer-left {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-dim);
+}
+
+.footer-right { display: flex; gap: 1.8rem; }
+.footer-right a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-right a:hover { color: var(--amber); }
+
+/* ANIMATIONS */
+@keyframes fadeDown { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeUp   { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .site-header { padding: 1rem 1.2rem; }
+  .header-hall { display: none; }
+  nav { gap: 1rem; }
+
+  .hero { grid-template-columns: 1fr; }
+  .hero-portrait {
+    min-height: 380px;
+    border-right: none;
+    border-bottom: 1px solid rgba(196,154,60,0.2);
+  }
+  .hero-info { padding: 2rem 1.5rem; }
+
+  .starters-grid { grid-template-columns: 1fr; }
+
+  .info-grid { grid-template-columns: 1fr; }
+  .info-section { padding: 2.5rem 1.2rem; }
+
+  .chat-container { padding: 1.5rem 0.8rem; }
+
+  .site-footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-right { justify-content: center; }
+
+  .portrait-name { font-size: 2rem; }
+}
+
+.photo-frame{position:relative;width:68%;max-width:240px;margin:0 auto 0.8rem;}
+.photo-frame::before{content:'';position:absolute;inset:-6px;border:1px solid rgba(196,154,60,0.45);pointer-events:none;z-index:2;}
+.photo-frame::after{content:'';position:absolute;inset:-12px;border:1px solid rgba(196,154,60,0.15);pointer-events:none;}
+.frame-corner{position:absolute;width:14px;height:14px;border-color:var(--amber);border-style:solid;z-index:3;}
+.frame-corner.tl{top:-2px;left:-2px;border-width:2px 0 0 2px;}
+.frame-corner.tr{top:-2px;right:-2px;border-width:2px 2px 0 0;}
+.frame-corner.bl{bottom:-2px;left:-2px;border-width:0 0 2px 2px;}
+.frame-corner.br{bottom:-2px;right:-2px;border-width:0 2px 2px 0;}
+.photo-frame img{width:100%;display:block;filter:grayscale(100%) sepia(20%) contrast(1.05);position:relative;z-index:1;object-fit:cover;object-position:top;}
+.photo-caption{font-family:'Cinzel',serif;font-size:0.46rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);text-align:center;opacity:0.6;}
+.illustration-section{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(196,154,60,0.15);border-bottom:1px solid rgba(196,154,60,0.15);background:var(--deep);}
+.illus-svg-col{position:relative;min-height:420px;overflow:hidden;border-right:1px solid rgba(196,154,60,0.12);display:flex;align-items:center;justify-content:center;}
+.illus-svg-col svg{width:85%;height:auto;max-height:400px;}
+.illus-text-col{padding:4rem 3rem;display:flex;flex-direction:column;gap:1.4rem;justify-content:center;}
+.illus-quote{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:var(--ivory);line-height:1.4;}
+.illus-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text);line-height:1.8;font-style:italic;font-weight:300;}
+.illus-note{font-family:'Inter',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);line-height:1.7;opacity:0.7;}
+.corpus-work{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text);line-height:1.5;}
+.corpus-year{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;color:var(--amber);opacity:0.7;margin-right:0.8rem;font-style:normal;}
+.corpus-count{font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-left:0.5rem;font-style:normal;}
+.canon-quote{border-left:2px solid rgba(196,154,60,0.3);padding-left:1.2rem;}
+.quote-cite{font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);opacity:0.55;display:block;margin-top:0.4rem;font-style:normal;}
+@media(max-width:800px){.illustration-section{grid-template-columns:1fr;}.illus-svg-col{min-height:280px;border-right:none;border-bottom:1px solid rgba(196,154,60,0.12);}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://museumofminds.com" class="site-label">Museum of Minds</a>
+  <div class="header-right">
+    <span class="header-hall">The Library</span>
+    <nav>
+      <a href="https://museumofminds.com">The Museum</a>
+      <a href="https://museumofminds.com/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- LEFT: PORTRAIT PANEL — Holmes figure illustration -->
+  <div class="hero-portrait">
+    <!-- 221B Baker Street — The Study -->
+    <svg viewBox="0 0 480 660" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+      <defs>
+        <radialGradient id="studyBg" cx="55%" cy="38%" r="65%">
+          <stop offset="0%" stop-color="#171215"/>
+          <stop offset="100%" stop-color="#0A090C"/>
+        </radialGradient>
+        <radialGradient id="winGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.22"/>
+          <stop offset="55%" stop-color="#8B6020" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="fireGlow" cx="50%" cy="60%" r="55%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="sconce1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glow1" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softGlow1" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="7" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background -->
+      <rect width="480" height="660" fill="url(#studyBg)"/>
+
+      <!-- Floor perspective lines (vanishing point ~240,400) -->
+      <g stroke="rgba(196,154,60,0.055)" stroke-width="0.6" fill="none">
+        <line x1="0" y1="575" x2="480" y2="575"/>
+        <line x1="0" y1="600" x2="480" y2="600"/>
+        <line x1="0" y1="630" x2="480" y2="630"/>
+        <line x1="240" y1="405" x2="0" y2="660"/>
+        <line x1="240" y1="405" x2="96" y2="660"/>
+        <line x1="240" y1="405" x2="192" y2="660"/>
+        <line x1="240" y1="405" x2="288" y2="660"/>
+        <line x1="240" y1="405" x2="384" y2="660"/>
+        <line x1="240" y1="405" x2="480" y2="660"/>
+      </g>
+
+      <!-- Wainscot / wall dado rail -->
+      <line x1="0" y1="310" x2="480" y2="310" stroke="rgba(196,154,60,0.1)" stroke-width="0.8"/>
+      <rect x="0" y="308" width="480" height="6" fill="rgba(196,154,60,0.03)"/>
+
+      <!-- BOW WINDOW (centre back wall) -->
+      <ellipse cx="240" cy="175" rx="130" ry="155" fill="url(#winGlow)"/>
+      <!-- Outer bow frame -->
+      <path d="M108,16 L108,300 Q240,318 372,300 L372,16" fill="none" stroke="rgba(196,154,60,0.32)" stroke-width="1.5"/>
+      <!-- Three panes: left, centre, right -->
+      <!-- Left pane -->
+      <path d="M116,24 L116,292 Q153,304 190,298 L190,24 Z" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
+      <!-- Centre pane (prominent) -->
+      <rect x="190" y="24" width="100" height="275" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
+      <!-- Right pane -->
+      <path d="M290,24 L290,298 Q327,304 364,292 L364,24 Z" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
+      <!-- Sash glazing bars — centre pane -->
+      <line x1="190" y1="100" x2="290" y2="100" stroke="rgba(196,154,60,0.2)" stroke-width="0.8"/>
+      <line x1="190" y1="162" x2="290" y2="162" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
+      <line x1="190" y1="224" x2="290" y2="224" stroke="rgba(196,154,60,0.15)" stroke-width="0.8"/>
+      <line x1="240" y1="24" x2="240" y2="299" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
+      <!-- Sash bars left pane -->
+      <line x1="116" y1="130" x2="190" y2="125" stroke="rgba(196,154,60,0.14)" stroke-width="0.7"/>
+      <line x1="116" y1="200" x2="190" y2="192" stroke="rgba(196,154,60,0.11)" stroke-width="0.7"/>
+      <line x1="153" y1="24" x2="153" y2="293" stroke="rgba(196,154,60,0.13)" stroke-width="0.7"/>
+      <!-- Sash bars right pane -->
+      <line x1="290" y1="125" x2="364" y2="130" stroke="rgba(196,154,60,0.14)" stroke-width="0.7"/>
+      <line x1="290" y1="192" x2="364" y2="200" stroke="rgba(196,154,60,0.11)" stroke-width="0.7"/>
+      <line x1="327" y1="24" x2="327" y2="293" stroke="rgba(196,154,60,0.13)" stroke-width="0.7"/>
+      <!-- Window sill -->
+      <path d="M100,298 Q240,316 380,298 L380,308 Q240,326 100,308 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.28)" stroke-width="1"/>
+      <!-- Foggy London exterior (gaslit street glimpsed) -->
+      <ellipse cx="240" cy="80" rx="60" ry="30" fill="rgba(196,154,60,0.06)"/>
+      <line x1="160" y1="55" x2="320" y2="55" stroke="rgba(196,154,60,0.06)" stroke-width="10"/>
+      <line x1="170" y1="85" x2="230" y2="85" stroke="rgba(196,154,60,0.04)" stroke-width="6"/>
+      <line x1="258" y1="78" x2="318" y2="78" stroke="rgba(196,154,60,0.04)" stroke-width="5"/>
+      <!-- Gas lamp post outside -->
+      <line x1="210" y1="24" x2="210" y2="100" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+      <ellipse cx="210" cy="35" rx="10" ry="13" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.8"/>
+      <ellipse cx="210" cy="35" rx="4" ry="5" fill="rgba(232,201,106,0.22)"/>
+
+      <!-- LEFT WALL GAS SCONCE -->
+      <ellipse cx="54" cy="175" rx="55" ry="65" fill="url(#sconce1)"/>
+      <g filter="url(#glow1)" opacity="0.88">
+        <path d="M30,148 Q44,145 50,158 L50,182" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="50" cy="194" rx="13" ry="17" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="50" cy="194" rx="13" ry="17" fill="rgba(196,154,60,0.06)"/>
+        <ellipse cx="50" cy="194" rx="5.5" ry="7" fill="rgba(232,201,106,0.22)"/>
+        <line x1="50" y1="211" x2="50" y2="220" stroke="#C49A3C" stroke-width="1.2"/>
+        <line x1="43" y1="220" x2="57" y2="220" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- RIGHT WALL GAS SCONCE -->
+      <ellipse cx="426" cy="175" rx="55" ry="65" fill="url(#sconce1)"/>
+      <g filter="url(#glow1)" opacity="0.82">
+        <path d="M450,148 Q436,145 430,158 L430,182" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="430" cy="194" rx="13" ry="17" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="430" cy="194" rx="13" ry="17" fill="rgba(196,154,60,0.06)"/>
+        <ellipse cx="430" cy="194" rx="5.5" ry="7" fill="rgba(232,201,106,0.22)"/>
+        <line x1="430" y1="211" x2="430" y2="220" stroke="#C49A3C" stroke-width="1.2"/>
+        <line x1="423" y1="220" x2="437" y2="220" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- V  R bullet holes (left of window, canon detail) -->
+      <g opacity="0.48" stroke="#C49A3C" stroke-width="1" fill="rgba(196,154,60,0.18)">
+        <circle cx="72" cy="200" r="2.2"/><circle cx="78" cy="214" r="1.8"/>
+        <circle cx="84" cy="228" r="1.8"/><circle cx="90" cy="214" r="1.8"/>
+        <circle cx="96" cy="200" r="2.2"/>
+        <circle cx="72" cy="246" r="2.2"/><circle cx="72" cy="258" r="1.8"/>
+        <circle cx="72" cy="270" r="2.2"/><circle cx="82" cy="246" r="1.8"/>
+        <circle cx="88" cy="252" r="1.8"/><circle cx="82" cy="260" r="1.8"/>
+        <circle cx="89" cy="270" r="1.8"/>
+      </g>
+      <text x="66" y="286" font-family="Cinzel,serif" font-size="7" fill="rgba(196,154,60,0.3)" letter-spacing="7">V  R</text>
+
+      <!-- BOOKCASE (left wall) -->
+      <g opacity="0.72">
+        <rect x="0" y="60" width="5" height="250" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="60" width="60" height="5" fill="rgba(196,154,60,0.14)" stroke="rgba(196,154,60,0.3)" stroke-width="0.7"/>
+        <rect x="0" y="132" width="60" height="4" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="200" width="60" height="4" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="268" width="60" height="4" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.6"/>
+        <!-- Books row 1 -->
+        <rect x="6" y="70" width="7" height="62" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.28)" stroke-width="0.5"/>
+        <rect x="14" y="74" width="5" height="58" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.5"/>
+        <rect x="20" y="68" width="8" height="64" fill="rgba(196,154,60,0.15)" stroke="rgba(196,154,60,0.3)" stroke-width="0.5"/>
+        <rect x="29" y="72" width="6" height="60" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.22)" stroke-width="0.5"/>
+        <rect x="36" y="66" width="9" height="66" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+        <rect x="46" y="71" width="5" height="61" fill="rgba(196,154,60,0.07)" stroke="rgba(196,154,60,0.18)" stroke-width="0.5"/>
+        <rect x="52" y="69" width="7" height="63" fill="rgba(196,154,60,0.11)" stroke="rgba(196,154,60,0.24)" stroke-width="0.5"/>
+        <!-- Books row 2 -->
+        <rect x="6" y="136" width="8" height="64" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.23)" stroke-width="0.5"/>
+        <rect x="15" y="140" width="6" height="60" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.27)" stroke-width="0.5"/>
+        <rect x="22" y="135" width="9" height="65" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.5"/>
+        <rect x="32" y="139" width="7" height="61" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.5"/>
+        <rect x="40" y="137" width="6" height="63" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.21)" stroke-width="0.5"/>
+        <rect x="47" y="141" width="8" height="59" fill="rgba(196,154,60,0.14)" stroke="rgba(196,154,60,0.28)" stroke-width="0.5"/>
+        <!-- Books row 3 -->
+        <rect x="6" y="204" width="7" height="64" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.5"/>
+        <rect x="14" y="208" width="9" height="60" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+        <rect x="24" y="205" width="6" height="63" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.19)" stroke-width="0.5"/>
+        <rect x="31" y="207" width="8" height="61" fill="rgba(196,154,60,0.11)" stroke="rgba(196,154,60,0.24)" stroke-width="0.5"/>
+        <rect x="40" y="204" width="7" height="64" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.21)" stroke-width="0.5"/>
+        <rect x="48" y="209" width="6" height="59" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+      </g>
+
+      <!-- FIREPLACE (right foreground, angled) -->
+      <ellipse cx="416" cy="500" rx="90" ry="75" fill="url(#fireGlow)"/>
+      <!-- Surround / chimneybreast -->
+      <path d="M360,314 L360,535 L480,535 L480,314" fill="rgba(196,154,60,0.018)" stroke="rgba(196,154,60,0.18)" stroke-width="1"/>
+      <!-- Mantelpiece -->
+      <rect x="352" y="310" width="128" height="9" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.38)" stroke-width="1.2"/>
+      <!-- Overmantel frame outline -->
+      <rect x="368" y="248" width="96" height="60" fill="none" stroke="rgba(196,154,60,0.14)" stroke-width="0.8"/>
+      <!-- Fireplace opening arch -->
+      <path d="M374,535 L374,430 Q374,416 388,416 L464,416 Q478,416 478,430 L478,535" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
+      <!-- Grate bars -->
+      <g stroke="rgba(196,154,60,0.3)" stroke-width="0.9">
+        <line x1="390" y1="530" x2="390" y2="474"/>
+        <line x1="400" y1="530" x2="400" y2="468"/>
+        <line x1="410" y1="530" x2="410" y2="466"/>
+        <line x1="420" y1="530" x2="420" y2="468"/>
+        <line x1="430" y1="530" x2="430" y2="472"/>
+        <line x1="440" y1="530" x2="440" y2="478"/>
+        <line x1="450" y1="530" x2="450" y2="484"/>
+        <line x1="460" y1="530" x2="460" y2="490"/>
+      </g>
+      <!-- Flames -->
+      <g filter="url(#glow1)" opacity="0.65">
+        <path d="M395,528 Q390,498 402,475 Q410,456 416,472 Q420,455 428,450 Q438,462 436,480 Q444,458 452,468 Q456,484 450,504 Q458,482 466,494 Q466,514 458,528 Z" fill="rgba(196,154,60,0.18)" stroke="#C49A3C" stroke-width="0.9"/>
+        <path d="M408,528 Q404,502 412,484 Q420,470 424,485 Q430,470 440,478 Q444,496 438,514 Z" fill="rgba(232,201,106,0.12)" stroke="rgba(232,201,106,0.35)" stroke-width="0.7"/>
+      </g>
+      <!-- Fender (hearth rail) -->
+      <path d="M376,535 Q427,542 478,535" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="1.5"/>
+      <!-- Mantelpiece objects -->
+      <!-- Carriage clock -->
+      <rect x="396" y="282" width="20" height="26" fill="none" stroke="rgba(196,154,60,0.42)" stroke-width="1"/>
+      <circle cx="406" cy="293" r="7" fill="none" stroke="rgba(196,154,60,0.38)" stroke-width="0.9"/>
+      <line x1="406" y1="293" x2="406" y2="287" stroke="rgba(196,154,60,0.45)" stroke-width="1"/>
+      <line x1="406" y1="293" x2="410" y2="296" stroke="rgba(196,154,60,0.38)" stroke-width="0.9"/>
+      <!-- Skull (Holmes keeps one on the mantel as a tobacco holder) -->
+      <g filter="url(#glow1)" opacity="0.55">
+        <ellipse cx="450" cy="293" rx="11" ry="10" fill="none" stroke="#C49A3C" stroke-width="1"/>
+        <ellipse cx="450" cy="299" rx="7" ry="4.5" fill="none" stroke="rgba(196,154,60,0.55)" stroke-width="0.8"/>
+        <ellipse cx="445" cy="290" rx="2.8" ry="3.2" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.4)" stroke-width="0.7"/>
+        <ellipse cx="455" cy="290" rx="2.8" ry="3.2" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.4)" stroke-width="0.7"/>
+      </g>
+      <!-- Persian slipper on hearth (tobacco) -->
+      <path d="M382,538 Q394,530 408,535 Q414,538 412,543 Q406,547 390,545 Q382,543 382,538 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.28)" stroke-width="0.9"/>
+
+      <!-- CHEMISTRY TABLE (left-centre foreground) -->
+      <!-- Table top -->
+      <rect x="58" y="398" width="210" height="9" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.3)" stroke-width="1.2"/>
+      <!-- Legs -->
+      <line x1="66" y1="407" x2="62" y2="480" stroke="rgba(196,154,60,0.2)" stroke-width="1.8"/>
+      <line x1="260" y1="407" x2="264" y2="480" stroke="rgba(196,154,60,0.2)" stroke-width="1.8"/>
+      <!-- Stretcher -->
+      <line x1="64" y1="452" x2="262" y2="452" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+      <!-- Bunsen burner -->
+      <line x1="104" y1="398" x2="104" y2="366" stroke="rgba(196,154,60,0.38)" stroke-width="1.8"/>
+      <rect x="97" y="362" width="14" height="5" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.3)" stroke-width="0.8"/>
+      <g filter="url(#glow1)">
+        <ellipse cx="104" cy="360" rx="6" ry="4" fill="rgba(232,201,106,0.28)" stroke="rgba(196,154,60,0.55)" stroke-width="1"/>
+      </g>
+      <!-- Test tube rack -->
+      <g stroke="rgba(196,154,60,0.32)" fill="none" stroke-width="0.9">
+        <line x1="140" y1="370" x2="140" y2="398"/><ellipse cx="140" cy="372" rx="3" ry="3"/>
+        <line x1="150" y1="367" x2="150" y2="398"/><ellipse cx="150" cy="369" rx="3" ry="3"/>
+        <line x1="160" y1="373" x2="160" y2="398"/><ellipse cx="160" cy="375" rx="3" ry="3"/>
+        <line x1="170" y1="368" x2="170" y2="398"/><ellipse cx="170" cy="370" rx="3" ry="3"/>
+      </g>
+      <rect x="136" y="390" width="38" height="4" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.6"/>
+      <!-- Round-bottom flask on stand -->
+      <circle cx="205" cy="380" rx="14" ry="14" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.3)" stroke-width="1" cx="205" cy="380" r="14"/>
+      <line x1="205" y1="366" x2="205" y2="352" stroke="rgba(196,154,60,0.28)" stroke-width="1.4"/>
+      <path d="M196,395 L214,395 L212,403 Q205,407 198,403 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.25)" stroke-width="0.8"/>
+      <!-- Scattered papers on table -->
+      <rect x="62" y="390" width="40" height="8" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.18)" stroke-width="0.5" transform="rotate(-3,62,390)"/>
+      <rect x="70" y="389" width="32" height="6" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.12)" stroke-width="0.5" transform="rotate(4,70,389)"/>
+
+      <!-- ARMCHAIR (centre-right, Holmes's chair) -->
+      <!-- Back -->
+      <path d="M212,426 Q207,360 222,322 Q232,308 248,306 Q264,306 274,322 Q289,360 284,426 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.22)" stroke-width="1.3"/>
+      <!-- Seat -->
+      <path d="M205,426 L291,426 Q298,448 295,464 L201,464 Q198,448 205,426 Z" fill="rgba(196,154,60,0.035)" stroke="rgba(196,154,60,0.2)" stroke-width="1.2"/>
+      <!-- Arms -->
+      <path d="M207,395 Q192,400 190,420 L202,420 Q203,406 212,402 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.17)" stroke-width="1"/>
+      <path d="M289,395 Q304,400 306,420 L294,420 Q293,406 284,402 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.17)" stroke-width="1"/>
+      <!-- Legs -->
+      <line x1="204" y1="464" x2="202" y2="484" stroke="rgba(196,154,60,0.22)" stroke-width="2"/>
+      <line x1="292" y1="464" x2="294" y2="484" stroke="rgba(196,154,60,0.22)" stroke-width="2"/>
+      <!-- Cushion tuck -->
+      <path d="M212,428 Q248,422 284,428" fill="none" stroke="rgba(196,154,60,0.1)" stroke-width="0.9"/>
+
+      <!-- VIOLIN propped against chair arm -->
+      <g opacity="0.68" transform="translate(296,338) rotate(-12)">
+        <path d="M10,0 Q19,-6 21,9 Q23,20 19,28 Q21,36 19,44 Q23,52 19,60 Q17,68 10,71 Q3,68 1,60 Q-3,52 1,44 Q-1,36 1,28 Q-3,20 -1,9 Q1,-6 10,0 Z" fill="rgba(196,154,60,0.07)" stroke="#C49A3C" stroke-width="1.1"/>
+        <path d="M6,30 L6,42" stroke="rgba(196,154,60,0.55)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M14,30 L14,42" stroke="rgba(196,154,60,0.55)" stroke-width="1.3" stroke-linecap="round"/>
+        <rect x="6" y="-24" width="8" height="24" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.3)" stroke-width="0.9"/>
+        <path d="M6,-24 Q4,-31 10,-36 Q16,-31 14,-24" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="0.9"/>
+        <g stroke="rgba(196,154,60,0.14)" stroke-width="0.45">
+          <line x1="8.5" y1="-24" x2="8.5" y2="71"/>
+          <line x1="10.5" y1="-24" x2="10.5" y2="71"/>
+          <line x1="12.5" y1="-24" x2="12.5" y2="71"/>
+        </g>
+      </g>
+      <!-- Violin bow leaning on chair -->
+      <line x1="320" y1="310" x2="310" y2="420" stroke="rgba(196,154,60,0.3)" stroke-width="1.2" stroke-linecap="round"/>
+
+      <!-- PIPE on chair arm, wisps of smoke -->
+      <g opacity="0.65" transform="translate(286,405)">
+        <path d="M0,0 L30,6" stroke="#C49A3C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M30,6 Q38,5 40,11 Q42,18 35,20 Q28,19 27,13" fill="rgba(196,154,60,0.09)" stroke="#C49A3C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M37,4 Q35,-4 39,-11 Q43,-18 40,-26" stroke="rgba(196,154,60,0.22)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+        <path d="M41,3 Q40,-5 44,-12 Q48,-19 45,-28" stroke="rgba(196,154,60,0.13)" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- Papers on floor -->
+      <g opacity="0.3" stroke="rgba(196,154,60,0.28)" fill="rgba(196,154,60,0.04)" stroke-width="0.5">
+        <rect x="320" y="545" width="65" height="48" transform="rotate(-7,320,545)"/>
+        <rect x="336" y="558" width="52" height="40" transform="rotate(6,336,558)"/>
+        <rect x="130" y="568" width="78" height="54" transform="rotate(-4,130,568)"/>
+        <rect x="148" y="575" width="60" height="44" transform="rotate(8,148,575)"/>
+        <rect x="195" y="562" width="44" height="32" transform="rotate(-2,195,562)"/>
+      </g>
+
+      <!-- Corner ornaments -->
+      <g stroke="rgba(196,154,60,0.16)" stroke-width="0.9" fill="none">
+        <path d="M18,18 L18,44 M18,18 L44,18"/>
+        <path d="M462,18 L462,44 M462,18 L436,18"/>
+        <path d="M18,642 L18,616 M18,642 L44,642"/>
+        <path d="M462,642 L462,616 M462,642 L436,642"/>
+      </g>
+
+      <!-- Address plaque -->
+      <g opacity="0.55">
+        <rect x="148" y="628" width="184" height="26" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="0.8"/>
+        <text x="240" y="640" font-family="Cinzel,serif" font-size="6" fill="#C49A3C" text-anchor="middle" letter-spacing="3">221B BAKER STREET</text>
+        <text x="240" y="651" font-family="Cinzel,serif" font-size="5" fill="rgba(196,154,60,0.52)" text-anchor="middle" letter-spacing="2">THE STUDY · LONDON</text>
+      </g>
+    </svg>
+
+    <!-- Name / dates overlay -->
+    <div class="portrait-caption">
+      <span class="portrait-name">Sherlock Holmes</span>
+      <span class="portrait-dates">1854 — ?</span>
+      <span class="portrait-location">The Library · Museum of Minds</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: INFO PANEL -->
+  <div class="hero-info">
+
+    <div class="hero-eyebrow">Consulting Detective · 221B Baker Street</div>
+
+    <div class="photo-frame">
+      <div class="frame-corner tl"></div><div class="frame-corner tr"></div>
+      <div class="frame-corner bl"></div><div class="frame-corner br"></div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Sherlock_Holmes_Portrait_Paget.jpg" alt="Sherlock Holmes — Sidney Paget, 1891">
+    </div>
+    <p class="photo-caption">Sidney Paget, 1891 — The Strand Magazine</p>
+
+    <div class="hero-attribution">As written by Arthur Conan Doyle, 1887–1917</div>
+
+    <div class="hero-description">
+      Sherlock Holmes is the consulting detective of 221B Baker Street — the master of observation and deductive inference who can read a man's profession, history, and character from the calluses on his hands and the mud on his boots.
+    </div>
+
+    <div>
+      <div class="trust-badge">
+        <span class="trust-score-num">92</span>
+        <div class="trust-score-divider"></div>
+        <div>
+          <div class="trust-label-text">Foundational</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.45rem;letter-spacing:0.2em;color:var(--text-dim);margin-top:0.15rem;text-transform:uppercase;">Trust Score</div>
+        </div>
+      </div>
+      <div class="trust-detail" style="margin-top:0.7rem;">
+        1,814 passages · 4 novels · 56 stories · All US public-domain verified
+      </div>
+    </div>
+
+    <div>
+      <div class="starters-label">Begin a conversation</div>
+      <div class="starters-grid">
+        <button class="starter-btn" data-starter="Show me your method. Where do most amateurs go wrong?">Show me your method. Where do most amateurs go wrong?</button>
+        <button class="starter-btn" data-starter="What can you make of me, just from this conversation?">What can you make of me, just from this conversation?</button>
+        <button class="starter-btn" data-starter="Tell me about Reichenbach. Did you expect to survive?">Tell me about Reichenbach. Did you expect to survive?</button>
+        <button class="starter-btn" data-starter="Why Watson, of all men?">Why Watson, of all men?</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORPUS + QUOTES SECTION -->
+<section class="illustration-section">
+
+  <div class="illus-svg-col" style="padding:3.5rem 3rem;flex-direction:column;align-items:flex-start;justify-content:center;gap:2rem;">
+    <span class="hero-eyebrow">The Canon</span>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.55rem;">
+      <li class="corpus-work"><span class="corpus-year">1887</span>A Study in Scarlet</li>
+      <li class="corpus-work"><span class="corpus-year">1890</span>The Sign of Four</li>
+      <li class="corpus-work"><span class="corpus-year">1892</span>The Adventures of Sherlock Holmes <span class="corpus-count">12 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1894</span>The Memoirs of Sherlock Holmes <span class="corpus-count">12 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1902</span>The Hound of the Baskervilles</li>
+      <li class="corpus-work"><span class="corpus-year">1905</span>The Return of Sherlock Holmes <span class="corpus-count">13 stories</span></li>
+      <li class="corpus-work"><span class="corpus-year">1915</span>The Valley of Fear</li>
+      <li class="corpus-work"><span class="corpus-year">1917</span>His Last Bow <span class="corpus-count">8 stories</span></li>
+    </ul>
+    <p class="illus-note" style="margin-top:0.5rem;">All 8 works are unambiguous US public domain. The Casebook (1921–1927) is excluded pending IP review.</p>
+    <div style="display:flex;gap:2rem;margin-top:0.5rem;">
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">1,814</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Passages</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">92</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Trust Score</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--amber);">60</div>
+        <div style="font-family:'Inter',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem;">Works</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="illus-text-col" style="border-left:1px solid rgba(196,154,60,0.12);">
+    <span class="hero-eyebrow">From the Canon</span>
+
+    <div class="canon-quote">
+      <p class="illus-quote">"When you have eliminated the impossible, whatever remains, however improbable, must be the truth."</p>
+      <cite class="quote-cite">The Sign of Four, 1890</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.2rem;">"You see, but you do not observe. The distinction is clear."</p>
+      <cite class="quote-cite">A Scandal in Bohemia, 1891</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.15rem;">"The game is afoot."</p>
+      <cite class="quote-cite">The Adventure of the Abbey Grange, 1904</cite>
+    </div>
+
+    <div class="canon-quote">
+      <p class="illus-quote" style="font-size:1.1rem;">"I am not the whole of myself when there is no work to engage me."</p>
+      <cite class="quote-cite">The Adventure of the Devil's Foot, 1910</cite>
+    </div>
+
+  </div>
+
+  <!-- Closing out the old duplicate SVG block below — replaced with above -->
+  <div style="display:none">
+    <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+          <stop offset="0%" stop-color="#1A1520"/>
+          <stop offset="100%" stop-color="#0A090C"/>
+        </radialGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background -->
+      <rect width="560" height="720" fill="url(#bgGrad)"/>
+
+      <!-- Ambient lamp glow top-right -->
+      <ellipse cx="440" cy="120" rx="180" ry="160" fill="url(#lampGlow)"/>
+
+      <!-- Wall panelling lines -->
+      <line x1="0" y1="0" x2="0" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="560" y1="0" x2="560" y2="720" stroke="rgba(196,154,60,0.06)" stroke-width="1"/>
+      <line x1="0" y1="580" x2="560" y2="580" stroke="rgba(196,154,60,0.08)" stroke-width="0.5"/>
+      <rect x="20" y="20" width="520" height="540" fill="none" stroke="rgba(196,154,60,0.05)" stroke-width="0.5"/>
+
+      <!-- Gas lamp on wall (right) -->
+      <g filter="url(#softGlow)" opacity="0.85">
+        <path d="M480,60 Q500,60 500,90 L500,130" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="500" cy="145" rx="18" ry="22" fill="rgba(196,154,60,0.08)"/>
+        <ellipse cx="500" cy="145" rx="8" ry="10" fill="rgba(232,201,106,0.25)"/>
+        <line x1="500" y1="167" x2="500" y2="178" stroke="#C49A3C" stroke-width="1.2"/>
+        <path d="M492,178 L508,178" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Pipe -->
+      <g filter="url(#glow)" opacity="0.7">
+        <path d="M310,560 Q330,545 355,542 Q365,541 368,548 Q371,555 360,558 Q345,562 320,570" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/>
+        <path d="M355,542 Q368,536 375,540 Q380,544 375,550 Q368,554 360,553" fill="none" stroke="#C49A3C" stroke-width="1.5"/>
+        <path d="M362,537 Q366,528 370,525" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <path d="M367,536 Q373,526 376,523" stroke="#C49A3C" stroke-width="0.8" stroke-linecap="round" opacity="0.35"/>
+      </g>
+
+      <!-- FIGURE -->
+      <!-- Armchair silhouette -->
+      <g opacity="0.35">
+        <path d="M140,580 L140,480 Q140,460 160,460 L400,460 Q420,460 420,480 L420,580 Z" fill="#1A1520" stroke="rgba(196,154,60,0.15)" stroke-width="1"/>
+        <path d="M130,460 Q130,440 150,440 L160,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <path d="M430,460 Q430,440 410,440 L400,460 Z" fill="#1A1520" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+        <rect x="120" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+        <rect x="410" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
+      </g>
+
+      <!-- FIGURE LINE ART -->
+      <g stroke="#C49A3C" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M240,155 Q238,120 248,102 Q258,82 280,78 Q302,74 316,90 Q330,106 328,135 Q326,158 318,172" stroke-width="1.8" opacity="0.9"/>
+        <path d="M240,155 Q236,170 238,182 Q240,192 248,196" stroke-width="1.6" opacity="0.85"/>
+        <path d="M318,172 Q322,185 318,196 Q312,206 300,210 Q285,215 270,212 Q255,208 248,196" stroke-width="1.6" opacity="0.85"/>
+        <path d="M272,115 Q270,128 268,138 Q266,145 272,148 Q278,150 284,146 Q286,143 285,138" stroke-width="1.4" opacity="0.8"/>
+        <path d="M288,108 Q294,105 300,108 Q294,114 288,111 Z" stroke-width="1.2" opacity="0.75" fill="rgba(196,154,60,0.1)"/>
+        <path d="M265,110 Q270,107 275,110 Q270,115 265,112 Z" stroke-width="1.1" opacity="0.65" fill="rgba(196,154,60,0.08)"/>
+        <path d="M262,103 Q268,98 276,101" stroke-width="1.4" opacity="0.7"/>
+        <path d="M286,101 Q294,97 303,100" stroke-width="1.4" opacity="0.7"/>
+        <path d="M240,130 Q232,135 233,148 Q234,158 240,160" stroke-width="1.3" opacity="0.65"/>
+        <path d="M245,90 Q248,76 260,72 Q275,66 290,68 Q308,70 318,82" stroke-width="1.4" opacity="0.7"/>
+        <path d="M245,90 Q238,88 236,82 Q238,74 245,72" stroke-width="1.1" opacity="0.5"/>
+        <path d="M250,80 Q258,74 268,72" stroke-width="0.9" opacity="0.4"/>
+        <path d="M300,70 Q308,68 316,72 Q320,78 318,86" stroke-width="0.9" opacity="0.4"/>
+        <path d="M240,155 Q238,165 242,172 Q248,178 256,180" stroke-width="1.2" opacity="0.55"/>
+        <path d="M318,160 Q322,170 320,178 Q314,184 306,186" stroke-width="1.2" opacity="0.55"/>
+        <path d="M256,200 Q265,208 280,210 Q295,210 304,200" stroke-width="1.5" opacity="0.75"/>
+        <path d="M262,210 L258,235" stroke-width="1.4" opacity="0.75"/>
+        <path d="M300,208 L304,233" stroke-width="1.4" opacity="0.75"/>
+        <path d="M250,232 Q248,240 255,245 Q265,250 280,248 Q295,246 305,240 Q310,235 308,230" stroke-width="1.5" opacity="0.8"/>
+        <path d="M270,248 Q278,258 285,248" stroke-width="1.3" opacity="0.75"/>
+        <path d="M276,258 L278,280" stroke-width="1.2" opacity="0.65"/>
+        <path d="M255,245 Q238,260 230,290 Q222,320 220,360" stroke-width="1.6" opacity="0.8"/>
+        <path d="M305,242 Q322,256 330,286 Q338,316 340,360" stroke-width="1.6" opacity="0.8"/>
+        <path d="M255,245 Q265,268 275,280" stroke-width="1.2" opacity="0.6"/>
+        <path d="M305,242 Q296,265 286,278" stroke-width="1.2" opacity="0.6"/>
+        <path d="M278,282 L280,380" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="308" r="2" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="330" r="2" stroke-width="1" opacity="0.5"/>
+        <circle cx="280" cy="352" r="2" stroke-width="1" opacity="0.5"/>
+        <path d="M220,360 Q218,400 222,440 Q226,465 235,475" stroke-width="1.5" opacity="0.75"/>
+        <path d="M340,360 Q342,400 338,440 Q334,465 325,475" stroke-width="1.5" opacity="0.75"/>
+        <path d="M235,475 Q258,488 280,490 Q302,488 325,475" stroke-width="1.4" opacity="0.65"/>
+        <path d="M260,280 Q252,320 250,360 Q248,395 252,425" stroke-width="1.1" opacity="0.55"/>
+        <path d="M300,280 Q308,320 310,360 Q312,395 308,425" stroke-width="1.1" opacity="0.55"/>
+        <path d="M252,425 Q266,432 280,433 Q294,432 308,425" stroke-width="1.1" opacity="0.55"/>
+        <path d="M286,340 Q296,342 302,350 Q306,358 304,365" stroke-width="0.9" opacity="0.5" stroke-dasharray="3,2"/>
+        <path d="M220,360 Q210,370 198,378 Q188,384 182,395 Q178,408 180,430 Q182,450 188,462" stroke-width="1.5" opacity="0.75"/>
+        <path d="M188,462 Q192,470 200,474 Q208,476 214,470" stroke-width="1.3" opacity="0.65"/>
+        <path d="M194,472 L196,485" stroke-width="1" opacity="0.5"/>
+        <path d="M200,475 L202,488" stroke-width="1" opacity="0.5"/>
+        <path d="M206,473 L208,486" stroke-width="1" opacity="0.5"/>
+        <path d="M340,360 Q352,370 362,382 Q372,396 374,418 Q374,440 368,455" stroke-width="1.5" opacity="0.75"/>
+        <path d="M368,455 Q364,468 356,474 Q348,478 342,472" stroke-width="1.3" opacity="0.65"/>
+        <path d="M360,472 L358,485" stroke-width="1" opacity="0.5"/>
+        <path d="M354,475 L352,488" stroke-width="1" opacity="0.5"/>
+        <path d="M348,473 L346,485" stroke-width="1" opacity="0.5"/>
+        <path d="M250,490 Q248,520 252,555 Q256,575 260,590" stroke-width="1.4" opacity="0.65"/>
+        <path d="M310,490 Q312,520 308,555 Q304,575 300,590" stroke-width="1.4" opacity="0.65"/>
+        <path d="M265,490 L268,590" stroke-width="0.8" opacity="0.35"/>
+        <path d="M295,490 L292,590" stroke-width="0.8" opacity="0.35"/>
+        <path d="M238,88 Q240,72 245,62 Q252,50 268,46 Q282,42 296,46 Q312,52 318,64 Q324,76 322,90" stroke-width="1.8" opacity="0.85"/>
+        <path d="M236,88 Q230,84 228,80 Q228,74 234,72 Q240,70 245,74" stroke-width="1.4" opacity="0.75"/>
+        <path d="M322,88 Q328,84 330,78 Q330,72 324,70 Q318,68 313,73" stroke-width="1.4" opacity="0.75"/>
+        <path d="M238,88 Q245,86 256,85 Q270,84 284,85 Q298,86 310,88 L322,88" stroke-width="1" opacity="0.55"/>
+        <path d="M240,76 Q234,68 235,58 Q238,50 244,52 Q248,56 246,66" stroke-width="1.1" opacity="0.55"/>
+        <path d="M320,76 Q326,68 325,58 Q322,50 316,52 Q312,56 314,66" stroke-width="1.1" opacity="0.55"/>
+        <path d="M246,62 Q280,55 314,62" stroke-width="0.9" opacity="0.45"/>
+        <circle cx="280" cy="58" r="3" stroke-width="1.1" opacity="0.55"/>
+        <circle cx="245" cy="510" r="22" stroke-width="1.3" opacity="0.4"/>
+        <line x1="260" y1="526" x2="278" y2="545" stroke-width="1.8" opacity="0.45"/>
+        <path d="M234,498 Q238,494 244,496" stroke-width="0.9" opacity="0.3"/>
+      </g>
+
+      <!-- Smoke wisps -->
+      <g opacity="0.25" stroke="#C49A3C" fill="none" stroke-width="0.8">
+        <path d="M370,525 Q365,512 372,500 Q378,488 374,475" stroke-linecap="round"/>
+        <path d="M374,522 Q380,508 376,494 Q372,480 378,468" stroke-linecap="round" opacity="0.6"/>
+      </g>
+
+      <!-- Decorative corner ornaments -->
+      <g stroke="rgba(196,154,60,0.2)" stroke-width="0.8" fill="none">
+        <path d="M30,30 L30,55 M30,30 L55,30"/>
+        <path d="M530,30 L530,55 M530,30 L505,30"/>
+        <path d="M30,560 L30,535 M30,560 L55,560"/>
+        <path d="M530,560 L530,535 M530,560 L505,560"/>
+      </g>
+
+      <!-- 221B Baker Street address plaque -->
+      <g opacity="0.5">
+        <rect x="178" y="600" width="204" height="38" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="0.8"/>
+        <text x="280" y="614" font-family="'Cinzel', serif" font-size="6" fill="#C49A3C" text-anchor="middle" letter-spacing="4">221B BAKER STREET</text>
+        <text x="280" y="630" font-family="'Cinzel', serif" font-size="5" fill="rgba(196,154,60,0.6)" text-anchor="middle" letter-spacing="3">LONDON</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="illus-text-col">
+    <span class="hero-eyebrow">The Science of Observation</span>
+    <p class="illus-quote">"You see, but you do not observe."</p>
+  </div><!-- end hidden old SVG block -->
+
+</section>
+
+<!-- CHAT SECTION -->
+<section class="chat-section">
+  <div class="chat-container">
+    <div class="chat-widget">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <span class="chat-persona-name">Sherlock Holmes</span>
+          <span class="chat-persona-sub">(1854 – ?) — the world's only consulting detective</span>
+        </div>
+        <div class="chat-header-right">
+          <div class="status-dot"></div>
+          <span class="status-text">221B Baker Street</span>
+        </div>
+      </div>
+
+      <!-- Messages Area -->
+      <div class="messages-area" id="messagesArea">
+        <!-- Initial greeting injected by JS -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div style="padding: 0 1.5rem 0.5rem; display:flex;" id="typingWrapper">
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <textarea
+          class="chat-input"
+          id="chatInput"
+          placeholder="Lay your case before Mr. Holmes…"
+          rows="1"
+        ></textarea>
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+
+      <!-- Footer Note -->
+      <div class="chat-footer-note">
+        <span class="corpus-note">
+          RAG-grounded · <span>4 novels · 56 stories</span> · Arthur Conan Doyle · Public domain
+        </span>
+        <span class="corpus-note" style="color:var(--amber-dim);">Sources cited on each response</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO GRID -->
+<section class="info-section">
+  <div class="info-grid">
+    <!-- Corpus Works -->
+    <div class="info-card">
+      <div class="info-card-header">Corpus — Canonical Works</div>
+      <ul class="corpus-list">
+        <li><em>A Study in Scarlet</em> — 1887</li>
+        <li><em>The Sign of the Four</em> — 1890</li>
+        <li><em>The Adventures of Sherlock Holmes</em> — 1892</li>
+        <li><em>The Memoirs of Sherlock Holmes</em> — 1894</li>
+        <li><em>The Hound of the Baskervilles</em> — 1902</li>
+        <li><em>The Return of Sherlock Holmes</em> — 1905</li>
+        <li><em>The Valley of Fear</em> — 1915</li>
+        <li><em>His Last Bow</em> — 1917</li>
+      </ul>
+      <div class="corpus-stat">
+        <div class="stat-item">
+          <span class="stat-num">1,814</span>
+          <span class="stat-label">Corpus Chunks</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Distinct Works</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">~600k</span>
+          <span class="stat-label">Words Indexed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Standard -->
+    <div class="info-card">
+      <div class="info-card-header">Editorial Standard</div>
+      <div class="editorial-list">
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Do</span>
+          <span class="editorial-text">Discuss any case in the canonical corpus, demonstrate his method of observation and deductive inference, speak in authentic late-Victorian educated English.</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Do</span>
+          <span class="editorial-text">Acknowledge the cocaine, the periodic despair, the difficulty with ordinary sentiment — honestly, without dramatizing or denial.</span>
+        </div>
+        <div class="editorial-item">
+          <span class="editorial-tag">Will Not</span>
+          <span class="editorial-text">Invent cases Doyle did not write. Extend the canon. Speak to events after 1917, when Watson last published.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="footer-left">Museum of Minds — Personas grounded in primary sources</span>
+  <div class="footer-right">
+    <a href="https://museumofminds.com">The Museum</a>
+    <a href="https://museumofminds.com/about">About</a>
+  </div>
+</footer>
+
+<script>
+  const API_BASE = 'https://sherlock-holmes-production-5185.up.railway.app';
+  let conversationId = null;
+
+  const messagesEl  = document.getElementById('messagesArea');
+  const inputEl     = document.getElementById('chatInput');
+  const sendBtn     = document.getElementById('sendBtn');
+  const typingEl    = document.getElementById('typingIndicator');
+
+  // Starter buttons
+  document.querySelectorAll('.starter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      inputEl.value = btn.dataset.starter;
+      inputEl.focus();
+      sendMessage();
+    });
+  });
+
+  // Input auto-resize
+  inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = Math.min(inputEl.scrollHeight, 150) + 'px';
+  });
+
+  inputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  function appendMessage(role, text, sources) {
+    const isHolmes = role === 'persona';
+    const wrap = document.createElement('div');
+    wrap.className = 'message ' + (isHolmes ? 'persona' : 'user');
+
+    const lbl = document.createElement('span');
+    lbl.className = 'message-role';
+    lbl.textContent = isHolmes ? 'Sherlock Holmes' : 'You';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.textContent = text;
+
+    wrap.appendChild(lbl);
+    wrap.appendChild(bubble);
+
+    if (isHolmes && sources && sources.length > 0) {
+      const toggle = document.createElement('button');
+      toggle.className = 'sources-toggle';
+      toggle.textContent = '▾ sources (' + sources.length + ')';
+      toggle.style.cssText = 'background:none;border:none;cursor:pointer;font-family:Cinzel,serif;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);opacity:0.75;padding:0.3rem 0 0.1rem;display:block;';
+
+      const panel = document.createElement('div');
+      panel.className = 'sources-panel';
+      panel.style.cssText = 'display:none;background:var(--deep);border-left:3px solid rgba(196,154,60,0.3);padding:0.6rem 1rem;margin-top:0.3rem;font-family:Inter,sans-serif;font-size:0.55rem;letter-spacing:0.1em;color:var(--text-dim);';
+
+      sources.forEach(s => {
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:0.2rem 0;';
+        const type = document.createElement('span');
+        type.style.cssText = 'color:var(--amber);opacity:0.7;margin-right:0.5rem;text-transform:uppercase;';
+        type.textContent = s.knowledge_type === 'critical discourse' ? 'Discourse' : 'Canon';
+        item.appendChild(type);
+        item.appendChild(document.createTextNode(s.title || s.source || 'Doyle corpus'));
+        panel.appendChild(item);
+      });
+
+      toggle.addEventListener('click', () => {
+        const open = panel.style.display === 'block';
+        panel.style.display = open ? 'none' : 'block';
+        toggle.textContent = open ? '▾ sources (' + sources.length + ')' : '▴ hide sources';
+      });
+
+      wrap.appendChild(toggle);
+      wrap.appendChild(panel);
+    }
+
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return wrap;
+  }
+
+  async function sendMessage() {
+    const text = inputEl.value.trim();
+    if (!text) return;
+
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    appendMessage('user', text, null);
+    typingEl.classList.add('visible');
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const resp = await fetch(API_BASE + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          conversation_id: conversationId,
+          mode: 'historical',
+          length: 'detailed',
+          reading_level: 'general'
+        })
+      });
+
+      if (!resp.ok) {
+        const errText = await resp.text().catch(() => '');
+        throw new Error(resp.status + ': ' + errText.slice(0, 200));
+      }
+
+      const data = await resp.json();
+      conversationId = data.conversation_id;
+      typingEl.classList.remove('visible');
+      appendMessage('persona', data.response, data.sources || []);
+    } catch (err) {
+      typingEl.classList.remove('visible');
+      appendMessage('persona',
+        'I find myself momentarily without words — a most uncharacteristic state. The difficulty appears to be with the telegraph, not the problem itself. Please try again.',
+        null);
+      console.error('Chat error:', err);
+    } finally {
+      sendBtn.disabled = false;
+      inputEl.focus();
+    }
+  }
+
+  // Initial greeting
+  appendMessage('persona',
+    'Holmes is available. Present your case — lay the facts before me without theory or embellishment, and I shall tell you what they mean.',
+    null);
+</script>
+</body>
+</html>
