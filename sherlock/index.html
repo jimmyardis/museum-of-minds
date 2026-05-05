@@ -1256,5 +1256,138 @@ nav a:hover { color: var(--amber); }
   </div>
 </footer>
 
+<script>
+  const API_BASE = 'https://sherlock-holmes-production-5185.up.railway.app';
+  let conversationId = null;
+
+  const messagesEl  = document.getElementById('messagesArea');
+  const inputEl     = document.getElementById('chatInput');
+  const sendBtn     = document.getElementById('sendBtn');
+  const typingEl    = document.getElementById('typingIndicator');
+
+  // Starter buttons
+  document.querySelectorAll('.starter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      inputEl.value = btn.dataset.starter;
+      inputEl.focus();
+      sendMessage();
+    });
+  });
+
+  // Input auto-resize
+  inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = Math.min(inputEl.scrollHeight, 150) + 'px';
+  });
+
+  inputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  function appendMessage(role, text, sources) {
+    const isHolmes = role === 'persona';
+    const wrap = document.createElement('div');
+    wrap.className = 'message ' + (isHolmes ? 'persona' : 'user');
+
+    const lbl = document.createElement('span');
+    lbl.className = 'message-role';
+    lbl.textContent = isHolmes ? 'Sherlock Holmes' : 'You';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.textContent = text;
+
+    wrap.appendChild(lbl);
+    wrap.appendChild(bubble);
+
+    if (isHolmes && sources && sources.length > 0) {
+      const toggle = document.createElement('button');
+      toggle.className = 'sources-toggle';
+      toggle.textContent = '▾ sources (' + sources.length + ')';
+      toggle.style.cssText = 'background:none;border:none;cursor:pointer;font-family:Cinzel,serif;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);opacity:0.75;padding:0.3rem 0 0.1rem;display:block;';
+
+      const panel = document.createElement('div');
+      panel.className = 'sources-panel';
+      panel.style.cssText = 'display:none;background:var(--deep);border-left:3px solid rgba(196,154,60,0.3);padding:0.6rem 1rem;margin-top:0.3rem;font-family:Inter,sans-serif;font-size:0.55rem;letter-spacing:0.1em;color:var(--text-dim);';
+
+      sources.forEach(s => {
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:0.2rem 0;';
+        const type = document.createElement('span');
+        type.style.cssText = 'color:var(--amber);opacity:0.7;margin-right:0.5rem;text-transform:uppercase;';
+        type.textContent = s.knowledge_type === 'critical discourse' ? 'Discourse' : 'Canon';
+        item.appendChild(type);
+        item.appendChild(document.createTextNode(s.title || s.source || 'Doyle corpus'));
+        panel.appendChild(item);
+      });
+
+      toggle.addEventListener('click', () => {
+        const open = panel.style.display === 'block';
+        panel.style.display = open ? 'none' : 'block';
+        toggle.textContent = open ? '▾ sources (' + sources.length + ')' : '▴ hide sources';
+      });
+
+      wrap.appendChild(toggle);
+      wrap.appendChild(panel);
+    }
+
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return wrap;
+  }
+
+  async function sendMessage() {
+    const text = inputEl.value.trim();
+    if (!text) return;
+
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    appendMessage('user', text, null);
+    typingEl.classList.add('visible');
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const resp = await fetch(API_BASE + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          conversation_id: conversationId,
+          mode: 'historical',
+          length: 'detailed',
+          reading_level: 'general'
+        })
+      });
+
+      if (!resp.ok) {
+        const errText = await resp.text().catch(() => '');
+        throw new Error(resp.status + ': ' + errText.slice(0, 200));
+      }
+
+      const data = await resp.json();
+      conversationId = data.conversation_id;
+      typingEl.classList.remove('visible');
+      appendMessage('persona', data.response, data.sources || []);
+    } catch (err) {
+      typingEl.classList.remove('visible');
+      appendMessage('persona',
+        'I find myself momentarily without words — a most uncharacteristic state. The difficulty appears to be with the telegraph, not the problem itself. Please try again.',
+        null);
+      console.error('Chat error:', err);
+    } finally {
+      sendBtn.disabled = false;
+      inputEl.focus();
+    }
+  }
+
+  // Initial greeting
+  appendMessage('persona',
+    'Holmes is available. Present your case — lay the facts before me without theory or embellishment, and I shall tell you what they mean.',
+    null);
+</script>
 </body>
 </html>
