@@ -1,1 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carl Jung — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void: #0D0A0B;
+      --deep: #120E10;
+      --surface: #1C1518;
+      --burgundy: #6B1E2E;
+      --burgundy-bright: #8B2A3E;
+      --gold: #B8934A;
+      --gold-pale: #D4B060;
+      --parchment: #E8DFC8;
+      --parchment-dim: #A89870;
+      --text: #D4C9B0;
+      --text-dim: #7A6E5A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--void);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 1.4rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(184,147,74,0.2);
+      animation: fadeDown 1s ease both;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      border-bottom: 1px solid rgba(184,147,74,0.15);
+      overflow: hidden;
+    }
+
+    /* Left: Mandala panel */
+    .mandala-panel {
+      position: relative;
+      background: var(--deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .mandala-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(107,30,46,0.25) 0%, transparent 70%);
+    }
+
+    .mandala-svg-wrap {
+      position: relative;
+      width: min(520px, 90%);
+      aspect-ratio: 1;
+      animation: slowRotate 120s linear infinite;
+    }
+
+    .mandala-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Inner ring rotates opposite */
+    .inner-ring {
+      animation: slowRotateReverse 80s linear infinite;
+      transform-origin: center;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 400;
+      color: var(--parchment);
+      line-height: 1.05;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title h1 span {
+      color: var(--gold);
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      margin-top: 0.7rem;
+      display: block;
+      opacity: 0.7;
+    }
+
+    /* Right: Bio panel */
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 4rem 3rem;
+      border-left: 1px solid rgba(184,147,74,0.2);
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(107,30,46,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: var(--burgundy-bright);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Photo frame with alchemical border */
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 3rem;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(184,147,74,0.4);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border: 1px solid rgba(184,147,74,0.15);
+    }
+
+    .photo-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: var(--gold);
+      border-style: solid;
+      z-index: 2;
+    }
+    .photo-corner.tl { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+    .photo-corner.tr { top: -2px; right: -2px; border-width: 2px 2px 0 0; }
+    .photo-corner.bl { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; }
+    .photo-corner.br { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.1) brightness(0.9) sepia(20%);
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-placeholder span {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(212,201,176,0.6);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .placard {
+      border-top: 1px solid rgba(184,147,74,0.3);
+      padding-top: 2rem;
+      margin-top: auto;
+    }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--parchment);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .placard-bio {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    .placard-bio strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .placard-bio em {
+      font-style: italic;
+      color: var(--parchment-dim);
+    }
+
+    /* ── DIVIDER ── */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 3rem;
+      border-bottom: 1px solid rgba(184,147,74,0.1);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      white-space: nowrap;
+      opacity: 0.6;
+    }
+
+    .section-rule::before,
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,147,74,0.3), transparent);
+    }
+
+    /* Alchemical symbol in divider */
+    .alch-symbol {
+      color: var(--gold);
+      opacity: 0.4;
+      font-size: 1rem;
+    }
+
+    /* ── CHATBOT SECTION ── */
+    .chatbot-section {
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      border-bottom: 1px solid rgba(184,147,74,0.15);
+      background: var(--deep);
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--parchment);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.8rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .chatbot-intro p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .chatbot-intro .domain-tags {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,147,74,0.2);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      border: 1px solid rgba(184,147,74,0.25);
+      padding: 0.3rem 0.8rem;
+      opacity: 0.6;
+    }
+
+    .chatbot-embed {
+      border: 1px solid rgba(184,147,74,0.25);
+      min-height: 580px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      box-shadow: 0 0 60px rgba(107,30,46,0.2), inset 0 0 40px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .chatbot-embed::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(184,147,74,0.1);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chatbot-embed .scene-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%) contrast(1.1) brightness(0.5) sepia(30%);
+      opacity: 0.6;
+    }
+
+    .chatbot-embed .scene-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: rgba(13,10,11,0.85);
+      font-family: 'Cinzel', serif;
+      font-size: 0.48rem;
+      letter-spacing: 0.2em;
+      color: rgba(184,147,74,0.5);
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      padding: 7rem 3rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(184,147,74,0.15);
+      position: relative;
+    }
+
+    .quote-ornament {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 5rem;
+      color: var(--burgundy);
+      line-height: 0.5;
+      margin-bottom: 2rem;
+      opacity: 0.4;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.6;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--parchment);
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── CORPUS STRIP ── */
+    .corpus-strip {
+      background: var(--surface);
+      padding: 3rem;
+      border-bottom: 1px solid rgba(184,147,74,0.15);
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .corpus-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.7;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      min-width: 120px;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.5rem;
+    }
+
+    .corpus-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(184,147,74,0.1);
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      opacity: 0.65;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes slowRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes slowRotateReverse {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(-360deg); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero { animation: fadeIn 1.2s ease 0.1s both; }
+    .chatbot-section { animation: fadeIn 1s ease 0.3s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .mandala-panel { min-height: 380px; }
+      .bio-panel { border-left: none; border-top: 1px solid rgba(184,147,74,0.2); padding: 2.5rem 1.5rem; }
+      .chatbot-section { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      header { padding: 1rem 1.5rem; }
+      .hero-title { left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+      .corpus-strip { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <span class="header-label">In Conversation With</span>
+    <span class="header-right">Accession No. &nbsp;CG–1875–2026</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Left: Alchemical Mandala -->
+    <div class="mandala-panel">
+      <div class="mandala-svg-wrap">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer rings -->
+          <circle cx="250" cy="250" r="235" fill="none" stroke="rgba(184,147,74,0.12)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="220" fill="none" stroke="rgba(184,147,74,0.08)" stroke-width="0.5"/>
+          <circle cx="250" cy="250" r="200" fill="none" stroke="rgba(184,147,74,0.2)" stroke-width="1.5"/>
+
+          <!-- Outer geometric ring — 12-fold -->
+          <g stroke="rgba(184,147,74,0.35)" stroke-width="1" fill="none">
+            <line x1="250" y1="50" x2="250" y2="450"/>
+            <line x1="50" y1="250" x2="450" y2="250"/>
+            <line x1="108" y1="108" x2="392" y2="392"/>
+            <line x1="392" y1="108" x2="108" y2="392"/>
+            <!-- additional spokes -->
+            <line x1="250" y1="50" x2="432" y2="350"/>
+            <line x1="250" y1="50" x2="68" y2="350"/>
+            <line x1="50" y1="250" x2="350" y2="68"/>
+            <line x1="450" y1="250" x2="150" y2="68"/>
+            <line x1="50" y1="250" x2="350" y2="432"/>
+            <line x1="450" y1="250" x2="150" y2="432"/>
+            <line x1="108" y1="108" x2="432" y2="150"/>
+            <line x1="392" y1="108" x2="68" y2="150"/>
+          </g>
+
+          <!-- Outer petal ring -->
+          <g fill="none" stroke="rgba(107,30,46,0.5)" stroke-width="1">
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(0 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(30 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(60 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(90 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(120 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(150 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(180 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(210 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(240 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(270 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(300 250 250)"/>
+            <ellipse cx="250" cy="100" rx="20" ry="40" transform="rotate(330 250 250)"/>
+          </g>
+
+          <!-- Mid ring -->
+          <circle cx="250" cy="250" r="155" fill="none" stroke="rgba(184,147,74,0.25)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="140" fill="none" stroke="rgba(184,147,74,0.12)" stroke-width="0.5"/>
+
+          <!-- Inner rotating element -->
+          <g class="inner-ring">
+            <!-- 8-pointed star -->
+            <g fill="none" stroke="rgba(184,147,74,0.4)" stroke-width="1.2">
+              <polygon points="250,110 265,240 395,250 265,260 250,390 235,260 105,250 235,240" />
+              <polygon points="250,120 275,235 380,210 265,255 290,380 245,265 120,290 235,245" opacity="0.4"/>
+            </g>
+            <!-- Inner petals -->
+            <g fill="none" stroke="rgba(107,30,46,0.6)" stroke-width="1">
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(0 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(45 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(90 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(135 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(180 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(225 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(270 250 250)"/>
+              <ellipse cx="250" cy="155" rx="14" ry="28" transform="rotate(315 250 250)"/>
+            </g>
+          </g>
+
+          <!-- Inner rings -->
+          <circle cx="250" cy="250" r="90" fill="none" stroke="rgba(184,147,74,0.3)" stroke-width="1.5"/>
+          <circle cx="250" cy="250" r="72" fill="rgba(107,30,46,0.08)" stroke="rgba(107,30,46,0.4)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="50" fill="rgba(13,10,11,0.5)" stroke="rgba(184,147,74,0.25)" stroke-width="1"/>
+
+          <!-- Alchemical cross at center -->
+          <g stroke="rgba(184,147,74,0.6)" stroke-width="1.5" fill="none">
+            <line x1="250" y1="220" x2="250" y2="280"/>
+            <line x1="220" y1="250" x2="280" y2="250"/>
+          </g>
+
+          <!-- Center point -->
+          <circle cx="250" cy="250" r="5" fill="rgba(184,147,74,0.5)"/>
+          <circle cx="250" cy="250" r="2" fill="var(--gold)"/>
+
+          <!-- Outer text ring (decorative arc labels) -->
+          <g fill="rgba(184,147,74,0.25)" font-family="Cinzel, serif" font-size="7" letter-spacing="3">
+            <text>
+              <textPath href="#outerCircle" startOffset="0%">
+                ✦ ANIMA · ANIMUS · SHADOW · SELF · PERSONA · ARCHETYPE · INDIVIDUATION · COLLECTIVE UNCONSCIOUS ✦
+              </textPath>
+            </text>
+          </g>
+          <defs>
+            <path id="outerCircle" d="M 250,22 A 228,228 0 1,1 249.9,22"/>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hero-title">
+        <h1>Carl<br/><span>Jung</span></h1>
+        <span class="years">1875 &nbsp;—&nbsp; 1961</span>
+      </div>
+    </div>
+
+    <!-- Right: Bio -->
+    <div class="bio-panel">
+      <div class="exhibit-tag">Psychological Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <div class="photo-corner tl"></div>
+        <div class="photo-corner tr"></div>
+        <div class="photo-corner bl"></div>
+        <div class="photo-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif/lossy-page1-1280px-ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif.jpg" alt="Carl Gustav Jung" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">Carl Gustav Jung</div>
+        <div class="placard-dates">Kesswil, Switzerland, 1875 &nbsp;·&nbsp; Küsnacht, Switzerland, 1961</div>
+        <p class="placard-bio">
+          <strong>Psychiatrist, psychoanalyst, and explorer of the unconscious.</strong> Jung broke with Freud 
+          to found analytical psychology — a framework that took seriously the symbols, myths, and archetypes 
+          that surface in dreams, religion, and the recurring stories humanity tells itself.
+          <br/><br/>
+          He gave us the <em>collective unconscious</em>, the <em>shadow</em>, the <em>anima</em> and 
+          <em>animus</em>, <em>introversion</em> and <em>extroversion</em>, and the concept of 
+          <em>individuation</em> — the lifelong process of becoming, fully and authentically, oneself.
+          <br/><br/>
+          He spent his life trying to understand what human beings are doing when they dream, create myths, 
+          build religions, and fall into madness. He believed the unconscious was not an enemy to be 
+          conquered but a conversation partner to be heard.
+          <br/><br/>
+          He is still listening.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule">
+    <span class="alch-symbol">☿</span>
+    <span>Consultation</span>
+    <span class="alch-symbol">☿</span>
+  </div>
+
+  <!-- CHATBOT SECTION -->
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Descend into<br/><em>the depths.</em></h2>
+      <p>
+        Jung speaks from the full breadth of his work — the seminars, the 
+        case studies, the letters, the visions of <em>The Red Book</em>. 
+        He will meet you where you are.
+      </p>
+      <p>
+        Ask him about your dreams. Ask him about the state of the world. 
+        Ask him what the collective unconscious is doing in an age of 
+        social media, artificial intelligence, and mass disconnection 
+        from the symbolic life.
+      </p>
+      <p>
+        He will not give you easy answers. He never did.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Archetypes</span>
+        <span class="domain-tag">Dreams</span>
+        <span class="domain-tag">Shadow Work</span>
+        <span class="domain-tag">Individuation</span>
+        <span class="domain-tag">Alchemy</span>
+        <span class="domain-tag">Synchronicity</span>
+        <span class="domain-tag">Myth</span>
+        <span class="domain-tag">The Self</span>
+        <span class="domain-tag">Modern Psychology</span>
+        <span class="domain-tag">Collective Unconscious</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+      <!-- Red Book inspired mandala -->
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.55;">
+        <rect width="500" height="500" fill="#0D0A0B"/>
+        <!-- Outer glow -->
+        <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6B1E2E" stop-opacity="0.4"/>
+          <stop offset="60%" stop-color="#1C0A10" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#0D0A0B" stop-opacity="0"/>
+        </radialGradient>
+        <circle cx="250" cy="250" r="250" fill="url(#glowGrad)"/>
+
+        <!-- Outer decorative ring -->
+        <circle cx="250" cy="250" r="230" fill="none" stroke="rgba(184,147,74,0.15)" stroke-width="1"/>
+        <circle cx="250" cy="250" r="218" fill="none" stroke="rgba(184,147,74,0.08)" stroke-width="0.5"/>
+
+        <!-- Outer petal ring — 16 petals, elongated -->
+        <g fill="none" stroke="rgba(107,30,46,0.7)" stroke-width="1.2">
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(0 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(22.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(45 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(67.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(90 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(112.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(135 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(157.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(180 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(202.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(225 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(247.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(270 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(292.5 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(315 250 250)"/>
+          <ellipse cx="250" cy="60"  rx="12" ry="38" transform="rotate(337.5 250 250)"/>
+        </g>
+
+        <!-- Mid geometric ring — 6-pointed star doubled -->
+        <g fill="none" stroke="rgba(184,147,74,0.35)" stroke-width="1">
+          <polygon points="250,105 290,175 370,175 330,245 370,315 290,315 250,385 210,315 130,315 170,245 130,175 210,175"/>
+          <polygon points="250,120 282,178 346,178 314,236 346,294 282,294 250,352 218,294 154,294 186,236 154,178 218,178" opacity="0.5"/>
+        </g>
+
+        <!-- Flame-like pointed petals — Red Book style -->
+        <g fill="rgba(107,30,46,0.3)" stroke="rgba(139,42,62,0.6)" stroke-width="0.8">
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(0 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(45 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(90 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(135 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(180 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(225 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(270 250 250)"/>
+          <path d="M250,150 C260,190 275,210 250,250 C225,210 240,190 250,150Z" transform="rotate(315 250 250)"/>
+        </g>
+
+        <!-- Inner decorative rings -->
+        <circle cx="250" cy="250" r="130" fill="none" stroke="rgba(184,147,74,0.3)" stroke-width="1.5"/>
+        <circle cx="250" cy="250" r="118" fill="none" stroke="rgba(184,147,74,0.1)" stroke-width="0.5"/>
+
+        <!-- Inner petal ring — 8 round petals -->
+        <g fill="rgba(184,147,74,0.08)" stroke="rgba(184,147,74,0.45)" stroke-width="1">
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(0 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(45 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(90 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(135 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(180 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(225 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(270 250 250)"/>
+          <ellipse cx="250" cy="155" rx="16" ry="26" transform="rotate(315 250 250)"/>
+        </g>
+
+        <!-- Snake/serpent ouroboros ring (Red Book motif) -->
+        <circle cx="250" cy="250" r="88" fill="none" stroke="rgba(107,30,46,0.5)" stroke-width="3" stroke-dasharray="8 4"/>
+        <circle cx="250" cy="250" r="88" fill="none" stroke="rgba(184,147,74,0.15)" stroke-width="1"/>
+
+        <!-- Inner core -->
+        <circle cx="250" cy="250" r="62" fill="rgba(13,10,11,0.8)" stroke="rgba(184,147,74,0.35)" stroke-width="1.5"/>
+
+        <!-- Core 4-petals -->
+        <g fill="rgba(107,30,46,0.4)" stroke="rgba(139,42,62,0.7)" stroke-width="0.8">
+          <ellipse cx="250" cy="207" rx="10" ry="20" transform="rotate(0 250 250)"/>
+          <ellipse cx="250" cy="207" rx="10" ry="20" transform="rotate(90 250 250)"/>
+          <ellipse cx="250" cy="207" rx="10" ry="20" transform="rotate(180 250 250)"/>
+          <ellipse cx="250" cy="207" rx="10" ry="20" transform="rotate(270 250 250)"/>
+        </g>
+
+        <!-- Quaternary cross -->
+        <g stroke="rgba(184,147,74,0.5)" stroke-width="1" fill="none">
+          <line x1="250" y1="225" x2="250" y2="275"/>
+          <line x1="225" y1="250" x2="275" y2="250"/>
+          <line x1="233" y1="233" x2="267" y2="267"/>
+          <line x1="267" y1="233" x2="233" y2="267"/>
+        </g>
+
+        <!-- Center eye / vesica -->
+        <ellipse cx="250" cy="250" rx="18" ry="10" fill="none" stroke="rgba(184,147,74,0.6)" stroke-width="1"/>
+        <circle cx="250" cy="250" r="5" fill="rgba(184,147,74,0.4)" stroke="rgba(184,147,74,0.8)" stroke-width="0.5"/>
+        <circle cx="250" cy="250" r="2" fill="var(--gold, #B8934A)"/>
+
+        <!-- Corner alchemical marks -->
+        <g fill="rgba(184,147,74,0.2)" font-family="serif" font-size="18" text-anchor="middle">
+          <text x="42" y="52">☽</text>
+          <text x="458" y="52">☀</text>
+          <text x="42" y="468">♄</text>
+          <text x="458" y="468">☿</text>
+        </g>
+
+        <!-- Outer text ring -->
+        <g fill="rgba(184,147,74,0.2)" font-family="Cinzel, serif" font-size="6.5" letter-spacing="2.5">
+          <text>
+            <textPath href="#innerTextRing" startOffset="0%">
+              ✦ THE RED BOOK · LIBER NOVUS · THE WAY OF WHAT IS TO COME · IN PRINCIPIO ERAT VERBUM ✦
+            </textPath>
+          </text>
+        </g>
+        <defs>
+          <path id="innerTextRing" d="M 250,18 A 232,232 0 1,1 249.9,18"/>
+        </defs>
+      </svg>
+      <span class="scene-caption">Liber Novus &nbsp;·&nbsp; The Red Book &nbsp;·&nbsp; C.G. Jung &nbsp;·&nbsp; 1915–1930</span>
+      <link rel="stylesheet" href="https://museumofminds.com/carl-jung/widget/carl-jung-widget.css">
+      <script src="https://museumofminds.com/carl-jung/widget/carl-jung-widget.js"
+              data-api-url="https://lively-perception-production-d9f1.up.railway.app"
+              data-persona-id="carl-jung"></script>
+    </div>
+
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <div class="quote-ornament">"</div>
+    <blockquote>
+      Your vision will become clear only when you look into your heart. 
+      Who looks outside, dreams. Who looks inside, awakes.
+    </blockquote>
+    <cite>— Carl Gustav Jung</cite>
+  </div>
+
+  <!-- CORPUS STRIP -->
+  <div class="corpus-strip">
+    <div class="corpus-label">Corpus Sources</div>
+    <div class="corpus-list">
+      <span class="corpus-item">Psychological Types · 1921</span>
+      <span class="corpus-item">Two Essays on Analytical Psychology · 1928</span>
+      <span class="corpus-item">Modern Man in Search of a Soul · 1933</span>
+      <span class="corpus-item">The Archetypes and the Collective Unconscious · 1934</span>
+      <span class="corpus-item">Psychology and Alchemy · 1944</span>
+      <span class="corpus-item">Memories, Dreams, Reflections · 1962</span>
+      <span class="corpus-item">Selected Seminars & Letters</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">Carl Gustav Jung &nbsp;·&nbsp; 1875 – 1961</span>
+    <span class="footer-text">Powered by His Own Words</span>
+    <span class="footer-text">Accession No. CG–1875–2026</span>
+  </footer>
+
+</body>
+</html>
