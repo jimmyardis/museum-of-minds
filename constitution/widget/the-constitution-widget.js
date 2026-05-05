@@ -21,6 +21,7 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let html2pdfLoaded = false;
 
     // Size mode: 'compact' | 'medium' | 'full'
     const SIZE_MODES = ['compact', 'medium', 'full'];
@@ -43,6 +44,7 @@
             personaConfig = await loadPersonaConfig();
             applyPersonaTheme(personaConfig);
             createWidget(personaConfig);
+            renderCorpusStats(personaConfig);
         } catch (error) {
             console.error('Failed to load persona config:', error);
             createWidget(getDefaultConfig());
@@ -100,7 +102,7 @@
         const starters = config.widget.conversation_starters;
 
         const container = document.createElement('div');
-        container.id = 'the-constitution-widget';
+        container.id = 'jane-jacobs-widget';
         container.innerHTML = `
             <div id="jj-trigger" class="jj-trigger">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -119,6 +121,13 @@
                         <p class="jj-tagline">${ui.header_tagline}</p>
                     </div>
                     <div class="jj-header-actions">
+                        <button id="jj-download" class="jj-download-btn" title="Download conversation as PDF" disabled>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
                         <button id="jj-size" class="jj-size-btn" title="${SIZE_TITLES[currentSize]}">${SIZE_ICONS[currentSize]}</button>
                         <button id="jj-close" class="jj-close-btn">&times;</button>
                     </div>
@@ -181,6 +190,7 @@
         document.getElementById('jj-send').addEventListener('click', sendMessage);
         document.getElementById('jj-size').addEventListener('click', cycleSize);
         document.getElementById('jj-voice').addEventListener('click', toggleVoice);
+        document.getElementById('jj-download').addEventListener('click', exportChat);
         document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
@@ -301,10 +311,24 @@
             const data = await resp.json();
             const content = data.lesson_plan || data.questions || '';
             addMessage('assistant', content, true);
+            enableDownload();
+            appendEduExportBtn(type, content);
         } catch (err) {
             console.error('Educator fetch error:', err);
             addMessage('assistant', 'Could not generate educator content. Please try again.');
         }
+    }
+
+    function appendEduExportBtn(type, content) {
+        const container = document.getElementById('jj-messages');
+        const label = type === 'lesson-plan' ? 'lesson plan' : 'discussion questions';
+        const filename = `${PERSONA_ID}-${type}.pdf`;
+        const btn = document.createElement('button');
+        btn.className = 'jj-edu-export-btn';
+        btn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download ${label} as PDF`;
+        btn.addEventListener('click', () => exportEduContent(content, filename, label));
+        container.appendChild(btn);
+        container.scrollTop = container.scrollHeight;
     }
 
     // ── Messaging ────────────────────────────────────────────────────────────
@@ -339,7 +363,7 @@
         showTypingIndicator();
 
         try {
-            const endpoint = voiceEnabled ? '/chat/voice' : '/chat';
+            const endpoint = voiceEnabled ? `/persona/${PERSONA_ID}/chat/voice` : `/persona/${PERSONA_ID}/chat`;
             const resp = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -355,6 +379,7 @@
                 confidence:       data.confidence || 'medium',
                 confidence_score: data.confidence_score || 50,
             });
+            enableDownload();
 
             if (voiceEnabled && data.audio_base64) playAudio(data.audio_base64);
 
@@ -405,23 +430,21 @@
         const wrap = document.createElement('div');
         wrap.className = 'jj-message-meta';
 
-        const row = document.createElement('div');
-        row.className = 'jj-meta-row';
-
-        // Trust meter
+        // Confidence badge (pill with dots)
         if (meta.confidence) {
-            const trustEl = document.createElement('span');
-            trustEl.className = `jj-trust jj-trust-${meta.confidence}`;
-            const labels = { high: 'High confidence', medium: 'Medium confidence', low: 'Low confidence' };
-            trustEl.textContent = labels[meta.confidence] || meta.confidence;
-            row.appendChild(trustEl);
+            const dots = { high: '●●●', medium: '●●○', low: '●○○' };
+            const badge = document.createElement('span');
+            badge.className = `jj-confidence jj-confidence-${meta.confidence}`;
+            badge.textContent = `${dots[meta.confidence] || '●○○'} ${meta.confidence.charAt(0).toUpperCase() + meta.confidence.slice(1)}`;
+            badge.title = `Source confidence: ${meta.confidence_score || 0}/100`;
+            wrap.appendChild(badge);
         }
 
         // Sources toggle
         if (meta.sources && meta.sources.length > 0) {
             const srcBtn = document.createElement('button');
-            srcBtn.className = 'jj-sources-btn';
-            srcBtn.innerHTML = `<span class="jj-sources-s">S</span> Sources (${meta.sources.length})`;
+            srcBtn.className = 'jj-sources-toggle';
+            srcBtn.textContent = `§ ${meta.sources.length} source${meta.sources.length !== 1 ? 's' : ''}`;
 
             const panel = document.createElement('div');
             panel.className = 'jj-sources-panel jj-hidden';
@@ -429,23 +452,26 @@
             meta.sources.forEach(s => {
                 const item = document.createElement('div');
                 item.className = 'jj-source-item';
-                const type = s.knowledge_type === 'critical discourse' ? 'discourse' : 'own words';
-                item.innerHTML = `
-                    <span class="jj-source-title">${s.title}${s.year ? ', ' + s.year : ''}</span>
-                    <span class="jj-source-type">${type}</span>`;
+                const isOwn = s.knowledge_type === 'own words';
+                const typeSpan = document.createElement('span');
+                typeSpan.className = `jj-source-type ${isOwn ? 'jj-source-own' : 'jj-source-discourse'}`;
+                typeSpan.textContent = isOwn ? 'own writings' : 'discourse';
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'jj-source-title';
+                const yr = s.year && s.year !== 'Unknown' ? ` · ${s.year}` : '';
+                titleSpan.textContent = (s.title || 'Unknown') + yr;
+                item.appendChild(typeSpan);
+                item.appendChild(titleSpan);
                 panel.appendChild(item);
             });
 
             srcBtn.addEventListener('click', () => {
                 panel.classList.toggle('jj-hidden');
-                srcBtn.classList.toggle('jj-sources-open');
+                srcBtn.classList.toggle('jj-sources-active');
             });
 
-            row.appendChild(srcBtn);
-            wrap.appendChild(row);
+            wrap.appendChild(srcBtn);
             wrap.appendChild(panel);
-        } else {
-            wrap.appendChild(row);
         }
 
         return wrap;
@@ -473,6 +499,140 @@
             setTimeout(typeChar, speed);
         }
         typeChar();
+    }
+
+    // ── Corpus Stats (static page element) ───────────────────────────────────
+
+    function renderCorpusStats(config) {
+        const el = document.getElementById('jj-corpus-stats');
+        if (!el) return;
+        const ts = config.trust_score;
+        if (!ts) return;
+
+        const total = (ts.corpus_chunks || 0) + (ts.discourse_chunks || 0);
+        if (total === 0 && ts.coverage_pct === 0) {
+            el.innerHTML = `<div class="jj-cs-pending">Corpus pending ingest</div>`;
+            return;
+        }
+
+        const pct = ts.coverage_pct || 0;
+        const filled = Math.round(pct / 5);    // 20 segments
+        const bar = '■'.repeat(filled) + '□'.repeat(20 - filled);
+        const label = ts.coverage_label || '';
+        const works = ts.works_in_corpus || 0;
+        const known = ts.known_primary_works || 0;
+        const corpusN = ts.corpus_chunks ? ts.corpus_chunks.toLocaleString() : '—';
+        const discN = ts.discourse_chunks ? ts.discourse_chunks.toLocaleString() : null;
+
+        el.innerHTML = `
+            <div class="jj-cs-label">Corpus Coverage</div>
+            <div class="jj-cs-bar" title="${pct}% of known primary works indexed">${bar} <span class="jj-cs-pct">${pct}%</span></div>
+            <div class="jj-cs-meta">
+                <span class="jj-cs-badge jj-cs-badge-${label.toLowerCase()}">${label}</span>
+                <span class="jj-cs-detail">${works} of ${known} key primary works · ${corpusN} passages${discN ? ' + ' + discN + ' discourse' : ''}</span>
+            </div>
+            ${ts.missing_note ? `<div class="jj-cs-note">${ts.missing_note}</div>` : ''}
+        `;
+    }
+
+    // ── PDF Export ───────────────────────────────────────────────────────────
+
+    function enableDownload() {
+        const btn = document.getElementById('jj-download');
+        if (btn) btn.disabled = false;
+    }
+
+    function loadHtml2Pdf() {
+        if (html2pdfLoaded || window.html2pdf) { html2pdfLoaded = true; return Promise.resolve(); }
+        return new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+            s.onload = () => { html2pdfLoaded = true; resolve(); };
+            s.onerror = reject;
+            document.head.appendChild(s);
+        });
+    }
+
+    function buildPdfStyles() {
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const primary = personaConfig?.widget?.theme?.primary_color || '#2a2a2a';
+        return `
+            body { font-family: Georgia, serif; color: #222; margin: 0; padding: 0; }
+            .pdf-header { border-bottom: 2px solid ${primary}; padding-bottom: 10px; margin-bottom: 24px; }
+            .pdf-title { font-size: 22px; font-weight: bold; color: ${primary}; margin: 0 0 4px; }
+            .pdf-meta { font-size: 11px; color: #888; font-style: italic; }
+            .pdf-msg { margin-bottom: 18px; }
+            .pdf-msg-user { background: #f5f5f5; border-left: 3px solid #aaa; padding: 10px 14px; border-radius: 2px; }
+            .pdf-msg-assistant { border-left: 4px solid ${primary}; padding: 10px 14px; }
+            .pdf-speaker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: #888; margin-bottom: 5px; }
+            .pdf-text { font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
+            .pdf-confidence { font-size: 9px; color: #888; font-style: italic; margin-top: 5px; }
+            .pdf-footer { border-top: 1px solid #ddd; margin-top: 30px; padding-top: 8px; font-size: 9px; color: #aaa; text-align: center; }
+        `;
+    }
+
+    async function exportChat() {
+        const messages = [...document.querySelectorAll('#jj-messages .jj-message:not(.jj-message-system)')];
+        if (!messages.length) return;
+
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>${buildPdfStyles()}</style></head><body>`;
+        html += `<div class="pdf-header"><div class="pdf-title">Conversation with ${name}</div><div class="pdf-meta">Museum of Minds · ${date}</div></div>`;
+
+        messages.forEach(msg => {
+            const isUser = msg.classList.contains('jj-message-user');
+            const contentEl = msg.querySelector('.jj-message-content');
+            const text = contentEl ? contentEl.textContent.trim() : '';
+            if (!text) return;
+            const speaker = isUser ? 'You' : name;
+            const cls = isUser ? 'pdf-msg-user' : 'pdf-msg-assistant';
+            const confEl = msg.querySelector('.jj-confidence');
+            const confNote = (!isUser && confEl) ? `<div class="pdf-confidence">${confEl.textContent.trim()}</div>` : '';
+            html += `<div class="pdf-msg"><div class="${cls}"><div class="pdf-speaker">${speaker}</div><div class="pdf-text">${escapeHtml(text)}</div>${confNote}</div></div>`;
+        });
+
+        html += `<div class="pdf-footer">Generated from Museum of Minds · museumofminds.com</div></body></html>`;
+
+        await renderPdf(html, `${PERSONA_ID}-conversation.pdf`);
+    }
+
+    async function exportEduContent(content, filename, label) {
+        const name = personaConfig?.metadata?.name || PERSONA_ID;
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>${buildPdfStyles()}</style></head><body>`;
+        html += `<div class="pdf-header"><div class="pdf-title">${name} — ${label.replace(/^\w/, c => c.toUpperCase())}</div><div class="pdf-meta">Museum of Minds · ${date}</div></div>`;
+        html += `<div style="font-family:Georgia,serif;font-size:13px;line-height:1.7;white-space:pre-wrap;color:#222;">${escapeHtml(content)}</div>`;
+        html += `<div class="pdf-footer">Generated from Museum of Minds · museumofminds.com</div></body></html>`;
+
+        await renderPdf(html, filename);
+    }
+
+    async function renderPdf(html, filename) {
+        try {
+            await loadHtml2Pdf();
+            const el = document.createElement('div');
+            el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:750px;';
+            el.innerHTML = html;
+            document.body.appendChild(el);
+            await window.html2pdf().set({
+                margin: 15,
+                filename,
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            }).from(el).save();
+            document.body.removeChild(el);
+        } catch (e) {
+            console.error('PDF export failed:', e);
+            alert('PDF export failed. Please try again.');
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
     // ── Boot ─────────────────────────────────────────────────────────────────
