@@ -557,216 +557,351 @@
 <!-- ─── HERO ───────────────────────────────────────────────────── -->
 <section class="hero">
 
-  <!-- LEFT: SVG — National Archives Rotunda, Washington D.C. -->
+  <!-- LEFT: SVG — Constitution on parchment flanked by American flags -->
   <div class="hero-svg-panel">
     <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
          xmlns="http://www.w3.org/2000/svg" role="img"
-         aria-label="National Archives Rotunda, Washington D.C. — where the Constitution is enshrined">
+         aria-label="The Constitution of the United States on parchment, flanked by the Betsy Ross flag and the modern American flag">
       <defs>
-        <radialGradient id="domeLight" cx="50%" cy="20%" r="70%">
-          <stop offset="0%"   stop-color="#C8D4E8" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#C8D4E8" stop-opacity="0"/>
+        <!-- Warm glow behind parchment -->
+        <radialGradient id="docGlow" cx="50%" cy="48%" r="52%">
+          <stop offset="0%"   stop-color="#C8A040" stop-opacity="0.32"/>
+          <stop offset="55%"  stop-color="#C8A040" stop-opacity="0.09"/>
+          <stop offset="100%" stop-color="#C8A040" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="caseGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#E8D5A0" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#C8A850" stop-opacity="0"/>
+        <!-- Parchment body -->
+        <linearGradient id="parchMain" x1="8%" y1="0%" x2="92%" y2="100%">
+          <stop offset="0%"   stop-color="#EBD99A"/>
+          <stop offset="30%"  stop-color="#F4E8B2"/>
+          <stop offset="55%"  stop-color="#EEE0A8"/>
+          <stop offset="80%"  stop-color="#E4D496"/>
+          <stop offset="100%" stop-color="#D8C47E"/>
+        </linearGradient>
+        <!-- Parchment age darkening at edges -->
+        <radialGradient id="parchEdge" cx="50%" cy="50%" r="58%">
+          <stop offset="55%"  stop-color="#7A5020" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#5A3810" stop-opacity="0.50"/>
         </radialGradient>
-        <radialGradient id="caseGlow2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#E8D5A0" stop-opacity="0.85"/>
-          <stop offset="100%" stop-color="#C8A850" stop-opacity="0"/>
+        <!-- Top fold shadow -->
+        <linearGradient id="foldTop" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="#A07828" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#A07828" stop-opacity="0"/>
+        </linearGradient>
+        <!-- Bottom fold shadow -->
+        <linearGradient id="foldBot" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="#A07828" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#7A5018" stop-opacity="0.45"/>
+        </linearGradient>
+        <!-- Brass flagpole -->
+        <linearGradient id="poleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#4A3410"/>
+          <stop offset="35%"  stop-color="#8A6820"/>
+          <stop offset="65%"  stop-color="#A88030"/>
+          <stop offset="100%" stop-color="#604A18"/>
+        </linearGradient>
+        <!-- Wax seal -->
+        <radialGradient id="waxGrad" cx="38%" cy="32%" r="65%">
+          <stop offset="0%"   stop-color="#B83820"/>
+          <stop offset="100%" stop-color="#5A0C08"/>
         </radialGradient>
-        <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stop-color="#1E2535"/>
-          <stop offset="100%" stop-color="#0E1525"/>
+        <!-- Floor -->
+        <linearGradient id="floorG" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="#141828"/>
+          <stop offset="100%" stop-color="#06090F"/>
         </linearGradient>
-        <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stop-color="#16213A"/>
-          <stop offset="60%"  stop-color="#1A2845"/>
-          <stop offset="100%" stop-color="#0E1525"/>
-        </linearGradient>
-        <linearGradient id="columnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stop-color="#2A3550"/>
-          <stop offset="40%"  stop-color="#3A4A6A"/>
-          <stop offset="100%" stop-color="#1E2B40"/>
-        </linearGradient>
-        <linearGradient id="domeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stop-color="#0A1020"/>
-          <stop offset="100%" stop-color="#142038"/>
-        </linearGradient>
-        <linearGradient id="parchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"  stop-color="#F2E8C8"/>
-          <stop offset="100%" stop-color="#D8C890"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        <!-- Flag shadow -->
+        <filter id="fShadow" x="-10%" y="-5%" width="130%" height="130%">
+          <feDropShadow dx="4" dy="4" stdDeviation="5" flood-color="rgba(0,0,0,0.55)"/>
         </filter>
+        <!-- Document drop shadow -->
+        <filter id="dShadow" x="-15%" y="-8%" width="140%" height="125%">
+          <feDropShadow dx="0" dy="10" stdDeviation="22" flood-color="rgba(0,0,0,0.75)"/>
+        </filter>
+        <!-- Left flag clip -->
+        <clipPath id="lfClip"><rect x="48" y="145" width="140" height="120"/></clipPath>
+        <!-- Right flag clip -->
+        <clipPath id="rfClip"><rect x="507" y="145" width="140" height="120"/></clipPath>
       </defs>
 
-      <!-- ── BACKGROUND / CEILING ── -->
-      <rect width="700" height="900" fill="url(#wallGrad)"/>
+      <!-- ── BACKGROUND ── -->
+      <rect width="700" height="900" fill="#080D18"/>
+      <!-- Atmospheric warm glow behind document -->
+      <ellipse cx="350" cy="435" rx="240" ry="310" fill="url(#docGlow)"/>
+      <!-- Subtle dark vignette top corners -->
+      <path d="M0,0 L220,0 L220,140 Q0,120 0,0 Z" fill="rgba(0,0,0,0.35)"/>
+      <path d="M700,0 L480,0 L480,140 Q700,120 700,0 Z" fill="rgba(0,0,0,0.35)"/>
 
-      <!-- Dome ellipse overhead -->
-      <ellipse cx="350" cy="0" rx="340" ry="220" fill="url(#domeGrad)"/>
-      <!-- Dome light scatter -->
-      <ellipse cx="350" cy="80" rx="260" ry="140" fill="url(#domeLight)"/>
+      <!-- ── LEFT FLAGPOLE (Betsy Ross — 13 stars, 1777) ── -->
+      <rect x="50" y="120" width="6" height="770" fill="url(#poleGrad)" rx="3"/>
+      <!-- Finial ball -->
+      <circle cx="53" cy="117" r="9" fill="#9A7828" stroke="#C8A040" stroke-width="1.2"/>
+      <circle cx="53" cy="113" r="4.5" fill="#C8A040"/>
 
-      <!-- Dome coffering — concentric rings of detail -->
-      <ellipse cx="350" cy="0" rx="330" ry="210" fill="none" stroke="rgba(168,132,37,0.12)" stroke-width="1"/>
-      <ellipse cx="350" cy="0" rx="295" ry="185" fill="none" stroke="rgba(168,132,37,0.10)" stroke-width="0.8"/>
-      <ellipse cx="350" cy="0" rx="255" ry="160" fill="none" stroke="rgba(168,132,37,0.09)" stroke-width="0.8"/>
-      <ellipse cx="350" cy="0" rx="210" ry="130" fill="none" stroke="rgba(168,132,37,0.08)" stroke-width="0.7"/>
-      <!-- Oculus ring -->
-      <ellipse cx="350" cy="0" rx="80"  ry="50"  fill="rgba(200,212,232,0.12)" stroke="rgba(168,132,37,0.3)" stroke-width="1.5"/>
-      <ellipse cx="350" cy="0" rx="65"  ry="40"  fill="rgba(200,212,232,0.18)"/>
+      <!-- Flag body: x=53–193, y=145–265 (140×120) -->
+      <g clip-path="url(#lfClip)" filter="url(#fShadow)">
+        <!-- 13 stripes, each 120/13 ≈ 9.23px; simplified as 7 red + 6 white at 120/13 intervals -->
+        <rect x="48" y="145" width="145" height="9"  fill="#BF0A30"/><!-- 1 red -->
+        <rect x="48" y="154" width="145" height="9"  fill="#FFFFFF"/><!-- 2 white -->
+        <rect x="48" y="163" width="145" height="9"  fill="#BF0A30"/><!-- 3 -->
+        <rect x="48" y="172" width="145" height="9"  fill="#FFFFFF"/><!-- 4 -->
+        <rect x="48" y="181" width="145" height="9"  fill="#BF0A30"/><!-- 5 -->
+        <rect x="48" y="190" width="145" height="9"  fill="#FFFFFF"/><!-- 6 -->
+        <rect x="48" y="199" width="145" height="9"  fill="#BF0A30"/><!-- 7 -->
+        <rect x="48" y="208" width="145" height="9"  fill="#FFFFFF"/><!-- 8 -->
+        <rect x="48" y="217" width="145" height="9"  fill="#BF0A30"/><!-- 9 -->
+        <rect x="48" y="226" width="145" height="9"  fill="#FFFFFF"/><!-- 10 -->
+        <rect x="48" y="235" width="145" height="9"  fill="#BF0A30"/><!-- 11 -->
+        <rect x="48" y="244" width="145" height="9"  fill="#FFFFFF"/><!-- 12 -->
+        <rect x="48" y="253" width="145" height="12" fill="#BF0A30"/><!-- 13 -->
+        <!-- Blue canton: 40% width × top-7-stripe height = 58×63 -->
+        <rect x="48" y="145" width="58" height="63" fill="#002868"/>
+        <!-- 13 stars in circle (center 77,176 r=19) clockwise from top -->
+        <circle cx="77"  cy="157" r="2.8" fill="white"/>
+        <circle cx="86"  cy="159" r="2.8" fill="white"/>
+        <circle cx="94"  cy="165" r="2.8" fill="white"/>
+        <circle cx="96"  cy="174" r="2.8" fill="white"/>
+        <circle cx="93"  cy="183" r="2.8" fill="white"/>
+        <circle cx="86"  cy="189" r="2.8" fill="white"/>
+        <circle cx="77"  cy="192" r="2.8" fill="white"/>
+        <circle cx="68"  cy="189" r="2.8" fill="white"/>
+        <circle cx="61"  cy="183" r="2.8" fill="white"/>
+        <circle cx="58"  cy="174" r="2.8" fill="white"/>
+        <circle cx="60"  cy="165" r="2.8" fill="white"/>
+        <circle cx="68"  cy="159" r="2.8" fill="white"/>
+        <circle cx="77"  cy="157" r="2.8" fill="white"/>
+      </g>
+      <!-- Flag border -->
+      <rect x="48" y="145" width="145" height="120" fill="none" stroke="rgba(0,0,0,0.28)" stroke-width="0.6"/>
+      <!-- Label under flag -->
+      <text x="120" y="282" text-anchor="middle" font-family="'Cinzel',serif"
+            font-size="5.5" fill="rgba(200,172,80,0.55)" letter-spacing="1.2">BETSY ROSS · 1777</text>
 
-      <!-- ── BACK WALL MURAL PANELS ── -->
-      <!-- Arched mural niches — three panels across back wall -->
-      <path d="M60,180 Q60,100 175,100 Q290,100 290,180 L290,440 L60,440 Z" fill="rgba(20,32,56,0.7)" stroke="rgba(168,132,37,0.18)" stroke-width="1"/>
-      <path d="M410,180 Q410,100 525,100 Q640,100 640,180 L640,440 L410,440 Z" fill="rgba(20,32,56,0.7)" stroke="rgba(168,132,37,0.18)" stroke-width="1"/>
-      <!-- Center arch (wider, behind document cases) -->
-      <path d="M220,200 Q220,100 350,100 Q480,100 480,200 L480,460 L220,460 Z" fill="rgba(14,24,44,0.8)" stroke="rgba(168,132,37,0.22)" stroke-width="1.5"/>
+      <!-- ── RIGHT FLAGPOLE (Modern — 50 stars) ── -->
+      <rect x="644" y="120" width="6" height="770" fill="url(#poleGrad)" rx="3"/>
+      <circle cx="647" cy="117" r="9" fill="#9A7828" stroke="#C8A040" stroke-width="1.2"/>
+      <circle cx="647" cy="113" r="4.5" fill="#C8A040"/>
 
-      <!-- Mural figures in side niches (silhouette) -->
-      <!-- Left niche: allegorical figure -->
-      <ellipse cx="175" cy="220" rx="18" ry="18" fill="rgba(40,52,80,0.8)"/>
-      <path d="M155,238 Q155,310 175,320 Q195,310 195,238 Z" fill="rgba(40,52,80,0.8)"/>
-      <path d="M148,260 Q175,275 202,260" fill="rgba(40,52,80,0.5)" stroke="rgba(40,52,80,0.6)" stroke-width="1"/>
-      <!-- Right niche: allegorical figure -->
-      <ellipse cx="525" cy="220" rx="18" ry="18" fill="rgba(40,52,80,0.8)"/>
-      <path d="M505,238 Q505,310 525,320 Q545,310 545,238 Z" fill="rgba(40,52,80,0.8)"/>
-      <path d="M498,260 Q525,275 552,260" fill="rgba(40,52,80,0.5)" stroke="rgba(40,52,80,0.6)" stroke-width="1"/>
+      <!-- Modern flag hangs LEFT from pole: x=507–647, y=145–265 -->
+      <g clip-path="url(#rfClip)" filter="url(#fShadow)">
+        <!-- 13 stripes -->
+        <rect x="507" y="145" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="154" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="163" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="172" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="181" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="190" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="199" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="208" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="217" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="226" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="235" width="140" height="9"  fill="#BF0A30"/>
+        <rect x="507" y="244" width="140" height="9"  fill="#FFFFFF"/>
+        <rect x="507" y="253" width="140" height="12" fill="#BF0A30"/>
+        <!-- Blue canton on POLE side (right): x=589–647, y=145–208 -->
+        <rect x="589" y="145" width="58" height="63" fill="#002868"/>
+        <!-- 50 stars in canton: 9 rows alternating 6/5 — r=1.4 -->
+        <!-- Rows of 6 (x: 593,600,607,614,621,628) -->
+        <!-- Rows of 5 (x: 596,603,610,617,624) shifted half-step -->
+        <circle cx="593" cy="150" r="1.4" fill="white"/>
+        <circle cx="600" cy="150" r="1.4" fill="white"/>
+        <circle cx="607" cy="150" r="1.4" fill="white"/>
+        <circle cx="614" cy="150" r="1.4" fill="white"/>
+        <circle cx="621" cy="150" r="1.4" fill="white"/>
+        <circle cx="628" cy="150" r="1.4" fill="white"/>
+        <circle cx="596" cy="157" r="1.4" fill="white"/>
+        <circle cx="603" cy="157" r="1.4" fill="white"/>
+        <circle cx="610" cy="157" r="1.4" fill="white"/>
+        <circle cx="617" cy="157" r="1.4" fill="white"/>
+        <circle cx="624" cy="157" r="1.4" fill="white"/>
+        <circle cx="593" cy="164" r="1.4" fill="white"/>
+        <circle cx="600" cy="164" r="1.4" fill="white"/>
+        <circle cx="607" cy="164" r="1.4" fill="white"/>
+        <circle cx="614" cy="164" r="1.4" fill="white"/>
+        <circle cx="621" cy="164" r="1.4" fill="white"/>
+        <circle cx="628" cy="164" r="1.4" fill="white"/>
+        <circle cx="596" cy="171" r="1.4" fill="white"/>
+        <circle cx="603" cy="171" r="1.4" fill="white"/>
+        <circle cx="610" cy="171" r="1.4" fill="white"/>
+        <circle cx="617" cy="171" r="1.4" fill="white"/>
+        <circle cx="624" cy="171" r="1.4" fill="white"/>
+        <circle cx="593" cy="178" r="1.4" fill="white"/>
+        <circle cx="600" cy="178" r="1.4" fill="white"/>
+        <circle cx="607" cy="178" r="1.4" fill="white"/>
+        <circle cx="614" cy="178" r="1.4" fill="white"/>
+        <circle cx="621" cy="178" r="1.4" fill="white"/>
+        <circle cx="628" cy="178" r="1.4" fill="white"/>
+        <circle cx="596" cy="185" r="1.4" fill="white"/>
+        <circle cx="603" cy="185" r="1.4" fill="white"/>
+        <circle cx="610" cy="185" r="1.4" fill="white"/>
+        <circle cx="617" cy="185" r="1.4" fill="white"/>
+        <circle cx="624" cy="185" r="1.4" fill="white"/>
+        <circle cx="593" cy="192" r="1.4" fill="white"/>
+        <circle cx="600" cy="192" r="1.4" fill="white"/>
+        <circle cx="607" cy="192" r="1.4" fill="white"/>
+        <circle cx="614" cy="192" r="1.4" fill="white"/>
+        <circle cx="621" cy="192" r="1.4" fill="white"/>
+        <circle cx="628" cy="192" r="1.4" fill="white"/>
+        <circle cx="596" cy="199" r="1.4" fill="white"/>
+        <circle cx="603" cy="199" r="1.4" fill="white"/>
+        <circle cx="610" cy="199" r="1.4" fill="white"/>
+        <circle cx="617" cy="199" r="1.4" fill="white"/>
+        <circle cx="624" cy="199" r="1.4" fill="white"/>
+        <circle cx="593" cy="206" r="1.4" fill="white"/>
+        <circle cx="600" cy="206" r="1.4" fill="white"/>
+        <circle cx="607" cy="206" r="1.4" fill="white"/>
+        <circle cx="614" cy="206" r="1.4" fill="white"/>
+        <circle cx="621" cy="206" r="1.4" fill="white"/>
+        <circle cx="628" cy="206" r="1.4" fill="white"/>
+      </g>
+      <!-- Flag border -->
+      <rect x="507" y="145" width="140" height="120" fill="none" stroke="rgba(0,0,0,0.28)" stroke-width="0.6"/>
+      <text x="578" y="282" text-anchor="middle" font-family="'Cinzel',serif"
+            font-size="5.5" fill="rgba(200,172,80,0.55)" letter-spacing="1.2">50 STATES · 1960</text>
 
-      <!-- Entablature / cornice band -->
-      <rect x="0" y="440" width="700" height="8"  fill="rgba(0,0,0,0.4)"/>
-      <rect x="0" y="448" width="700" height="14" fill="rgba(168,132,37,0.14)"/>
-      <rect x="0" y="462" width="700" height="6"  fill="rgba(0,0,0,0.3)"/>
+      <!-- ── CENTRAL PARCHMENT DOCUMENT ── -->
+      <!-- Drop shadow -->
+      <rect x="196" y="155" width="308" height="542" rx="3" fill="rgba(0,0,0,0.6)" filter="url(#dShadow)"/>
 
-      <!-- ── COLUMNS (4 visible — 2 pairs framing center) ── -->
-      <!-- Column 1 — far left -->
-      <rect x="28" y="280" width="32" height="460" fill="url(#columnGrad)" rx="1"/>
-      <rect x="24" y="276" width="40" height="12"  fill="rgba(168,132,37,0.35)" rx="1"/><!-- capital -->
-      <rect x="22" y="731" width="44" height="10"  fill="rgba(30,40,60,0.8)"   rx="1"/><!-- base -->
-      <!-- Column highlight (light catch) -->
-      <rect x="38" y="280" width="4"  height="450" fill="rgba(200,212,232,0.08)"/>
+      <!-- Parchment body: x=195, y=152, 310×545 -->
+      <rect x="195" y="152" width="310" height="545" rx="3" fill="url(#parchMain)"/>
+      <!-- Edge aging -->
+      <rect x="195" y="152" width="310" height="545" rx="3" fill="url(#parchEdge)"/>
+      <!-- Top fold -->
+      <rect x="195" y="152" width="310" height="22" rx="3" fill="url(#foldTop)"/>
+      <!-- Bottom fold -->
+      <rect x="195" y="675" width="310" height="22" rx="3" fill="url(#foldBot)"/>
 
-      <!-- Column 2 — left inner -->
-      <rect x="118" y="300" width="28" height="440" fill="url(#columnGrad)" rx="1"/>
-      <rect x="114" y="296" width="36" height="10"  fill="rgba(168,132,37,0.32)" rx="1"/>
-      <rect x="113" y="733" width="38" height="8"   fill="rgba(30,40,60,0.8)"   rx="1"/>
-      <rect x="127" y="300" width="3"  height="432" fill="rgba(200,212,232,0.07)"/>
+      <!-- Outer gold border -->
+      <rect x="195" y="152" width="310" height="545" rx="3"
+            fill="none" stroke="#9A7820" stroke-width="1.8"/>
+      <!-- Inner ruled border -->
+      <rect x="206" y="163" width="288" height="523" rx="1.5"
+            fill="none" stroke="rgba(110,78,14,0.38)" stroke-width="0.7"/>
 
-      <!-- Column 3 — right inner -->
-      <rect x="554" y="300" width="28" height="440" fill="url(#columnGrad)" rx="1"/>
-      <rect x="550" y="296" width="36" height="10"  fill="rgba(168,132,37,0.32)" rx="1"/>
-      <rect x="549" y="733" width="38" height="8"   fill="rgba(30,40,60,0.8)"   rx="1"/>
-      <rect x="558" y="300" width="3"  height="432" fill="rgba(200,212,232,0.07)"/>
+      <!-- Header band -->
+      <rect x="195" y="152" width="310" height="46" rx="3" fill="rgba(140,100,18,0.16)"/>
+      <line x1="195" y1="198" x2="505" y2="198" stroke="#9A7820" stroke-width="0.9"/>
+      <!-- Stars row in header -->
+      <text x="350" y="180" text-anchor="middle" font-family="Georgia,serif"
+            font-size="12" fill="rgba(70,44,6,0.60)" letter-spacing="9">★  ★  ★  ★  ★</text>
 
-      <!-- Column 4 — far right -->
-      <rect x="640" y="280" width="32" height="460" fill="url(#columnGrad)" rx="1"/>
-      <rect x="636" y="276" width="40" height="12"  fill="rgba(168,132,37,0.35)" rx="1"/>
-      <rect x="634" y="731" width="44" height="10"  fill="rgba(30,40,60,0.8)"   rx="1"/>
-      <rect x="650" y="280" width="4"  height="450" fill="rgba(200,212,232,0.07)"/>
+      <!-- "We the People" -->
+      <text x="350" y="232" text-anchor="middle"
+            font-family="'IM Fell English SC','Cormorant Garamond',Georgia,serif"
+            font-size="28" font-style="italic" font-weight="600"
+            fill="#251600" letter-spacing="1.2">We the People</text>
+
+      <!-- Preamble — full text -->
+      <text x="350" y="256" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.88)" letter-spacing="0.25">of the United States, in Order to form a more</text>
+      <text x="350" y="269" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.88)" letter-spacing="0.25">perfect Union, establish Justice, insure domestic</text>
+      <text x="350" y="282" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.85)" letter-spacing="0.25">Tranquility, provide for the common defence,</text>
+      <text x="350" y="295" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.83)" letter-spacing="0.25">promote the general Welfare, and secure the</text>
+      <text x="350" y="308" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.80)" letter-spacing="0.25">Blessings of Liberty to ourselves and our Posterity,</text>
+      <text x="350" y="321" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.78)" letter-spacing="0.25">do ordain and establish this Constitution</text>
+      <text x="350" y="334" text-anchor="middle"
+            font-family="'EB Garamond','Cormorant Garamond',Georgia,serif"
+            font-size="9.8" fill="rgba(36,20,4,0.75)" letter-spacing="0.25">for the United States of America.</text>
+
+      <!-- Divider after preamble -->
+      <line x1="220" y1="346" x2="480" y2="346" stroke="rgba(110,78,14,0.45)" stroke-width="0.85"/>
+      <text x="350" y="358" text-anchor="middle" font-family="'Cinzel',Georgia,serif"
+            font-size="8.5" fill="rgba(70,44,8,0.72)" letter-spacing="3.5">ARTICLE I</text>
+      <line x1="220" y1="364" x2="480" y2="364" stroke="rgba(110,78,14,0.28)" stroke-width="0.55"/>
+
+      <!-- Simulated article text lines -->
+      <line x1="213" y1="376" x2="487" y2="376" stroke="rgba(36,20,4,0.26)" stroke-width="0.8"/>
+      <line x1="213" y1="386" x2="478" y2="386" stroke="rgba(36,20,4,0.24)" stroke-width="0.7"/>
+      <line x1="213" y1="396" x2="487" y2="396" stroke="rgba(36,20,4,0.23)" stroke-width="0.7"/>
+      <line x1="213" y1="406" x2="475" y2="406" stroke="rgba(36,20,4,0.21)" stroke-width="0.7"/>
+      <line x1="213" y1="416" x2="487" y2="416" stroke="rgba(36,20,4,0.20)" stroke-width="0.6"/>
+      <line x1="213" y1="426" x2="482" y2="426" stroke="rgba(36,20,4,0.19)" stroke-width="0.6"/>
+
+      <text x="350" y="442" text-anchor="middle" font-family="'Cinzel',Georgia,serif"
+            font-size="8" fill="rgba(70,44,8,0.60)" letter-spacing="3">ARTICLE II</text>
+
+      <line x1="213" y1="451" x2="487" y2="451" stroke="rgba(36,20,4,0.19)" stroke-width="0.6"/>
+      <line x1="213" y1="461" x2="479" y2="461" stroke="rgba(36,20,4,0.17)" stroke-width="0.6"/>
+      <line x1="213" y1="471" x2="487" y2="471" stroke="rgba(36,20,4,0.16)" stroke-width="0.5"/>
+      <line x1="213" y1="481" x2="483" y2="481" stroke="rgba(36,20,4,0.15)" stroke-width="0.5"/>
+
+      <text x="350" y="497" text-anchor="middle" font-family="'Cinzel',Georgia,serif"
+            font-size="8" fill="rgba(70,44,8,0.52)" letter-spacing="3">ARTICLE III</text>
+
+      <line x1="213" y1="506" x2="487" y2="506" stroke="rgba(36,20,4,0.14)" stroke-width="0.5"/>
+      <line x1="213" y1="516" x2="479" y2="516" stroke="rgba(36,20,4,0.13)" stroke-width="0.5"/>
+      <line x1="213" y1="526" x2="487" y2="526" stroke="rgba(36,20,4,0.13)" stroke-width="0.5"/>
+      <line x1="213" y1="536" x2="483" y2="536" stroke="rgba(36,20,4,0.12)" stroke-width="0.5"/>
+      <line x1="213" y1="546" x2="487" y2="546" stroke="rgba(36,20,4,0.11)" stroke-width="0.4"/>
+      <line x1="213" y1="556" x2="477" y2="556" stroke="rgba(36,20,4,0.10)" stroke-width="0.4"/>
+      <line x1="213" y1="566" x2="487" y2="566" stroke="rgba(36,20,4,0.10)" stroke-width="0.4"/>
+
+      <!-- Signatures section -->
+      <line x1="220" y1="580" x2="480" y2="580" stroke="rgba(110,78,14,0.38)" stroke-width="0.7"/>
+      <text x="350" y="592" text-anchor="middle"
+            font-family="'Cormorant Garamond',Georgia,serif" font-style="italic"
+            font-size="7.8" fill="rgba(60,36,6,0.58)" letter-spacing="0.8">Done in Convention by the Unanimous Consent of the States</text>
+      <text x="350" y="603" text-anchor="middle"
+            font-family="'Cormorant Garamond',Georgia,serif" font-style="italic"
+            font-size="7.8" fill="rgba(60,36,6,0.52)" letter-spacing="0.6">present the Seventeenth Day of September, in the Year of</text>
+      <text x="350" y="614" text-anchor="middle"
+            font-family="'Cormorant Garamond',Georgia,serif" font-style="italic"
+            font-size="7.8" fill="rgba(60,36,6,0.48)" letter-spacing="0.6">our Lord one thousand seven hundred and Eighty seven.</text>
+
+      <!-- Signature lines + names -->
+      <line x1="213" y1="632" x2="338" y2="632" stroke="rgba(80,50,10,0.45)" stroke-width="0.7"/>
+      <line x1="362" y1="632" x2="487" y2="632" stroke="rgba(80,50,10,0.45)" stroke-width="0.7"/>
+      <text x="275" y="644" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+            font-style="italic" font-size="8" fill="rgba(60,36,6,0.52)">G⁰ Washington — Presidt.</text>
+      <text x="425" y="644" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+            font-style="italic" font-size="8" fill="rgba(60,36,6,0.52)">James Madison</text>
+      <line x1="213" y1="657" x2="338" y2="657" stroke="rgba(80,50,10,0.32)" stroke-width="0.5"/>
+      <line x1="362" y1="657" x2="487" y2="657" stroke="rgba(80,50,10,0.32)" stroke-width="0.5"/>
+      <text x="275" y="668" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+            font-style="italic" font-size="8" fill="rgba(60,36,6,0.42)">Alexander Hamilton</text>
+      <text x="425" y="668" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+            font-style="italic" font-size="8" fill="rgba(60,36,6,0.42)">Benj. Franklin</text>
+
+      <!-- Wax seals -->
+      <circle cx="350" cy="640" r="20" fill="url(#waxGrad)" stroke="rgba(190,90,50,0.7)" stroke-width="1.2"/>
+      <circle cx="350" cy="640" r="15" fill="none" stroke="rgba(230,140,80,0.45)" stroke-width="0.8"/>
+      <text x="350" y="644" text-anchor="middle" font-family="Georgia,serif"
+            font-size="8" fill="rgba(255,200,140,0.65)">USA</text>
+      <circle cx="243" cy="640" r="10" fill="url(#waxGrad)" opacity="0.65"/>
+      <circle cx="457" cy="640" r="10" fill="url(#waxGrad)" opacity="0.65"/>
 
       <!-- ── FLOOR ── -->
-      <rect x="0" y="740" width="700" height="160" fill="url(#floorGrad)"/>
-      <!-- Marble floor tiles -->
-      <line x1="0" y1="760" x2="700" y2="760" stroke="rgba(168,132,37,0.12)" stroke-width="0.8"/>
-      <line x1="0" y1="790" x2="700" y2="790" stroke="rgba(168,132,37,0.10)" stroke-width="0.7"/>
-      <line x1="0" y1="820" x2="700" y2="820" stroke="rgba(168,132,37,0.08)" stroke-width="0.6"/>
-      <line x1="175" y1="740" x2="175" y2="900" stroke="rgba(168,132,37,0.1)" stroke-width="0.7"/>
-      <line x1="350" y1="740" x2="350" y2="900" stroke="rgba(168,132,37,0.1)" stroke-width="0.7"/>
-      <line x1="525" y1="740" x2="525" y2="900" stroke="rgba(168,132,37,0.1)" stroke-width="0.7"/>
+      <rect x="0" y="795" width="700" height="105" fill="url(#floorG)"/>
+      <line x1="0" y1="818" x2="700" y2="818" stroke="rgba(168,132,37,0.07)" stroke-width="0.7"/>
+      <line x1="0" y1="850" x2="700" y2="850" stroke="rgba(168,132,37,0.05)" stroke-width="0.6"/>
+      <!-- Pole shadows -->
+      <ellipse cx="53"  cy="812" rx="16" ry="5" fill="rgba(0,0,0,0.35)"/>
+      <ellipse cx="647" cy="812" rx="16" ry="5" fill="rgba(0,0,0,0.35)"/>
+      <!-- Pole bases -->
+      <rect x="44"  y="870" width="18" height="9" rx="2" fill="#5A4418"/>
+      <rect x="638" y="870" width="18" height="9" rx="2" fill="#5A4418"/>
+      <!-- Soft light on floor under document -->
+      <ellipse cx="350" cy="815" rx="95" ry="18" fill="rgba(200,164,72,0.05)"/>
 
-      <!-- Floor compass medallion -->
-      <ellipse cx="350" cy="810" rx="55" ry="30" fill="none" stroke="rgba(168,132,37,0.2)" stroke-width="0.8"/>
-      <ellipse cx="350" cy="810" rx="40" ry="22" fill="none" stroke="rgba(168,132,37,0.15)" stroke-width="0.7"/>
-      <line x1="350" y1="782" x2="350" y2="838" stroke="rgba(168,132,37,0.25)" stroke-width="0.8"/>
-      <line x1="310" y1="810" x2="390" y2="810" stroke="rgba(168,132,37,0.25)" stroke-width="0.8"/>
+      <!-- Caption -->
+      <text x="350" y="848" text-anchor="middle" font-family="'Cinzel',serif"
+            font-size="7" fill="rgba(212,184,112,0.65)" letter-spacing="2.2">PHILADELPHIA, 1787</text>
+      <text x="350" y="862" text-anchor="middle" font-family="'Cormorant Garamond',serif"
+            font-style="italic" font-size="6.5" fill="rgba(212,184,112,0.45)" letter-spacing="0.8">Signed by 39 of 55 delegates</text>
 
-      <!-- ── SECURITY RAILING ── -->
-      <!-- Brass railing encircling document cases -->
-      <rect x="200" y="680" width="300" height="4"  rx="2" fill="rgba(168,132,37,0.6)"/>
-      <rect x="200" y="680" width="4"   height="40" rx="2" fill="rgba(168,132,37,0.55)"/>
-      <rect x="496" y="680" width="4"   height="40" rx="2" fill="rgba(168,132,37,0.55)"/>
-      <!-- Railing posts -->
-      <rect x="240" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="280" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="320" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="360" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="400" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="440" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-      <rect x="460" y="676" width="3" height="44" rx="1" fill="rgba(168,132,37,0.4)"/>
-
-      <!-- ── DOCUMENT CASES (center stage) ── -->
-      <!-- Left case: Constitution -->
-      <rect x="225" y="570" width="100" height="110" rx="3" fill="#1A2236" stroke="rgba(168,132,37,0.5)" stroke-width="1.5"/>
-      <!-- Case top -->
-      <rect x="222" y="565" width="106" height="12" rx="2" fill="rgba(168,132,37,0.35)"/>
-      <!-- Argon gas glow inside case -->
-      <rect x="230" y="575" width="90" height="95" rx="1" fill="rgba(180,155,80,0.06)"/>
-      <!-- Parchment document inside -->
-      <rect x="238" y="582" width="74" height="82" rx="1" fill="url(#parchGrad)" opacity="0.72"/>
-      <!-- "We the People" text lines on document -->
-      <line x1="244" y1="592" x2="306" y2="592" stroke="rgba(44,30,10,0.6)" stroke-width="1.5"/>
-      <line x1="244" y1="600" x2="306" y2="600" stroke="rgba(44,30,10,0.4)" stroke-width="0.8"/>
-      <line x1="244" y1="607" x2="290" y2="607" stroke="rgba(44,30,10,0.4)" stroke-width="0.8"/>
-      <line x1="244" y1="614" x2="306" y2="614" stroke="rgba(44,30,10,0.35)" stroke-width="0.7"/>
-      <line x1="244" y1="620" x2="298" y2="620" stroke="rgba(44,30,10,0.35)" stroke-width="0.7"/>
-      <line x1="244" y1="626" x2="306" y2="626" stroke="rgba(44,30,10,0.3)" stroke-width="0.6"/>
-      <line x1="244" y1="632" x2="302" y2="632" stroke="rgba(44,30,10,0.3)" stroke-width="0.6"/>
-      <line x1="244" y1="638" x2="306" y2="638" stroke="rgba(44,30,10,0.28)" stroke-width="0.6"/>
-      <line x1="244" y1="644" x2="290" y2="644" stroke="rgba(44,30,10,0.28)" stroke-width="0.6"/>
-      <line x1="244" y1="650" x2="306" y2="650" stroke="rgba(44,30,10,0.25)" stroke-width="0.5"/>
-      <line x1="244" y1="656" x2="298" y2="656" stroke="rgba(44,30,10,0.22)" stroke-width="0.5"/>
-      <!-- Seal at bottom of document -->
-      <circle cx="275" cy="648" r="10" fill="none" stroke="rgba(44,30,10,0.4)" stroke-width="0.8"/>
-      <!-- Case glow -->
-      <circle cx="275" cy="625" r="55" fill="url(#caseGlow)" opacity="0.45"/>
-      <!-- Case label plate -->
-      <rect x="244" y="668" width="62" height="10" rx="1" fill="rgba(168,132,37,0.25)"/>
-      <text x="275" y="676" text-anchor="middle" font-family="'Cinzel',serif" font-size="4.5" fill="rgba(240,228,200,0.7)" letter-spacing="0.8">THE CONSTITUTION · 1787</text>
-
-      <!-- Right case: Declaration of Independence -->
-      <rect x="375" y="570" width="100" height="110" rx="3" fill="#1A2236" stroke="rgba(168,132,37,0.4)" stroke-width="1.2"/>
-      <rect x="372" y="565" width="106" height="12" rx="2" fill="rgba(168,132,37,0.28)"/>
-      <rect x="380" y="575" width="90" height="95" rx="1" fill="rgba(168,140,65,0.05)"/>
-      <rect x="388" y="582" width="74" height="82" rx="1" fill="url(#parchGrad)" opacity="0.60"/>
-      <line x1="394" y1="592" x2="456" y2="592" stroke="rgba(44,30,10,0.5)" stroke-width="1.2"/>
-      <line x1="394" y1="600" x2="456" y2="600" stroke="rgba(44,30,10,0.35)" stroke-width="0.7"/>
-      <line x1="394" y1="607" x2="448" y2="607" stroke="rgba(44,30,10,0.32)" stroke-width="0.7"/>
-      <line x1="394" y1="614" x2="456" y2="614" stroke="rgba(44,30,10,0.28)" stroke-width="0.6"/>
-      <line x1="394" y1="620" x2="450" y2="620" stroke="rgba(44,30,10,0.25)" stroke-width="0.5"/>
-      <line x1="394" y1="626" x2="456" y2="626" stroke="rgba(44,30,10,0.22)" stroke-width="0.5"/>
-      <circle cx="425" cy="648" r="10" fill="none" stroke="rgba(44,30,10,0.32)" stroke-width="0.8"/>
-      <circle cx="425" cy="625" r="55" fill="url(#caseGlow2)" opacity="0.3"/>
-      <rect x="394" y="668" width="62" height="10" rx="1" fill="rgba(168,132,37,0.2)"/>
-      <text x="425" y="676" text-anchor="middle" font-family="'Cinzel',serif" font-size="4.5" fill="rgba(240,228,200,0.6)" letter-spacing="0.8">DECLARATION · 1776</text>
-
-      <!-- ── VISITOR SILHOUETTES ── -->
-      <!-- Left cluster -->
-      <ellipse cx="165" cy="722" rx="9"  ry="9"  fill="rgba(14,20,32,0.9)"/>
-      <rect    x="157"  y="731" width="16" height="22" rx="2" fill="rgba(14,20,32,0.9)"/>
-      <ellipse cx="188" cy="726" rx="8"  ry="8"  fill="rgba(14,20,32,0.85)"/>
-      <rect    x="181"  y="734" width="14" height="18" rx="2" fill="rgba(14,20,32,0.85)"/>
-
-      <!-- Right cluster -->
-      <ellipse cx="518" cy="724" rx="9"  ry="9"  fill="rgba(14,20,32,0.9)"/>
-      <rect    x="510"  y="733" width="16" height="20" rx="2" fill="rgba(14,20,32,0.9)"/>
-      <ellipse cx="540" cy="720" rx="8"  ry="8"  fill="rgba(14,20,32,0.85)"/>
-      <rect    x="533"  y="728" width="14" height="22" rx="2" fill="rgba(14,20,32,0.85)"/>
-      <ellipse cx="562" cy="725" rx="7"  ry="7"  fill="rgba(14,20,32,0.8)"/>
-      <rect    x="556"  y="732" width="12" height="20" rx="2" fill="rgba(14,20,32,0.8)"/>
-
-      <!-- ── TITLE BLOCK ── -->
-      <rect x="468" y="840" width="222" height="52" fill="rgba(0,0,0,0.4)" stroke="rgba(168,132,37,0.28)" stroke-width="0.8"/>
-      <line x1="468" y1="857" x2="690" y2="857" stroke="rgba(168,132,37,0.28)" stroke-width="0.6"/>
-      <text x="579" y="852" text-anchor="middle" font-family="'Cinzel',serif" font-size="7" fill="rgba(212,184,112,0.8)" letter-spacing="1.5">NATIONAL ARCHIVES</text>
-      <text x="579" y="866" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="6.5" fill="rgba(212,184,112,0.65)" font-style="italic" letter-spacing="1">Rotunda for the Charters of Freedom</text>
-      <text x="579" y="880" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="6" fill="rgba(212,184,112,0.55)" letter-spacing="0.8">Washington, District of Columbia</text>
-
-      <!-- Dim unifying overlay -->
-      <rect width="700" height="900" fill="rgba(8,14,28,0.15)"/>
+      <!-- Final depth overlay -->
+      <rect width="700" height="900" fill="rgba(6,10,20,0.10)"/>
     </svg>
   </div>
 
