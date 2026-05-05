@@ -628,3 +628,71 @@
 }
 
 @media print { #jane-jacobs-widget { display: none !important; } }
+
+/* ── Corpus Stats (static page element, outside widget) ──────────────────── */
+#jj-corpus-stats {
+    font-family: var(--persona-font-secondary, 'Georgia', serif);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--persona-charcoal, #1a2332);
+    margin: 0;
+    padding: 0;
+}
+.jj-cs-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--persona-warm-gray, #8a8070);
+    margin-bottom: 6px;
+}
+.jj-cs-bar {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--persona-primary-color, #2a3a2a);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.jj-cs-pct {
+    font-family: var(--persona-font-secondary, 'Georgia', serif);
+    font-size: 10px;
+    font-style: italic;
+    letter-spacing: 0;
+    margin-left: 4px;
+    color: var(--persona-warm-gray, #8a8070);
+}
+.jj-cs-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.jj-cs-badge {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+.jj-cs-badge-comprehensive { color: #2d7a4a; background: rgba(45,122,74,0.10); border: 1px solid rgba(45,122,74,0.25); }
+.jj-cs-badge-substantial   { color: #2a5a8a; background: rgba(42,90,138,0.10); border: 1px solid rgba(42,90,138,0.25); }
+.jj-cs-badge-partial       { color: #9a6e1a; background: rgba(154,110,26,0.10); border: 1px solid rgba(154,110,26,0.25); }
+.jj-cs-badge-selective     { color: #8a3030; background: rgba(138,48,48,0.08); border: 1px solid rgba(138,48,48,0.20); }
+.jj-cs-detail {
+    font-size: 11px;
+    color: var(--persona-text-gray, #6b5f52);
+    font-style: italic;
+}
+.jj-cs-note {
+    font-size: 11px;
+    color: var(--persona-text-gray, #6b5f52);
+    line-height: 1.55;
+    padding-top: 4px;
+    border-top: 1px solid var(--persona-dark-cream, #e8e0d0);
+}
+.jj-cs-pending {
+    font-size: 11px;
+    color: var(--persona-warm-gray, #8a8070);
+    font-style: italic;
+}
