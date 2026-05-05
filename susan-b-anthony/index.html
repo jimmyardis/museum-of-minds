@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Susan B. Anthony — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --walnut:        #2E1F14;
+    --walnut-mid:    #4A3728;
+    --mahogany:      #6B2A1A;
+    --crimson:       #8B2E2E;
+    --crimson-light: #A84040;
+    --parchment:     #F5F0E8;
+    --parchment-dim: #EDE5D4;
+    --parchment-dark:#D4C9B0;
+    --ivory:         #FAF7F2;
+    --gold:          #9E7A3A;
+    --gold-light:    #C4A05A;
+    --sage:          #4A5E48;
+    --text-dark:     #1A110A;
+    --text-mid:      #2E1F14;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--text-dark);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.07;
+  }
+
+  body > * { position: relative; z-index: 1; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 2.8rem;
+    background-color: var(--walnut);
+    border-bottom: 2px solid var(--gold);
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--parchment-dark);
+    opacity: 0.85;
+    text-transform: uppercase;
+  }
+
+  .header-center {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-light);
+    opacity: 0.90;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.26em;
+    color: var(--parchment-dark);
+    opacity: 0.75;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.28fr 0.72fr;
+    min-height: 92vh;
+    animation: fadeIn 1.1s ease 0.2s both;
+  }
+
+  .hero-left {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--walnut);
+  }
+
+  .hero-left svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-right {
+    background-color: var(--ivory);
+    border-left: 3px solid var(--walnut-mid);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 2.8rem 3rem 3rem;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .museum-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    color: var(--walnut-mid);
+    opacity: 0.75;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ─── PHOTO FRAME ─── */
+  .photo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto 2.2rem auto;
+    display: block;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid var(--gold);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid var(--walnut-mid);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(25%) sepia(35%) contrast(1.08) brightness(0.88);
+    position: relative;
+    z-index: 0;
+  }
+
+  /* ─── PLACARD ─── */
+  .placard { margin-top: 0.2rem; }
+
+  .placard-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3.2vw, 3.4rem);
+    font-weight: 700;
+    color: var(--walnut);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  .placard-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.22em;
+    color: var(--walnut-mid);
+    opacity: 0.80;
+    margin-bottom: 0.6rem;
+  }
+
+  .placard-rule {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+    margin-bottom: 0.9rem;
+    border: none;
+  }
+
+  .placard-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--crimson);
+    opacity: 0.90;
+    line-height: 1.5;
+    margin-bottom: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .placard-bio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.91rem;
+    color: var(--text-dark);
+    opacity: 0.88;
+    line-height: 1.72;
+  }
+
+  /* ─── TRANSITION BAND ─── */
+  .transition-band {
+    background: linear-gradient(135deg, var(--walnut) 0%, var(--mahogany) 50%, var(--walnut) 100%);
+    padding: 1.2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .transition-band .rule-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    opacity: 0.60;
+  }
+
+  .transition-band .ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.48em;
+    color: var(--gold-light);
+    opacity: 0.88;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+    background-color: var(--parchment);
+  }
+
+  .chatbot-intro {
+    padding: 3.5rem 3rem 3.5rem 3.5rem;
+    border-right: 1.5px solid var(--parchment-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--walnut);
+    text-transform: uppercase;
+    opacity: 0.95;
+  }
+
+  .chatbot-intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.97rem;
+    color: var(--text-dark);
+    opacity: 0.86;
+    line-height: 1.75;
+  }
+
+  .featured-quote {
+    border-left: 3px solid var(--crimson);
+    padding: 0.9rem 1.2rem;
+    background-color: rgba(74, 55, 40, 0.05);
+    margin: 0.4rem 0;
+  }
+
+  .featured-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--walnut);
+    opacity: 0.90;
+    line-height: 1.6;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+
+  .domain-tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.24em;
+    padding: 0.28rem 0.75rem;
+    border: 1px solid var(--walnut-mid);
+    color: var(--walnut-mid);
+    opacity: 0.80;
+    text-transform: uppercase;
+  }
+
+  .chatbot-embed {
+    background-color: var(--parchment-dim);
+    min-height: 480px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    background-color: var(--walnut);
+    padding: 4.5rem 8vw;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 2.1rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.55;
+    opacity: 0.92;
+    max-width: 860px;
+    margin: 0 auto 1.4rem auto;
+  }
+
+  .pull-quote blockquote::before {
+    content: '\201C';
+    font-size: 3.5rem;
+    color: var(--gold);
+    opacity: 0.55;
+    line-height: 0;
+    vertical-align: -0.55rem;
+    margin-right: 0.15rem;
+  }
+
+  .pull-quote blockquote::after {
+    content: '\201D';
+    font-size: 3.5rem;
+    color: var(--gold);
+    opacity: 0.55;
+    line-height: 0;
+    vertical-align: -0.55rem;
+    margin-left: 0.15rem;
+  }
+
+  .pull-quote cite {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-light);
+    opacity: 0.72;
+    text-transform: uppercase;
+    font-style: normal;
+    display: block;
+  }
+
+  /* ─── CORPUS STRIP ─── */
+  .corpus-strip {
+    background-color: var(--walnut-mid);
+    padding: 2.2rem 3rem;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .corpus-strip-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.40em;
+    color: var(--gold-light);
+    opacity: 0.75;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+    text-align: center;
+  }
+
+  .corpus-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    justify-content: center;
+  }
+
+  .corpus-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--parchment-dark);
+    opacity: 0.80;
+    letter-spacing: 0.05em;
+    padding: 0.22rem 0;
+    border-bottom: 1px solid rgba(196, 160, 90, 0.28);
+  }
+
+  .corpus-item::before {
+    content: '◆ ';
+    color: var(--gold-light);
+    opacity: 0.65;
+    font-size: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background-color: var(--walnut);
+    padding: 2.2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    border-top: 2px solid var(--gold);
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--parchment);
+    opacity: 0.82;
+  }
+
+  .footer-dates {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--parchment-dark);
+    opacity: 0.68;
+    margin-top: 0.2rem;
+  }
+
+  .footer-center {
+    text-align: center;
+  }
+
+  .footer-center p {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-light);
+    opacity: 0.55;
+    text-transform: uppercase;
+    line-height: 1.7;
+  }
+
+  .footer-right {
+    text-align: right;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.60rem;
+    letter-spacing: 0.22em;
+    color: var(--parchment-dark);
+    opacity: 0.72;
+    text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    header {
+      padding: 0.8rem 1.5rem;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: center;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      height: 55vw;
+      min-height: 300px;
+    }
+
+    .hero-right {
+      border-left: none;
+      border-top: 3px solid var(--walnut-mid);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      border-right: none;
+      border-bottom: 1.5px solid var(--parchment-dark);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-embed {
+      min-height: 380px;
+    }
+
+    .pull-quote {
+      padding: 3rem 1.5rem;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 1.2rem;
+      padding: 1.8rem 1.5rem;
+    }
+
+    .footer-right { text-align: center; }
+
+    .corpus-strip {
+      padding: 1.8rem 1.5rem;
+    }
+
+    .transition-band {
+      padding: 1rem 1.5rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-center">Museum of Minds</div>
+  <div class="header-right">SBA–1820–2026</div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+
+  <!-- LEFT: SVG Illustration — Rochester Courthouse Interior, 1872 -->
+  <div class="hero-left">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Warm candlelight radial gradient -->
+        <radialGradient id="lampGlow" cx="50%" cy="38%" r="55%">
+          <stop offset="0%"   stop-color="#C4824A" stop-opacity="0.45"/>
+          <stop offset="60%"  stop-color="#6B2A1A" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#2E1F14" stop-opacity="0.0"/>
+        </radialGradient>
+
+        <!-- Deep room background gradient -->
+        <linearGradient id="roomBg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#1A0E08"/>
+          <stop offset="45%"  stop-color="#2E1A0F"/>
+          <stop offset="100%" stop-color="#140A05"/>
+        </linearGradient>
+
+        <!-- Wood panel gradient -->
+        <linearGradient id="woodPanel" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#3D2210"/>
+          <stop offset="50%"  stop-color="#5A3018"/>
+          <stop offset="100%" stop-color="#3D2210"/>
+        </linearGradient>
+
+        <!-- Paper/parchment gradient for documents -->
+        <linearGradient id="paperGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#F5EDD8"/>
+          <stop offset="100%" stop-color="#DDD0B0"/>
+        </linearGradient>
+
+        <!-- Soft blur for glow effects -->
+        <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+        </filter>
+
+        <!-- Slight blur for candle flame -->
+        <filter id="flameBlur" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+        </filter>
+      </defs>
+
+      <!-- ── Background: deep Victorian courtroom ── -->
+      <rect width="700" height="900" fill="url(#roomBg)"/>
+
+      <!-- Floor boards -->
+      <rect x="0" y="720" width="700" height="180" fill="#2A1508"/>
+      <line x1="0" y1="730" x2="700" y2="730" stroke="#3D2210" stroke-width="1.5" opacity="0.8"/>
+      <line x1="0" y1="748" x2="700" y2="748" stroke="#3D2210" stroke-width="1" opacity="0.5"/>
+      <line x1="0" y1="764" x2="700" y2="764" stroke="#3D2210" stroke-width="1" opacity="0.4"/>
+      <line x1="0" y1="780" x2="700" y2="780" stroke="#3D2210" stroke-width="0.8" opacity="0.35"/>
+
+      <!-- Perspective floorboards vertical lines -->
+      <line x1="350" y1="720" x2="200" y2="900" stroke="#3D2210" stroke-width="0.7" opacity="0.4"/>
+      <line x1="350" y1="720" x2="490" y2="900" stroke="#3D2210" stroke-width="0.7" opacity="0.4"/>
+      <line x1="350" y1="720" x2="80"  y2="900" stroke="#3D2210" stroke-width="0.5" opacity="0.3"/>
+      <line x1="350" y1="720" x2="620" y2="900" stroke="#3D2210" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- Rear wainscoting / wall paneling -->
+      <rect x="0" y="120" width="700" height="600" fill="#291408"/>
+
+      <!-- Upper wall with plaster tone -->
+      <rect x="0" y="0" width="700" height="130" fill="#1E1008"/>
+      <rect x="0" y="125" width="700" height="8" fill="#4A2A12" opacity="0.7"/>
+
+      <!-- Crown molding -->
+      <rect x="0" y="108" width="700" height="14" fill="#3A1E0C"/>
+      <rect x="0" y="104" width="700" height="5"  fill="#5A3018" opacity="0.6"/>
+
+      <!-- Wainscoting panels: horizontal rails -->
+      <rect x="30" y="140" width="640" height="6"  fill="#5A3018" opacity="0.7"/>
+      <rect x="30" y="380" width="640" height="5"  fill="#4A2812" opacity="0.55"/>
+      <rect x="30" y="600" width="640" height="5"  fill="#4A2812" opacity="0.55"/>
+      <rect x="30" y="715" width="640" height="4"  fill="#5A3018" opacity="0.6"/>
+
+      <!-- Wainscoting panel vertical stiles -->
+      <rect x="30"  y="140" width="5" height="580" fill="#5A3018" opacity="0.65"/>
+      <rect x="170" y="140" width="4" height="580" fill="#4A2812" opacity="0.50"/>
+      <rect x="346" y="140" width="4" height="580" fill="#4A2812" opacity="0.50"/>
+      <rect x="530" y="140" width="4" height="580" fill="#4A2812" opacity="0.50"/>
+      <rect x="665" y="140" width="5" height="580" fill="#5A3018" opacity="0.65"/>
+
+      <!-- Recessed panel rectangles -->
+      <rect x="40"  y="155" width="122" height="215" fill="none" stroke="#3D2010" stroke-width="1.5" opacity="0.55"/>
+      <rect x="46"  y="161" width="110" height="203" fill="none" stroke="#5A3018" stroke-width="0.8" opacity="0.35"/>
+      <rect x="180" y="155" width="158" height="215" fill="none" stroke="#3D2010" stroke-width="1.5" opacity="0.55"/>
+      <rect x="186" y="161" width="146" height="203" fill="none" stroke="#5A3018" stroke-width="0.8" opacity="0.35"/>
+      <rect x="350" y="155" width="172" height="215" fill="none" stroke="#3D2010" stroke-width="1.5" opacity="0.55"/>
+      <rect x="356" y="161" width="160" height="203" fill="none" stroke="#5A3018" stroke-width="0.8" opacity="0.35"/>
+      <rect x="538" y="155" width="120" height="215" fill="none" stroke="#3D2010" stroke-width="1.5" opacity="0.55"/>
+      <rect x="544" y="161" width="108" height="203" fill="none" stroke="#5A3018" stroke-width="0.8" opacity="0.35"/>
+
+      <!-- Lower wall panels -->
+      <rect x="40"  y="390" width="122" height="200" fill="none" stroke="#3D2010" stroke-width="1.2" opacity="0.45"/>
+      <rect x="180" y="390" width="158" height="200" fill="none" stroke="#3D2010" stroke-width="1.2" opacity="0.45"/>
+      <rect x="350" y="390" width="172" height="200" fill="none" stroke="#3D2010" stroke-width="1.2" opacity="0.45"/>
+      <rect x="538" y="390" width="120" height="200" fill="none" stroke="#3D2010" stroke-width="1.2" opacity="0.45"/>
+
+      <!-- ── JUDGE'S BENCH / RAISED DAIS ── -->
+      <rect x="100" y="600" width="500" height="120" rx="2" fill="#3A1E0C"/>
+      <rect x="100" y="600" width="500" height="8"   fill="#5A3018" opacity="0.8"/>
+      <rect x="98"  y="600" width="504" height="120" rx="2" fill="none" stroke="#6A4020" stroke-width="2" opacity="0.5"/>
+
+      <!-- Bench face panels -->
+      <rect x="115" y="615" width="140" height="90" fill="none" stroke="#5A3018" stroke-width="1.5" opacity="0.5"/>
+      <rect x="275" y="615" width="150" height="90" fill="none" stroke="#5A3018" stroke-width="1.5" opacity="0.5"/>
+      <rect x="445" y="615" width="140" height="90" fill="none" stroke="#5A3018" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- Bench top surface -->
+      <rect x="96" y="596" width="508" height="10" rx="1" fill="#5A3018"/>
+      <rect x="96" y="596" width="508" height="3"  fill="#7A4828" opacity="0.6"/>
+
+      <!-- Bench stacked books / papers -->
+      <rect x="170" y="572" width="60" height="24" rx="1" fill="#8B2E2E" opacity="0.85"/>
+      <rect x="170" y="568" width="55" height="5"  rx="1" fill="#A84040" opacity="0.7"/>
+      <rect x="200" y="560" width="40" height="32" rx="1" fill="#4A3728" opacity="0.85"/>
+      <rect x="200" y="556" width="36" height="5"  rx="1" fill="#6A5038" opacity="0.7"/>
+      <rect x="450" y="573" width="70" height="22" rx="1" fill="#2E4020" opacity="0.80"/>
+      <rect x="450" y="569" width="65" height="5"  rx="1" fill="#4A6035" opacity="0.7"/>
+
+      <!-- Inkwell on bench -->
+      <ellipse cx="400" cy="580" rx="10" ry="6" fill="#1A0E08"/>
+      <ellipse cx="400" cy="578" rx="8"  ry="4" fill="#2A1A10" opacity="0.8"/>
+      <rect x="397" y="565" width="2" height="14" fill="#8B2E2E" opacity="0.7"/>
+
+      <!-- ── JUDGE'S CHAIR / THRONE ── -->
+      <rect x="270" y="485" width="160" height="120" rx="2" fill="#3A1E0C"/>
+      <rect x="264" y="595" width="172" height="12"  rx="1" fill="#5A3018"/>
+      <!-- Chair back ornament -->
+      <rect x="280" y="490" width="140" height="100" fill="none" stroke="#6A4020" stroke-width="1.5" opacity="0.6"/>
+      <rect x="292" y="498" width="116" height="84"  fill="none" stroke="#5A3018" stroke-width="1"   opacity="0.4"/>
+      <!-- Carved oval motif on chair back -->
+      <ellipse cx="350" cy="540" rx="40" ry="30" fill="none" stroke="#7A4828" stroke-width="1.5" opacity="0.5"/>
+      <ellipse cx="350" cy="540" rx="28" ry="20" fill="none" stroke="#6A3818" stroke-width="1"   opacity="0.4"/>
+      <!-- Eagle or seal suggestion -->
+      <path d="M350,525 L345,535 L335,537 L343,543 L340,554 L350,548 L360,554 L357,543 L365,537 L355,535 Z" fill="#9E7A3A" opacity="0.40"/>
+
+      <!-- ── OIL LAMP ON BENCH ── -->
+      <!-- Glow first, behind lamp -->
+      <ellipse cx="350" cy="555" rx="90" ry="50" fill="url(#lampGlow)" filter="url(#softGlow)" opacity="0.9"/>
+      <!-- Lamp base -->
+      <rect x="340" y="552" width="20" height="30" rx="2" fill="#7A5A28" opacity="0.9"/>
+      <rect x="338" y="580" width="24" height="5"  rx="1" fill="#9E7A3A" opacity="0.85"/>
+      <!-- Lamp bowl -->
+      <ellipse cx="350" cy="553" rx="18" ry="10" fill="#C4A05A" opacity="0.85"/>
+      <ellipse cx="350" cy="551" rx="12" ry="6"   fill="#D4B06A" opacity="0.75"/>
+      <!-- Glass chimney -->
+      <rect x="344" y="525" width="12" height="28" rx="4" fill="rgba(200,170,100,0.18)" stroke="#C4A05A" stroke-width="0.8" opacity="0.65"/>
+      <!-- Flame -->
+      <ellipse cx="350" cy="524" rx="4" ry="7" fill="#E8C060" filter="url(#flameBlur)" opacity="0.90"/>
+      <ellipse cx="350" cy="522" rx="2" ry="4" fill="#FFF0A0" opacity="0.95"/>
+
+      <!-- Light cast on ceiling from lamp -->
+      <ellipse cx="350" cy="80" rx="220" ry="80" fill="#C4824A" opacity="0.06" filter="url(#softGlow)"/>
+
+      <!-- ── ARCHED WINDOW: CENTER REAR (boarded/shuttered) ── -->
+      <rect x="290" y="145" width="120" height="200" rx="0" fill="#1A0A04" opacity="0.9"/>
+      <path d="M290,200 Q350,130 410,200" fill="#1A0A04" opacity="0.9"/>
+      <!-- Window muntins -->
+      <line x1="350" y1="145" x2="350" y2="340" stroke="#3D2010" stroke-width="1.5" opacity="0.7"/>
+      <line x1="290" y1="240" x2="410" y2="240" stroke="#3D2010" stroke-width="1.5" opacity="0.7"/>
+      <line x1="290" y1="290" x2="410" y2="290" stroke="#3D2010" stroke-width="1.5" opacity="0.6"/>
+      <!-- Window frame -->
+      <rect x="288" y="145" width="124" height="198" fill="none" stroke="#5A3018" stroke-width="2.5" opacity="0.7"/>
+      <!-- Arch keystone -->
+      <path d="M340,148 L350,138 L360,148" fill="#5A3018" opacity="0.6"/>
+
+      <!-- Thin curtain suggestion left -->
+      <path d="M288,145 Q270,230 280,340 L290,340 L290,145Z" fill="#4A2A14" opacity="0.45"/>
+      <path d="M412,145 Q430,230 420,340 L410,340 L410,145Z" fill="#4A2A14" opacity="0.45"/>
+
+      <!-- ── FIGURE OF SUSAN B. ANTHONY (standing, defiant) ── -->
+      <!-- Shadow on floor -->
+      <ellipse cx="350" cy="718" rx="38" ry="8" fill="#1A0A04" opacity="0.55"/>
+
+      <!-- Dress / skirt: dark Victorian -->
+      <path d="M295,720 Q300,680 310,650 Q320,580 325,540 Q330,510 345,500 L355,500 Q370,510 375,540 Q380,580 390,650 Q400,680 405,720Z" fill="#2A1A10"/>
+      <!-- Dress folds -->
+      <path d="M310,650 Q318,620 325,540" stroke="#3A2418" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <path d="M390,650 Q382,620 375,540" stroke="#3A2418" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <path d="M320,600 Q335,590 350,592 Q365,590 380,600" stroke="#4A3020" stroke-width="1" fill="none" opacity="0.55"/>
+
+      <!-- Dress bustle/back suggestion -->
+      <ellipse cx="350" cy="620" rx="55" ry="12" fill="#241408" opacity="0.6"/>
+
+      <!-- Bodice -->
+      <rect x="325" y="465" width="50" height="42" rx="3" fill="#1E1008"/>
+      <path d="M325,465 Q350,458 375,465 L372,507 Q350,512 328,507Z" fill="#2A1810"/>
+      <!-- Collar / white lace -->
+      <path d="M330,465 Q350,455 370,465 L368,470 Q350,462 332,470Z" fill="#F5EDD8" opacity="0.80"/>
+      <!-- Brooch at throat -->
+      <circle cx="350" cy="470" r="4" fill="#9E7A3A" opacity="0.85"/>
+      <circle cx="350" cy="470" r="2" fill="#C4A05A" opacity="0.80"/>
+
+      <!-- Arms: left arm down with papers, right arm slightly raised -->
+      <!-- Left arm + hand holding document -->
+      <path d="M325,475 Q308,495 302,520 Q298,535 302,540" stroke="#3A2010" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M302,540 Q300,550 298,555" stroke="#6A4030" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- Document in left hand -->
+      <rect x="275" y="548" width="38" height="50" rx="1" fill="url(#paperGrad)" opacity="0.90"/>
+      <line x1="280" y1="558" x2="308" y2="558" stroke="#4A3728" stroke-width="0.8" opacity="0.55"/>
+      <line x1="280" y1="564" x2="308" y2="564" stroke="#4A3728" stroke-width="0.8" opacity="0.55"/>
+      <line x1="280" y1="570" x2="308" y2="570" stroke="#4A3728" stroke-width="0.8" opacity="0.55"/>
+      <line x1="280" y1="576" x2="308" y2="576" stroke="#4A3728" stroke-width="0.8" opacity="0.55"/>
+      <line x1="280" y1="582" x2="300" y2="582" stroke="#4A3728" stroke-width="0.8" opacity="0.45"/>
+      <!-- Header text on document suggestion -->
+      <rect x="281" y="552" width="30" height="3" rx="0.5" fill="#8B2E2E" opacity="0.55"/>
+
+      <!-- Right arm raised slightly toward viewer / gesturing -->
+      <path d="M375,475 Q392,492 400,515 Q405,530 400,535" stroke="#3A2010" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M400,535 Q403,545 402,552" stroke="#6A4030" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- Gloved hand suggestion -->
+      <ellipse cx="402" cy="556" rx="8" ry="10" fill="#5A3018" opacity="0.8"/>
+      <ellipse cx="402" cy="552" rx="5"  rx="5" ry="6"  fill="#4A2A12" opacity="0.7"/>
+
+      <!-- Neck -->
+      <rect x="343" y="445" width="14" height="24" rx="4" fill="#7A5040" opacity="0.9"/>
+
+      <!-- Head -->
+      <ellipse cx="350" cy="430" rx="30" ry="36" fill="#8A6050" opacity="0.95"/>
+      <!-- Face shading -->
+      <ellipse cx="350" cy="432" rx="24" ry="28" fill="#9A6D58" opacity="0.55"/>
+
+      <!-- Hair: severe centre part, pulled back -->
+      <path d="M320,415 Q335,395 350,392 Q365,395 380,415 L376,425 Q365,405 350,402 Q335,405 324,425Z" fill="#2A1810" opacity="0.95"/>
+      <!-- Hair sides -->
+      <path d="M320,415 Q315,430 318,450 Q322,460 328,462" stroke="#2A1810" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <path d="M380,415 Q385,430 382,450 Q378,460 372,462" stroke="#2A1810" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <!-- Hair bun at back/top -->
+      <ellipse cx="350" cy="398" rx="18" ry="10" fill="#2A1810" opacity="0.90"/>
+
+      <!-- Eyes: steady, determined -->
+      <ellipse cx="340" cy="430" rx="5"  ry="3.5" fill="#1A1008" opacity="0.90"/>
+      <ellipse cx="360" cy="430" rx="5"  ry="3.5" fill="#1A1008" opacity="0.90"/>
+      <circle  cx="341" cy="430" r="1.5" fill="#3A2810" opacity="0.7"/>
+      <circle  cx="361" cy="430" r="1.5" fill="#3A2810" opacity="0.7"/>
+      <!-- Eye highlights -->
+      <circle cx="342" cy="429" r="0.7" fill="#F5EDD8" opacity="0.60"/>
+      <circle cx="362" cy="429" r="0.7" fill="#F5EDD8" opacity="0.60"/>
+
+      <!-- Nose -->
+      <path d="M348,436 Q345,444 342,447 Q348,450 352,450 Q356,450 362,447 Q359,444 352,436" stroke="#6A4030" stroke-width="0.8" fill="none" opacity="0.7"/>
+
+      <!-- Mouth: firm, set line -->
+      <path d="M340,455 Q350,459 360,455" stroke="#5A3020" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+      <!-- Spectacles suggestion -->
+      <ellipse cx="340" cy="430" rx="6"  ry="4.5" fill="none" stroke="#8B6A3A" stroke-width="0.8" opacity="0.60"/>
+      <ellipse cx="360" cy="430" rx="6"  ry="4.5" fill="none" stroke="#8B6A3A" stroke-width="0.8" opacity="0.60"/>
+      <line x1="346" y1="430" x2="354" y2="430" stroke="#8B6A3A" stroke-width="0.7" opacity="0.55"/>
+
+      <!-- ── AUDIENCE / GALLERY FIGURES (background, left and right) ── -->
+      <!-- Left gallery figure 1 -->
+      <ellipse cx="100" cy="660" rx="18" ry="22" fill="#2A1810" opacity="0.70"/>
+      <ellipse cx="100" cy="648" rx="10" ry="12" fill="#6A4A30" opacity="0.55"/>
+      <!-- Left gallery figure 2 -->
+      <ellipse cx="148" cy="655" rx="16" ry="20" fill="#3A2218" opacity="0.65"/>
+      <ellipse cx="148" cy="643" rx="9"  ry="11" fill="#7A5A3A" opacity="0.50"/>
+      <!-- Left gallery figure 3 -->
+      <ellipse cx="62"  cy="665" rx="15" ry="19" fill="#241408" opacity="0.60"/>
+      <ellipse cx="62"  cy="653" rx="8"  ry="10" fill="#5A3A28" opacity="0.50"/>
+      <!-- Right gallery figure 1 -->
+      <ellipse cx="600" cy="660" rx="18" ry="22" fill="#2A1810" opacity="0.70"/>
+      <ellipse cx="600" cy="648" rx="10" ry="12" fill="#6A4A30" opacity="0.55"/>
+      <!-- Right gallery figure 2 -->
+      <ellipse cx="550" cy="655" rx="16" ry="20" fill="#3A2218" opacity="0.65"/>
+      <ellipse cx="550" cy="643" rx="9"  ry="11" fill="#7A5A3A" opacity="0.50"/>
+      <!-- Right gallery figure 3 -->
+      <ellipse cx="638" cy="658" rx="14" ry="18" fill="#241408" opacity="0.60"/>
+      <ellipse cx="638" cy="647" rx="8"  ry="10" fill="#5A3A28" opacity="0.50"/>
+
+      <!-- ── AMERICAN FLAG (partially visible, left wall) ── -->
+      <rect x="38" y="230" width="70" height="46" fill="#8B2E2E" opacity="0.75"/>
+      <!-- Stripes suggestion -->
+      <rect x="38" y="237" width="70" height="5" fill="#F5EDD8" opacity="0.60"/>
+      <rect x="38" y="247" width="70" height="5" fill="#F5EDD8" opacity="0.55"/>
+      <rect x="38" y="257" width="70" height="5" fill="#F5EDD8" opacity="0.55"/>
+      <rect x="38" y="267" width="70" height="5" fill="#F5EDD8" opacity="0.50"/>
+      <!-- Blue canton -->
+      <rect x="38" y="230" width="32" height="22" fill="#2A3A6A" opacity="0.75"/>
+      <!-- Stars: small white dots -->
+      <circle cx="43"  cy="235" r="1.2" fill="#F5EDD8" opacity="0.70"/>
+      <circle cx="50"  cy="235" r="1.2" fill="#F5EDD8" opacity="0.70"/>
+      <circle cx="57"  cy="235" r="1.2" fill="#F5EDD8" opacity="0.70"/>
+      <circle cx="64"  cy="235" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <circle cx="43"  cy="241" r="1.2" fill="#F5EDD8" opacity="0.70"/>
+      <circle cx="50"  cy="241" r="1.2" fill="#F5EDD8" opacity="0.70"/>
+      <circle cx="57"  cy="241" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <circle cx="64"  cy="241" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <circle cx="43"  cy="247" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <circle cx="50"  cy="247" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <circle cx="57"  cy="247" r="1.2" fill="#F5EDD8" opacity="0.65"/>
+      <!-- Flagpole -->
+      <line x1="37" y1="220" x2="37" y2="310" stroke="#8B6A3A" stroke-width="2" opacity="0.70"/>
+
+      <!-- ── ANNOTATION LAYER ── -->
+      <!-- Location annotation, bottom left -->
+      <text x="32" y="856" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="10" fill="#C4A05A" opacity="0.60">Federal Building, Rochester, N.Y.</text>
+      <text x="32" y="869" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="9"  fill="#C4A05A" opacity="0.50">November 14, 1872</text>
+
+      <!-- Corner title block, bottom right -->
+      <rect x="490" y="838" width="178" height="48" fill="none" stroke="#6A4020" stroke-width="0.8" opacity="0.40"/>
+      <text x="498" y="851" font-family="'Cinzel', serif" font-size="8"  fill="#C4A05A" opacity="0.65" letter-spacing="1">MUSEUM OF MINDS</text>
+      <line x1="490" y1="855" x2="668" y2="855" stroke="#6A4020" stroke-width="0.6" opacity="0.38"/>
+      <text x="498" y="865" font-family="'Cormorant Garamond', serif" font-size="9"  fill="#C4A05A" opacity="0.60" font-style="italic">Susan B. Anthony</text>
+      <text x="498" y="877" font-family="'IM Fell English SC', serif" font-size="7.5" fill="#C4A05A" opacity="0.52" letter-spacing="1">SBA — 1820 — 2026</text>
+
+      <!-- Dimension / compass ornament, top right -->
+      <circle cx="650" cy="55" r="24" fill="none" stroke="#9E7A3A" stroke-width="0.8" opacity="0.35"/>
+      <circle cx="650" cy="55" r="18" fill="none" stroke="#9E7A3A" stroke-width="0.5" opacity="0.28"/>
+      <line x1="650" y1="31" x2="650" y2="79" stroke="#9E7A3A" stroke-width="0.8" opacity="0.38"/>
+      <line x1="626" y1="55" x2="674" y2="55" stroke="#9E7A3A" stroke-width="0.8" opacity="0.38"/>
+      <text x="647" y="26"  font-family="'Cinzel', serif" font-size="7" fill="#C4A05A" opacity="0.52">N</text>
+      <text x="647" y="87"  font-family="'Cinzel', serif" font-size="7" fill="#C4A05A" opacity="0.45">S</text>
+      <text x="618" y="58"  font-family="'Cinzel', serif" font-size="7" fill="#C4A05A" opacity="0.45">W</text>
+      <text x="668" y="58"  font-family="'Cinzel', serif" font-size="7" fill="#C4A05A" opacity="0.45">E</text>
+
+      <!-- Italic caption above figure -->
+      <text x="350" y="388" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#C4A05A" opacity="0.50" text-anchor="middle">Tried. Convicted. Unsilenced.</text>
+
+    </svg>
+  </div>
+
+  <!-- RIGHT: Bio Panel -->
+  <div class="hero-right">
+    <div class="museum-label">Gallery IV — Reform &amp; Revolution</div>
+
+    <div class="photo-frame">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Portrait_of_Susan_B._Anthony.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        alt="Portrait of Susan B. Anthony"
+        onerror="this.style.display='none'; this.parentElement.style.background='#2E1F14'; this.parentElement.style.minHeight='220px';"
+      />
+    </div>
+
+    <div class="placard">
+      <h1 class="placard-name">Susan B.<br>Anthony</h1>
+      <p class="placard-dates">1820 &mdash; 1906</p>
+      <hr class="placard-rule">
+      <p class="placard-tagline">The woman who voted illegally<br>and dared the republic to stop her</p>
+      <p class="placard-bio">
+        Susan B. Anthony was an abolitionist, temperance organizer, and the foremost architect 
+        of the American woman suffrage movement — a Quaker's daughter who became a revolutionary. 
+        She spent fifty years forcing the United States to reckon with the contradiction at the 
+        heart of its founding: a republic that proclaimed the consent of the governed while 
+        denying half its citizens a voice.
+      </p>
+      <br>
+      <p class="placard-bio">
+        She never married and never apologized for it. She was arrested for casting a ballot in 
+        Rochester in 1872, tried in a courtroom where she was forbidden to testify on her own 
+        behalf, convicted by a judge who directed the verdict, and fined $100 she never paid. 
+        The Nineteenth Amendment, ratified fourteen years after her death, bears her name 
+        in popular memory if not in the official text. She would have corrected that omission 
+        with characteristic precision.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ─── -->
+<div class="transition-band">
+  <div class="rule-line"></div>
+  <div class="ornament">Enter the Conversation &nbsp;&#9670;&nbsp; Speak With Miss Anthony</div>
+  <div class="rule-line"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ─── -->
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <h2>A Living Dialogue</h2>
+    <p>
+      Susan B. Anthony argued, lectured, organized, and testified before Congress for more than 
+      five decades. She left behind a remarkable body of writing — speeches, letters, diaries, 
+      and the six-volume <em>History of Woman Suffrage</em> she co-authored with Elizabeth Cady 
+      Stanton and Matilda Joslyn Gage. That record now speaks again.
+    </p>
+    <p>
+      This conversational exhibit draws from Anthony's own words to let you engage with the 
+      mind behind the movement: her strategic brilliance, her moral certainty, her genuine 
+      contradictions, and her unyielding conviction that the ballot was not a privilege 
+      bestowed by men but a right withheld by law.
+    </p>
+
+    <div class="featured-quote">
+      <p>"I distrust those people who know so well what God wants them to do to their fellows, 
+      because it always coincides with their own desires."</p>
+    </div>
+
+    <p>
+      Ask her about the 1872 arrest, the alliance with George Train, the split with Frederick 
+      Douglass over the Fifteenth Amendment, or what she makes of a world that finally, 
+      imperfectly, did what she demanded. She does not soften her positions to suit the times.
+    </p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Woman Suffrage</span>
+      <span class="domain-tag">Abolitionism</span>
+      <span class="domain-tag">Constitutional Law</span>
+      <span class="domain-tag">Reform Movements</span>
+      <span class="domain-tag">Civil Disobedience</span>
+      <span class="domain-tag">Reconstruction</span>
+      <span class="domain-tag">19th C. America</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/susan-b-anthony/widget/susan-b-anthony-widget.css">
+      <script src="https://museumofminds.com/susan-b-anthony/widget/susan-b-anthony-widget.js"
+              data-api-url="https://susan-b-anthony-production.up.railway.app"
+              data-persona-id="susan-b-anthony"></script>
+    </div>
+</section>
+
+<!-- ─── PULL QUOTE ─── -->
+<section class="pull-quote">
+  <blockquote>
+    The moment you deprive a human being of the ballot — that symbol of equality — 
+    you make of that human being a subject, a serf, a slave.
+  </blockquote>
+  <cite>Susan B. Anthony &mdash; Speech on Woman's Rights, 1873</cite>
+</section>
+
+<!-- ─── CORPUS STRIP ─── -->
+<div class="corpus-strip">
+  <div class="corpus-strip-label">This Exhibit Draws From the Following Primary Sources</div>
+  <div class="corpus-items">
+    <span class="corpus-item"><em>History of Woman Suffrage</em>, Vols. I–VI (1881–1922)</span>
+    <span class="corpus-item">United States v. Susan B. Anthony — Trial Record (1873)</span>
+    <span class="corpus-item">Selected Speeches &amp; Lectures (1848–1900)</span>
+    <span class="corpus-item">Personal Diaries &amp; Correspondence (Rochester, 1838–1906)</span>
+    <span class="corpus-item"><em>The Revolution</em> — Newspaper Editorials (1868–1870)</span>
+    <span class="corpus-item">Congressional Testimony on Woman Suffrage (1869–1906)</span>
+    <span class="corpus-item">Letters to Elizabeth Cady Stanton &amp; Frederick Douglass</span>
+    <span class="corpus-item">Declaration of Rights for Women (1876)</span>
+    <span class="corpus-item">Ida Husted Harper, <em>Life and Work of Susan B. Anthony</em> (1898)</span>
+    <span class="corpus-item">Address to the National American Woman Suffrage Association (1900)</span>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div>
+    <div class="footer-name">Susan B. Anthony</div>
+    <span class="footer-dates">Adams, Massachusetts &nbsp;1820 &mdash; Rochester, New York &nbsp;1906</span>
+  </div>
+
+  <div class="footer-center">
+    <p>Museum of Minds</p>
+    <p>A Living Archive of Human Thought</p>
+    <p>&copy; 2026 &nbsp;&middot;&nbsp; All Rights Reserved</p>
+  </div>
+
+  <div class="footer-right">
+    Powered by Her Own Words
+  </div>
+</footer>
+
+</body>
+</html>
