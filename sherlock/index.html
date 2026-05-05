@@ -107,18 +107,11 @@ nav a:hover { color: var(--amber); }
   background: var(--void);
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   border-right: 1px solid rgba(196,154,60,0.2);
   overflow: hidden;
   min-height: 560px;
-}
-
-.hero-portrait svg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
 }
 
 .portrait-caption {
@@ -126,26 +119,38 @@ nav a:hover { color: var(--amber); }
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 2rem 1.6rem;
-  background: linear-gradient(transparent, rgba(10,9,12,0.92));
+  padding: 2rem 2rem 1.8rem;
+  background: linear-gradient(transparent, rgba(10,9,12,0.95));
   z-index: 2;
 }
 
 .portrait-name {
   font-family: 'Cinzel', serif;
-  font-size: 1.6rem;
+  font-size: 3.5rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--ivory);
   display: block;
+  line-height: 1.05;
 }
 
 .portrait-dates {
   font-family: 'Cinzel', serif;
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   letter-spacing: 0.4em;
   color: var(--amber);
-  opacity: 0.8;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.portrait-location {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.35em;
+  color: var(--amber);
+  opacity: 0.5;
   margin-top: 0.3rem;
   display: block;
   text-transform: uppercase;
@@ -745,7 +750,28 @@ nav a:hover { color: var(--amber); }
 
   .site-footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
   .footer-right { justify-content: center; }
+
+  .portrait-name { font-size: 2rem; }
 }
+
+.photo-frame{position:relative;width:100%;margin:0 auto 0.8rem;}
+.photo-frame::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(196,154,60,0.4);pointer-events:none;z-index:2;}
+.photo-frame::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(196,154,60,0.12);pointer-events:none;}
+.frame-corner{position:absolute;width:12px;height:12px;border-color:var(--amber);border-style:solid;z-index:3;}
+.frame-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px;}
+.frame-corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0;}
+.frame-corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px;}
+.frame-corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+.photo-frame img{width:100%;display:block;filter:grayscale(100%) sepia(20%) contrast(1.05);position:relative;z-index:1;max-height:320px;object-fit:cover;object-position:top;}
+.photo-caption{font-family:'Cinzel',serif;font-size:0.46rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);text-align:center;opacity:0.6;}
+.illustration-section{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(196,154,60,0.15);border-bottom:1px solid rgba(196,154,60,0.15);background:var(--deep);}
+.illus-svg-col{position:relative;min-height:420px;overflow:hidden;border-right:1px solid rgba(196,154,60,0.12);display:flex;align-items:center;justify-content:center;}
+.illus-svg-col svg{width:85%;height:auto;max-height:400px;}
+.illus-text-col{padding:4rem 3rem;display:flex;flex-direction:column;gap:1.4rem;justify-content:center;}
+.illus-quote{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:var(--ivory);line-height:1.4;}
+.illus-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text);line-height:1.8;font-style:italic;font-weight:300;}
+.illus-note{font-family:'Inter',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);line-height:1.7;opacity:0.7;}
+@media(max-width:800px){.illustration-section{grid-template-columns:1fr;}.illus-svg-col{min-height:280px;border-right:none;border-bottom:1px solid rgba(196,154,60,0.12);}}
 </style>
 </head>
 <body>
@@ -764,8 +790,96 @@ nav a:hover { color: var(--amber); }
 
 <!-- HERO -->
 <section class="hero">
-  <!-- PORTRAIT PANEL -->
+
+  <!-- LEFT: PORTRAIT PANEL — atmospheric background, name at bottom-left, no SVG illustration -->
   <div class="hero-portrait">
+    <!-- Atmospheric background SVG: radial glow + fog lines only -->
+    <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+      <defs>
+        <radialGradient id="heroAtmGrad" cx="50%" cy="38%" r="70%">
+          <stop offset="0%" stop-color="#1C1828"/>
+          <stop offset="100%" stop-color="#0A090C"/>
+        </radialGradient>
+        <radialGradient id="heroLampGlow" cx="72%" cy="22%" r="45%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.13"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="heroFootGlow" cx="50%" cy="100%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="560" height="720" fill="url(#heroAtmGrad)"/>
+      <ellipse cx="400" cy="140" rx="260" ry="200" fill="url(#heroLampGlow)"/>
+      <ellipse cx="280" cy="720" rx="280" ry="160" fill="url(#heroFootGlow)"/>
+      <!-- subtle fog lines -->
+      <line x1="0" y1="320" x2="560" y2="290" stroke="rgba(196,154,60,0.025)" stroke-width="1"/>
+      <line x1="0" y1="400" x2="560" y2="370" stroke="rgba(196,154,60,0.02)" stroke-width="1"/>
+      <line x1="0" y1="480" x2="560" y2="460" stroke="rgba(196,154,60,0.018)" stroke-width="0.8"/>
+      <!-- decorative corner marks -->
+      <path d="M30,30 L30,55 M30,30 L55,30" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
+      <path d="M530,30 L530,55 M530,30 L505,30" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
+      <path d="M30,560 L30,535 M30,560 L55,560" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
+      <path d="M530,560 L530,535 M530,560 L505,560" stroke="rgba(196,154,60,0.18)" stroke-width="0.8" fill="none"/>
+    </svg>
+
+    <!-- Name / dates overlay -->
+    <div class="portrait-caption">
+      <span class="portrait-name">Sherlock Holmes</span>
+      <span class="portrait-dates">1854 — ?</span>
+      <span class="portrait-location">The Library · Museum of Minds</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: INFO PANEL -->
+  <div class="hero-info">
+
+    <div class="hero-eyebrow">Consulting Detective · 221B Baker Street</div>
+
+    <div class="photo-frame">
+      <div class="frame-corner tl"></div><div class="frame-corner tr"></div>
+      <div class="frame-corner bl"></div><div class="frame-corner br"></div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Portrait_at_221B_Baker_Street.jpg" alt="Sherlock Holmes — Sidney Paget, 1891">
+    </div>
+    <p class="photo-caption">Sidney Paget, 1891 — The Strand Magazine</p>
+
+    <div class="hero-attribution">As written by Arthur Conan Doyle, 1887–1917</div>
+
+    <div class="hero-description">
+      Sherlock Holmes is the consulting detective of 221B Baker Street — the master of observation and deductive inference who can read a man's profession, history, and character from the calluses on his hands and the mud on his boots.
+    </div>
+
+    <div>
+      <div class="trust-badge">
+        <span class="trust-score-num">92</span>
+        <div class="trust-score-divider"></div>
+        <div>
+          <div class="trust-label-text">Foundational</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.45rem;letter-spacing:0.2em;color:var(--text-dim);margin-top:0.15rem;text-transform:uppercase;">Trust Score</div>
+        </div>
+      </div>
+      <div class="trust-detail" style="margin-top:0.7rem;">
+        1,814 passages · 4 novels · 56 stories · All US public-domain verified
+      </div>
+    </div>
+
+    <div>
+      <div class="starters-label">Begin a conversation</div>
+      <div class="starters-grid">
+        <button class="starter-btn" data-starter="Show me your method. Where do most amateurs go wrong?">Show me your method. Where do most amateurs go wrong?</button>
+        <button class="starter-btn" data-starter="What can you make of me, just from this conversation?">What can you make of me, just from this conversation?</button>
+        <button class="starter-btn" data-starter="Tell me about Reichenbach. Did you expect to survive?">Tell me about Reichenbach. Did you expect to survive?</button>
+        <button class="starter-btn" data-starter="Why Watson, of all men?">Why Watson, of all men?</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ILLUSTRATION SECTION -->
+<section class="illustration-section">
+
+  <div class="illus-svg-col">
     <svg viewBox="0 0 560 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       <defs>
         <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
@@ -800,27 +914,23 @@ nav a:hover { color: var(--amber); }
 
       <!-- Gas lamp on wall (right) -->
       <g filter="url(#softGlow)" opacity="0.85">
-        <!-- lamp bracket -->
         <path d="M480,60 Q500,60 500,90 L500,130" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- lamp globe -->
         <ellipse cx="500" cy="145" rx="18" ry="22" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
         <ellipse cx="500" cy="145" rx="18" ry="22" fill="rgba(196,154,60,0.08)"/>
-        <!-- flame glow -->
         <ellipse cx="500" cy="145" rx="8" ry="10" fill="rgba(232,201,106,0.25)"/>
         <line x1="500" y1="167" x2="500" y2="178" stroke="#C49A3C" stroke-width="1.2"/>
         <path d="M492,178 L508,178" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
       </g>
 
-      <!-- Pipe — resting on armchair suggestion -->
+      <!-- Pipe -->
       <g filter="url(#glow)" opacity="0.7">
         <path d="M310,560 Q330,545 355,542 Q365,541 368,548 Q371,555 360,558 Q345,562 320,570" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/>
-        <!-- bowl of pipe -->
         <path d="M355,542 Q368,536 375,540 Q380,544 375,550 Q368,554 360,553" fill="none" stroke="#C49A3C" stroke-width="1.5"/>
         <path d="M362,537 Q366,528 370,525" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
         <path d="M367,536 Q373,526 376,523" stroke="#C49A3C" stroke-width="0.8" stroke-linecap="round" opacity="0.35"/>
       </g>
 
-      <!-- FIGURE — Sherlock Holmes seated, facing slightly left -->
+      <!-- FIGURE -->
       <!-- Armchair silhouette -->
       <g opacity="0.35">
         <path d="M140,580 L140,480 Q140,460 160,460 L400,460 Q420,460 420,480 L420,580 Z" fill="#1A1520" stroke="rgba(196,154,60,0.15)" stroke-width="1"/>
@@ -830,125 +940,72 @@ nav a:hover { color: var(--amber); }
         <rect x="410" y="550" width="30" height="60" rx="2" fill="#161320" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
       </g>
 
-      <!-- FIGURE LINE ART — amber strokes -->
-      <g filter="url(--glow)" stroke="#C49A3C" stroke-linecap="round" stroke-linejoin="round" fill="none">
-
-        <!-- Head shape -->
+      <!-- FIGURE LINE ART -->
+      <g stroke="#C49A3C" stroke-linecap="round" stroke-linejoin="round" fill="none">
         <path d="M240,155 Q238,120 248,102 Q258,82 280,78 Q302,74 316,90 Q330,106 328,135 Q326,158 318,172" stroke-width="1.8" opacity="0.9"/>
         <path d="M240,155 Q236,170 238,182 Q240,192 248,196" stroke-width="1.6" opacity="0.85"/>
         <path d="M318,172 Q322,185 318,196 Q312,206 300,210 Q285,215 270,212 Q255,208 248,196" stroke-width="1.6" opacity="0.85"/>
-
-        <!-- Distinctive aquiline nose -->
         <path d="M272,115 Q270,128 268,138 Q266,145 272,148 Q278,150 284,146 Q286,143 285,138" stroke-width="1.4" opacity="0.8"/>
-
-        <!-- Eye (right, visible) -->
         <path d="M288,108 Q294,105 300,108 Q294,114 288,111 Z" stroke-width="1.2" opacity="0.75" fill="rgba(196,154,60,0.1)"/>
-        <!-- Eye (left, partial) -->
         <path d="M265,110 Q270,107 275,110 Q270,115 265,112 Z" stroke-width="1.1" opacity="0.65" fill="rgba(196,154,60,0.08)"/>
-
-        <!-- Eyebrows — sharp, arched -->
         <path d="M262,103 Q268,98 276,101" stroke-width="1.4" opacity="0.7"/>
         <path d="M286,101 Q294,97 303,100" stroke-width="1.4" opacity="0.7"/>
-
-        <!-- Ear -->
         <path d="M240,130 Q232,135 233,148 Q234,158 240,160" stroke-width="1.3" opacity="0.65"/>
-
-        <!-- Hair — swept back, thinning at temples -->
         <path d="M245,90 Q248,76 260,72 Q275,66 290,68 Q308,70 318,82" stroke-width="1.4" opacity="0.7"/>
         <path d="M245,90 Q238,88 236,82 Q238,74 245,72" stroke-width="1.1" opacity="0.5"/>
         <path d="M250,80 Q258,74 268,72" stroke-width="0.9" opacity="0.4"/>
         <path d="M300,70 Q308,68 316,72 Q320,78 318,86" stroke-width="0.9" opacity="0.4"/>
-
-        <!-- Cheekbones — angular, sharp -->
         <path d="M240,155 Q238,165 242,172 Q248,178 256,180" stroke-width="1.2" opacity="0.55"/>
         <path d="M318,160 Q322,170 320,178 Q314,184 306,186" stroke-width="1.2" opacity="0.55"/>
-
-        <!-- Jaw — angular, lean -->
         <path d="M256,200 Q265,208 280,210 Q295,210 304,200" stroke-width="1.5" opacity="0.75"/>
-
-        <!-- Neck -->
         <path d="M262,210 L258,235" stroke-width="1.4" opacity="0.75"/>
         <path d="M300,208 L304,233" stroke-width="1.4" opacity="0.75"/>
-
-        <!-- High collar, cravat -->
         <path d="M250,232 Q248,240 255,245 Q265,250 280,248 Q295,246 305,240 Q310,235 308,230" stroke-width="1.5" opacity="0.8"/>
-        <!-- Cravat knot -->
         <path d="M270,248 Q278,258 285,248" stroke-width="1.3" opacity="0.75"/>
         <path d="M276,258 L278,280" stroke-width="1.2" opacity="0.65"/>
-
-        <!-- Jacket lapels -->
         <path d="M255,245 Q238,260 230,290 Q222,320 220,360" stroke-width="1.6" opacity="0.8"/>
         <path d="M305,242 Q322,256 330,286 Q338,316 340,360" stroke-width="1.6" opacity="0.8"/>
-        <!-- Lapel detail -->
         <path d="M255,245 Q265,268 275,280" stroke-width="1.2" opacity="0.6"/>
         <path d="M305,242 Q296,265 286,278" stroke-width="1.2" opacity="0.6"/>
-        <!-- Button line -->
         <path d="M278,282 L280,380" stroke-width="1" opacity="0.5"/>
         <circle cx="280" cy="308" r="2" stroke-width="1" opacity="0.5"/>
         <circle cx="280" cy="330" r="2" stroke-width="1" opacity="0.5"/>
         <circle cx="280" cy="352" r="2" stroke-width="1" opacity="0.5"/>
-
-        <!-- Jacket body -->
         <path d="M220,360 Q218,400 222,440 Q226,465 235,475" stroke-width="1.5" opacity="0.75"/>
         <path d="M340,360 Q342,400 338,440 Q334,465 325,475" stroke-width="1.5" opacity="0.75"/>
-        <!-- Bottom of jacket -->
         <path d="M235,475 Q258,488 280,490 Q302,488 325,475" stroke-width="1.4" opacity="0.65"/>
-
-        <!-- Waistcoat -->
         <path d="M260,280 Q252,320 250,360 Q248,395 252,425" stroke-width="1.1" opacity="0.55"/>
         <path d="M300,280 Q308,320 310,360 Q312,395 308,425" stroke-width="1.1" opacity="0.55"/>
         <path d="M252,425 Q266,432 280,433 Q294,432 308,425" stroke-width="1.1" opacity="0.55"/>
-        <!-- Watch chain -->
         <path d="M286,340 Q296,342 302,350 Q306,358 304,365" stroke-width="0.9" opacity="0.5" stroke-dasharray="3,2"/>
-
-        <!-- Left arm resting on armchair -->
         <path d="M220,360 Q210,370 198,378 Q188,384 182,395 Q178,408 180,430 Q182,450 188,462" stroke-width="1.5" opacity="0.75"/>
-        <!-- Left hand, fingertips steepled suggestion -->
         <path d="M188,462 Q192,470 200,474 Q208,476 214,470" stroke-width="1.3" opacity="0.65"/>
-        <!-- Fingers -->
         <path d="M194,472 L196,485" stroke-width="1" opacity="0.5"/>
         <path d="M200,475 L202,488" stroke-width="1" opacity="0.5"/>
         <path d="M206,473 L208,486" stroke-width="1" opacity="0.5"/>
-
-        <!-- Right arm -->
         <path d="M340,360 Q352,370 362,382 Q372,396 374,418 Q374,440 368,455" stroke-width="1.5" opacity="0.75"/>
-        <!-- Right hand resting -->
         <path d="M368,455 Q364,468 356,474 Q348,478 342,472" stroke-width="1.3" opacity="0.65"/>
         <path d="M360,472 L358,485" stroke-width="1" opacity="0.5"/>
         <path d="M354,475 L352,488" stroke-width="1" opacity="0.5"/>
         <path d="M348,473 L346,485" stroke-width="1" opacity="0.5"/>
-
-        <!-- Trousers -->
         <path d="M250,490 Q248,520 252,555 Q256,575 260,590" stroke-width="1.4" opacity="0.65"/>
         <path d="M310,490 Q312,520 308,555 Q304,575 300,590" stroke-width="1.4" opacity="0.65"/>
-        <!-- Crease -->
         <path d="M265,490 L268,590" stroke-width="0.8" opacity="0.35"/>
         <path d="M295,490 L292,590" stroke-width="0.8" opacity="0.35"/>
-
-        <!-- Deerstalker hat (iconic) -->
         <path d="M238,88 Q240,72 245,62 Q252,50 268,46 Q282,42 296,46 Q312,52 318,64 Q324,76 322,90" stroke-width="1.8" opacity="0.85"/>
-        <!-- Hat brim front -->
         <path d="M236,88 Q230,84 228,80 Q228,74 234,72 Q240,70 245,74" stroke-width="1.4" opacity="0.75"/>
-        <!-- Hat brim back -->
         <path d="M322,88 Q328,84 330,78 Q330,72 324,70 Q318,68 313,73" stroke-width="1.4" opacity="0.75"/>
-        <!-- Hat band -->
         <path d="M238,88 Q245,86 256,85 Q270,84 284,85 Q298,86 310,88 L322,88" stroke-width="1" opacity="0.55"/>
-        <!-- Hat flaps (deerstalker ear flaps, tied up) -->
         <path d="M240,76 Q234,68 235,58 Q238,50 244,52 Q248,56 246,66" stroke-width="1.1" opacity="0.55"/>
         <path d="M320,76 Q326,68 325,58 Q322,50 316,52 Q312,56 314,66" stroke-width="1.1" opacity="0.55"/>
-        <!-- Tied flap bow top -->
         <path d="M246,62 Q280,55 314,62" stroke-width="0.9" opacity="0.45"/>
         <circle cx="280" cy="58" r="3" stroke-width="1.1" opacity="0.55"/>
-
-        <!-- Magnifying glass in lap (subtle) -->
         <circle cx="245" cy="510" r="22" stroke-width="1.3" opacity="0.4"/>
         <line x1="260" y1="526" x2="278" y2="545" stroke-width="1.8" opacity="0.45"/>
-        <!-- lens highlight -->
         <path d="M234,498 Q238,494 244,496" stroke-width="0.9" opacity="0.3"/>
-
       </g>
 
-      <!-- Subtle smoke wisps from pipe area -->
+      <!-- Smoke wisps -->
       <g opacity="0.25" stroke="#C49A3C" fill="none" stroke-width="0.8">
         <path d="M370,525 Q365,512 372,500 Q378,488 374,475" stroke-linecap="round"/>
         <path d="M374,522 Q380,508 376,494 Q372,480 378,468" stroke-linecap="round" opacity="0.6"/>
@@ -969,50 +1026,15 @@ nav a:hover { color: var(--amber); }
         <text x="280" y="630" font-family="'Cinzel', serif" font-size="5" fill="rgba(196,154,60,0.6)" text-anchor="middle" letter-spacing="3">LONDON</text>
       </g>
     </svg>
-
-    <!-- Caption overlay -->
-    <div class="portrait-caption">
-      <span class="portrait-name">Sherlock Holmes</span>
-      <span class="portrait-dates">1854 — The Game Is Afoot</span>
-    </div>
   </div>
 
-  <!-- INFO PANEL -->
-  <div class="hero-info">
-    <div>
-      <div class="hero-eyebrow">Consulting Detective · 221B Baker Street</div>
-    </div>
-
-    <div class="hero-attribution">As written by Arthur Conan Doyle, 1887–1917</div>
-
-    <div>
-      <div class="trust-badge">
-        <span class="trust-score-num">92</span>
-        <div class="trust-score-divider"></div>
-        <div>
-          <div class="trust-label-text">Foundational</div>
-          <div style="font-family:'Inter',sans-serif;font-size:0.45rem;letter-spacing:0.2em;color:var(--text-dim);margin-top:0.15rem;text-transform:uppercase;">Trust Score</div>
-        </div>
-      </div>
-      <div class="trust-detail" style="margin-top:0.7rem;">
-        Complete canon: 4 novels · 56 stories · ~600,000 words · 8 works · 1,814 corpus chunks · All US public-domain verified
-      </div>
-    </div>
-
-    <div class="hero-description">
-      Sherlock Holmes is the consulting detective of 221B Baker Street — the master of observation and deductive inference who can read a man's profession, history, and character from the calluses on his hands and the mud on his boots. What makes him endure is not his triumphs but his tensions: the cocaine-dulled ennui between cases, the restless intellect that burns without stimulus, the loyalty to Watson that his arrogance perpetually tests.
-    </div>
-
-    <div>
-      <div class="starters-label">Begin a conversation</div>
-      <div class="starters-grid">
-        <button class="starter-btn" data-starter="Show me your method. Where do most amateurs go wrong?">Show me your method. Where do most amateurs go wrong?</button>
-        <button class="starter-btn" data-starter="What can you make of me, just from this conversation?">What can you make of me, just from this conversation?</button>
-        <button class="starter-btn" data-starter="Tell me about Reichenbach. Did you expect to survive?">Tell me about Reichenbach. Did you expect to survive?</button>
-        <button class="starter-btn" data-starter="Why Watson, of all men?">Why Watson, of all men?</button>
-      </div>
-    </div>
+  <div class="illus-text-col">
+    <span class="hero-eyebrow">The Science of Observation</span>
+    <p class="illus-quote">"You see, but you do not observe."</p>
+    <p class="illus-body">Holmes is the master of observation and deductive inference, capable of reading a man's profession, history, and character from the calluses on his hands and the mud on his boots.</p>
+    <p class="illus-note">Grounded in 1,814 passages from the complete public-domain canon: 4 novels and 56 short stories, 1887–1917.</p>
   </div>
+
 </section>
 
 <!-- CHAT SECTION -->
@@ -1115,14 +1137,6 @@ nav a:hover { color: var(--amber); }
           <span class="editorial-tag">Will Not</span>
           <span class="editorial-text">Invent cases Doyle did not write. Extend the canon. Speak to events after 1917, when Watson last published.</span>
         </div>
-        <div class="editorial-item">
-          <span class="editorial-tag">Will Not</span>
-          <span class="editorial-text">Opine on contemporary figures or current events: "You are asking me to read faces I have never observed."</span>
-        </div>
-        <div class="editorial-item">
-          <span class="editorial-tag">Note</span>
-          <span class="editorial-text"><em>The Casebook of Sherlock Holmes</em> (1921–27) excluded pending IP review. All 8 included works have unambiguous US public-domain status.</span>
-        </div>
       </div>
     </div>
   </div>
@@ -1130,183 +1144,12 @@ nav a:hover { color: var(--amber); }
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <span class="footer-left">Sherlock Holmes — Museum of Minds</span>
+  <span class="footer-left">Museum of Minds — Personas grounded in primary sources</span>
   <div class="footer-right">
     <a href="https://museumofminds.com">The Museum</a>
     <a href="https://museumofminds.com/about">About</a>
-    <a href="https://museumofminds.com">museumofminds.com</a>
   </div>
 </footer>
 
-<script>
-  const API_BASE = 'https://sherlock-holmes-production-5185.up.railway.app';
-  let conversationId = null;
-  let isLoading = false;
-
-  const messagesArea = document.getElementById('messagesArea');
-  const chatInput = document.getElementById('chatInput');
-  const sendBtn = document.getElementById('sendBtn');
-  const typingIndicator = document.getElementById('typingIndicator');
-
-  // Initial greeting
-  const GREETING = `You have found me between cases, which is — I confess — the less comfortable position. The mind requires occupation. Come, then. What is it you want to lay before me? Observation, method, the Baskerville affair, Reichenbach, Watson — name your interest, and I shall give you my complete attention.`;
-
-  function scrollToBottom() {
-    messagesArea.scrollTop = messagesArea.scrollHeight;
-  }
-
-  function appendMessage(role, text, sources) {
-    const msgDiv = document.createElement('div');
-    msgDiv.classList.add('message', role);
-
-    const roleLabel = document.createElement('div');
-    roleLabel.classList.add('message-role');
-    roleLabel.textContent = role === 'user' ? 'You' : 'Sherlock Holmes';
-    msgDiv.appendChild(roleLabel);
-
-    const bubble = document.createElement('div');
-    bubble.classList.add('message-bubble');
-    bubble.textContent = text;
-    msgDiv.appendChild(bubble);
-
-    // Sources toggle for persona messages
-    if (role === 'persona' && sources && sources.length > 0) {
-      const toggle = document.createElement('button');
-      toggle.classList.add('sources-toggle');
-      toggle.textContent = `▾ sources (${sources.length})`;
-
-      const panel = document.createElement('div');
-      panel.classList.add('sources-panel');
-
-      sources.forEach(function(src) {
-        const item = document.createElement('div');
-        item.classList.add('source-item');
-
-        const typeEl = document.createElement('div');
-        typeEl.classList.add('source-type');
-        const ktype = (src.knowledge_type || 'canon').toLowerCase();
-        typeEl.textContent = ktype === 'discourse' ? 'Discourse' : 'Canon';
-
-        const titleEl = document.createElement('div');
-        titleEl.classList.add('source-title');
-        titleEl.textContent = src.title || src.source || 'Arthur Conan Doyle';
-
-        item.appendChild(typeEl);
-        item.appendChild(titleEl);
-        panel.appendChild(item);
-      });
-
-      toggle.addEventListener('click', function() {
-        panel.classList.toggle('open');
-        toggle.textContent = panel.classList.contains('open')
-          ? `▴ sources (${sources.length})`
-          : `▾ sources (${sources.length})`;
-      });
-
-      msgDiv.appendChild(toggle);
-      msgDiv.appendChild(panel);
-    }
-
-    messagesArea.appendChild(msgDiv);
-    scrollToBottom();
-  }
-
-  function showTyping() {
-    typingIndicator.classList.add('visible');
-    scrollToBottom();
-  }
-
-  function hideTyping() {
-    typingIndicator.classList.remove('visible');
-  }
-
-  async function sendMessage(text) {
-    if (!text || !text.trim() || isLoading) return;
-
-    const message = text.trim();
-    isLoading = true;
-    sendBtn.disabled = true;
-    chatInput.value = '';
-    chatInput.style.height = 'auto';
-
-    appendMessage('user', message, null);
-    showTyping();
-
-    try {
-      const response = await fetch(API_BASE + '/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: message,
-          conversation_id: conversationId,
-          mode: 'historical',
-          length: 'detailed',
-          reading_level: 'general'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok: ' + response.status);
-      }
-
-      const data = await response.json();
-      hideTyping();
-
-      if (data.conversation_id) {
-        conversationId = data.conversation_id;
-      }
-
-      const replyText = data.response || 'I find my faculties temporarily obstructed. Extraordinary. Please try again.';
-      const sources = data.sources || [];
-
-      appendMessage('persona', replyText, sources);
-
-    } catch (error) {
-      hideTyping();
-      appendMessage('persona', 'I find my faculties temporarily obstructed. Extraordinary. Please try again.', null);
-      console.error('Chat error:', error);
-    } finally {
-      isLoading = false;
-      sendBtn.disabled = false;
-      chatInput.focus();
-    }
-  }
-
-  // Send button click
-  sendBtn.addEventListener('click', function() {
-    sendMessage(chatInput.value);
-  });
-
-  // Enter key to send (Shift+Enter = newline)
-  chatInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage(chatInput.value);
-    }
-  });
-
-  // Auto-resize textarea
-  chatInput.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight, 128) + 'px';
-  });
-
-  // Starter buttons
-  document.querySelectorAll('.starter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const starterText = btn.getAttribute('data-starter');
-      if (starterText && !isLoading) {
-        sendMessage(starterText);
-        // Scroll to chat widget
-        document.querySelector('.chat-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // Initialize with greeting
-  (function init() {
-    appendMessage('persona', GREETING, null);
-  })();
-</script>
 </body>
 </html>
