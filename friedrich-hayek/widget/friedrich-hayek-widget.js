@@ -44,6 +44,7 @@
             personaConfig = await loadPersonaConfig();
             applyPersonaTheme(personaConfig);
             createWidget(personaConfig);
+            renderCorpusStats(personaConfig);
         } catch (error) {
             console.error('Failed to load persona config:', error);
             createWidget(getDefaultConfig());
@@ -362,7 +363,7 @@
         showTypingIndicator();
 
         try {
-            const endpoint = voiceEnabled ? '/chat/voice' : '/chat';
+            const endpoint = voiceEnabled ? `/persona/${PERSONA_ID}/chat/voice` : `/persona/${PERSONA_ID}/chat`;
             const resp = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -498,6 +499,40 @@
             setTimeout(typeChar, speed);
         }
         typeChar();
+    }
+
+    // ── Corpus Stats (static page element) ───────────────────────────────────
+
+    function renderCorpusStats(config) {
+        const el = document.getElementById('jj-corpus-stats');
+        if (!el) return;
+        const ts = config.trust_score;
+        if (!ts) return;
+
+        const total = (ts.corpus_chunks || 0) + (ts.discourse_chunks || 0);
+        if (total === 0 && ts.coverage_pct === 0) {
+            el.innerHTML = `<div class="jj-cs-pending">Corpus pending ingest</div>`;
+            return;
+        }
+
+        const pct = ts.coverage_pct || 0;
+        const filled = Math.round(pct / 5);    // 20 segments
+        const bar = '■'.repeat(filled) + '□'.repeat(20 - filled);
+        const label = ts.coverage_label || '';
+        const works = ts.works_in_corpus || 0;
+        const known = ts.known_primary_works || 0;
+        const corpusN = ts.corpus_chunks ? ts.corpus_chunks.toLocaleString() : '—';
+        const discN = ts.discourse_chunks ? ts.discourse_chunks.toLocaleString() : null;
+
+        el.innerHTML = `
+            <div class="jj-cs-label">Corpus Coverage</div>
+            <div class="jj-cs-bar" title="${pct}% of known primary works indexed">${bar} <span class="jj-cs-pct">${pct}%</span></div>
+            <div class="jj-cs-meta">
+                <span class="jj-cs-badge jj-cs-badge-${label.toLowerCase()}">${label}</span>
+                <span class="jj-cs-detail">${works} of ${known} key primary works · ${corpusN} passages${discN ? ' + ' + discN + ' discourse' : ''}</span>
+            </div>
+            ${ts.missing_note ? `<div class="jj-cs-note">${ts.missing_note}</div>` : ''}
+        `;
     }
 
     // ── PDF Export ───────────────────────────────────────────────────────────
