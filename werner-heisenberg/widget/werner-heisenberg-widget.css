@@ -16,7 +16,7 @@
 }
 
 /* ── Container ────────────────────────────────────────────────────────────── */
-#werner-heisenberg-widget {
+#jane-jacobs-widget {
     font-family: var(--persona-font-primary);
     position: fixed;
     bottom: 24px;
@@ -168,6 +168,50 @@
     transition: opacity 0.2s;
 }
 .jj-close-btn:hover { opacity: 1; }
+.jj-download-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.55);
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+    flex-shrink: 0;
+}
+.jj-download-btn:hover:not(:disabled) {
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.08);
+}
+.jj-download-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+.jj-edu-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 6px 0 12px 0;
+    background: none;
+    border: 1px solid var(--persona-warm-gray, #8a8070);
+    color: var(--persona-text-gray, #6b5f52);
+    font-family: var(--persona-font-secondary);
+    font-size: 10px;
+    font-style: italic;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.jj-edu-export-btn:hover {
+    background: var(--persona-dark-cream, #e8e0d0);
+    color: var(--persona-charcoal, #1a2332);
+}
 
 /* ── Messages ─────────────────────────────────────────────────────────────── */
 .jj-messages {
@@ -279,7 +323,7 @@
     padding: 4px 0 2px 0;
 }
 
-/* Trust indicator */
+/* Trust indicator — legacy (old deployed pages use jj-trust) */
 .jj-trust {
     display: inline-flex;
     align-items: center;
@@ -298,12 +342,45 @@
 }
 .jj-trust-high   { color: #3d7a55; }
 .jj-trust-high::before   { background: #3d7a55; }
-.jj-trust-medium { color: var(--persona-text-gray); }
-.jj-trust-medium::before { background: var(--persona-warm-gray); }
+.jj-trust-medium { color: var(--persona-text-gray, #6b5f52); }
+.jj-trust-medium::before { background: var(--persona-warm-gray, #8a8070); }
 .jj-trust-low    { color: #8b4a3c; }
 .jj-trust-low::before    { background: #8b4a3c; }
 
+/* Confidence badge — pill style (current) */
+.jj-confidence {
+    display: inline-block;
+    font-family: var(--persona-font-primary);
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: default;
+    white-space: nowrap;
+}
+.jj-confidence-high   { color: #2d7a4a; background: rgba(45,122,74,0.10); border-color: rgba(45,122,74,0.25); }
+.jj-confidence-medium { color: #9a6e1a; background: rgba(154,110,26,0.10); border-color: rgba(154,110,26,0.25); }
+.jj-confidence-low    { color: #8a3030; background: rgba(138,48,48,0.10); border-color: rgba(138,48,48,0.25); }
+
 /* Sources toggle button */
+.jj-sources-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    font-family: var(--persona-font-secondary);
+    font-size: 11px;
+    font-style: italic;
+    color: var(--persona-text-gray, #6b5f52);
+    cursor: pointer;
+    padding: 2px 4px;
+    letter-spacing: 0.2px;
+    transition: color 0.15s;
+}
+.jj-sources-toggle:hover,
+.jj-sources-toggle.jj-sources-active { color: var(--persona-primary-color); }
+
+/* Legacy sources button (old deployed pages) */
 .jj-sources-btn {
     display: inline-flex;
     align-items: center;
@@ -311,9 +388,9 @@
     font-family: var(--persona-font-secondary);
     font-size: 10px;
     font-style: italic;
-    color: var(--persona-text-gray);
-    background: var(--persona-dark-cream);
-    border: 1px solid var(--persona-warm-gray);
+    color: var(--persona-text-gray, #6b5f52);
+    background: var(--persona-dark-cream, #e8e0d0);
+    border: 1px solid var(--persona-warm-gray, #8a8070);
     padding: 3px 8px;
     cursor: pointer;
     transition: all 0.2s;
@@ -321,8 +398,8 @@
 }
 .jj-sources-btn:hover,
 .jj-sources-btn.jj-sources-open {
-    background: var(--persona-warm-gray);
-    color: var(--persona-charcoal);
+    background: var(--persona-warm-gray, #8a8070);
+    color: var(--persona-charcoal, #1a2332);
     border-color: var(--persona-primary-color);
 }
 .jj-sources-s {
@@ -331,7 +408,7 @@
     font-family: var(--persona-font-primary);
     font-size: 9px;
     background: var(--persona-primary-color);
-    color: var(--persona-cream);
+    color: var(--persona-cream, #f5f0e8);
     width: 14px;
     height: 14px;
     border-radius: 2px;
@@ -352,23 +429,30 @@
     gap: 8px;
 }
 .jj-sources-panel.jj-hidden { display: none; }
-.jj-source-item { display: flex; flex-direction: column; gap: 2px; }
+.jj-source-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 3px 0;
+}
 .jj-source-title {
     font-family: var(--persona-font-secondary);
     font-size: 10px;
     font-style: italic;
-    color: var(--persona-charcoal);
+    color: var(--persona-charcoal, #1a2332);
+    flex: 1;
 }
-.jj-source-title::before { content: '— '; color: var(--persona-primary-color); }
 .jj-source-type {
     font-family: var(--persona-font-secondary);
     font-size: 9px;
-    color: var(--persona-text-gray);
     text-transform: uppercase;
-    letter-spacing: 0.3px;
-    padding-left: 14px;
-    opacity: 0.8;
+    letter-spacing: 0.4px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
+.jj-source-own      { color: #2d7a4a; background: rgba(45,122,74,0.10); }
+.jj-source-discourse { color: #9a6e1a; background: rgba(154,110,26,0.10); }
 
 /* ── Educator panel ───────────────────────────────────────────────────────── */
 .jj-edu-panel {
@@ -524,7 +608,7 @@
         bottom: 96px;
     }
     .jj-chat-window.jj-size-medium { width: calc(100vw - 32px); }
-    #werner-heisenberg-widget { bottom: 20px; right: 20px; }
+    #jane-jacobs-widget { bottom: 20px; right: 20px; }
     .jj-trigger { width: 56px; height: 56px; }
     .jj-message-content { font-size: 13px; }
     .jj-starter-btn { font-size: 12px; padding: 12px 14px; }
@@ -543,4 +627,4 @@
     outline-offset: 2px;
 }
 
-@media print { #werner-heisenberg-widget { display: none !important; } }
+@media print { #jane-jacobs-widget { display: none !important; } }
