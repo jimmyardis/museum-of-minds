@@ -798,81 +798,292 @@ nav a:hover { color: var(--amber); }
 
   <!-- LEFT: PORTRAIT PANEL — Holmes figure illustration -->
   <div class="hero-portrait">
-    <!-- Original detailed Paget-style illustration -->
+    <!-- 221B Baker Street — The Study -->
     <svg viewBox="0 0 480 660" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
       <defs>
-        <radialGradient id="gaslight" cx="50%" cy="25%" r="55%">
+        <radialGradient id="studyBg" cx="55%" cy="38%" r="65%">
+          <stop offset="0%" stop-color="#171215"/>
+          <stop offset="100%" stop-color="#0A090C"/>
+        </radialGradient>
+        <radialGradient id="winGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.22"/>
+          <stop offset="55%" stop-color="#8B6020" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="fireGlow" cx="50%" cy="60%" r="55%">
+          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="sconce1" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.18"/>
-          <stop offset="100%" stop-color="#0A090C" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="footglow" cx="50%" cy="90%" r="45%">
-          <stop offset="0%" stop-color="#C49A3C" stop-opacity="0.08"/>
-          <stop offset="100%" stop-color="#0A090C" stop-opacity="0"/>
-        </radialGradient>
+        <filter id="glow1" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softGlow1" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="7" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <!-- Dark background -->
-      <rect width="480" height="660" fill="#0A090C"/>
-      <rect width="480" height="660" fill="url(#gaslight)"/>
-      <rect width="480" height="660" fill="url(#footglow)"/>
-      <!-- Baker Street window frame behind figure -->
-      <rect x="60" y="80" width="360" height="440" rx="3" fill="none" stroke="rgba(196,154,60,0.1)" stroke-width="1"/>
-      <line x1="240" y1="80" x2="240" y2="520" stroke="rgba(196,154,60,0.07)" stroke-width="0.8"/>
-      <line x1="60" y1="300" x2="420" y2="300" stroke="rgba(196,154,60,0.07)" stroke-width="0.8"/>
-      <!-- Figure silhouette — consulting detective at window -->
-      <path d="M180 280 C170 300 155 340 150 400 C145 440 143 480 148 520 L332 520 C337 480 335 440 330 400 C325 340 310 300 300 280 Z" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="1.5"/>
-      <!-- Long overcoat detail lines -->
-      <path d="M195 290 C192 340 190 390 192 440" fill="none" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
-      <path d="M285 290 C288 340 290 390 288 440" fill="none" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
-      <!-- Coat lapels -->
-      <path d="M200 285 L240 340 L280 285" fill="none" stroke="rgba(196,154,60,0.25)" stroke-width="1"/>
-      <!-- Cape/inverness detail -->
-      <path d="M180 280 C160 295 145 320 140 355" fill="none" stroke="rgba(196,154,60,0.2)" stroke-width="1.2"/>
-      <path d="M300 280 C320 295 335 320 340 355" fill="none" stroke="rgba(196,154,60,0.2)" stroke-width="1.2"/>
-      <!-- Hands — left with pipe -->
-      <path d="M148 390 L118 412 L112 427" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="1.8" stroke-linecap="round"/>
-      <!-- Pipe -->
-      <path d="M108 424 L86 432 L84 430" fill="none" stroke="rgba(196,154,60,0.45)" stroke-width="2.2" stroke-linecap="round"/>
-      <ellipse cx="84" cy="429" rx="6" ry="4" fill="none" stroke="rgba(196,154,60,0.4)" stroke-width="1.2"/>
-      <!-- Pipe smoke wisps -->
-      <path d="M84 423 C82 414 86 405 83 397" fill="none" stroke="rgba(196,154,60,0.15)" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M87 418 C91 409 86 401 89 393" fill="none" stroke="rgba(196,154,60,0.10)" stroke-width="1" stroke-linecap="round"/>
-      <path d="M81 415 C78 407 82 399 79 391" fill="none" stroke="rgba(196,154,60,0.07)" stroke-width="0.8" stroke-linecap="round"/>
-      <!-- Right hand with magnifying glass -->
-      <path d="M332 388 L358 368 L364 378 L340 398" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="364" cy="374" r="18" fill="none" stroke="rgba(196,154,60,0.45)" stroke-width="1.8"/>
-      <circle cx="364" cy="374" r="12" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
-      <!-- Neck -->
-      <rect x="222" y="238" width="36" height="42" rx="4" fill="none" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
-      <!-- Head — aquiline profile facing slightly left -->
-      <ellipse cx="240" cy="205" rx="50" ry="60" fill="none" stroke="rgba(196,154,60,0.32)" stroke-width="1.6"/>
-      <!-- Deerstalker hat — brim -->
-      <path d="M188 172 L292 172" stroke="rgba(196,154,60,0.45)" stroke-width="1.8"/>
-      <!-- Crown -->
-      <path d="M198 172 C193 156 198 140 208 134 C218 128 229 126 240 126 C251 126 262 128 272 134 C282 140 287 156 282 172" fill="none" stroke="rgba(196,154,60,0.42)" stroke-width="1.8"/>
-      <!-- Hat peak front -->
-      <path d="M188 172 C178 169 170 160 174 148 L198 172" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="1.2"/>
-      <!-- Hat peak back -->
-      <path d="M292 172 C302 169 310 160 306 148 L282 172" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="1.2"/>
-      <!-- Hat band -->
-      <path d="M200 172 C210 168 230 166 240 166 C250 166 270 168 280 172" fill="none" stroke="rgba(196,154,60,0.2)" stroke-width="0.8"/>
-      <!-- Eyes — sharp, intelligent -->
-      <path d="M214 196 Q224 191 236 194 Q224 200 214 197 Z" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.32)" stroke-width="0.9"/>
-      <path d="M244 194 Q256 191 266 196 Q256 200 244 198 Z" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.32)" stroke-width="0.9"/>
-      <circle cx="226" cy="196" r="2" fill="rgba(196,154,60,0.35)"/>
-      <circle cx="255" cy="196" r="2" fill="rgba(196,154,60,0.35)"/>
-      <!-- Brow — concentrated -->
-      <path d="M210 188 Q222 183 236 186" fill="none" stroke="rgba(196,154,60,0.38)" stroke-width="1.4"/>
-      <path d="M244 186 Q258 183 268 188" fill="none" stroke="rgba(196,154,60,0.38)" stroke-width="1.4"/>
-      <!-- Aquiline nose -->
-      <path d="M238 198 L234 222 L238 232 L244 229" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
-      <!-- Firm mouth -->
-      <path d="M228 242 Q240 246 252 242" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
-      <!-- Chin/jaw line -->
-      <path d="M210 228 Q225 248 240 252 Q255 248 270 228" fill="none" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
-      <!-- London fog/street at base -->
-      <path d="M60 550 Q120 535 180 545 Q240 555 300 540 Q360 530 420 545" fill="none" stroke="rgba(196,154,60,0.14)" stroke-width="1.2"/>
-      <path d="M60 568 Q140 555 200 562 Q270 570 350 556 Q390 549 420 560" fill="none" stroke="rgba(196,154,60,0.09)" stroke-width="0.9"/>
-      <path d="M60 585 Q150 575 220 580 Q290 586 360 572 Q400 566 420 575" fill="none" stroke="rgba(196,154,60,0.06)" stroke-width="0.7"/>
+
+      <!-- Background -->
+      <rect width="480" height="660" fill="url(#studyBg)"/>
+
+      <!-- Floor perspective lines (vanishing point ~240,400) -->
+      <g stroke="rgba(196,154,60,0.055)" stroke-width="0.6" fill="none">
+        <line x1="0" y1="575" x2="480" y2="575"/>
+        <line x1="0" y1="600" x2="480" y2="600"/>
+        <line x1="0" y1="630" x2="480" y2="630"/>
+        <line x1="240" y1="405" x2="0" y2="660"/>
+        <line x1="240" y1="405" x2="96" y2="660"/>
+        <line x1="240" y1="405" x2="192" y2="660"/>
+        <line x1="240" y1="405" x2="288" y2="660"/>
+        <line x1="240" y1="405" x2="384" y2="660"/>
+        <line x1="240" y1="405" x2="480" y2="660"/>
+      </g>
+
+      <!-- Wainscot / wall dado rail -->
+      <line x1="0" y1="310" x2="480" y2="310" stroke="rgba(196,154,60,0.1)" stroke-width="0.8"/>
+      <rect x="0" y="308" width="480" height="6" fill="rgba(196,154,60,0.03)"/>
+
+      <!-- BOW WINDOW (centre back wall) -->
+      <ellipse cx="240" cy="175" rx="130" ry="155" fill="url(#winGlow)"/>
+      <!-- Outer bow frame -->
+      <path d="M108,16 L108,300 Q240,318 372,300 L372,16" fill="none" stroke="rgba(196,154,60,0.32)" stroke-width="1.5"/>
+      <!-- Three panes: left, centre, right -->
+      <!-- Left pane -->
+      <path d="M116,24 L116,292 Q153,304 190,298 L190,24 Z" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
+      <!-- Centre pane (prominent) -->
+      <rect x="190" y="24" width="100" height="275" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
+      <!-- Right pane -->
+      <path d="M290,24 L290,298 Q327,304 364,292 L364,24 Z" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.22)" stroke-width="1"/>
+      <!-- Sash glazing bars — centre pane -->
+      <line x1="190" y1="100" x2="290" y2="100" stroke="rgba(196,154,60,0.2)" stroke-width="0.8"/>
+      <line x1="190" y1="162" x2="290" y2="162" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
+      <line x1="190" y1="224" x2="290" y2="224" stroke="rgba(196,154,60,0.15)" stroke-width="0.8"/>
+      <line x1="240" y1="24" x2="240" y2="299" stroke="rgba(196,154,60,0.18)" stroke-width="0.8"/>
+      <!-- Sash bars left pane -->
+      <line x1="116" y1="130" x2="190" y2="125" stroke="rgba(196,154,60,0.14)" stroke-width="0.7"/>
+      <line x1="116" y1="200" x2="190" y2="192" stroke="rgba(196,154,60,0.11)" stroke-width="0.7"/>
+      <line x1="153" y1="24" x2="153" y2="293" stroke="rgba(196,154,60,0.13)" stroke-width="0.7"/>
+      <!-- Sash bars right pane -->
+      <line x1="290" y1="125" x2="364" y2="130" stroke="rgba(196,154,60,0.14)" stroke-width="0.7"/>
+      <line x1="290" y1="192" x2="364" y2="200" stroke="rgba(196,154,60,0.11)" stroke-width="0.7"/>
+      <line x1="327" y1="24" x2="327" y2="293" stroke="rgba(196,154,60,0.13)" stroke-width="0.7"/>
+      <!-- Window sill -->
+      <path d="M100,298 Q240,316 380,298 L380,308 Q240,326 100,308 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.28)" stroke-width="1"/>
+      <!-- Foggy London exterior (gaslit street glimpsed) -->
+      <ellipse cx="240" cy="80" rx="60" ry="30" fill="rgba(196,154,60,0.06)"/>
+      <line x1="160" y1="55" x2="320" y2="55" stroke="rgba(196,154,60,0.06)" stroke-width="10"/>
+      <line x1="170" y1="85" x2="230" y2="85" stroke="rgba(196,154,60,0.04)" stroke-width="6"/>
+      <line x1="258" y1="78" x2="318" y2="78" stroke="rgba(196,154,60,0.04)" stroke-width="5"/>
+      <!-- Gas lamp post outside -->
+      <line x1="210" y1="24" x2="210" y2="100" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+      <ellipse cx="210" cy="35" rx="10" ry="13" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.8"/>
+      <ellipse cx="210" cy="35" rx="4" ry="5" fill="rgba(232,201,106,0.22)"/>
+
+      <!-- LEFT WALL GAS SCONCE -->
+      <ellipse cx="54" cy="175" rx="55" ry="65" fill="url(#sconce1)"/>
+      <g filter="url(#glow1)" opacity="0.88">
+        <path d="M30,148 Q44,145 50,158 L50,182" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="50" cy="194" rx="13" ry="17" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="50" cy="194" rx="13" ry="17" fill="rgba(196,154,60,0.06)"/>
+        <ellipse cx="50" cy="194" rx="5.5" ry="7" fill="rgba(232,201,106,0.22)"/>
+        <line x1="50" y1="211" x2="50" y2="220" stroke="#C49A3C" stroke-width="1.2"/>
+        <line x1="43" y1="220" x2="57" y2="220" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- RIGHT WALL GAS SCONCE -->
+      <ellipse cx="426" cy="175" rx="55" ry="65" fill="url(#sconce1)"/>
+      <g filter="url(#glow1)" opacity="0.82">
+        <path d="M450,148 Q436,145 430,158 L430,182" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="430" cy="194" rx="13" ry="17" fill="none" stroke="#C49A3C" stroke-width="1.2"/>
+        <ellipse cx="430" cy="194" rx="13" ry="17" fill="rgba(196,154,60,0.06)"/>
+        <ellipse cx="430" cy="194" rx="5.5" ry="7" fill="rgba(232,201,106,0.22)"/>
+        <line x1="430" y1="211" x2="430" y2="220" stroke="#C49A3C" stroke-width="1.2"/>
+        <line x1="423" y1="220" x2="437" y2="220" stroke="#C49A3C" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+
+      <!-- V  R bullet holes (left of window, canon detail) -->
+      <g opacity="0.48" stroke="#C49A3C" stroke-width="1" fill="rgba(196,154,60,0.18)">
+        <circle cx="72" cy="200" r="2.2"/><circle cx="78" cy="214" r="1.8"/>
+        <circle cx="84" cy="228" r="1.8"/><circle cx="90" cy="214" r="1.8"/>
+        <circle cx="96" cy="200" r="2.2"/>
+        <circle cx="72" cy="246" r="2.2"/><circle cx="72" cy="258" r="1.8"/>
+        <circle cx="72" cy="270" r="2.2"/><circle cx="82" cy="246" r="1.8"/>
+        <circle cx="88" cy="252" r="1.8"/><circle cx="82" cy="260" r="1.8"/>
+        <circle cx="89" cy="270" r="1.8"/>
+      </g>
+      <text x="66" y="286" font-family="Cinzel,serif" font-size="7" fill="rgba(196,154,60,0.3)" letter-spacing="7">V  R</text>
+
+      <!-- BOOKCASE (left wall) -->
+      <g opacity="0.72">
+        <rect x="0" y="60" width="5" height="250" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="60" width="60" height="5" fill="rgba(196,154,60,0.14)" stroke="rgba(196,154,60,0.3)" stroke-width="0.7"/>
+        <rect x="0" y="132" width="60" height="4" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="200" width="60" height="4" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.6"/>
+        <rect x="0" y="268" width="60" height="4" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.6"/>
+        <!-- Books row 1 -->
+        <rect x="6" y="70" width="7" height="62" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.28)" stroke-width="0.5"/>
+        <rect x="14" y="74" width="5" height="58" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.5"/>
+        <rect x="20" y="68" width="8" height="64" fill="rgba(196,154,60,0.15)" stroke="rgba(196,154,60,0.3)" stroke-width="0.5"/>
+        <rect x="29" y="72" width="6" height="60" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.22)" stroke-width="0.5"/>
+        <rect x="36" y="66" width="9" height="66" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+        <rect x="46" y="71" width="5" height="61" fill="rgba(196,154,60,0.07)" stroke="rgba(196,154,60,0.18)" stroke-width="0.5"/>
+        <rect x="52" y="69" width="7" height="63" fill="rgba(196,154,60,0.11)" stroke="rgba(196,154,60,0.24)" stroke-width="0.5"/>
+        <!-- Books row 2 -->
+        <rect x="6" y="136" width="8" height="64" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.23)" stroke-width="0.5"/>
+        <rect x="15" y="140" width="6" height="60" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.27)" stroke-width="0.5"/>
+        <rect x="22" y="135" width="9" height="65" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.2)" stroke-width="0.5"/>
+        <rect x="32" y="139" width="7" height="61" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.25)" stroke-width="0.5"/>
+        <rect x="40" y="137" width="6" height="63" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.21)" stroke-width="0.5"/>
+        <rect x="47" y="141" width="8" height="59" fill="rgba(196,154,60,0.14)" stroke="rgba(196,154,60,0.28)" stroke-width="0.5"/>
+        <!-- Books row 3 -->
+        <rect x="6" y="204" width="7" height="64" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.5"/>
+        <rect x="14" y="208" width="9" height="60" fill="rgba(196,154,60,0.12)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+        <rect x="24" y="205" width="6" height="63" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.19)" stroke-width="0.5"/>
+        <rect x="31" y="207" width="8" height="61" fill="rgba(196,154,60,0.11)" stroke="rgba(196,154,60,0.24)" stroke-width="0.5"/>
+        <rect x="40" y="204" width="7" height="64" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.21)" stroke-width="0.5"/>
+        <rect x="48" y="209" width="6" height="59" fill="rgba(196,154,60,0.13)" stroke="rgba(196,154,60,0.26)" stroke-width="0.5"/>
+      </g>
+
+      <!-- FIREPLACE (right foreground, angled) -->
+      <ellipse cx="416" cy="500" rx="90" ry="75" fill="url(#fireGlow)"/>
+      <!-- Surround / chimneybreast -->
+      <path d="M360,314 L360,535 L480,535 L480,314" fill="rgba(196,154,60,0.018)" stroke="rgba(196,154,60,0.18)" stroke-width="1"/>
+      <!-- Mantelpiece -->
+      <rect x="352" y="310" width="128" height="9" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.38)" stroke-width="1.2"/>
+      <!-- Overmantel frame outline -->
+      <rect x="368" y="248" width="96" height="60" fill="none" stroke="rgba(196,154,60,0.14)" stroke-width="0.8"/>
+      <!-- Fireplace opening arch -->
+      <path d="M374,535 L374,430 Q374,416 388,416 L464,416 Q478,416 478,430 L478,535" fill="rgba(196,154,60,0.025)" stroke="rgba(196,154,60,0.28)" stroke-width="1.2"/>
+      <!-- Grate bars -->
+      <g stroke="rgba(196,154,60,0.3)" stroke-width="0.9">
+        <line x1="390" y1="530" x2="390" y2="474"/>
+        <line x1="400" y1="530" x2="400" y2="468"/>
+        <line x1="410" y1="530" x2="410" y2="466"/>
+        <line x1="420" y1="530" x2="420" y2="468"/>
+        <line x1="430" y1="530" x2="430" y2="472"/>
+        <line x1="440" y1="530" x2="440" y2="478"/>
+        <line x1="450" y1="530" x2="450" y2="484"/>
+        <line x1="460" y1="530" x2="460" y2="490"/>
+      </g>
+      <!-- Flames -->
+      <g filter="url(#glow1)" opacity="0.65">
+        <path d="M395,528 Q390,498 402,475 Q410,456 416,472 Q420,455 428,450 Q438,462 436,480 Q444,458 452,468 Q456,484 450,504 Q458,482 466,494 Q466,514 458,528 Z" fill="rgba(196,154,60,0.18)" stroke="#C49A3C" stroke-width="0.9"/>
+        <path d="M408,528 Q404,502 412,484 Q420,470 424,485 Q430,470 440,478 Q444,496 438,514 Z" fill="rgba(232,201,106,0.12)" stroke="rgba(232,201,106,0.35)" stroke-width="0.7"/>
+      </g>
+      <!-- Fender (hearth rail) -->
+      <path d="M376,535 Q427,542 478,535" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="1.5"/>
+      <!-- Mantelpiece objects -->
+      <!-- Carriage clock -->
+      <rect x="396" y="282" width="20" height="26" fill="none" stroke="rgba(196,154,60,0.42)" stroke-width="1"/>
+      <circle cx="406" cy="293" r="7" fill="none" stroke="rgba(196,154,60,0.38)" stroke-width="0.9"/>
+      <line x1="406" y1="293" x2="406" y2="287" stroke="rgba(196,154,60,0.45)" stroke-width="1"/>
+      <line x1="406" y1="293" x2="410" y2="296" stroke="rgba(196,154,60,0.38)" stroke-width="0.9"/>
+      <!-- Skull (Holmes keeps one on the mantel as a tobacco holder) -->
+      <g filter="url(#glow1)" opacity="0.55">
+        <ellipse cx="450" cy="293" rx="11" ry="10" fill="none" stroke="#C49A3C" stroke-width="1"/>
+        <ellipse cx="450" cy="299" rx="7" ry="4.5" fill="none" stroke="rgba(196,154,60,0.55)" stroke-width="0.8"/>
+        <ellipse cx="445" cy="290" rx="2.8" ry="3.2" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.4)" stroke-width="0.7"/>
+        <ellipse cx="455" cy="290" rx="2.8" ry="3.2" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.4)" stroke-width="0.7"/>
+      </g>
+      <!-- Persian slipper on hearth (tobacco) -->
+      <path d="M382,538 Q394,530 408,535 Q414,538 412,543 Q406,547 390,545 Q382,543 382,538 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.28)" stroke-width="0.9"/>
+
+      <!-- CHEMISTRY TABLE (left-centre foreground) -->
+      <!-- Table top -->
+      <rect x="58" y="398" width="210" height="9" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.3)" stroke-width="1.2"/>
+      <!-- Legs -->
+      <line x1="66" y1="407" x2="62" y2="480" stroke="rgba(196,154,60,0.2)" stroke-width="1.8"/>
+      <line x1="260" y1="407" x2="264" y2="480" stroke="rgba(196,154,60,0.2)" stroke-width="1.8"/>
+      <!-- Stretcher -->
+      <line x1="64" y1="452" x2="262" y2="452" stroke="rgba(196,154,60,0.12)" stroke-width="1"/>
+      <!-- Bunsen burner -->
+      <line x1="104" y1="398" x2="104" y2="366" stroke="rgba(196,154,60,0.38)" stroke-width="1.8"/>
+      <rect x="97" y="362" width="14" height="5" fill="rgba(196,154,60,0.08)" stroke="rgba(196,154,60,0.3)" stroke-width="0.8"/>
+      <g filter="url(#glow1)">
+        <ellipse cx="104" cy="360" rx="6" ry="4" fill="rgba(232,201,106,0.28)" stroke="rgba(196,154,60,0.55)" stroke-width="1"/>
+      </g>
+      <!-- Test tube rack -->
+      <g stroke="rgba(196,154,60,0.32)" fill="none" stroke-width="0.9">
+        <line x1="140" y1="370" x2="140" y2="398"/><ellipse cx="140" cy="372" rx="3" ry="3"/>
+        <line x1="150" y1="367" x2="150" y2="398"/><ellipse cx="150" cy="369" rx="3" ry="3"/>
+        <line x1="160" y1="373" x2="160" y2="398"/><ellipse cx="160" cy="375" rx="3" ry="3"/>
+        <line x1="170" y1="368" x2="170" y2="398"/><ellipse cx="170" cy="370" rx="3" ry="3"/>
+      </g>
+      <rect x="136" y="390" width="38" height="4" fill="rgba(196,154,60,0.1)" stroke="rgba(196,154,60,0.22)" stroke-width="0.6"/>
+      <!-- Round-bottom flask on stand -->
+      <circle cx="205" cy="380" rx="14" ry="14" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.3)" stroke-width="1" cx="205" cy="380" r="14"/>
+      <line x1="205" y1="366" x2="205" y2="352" stroke="rgba(196,154,60,0.28)" stroke-width="1.4"/>
+      <path d="M196,395 L214,395 L212,403 Q205,407 198,403 Z" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.25)" stroke-width="0.8"/>
+      <!-- Scattered papers on table -->
+      <rect x="62" y="390" width="40" height="8" fill="rgba(196,154,60,0.06)" stroke="rgba(196,154,60,0.18)" stroke-width="0.5" transform="rotate(-3,62,390)"/>
+      <rect x="70" y="389" width="32" height="6" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.12)" stroke-width="0.5" transform="rotate(4,70,389)"/>
+
+      <!-- ARMCHAIR (centre-right, Holmes's chair) -->
+      <!-- Back -->
+      <path d="M212,426 Q207,360 222,322 Q232,308 248,306 Q264,306 274,322 Q289,360 284,426 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.22)" stroke-width="1.3"/>
+      <!-- Seat -->
+      <path d="M205,426 L291,426 Q298,448 295,464 L201,464 Q198,448 205,426 Z" fill="rgba(196,154,60,0.035)" stroke="rgba(196,154,60,0.2)" stroke-width="1.2"/>
+      <!-- Arms -->
+      <path d="M207,395 Q192,400 190,420 L202,420 Q203,406 212,402 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.17)" stroke-width="1"/>
+      <path d="M289,395 Q304,400 306,420 L294,420 Q293,406 284,402 Z" fill="rgba(196,154,60,0.04)" stroke="rgba(196,154,60,0.17)" stroke-width="1"/>
+      <!-- Legs -->
+      <line x1="204" y1="464" x2="202" y2="484" stroke="rgba(196,154,60,0.22)" stroke-width="2"/>
+      <line x1="292" y1="464" x2="294" y2="484" stroke="rgba(196,154,60,0.22)" stroke-width="2"/>
+      <!-- Cushion tuck -->
+      <path d="M212,428 Q248,422 284,428" fill="none" stroke="rgba(196,154,60,0.1)" stroke-width="0.9"/>
+
+      <!-- VIOLIN propped against chair arm -->
+      <g opacity="0.68" transform="translate(296,338) rotate(-12)">
+        <path d="M10,0 Q19,-6 21,9 Q23,20 19,28 Q21,36 19,44 Q23,52 19,60 Q17,68 10,71 Q3,68 1,60 Q-3,52 1,44 Q-1,36 1,28 Q-3,20 -1,9 Q1,-6 10,0 Z" fill="rgba(196,154,60,0.07)" stroke="#C49A3C" stroke-width="1.1"/>
+        <path d="M6,30 L6,42" stroke="rgba(196,154,60,0.55)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M14,30 L14,42" stroke="rgba(196,154,60,0.55)" stroke-width="1.3" stroke-linecap="round"/>
+        <rect x="6" y="-24" width="8" height="24" fill="rgba(196,154,60,0.09)" stroke="rgba(196,154,60,0.3)" stroke-width="0.9"/>
+        <path d="M6,-24 Q4,-31 10,-36 Q16,-31 14,-24" fill="none" stroke="rgba(196,154,60,0.3)" stroke-width="0.9"/>
+        <g stroke="rgba(196,154,60,0.14)" stroke-width="0.45">
+          <line x1="8.5" y1="-24" x2="8.5" y2="71"/>
+          <line x1="10.5" y1="-24" x2="10.5" y2="71"/>
+          <line x1="12.5" y1="-24" x2="12.5" y2="71"/>
+        </g>
+      </g>
+      <!-- Violin bow leaning on chair -->
+      <line x1="320" y1="310" x2="310" y2="420" stroke="rgba(196,154,60,0.3)" stroke-width="1.2" stroke-linecap="round"/>
+
+      <!-- PIPE on chair arm, wisps of smoke -->
+      <g opacity="0.65" transform="translate(286,405)">
+        <path d="M0,0 L30,6" stroke="#C49A3C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M30,6 Q38,5 40,11 Q42,18 35,20 Q28,19 27,13" fill="rgba(196,154,60,0.09)" stroke="#C49A3C" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M37,4 Q35,-4 39,-11 Q43,-18 40,-26" stroke="rgba(196,154,60,0.22)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+        <path d="M41,3 Q40,-5 44,-12 Q48,-19 45,-28" stroke="rgba(196,154,60,0.13)" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- Papers on floor -->
+      <g opacity="0.3" stroke="rgba(196,154,60,0.28)" fill="rgba(196,154,60,0.04)" stroke-width="0.5">
+        <rect x="320" y="545" width="65" height="48" transform="rotate(-7,320,545)"/>
+        <rect x="336" y="558" width="52" height="40" transform="rotate(6,336,558)"/>
+        <rect x="130" y="568" width="78" height="54" transform="rotate(-4,130,568)"/>
+        <rect x="148" y="575" width="60" height="44" transform="rotate(8,148,575)"/>
+        <rect x="195" y="562" width="44" height="32" transform="rotate(-2,195,562)"/>
+      </g>
+
+      <!-- Corner ornaments -->
+      <g stroke="rgba(196,154,60,0.16)" stroke-width="0.9" fill="none">
+        <path d="M18,18 L18,44 M18,18 L44,18"/>
+        <path d="M462,18 L462,44 M462,18 L436,18"/>
+        <path d="M18,642 L18,616 M18,642 L44,642"/>
+        <path d="M462,642 L462,616 M462,642 L436,642"/>
+      </g>
+
+      <!-- Address plaque -->
+      <g opacity="0.55">
+        <rect x="148" y="628" width="184" height="26" fill="none" stroke="rgba(196,154,60,0.28)" stroke-width="0.8"/>
+        <text x="240" y="640" font-family="Cinzel,serif" font-size="6" fill="#C49A3C" text-anchor="middle" letter-spacing="3">221B BAKER STREET</text>
+        <text x="240" y="651" font-family="Cinzel,serif" font-size="5" fill="rgba(196,154,60,0.52)" text-anchor="middle" letter-spacing="2">THE STUDY · LONDON</text>
+      </g>
     </svg>
 
     <!-- Name / dates overlay -->
