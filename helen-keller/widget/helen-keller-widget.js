@@ -363,7 +363,7 @@
         showTypingIndicator();
 
         try {
-            const endpoint = voiceEnabled ? `/persona/${PERSONA_ID}/chat/voice` : `/persona/${PERSONA_ID}/chat`;
+            const endpoint = voiceEnabled ? '/chat/voice' : '/chat';
             const resp = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
