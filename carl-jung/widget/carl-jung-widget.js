@@ -22,6 +22,9 @@
     let voiceEnabled = false;
     let eduPanelOpen = false;
     let settingsPanelOpen = false;
+    let chatMode     = 'modern';       // 'modern' | 'historical'
+    let chatLength   = 'detailed';     // 'brief' | 'conversational' | 'detailed'
+    let chatLevel    = 'general';      // 'general' | 'middle_school'
     let html2pdfLoaded = false;
 
     // Size mode: 'compact' | 'medium' | 'full'
@@ -164,8 +167,25 @@
 
                 <div id="jj-settings-panel" class="jj-settings-panel jj-hidden">
                     <div class="jj-settings-row">
-                        <span class="jj-settings-label">Voice responses</span>
-                        <button id="jj-voice-setting" class="jj-voice-setting-btn">Off</button>
+                        <span class="jj-settings-label">Historical</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt jj-setting-active" data-setting="mode" data-value="modern">Modern</button>
+                            <button class="jj-setting-opt" data-setting="mode" data-value="historical">Historical</button>
+                        </div>
+                    </div>
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Length</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt" data-setting="length" data-value="brief">Brief</button>
+                            <button class="jj-setting-opt jj-setting-active" data-setting="length" data-value="detailed">Standard</button>
+                        </div>
+                    </div>
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Reading level</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt jj-setting-active" data-setting="level" data-value="general">General</button>
+                            <button class="jj-setting-opt" data-setting="level" data-value="middle_school">Middle School</button>
+                        </div>
                     </div>
                 </div>
 
@@ -207,7 +227,9 @@
         document.getElementById('jj-download').addEventListener('click', exportChat);
         document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
         document.getElementById('jj-settings').addEventListener('click', toggleSettings);
-        document.getElementById('jj-voice-setting').addEventListener('click', toggleVoice);
+        document.querySelectorAll('.jj-setting-opt').forEach(btn => {
+            btn.addEventListener('click', () => applySettingOpt(btn));
+        });
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
         document.getElementById('jj-input').addEventListener('keypress', e => {
@@ -290,16 +312,23 @@
         document.getElementById('jj-settings').classList.toggle('jj-settings-active', settingsPanelOpen);
     }
 
+    function applySettingOpt(btn) {
+        const setting = btn.getAttribute('data-setting');
+        const value   = btn.getAttribute('data-value');
+        if (setting === 'mode')   chatMode   = value;
+        if (setting === 'length') chatLength = value;
+        if (setting === 'level')  chatLevel  = value;
+        // Update active state within the same group
+        btn.closest('.jj-setting-group').querySelectorAll('.jj-setting-opt').forEach(b => {
+            b.classList.toggle('jj-setting-active', b === btn);
+        });
+    }
+
     function toggleVoice() {
         voiceEnabled = !voiceEnabled;
         const btn = document.getElementById('jj-voice');
         btn.classList.toggle('jj-voice-active', voiceEnabled);
         btn.title = voiceEnabled ? 'Voice on — click to mute' : 'Enable voice';
-        const vsBtn = document.getElementById('jj-voice-setting');
-        if (vsBtn) {
-            vsBtn.textContent = voiceEnabled ? 'On' : 'Off';
-            vsBtn.classList.toggle('active', voiceEnabled);
-        }
     }
 
     function playAudio(b64) {
@@ -394,7 +423,13 @@
             const resp = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message, conversation_id: conversationId }),
+                body: JSON.stringify({
+                    message,
+                    conversation_id: conversationId,
+                    mode:          chatMode,
+                    length:        chatLength,
+                    reading_level: chatLevel,
+                }),
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             const data = await resp.json();
