@@ -439,9 +439,11 @@
 
             removeTypingIndicator();
             addMessage('assistant', data.response, true, {
-                sources:          data.sources || [],
-                confidence:       data.confidence || 'medium',
-                confidence_score: data.confidence_score || 50,
+                sources:                      data.sources || [],
+                confidence:                   data.confidence || 'medium',
+                confidence_score:             data.confidence_score || 50,
+                historical_confidence:        data.historical_confidence || 'low',
+                historical_confidence_score:  data.historical_confidence_score || 0,
             });
             enableDownload();
 
@@ -494,14 +496,26 @@
         const wrap = document.createElement('div');
         wrap.className = 'jj-message-meta';
 
-        // Confidence badge (pill with dots)
+        // Two-tier confidence row
+        const dots = { high: '●●●', medium: '●●○', low: '●○○' };
         if (meta.confidence) {
-            const dots = { high: '●●●', medium: '●●○', low: '●○○' };
-            const badge = document.createElement('span');
-            badge.className = `jj-confidence jj-confidence-${meta.confidence}`;
-            badge.textContent = `${dots[meta.confidence] || '●○○'} ${meta.confidence.charAt(0).toUpperCase() + meta.confidence.slice(1)}`;
-            badge.title = `Source confidence: ${meta.confidence_score || 0}/100`;
-            wrap.appendChild(badge);
+            const row = document.createElement('div');
+            row.className = 'jj-confidence-row';
+
+            const ownBadge = document.createElement('span');
+            ownBadge.className = `jj-confidence jj-confidence-${meta.confidence}`;
+            ownBadge.textContent = `${dots[meta.confidence] || '●○○'} Own Voice`;
+            ownBadge.title = `Own-voice confidence — how grounded in the figure's direct writings (${meta.confidence_score || 0}/100)`;
+            row.appendChild(ownBadge);
+
+            const histConf = meta.historical_confidence || 'low';
+            const histBadge = document.createElement('span');
+            histBadge.className = `jj-confidence jj-confidence-hist jj-confidence-hist-${histConf}`;
+            histBadge.textContent = `${dots[histConf] || '●○○'} Historical Record`;
+            histBadge.title = `Historical-record confidence — how grounded in biographies and secondary sources (${meta.historical_confidence_score || 0}/100)`;
+            row.appendChild(histBadge);
+
+            wrap.appendChild(row);
         }
 
         // Sources toggle
@@ -652,8 +666,9 @@
             if (!text) return;
             const speaker = isUser ? 'You' : name;
             const cls = isUser ? 'pdf-msg-user' : 'pdf-msg-assistant';
-            const confEl = msg.querySelector('.jj-confidence');
-            const confNote = (!isUser && confEl) ? `<div class="pdf-confidence">${confEl.textContent.trim()}</div>` : '';
+            const confEls = msg.querySelectorAll('.jj-confidence');
+            const confNote = (!isUser && confEls.length) ?
+                `<div class="pdf-confidence">${[...confEls].map(el => el.textContent.trim()).join(' · ')}</div>` : '';
             html += `<div class="pdf-msg"><div class="${cls}"><div class="pdf-speaker">${speaker}</div><div class="pdf-text">${escapeHtml(text)}</div>${confNote}</div></div>`;
         });
 
