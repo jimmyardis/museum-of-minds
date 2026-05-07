@@ -130,6 +130,24 @@
     font-style: italic;
 }
 
+.jj-header-portrait {
+    width: 44px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.15);
+    margin-right: 12px;
+    align-self: center;
+}
+.jj-portrait-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
 .jj-header-actions {
     display: flex;
     align-items: center;
