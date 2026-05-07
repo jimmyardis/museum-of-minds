@@ -231,7 +231,8 @@
     background: rgba(255,255,255,0.08);
 }
 .jj-settings-panel {
-    background: rgba(0,0,0,0.18);
+    background: rgba(0,0,0,0.55);
+    border-top: 1px solid rgba(255,255,255,0.1);
     border-bottom: 2px solid var(--persona-primary-color);
     padding: 10px 20px;
     flex-shrink: 0;
@@ -239,6 +240,7 @@
     flex-direction: column;
     gap: 8px;
 }
+.jj-settings-panel.jj-hidden { display: none; }
 .jj-settings-row {
     display: flex;
     align-items: center;
@@ -248,7 +250,7 @@
 .jj-settings-label {
     font-family: var(--persona-font-secondary);
     font-size: 11px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.85);
     letter-spacing: 0.3px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -267,7 +269,7 @@
     border: 1px solid rgba(255,255,255,0.2);
     border-right-width: 0;
     background: transparent;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.65);
     cursor: pointer;
     transition: all 0.15s;
     line-height: 1.4;
@@ -275,7 +277,7 @@
 .jj-setting-opt:last-child { border-right-width: 1px; }
 .jj-setting-opt:first-child { border-radius: 2px 0 0 2px; }
 .jj-setting-opt:last-child  { border-radius: 0 2px 2px 0; }
-.jj-setting-opt:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.06); }
+.jj-setting-opt:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.12); }
 .jj-setting-opt.jj-setting-active {
     background: var(--persona-primary-color);
     border-color: var(--persona-primary-color);
