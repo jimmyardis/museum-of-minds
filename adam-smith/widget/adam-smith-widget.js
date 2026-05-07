@@ -14,6 +14,7 @@
     const script = document.currentScript;
     const API_URL = script.getAttribute('data-api-url') || 'http://localhost:8000';
     const PERSONA_ID = script.getAttribute('data-persona-id') || 'jane-jacobs';
+    const PORTRAIT_URL = script.getAttribute('data-portrait-url') || '';
 
     let conversationId = null;
     let isOpen = false;
@@ -119,6 +120,7 @@
 
             <div id="jj-chat-window" class="jj-chat-window jj-hidden">
                 <div class="jj-header">
+                    ${PORTRAIT_URL ? `<div class="jj-header-portrait"><img class="jj-portrait-thumb" src="${PORTRAIT_URL}" alt="" /></div>` : ''}
                     <div class="jj-header-content">
                         <h3>${ui.header_title}</h3>
                         <p class="jj-subtitle">${ui.header_subtitle}</p>
