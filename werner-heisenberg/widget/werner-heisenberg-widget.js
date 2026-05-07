@@ -21,6 +21,7 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let settingsPanelOpen = false;
     let html2pdfLoaded = false;
 
     // Size mode: 'compact' | 'medium' | 'full'
@@ -128,6 +129,12 @@
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
                         </button>
+                        <button id="jj-settings" class="jj-settings-btn" title="Settings">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </button>
                         <button id="jj-size" class="jj-size-btn" title="${SIZE_TITLES[currentSize]}">${SIZE_ICONS[currentSize]}</button>
                         <button id="jj-close" class="jj-close-btn">&times;</button>
                     </div>
@@ -152,6 +159,13 @@
                     <div class="jj-edu-btns">
                         <button id="jj-lesson-btn" class="jj-edu-btn">Lesson Plan</button>
                         <button id="jj-questions-btn" class="jj-edu-btn">Discussion Questions</button>
+                    </div>
+                </div>
+
+                <div id="jj-settings-panel" class="jj-settings-panel jj-hidden">
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Voice responses</span>
+                        <button id="jj-voice-setting" class="jj-voice-setting-btn">Off</button>
                     </div>
                 </div>
 
@@ -192,6 +206,8 @@
         document.getElementById('jj-voice').addEventListener('click', toggleVoice);
         document.getElementById('jj-download').addEventListener('click', exportChat);
         document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
+        document.getElementById('jj-settings').addEventListener('click', toggleSettings);
+        document.getElementById('jj-voice-setting').addEventListener('click', toggleVoice);
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
         document.getElementById('jj-input').addEventListener('keypress', e => {
@@ -268,11 +284,22 @@
 
     // ── Voice ────────────────────────────────────────────────────────────────
 
+    function toggleSettings() {
+        settingsPanelOpen = !settingsPanelOpen;
+        document.getElementById('jj-settings-panel').classList.toggle('jj-hidden', !settingsPanelOpen);
+        document.getElementById('jj-settings').classList.toggle('jj-settings-active', settingsPanelOpen);
+    }
+
     function toggleVoice() {
         voiceEnabled = !voiceEnabled;
         const btn = document.getElementById('jj-voice');
         btn.classList.toggle('jj-voice-active', voiceEnabled);
         btn.title = voiceEnabled ? 'Voice on — click to mute' : 'Enable voice';
+        const vsBtn = document.getElementById('jj-voice-setting');
+        if (vsBtn) {
+            vsBtn.textContent = voiceEnabled ? 'On' : 'Off';
+            vsBtn.classList.toggle('active', voiceEnabled);
+        }
     }
 
     function playAudio(b64) {
