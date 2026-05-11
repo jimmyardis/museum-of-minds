@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benjamin Franklin — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --slate-deep:    #1E2B38;
+  --slate-mid:     #2E3F52;
+  --slate-lift:    #3B5068;
+  --slate-pale:    #4D6580;
+  --amber-bright:  #C47A2B;
+  --amber-warm:    #D9913C;
+  --amber-pale:    #E8B86D;
+  --parchment:     #F5EFE0;
+  --parchment-dim: #E8E0CC;
+  --parchment-dark:#CFC3A8;
+  --ink:           #12191F;
+  --text-main:     #F5EFE0;
+  --text-dim:      #C8BAA0;
+  --text-muted:    #8A7A60;
+  --rule-color:    #C47A2B;
+  --accent-glow:   rgba(196,122,43,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--slate-deep);
+  color: var(--text-main);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  45%      { opacity: 0.88; }
+  50%      { opacity: 0.94; }
+  75%      { opacity: 0.91; }
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 2.8rem;
+  background: var(--slate-deep);
+  border-bottom: 1px solid rgba(196,122,43,0.30);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  animation: fadeDown 0.7s ease both;
+}
+
+.header-left {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  color: var(--parchment);
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
+.header-right {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  color: var(--amber-pale);
+  opacity: 0.70;
+  text-transform: uppercase;
+}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1.28fr 0.72fr;
+  min-height: 92vh;
+  animation: fadeIn 1s ease 0.2s both;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── BIO PANEL ──────────────────────────────────────────── */
+.hero-bio {
+  background: var(--slate-mid);
+  border-left: 1px solid rgba(196,122,43,0.22);
+  padding: 3rem 2.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.4rem;
+  overflow-y: auto;
+  animation: fadeUp 0.9s ease 0.4s both;
+}
+
+/* ─── PHOTO FRAME ────────────────────────────────────────── */
+.photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(196,122,43,0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -13px;
+  border: 1px solid rgba(196,122,43,0.22);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(25%) sepia(30%) contrast(1.07) brightness(0.88);
+}
+
+/* ─── PLACARD ────────────────────────────────────────────── */
+.placard {
+  width: 100%;
+  border-top: 1px solid rgba(196,122,43,0.30);
+  padding-top: 1.2rem;
+}
+
+.placard-label {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.35em;
+  color: var(--amber-pale);
+  opacity: 0.72;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.placard-name {
+  font-family: 'Cormorant Upright', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.9rem);
+  font-weight: 600;
+  color: var(--parchment);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.placard-dates {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  color: var(--amber-pale);
+  opacity: 0.82;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+
+.placard-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--parchment-dim);
+  opacity: 0.88;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  border-left: 2px solid var(--amber-bright);
+  padding-left: 0.85rem;
+}
+
+.placard-bio {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.91rem;
+  color: var(--parchment-dim);
+  opacity: 0.88;
+  line-height: 1.72;
+}
+
+.placard-bio p + p { margin-top: 0.75rem; }
+
+.placard-meta {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196,122,43,0.20);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.meta-tag {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  color: var(--amber-pale);
+  opacity: 0.72;
+  border: 1px solid rgba(196,122,43,0.30);
+  padding: 0.25rem 0.65rem;
+  text-transform: uppercase;
+}
+
+/* ─── TRANSITION BAND ────────────────────────────────────── */
+.transition-band {
+  background: var(--slate-deep);
+  border-top: 1px solid rgba(196,122,43,0.25);
+  border-bottom: 1px solid rgba(196,122,43,0.25);
+  padding: 0.95rem 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.band-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,122,43,0.40), transparent);
+}
+
+.band-ornament {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.42em;
+  color: var(--amber-pale);
+  opacity: 0.72;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── CHATBOT SECTION ────────────────────────────────────── */
+.chatbot-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 72vh;
+  background: var(--slate-deep);
+}
+
+.chatbot-intro {
+  padding: 3rem 2.8rem 3rem 3rem;
+  border-right: 1px solid rgba(196,122,43,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cormorant Upright', serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 500;
+  color: var(--parchment);
+  line-height: 1.25;
+}
+
+.chatbot-intro h2 span {
+  display: block;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.38em;
+  color: var(--amber-pale);
+  opacity: 0.72;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.chatbot-intro p {
+  font-size: 0.94rem;
+  color: var(--parchment-dim);
+  opacity: 0.88;
+  line-height: 1.76;
+}
+
+.featured-quote {
+  border-left: 2px solid var(--amber-bright);
+  padding: 0.8rem 1.2rem;
+  background: rgba(196,122,43,0.06);
+  margin: 0.5rem 0;
+}
+
+.featured-quote p {
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--parchment);
+  opacity: 0.92;
+  line-height: 1.6;
+}
+
+.featured-quote cite {
+  display: block;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-family: 'IM Fell English SC', serif;
+  letter-spacing: 0.22em;
+  color: var(--amber-pale);
+  opacity: 0.70;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.domain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.domain-tag {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.54rem;
+  letter-spacing: 0.22em;
+  color: var(--amber-pale);
+  opacity: 0.72;
+  border: 1px solid rgba(196,122,43,0.35);
+  padding: 0.28rem 0.75rem;
+  text-transform: uppercase;
+  background: rgba(196,122,43,0.04);
+}
+
+.chatbot-embed {
+  background: var(--slate-mid);
+  min-height: 520px;
+}
+
+/* ─── PULL QUOTE ─────────────────────────────────────────── */
+.pull-quote {
+  background: var(--slate-deep);
+  border-top: 1px solid rgba(196,122,43,0.22);
+  border-bottom: 1px solid rgba(196,122,43,0.22);
+  padding: 4rem 2.8rem;
+  text-align: center;
+}
+
+.pull-quote blockquote {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.pull-quote blockquote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--parchment);
+  opacity: 0.92;
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+}
+
+.pull-quote blockquote p::before { content: '\201C'; color: var(--amber-bright); }
+.pull-quote blockquote p::after  { content: '\201D'; color: var(--amber-bright); }
+
+.pull-quote cite {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.60rem;
+  letter-spacing: 0.30em;
+  color: var(--amber-pale);
+  opacity: 0.70;
+  text-transform: uppercase;
+}
+
+.quote-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--amber-bright);
+  margin: 1.2rem auto;
+  opacity: 0.55;
+}
+
+/* ─── CORPUS STRIP ───────────────────────────────────────── */
+.corpus-strip {
+  background: var(--ink);
+  padding: 2.2rem 3rem;
+  border-top: 1px solid rgba(196,122,43,0.20);
+}
+
+.corpus-label {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.40em;
+  color: var(--amber-pale);
+  opacity: 0.70;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.corpus-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.corpus-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.80rem;
+  color: var(--parchment-dim);
+  opacity: 0.70;
+  padding: 0.22rem 0.70rem;
+  border: 1px solid rgba(196,122,43,0.18);
+  font-style: italic;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(196,122,43,0.25);
+  padding: 1.6rem 2.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-name {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.85rem;
+  color: var(--parchment);
+  opacity: 0.70;
+}
+
+.footer-name span {
+  display: block;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  color: var(--amber-pale);
+  opacity: 0.70;
+  margin-top: 0.2rem;
+}
+
+.footer-credit {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.70rem;
+  color: var(--text-dim);
+  opacity: 0.52;
+  line-height: 1.6;
+}
+
+.footer-powered {
+  text-align: right;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  color: var(--amber-pale);
+  opacity: 0.68;
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-svg-panel {
+    min-height: 55vw;
+    max-height: 500px;
+    position: relative;
+  }
+
+  .hero-svg-panel svg {
+    position: absolute;
+  }
+
+  .hero-bio {
+    border-left: none;
+    border-top: 1px solid rgba(196,122,43,0.22);
+    padding: 2rem 1.5rem;
+  }
+
+  .chatbot-section {
+    grid-template-columns: 1fr;
+  }
+
+  .chatbot-intro {
+    border-right: none;
+    border-bottom: 1px solid rgba(196,122,43,0.18);
+    padding: 2rem 1.5rem;
+  }
+
+  header { padding: 1rem 1.5rem; }
+
+  .transition-band { padding: 0.85rem 1.5rem; }
+
+  .pull-quote { padding: 2.8rem 1.5rem; }
+
+  .corpus-strip { padding: 1.8rem 1.5rem; }
+
+  footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1.4rem 1.5rem;
+  }
+
+  .footer-powered { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────────────────── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-right">BF–1706–2026</div>
+</header>
+
+<!-- ─── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- LEFT: SVG ILLUSTRATION — Philadelphia Electrical Experiment / Kite Storm -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg" aria-label="A stormy night sky over colonial Philadelphia, lightning branching through clouds, a kite ascending on a thread toward the heavens — the famous experiment rendered as a scientific illustration with annotation lines and copperplate lettering">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#070C12"/>
+          <stop offset="40%"  stop-color="#0E1A28"/>
+          <stop offset="78%"  stop-color="#1E2B38"/>
+          <stop offset="100%" stop-color="#2A3A4A"/>
+        </linearGradient>
+        <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#1A2630"/>
+          <stop offset="100%" stop-color="#0D1520"/>
+        </linearGradient>
+        <radialGradient id="lightningGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#C8D8FF" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#C8D8FF" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#C47A2B" stop-opacity="0.32"/>
+          <stop offset="100%" stop-color="#C47A2B" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="3.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softBlur">
+          <feGaussianBlur stdDeviation="2.2"/>
+        </filter>
+      </defs>
+
+      <!-- SKY BACKGROUND -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- STARS -->
+      <circle cx="42"  cy="38"  r="0.9" fill="#D0E0FF" opacity="0.55"/>
+      <circle cx="120" cy="18"  r="0.7" fill="#D0E0FF" opacity="0.42"/>
+      <circle cx="210" cy="52"  r="1.1" fill="#E0EAFF" opacity="0.48"/>
+      <circle cx="330" cy="24"  r="0.8" fill="#D0E0FF" opacity="0.38"/>
+      <circle cx="480" cy="44"  r="0.9" fill="#D0E0FF" opacity="0.52"/>
+      <circle cx="580" cy="18"  r="0.7" fill="#E0EAFF" opacity="0.40"/>
+      <circle cx="650" cy="60"  r="1.0" fill="#D0E0FF" opacity="0.44"/>
+      <circle cx="70"  cy="90"  r="0.6" fill="#D0E0FF" opacity="0.30"/>
+      <circle cx="560" cy="80"  r="0.8" fill="#D0E0FF" opacity="0.36"/>
+      <circle cx="390" cy="70"  r="0.7" fill="#E0EAFF" opacity="0.34"/>
+
+      <!-- STORM CLOUDS — back layer -->
+      <ellipse cx="120" cy="130" rx="140" ry="65"  fill="#0F1E2C" opacity="0.90"/>
+      <ellipse cx="220" cy="105" rx="110" ry="50"  fill="#111F2E" opacity="0.85"/>
+      <ellipse cx="380" cy="120" rx="160" ry="72"  fill="#0D1C2A" opacity="0.92"/>
+      <ellipse cx="570" cy="110" rx="140" ry="58"  fill="#0F1E2C" opacity="0.88"/>
+      <ellipse cx="660" cy="140" rx="90"  ry="45"  fill="#111F2E" opacity="0.80"/>
+      <ellipse cx="50"  cy="160" rx="80"  ry="40"  fill="#0D1A28" opacity="0.82"/>
+
+      <!-- STORM CLOUDS — mid layer -->
+      <ellipse cx="180" cy="180" rx="175" ry="80"  fill="#0A1620" opacity="0.88"/>
+      <ellipse cx="420" cy="165" rx="190" ry="85"  fill="#0C1A26" opacity="0.90"/>
+      <ellipse cx="620" cy="185" rx="130" ry="60"  fill="#0A1620" opacity="0.82"/>
+      <ellipse cx="30"  cy="195" rx="80"  ry="45"  fill="#0D1C28" opacity="0.78"/>
+
+      <!-- LIGHTNING GLOW BLOOM -->
+      <ellipse cx="350" cy="170" rx="260" ry="110" fill="url(#lightningGlow)" filter="url(#softBlur)"/>
+
+      <!-- PRIMARY LIGHTNING BOLT — main stroke -->
+      <path d="M 350,82 L 328,148 L 355,148 L 305,252 L 338,252 L 278,380 L 320,380 L 285,485"
+            stroke="#D8ECFF" stroke-width="2.2" fill="none" opacity="0.90" filter="url(#glow)"/>
+
+      <!-- LIGHTNING BRANCH RIGHT -->
+      <path d="M 338,252 L 395,305 L 382,340"
+            stroke="#C8DEFF" stroke-width="1.3" fill="none" opacity="0.70"/>
+
+      <!-- LIGHTNING BRANCH LEFT -->
+      <path d="M 305,252 L 258,300 L 242,335"
+            stroke="#C8DEFF" stroke-width="1.1" fill="none" opacity="0.62"/>
+
+      <!-- LIGHTNING SECONDARY SMALL -->
+      <path d="M 328,148 L 295,195 L 305,195 L 278,235"
+            stroke="#D0E5FF" stroke-width="0.9" fill="none" opacity="0.52"/>
+
+      <!-- KITE STRING — descends from kite down to ground figure -->
+      <path d="M 285,485 Q 310,580 330,665 Q 345,720 360,755"
+            stroke="#C47A2B" stroke-width="1.4" fill="none" stroke-dasharray="5 4" opacity="0.82"/>
+
+      <!-- KEY on the string (classic Franklin image) -->
+      <g transform="translate(338,680)" opacity="0.88">
+        <!-- Key outline -->
+        <ellipse cx="0" cy="0" rx="9" ry="12" fill="none" stroke="#C47A2B" stroke-width="1.5"/>
+        <rect x="-2" y="11" width="4" height="16" fill="#C47A2B" opacity="0.90"/>
+        <rect x="2"  y="18" width="5" height="2"  fill="#C47A2B" opacity="0.90"/>
+        <rect x="2"  y="23" width="3" height="2"  fill="#C47A2B" opacity="0.90"/>
+      </g>
+
+      <!-- KITE SHAPE -->
+      <g transform="translate(285,440)" opacity="0.88" filter="url(#glow)">
+        <polygon points="0,-55 38,0 0,38 -38,0"
+                 fill="none" stroke="#D0DCEE" stroke-width="1.8"/>
+        <line x1="0" y1="-55" x2="0"  y2="38"  stroke="#D0DCEE" stroke-width="0.9" opacity="0.55"/>
+        <line x1="-38" y1="0" x2="38" y2="0"   stroke="#D0DCEE" stroke-width="0.9" opacity="0.55"/>
+        <!-- Kite tail -->
+        <path d="M 0,38 Q 12,58 -5,75 Q 15,90 0,108"
+              stroke="#D0DCEE" stroke-width="0.9" fill="none" stroke-dasharray="4 3" opacity="0.62"/>
+      </g>
+
+      <!-- AMBER GLOW near key / bottom string area -->
+      <ellipse cx="338" cy="690" rx="55" ry="40" fill="url(#amberGlow)" filter="url(#softBlur)"/>
+
+      <!-- FOREGROUND GROUND PLANE -->
+      <rect x="0" y="800" width="700" height="100" fill="url(#groundGrad)"/>
+
+      <!-- COLONIAL BUILDING SILHOUETTES — left -->
+      <rect x="30"  y="720" width="70"  height="80" fill="#0A1520"/>
+      <polygon points="30,720 65,680 100,720" fill="#0A1520"/>
+      <!-- Windows lit amber -->
+      <rect x="42"  y="735" width="12" height="14" fill="#C47A2B" opacity="0.55"/>
+      <rect x="72"  y="735" width="12" height="14" fill="#C47A2B" opacity="0.48"/>
+      <rect x="42"  y="760" width="12" height="14" fill="#C47A2B" opacity="0.40"/>
+      <rect x="72"  y="760" width="12" height="14" fill="#C47A2B" opacity="0.52"/>
+
+      <!-- COLONIAL BUILDING — mid left -->
+      <rect x="115" y="735" width="90"  height="65" fill="#08111A"/>
+      <polygon points="115,735 160,695 205,735" fill="#08111A"/>
+      <rect x="125" y="750" width="14" height="18" fill="#C47A2B" opacity="0.45"/>
+      <rect x="148" y="750" width="14" height="18" fill="#C47A2B" opacity="0.38"/>
+      <rect x="173" y="750" width="14" height="18" fill="#C47A2B" opacity="0.50"/>
+
+      <!-- STEEPLE / CHURCH — right of center -->
+      <rect x="440" y="700" width="65" height="100" fill="#080F18"/>
+      <polygon points="440,700 472,650 505,700" fill="#080F18"/>
+      <rect x="468" y="640" width="9"  height="35"  fill="#090E18"/>
+      <rect x="450" y="715" width="15" height="20"  fill="#C47A2B" opacity="0.42"/>
+      <rect x="472" y="715" width="15" height="20"  fill="#C47A2B" opacity="0.38"/>
+      <rect x="450" y="745" width="15" height="20"  fill="#C47A2B" opacity="0.46"/>
+      <rect x="472" y="745" width="15" height="20"  fill="#C47A2B" opacity="0.40"/>
+
+      <!-- BUILDING — far right -->
+      <rect x="560" y="740" width="80" height="60" fill="#070D18"/>
+      <polygon points="560,740 600,700 640,740" fill="#070D18"/>
+      <rect x="572" y="752" width="12" height="16" fill="#C47A2B" opacity="0.44"/>
+      <rect x="592" y="752" width="12" height="16" fill="#C47A2B" opacity="0.36"/>
+      <rect x="612" y="752" width="12" height="16" fill="#C47A2B" opacity="0.50"/>
+
+      <!-- FIGURE OF FRANKLIN — silhouette at bottom holding string -->
+      <g transform="translate(355,760)" opacity="0.90">
+        <!-- Body -->
+        <rect x="-10" y="-30" width="20" height="35" rx="2" fill="#0A1520"/>
+        <!-- Head -->
+        <ellipse cx="0" cy="-38" rx="11" ry="13" fill="#0A1520"/>
+        <!-- Tricorn hat -->
+        <rect x="-13" y="-54" width="26" height="6"  fill="#0A1520"/>
+        <polygon points="-8,-54 0,-70 8,-54" fill="#0A1520"/>
+        <!-- Left arm holding string up -->
+        <line x1="-10" y1="-18" x2="-28" y2="-35" stroke="#0A1520" stroke-width="5" stroke-linecap="round"/>
+        <!-- Right arm down -->
+        <line x1="10" y1="-18" x2="22"  y2="-5"  stroke="#0A1520" stroke-width="5" stroke-linecap="round"/>
+        <!-- Legs -->
+        <line x1="-5"  y1="5"  x2="-8"  y2="28" stroke="#0A1520" stroke-width="5" stroke-linecap="round"/>
+        <line x1="5"   y1="5"  x2="9"   y2="28" stroke="#0A1520" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <!-- ANNOTATION OVERLAY — dimension/note lines, copperplate style -->
+      <!-- Arrow to kite -->
+      <line x1="180" y1="430" x2="248" y2="445" stroke="#C47A2B" stroke-width="0.8" opacity="0.55"/>
+      <polygon points="248,445 238,440 240,452" fill="#C47A2B" opacity="0.55"/>
+      <text x="84" y="428" font-family="'Cormorant Garamond',serif" font-style="italic"
+            font-size="11" fill="#C47A2B" opacity="0.65">Fig. I. — The Kite</text>
+
+      <!-- Arrow to key -->
+      <line x1="188" y1="682" x2="324" y2="682" stroke="#C47A2B" stroke-width="0.8" opacity="0.50"/>
+      <polygon points="324,682 314,678 316,686" fill="#C47A2B" opacity="0.50"/>
+      <text x="68" y="678" font-family="'Cormorant Garamond',serif" font-style="italic"
+            font-size="11" fill="#C47A2B" opacity="0.62">Iron Key</text>
+
+      <!-- Arrow to lightning -->
+      <line x1="490" y1="240" x2="362" y2="260" stroke="#C47A2B" stroke-width="0.8" opacity="0.50"/>
+      <polygon points="362,260 374,255 371,265" fill="#C47A2B" opacity="0.50"/>
+      <text x="492" y="236" font-family="'Cormorant Garamond',serif" font-style="italic"
+            font-size="11" fill="#C47A2B" opacity="0.62">Electric Fluid</text>
+
+      <!-- TITLE BLOCK — bottom right corner -->
+      <rect x="465" y="832" width="222" height="58" fill="none" stroke="#C47A2B" stroke-width="0.8" opacity="0.38"/>
+      <rect x="465" y="832" width="222" height="12" fill="rgba(196,122,43,0.10)"/>
+      <text x="576" y="842" text-anchor="middle" font-family="'IM Fell English SC',serif"
+            font-size="8" fill="#C47A2B" opacity="0.68" letter-spacing="2">Philadelphia · June 1752</text>
+      <text x="576" y="858" text-anchor="middle" font-family="'Cormorant Garamond',serif"
+            font-size="9" font-style="italic" fill="#D0DCEE" opacity="0.62">Experiment to Demonstrate</text>
+      <text x="576" y="869" text-anchor="middle" font-family="'Cormorant Garamond',serif"
+            font-size="9" font-style="italic" fill="#D0DCEE" opacity="0.62">the Electrical Nature of Lightning</text>
+      <text x="576" y="882" text-anchor="middle" font-family="'IM Fell English SC',serif"
+            font-size="7.5" fill="#C47A2B" opacity="0.55" letter-spacing="1.5">B. Franklin, F.R.S.</text>
+
+      <!-- COMPASS ROSE — bottom left -->
+      <g transform="translate(60, 855)" opacity="0.42">
+        <line x1="0" y1="-18" x2="0"  y2="18"  stroke="#C47A2B" stroke-width="0.9"/>
+        <line x1="-18" y1="0" x2="18" y2="0"   stroke="#C47A2B" stroke-width="0.9"/>
+        <line x1="-12" y1="-12" x2="12" y2="12" stroke="#C47A2B" stroke-width="0.6"/>
+        <line x1="12" y1="-12" x2="-12" y2="12" stroke="#C47A2B" stroke-width="0.6"/>
+        <polygon points="0,-18 -4,-8 0,-12 4,-8" fill="#C47A2B"/>
+        <circle cx="0" cy="0" r="3" fill="none" stroke="#C47A2B" stroke-width="0.8"/>
+        <text x="0" y="-22" text-anchor="middle" font-family="'IM Fell English SC',serif"
+              font-size="7" fill="#C47A2B" letter-spacing="1">N</text>
+      </g>
+
+      <!-- Horizontal rule at bottom of annotation area -->
+      <line x1="30" y1="828" x2="460" y2="828" stroke="#C47A2B" stroke-width="0.6" opacity="0.28"/>
+      <line x1="30" y1="895" x2="460" y2="895" stroke="#C47A2B" stroke-width="0.6" opacity="0.20"/>
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio">
+
+    <div class="photo-frame">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Joseph-Siffrede_Duplessis_Portrait_de_Benjamin_Franklin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        alt="Portrait of Benjamin Franklin by Joseph-Siffred Duplessis"
+        onerror="this.style.background='#1E2B38';this.style.minHeight='320px';this.alt='Portrait unavailable';"
+      >
+    </div>
+
+    <div class="placard">
+      <div class="placard-label">Museum of Minds — Collection</div>
+      <div class="placard-name">Benjamin<br>Franklin</div>
+      <div class="placard-dates">1706 — 1790</div>
+      <div class="placard-tagline">Printer, scientist, diplomat, schemer — America's first self-made man</div>
+
+      <div class="placard-bio">
+        <p>Benjamin Franklin was a Boston-born printer's apprentice who became the most famous American in the world before America existed. Scientist, satirist, diplomat, and architect of the republic, he contained multitudes without apology.</p>
+        <p>The man who theorized electricity also ran a lottery, founded a library, negotiated a nation, and kept secrets that would have ruined lesser men. He arrived in Philadelphia at seventeen with a loaf of bread under each arm and left it as a legend.</p>
+        <p>He is still dangerous — because he understood power, vanity, and human nature so precisely that his observations have never aged out of relevance.</p>
+      </div>
+
+      <div class="placard-meta">
+        <span class="meta-tag">Natural Philosophy</span>
+        <span class="meta-tag">Diplomacy</span>
+        <span class="meta-tag">Print &amp; Press</span>
+        <span class="meta-tag">Political Economy</span>
+        <span class="meta-tag">Moral Philosophy</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ────────────────────────────────────── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-ornament">Enter Into Conversation</div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ─────────────────────────────────────── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>
+      <span>Museum of Minds — Interactive Gallery</span>
+      Speak With Franklin Directly
+    </h2>
+
+    <p>The figure before you is reconstructed from Franklin's own hand: the <em>Autobiography</em>, the <em>Poor Richard's Almanack</em>, his scientific papers, his diplomatic correspondence from Paris, his letters to friends, enemies, and the occasional secret lover. He will answer in his own voice — which is to say, he will be charming, evasive, honest, and occasionally infuriating in equal measure.</p>
+
+    <p>Do not expect a monument. Expect a man who invented himself from nothing, understood his contradictions, and mostly found them useful. Ask him about slavery, about his son William, about the persona of Poor Richard, about electricity, about France. He has thought about all of it more than you have.</p>
+
+    <div class="featured-quote">
+      <p>He that can have patience can have what he will.</p>
+      <cite>— Poor Richard's Almanack, 1736</cite>
+    </div>
+
+    <p>Franklin was the first American celebrity, the first to understand that reputation is a technology. He built Poor Richard as a brand before the word existed, and he managed his own image with the same precision he applied to lightning rods. Conversation with him rewards candor — and punishes flattery.</p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Electricity &amp; Physics</span>
+      <span class="domain-tag">Slavery &amp; Abolition</span>
+      <span class="domain-tag">American Revolution</span>
+      <span class="domain-tag">Diplomacy in Paris</span>
+      <span class="domain-tag">Poor Richard</span>
+      <span class="domain-tag">William Franklin</span>
+      <span class="domain-tag">Self-Improvement</span>
+      <span class="domain-tag">Press &amp; Printing</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/benjamin-franklin/widget/benjamin-franklin-widget.css">
+      <script src="https://museumofminds.com/benjamin-franklin/widget/benjamin-franklin-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="benjamin-franklin"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ─────────────────────────────────────────── -->
+<section class="pull-quote">
+  <blockquote>
+    <p>We must, indeed, all hang together, or most assuredly we shall all hang separately.</p>
+    <div class="quote-rule"></div>
+    <cite>Benjamin Franklin — Remark at the Signing of the Declaration of Independence, Philadelphia, 1776</cite>
+  </blockquote>
+</section>
+
+<!-- ─── CORPUS STRIP ───────────────────────────────────────── -->
+<div class="corpus-strip">
+  <div class="corpus-label">This Conversation Is Grounded In</div>
+  <div class="corpus-grid">
+    <span class="corpus-item">Autobiography of Benjamin Franklin (1771–1790)</span>
+    <span class="corpus-item">Poor Richard's Almanack (1732–1758)</span>
+    <span class="corpus-item">Experiments and Observations on Electricity (1751)</span>
+    <span class="corpus-item">The Papers of Benjamin Franklin — Yale Edition (47 vols.)</span>
+    <span class="corpus-item">Letters from Paris to the Continental Congress</span>
+    <span class="corpus-item">A Dissertation on Liberty and Necessity (1725)</span>
+    <span class="corpus-item">The Way to Wealth (1758)</span>
+    <span class="corpus-item">Letters to William Franklin (1764–1784)</span>
+    <span class="corpus-item">Correspondence with Polly Stevenson (1760–1789)</span>
+    <span class="corpus-item">Bagatelles Written at Passy (1778–1785)</span>
+    <span class="corpus-item">Pennsylvania Gazette Editorials (1729–1748)</span>
+    <span class="corpus-item">Address to the Pennsylvania Abolition Society (1789)</span>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-name">
+    Benjamin Franklin
+    <span>1706 — 1790 · Boston &amp; Philadelphia</span>
+  </div>
+
+  <div class="footer-credit">
+    Museum of Minds<br>
+    A project of the Ruffin Foundation<br>
+    Collection Accession BF–1706–2026
+  </div>
+
+  <div class="footer-powered">
+    Powered by<br>
+    His Own Words
+  </div>
+</footer>
+
+</body>
+</html>
