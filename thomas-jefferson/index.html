@@ -679,6 +679,44 @@
       font-size: 0.72rem; color: var(--ink-faint);
       letter-spacing: 0.12em; text-transform: uppercase;
     }
+
+    /* ── Geographic Map ── */
+    .kg-map-section {
+      padding: 0 3rem 4rem;
+      background: linear-gradient(180deg, #DDD3A8 0%, var(--parchment) 100%);
+    }
+    .kg-map-header {
+      text-align: center; max-width: 600px; margin: 0 auto 1.5rem;
+    }
+    .kg-map-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--ink-faint);
+      margin-bottom: 0.5rem;
+    }
+    .kg-map-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 400; color: var(--ink);
+    }
+    #kg-map {
+      height: 420px;
+      border: 1px solid var(--parchment-dark);
+      border-radius: 3px;
+      box-shadow: 0 4px 20px rgba(44,31,14,0.2);
+    }
+    .leaflet-popup-content-wrapper {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      background: var(--parchment);
+      border: 1px solid var(--parchment-dark);
+      border-radius: 2px;
+      box-shadow: 0 4px 16px rgba(44,31,14,0.25);
+    }
+    .leaflet-popup-tip { background: var(--parchment); }
+    @media (max-width: 768px) {
+      .kg-map-section { padding: 0 1.5rem 3rem; }
+      #kg-map { height: 320px; }
+    }
   </style>
 </head>
 <body>
@@ -1069,6 +1107,15 @@
     <div class="kg-hint">Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Click any node</div>
   </section>
 
+  <!-- GEOGRAPHIC MAP -->
+  <section class="kg-map-section">
+    <div class="kg-map-header">
+      <div class="kg-map-eyebrow">Geographic Record &nbsp;·&nbsp; Primary Sources</div>
+      <h3 class="kg-map-title">The Places of a Life</h3>
+    </div>
+    <div id="kg-map"></div>
+  </section>
+
   <!-- CORPUS STRIP -->
   <div class="corpus-strip">
     <div class="corpus-label">Corpus Sources</div>
@@ -1093,6 +1140,91 @@
     <span class="footer-text">Powered by His Own Words</span>
     <span class="footer-text">Accession No. TJ–1743–2026</span>
   </footer>
+
+  <!-- LEAFLET MAP -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function() {
+    const API = 'https://museum-api-production-8ce6.up.railway.app';
+    const PERSONA = 'thomas-jefferson';
+
+    // Sepia/parchment tile layer (Stamen Toner Lite via Stadia)
+    const map = L.map('kg-map', {
+      center: [39.5, -82],
+      zoom: 5,
+      zoomControl: true,
+      scrollWheelZoom: false,
+    });
+
+    L.tileLayer(
+      'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png',
+      {
+        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>',
+        maxZoom: 18,
+        opacity: 0.6,
+      }
+    ).addTo(map);
+
+    // Custom parchment-style marker
+    function makeIcon(passages) {
+      const size = passages > 3 ? 16 : passages > 0 ? 13 : 10;
+      return L.divIcon({
+        html: `<div style="
+          width:${size}px;height:${size}px;border-radius:50%;
+          background:#8B3A2A;border:2px solid #4A2010;
+          box-shadow:0 2px 6px rgba(0,0,0,0.4);
+          cursor:pointer;"></div>`,
+        iconSize: [size, size],
+        iconAnchor: [size/2, size/2],
+        className: '',
+      });
+    }
+
+    fetch(`${API}/persona/${PERSONA}/kg?entity_type=Place`)
+      .then(r => r.json())
+      .then(data => {
+        data.nodes.forEach(node => {
+          if (!node.lat || !node.lon) return;
+
+          const passages = (node.gis_passages || []).length;
+          const marker = L.marker([node.lat, node.lon], { icon: makeIcon(passages) });
+
+          // Build popup
+          let popupHtml = `<strong style="font-size:1.05rem">${node.name}</strong>`;
+          if (node.notes) popupHtml += `<br><em style="font-size:0.85rem;color:#6B4E2A">${node.notes}</em>`;
+
+          const allPassages = node.gis_passages || [];
+          if (allPassages.length > 0) {
+            const best = allPassages.reduce((a, b) => (a.score||0) > (b.score||0) ? a : b);
+            const excerpt = (best.excerpt || '').slice(0, 180);
+            const year = best.year || '';
+            const work = best.work_title || best.source_file || '';
+            if (excerpt) {
+              popupHtml += `<br><br><span style="font-style:italic;font-size:0.85rem">"${excerpt}…"</span>`;
+              popupHtml += `<br><span style="font-size:0.75rem;opacity:0.7">— ${work}${year ? ', ' + year : ''}</span>`;
+            }
+          }
+
+          marker.bindPopup(popupHtml, { maxWidth: 280 });
+
+          // Label
+          marker.bindTooltip(node.name, {
+            permanent: false,
+            direction: 'top',
+            className: 'kg-map-tooltip',
+            offset: [0, -8],
+          });
+
+          marker.addTo(map);
+        });
+      })
+      .catch(err => {
+        console.error('Map load error:', err);
+        document.getElementById('kg-map').style.display = 'none';
+      });
+  })();
+  </script>
 
   <!-- 3D KNOWLEDGE GRAPH SCRIPT -->
   <script src="https://unpkg.com/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
