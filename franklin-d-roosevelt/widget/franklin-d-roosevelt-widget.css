@@ -1,0 +1,698 @@
+/**
+ * Historical Figure Chatbot Widget Styles
+ */
+
+:root {
+    --jj-shadow: rgba(42, 42, 42, 0.15);
+    /* Runtime-injectable persona variables — overridden per-persona via JS or per-page CSS */
+    --persona-primary-color: #b8554a;
+    --persona-cream:         #f7f3e9;
+    --persona-charcoal:      #2a2a2a;
+    --persona-warm-gray:     #c4bfb3;
+    --persona-dark-cream:    #ebe5d6;
+    --persona-text-gray:     #5a5a5a;
+    --persona-font-primary:  'Courier New', 'Courier', monospace;
+    --persona-font-secondary:'Georgia', 'Times New Roman', serif;
+}
+
+/* ── Container ────────────────────────────────────────────────────────────── */
+#franklin-d-roosevelt-widget {
+    font-family: var(--persona-font-primary);
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+
+/* ── Trigger button ───────────────────────────────────────────────────────── */
+.jj-trigger {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--persona-primary-color) 0%, #9a4539 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px var(--jj-shadow), 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--persona-cream);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.jj-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--jj-shadow), 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* ── Chat window ──────────────────────────────────────────────────────────── */
+.jj-chat-window {
+    position: fixed;
+    bottom: 104px;
+    right: 24px;
+    width: 400px;
+    height: 620px;
+    /* Never overflow the top of the viewport — always leave 16px clearance */
+    max-height: calc(100vh - 120px);
+    background: var(--persona-cream);
+    border-radius: 2px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid var(--persona-charcoal);
+    font-family: var(--persona-font-primary);
+}
+.jj-chat-window.jj-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+/* Size modes */
+.jj-chat-window.jj-size-medium {
+    width: 580px;
+    height: 760px;
+    /* max-height inherited: clamps to viewport */
+}
+.jj-chat-window.jj-size-full {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    bottom: 0 !important;
+    right: 0 !important;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.jj-header {
+    background: var(--persona-charcoal);
+    color: var(--persona-cream);
+    padding: 24px 20px 20px;
+    border-bottom: 4px solid var(--persona-primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+.jj-header::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--persona-cream), transparent);
+    opacity: 0.2;
+}
+.jj-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: var(--persona-font-primary);
+}
+.jj-subtitle {
+    margin: 4px 0 12px;
+    font-size: 13px;
+    opacity: 0.75;
+    font-style: italic;
+    font-family: var(--persona-font-secondary);
+    letter-spacing: 0.5px;
+}
+.jj-tagline {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.65;
+    line-height: 1.5;
+    font-family: var(--persona-font-secondary);
+    font-style: italic;
+}
+
+.jj-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.jj-size-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.55);
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+    flex-shrink: 0;
+}
+.jj-size-btn:hover {
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.08);
+}
+.jj-close-btn {
+    background: none;
+    border: none;
+    color: var(--persona-cream);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.jj-close-btn:hover { opacity: 1; }
+.jj-download-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.55);
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+    flex-shrink: 0;
+}
+.jj-download-btn:hover:not(:disabled) {
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.08);
+}
+.jj-download-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+.jj-edu-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 6px 0 12px 0;
+    background: none;
+    border: 1px solid var(--persona-warm-gray, #8a8070);
+    color: var(--persona-text-gray, #6b5f52);
+    font-family: var(--persona-font-secondary);
+    font-size: 10px;
+    font-style: italic;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.jj-edu-export-btn:hover {
+    background: var(--persona-dark-cream, #e8e0d0);
+    color: var(--persona-charcoal, #1a2332);
+}
+
+/* ── Messages ─────────────────────────────────────────────────────────────── */
+.jj-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--persona-cream);
+    background-image:
+        linear-gradient(rgba(0,0,0,0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.01) 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 0; /* allow flex shrink */
+}
+.jj-messages::-webkit-scrollbar { width: 8px; }
+.jj-messages::-webkit-scrollbar-track { background: var(--persona-dark-cream); border-left: 1px solid rgba(0,0,0,0.1); }
+.jj-messages::-webkit-scrollbar-thumb { background: var(--persona-warm-gray); border: 1px solid rgba(0,0,0,0.1); }
+.jj-messages::-webkit-scrollbar-thumb:hover { background: var(--persona-primary-color); }
+
+/* Starters */
+.jj-starters { display: flex; flex-direction: column; gap: 12px; padding: 8px 0; }
+.jj-starter-btn {
+    background: white;
+    border: 2px solid var(--persona-charcoal);
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--persona-font-secondary);
+    font-size: 13px;
+    color: var(--persona-charcoal);
+    transition: all 0.2s;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 3px 3px 0 var(--persona-dark-cream);
+}
+.jj-starter-btn:hover {
+    background: var(--persona-dark-cream);
+    border-color: var(--persona-primary-color);
+    transform: translateX(4px);
+}
+
+/* Messages */
+.jj-message {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    animation: jj-slideIn 0.3s ease-out;
+}
+@keyframes jj-slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.jj-message-content {
+    padding: 14px 16px;
+    line-height: 1.7;
+    font-size: 14px;
+    font-family: var(--persona-font-primary);
+    white-space: pre-wrap;
+}
+.jj-message-user .jj-message-content {
+    background: white;
+    border: 2px solid var(--persona-charcoal);
+    color: var(--persona-charcoal);
+    align-self: flex-end;
+    max-width: 75%;
+    box-shadow: 4px 4px 0 var(--persona-dark-cream);
+}
+.jj-message-assistant .jj-message-content {
+    background: white;
+    border-left: 4px solid var(--persona-primary-color);
+    border-top: 2px solid var(--persona-dark-cream);
+    border-right: 2px solid var(--persona-dark-cream);
+    border-bottom: 2px solid var(--persona-dark-cream);
+    color: var(--persona-charcoal);
+    align-self: flex-start;
+    max-width: 92%;
+    position: relative;
+}
+.jj-message-assistant .jj-message-content::before {
+    content: '"';
+    position: absolute;
+    top: -8px; left: 8px;
+    font-size: 32px;
+    color: var(--persona-primary-color);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+.jj-message-system .jj-message-content {
+    background: transparent;
+    color: var(--persona-text-gray);
+    font-style: italic;
+    font-size: 12px;
+    padding: 6px 0;
+    align-self: center;
+}
+
+/* ── Message meta (trust + sources) ──────────────────────────────────────── */
+.jj-message-meta {
+    align-self: flex-start;
+    max-width: 92%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.jj-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0 2px 0;
+}
+
+/* Trust indicator — legacy (old deployed pages use jj-trust) */
+.jj-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--persona-font-secondary);
+    font-size: 10px;
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+.jj-trust::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.jj-trust-high   { color: #3d7a55; }
+.jj-trust-high::before   { background: #3d7a55; }
+.jj-trust-medium { color: var(--persona-text-gray, #6b5f52); }
+.jj-trust-medium::before { background: var(--persona-warm-gray, #8a8070); }
+.jj-trust-low    { color: #8b4a3c; }
+.jj-trust-low::before    { background: #8b4a3c; }
+
+/* Confidence badge — pill style (current) */
+.jj-confidence {
+    display: inline-block;
+    font-family: var(--persona-font-primary);
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: default;
+    white-space: nowrap;
+}
+.jj-confidence-high   { color: #2d7a4a; background: rgba(45,122,74,0.10); border-color: rgba(45,122,74,0.25); }
+.jj-confidence-medium { color: #9a6e1a; background: rgba(154,110,26,0.10); border-color: rgba(154,110,26,0.25); }
+.jj-confidence-low    { color: #8a3030; background: rgba(138,48,48,0.10); border-color: rgba(138,48,48,0.25); }
+
+/* Sources toggle button */
+.jj-sources-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    font-family: var(--persona-font-secondary);
+    font-size: 11px;
+    font-style: italic;
+    color: var(--persona-text-gray, #6b5f52);
+    cursor: pointer;
+    padding: 2px 4px;
+    letter-spacing: 0.2px;
+    transition: color 0.15s;
+}
+.jj-sources-toggle:hover,
+.jj-sources-toggle.jj-sources-active { color: var(--persona-primary-color); }
+
+/* Legacy sources button (old deployed pages) */
+.jj-sources-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--persona-font-secondary);
+    font-size: 10px;
+    font-style: italic;
+    color: var(--persona-text-gray, #6b5f52);
+    background: var(--persona-dark-cream, #e8e0d0);
+    border: 1px solid var(--persona-warm-gray, #8a8070);
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+}
+.jj-sources-btn:hover,
+.jj-sources-btn.jj-sources-open {
+    background: var(--persona-warm-gray, #8a8070);
+    color: var(--persona-charcoal, #1a2332);
+    border-color: var(--persona-primary-color);
+}
+.jj-sources-s {
+    font-style: normal;
+    font-weight: bold;
+    font-family: var(--persona-font-primary);
+    font-size: 9px;
+    background: var(--persona-primary-color);
+    color: var(--persona-cream, #f5f0e8);
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Sources panel (expanded) */
+.jj-sources-panel {
+    background: var(--persona-dark-cream);
+    border: 1px solid var(--persona-warm-gray);
+    border-top: none;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.jj-sources-panel.jj-hidden { display: none; }
+.jj-source-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 3px 0;
+}
+.jj-source-title {
+    font-family: var(--persona-font-secondary);
+    font-size: 10px;
+    font-style: italic;
+    color: var(--persona-charcoal, #1a2332);
+    flex: 1;
+}
+.jj-source-type {
+    font-family: var(--persona-font-secondary);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+.jj-source-own      { color: #2d7a4a; background: rgba(45,122,74,0.10); }
+.jj-source-discourse { color: #9a6e1a; background: rgba(154,110,26,0.10); }
+
+/* ── Educator panel ───────────────────────────────────────────────────────── */
+.jj-edu-panel {
+    background: var(--persona-charcoal);
+    border-top: 2px solid rgba(255,255,255,0.1);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.jj-edu-panel.jj-hidden { display: none; }
+.jj-edu-header {
+    font-family: var(--persona-font-primary);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--persona-cream);
+    opacity: 0.7;
+}
+.jj-edu-grade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.jj-edu-label {
+    font-family: var(--persona-font-secondary);
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+}
+.jj-grade-select {
+    flex: 1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--persona-cream);
+    font-family: var(--persona-font-secondary);
+    font-size: 12px;
+    padding: 5px 8px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+.jj-grade-select option { background: #333; }
+.jj-edu-btns { display: flex; gap: 8px; }
+.jj-edu-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.7);
+    font-family: var(--persona-font-primary);
+    font-size: 11px;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+.jj-edu-btn:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: var(--persona-primary-color);
+    color: var(--persona-cream);
+}
+
+/* ── Input container ──────────────────────────────────────────────────────── */
+.jj-input-container {
+    display: flex;
+    padding: 16px;
+    background: var(--persona-charcoal);
+    border-top: 3px solid var(--persona-primary-color);
+    gap: 10px;
+    flex-shrink: 0;
+}
+.jj-input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 2px solid var(--persona-cream);
+    font-family: var(--persona-font-primary);
+    font-size: 13px;
+    color: var(--persona-charcoal);
+    background: var(--persona-cream);
+    transition: all 0.2s;
+    min-width: 0;
+}
+.jj-input::placeholder { color: var(--persona-text-gray); opacity: 0.6; }
+.jj-input:focus { outline: none; border-color: var(--persona-primary-color); }
+.jj-input:disabled { opacity: 0.6; cursor: not-allowed; background: var(--persona-dark-cream); }
+
+.jj-voice-btn,
+.jj-edu-toggle-btn {
+    background: none;
+    border: 2px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.45);
+    width: 40px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.jj-voice-btn:hover,
+.jj-edu-toggle-btn:hover {
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.5);
+}
+.jj-voice-btn.jj-voice-active,
+.jj-edu-toggle-btn.jj-edu-active {
+    color: var(--persona-primary-color);
+    border-color: var(--persona-primary-color);
+    background: rgba(255,255,255,0.08);
+}
+
+.jj-send-btn {
+    background: var(--persona-primary-color);
+    border: 2px solid var(--persona-primary-color);
+    color: var(--persona-cream);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    flex-shrink: 0;
+}
+.jj-send-btn:hover:not(:disabled) { background: #9a4539; transform: translate(-1px,-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.2); }
+.jj-send-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--persona-warm-gray); border-color: var(--persona-warm-gray); }
+
+/* ── Typing indicator ─────────────────────────────────────────────────────── */
+.jj-typing-indicator { display: flex; gap: 5px; padding: 14px 16px; align-items: center; }
+.jj-typing-indicator span {
+    width: 6px; height: 6px;
+    background: var(--persona-primary-color);
+    animation: jj-typing 1.4s infinite;
+}
+.jj-typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.jj-typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes jj-typing {
+    0%, 60%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+    30%           { transform: translateY(-8px) scale(1.2); opacity: 1; }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .jj-chat-window {
+        width: calc(100vw - 32px);
+        right: 16px;
+        bottom: 96px;
+    }
+    .jj-chat-window.jj-size-medium { width: calc(100vw - 32px); }
+    #franklin-d-roosevelt-widget { bottom: 20px; right: 20px; }
+    .jj-trigger { width: 56px; height: 56px; }
+    .jj-message-content { font-size: 13px; }
+    .jj-starter-btn { font-size: 12px; padding: 12px 14px; }
+}
+
+/* ── Accessibility ────────────────────────────────────────────────────────── */
+.jj-trigger:focus,
+.jj-send-btn:focus,
+.jj-voice-btn:focus,
+.jj-edu-toggle-btn:focus,
+.jj-size-btn:focus,
+.jj-input:focus,
+.jj-close-btn:focus,
+.jj-starter-btn:focus {
+    outline: 3px solid var(--persona-primary-color);
+    outline-offset: 2px;
+}
+
+@media print { #franklin-d-roosevelt-widget { display: none !important; } }
+
+/* ── Corpus Stats (static page element, outside widget) ──────────────────── */
+#jj-corpus-stats {
+    font-family: var(--persona-font-secondary, 'Georgia', serif);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--persona-charcoal, #1a2332);
+    margin: 0;
+    padding: 0;
+}
+.jj-cs-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--persona-warm-gray, #8a8070);
+    margin-bottom: 6px;
+}
+.jj-cs-bar {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--persona-primary-color, #2a3a2a);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.jj-cs-pct {
+    font-family: var(--persona-font-secondary, 'Georgia', serif);
+    font-size: 10px;
+    font-style: italic;
+    letter-spacing: 0;
+    margin-left: 4px;
+    color: var(--persona-warm-gray, #8a8070);
+}
+.jj-cs-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.jj-cs-badge {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+.jj-cs-badge-comprehensive { color: #2d7a4a; background: rgba(45,122,74,0.10); border: 1px solid rgba(45,122,74,0.25); }
+.jj-cs-badge-substantial   { color: #2a5a8a; background: rgba(42,90,138,0.10); border: 1px solid rgba(42,90,138,0.25); }
+.jj-cs-badge-partial       { color: #9a6e1a; background: rgba(154,110,26,0.10); border: 1px solid rgba(154,110,26,0.25); }
+.jj-cs-badge-selective     { color: #8a3030; background: rgba(138,48,48,0.08); border: 1px solid rgba(138,48,48,0.20); }
+.jj-cs-detail {
+    font-size: 11px;
+    color: var(--persona-text-gray, #6b5f52);
+    font-style: italic;
+}
+.jj-cs-note {
+    font-size: 11px;
+    color: var(--persona-text-gray, #6b5f52);
+    line-height: 1.55;
+    padding-top: 4px;
+    border-top: 1px solid var(--persona-dark-cream, #e8e0d0);
+}
+.jj-cs-pending {
+    font-size: 11px;
+    color: var(--persona-warm-gray, #8a8070);
+    font-style: italic;
+}
