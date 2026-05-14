@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educator Portal — Museum of Minds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:   #0A090C;
+      --deep:   #111018;
+      --wall:   #1A1825;
+      --mid:    #232135;
+      --brass:  #C49A3C;
+      --brass-dim: #7A5E20;
+      --brass-pale: #E8C96A;
+      --cream:  #EDE8D8;
+      --text:   #D4CEB8;
+      --dim:    #6B6455;
+      --amber:  #C49A3C;
+      --green:  #5A9A5A;
+      --red:    #8B2020;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid rgba(196,154,60,0.18);
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 1.2rem; }
+    .back-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--brass-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--brass); }
+    .header-divider { width: 1px; height: 24px; background: rgba(196,154,60,0.2); }
+    .header-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+    }
+    .header-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      color: var(--dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── HERO BAND ── */
+    .hero-band {
+      background: linear-gradient(180deg, var(--deep) 0%, var(--void) 100%);
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+      padding: 3.5rem 3rem 3rem;
+      position: relative;
+      z-index: 5;
+      overflow: hidden;
+    }
+    .hero-band::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brass-dim), transparent);
+    }
+    .hero-rule {
+      width: 48px; height: 2px;
+      background: var(--brass-dim);
+      margin-bottom: 1.2rem;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.8rem;
+    }
+    .hero-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.15;
+      max-width: 600px;
+      margin-bottom: 1rem;
+    }
+    .hero-body {
+      font-size: 1.1rem;
+      color: var(--text);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 1.8rem;
+    }
+    .standards-chips { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .chip {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(196,154,60,0.3);
+      color: var(--brass-dim);
+      text-transform: uppercase;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem;
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── CONTROL PANEL ── */
+    .panel {
+      background: var(--deep);
+      border: 1px solid rgba(196,154,60,0.14);
+      padding: 1.8rem;
+      position: sticky;
+      top: 1.5rem;
+    }
+    .panel-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(196,154,60,0.1);
+    }
+    .field-group { margin-bottom: 1.4rem; }
+    .field-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dim);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    select, input, textarea {
+      width: 100%;
+      background: var(--wall);
+      border: 1px solid rgba(196,154,60,0.15);
+      color: var(--text);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      padding: 0.6rem 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    select:focus, input:focus, textarea:focus {
+      border-color: rgba(196,154,60,0.45);
+    }
+    select option { background: var(--deep); }
+    textarea { resize: vertical; min-height: 80px; }
+
+    .btn-group { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.8rem; }
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.2rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .btn-primary {
+      background: var(--brass-dim);
+      color: var(--void);
+    }
+    .btn-primary:hover:not(:disabled) { background: var(--brass); }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(196,154,60,0.3);
+      color: var(--brass-dim);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      border-color: var(--brass-dim);
+      color: var(--brass);
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-icon { font-size: 1rem; }
+
+    .persona-info {
+      margin-top: 1.2rem;
+      padding: 0.9rem;
+      background: rgba(196,154,60,0.04);
+      border: 1px solid rgba(196,154,60,0.08);
+      font-size: 0.85rem;
+      color: var(--dim);
+      line-height: 1.6;
+      display: none;
+    }
+    .persona-info.visible { display: block; }
+    .persona-info .pname {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--brass-dim);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── OUTPUT AREA ── */
+    .output-area { min-height: 400px; }
+    .output-state {
+      border: 1px solid rgba(196,154,60,0.1);
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--deep);
+    }
+    .state-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
+    .state-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+    .state-text { font-size: 0.9rem; color: var(--dim); }
+
+    .output-card {
+      background: var(--deep);
+      border: 1px solid rgba(196,154,60,0.14);
+      overflow: hidden;
+      display: none;
+    }
+    .output-card.visible { display: block; }
+    .output-header {
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid rgba(196,154,60,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .output-meta { flex: 1; }
+    .output-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.25rem;
+    }
+    .output-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+    .output-grade {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: var(--dim);
+      margin-top: 0.2rem;
+    }
+    .output-actions { display: flex; gap: 0.5rem; }
+    .btn-small {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid rgba(196,154,60,0.25);
+      background: transparent;
+      color: var(--brass-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-small:hover { border-color: var(--brass-dim); color: var(--brass); }
+
+    .output-body {
+      padding: 2rem 1.8rem;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    .output-body::-webkit-scrollbar { width: 4px; }
+    .output-body::-webkit-scrollbar-track { background: transparent; }
+    .output-body::-webkit-scrollbar-thumb { background: var(--brass-dim); }
+
+    /* Markdown rendering */
+    .rendered h1, .rendered h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--cream);
+      margin: 1.6rem 0 0.6rem;
+      font-weight: 600;
+    }
+    .rendered h2 { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass-dim); }
+    .rendered h3 { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--text); margin: 1rem 0 0.4rem; }
+    .rendered p { font-size: 1rem; line-height: 1.8; margin-bottom: 0.8rem; color: var(--text); }
+    .rendered ul, .rendered ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    .rendered li { font-size: 0.97rem; line-height: 1.7; color: var(--text); margin-bottom: 0.3rem; }
+    .rendered strong { color: var(--cream); font-weight: 600; }
+    .rendered em { color: var(--cream); font-style: italic; }
+    .rendered code {
+      font-family: monospace;
+      background: var(--wall);
+      padding: 0.1rem 0.4rem;
+      font-size: 0.85rem;
+      color: var(--brass-pale);
+    }
+    .rendered blockquote {
+      border-left: 2px solid var(--brass-dim);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--dim);
+      font-style: italic;
+    }
+    .rendered .dok-badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      padding: 0.15rem 0.5rem;
+      background: rgba(196,154,60,0.1);
+      border: 1px solid rgba(196,154,60,0.2);
+      color: var(--brass-dim);
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* Standards callout */
+    .standards-callout {
+      background: rgba(90,154,90,0.06);
+      border: 1px solid rgba(90,154,90,0.2);
+      padding: 1rem 1.2rem;
+      margin: 1.5rem 0;
+    }
+    .standards-callout-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid rgba(196,154,60,0.15);
+      border-top-color: var(--brass-dim);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(196,154,60,0.08);
+      padding: 1.8rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; }
+      .panel { position: static; }
+      header, .hero-band, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      main { padding: 1.5rem; }
+    }
+    @media print {
+      header, .panel, footer, .output-actions, .hero-band { display: none !important; }
+      main { display: block; padding: 0; }
+      .output-card { border: none; }
+      .output-body { max-height: none; overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-left">
+      <a href="/" class="back-link">← Museum of Minds</a>
+      <div class="header-divider"></div>
+      <div>
+        <div class="header-title">Educator Portal</div>
+      </div>
+    </div>
+    <div class="header-sub">Lesson Planning &amp; Discussion Tools</div>
+  </header>
+
+  <!-- ── HERO BAND ── -->
+  <div class="hero-band">
+    <div class="hero-rule"></div>
+    <div class="hero-eyebrow">Museum of Minds</div>
+    <h1 class="hero-heading">Tools for the Classroom</h1>
+    <p class="hero-body">
+      Generate standards-aligned lesson plans and discussion questions grounded in primary source texts.
+      Every response draws from documented writings and speeches — not general knowledge.
+    </p>
+    <div class="standards-chips">
+      <span class="chip">NCSS C3 Framework</span>
+      <span class="chip">CCSS ELA-Literacy in History</span>
+      <span class="chip">DOK-Leveled Questions</span>
+      <span class="chip">Primary Source Grounded</span>
+    </div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- Control Panel -->
+    <aside class="panel">
+      <div class="panel-title">Configure</div>
+
+      <div class="field-group">
+        <label class="field-label" for="select-persona">Historical Figure</label>
+        <select id="select-persona">
+          <option value="">Loading figures…</option>
+        </select>
+        <div class="persona-info" id="persona-info">
+          <div class="pname" id="info-name"></div>
+          <div id="info-desc"></div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="select-grade">Grade Level</label>
+        <select id="select-grade">
+          <option value="high-school">High School (9–12)</option>
+          <option value="middle-school">Middle School (6–8)</option>
+          <option value="elementary">Elementary (4–5)</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="input-topic">Topic Focus <span style="color:var(--dim);font-family:serif;font-style:italic;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input type="text" id="input-topic" placeholder="e.g. federalism, abolition, natural selection…" />
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btn-lesson" disabled>
+          <span class="btn-icon">📋</span> Generate Lesson Plan
+        </button>
+        <button class="btn btn-secondary" id="btn-questions" disabled>
+          <span class="btn-icon">💬</span> Generate Discussion Questions
+        </button>
+      </div>
+    </aside>
+
+    <!-- Output Area -->
+    <section class="output-area" id="output-area">
+
+      <div class="output-state" id="state-empty">
+        <div class="state-icon">📚</div>
+        <div class="state-label">Ready</div>
+        <div class="state-text">Select a figure and click Generate to begin.</div>
+      </div>
+
+      <div class="output-state" id="state-loading" style="display:none">
+        <div class="spinner"></div>
+        <div class="state-label">Generating…</div>
+        <div class="state-text">Drawing from primary source corpus.</div>
+      </div>
+
+      <div class="output-card" id="output-card">
+        <div class="output-header">
+          <div class="output-meta">
+            <div class="output-type" id="out-type"></div>
+            <div class="output-title" id="out-title"></div>
+            <div class="output-grade" id="out-grade"></div>
+          </div>
+          <div class="output-actions">
+            <button class="btn-small" id="btn-copy" onclick="copyOutput()">Copy</button>
+            <button class="btn-small" onclick="window.print()">Print</button>
+          </div>
+        </div>
+        <div class="output-body">
+          <div class="rendered" id="output-content"></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Museum of Minds &nbsp;·&nbsp; Educator Portal</span>
+    <span>museumofminds.com</span>
+    <span>All content grounded in primary source texts</span>
+  </footer>
+
+  <script>
+    const API = 'https://museum-api-production-8ce6.up.railway.app';
+    let personaMap = {}; // id -> {display_name, years}
+    let currentOutput = '';
+
+    // ── Load personas ──
+    async function loadPersonas() {
+      try {
+        const r = await fetch(`${API}/personas`);
+        const data = await r.json();
+        const sel = document.getElementById('select-persona');
+        sel.innerHTML = '<option value="">— Select a figure —</option>';
+
+        // Group by hall using PERSONA_HALL map (approximated by ordering)
+        const sorted = (data.personas || []).sort((a, b) =>
+          a.display_name.localeCompare(b.display_name));
+
+        for (const p of sorted) {
+          personaMap[p.id] = p;
+          const opt = document.createElement('option');
+          opt.value = p.id;
+          opt.textContent = `${p.display_name}${p.years ? '  (' + p.years + ')' : ''}`;
+          sel.appendChild(opt);
+        }
+      } catch (e) {
+        console.error('Failed to load personas:', e);
+        document.getElementById('select-persona').innerHTML =
+          '<option value="">Failed to load — check API</option>';
+      }
+    }
+
+    // ── Persona info card ──
+    document.getElementById('select-persona').addEventListener('change', async function() {
+      const pid = this.value;
+      const infoEl = document.getElementById('persona-info');
+      const btns = [document.getElementById('btn-lesson'), document.getElementById('btn-questions')];
+
+      if (!pid) {
+        infoEl.classList.remove('visible');
+        btns.forEach(b => b.disabled = true);
+        return;
+      }
+
+      btns.forEach(b => b.disabled = false);
+
+      try {
+        const r = await fetch(`${API}/persona/${pid}/config`);
+        const cfg = await r.json();
+        const meta = cfg.metadata || {};
+        document.getElementById('info-name').textContent =
+          `${meta.name || pid} ${meta.birth_year ? '(' + meta.birth_year + '–' + (meta.death_year || 'present') + ')' : ''}`;
+        document.getElementById('info-desc').textContent =
+          (meta.description || '').slice(0, 180) + ((meta.description || '').length > 180 ? '…' : '');
+        infoEl.classList.add('visible');
+      } catch(e) {
+        infoEl.classList.remove('visible');
+      }
+    });
+
+    // ── Generate handlers ──
+    document.getElementById('btn-lesson').addEventListener('click', () =>
+      generate('lesson-plan'));
+    document.getElementById('btn-questions').addEventListener('click', () =>
+      generate('discussion-questions'));
+
+    async function generate(type) {
+      const pid = document.getElementById('select-persona').value;
+      const grade = document.getElementById('select-grade').value;
+      const topic = document.getElementById('input-topic').value.trim();
+
+      if (!pid) return;
+
+      showState('loading');
+
+      try {
+        const r = await fetch(`${API}/educator/${type}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            persona_id: pid,
+            grade_level: grade,
+            topic: topic || undefined,
+          }),
+        });
+
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data = await r.json();
+        const raw = type === 'lesson-plan' ? data.lesson_plan : data.questions;
+        currentOutput = raw;
+
+        const gradeLabel = {
+          'high-school': 'High School (9–12)',
+          'middle-school': 'Middle School (6–8)',
+          'elementary': 'Elementary (4–5)',
+        }[grade] || grade;
+
+        const typeLabel = type === 'lesson-plan' ? 'Lesson Plan' : 'Discussion Questions';
+        const persona = personaMap[pid] || { display_name: pid };
+
+        document.getElementById('out-type').textContent = typeLabel;
+        document.getElementById('out-title').textContent = persona.display_name;
+        document.getElementById('out-grade').textContent =
+          `${gradeLabel}${topic ? ' · ' + topic : ''}`;
+
+        document.getElementById('output-content').innerHTML = renderMarkdown(raw);
+        showState('result');
+
+      } catch (e) {
+        showState('empty');
+        alert('Generation failed: ' + e.message);
+      }
+    }
+
+    // ── States ──
+    function showState(state) {
+      document.getElementById('state-empty').style.display   = state === 'empty'   ? '' : 'none';
+      document.getElementById('state-loading').style.display = state === 'loading' ? '' : 'none';
+      const card = document.getElementById('output-card');
+      if (state === 'result') card.classList.add('visible');
+      else card.classList.remove('visible');
+    }
+
+    // ── Minimal markdown renderer ──
+    function renderMarkdown(md) {
+      return md
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        // Headers
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        // Bold / italic
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/_(.+?)_/g, '<em>$1</em>')
+        // Inline code
+        .replace(/`(.+?)`/g, '<code>$1</code>')
+        // DOK badges - highlight DOK mentions
+        .replace(/—\s*(DOK\s*(?:Level\s*)?[\d–]+)/g,
+          '— <span class="dok-badge">$1</span>')
+        // Unordered lists
+        .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)/s, function(m) {
+          return '<ul>' + m + '</ul>';
+        })
+        // Ordered lists
+        .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+        // Paragraphs - wrap lines not already wrapped
+        .replace(/^(?!<[hul]|<li|<\/|$)(.+)$/gm, '<p>$1</p>')
+        // Line breaks
+        .replace(/\n{2,}/g, '\n');
+    }
+
+    // ── Copy to clipboard ──
+    function copyOutput() {
+      navigator.clipboard.writeText(currentOutput).then(() => {
+        const btn = document.getElementById('btn-copy');
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    // Init
+    loadPersonas();
+  </script>
+</body>
+</html>
