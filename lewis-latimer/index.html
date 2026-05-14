@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lewis Howard Latimer — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:          #1C2B3A;
+    --ink-deep:     #0E1820;
+    --ink-mid:      #2A3F54;
+    --filament:     #E8C46A;
+    --filament-dim: #B8943A;
+    --filament-pale:#F5E9C0;
+    --glass:        #D4EAF0;
+    --glass-dim:    #8FB8C8;
+    --parchment:    #F5F0E8;
+    --parchment-dim:#E2D9C8;
+    --carbon:       #2C1F0E;
+    --glow:         rgba(232,196,106,0.18);
+    --text-main:    #1C2B3A;
+    --text-muted:   #4A5A6A;
+    --text-light:   #8A9AAA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: var(--parchment);
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1; }
+  }
+
+  @keyframes filamentFlicker {
+    0%, 100% { opacity: 1; }
+    48%       { opacity: 1; }
+    50%       { opacity: 0.82; }
+    52%       { opacity: 1; }
+    78%       { opacity: 0.9; }
+    80%       { opacity: 1; }
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.8rem;
+    background: var(--ink-deep);
+    border-bottom: 1px solid var(--filament-dim);
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--glass-dim);
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--filament-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    min-height: 92vh;
+    background: var(--ink-deep);
+  }
+
+  /* Left panel — SVG */
+  .hero-art {
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+  }
+
+  .hero-art svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Right panel — Bio */
+  .hero-bio {
+    background: var(--parchment);
+    border-left: 1px solid var(--filament-dim);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 2.6rem 3rem 2.8rem;
+    animation: fadeIn 1s ease 0.3s both;
+  }
+
+  .museum-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+  }
+
+  /* Photo frame */
+  .photo-frame {
+    position: relative;
+    max-width: 270px;
+    margin: 0 auto 2rem auto;
+    align-self: center;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--filament-dim);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid var(--parchment-dim);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(30%) sepia(28%) contrast(1.06) brightness(0.91);
+  }
+
+  .photo-caption {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 0.7rem;
+  }
+
+  /* Placard */
+  .placard {
+    margin-top: 1.6rem;
+  }
+
+  .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3.2vw, 3rem);
+    font-weight: 500;
+    color: var(--ink-deep);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  .persona-dates {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--filament-dim);
+    margin-bottom: 1.2rem;
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 1px;
+    background: var(--filament);
+    margin-bottom: 1.2rem;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.0rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    margin-bottom: 1.3rem;
+    font-weight: 300;
+  }
+
+  .bio-text {
+    font-size: 0.88rem;
+    line-height: 1.72;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+
+  .bio-text + .bio-text {
+    margin-top: -0.4rem;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.4rem;
+  }
+
+  .tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    color: var(--ink-mid);
+    border: 1px solid var(--parchment-dim);
+    background: transparent;
+    padding: 0.3rem 0.75rem;
+    text-transform: uppercase;
+  }
+
+  /* ── TRANSITION BAND ── */
+  .transition-band {
+    background: var(--ink);
+    padding: 1.05rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    border-top: 1px solid var(--filament-dim);
+    border-bottom: 1px solid var(--filament-dim);
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--filament-dim), transparent);
+    max-width: 220px;
+  }
+
+  .band-text {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.38em;
+    color: var(--filament);
+    text-transform: uppercase;
+  }
+
+  .band-ornament {
+    color: var(--filament);
+    font-size: 1.0rem;
+    opacity: 0.7;
+  }
+
+  /* ── CHATBOT SECTION ── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+    background: var(--parchment);
+  }
+
+  .chatbot-intro {
+    padding: 3.8rem 3rem 3.8rem 3.2rem;
+    border-right: 1px solid var(--parchment-dim);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.54rem;
+    letter-spacing: 0.32em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  .intro-prose {
+    font-size: 0.91rem;
+    line-height: 1.74;
+    color: var(--text-muted);
+    margin-bottom: 1.1rem;
+  }
+
+  .featured-quote {
+    margin: 1.6rem 0;
+    padding: 1.2rem 1.5rem;
+    border-left: 3px solid var(--filament);
+    background: rgba(232,196,106,0.07);
+  }
+
+  .featured-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .featured-quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    color: var(--text-light);
+    font-style: normal;
+  }
+
+  .chatbot-embed {
+    background: var(--ink-deep);
+    min-height: 520px;
+    position: relative;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: var(--ink);
+    padding: 4.5rem 4rem;
+    text-align: center;
+    border-top: 1px solid var(--filament-dim);
+    border-bottom: 1px solid var(--filament-dim);
+  }
+
+  .pull-quote blockquote {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .pull-quote blockquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+    font-weight: 300;
+    color: var(--filament-pale);
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+
+  .pull-quote blockquote::before {
+    content: '\201C';
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--filament);
+    opacity: 0.5;
+    line-height: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .pull-quote cite {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.32em;
+    color: var(--filament-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── CORPUS STRIP ── */
+  .corpus-strip {
+    background: var(--carbon);
+    padding: 2.2rem 3rem;
+    border-top: 1px solid rgba(232,196,106,0.2);
+  }
+
+  .corpus-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.54rem;
+    letter-spacing: 0.38em;
+    color: var(--filament-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .corpus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .corpus-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--glass-dim);
+    position: relative;
+    padding-left: 0.9rem;
+  }
+
+  .corpus-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--filament-dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink-deep);
+    border-top: 1px solid var(--filament-dim);
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    color: var(--filament-pale);
+  }
+
+  .footer-dates {
+    display: block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    color: var(--filament-dim);
+    margin-top: 0.2rem;
+  }
+
+  .footer-credit {
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  .footer-powered {
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--glass-dim);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-art {
+      min-height: 55vw;
+      max-height: 480px;
+    }
+
+    .hero-bio {
+      border-left: none;
+      border-top: 2px solid var(--filament-dim);
+      padding: 2.2rem 1.5rem 2rem 1.5rem;
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      border-right: none;
+      border-bottom: 1px solid var(--parchment-dim);
+      padding: 2.2rem 1.5rem;
+    }
+
+    .chatbot-embed {
+      min-height: 420px;
+    }
+
+    header {
+      padding: 0.9rem 1.5rem;
+    }
+
+    .pull-quote {
+      padding: 3rem 1.5rem;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 0.8rem;
+      padding: 1.5rem;
+    }
+
+    .footer-powered { text-align: center; }
+
+    .corpus-strip { padding: 1.8rem 1.5rem; }
+
+    .transition-band { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-right">LHL – 1848 – 2026</div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+
+  <!-- Left: SVG Illustration — Edison-era lamp workshop, cross-section patent drawing style -->
+  <div class="hero-art">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of an incandescent lamp in patent drawing style, surrounded by technical annotations">
+
+      <defs>
+        <!-- Deep background gradient -->
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0B1520"/>
+          <stop offset="55%" stop-color="#1C2B3A"/>
+          <stop offset="100%" stop-color="#0E1820"/>
+        </linearGradient>
+
+        <!-- Filament glow -->
+        <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#E8C46A" stop-opacity="0.95"/>
+          <stop offset="30%"  stop-color="#C8943A" stop-opacity="0.6"/>
+          <stop offset="70%"  stop-color="#B87020" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#0B1520"  stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Glass bulb gradient -->
+        <radialGradient id="bulbGrad" cx="38%" cy="32%" r="60%">
+          <stop offset="0%"   stop-color="#D4EAF0" stop-opacity="0.22"/>
+          <stop offset="40%"  stop-color="#8FB8C8" stop-opacity="0.10"/>
+          <stop offset="100%" stop-color="#1C2B3A" stop-opacity="0.05"/>
+        </radialGradient>
+
+        <!-- Soft blur for glow halo -->
+        <filter id="glowFilter" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="22"/>
+        </filter>
+
+        <!-- Slight blur for mid distance elements -->
+        <filter id="softBlur">
+          <feGaussianBlur stdDeviation="1.2"/>
+        </filter>
+
+        <!-- Grid texture filter -->
+        <filter id="gridNoise" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+          <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+          <feBlend in="SourceGraphic" in2="gray" mode="multiply" result="blend"/>
+          <feComponentTransfer in="blend">
+            <feFuncA type="linear" slope="0.07"/>
+          </feComponentTransfer>
+        </filter>
+
+      </defs>
+
+      <!-- ── BACKGROUND ── -->
+      <rect width="700" height="900" fill="url(#bgGrad)"/>
+
+      <!-- Subtle grid — patent drawing style -->
+      <!-- Horizontal lines -->
+      <g stroke="#2A3F54" stroke-width="0.4" opacity="0.35">
+        <line x1="0" y1="60"  x2="700" y2="60"/>
+        <line x1="0" y1="120" x2="700" y2="120"/>
+        <line x1="0" y1="180" x2="700" y2="180"/>
+        <line x1="0" y1="240" x2="700" y2="240"/>
+        <line x1="0" y1="300" x2="700" y2="300"/>
+        <line x1="0" y1="360" x2="700" y2="360"/>
+        <line x1="0" y1="420" x2="700" y2="420"/>
+        <line x1="0" y1="480" x2="700" y2="480"/>
+        <line x1="0" y1="540" x2="700" y2="540"/>
+        <line x1="0" y1="600" x2="700" y2="600"/>
+        <line x1="0" y1="660" x2="700" y2="660"/>
+        <line x1="0" y1="720" x2="700" y2="720"/>
+        <line x1="0" y1="780" x2="700" y2="780"/>
+        <line x1="0" y1="840" x2="700" y2="840"/>
+      </g>
+      <!-- Vertical lines -->
+      <g stroke="#2A3F54" stroke-width="0.4" opacity="0.35">
+        <line x1="58"  y1="0" x2="58"  y2="900"/>
+        <line x1="116" y1="0" x2="116" y2="900"/>
+        <line x1="174" y1="0" x2="174" y2="900"/>
+        <line x1="232" y1="0" x2="232" y2="900"/>
+        <line x1="290" y1="0" x2="290" y2="900"/>
+        <line x1="348" y1="0" x2="348" y2="900"/>
+        <line x1="406" y1="0" x2="406" y2="900"/>
+        <line x1="464" y1="0" x2="464" y2="900"/>
+        <line x1="522" y1="0" x2="522" y2="900"/>
+        <line x1="580" y1="0" x2="580" y2="900"/>
+        <line x1="638" y1="0" x2="638" y2="900"/>
+      </g>
+
+      <!-- Title block top-left — patent style -->
+      <rect x="30" y="28" width="200" height="40" fill="none" stroke="#B8943A" stroke-width="0.7" opacity="0.5"/>
+      <text x="40" y="43" font-family="'Cormorant Garamond',serif" font-size="6.5" fill="#B8943A" opacity="0.7" letter-spacing="2" font-style="italic">UNITED STATES PATENT OFFICE</text>
+      <text x="40" y="57" font-family="'Cormorant Garamond',serif" font-size="5.5" fill="#8FA8B8" opacity="0.6" letter-spacing="1.8">L. H. LATIMER — ELECTRIC LAMP — 1881</text>
+
+      <!-- Accession stamp bottom-right -->
+      <text x="635" y="868" font-family="'Cormorant Garamond',serif" font-size="5.5" fill="#B8943A" opacity="0.55" text-anchor="end" letter-spacing="1.5">FIG. I.</text>
+      <text x="635" y="878" font-family="'Cormorant Garamond',serif" font-size="5" fill="#8FA8B8" opacity="0.4" text-anchor="end" letter-spacing="1.2">PATENT NO. 252,386</text>
+
+      <!-- ── GLOW HALO behind bulb ── -->
+      <ellipse cx="350" cy="360" rx="140" ry="150" fill="url(#glowGrad)" filter="url(#glowFilter)" opacity="0.9">
+        <animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" repeatCount="indefinite"/>
+      </ellipse>
+
+      <!-- ── GLASS BULB BODY ── -->
+      <!-- Main bulb dome — upper hemisphere -->
+      <path d="M 230 370 
+               Q 228 240 350 210 
+               Q 472 240 470 370 
+               L 430 440 
+               Q 390 490 380 520 
+               L 320 520 
+               Q 310 490 270 440 
+               Z"
+            fill="url(#bulbGrad)"
+            stroke="#8FB8C8"
+            stroke-width="1.6"
+            opacity="0.88"/>
+
+      <!-- Glass highlight — upper left -->
+      <path d="M 268 255 Q 255 280 248 315" stroke="#D4EAF0" stroke-width="2.2" fill="none" opacity="0.35" stroke-linecap="round"/>
+      <path d="M 278 242 Q 264 258 258 275" stroke="#D4EAF0" stroke-width="1.4" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+      <!-- Glass highlight — secondary -->
+      <ellipse cx="295" cy="268" rx="12" ry="22" fill="#D4EAF0" opacity="0.06" transform="rotate(-18 295 268)"/>
+
+      <!-- Inner bulb glow volume -->
+      <path d="M 248 375 
+               Q 246 265 350 238 
+               Q 454 265 452 375 
+               L 420 434 
+               Q 388 476 380 505 
+               L 320 505 
+               Q 312 476 280 434 
+               Z"
+            fill="#E8C46A"
+            opacity="0.06"/>
+
+      <!-- ── NECK / COLLAR ── -->
+      <rect x="320" y="518" width="60" height="14" rx="2" fill="#2A3F54" stroke="#8FB8C8" stroke-width="1"/>
+      <rect x="315" y="530" width="70" height="8"  rx="1" fill="#1C2B3A" stroke="#8FB8C8" stroke-width="0.8"/>
+      <rect x="318" y="536" width="64" height="12" rx="1" fill="#2A3F54" stroke="#8FB8C8" stroke-width="0.8"/>
+
+      <!-- ── BASE ── -->
+      <!-- Threaded base body -->
+      <rect x="322" y="546" width="56" height="52" rx="3" fill="#1A2530" stroke="#B8943A" stroke-width="1.2"/>
+
+      <!-- Thread rings -->
+      <g stroke="#B8943A" stroke-width="0.7" opacity="0.6">
+        <line x1="322" y1="554" x2="378" y2="554"/>
+        <line x1="322" y1="560" x2="378" y2="560"/>
+        <line x1="322" y1="566" x2="378" y2="566"/>
+        <line x1="322" y1="572" x2="378" y2="572"/>
+        <line x1="322" y1="578" x2="378" y2="578"/>
+        <line x1="322" y1="584" x2="378" y2="584"/>
+        <line x1="322" y1="590" x2="378" y2="590"/>
+      </g>
+      <!-- Base cap -->
+      <rect x="326" y="596" width="48" height="8" rx="3" fill="#B8943A" opacity="0.75"/>
+      <ellipse cx="350" cy="604" rx="18" ry="5" fill="#C8A030" opacity="0.55"/>
+
+      <!-- ── INTERNAL STEM / SUPPORT STRUCTURE ── -->
+      <!-- Center stem -->
+      <line x1="350" y1="518" x2="350" y2="318" stroke="#8FB8C8" stroke-width="1.4" opacity="0.7"/>
+
+      <!-- Lateral support wires to glass -->
+      <line x1="350" y1="380" x2="308" y2="428" stroke="#8FB8C8" stroke-width="0.9" opacity="0.55"/>
+      <line x1="350" y1="380" x2="392" y2="428" stroke="#8FB8C8" stroke-width="0.9" opacity="0.55"/>
+
+      <!-- Upper lateral anchors -->
+      <line x1="350" y1="318" x2="318" y2="350" stroke="#8FB8C8" stroke-width="0.8" opacity="0.45"/>
+      <line x1="350" y1="318" x2="382" y2="350" stroke="#8FB8C8" stroke-width="0.8" opacity="0.45"/>
+
+      <!-- Lead-in wires -->
+      <line x1="340" y1="518" x2="336" y2="380" stroke="#B8943A" stroke-width="1.1" opacity="0.75"/>
+      <line x1="360" y1="518" x2="364" y2="380" stroke="#B8943A" stroke-width="1.1" opacity="0.75"/>
+
+      <!-- ── CARBON FILAMENT ── -->
+      <!-- The famous Latimer carbon filament — looping arch form -->
+      <!-- Left post -->
+      <line x1="336" y1="380" x2="336" y2="348" stroke="#E8C46A" stroke-width="1.5" opacity="0.9"/>
+      <!-- Right post -->
+      <line x1="364" y1="380" x2="364" y2="348" stroke="#E8C46A" stroke-width="1.5" opacity="0.9"/>
+
+      <!-- Filament arch — Latimer's key innovation: bamboo carbon in cardboard casing -->
+      <path d="M 336 348 
+               Q 336 310 350 302 
+               Q 364 310 364 348"
+            fill="none"
+            stroke="#F5E9C0"
+            stroke-width="2.2"
+            stroke-linecap="round">
+        <animate attributeName="opacity" values="0.85;1;0.82;1;0.88;1;0.85" dur="2.8s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Filament inner glow -->
+      <path d="M 336 348 
+               Q 336 310 350 302 
+               Q 364 310 364 348"
+            fill="none"
+            stroke="#FFFBEE"
+            stroke-width="0.9"
+            stroke-linecap="round"
+            opacity="0.7">
+        <animate attributeName="opacity" values="0.6;0.9;0.6;0.85;0.6" dur="2.8s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Filament hot-spot glow dot -->
+      <circle cx="350" cy="303" r="5" fill="#FFFBEE" opacity="0.9">
+        <animate attributeName="r" values="4.5;6;4.5" dur="2.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;1;0.7;1;0.8" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="350" cy="303" r="12" fill="#E8C46A" opacity="0.35" filter="url(#glowFilter)"/>
+
+      <!-- ── FILAMENT ENCLOSURE / CARDBOARD FORMER (Latimer's innovation) ── -->
+      <!-- Small rectangle around filament base — cardboard housing detail -->
+      <rect x="330" y="344" width="40" height="38" rx="2"
+            fill="none" stroke="#B8943A" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.55"/>
+      <text x="375" y="362" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="6" fill="#B8943A" opacity="0.7" letter-spacing="0.5">carbon former</text>
+
+      <!-- ── DIMENSION ANNOTATION LINES ── -->
+      <!-- Bulb width dimension -->
+      <line x1="228" y1="320" x2="165" y2="320" stroke="#8FA8B8" stroke-width="0.6" opacity="0.5"/>
+      <line x1="472" y1="320" x2="535" y2="320" stroke="#8FA8B8" stroke-width="0.6" opacity="0.5"/>
+      <line x1="165" y1="310" x2="165" y2="330" stroke="#8FA8B8" stroke-width="0.6" opacity="0.5"/>
+      <line x1="535" y1="310" x2="535" y2="330" stroke="#8FA8B8" stroke-width="0.5" opacity="0.5"/>
+      <text x="350" y="315" font-family="'Cormorant Garamond',serif" font-size="8" fill="#8FA8B8" opacity="0.6" text-anchor="middle" letter-spacing="1">4.8 in.</text>
+
+      <!-- Bulb height dimension left -->
+      <line x1="220" y1="210" x2="80" y2="210" stroke="#8FA8B8" stroke-width="0.5" opacity="0.45"/>
+      <line x1="220" y1="598" x2="80" y2="598" stroke="#8FA8B8" stroke-width="0.5" opacity="0.45"/>
+      <line x1="80" y1="210" x2="80" y2="598" stroke="#8FA8B8" stroke-width="0.5" opacity="0.45"/>
+      <line x1="75" y1="210" x2="85" y2="210" stroke="#8FA8B8" stroke-width="0.5" opacity="0.45"/>
+      <line x1="75" y1="598" x2="85" y2="598" stroke="#8FA8B8" stroke-width="0.5" opacity="0.45"/>
+      <text x="72" y="408" font-family="'Cormorant Garamond',serif" font-size="8" fill="#8FA8B8" opacity="0.55" text-anchor="middle" letter-spacing="1" transform="rotate(-90 72 408)">overall ht. 15.2 in.</text>
+
+      <!-- Leader line — filament annotation -->
+      <line x1="350" y1="295" x2="440" y2="245" stroke="#B8943A" stroke-width="0.7" opacity="0.6"/>
+      <circle cx="440" cy="245" r="2" fill="#B8943A" opacity="0.6"/>
+      <text x="448" y="241" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="8.5" fill="#B8943A" opacity="0.8" letter-spacing="0.5">carbon filament</text>
+      <text x="448" y="252" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="7" fill="#8FA8B8" opacity="0.6" letter-spacing="0.5">Latimer, 1881</text>
+
+      <!-- Leader line — base annotation -->
+      <line x1="378" y1="570" x2="460" y2="570" stroke="#8FA8B8" stroke-width="0.6" opacity="0.5"/>
+      <circle cx="460" cy="570" r="1.5" fill="#8FA8B8" opacity="0.5"/>
+      <text x="466" y="574" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="8" fill="#8FA8B8" opacity="0.6" letter-spacing="0.5">screw base</text>
+
+      <!-- Leader line — glass annotation -->
+      <line x1="240" y1="290" x2="140" y2="265" stroke="#8FA8B8" stroke-width="0.6" opacity="0.45"/>
+      <circle cx="140" cy="265" r="1.5" fill="#8FA8B8" opacity="0.5"/>
+      <text x="38" y="261" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="8" fill="#8FA8B8" opacity="0.58" letter-spacing="0.5">evacuated globe</text>
+      <text x="38" y="273" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="7" fill="#8FA8B8" opacity="0.4" letter-spacing="0.5">borosilicate glass</text>
+
+      <!-- Leader line — stem -->
+      <line x1="352" y1="440" x2="172" y2="460" stroke="#8FA8B8" stroke-width="0.55" opacity="0.4"/>
+      <circle cx="172" cy="460" r="1.5" fill="#8FA8B8" opacity="0.4"/>
+      <text x="38" y="458" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="8" fill="#8FA8B8" opacity="0.5" letter-spacing="0.5">support stem</text>
+
+      <!-- ── SCATTERED NOTES / MARGINALIA ── -->
+      <text x="42" y="680" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="9.5" fill="#B8943A" opacity="0.38" letter-spacing="0.5">"The process of mfg. the carbon</text>
+      <text x="42" y="693" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="9.5" fill="#B8943A" opacity="0.38" letter-spacing="0.5"> conductors constitutes my</text>
+      <text x="42" y="706" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="9.5" fill="#B8943A" opacity="0.38" letter-spacing="0.5"> invention."  — L.H.L.</text>
+
+      <!-- Fig number -->
+      <text x="350" y="778" font-family="'Cormorant Garamond',serif" font-size="10" fill="#8FA8B8" opacity="0.4" text-anchor="middle" letter-spacing="2" font-style="italic">Fig. I — Cross-section, incandescent lamp</text>
+      <text x="350" y="793" font-family="'Cormorant Garamond',serif" font-size="8.5" fill="#8FA8B8" opacity="0.3" text-anchor="middle" letter-spacing="1.5" font-style="italic">Carbon Filament Electric Lamp — Patent No. 252,386</text>
+
+      <!-- ── BOTTOM TITLE BLOCK ── -->
+      <rect x="30" y="820" width="640" height="55" fill="none" stroke="#B8943A" stroke-width="0.6" opacity="0.4"/>
+      <line x1="30" y1="835" x2="670" y2="835" stroke="#B8943A" stroke-width="0.4" opacity="0.35"/>
+      <text x="350" y="832" font-family="'Cormorant Garamond',serif" font-size="7" fill="#B8943A" opacity="0.55" text-anchor="middle" letter-spacing="3">MUSEUM OF MINDS — PATENT ELEVATION STUDY</text>
+      <text x="60" y="853" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="8.5" fill="#8FA8B8" opacity="0.45" letter-spacing="1">Inventor: Lewis Howard Latimer</text>
+      <text x="60" y="866" font-family="'Cormorant Garamond',serif" font-size="7" fill="#8FA8B8" opacity="0.35" letter-spacing="1">Boston, Mass. — 1848 — 1928</text>
+      <text x="580" y="853" font-family="'Cormorant Garamond',serif" font-size="7" fill="#8FA8B8" opacity="0.4" text-anchor="end" letter-spacing="1">Scale: 1:1</text>
+      <text x="580" y="866" font-family="'Cormorant Garamond',serif" font-size="7" fill="#8FA8B8" opacity="0.35" text-anchor="end" letter-spacing="1">Sheet 1 of 1</text>
+
+      <!-- Corner registration marks -->
+      <g stroke="#B8943A" stroke-width="0.6" opacity="0.3">
+        <!-- top-left -->
+        <line x1="18" y1="18" x2="40" y2="18"/>
+        <line x1="18" y1="18" x2="18" y2="40"/>
+        <!-- top-right -->
+        <line x1="682" y1="18" x2="660" y2="18"/>
+        <line x1="682" y1="18" x2="682" y2="40"/>
+        <!-- bottom-left -->
+        <line x1="18" y1="882" x2="40" y2="882"/>
+        <line x1="18" y1="882" x2="18" y2="860"/>
+        <!-- bottom-right -->
+        <line x1="682" y1="882" x2="660" y2="882"/>
+        <line x1="682" y1="882" x2="682" y2="860"/>
+      </g>
+
+    </svg>
+  </div>
+
+  <!-- Right: Bio Panel -->
+  <div class="hero-bio">
+    <div class="museum-label">Museum of Minds — Permanent Collection</div>
+
+    <div class="photo-frame">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/THE_LEWIS_LATIMER_HOUSE.jpg/500px-THE_LEWIS_LATIMER_HOUSE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        alt="Lewis Howard Latimer House, Flushing, Queens — the inventor's residence"
+        onerror="this.style.display='none'; this.parentElement.style.background='#1C2B3A'; this.parentElement.style.minHeight='200px';"
+      />
+      <div class="photo-caption">Latimer House — Flushing, New York</div>
+    </div>
+
+    <div class="placard">
+      <div class="persona-name">Lewis Howard<br>Latimer</div>
+      <div class="persona-dates">1848 — 1928</div>
+      <div class="divider-line"></div>
+      <p class="tagline">The man who made the light last — brilliant, Black, and systematically uncredited.</p>
+      <p class="bio-text">
+        Born in Chelsea, Massachusetts to George and Rebecca Latimer — escaped enslaved people whose own freedom had required a national campaign — Lewis Howard Latimer entered the world already inside a story about what a Black man must fight to own. He enlisted in the Navy at fifteen, lied about his age, and came home to a city lit by gas and ambition. He taught himself mechanical drawing by studying the instruments in the office where he swept floors.
+      </p>
+      <p class="bio-text">
+        Within a decade he was drafting Alexander Graham Bell's telephone patent. Within two, he had refined the carbon filament that transformed Edison's laboratory curiosity into a commercially viable bulb — then wrote the foundational textbook on electric lighting and personally directed its installation across New York, Philadelphia, Montreal, and London. He was the only Black member of the Edison Pioneers.
+      </p>
+      <div class="domain-tags">
+        <span class="tag">Invention</span>
+        <span class="tag">Patent Law</span>
+        <span class="tag">Electrical Engineering</span>
+        <span class="tag">Race &amp; Credit</span>
+        <span class="tag">Self-Education</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── TRANSITION BAND ── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <span class="band-ornament">✦</span>
+  <span class="band-text">Enter Into Conversation</span>
+  <span class="band-ornament">✦</span>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ── CHATBOT SECTION ── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>Speak With Latimer</h2>
+    <div class="section-sub">An AI persona trained on his writings &amp; patents</div>
+
+    <p class="intro-prose">
+      Lewis Latimer was a man of exceptional precision — in his draftsmanship, his prose, and his reckoning with a world determined to render him invisible. He did not rage loudly. He documented everything, filed every patent, wrote every manual. He believed the record itself was a form of resistance.
+    </p>
+    <p class="intro-prose">
+      Ask him about the myth of the lone genius, about what it felt like to draft Bell's drawings and never receive a footnote, about why he still believed in the promise of electric light even after the Edison Company absorbed his work into its own legend.
+    </p>
+
+    <div class="featured-quote">
+      <p>"We create the world we inhabit. If you neglect to create it, someone will create it for you — and it may not be a world in which you find a comfortable place."</p>
+      <cite>— Lewis Howard Latimer, Poems of Love and Life, c. 1925</cite>
+    </div>
+
+    <div class="domain-tags">
+      <span class="tag">Invention &amp; Credit</span>
+      <span class="tag">Race &amp; Erasure</span>
+      <span class="tag">Patent Strategy</span>
+      <span class="tag">Electric Light</span>
+      <span class="tag">Self-Made Expertise</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/lewis-latimer/widget/lewis-latimer-widget.css">
+      <script src="https://museumofminds.com/lewis-latimer/widget/lewis-latimer-widget.js"
+              data-api-url="https://lewis-howard-latimer-production.up.railway.app"
+              data-persona-id="lewis-latimer"></script>
+    </div>
+
+</section>
+
+<!-- ── PULL QUOTE ── -->
+<section class="pull-quote">
+  <blockquote>
+    <p>We have cause for thankfulness that the means to success have been made so easy in this our day; for it is now well understood that the race is not always to the swift, nor the battle to the strong, but to those who keep their eyes on the goal and never for a moment cease to press forward.</p>
+    <cite>— Lewis Howard Latimer, Incandescent Electric Lighting: A Practical Description of the Edison System, 1890</cite>
+  </blockquote>
+</section>
+
+<!-- ── CORPUS STRIP ── -->
+<div class="corpus-strip">
+  <div class="corpus-label">Corpus — Sources Informing This Persona</div>
+  <ul class="corpus-list">
+    <li>Incandescent Electric Lighting: A Practical Description of the Edison System (1890)</li>
+    <li>U.S. Patent No. 252,386 — Manufacturing of Carbon Conductors (1881)</li>
+    <li>U.S. Patent No. 247,097 — Globe Supporter for Electric Lamps (1881)</li>
+    <li>U.S. Patent No. 334,078 — Apparatus for Cooling and Disinfecting (1886)</li>
+    <li>Poems of Love and Life (c. 1925, unpublished manuscript)</li>
+    <li>Latimer's memoir fragments — Queens Borough Public Library Archive</li>
+    <li>Correspondence with Edison Pioneers, 1918–1928</li>
+    <li>Winifred Latimer Norman &amp; Lily Patterson, Lewis Howard Latimer (1995)</li>
+    <li>Janet Kempe, Lewis Latimer: The First Black Inventor (2006)</li>
+    <li>African American Patent Holders Archive, Smithsonian Institution</li>
+  </ul>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-name">Lewis Howard Latimer</div>
+    <span class="footer-dates">Chelsea, Massachusetts · 1848 — Flushing, New York · 1928</span>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds<br>
+    A Project in Living History
+  </div>
+  <div class="footer-powered">
+    Powered by His Own Words
+  </div>
+</footer>
+
+</body>
+</html>
