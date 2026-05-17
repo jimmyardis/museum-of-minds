@@ -9,1004 +9,1055 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --forest:        #2C4A1E;
-  --forest-deep:   #1A2E10;
-  --forest-mid:    #3D6228;
-  --forest-light:  #5A8A3A;
-  --parchment:     #F5F0E8;
-  --parchment-warm:#EDE5D0;
-  --parchment-dark:#D8CEB8;
-  --ivory:         #FAF7F0;
-  --amber:         #C87820;
-  --amber-light:   #E8A840;
-  --amber-pale:    #F2D89A;
-  --ink:           #1A1A14;
-  --ink-mid:       #2E2E24;
-  --text-body:     #2A2A1E;
-  --text-light:    #F5F0E8;
-  --text-muted:    #7A7060;
-  --accent-green:  #4A7A30;
-  --soy-gold:      #D4A030;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background-color: var(--parchment);
-  color: var(--text-body);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.055;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* ── HEADER ─────────────────────────────────────────────── */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2.8rem;
-  background: var(--forest-deep);
-  border-bottom: 2px solid var(--amber);
-  animation: fadeDown 0.8s ease both;
-}
-
-.header-left {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.32em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-}
-
-.header-museum {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.45em;
-  color: var(--parchment);
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.header-right {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  color: var(--amber-light);
-  text-align: right;
-}
-
-/* ── HERO ────────────────────────────────────────────────── */
-.hero {
-  display: grid;
-  grid-template-columns: 1.28fr 0.72fr;
-  min-height: 92vh;
-  animation: fadeIn 1.1s ease 0.2s both;
-}
-
-.hero-svg-panel {
-  position: relative;
-  overflow: hidden;
-  background: var(--forest-deep);
-}
-
-.hero-svg-panel svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-bio-panel {
-  background: var(--forest-deep);
-  border-left: 3px solid var(--amber);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3.5rem 2.6rem;
-  gap: 2rem;
-  animation: fadeUp 1s ease 0.45s both;
-}
-
-/* ── PHOTO FRAME ─────────────────────────────────────────── */
-.photo-frame {
-  position: relative;
-  max-width: 280px;
-  width: 100%;
-}
-
-.photo-frame::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 1px solid var(--amber);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.photo-frame::after {
-  content: '';
-  position: absolute;
-  inset: -13px;
-  border: 1px solid rgba(200,120,32,0.38);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.photo-frame img {
-  width: 100%;
-  display: block;
-  filter: grayscale(35%) sepia(30%) contrast(1.08) brightness(0.88);
-}
-
-/* ── PLACARD ─────────────────────────────────────────────── */
-.placard {
-  color: var(--text-light);
-  text-align: center;
-  width: 100%;
-}
-
-.placard-label {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.54rem;
-  letter-spacing: 0.38em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.placard-name {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.5rem, 3vw, 2.6rem);
-  font-weight: 500;
-  color: var(--parchment);
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.4rem;
-}
-
-.placard-dates {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.92rem;
-  font-style: italic;
-  color: var(--amber-pale);
-  letter-spacing: 0.12em;
-  margin-bottom: 1.1rem;
-}
-
-.placard-rule {
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--amber), transparent);
-  margin: 0 auto 1.1rem;
-}
-
-.placard-tagline {
-  font-size: 0.88rem;
-  font-style: italic;
-  color: var(--parchment-warm);
-  line-height: 1.55;
-  font-weight: 300;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* ── TRANSITION BAND ─────────────────────────────────────── */
-.transition-band {
-  background: var(--forest);
-  padding: 1.1rem 2.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.8rem;
-  border-top: 2px solid var(--amber);
-  border-bottom: 2px solid var(--amber);
-}
-
-.transition-band-rule {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--amber-light), transparent);
-  max-width: 240px;
-}
-
-.transition-band-text {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.42em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.6;
-}
-
-.transition-ornament {
-  color: var(--amber);
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-/* ── CHATBOT SECTION ─────────────────────────────────────── */
-.chatbot-section {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  background: var(--ivory);
-  min-height: 520px;
-}
-
-.chatbot-intro {
-  padding: 4rem 3.2rem 4rem 3.8rem;
-  border-right: 1px solid var(--parchment-dark);
-}
-
-.chatbot-intro h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.02rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  color: var(--forest);
-  text-transform: uppercase;
-  margin-bottom: 1.6rem;
-}
-
-.chatbot-intro p {
-  font-size: 0.96rem;
-  color: var(--text-body);
-  margin-bottom: 1.1rem;
-  line-height: 1.78;
-  font-weight: 400;
-}
-
-.featured-quote {
-  border-left: 3px solid var(--amber);
-  background: var(--parchment-warm);
-  padding: 1.2rem 1.6rem;
-  margin: 1.8rem 0;
-}
-
-.featured-quote p {
-  font-size: 1.05rem;
-  font-style: italic;
-  color: var(--forest-deep);
-  margin-bottom: 0.4rem;
-  line-height: 1.62;
-}
-
-.featured-quote cite {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.56rem;
-  letter-spacing: 0.25em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.domain-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 1.6rem;
-}
-
-.domain-tag {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.52rem;
-  letter-spacing: 0.22em;
-  color: var(--forest);
-  border: 1px solid var(--accent-green);
-  padding: 0.32rem 0.85rem;
-  text-transform: uppercase;
-  background: transparent;
-}
-
-.chatbot-embed {
-  padding: 3rem 2.8rem;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background: var(--parchment);
-  min-height: 480px;
-}
-
-/* ── PULL QUOTE ──────────────────────────────────────────── */
-.pull-quote {
-  background: var(--forest-deep);
-  padding: 5rem 6rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.pull-quote::before {
-  content: '"';
-  position: absolute;
-  top: -0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18rem;
-  color: rgba(200,120,32,0.07);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.pull-quote blockquote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.35rem, 2.4vw, 2rem);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--parchment);
-  line-height: 1.65;
-  max-width: 820px;
-  margin: 0 auto 1.6rem;
-}
-
-.pull-quote cite {
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.36em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-  display: block;
-}
-
-.pull-quote-rule {
-  width: 80px;
-  height: 2px;
-  background: var(--amber);
-  margin: 1.4rem auto;
-}
-
-/* ── CORPUS STRIP ────────────────────────────────────────── */
-.corpus-strip {
-  background: var(--ink-mid);
-  padding: 2.8rem 3.8rem;
-  border-top: 2px solid var(--forest-mid);
-  border-bottom: 2px solid var(--forest-mid);
-}
-
-.corpus-strip h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.4em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.corpus-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0.65rem 2rem;
-  list-style: none;
-  max-width: 1060px;
-  margin: 0 auto;
-}
-
-.corpus-list li {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--parchment-dark);
-  padding-left: 1rem;
-  position: relative;
-  line-height: 1.45;
-}
-
-.corpus-list li::before {
-  content: '⬡';
-  position: absolute;
-  left: 0;
-  color: var(--forest-light);
-  font-size: 0.55rem;
-  top: 0.22rem;
-}
-
-/* ── FOOTER ──────────────────────────────────────────────── */
-footer {
-  background: var(--forest-deep);
-  border-top: 2px solid var(--amber);
-  padding: 2.4rem 3.2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  color: var(--parchment);
-}
-
-.footer-dates {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.82rem;
-  color: var(--amber-pale);
-  margin-top: 0.2rem;
-}
-
-.footer-credit {
-  text-align: center;
-  font-family: 'IM Fell English SC', serif;
-  font-size: 0.54rem;
-  letter-spacing: 0.3em;
-  color: var(--amber-light);
-  text-transform: uppercase;
-  line-height: 1.7;
-}
-
-.footer-powered {
-  text-align: right;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  font-style: italic;
-  color: var(--parchment-dark);
-}
-
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 900px) {
-  header { padding: 0.9rem 1.4rem; }
-  .header-museum { display: none; }
-
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-svg-panel { height: 55vw; min-height: 280px; position: relative; }
-  .hero-bio-panel {
-    border-left: none;
-    border-top: 3px solid var(--amber);
-    padding: 2.5rem 1.8rem;
+  :root {
+    --forest:        #2C4A1E;
+    --forest-deep:   #1A2E10;
+    --forest-mid:    #3D6128;
+    --sage:          #6B8F5A;
+    --sage-light:    #9AB88A;
+    --parchment:     #F5F0E8;
+    --parchment-warm:#EDE5D0;
+    --parchment-dark:#D4C9B0;
+    --ivory:         #FAF7F2;
+    --amber:         #C47A1E;
+    --amber-light:   #D4952A;
+    --amber-pale:    #E8C878;
+    --ink:           #1A1C14;
+    --ink-mid:       #2E3020;
+    --text-main:     #1E2414;
+    --text-mid:      #3A4228;
+    --text-light:    #6B7A58;
+    --border:        #B8AC90;
   }
 
-  .chatbot-section { grid-template-columns: 1fr; }
-  .chatbot-intro { padding: 2.5rem 1.8rem; border-right: none; border-bottom: 1px solid var(--parchment-dark); }
-  .chatbot-embed { padding: 2rem 1.5rem; min-height: 360px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .pull-quote { padding: 3.2rem 2rem; }
-  .corpus-strip { padding: 2rem 1.8rem; }
+  html { scroll-behavior: smooth; }
 
-  footer { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.5rem; gap: 0.8rem; }
-  .footer-powered { text-align: center; }
+  body {
+    background-color: var(--parchment);
+    color: var(--text-main);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-  .transition-band { padding: 1rem 1.2rem; }
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ─── HEADER ─────────────────────────────────────── */
+  header {
+    background-color: var(--forest-deep);
+    border-bottom: 2px solid var(--amber);
+    padding: 0.65rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header-left {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--parchment-dark);
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--amber-pale);
+  }
+
+  /* ─── HERO ────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.28fr 0.72fr;
+    min-height: 92vh;
+    position: relative;
+  }
+
+  .hero-svg-panel {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--forest-deep);
+  }
+
+  .hero-svg-panel svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-bio-panel {
+    background-color: var(--ivory);
+    border-left: 3px solid var(--amber);
+    padding: 3rem 2.4rem 2.5rem 2.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    animation: fadeIn 1s 0.3s ease both;
+  }
+
+  /* ─── PHOTO FRAME ─────────────────────────────────── */
+  .photo-frame {
+    position: relative;
+    display: inline-block;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    align-self: center;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid var(--amber);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid var(--border);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(35%) sepia(25%) contrast(1.06) brightness(0.92);
+  }
+
+  /* ─── PLACARD ─────────────────────────────────────── */
+  .placard {
+    margin-top: 0.5rem;
+  }
+
+  .placard-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.54rem;
+    letter-spacing: 0.38em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .placard-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3.2vw, 3.1rem);
+    font-weight: 600;
+    color: var(--forest-deep);
+    line-height: 1.12;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .placard-dates {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+
+  .placard-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.96rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    border-left: 2px solid var(--amber);
+    padding-left: 0.9rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .placard-bio {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+  }
+
+  .placard-bio + .placard-bio {
+    margin-top: 0.1rem;
+  }
+
+  .placard-fields {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .field-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--forest);
+    border: 1px solid var(--sage);
+    padding: 0.3rem 0.7rem;
+    background: transparent;
+  }
+
+  /* ─── TRANSITION BAND ─────────────────────────────── */
+  .transition-band {
+    background-color: var(--forest);
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    border-top: 1px solid var(--forest-mid);
+    border-bottom: 1px solid var(--forest-mid);
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber-pale), transparent);
+    max-width: 260px;
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.42em;
+    color: var(--amber-pale);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─────────────────────────────── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 540px;
+    background-color: var(--parchment-warm);
+  }
+
+  .chatbot-intro {
+    padding: 3.2rem 2.8rem 3.2rem 3.2rem;
+    border-right: 1px solid var(--border);
+    animation: fadeIn 0.9s 0.5s ease both;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.85rem;
+  }
+
+  .chatbot-intro h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--forest-deep);
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+  }
+
+  .chatbot-intro p {
+    font-size: 0.91rem;
+    color: var(--text-mid);
+    margin-bottom: 0.9rem;
+    line-height: 1.78;
+  }
+
+  .featured-quote {
+    margin: 1.6rem 0;
+    background-color: var(--forest-deep);
+    color: var(--parchment);
+    padding: 1.4rem 1.6rem;
+    border-left: 4px solid var(--amber);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .featured-quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--amber-pale);
+    text-transform: uppercase;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+
+  .domain-tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--forest);
+    background: transparent;
+    border: 1px solid var(--sage);
+    padding: 0.28rem 0.75rem;
+  }
+
+  .chatbot-embed {
+    background-color: var(--ivory);
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    min-height: 540px;
+  }
+
+  .chatbot-embed > * {
+    flex: 1;
+  }
+
+  /* ─── PULL QUOTE ──────────────────────────────────── */
+  .pull-quote {
+    background-color: var(--forest-deep);
+    padding: 4.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14rem;
+    color: var(--forest-mid);
+    line-height: 1;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .pull-quote blockquote {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.4vw, 1.72rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 1.4rem;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    color: var(--amber-pale);
+    text-transform: uppercase;
+  }
+
+  /* ─── CORPUS STRIP ────────────────────────────────── */
+  .corpus-strip {
+    background-color: var(--ink);
+    padding: 2.2rem 3rem;
+    border-top: 2px solid var(--amber);
+  }
+
+  .corpus-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.4em;
+    color: var(--amber-pale);
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+    text-align: center;
+  }
+
+  .corpus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .corpus-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--parchment-dark);
+    letter-spacing: 0.04em;
+  }
+
+  .corpus-list li::before {
+    content: '◆ ';
+    color: var(--amber);
+    font-size: 0.5rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  footer {
+    background-color: var(--forest-deep);
+    border-top: 1px solid var(--forest-mid);
+    padding: 1.8rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--parchment-dark);
+  }
+
+  .footer-name span {
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+  }
+
+  .footer-credit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .footer-powered {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-align: right;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-svg-panel {
+      height: 60vw;
+      min-height: 320px;
+      max-height: 480px;
+      position: relative;
+    }
+
+    .hero-bio-panel {
+      border-left: none;
+      border-top: 3px solid var(--amber);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-embed {
+      min-height: 400px;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      text-align: center;
+    }
+
+    .footer-powered { text-align: center; }
+
+    .pull-quote { padding: 3rem 1.5rem; }
+
+    header { padding: 0.65rem 1.2rem; }
+
+    .transition-band { padding: 1rem 1.2rem; }
+
+    .corpus-strip { padding: 2rem 1.5rem; }
+  }
 </style>
 </head>
+
 <body>
 
-<!-- ── HEADER ─────────────────────────────────────────────── -->
+<!-- ─── HEADER ──────────────────────────────────────── -->
 <header>
   <div class="header-left">In Conversation With</div>
-  <div class="header-museum">Museum of Minds</div>
-  <div class="header-right">Accession No. PLJ–1899–2026</div>
+  <div class="header-right">PJ–1899–2026</div>
 </header>
 
-<!-- ── HERO ──────────────────────────────────────────────── -->
+<!-- ─── HERO ────────────────────────────────────────── -->
 <section class="hero">
 
-  <!-- LEFT: SVG illustration — Soybean research laboratory / botanical synthesis -->
+  <!-- LEFT: SVG ILLUSTRATION — Soybean Laboratory Interior -->
   <div class="hero-svg-panel">
-    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg">
       <defs>
         <!-- Deep forest background gradient -->
         <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#0D1A08"/>
+          <stop offset="0%"   stop-color="#0F1C09"/>
           <stop offset="55%"  stop-color="#1A2E10"/>
-          <stop offset="100%" stop-color="#0A1206"/>
+          <stop offset="100%" stop-color="#0A1406"/>
         </linearGradient>
-        <!-- Warm amber glow for flask/burner -->
-        <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#F0A020" stop-opacity="0.9"/>
-          <stop offset="40%"  stop-color="#C87820" stop-opacity="0.5"/>
-          <stop offset="100%" stop-color="#C87820" stop-opacity="0"/>
+
+        <!-- Amber glow for flasks -->
+        <radialGradient id="flaskGlow" cx="50%" cy="40%" r="60%">
+          <stop offset="0%"   stop-color="#E8A830" stop-opacity="0.85"/>
+          <stop offset="60%"  stop-color="#B87A14" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#7A4A08" stop-opacity="0"/>
         </radialGradient>
-        <!-- Bench lamp glow -->
-        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#F5E8B0" stop-opacity="0.55"/>
-          <stop offset="100%" stop-color="#F5E8B0" stop-opacity="0"/>
+
+        <!-- Soft overhead lamp -->
+        <radialGradient id="lampGlow" cx="50%" cy="0%" r="80%">
+          <stop offset="0%"   stop-color="#F5E8B0" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#1A2E10"  stop-opacity="0"/>
         </radialGradient>
-        <!-- Molecule node glow -->
-        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#7AB84A" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#3D6228" stop-opacity="0"/>
-        </radialGradient>
+
         <!-- Soybean pod gradient -->
-        <linearGradient id="podGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%"  stop-color="#6A9A40"/>
-          <stop offset="100%" stop-color="#3A5E20"/>
+        <linearGradient id="beanGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stop-color="#6B8F4A"/>
+          <stop offset="100%" stop-color="#3D6128"/>
         </linearGradient>
-        <!-- Glass flask gradient -->
-        <linearGradient id="flaskGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%"   stop-color="#A8D888" stop-opacity="0.35"/>
-          <stop offset="50%"  stop-color="#5A9A40" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#2A5018" stop-opacity="0.45"/>
-        </linearGradient>
-        <!-- Liquid in flask -->
-        <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#D4A030" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#A07018" stop-opacity="0.9"/>
+
+        <!-- Molecule glow -->
+        <radialGradient id="molGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#D4952A" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#D4952A" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Lab bench shadow -->
+        <linearGradient id="benchGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#2E1F0A"/>
+          <stop offset="100%" stop-color="#1A0F04"/>
         </linearGradient>
       </defs>
 
-      <!-- BACKGROUND -->
+      <!-- ── BACKGROUND ── -->
       <rect width="700" height="900" fill="url(#bgGrad)"/>
 
-      <!-- Subtle grid / graph paper texture -->
-      <g stroke="rgba(90,140,58,0.07)" stroke-width="0.5">
-        <line x1="0" y1="80"  x2="700" y2="80"/>
-        <line x1="0" y1="160" x2="700" y2="160"/>
-        <line x1="0" y1="240" x2="700" y2="240"/>
-        <line x1="0" y1="320" x2="700" y2="320"/>
-        <line x1="0" y1="400" x2="700" y2="400"/>
-        <line x1="0" y1="480" x2="700" y2="480"/>
-        <line x1="0" y1="560" x2="700" y2="560"/>
-        <line x1="0" y1="640" x2="700" y2="640"/>
-        <line x1="0" y1="720" x2="700" y2="720"/>
-        <line x1="0" y1="800" x2="700" y2="800"/>
-        <line x1="80"  y1="0" x2="80"  y2="900"/>
-        <line x1="160" y1="0" x2="160" y2="900"/>
-        <line x1="240" y1="0" x2="240" y2="900"/>
-        <line x1="320" y1="0" x2="320" y2="900"/>
-        <line x1="400" y1="0" x2="400" y2="900"/>
-        <line x1="480" y1="0" x2="480" y2="900"/>
-        <line x1="560" y1="0" x2="560" y2="900"/>
-        <line x1="640" y1="0" x2="640" y2="900"/>
-      </g>
+      <!-- Subtle overhead light wash -->
+      <ellipse cx="350" cy="0" rx="400" ry="280" fill="url(#lampGlow)"/>
 
-      <!-- ── LABORATORY BENCH (bottom third) ────────────── -->
-      <!-- Bench surface -->
-      <rect x="30" y="640" width="640" height="18" rx="2" fill="#2A3E1A" stroke="#4A6A28" stroke-width="1.2"/>
-      <!-- Bench front face -->
-      <rect x="30" y="658" width="640" height="220" fill="#1E2E12" stroke="none"/>
-      <!-- Bench top highlight -->
-      <rect x="30" y="640" width="640" height="4" fill="rgba(160,200,100,0.12)"/>
+      <!-- Wall planks (dark wood paneling) -->
+      <rect x="0" y="0" width="700" height="580" fill="none"/>
+      <!-- Horizontal wood grain lines -->
+      <line x1="0" y1="80"  x2="700" y2="80"  stroke="#213018" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="160" x2="700" y2="160" stroke="#213018" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="240" x2="700" y2="240" stroke="#213018" stroke-width="0.5" opacity="0.5"/>
+      <line x1="0" y1="320" x2="700" y2="320" stroke="#213018" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="400" x2="700" y2="400" stroke="#213018" stroke-width="0.5" opacity="0.4"/>
+      <line x1="0" y1="460" x2="700" y2="460" stroke="#213018" stroke-width="0.8" opacity="0.5"/>
 
-      <!-- Bench drawers -->
-      <rect x="60"  y="680" width="90" height="60" rx="2" fill="#253518" stroke="#3A5222" stroke-width="0.8"/>
-      <rect x="165" y="680" width="90" height="60" rx="2" fill="#253518" stroke="#3A5222" stroke-width="0.8"/>
-      <rect x="270" y="680" width="90" height="60" rx="2" fill="#253518" stroke="#3A5222" stroke-width="0.8"/>
-      <!-- Drawer knobs -->
-      <circle cx="105" cy="710" r="4" fill="#C87820" stroke="#A06010" stroke-width="0.8"/>
-      <circle cx="210" cy="710" r="4" fill="#C87820" stroke="#A06010" stroke-width="0.8"/>
-      <circle cx="315" cy="710" r="4" fill="#C87820" stroke="#A06010" stroke-width="0.8"/>
+      <!-- Vertical wall panels -->
+      <line x1="175" y1="0"   x2="175" y2="500" stroke="#1E2E14" stroke-width="1.2" opacity="0.7"/>
+      <line x1="350" y1="0"   x2="350" y2="500" stroke="#1E2E14" stroke-width="1.2" opacity="0.7"/>
+      <line x1="525" y1="0"   x2="525" y2="500" stroke="#1E2E14" stroke-width="1.2" opacity="0.7"/>
 
-      <!-- ── LARGE ROUND-BOTTOM FLASK (center) ──────────── -->
-      <!-- Flame glow -->
-      <ellipse cx="350" cy="635" rx="55" ry="28" fill="url(#flameGlow)" opacity="0.7"/>
+      <!-- ── SHELF SYSTEM (background) ── -->
+      <!-- Top shelf board -->
+      <rect x="30"  y="88"  width="640" height="10" fill="#2E1F0A" rx="1"/>
+      <!-- Shelf supports -->
+      <rect x="40"  y="88"  width="8"   height="90"  fill="#251A08"/>
+      <rect x="652" y="88"  width="8"   height="90"  fill="#251A08"/>
+      <rect x="170" y="88"  width="6"   height="90"  fill="#251A08"/>
+      <rect x="344" y="88"  width="6"   height="90"  fill="#251A08"/>
+      <rect x="518" y="88"  width="6"   height="90"  fill="#251A08"/>
 
-      <!-- Bunsen burner base -->
-      <rect x="335" y="638" width="30" height="8" rx="1" fill="#3A3A2A" stroke="#606050" stroke-width="0.8"/>
-      <rect x="342" y="626" width="16" height="14" rx="1" fill="#4A4A38" stroke="#707060" stroke-width="0.7"/>
-      <!-- Flame -->
-      <ellipse cx="350" cy="624" rx="7" ry="10" fill="#F0A020" opacity="0.85"/>
-      <ellipse cx="350" cy="622" rx="4" ry="7"  fill="#FADA60" opacity="0.9"/>
-      <ellipse cx="350" cy="620" rx="2" ry="4"  fill="#FFFFFF" opacity="0.6"/>
+      <!-- Middle shelf board -->
+      <rect x="30"  y="178" width="640" height="10" fill="#2E1F0A" rx="1"/>
 
+      <!-- Bottom shelf board -->
+      <rect x="30"  y="268" width="640" height="10" fill="#2E1F0A" rx="1"/>
+
+      <!-- ── SHELF: CHEMICAL JARS (top row) ── -->
+      <!-- Jar 1 - amber liquid -->
+      <rect x="55"  y="48" width="28" height="40" fill="#7A5010" rx="3"/>
+      <rect x="55"  y="54" width="28" height="30" fill="#C47A1E" rx="2" opacity="0.7"/>
+      <rect x="60"  y="44" width="18" height="8"  fill="#5A3A0A" rx="1"/>
+      <text x="69" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">STIGMASTEROL</text>
+
+      <!-- Jar 2 - green liquid -->
+      <rect x="95"  y="50" width="24" height="38" fill="#3D6128" rx="3"/>
+      <rect x="95"  y="56" width="24" height="28" fill="#6B8F4A" rx="2" opacity="0.65"/>
+      <rect x="99"  y="46" width="16" height="7"  fill="#2E4A1E" rx="1"/>
+      <text x="107" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">SOYBEAN OIL</text>
+
+      <!-- Jar 3 - clear -->
+      <rect x="128" y="52" width="30" height="35" fill="#1E3018" rx="3" opacity="0.8"/>
+      <rect x="128" y="52" width="30" height="35" fill="none" stroke="#4A6A38" stroke-width="1.2" rx="3"/>
+      <rect x="132" y="48" width="22" height="7"  fill="#2E4A1E" rx="1"/>
+      <text x="143" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">PYRIDINE</text>
+
+      <!-- Jar 4 -->
+      <rect x="200" y="46" width="26" height="42" fill="#7A3010" rx="3"/>
+      <rect x="200" y="52" width="26" height="32" fill="#C44A1E" rx="2" opacity="0.6"/>
+      <rect x="204" y="42" width="18" height="7"  fill="#5A2008" rx="1"/>
+      <text x="213" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">CORTISONE</text>
+
+      <!-- Jar 5 -->
+      <rect x="240" y="52" width="24" height="36" fill="#4A3A18" rx="3"/>
+      <rect x="240" y="56" width="24" height="28" fill="#C8A838" rx="2" opacity="0.5"/>
+      <rect x="244" y="48" width="16" height="7"  fill="#3A2A10" rx="1"/>
+      <text x="252" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">PROGESTERONE</text>
+
+      <!-- Jar 6 -->
+      <rect x="280" y="50" width="28" height="38" fill="#2A4A18" rx="3"/>
+      <rect x="280" y="54" width="28" height="30" fill="#5A9A38" rx="2" opacity="0.6"/>
+      <rect x="284" y="46" width="20" height="7"  fill="#1E3810" rx="1"/>
+      <text x="294" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">TESTOSTERONE</text>
+
+      <!-- Jar 7 -->
+      <rect x="370" y="48" width="28" height="40" fill="#5A2E10" rx="3"/>
+      <rect x="370" y="54" width="28" height="30" fill="#A84A18" rx="2" opacity="0.65"/>
+      <rect x="374" y="44" width="20" height="7"  fill="#3A1E08" rx="1"/>
+      <text x="384" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">PHYSOSTIGMINE</text>
+
+      <!-- Jar 8 -->
+      <rect x="414" y="52" width="26" height="36" fill="#1A3020" rx="3"/>
+      <rect x="414" y="52" width="26" height="36" fill="none" stroke="#4A8A58" stroke-width="1.2" rx="3"/>
+      <rect x="418" y="48" width="18" height="7"  fill="#122018" rx="1"/>
+      <text x="427" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">ESERINE</text>
+
+      <!-- Jar 9 -->
+      <rect x="454" y="46" width="30" height="42" fill="#7A6010" rx="3"/>
+      <rect x="454" y="52" width="30" height="32" fill="#D4A020" rx="2" opacity="0.7"/>
+      <rect x="458" y="42" width="22" height="7"  fill="#5A4808" rx="1"/>
+      <text x="469" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">ESTRONE</text>
+
+      <!-- Jar 10 -->
+      <rect x="545" y="50" width="24" height="38" fill="#3A1E28" rx="3"/>
+      <rect x="545" y="50" width="24" height="38" fill="none" stroke="#8A4A68" stroke-width="1" rx="3"/>
+      <rect x="549" y="46" width="16" height="7"  fill="#2A1018" rx="1"/>
+      <text x="557" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">ACETATE</text>
+
+      <!-- Jar 11 -->
+      <rect x="580" y="52" width="28" height="36" fill="#2A4010" rx="3"/>
+      <rect x="580" y="58" width="28" height="26" fill="#4A8018" rx="2" opacity="0.7"/>
+      <rect x="584" y="48" width="20" height="7"  fill="#1E2E0A" rx="1"/>
+      <text x="594" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">SOLAE OLEUM</text>
+
+      <!-- Jar 12 -->
+      <rect x="618" y="48" width="26" height="40" fill="#5A3A08" rx="3"/>
+      <rect x="618" y="54" width="26" height="30" fill="#B87818" rx="2" opacity="0.6"/>
+      <rect x="622" y="44" width="18" height="7"  fill="#3A2608" rx="1"/>
+      <text x="631" y="104" font-family="'Cormorant Garamond', serif" font-size="6" fill="#9AB88A" text-anchor="middle" letter-spacing="0.5">SAPONIN</text>
+
+      <!-- ── SHELF ROW 2: Books, notebooks ── -->
+      <!-- Book 1 -->
+      <rect x="50"  y="130" width="18" height="48" fill="#3D6128" rx="1"/>
+      <rect x="52"  y="132" width="14" height="44" fill="none" stroke="#6B8F4A" stroke-width="0.8"/>
+      <text x="59" y="158" font-family="'Cormorant Garamond', serif" font-size="5" fill="#B8D4A0" text-anchor="middle" transform="rotate(-90,59,158)" letter-spacing="1">ORGANIC SYNTHESIS</text>
+
+      <!-- Book 2 -->
+      <rect x="70"  y="128" width="22" height="50" fill="#7A5010" rx="1"/>
+      <rect x="72"  y="130" width="18" height="46" fill="none" stroke="#C88A30" stroke-width="0.8"/>
+      <text x="81" y="156" font-family="'Cormorant Garamond', serif" font-size="5" fill="#E8C070" text-anchor="middle" transform="rotate(-90,81,156)" letter-spacing="1">ALKALOIDS — MANSKE</text>
+
+      <!-- Book 3 -->
+      <rect x="94"  y="132" width="16" height="46" fill="#4A2010" rx="1"/>
+      <text x="102" y="157" font-family="'Cormorant Garamond', serif" font-size="5" fill="#C08060" text-anchor="middle" transform="rotate(-90,102,157)" letter-spacing="1">JOURNAL A.C.S.</text>
+
+      <!-- Book 4 -->
+      <rect x="112" y="130" width="20" height="48" fill="#1A2E3A" rx="1"/>
+      <text x="122" y="156" font-family="'Cormorant Garamond', serif" font-size="5" fill="#7AAAC0" text-anchor="middle" transform="rotate(-90,122,156)" letter-spacing="1">PHARMACEUTICAL CHEM</text>
+
+      <!-- Book 5 -->
+      <rect x="134" y="126" width="28" height="52" fill="#2E1A0A" rx="1"/>
+      <rect x="136" y="128" width="24" height="48" fill="none" stroke="#8A5A28" stroke-width="0.6"/>
+      <text x="148" y="155" font-family="'Cormorant Garamond', serif" font-size="5" fill="#D0A060" text-anchor="middle" transform="rotate(-90,148,155)" letter-spacing="1">STEROIDS — FIESER</text>
+
+      <!-- Notebook stack -->
+      <rect x="200" y="140" width="60" height="8"  fill="#F5F0E8" rx="1"/>
+      <rect x="203" y="134" width="54" height="8"  fill="#EDE5D0" rx="1"/>
+      <rect x="206" y="128" width="48" height="8"  fill="#D4C9B0" rx="1"/>
+      <text x="230" y="137" font-family="'Cormorant Garamond', serif" font-size="5.5" fill="#5A4A30" text-anchor="middle" letter-spacing="0.5">LABORATORY NOTEBOOKS</text>
+
+      <!-- More books mid section -->
+      <rect x="390" y="130" width="16" height="48" fill="#3A1028" rx="1"/>
+      <rect x="408" y="128" width="20" height="50" fill="#1A3010" rx="1"/>
+      <rect x="430" y="132" width="14" height="46" fill="#4A3800" rx="1"/>
+      <rect x="446" y="128" width="22" height="50" fill="#1E2A3A" rx="1"/>
+      <rect x="470" y="130" width="18" height="48" fill="#3A1010" rx="1"/>
+
+      <text x="398" y="156" font-family="'Cormorant Garamond', serif" font-size="5" fill="#C080A0" text-anchor="middle" transform="rotate(-90,398,156)" letter-spacing="1">WIEN 1929</text>
+      <text x="418" y="154" font-family="'Cormorant Garamond', serif" font-size="5" fill="#80C090" text-anchor="middle" transform="rotate(-90,418,154)" letter-spacing="1">DePAUW THESIS</text>
+
+      <!-- Microscope silhouette on shelf 2 -->
+      <rect x="550" y="160" width="10" height="18" fill="#4A4A3A"/>
+      <rect x="546" y="163" width="18" height="4"  fill="#5A5A4A"/>
+      <rect x="553" y="140" width="4"  height="22" fill="#3A3A2A"/>
+      <ellipse cx="555" cy="140" rx="8" ry="4" fill="#4A4A38"/>
+      <rect x="548" y="172" width="14" height="6"  fill="#3A3A2A" rx="1"/>
+
+      <!-- Bunsen burner sketch -->
+      <rect x="600" y="155" width="8"  height="22" fill="#3A3A28"/>
+      <rect x="596" y="174" width="16" height="4"  fill="#4A4A38"/>
+      <path d="M 604 155 Q 600 148 604 142 Q 608 148 604 155 Z" fill="#D4952A" opacity="0.85"/>
+      <path d="M 604 152 Q 602 146 604 141 Q 606 146 604 152 Z" fill="#F5D060" opacity="0.9"/>
+
+      <!-- ── LAB BENCH ── -->
+      <rect x="0"   y="500" width="700" height="24" fill="url(#benchGrad)" rx="2"/>
+      <rect x="0"   y="510" width="700" height="14" fill="#1A0F04"/>
+      <!-- bench edge highlight -->
+      <rect x="0"   y="500" width="700" height="3"  fill="#4A3010" opacity="0.8"/>
+
+      <!-- ── BENCH SURFACE (foreground) ── -->
+      <rect x="0"   y="524" width="700" height="376" fill="#0F1808"/>
+
+      <!-- bench surface planks -->
+      <line x1="0" y1="560" x2="700" y2="560" stroke="#1A2010" stroke-width="0.8" opacity="0.7"/>
+      <line x1="0" y1="600" x2="700" y2="600" stroke="#1A2010" stroke-width="0.8" opacity="0.5"/>
+      <line x1="0" y1="640" x2="700" y2="640" stroke="#1A2010" stroke-width="0.5" opacity="0.4"/>
+
+      <!-- ── ERLENMEYER FLASK (main, center-left) ── -->
       <!-- Flask body -->
-      <ellipse cx="350" cy="580" rx="72" ry="55" fill="url(#flaskGrad)" stroke="rgba(140,210,100,0.45)" stroke-width="1.5"/>
-      <!-- Liquid inside -->
-      <ellipse cx="350" cy="602" rx="58" ry="30" fill="url(#liquidGrad)"/>
+      <path d="M 220 500 L 195 490 L 165 530 L 155 600 Q 152 640 200 648 L 280 648 Q 328 640 325 600 L 315 530 L 285 490 L 260 500 Z"
+            fill="#1A3028" stroke="#3A6048" stroke-width="1.5"/>
+      <!-- Liquid inside flask -->
+      <path d="M 175 590 L 162 610 Q 160 640 200 645 L 278 645 Q 316 638 320 610 L 305 590 Z"
+            fill="#C47A1E" opacity="0.78"/>
+      <!-- Amber glow overlay on liquid -->
+      <ellipse cx="242" cy="620" rx="65" ry="28" fill="url(#flaskGlow)" opacity="0.6"/>
       <!-- Flask neck -->
-      <rect x="338" y="520" width="24" height="65" rx="4" fill="rgba(140,210,100,0.18)" stroke="rgba(140,210,100,0.4)" stroke-width="1.2"/>
+      <rect x="225" y="456" width="30" height="47" fill="#1A3028" stroke="#3A6048" stroke-width="1"/>
       <!-- Stopper -->
-      <rect x="336" y="516" width="28" height="10" rx="3" fill="#8B5E28" stroke="#6A4418" stroke-width="0.8"/>
-      <!-- Flask highlight -->
-      <ellipse cx="320" cy="565" rx="12" ry="20" fill="rgba(255,255,255,0.1)" transform="rotate(-20,320,565)"/>
-      <!-- Liquid swirl lines -->
-      <path d="M308 596 Q330 588 360 597 Q380 602 400 594" stroke="rgba(210,160,40,0.5)" stroke-width="1" fill="none"/>
-      <path d="M312 606 Q340 598 368 607 Q385 612 396 604" stroke="rgba(210,160,40,0.3)" stroke-width="0.8" fill="none"/>
+      <rect x="222" y="450" width="36" height="12" fill="#2E1808" rx="2" stroke="#4A2A10" stroke-width="0.8"/>
+      <!-- Flask highlight (glass effect) -->
+      <path d="M 175 540 Q 172 580 175 615" stroke="#5A9A78" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M 180 528 L 177 560" stroke="#8AC8A0" stroke-width="1" fill="none" opacity="0.4"/>
+      <!-- Liquid surface shimmer -->
+      <ellipse cx="242" cy="592" rx="62" ry="5" fill="#D4952A" opacity="0.3"/>
+      <!-- Flask label -->
+      <rect x="195" y="610" width="90" height="22" fill="#F5F0E8" opacity="0.88"/>
+      <text x="240" y="623" font-family="'Cinzel', serif" font-size="6.5" fill="#1A1C14" text-anchor="middle" letter-spacing="1.2">PHYSOSTIGMINE</text>
+      <text x="240" y="630" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="5.5" fill="#5A4A30" text-anchor="middle">Caldwell, Alabama — 1935</text>
 
-      <!-- ── ERLENMEYER FLASK (left) ─────────────────────── -->
-      <polygon points="170,638 130,540 210,540" fill="rgba(100,180,80,0.15)" stroke="rgba(120,190,90,0.5)" stroke-width="1.2"/>
-      <rect x="155" y="500" width="22" height="42" rx="3" fill="rgba(100,180,80,0.12)" stroke="rgba(120,190,90,0.4)" stroke-width="1"/>
-      <!-- Liquid in erlenmeyer -->
-      <polygon points="170,638 148,590 192,590" fill="rgba(80,160,50,0.35)"/>
-      <rect x="156" y="510" width="20" height="8" rx="2" fill="#7A4E18" stroke="#5A3A10" stroke-width="0.7"/>
-      <!-- Highlight -->
-      <line x1="145" y1="548" x2="155" y2="610" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <!-- ── ROUND-BOTTOM FLASK (right, large) ── -->
+      <circle cx="480" cy="620" r="72" fill="#1A2810" stroke="#3A5828" stroke-width="1.5"/>
+      <!-- liquid fill -->
+      <path d="M 415 640 Q 412 680 480 688 Q 548 680 545 640 Z" fill="#3D6128" opacity="0.8"/>
+      <!-- green glow -->
+      <ellipse cx="480" cy="660" rx="62" ry="24" fill="#6B8F4A" opacity="0.3"/>
+      <!-- flask neck -->
+      <rect x="465" y="535" width="30" height="50" fill="#1A2810" stroke="#3A5828" stroke-width="1"/>
+      <!-- stopper/condenser top -->
+      <rect x="461" y="528" width="38" height="12" fill="#2A3818" rx="2"/>
+      <rect x="469" y="516" width="22" height="16" fill="#222E14" rx="1"/>
+      <!-- flask highlight -->
+      <path d="M 422 590 Q 416 625 420 658" stroke="#6B8F4A" stroke-width="1.5" fill="none" opacity="0.45"/>
+      <!-- liquid shimmer -->
+      <ellipse cx="480" cy="642" rx="60" ry="5" fill="#9AB88A" opacity="0.25"/>
+      <!-- flask label -->
+      <rect x="435" y="640" width="90" height="22" fill="#F5F0E8" opacity="0.85"/>
+      <text x="480" y="653" font-family="'Cinzel', serif" font-size="6.5" fill="#1A1C14" text-anchor="middle" letter-spacing="1">CORTISONE</text>
+      <text x="480" y="660" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="5.5" fill="#5A4A30" text-anchor="middle">Glidden Company — 1940s</text>
 
-      <!-- ── TALL CONDENSER (right side) ────────────────── -->
-      <!-- Condenser body -->
-      <rect x="490" y="480" width="22" height="160" rx="4" fill="rgba(140,210,110,0.12)" stroke="rgba(140,200,100,0.4)" stroke-width="1"/>
-      <!-- Coil windings -->
-      <g stroke="rgba(140,200,100,0.35)" stroke-width="1.5" fill="none">
-        <path d="M487 500 Q512 506 487 514"/>
-        <path d="M487 514 Q512 520 487 528"/>
-        <path d="M487 528 Q512 534 487 542"/>
-        <path d="M487 542 Q512 548 487 556"/>
-        <path d="M487 556 Q512 562 487 570"/>
-        <path d="M487 570 Q512 576 487 584"/>
-        <path d="M487 584 Q512 590 487 598"/>
-        <path d="M487 598 Q512 604 487 612"/>
-        <path d="M487 612 Q512 618 487 626"/>
-      </g>
-      <!-- Drip collecting flask -->
-      <ellipse cx="501" cy="640" rx="22" ry="16" fill="rgba(140,210,110,0.18)" stroke="rgba(140,200,100,0.4)" stroke-width="1"/>
-      <!-- Water inlet/outlet tubes -->
-      <path d="M512 510 Q535 506 540 500" stroke="rgba(100,180,200,0.5)" stroke-width="2" fill="none"/>
-      <path d="M512 630 Q535 634 540 640" stroke="rgba(100,180,200,0.5)" stroke-width="2" fill="none"/>
-
-      <!-- ── RING STAND & CLAMP ─────────────────────────── -->
-      <rect x="240" y="500" width="6" height="145" fill="#5A5040" stroke="#7A7060" stroke-width="0.8"/>
-      <rect x="225" y="638" width="36" height="8" rx="1" fill="#4A4030" stroke="#6A6050" stroke-width="0.8"/>
-      <!-- Clamp -->
-      <rect x="234" y="528" width="28" height="10" rx="2" fill="#8A7A50" stroke="#A09060" stroke-width="0.8"/>
-      <rect x="243" y="520" width="10" height="10" rx="1" fill="#6A5A38" stroke="#8A7A58" stroke-width="0.7"/>
-
-      <!-- ── OPEN NOTEBOOK (lower left area of bench) ───── -->
-      <rect x="50" y="570" width="145" height="75" rx="2" fill="#F5F0E4" stroke="#C8B890" stroke-width="1"/>
-      <!-- Notebook spine -->
-      <rect x="50" y="570" width="8" height="75" fill="#D4C89A" stroke="#B4A878" stroke-width="0.8"/>
-      <!-- Notebook lines -->
-      <g stroke="#D0C8A8" stroke-width="0.6">
-        <line x1="65" y1="584" x2="185" y2="584"/>
-        <line x1="65" y1="594" x2="185" y2="594"/>
-        <line x1="65" y1="604" x2="185" y2="604"/>
-        <line x1="65" y1="614" x2="185" y2="614"/>
-        <line x1="65" y1="624" x2="185" y2="624"/>
-        <line x1="65" y1="634" x2="160" y2="634"/>
-      </g>
-      <!-- Handwritten formula suggestion -->
-      <text x="68" y="582" font-family="serif" font-style="italic" font-size="7" fill="#4A3A18" opacity="0.7">C₂₁H₃₀O₅  →  cortisone</text>
-      <text x="68" y="592" font-family="serif" font-style="italic" font-size="6.5" fill="#4A3A18" opacity="0.6">physostigmine</text>
-      <text x="68" y="601" font-family="serif" font-style="italic" font-size="6.5" fill="#4A3A18" opacity="0.5">MW: 275.34 g/mol</text>
-      <!-- Structural drawing dots -->
-      <circle cx="85"  cy="617" r="1.5" fill="#4A3A18" opacity="0.6"/>
-      <circle cx="95"  cy="612" r="1.5" fill="#4A3A18" opacity="0.6"/>
-      <circle cx="105" cy="617" r="1.5" fill="#4A3A18" opacity="0.6"/>
-      <circle cx="115" cy="612" r="1.5" fill="#4A3A18" opacity="0.6"/>
-      <circle cx="125" cy="617" r="1.5" fill="#4A3A18" opacity="0.6"/>
-      <line x1="85" y1="617" x2="95" y2="612" stroke="#4A3A18" stroke-width="0.8" opacity="0.5"/>
-      <line x1="95" y1="612" x2="105" y2="617" stroke="#4A3A18" stroke-width="0.8" opacity="0.5"/>
-      <line x1="105" y1="617" x2="115" y2="612" stroke="#4A3A18" stroke-width="0.8" opacity="0.5"/>
-      <line x1="115" y1="612" x2="125" y2="617" stroke="#4A3A18" stroke-width="0.8" opacity="0.5"/>
-
-      <!-- ── SOYBEAN PLANT (left background) ────────────── -->
+      <!-- ── SOYBEAN PLANT (decorative, left side) ── -->
       <!-- Main stem -->
-      <path d="M100 640 Q90 560 110 480 Q120 420 95 350" stroke="#4A7830" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- Side branches -->
-      <path d="M100 580 Q70 560 55 540 Q45 520 60 505" stroke="#4A7830" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M105 530 Q130 510 140 490 Q148 472 135 460" stroke="#4A7830" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M98 475 Q75 455 65 435 Q58 418 70 408" stroke="#3A6020" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M105 445 Q128 430 132 410 Q136 395 126 388" stroke="#3A6020" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M 80 900 Q 85 820 90 760 Q 95 710 100 670 Q 105 640 108 610"
+            stroke="#4A6B30" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Branch 1 -->
+      <path d="M 95 740 Q 110 720 130 710 Q 150 700 160 688"
+            stroke="#3D6128" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Branch 2 -->
+      <path d="M 100 690 Q 70 672 55 660 Q 42 650 35 638"
+            stroke="#3D6128" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- Branch 3 -->
+      <path d="M 105 640 Q 120 620 140 612 Q 158 605 168 598"
+            stroke="#3D6128" stroke-width="1.5" fill="none" stroke-linecap="round"/>
 
-      <!-- Soy leaves (trifoliate) -->
-      <!-- Leaf cluster 1 -->
-      <ellipse cx="52" cy="500" rx="20" ry="12" fill="url(#podGrad)" opacity="0.8" transform="rotate(-30,52,500)"/>
-      <ellipse cx="68" cy="492" rx="18" ry="11" fill="url(#podGrad)" opacity="0.75" transform="rotate(10,68,492)"/>
-      <ellipse cx="44" cy="488" rx="16" ry="10" fill="url(#podGrad)" opacity="0.7" transform="rotate(-50,44,488)"/>
-      <!-- Leaf veins -->
-      <path d="M48 506 Q56 498 64 500" stroke="rgba(30,60,15,0.5)" stroke-width="0.7" fill="none"/>
-      <path d="M56 498 Q60 490 66 492" stroke="rgba(30,60,15,0.5)" stroke-width="0.7" fill="none"/>
-
-      <!-- Leaf cluster 2 -->
-      <ellipse cx="148" cy="478" rx="22" ry="13" fill="url(#podGrad)" opacity="0.8" transform="rotate(25,148,478)"/>
-      <ellipse cx="132" cy="470" rx="19" ry="11" fill="url(#podGrad)" opacity="0.75" transform="rotate(-15,132,470)"/>
-      <ellipse cx="156" cy="462" rx="17" ry="10" fill="url(#podGrad)" opacity="0.7" transform="rotate(40,156,462)"/>
-
-      <!-- Leaf cluster 3 -->
-      <ellipse cx="62" cy="430" rx="19" ry="11" fill="url(#podGrad)" opacity="0.75" transform="rotate(-40,62,430)"/>
-      <ellipse cx="78" cy="420" rx="17" ry="10" fill="url(#podGrad)" opacity="0.7" transform="rotate(5,78,420)"/>
-
-      <!-- Leaf cluster 4 -->
-      <ellipse cx="130" cy="400" rx="20" ry="12" fill="url(#podGrad)" opacity="0.75" transform="rotate(30,130,400)"/>
-      <ellipse cx="115" cy="392" rx="18" ry="10" fill="url(#podGrad)" opacity="0.7" transform="rotate(-10,115,392)"/>
+      <!-- Soybean leaves -->
+      <!-- Leaf 1 -->
+      <ellipse cx="155" cy="700" rx="22" ry="12" fill="#3D6128" opacity="0.85" transform="rotate(-30,155,700)"/>
+      <path d="M 130 706 Q 155 700 165 690" stroke="#2E4A1E" stroke-width="0.7" fill="none"/>
+      <!-- Leaf 2 -->
+      <ellipse cx="40" cy="638" rx="20" ry="10" fill="#4A7830" opacity="0.8" transform="rotate(20,40,638)"/>
+      <!-- Leaf 3 -->
+      <ellipse cx="168" cy="598" rx="18" ry="9" fill="#3D6128" opacity="0.82" transform="rotate(-25,168,598)"/>
+      <!-- Leaf 4 (near top) -->
+      <ellipse cx="110" cy="612" rx="16" ry="8" fill="#5A8A38" opacity="0.75" transform="rotate(15,110,612)"/>
 
       <!-- Soybean pods -->
-      <!-- Pod 1 -->
-      <path d="M62 510 Q58 525 64 538 Q70 525 66 510 Z" fill="#7AAA48" stroke="#4A7830" stroke-width="0.8" opacity="0.9"/>
-      <!-- Pod 2 -->
-      <path d="M140 488 Q136 503 142 516 Q148 503 144 488 Z" fill="#7AAA48" stroke="#4A7830" stroke-width="0.8" opacity="0.9"/>
-      <!-- Pod 3 -->
-      <path d="M128 408 Q124 420 130 432 Q136 420 132 408 Z" fill="#8AB850" stroke="#5A8838" stroke-width="0.8" opacity="0.85"/>
+      <!-- Pod 1 on branch 1 -->
+      <path d="M 148 702 Q 158 696 165 690" stroke="url(#beanGrad)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <ellipse cx="151" cy="700" rx="4" ry="6" fill="#6B8F4A" transform="rotate(-25,151,700)"/>
+      <ellipse cx="158" cy="695" rx="4" ry="6" fill="#5A7A3A" transform="rotate(-30,158,695)"/>
+      <ellipse cx="163" cy="690" rx="3" ry="5" fill="#6B8F4A" transform="rotate(-35,163,690)"/>
+      <!-- Pod 2 on branch 2 -->
+      <path d="M 52 650 Q 42 644 35 638" stroke="url(#beanGrad)" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <ellipse cx="50" cy="648" rx="4" ry="5.5" fill="#3D6128" transform="rotate(20,50,648)"/>
+      <ellipse cx="42" cy="643" rx="3.5" ry="5" fill="#5A7A38" transform="rotate(18,42,643)"/>
+      <!-- Beans inside pod (cutaway hint) -->
+      <ellipse cx="155" cy="700" rx="2.5" ry="2.5" fill="#C8A838" opacity="0.6"/>
+      <ellipse cx="161" cy="694" rx="2" ry="2" fill="#C8A838" opacity="0.5"/>
 
-      <!-- ── MOLECULE DIAGRAM (upper center) ────────────── -->
-      <!-- Cortisone-inspired hexagonal/pentagonal ring structure -->
-      <g transform="translate(350, 200)">
-        <!-- Ring A (hexagon) -->
-        <polygon points="0,-52 45,-26 45,26 0,52 -45,26 -45,-26"
-          fill="none" stroke="rgba(160,220,100,0.45)" stroke-width="1.8"/>
-        <!-- Ring B (fused hexagon) -->
-        <polygon points="45,-26 90,-52 135,-26 135,26 90,52 45,26"
-          fill="none" stroke="rgba(160,220,100,0.40)" stroke-width="1.8"/>
-        <!-- Ring C (fused hexagon) -->
-        <polygon points="135,-26 180,-52 225,-26 225,26 180,52 135,26"
-          fill="none" stroke="rgba(160,220,100,0.35)" stroke-width="1.8"/>
-        <!-- Ring D (pentagon) -->
-        <polygon points="225,-26 262,-52 280,0 262,52 225,26"
-          fill="none" stroke="rgba(160,220,100,0.30)" stroke-width="1.8"/>
-        <!-- Ketone side chain -->
-        <path d="M280,0 L320,-20 M280,0 L320,20" stroke="rgba(200,160,60,0.55)" stroke-width="1.5" fill="none"/>
-        <circle cx="320" cy="-20" r="4" fill="rgba(200,160,60,0.6)"/>
-        <circle cx="320" cy="20"  r="4" fill="rgba(200,160,60,0.6)"/>
-
-        <!-- Node atoms — ring vertices -->
-        <circle cx="0"   cy="-52" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="45"  cy="-26" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="45"  cy="26"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="0"   cy="52"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="-45" cy="26"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="-45" cy="-26" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="90"  cy="-52" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="135" cy="-26" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="135" cy="26"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="90"  cy="52"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="180" cy="-52" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="225" cy="-26" r="5" fill="url(#nodeGlow)"/>
-        <circle cx="225" cy="26"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="180" cy="52"  r="5" fill="url(#nodeGlow)"/>
-        <circle cx="262" cy="-52" r="4" fill="rgba(200,160,60,0.6)"/>
-        <circle cx="280" cy="0"   r="5" fill="url(#nodeGlow)"/>
-        <circle cx="262" cy="52"  r="4" fill="rgba(200,160,60,0.6)"/>
-
-        <!-- Atom labels -->
-        <text x="-8" y="-58" font-family="serif" font-size="10" fill="rgba(180,230,120,0.6)">C</text>
-        <text x="40" y="-32" font-family="serif" font-size="10" fill="rgba(180,230,120,0.6)">C</text>
-        <text x="275" y="-56" font-family="serif" font-size="9" fill="rgba(210,170,60,0.7)">O</text>
-        <text x="278" y="62"  font-family="serif" font-size="9" fill="rgba(210,170,60,0.7)">O</text>
-        <text x="325" y="-15" font-family="serif" font-size="8" fill="rgba(210,170,60,0.65)">OH</text>
-        <text x="325" y="28"  font-family="serif" font-size="8" fill="rgba(210,170,60,0.65)">OH</text>
+      <!-- ── MOLECULAR STRUCTURE OVERLAY (center top area, annotation) ── -->
+      <!-- Steroid ring system — schematic representation -->
+      <g transform="translate(320, 380)" opacity="0.62">
+        <!-- Ring A -->
+        <polygon points="0,0 25,-14 50,0 50,28 25,42 0,28" fill="none" stroke="#C47A1E" stroke-width="1.2"/>
+        <!-- Ring B -->
+        <polygon points="50,0 75,-14 100,0 100,28 75,42 50,28" fill="none" stroke="#C47A1E" stroke-width="1.2"/>
+        <!-- Ring C -->
+        <polygon points="100,0 125,-14 150,0 150,28 125,42 100,28" fill="none" stroke="#D4952A" stroke-width="1.2"/>
+        <!-- Ring D (cyclopentane) -->
+        <polygon points="150,0 170,-10 175,14 160,30 140,28" fill="none" stroke="#D4952A" stroke-width="1.2"/>
+        <!-- Bond highlights -->
+        <line x1="25" y1="-14" x2="25" y2="-24" stroke="#E8C060" stroke-width="0.8"/>
+        <line x1="75" y1="-14" x2="75" y2="-24" stroke="#E8C060" stroke-width="0.8"/>
+        <text x="0"   y="-5"  font-family="'Cormorant Garamond', serif" font-style="italic" font-size="7" fill="#E8C060">A</text>
+        <text x="70"  y="-5"  font-family="'Cormorant Garamond', serif" font-style="italic" font-size="7" fill="#E8C060">B</text>
+        <text x="118" y="-5"  font-family="'Cormorant Garamond', serif" font-style="italic" font-size="7" fill="#E8C060">C</text>
+        <text x="153" y="-5"  font-family="'Cormorant Garamond', serif" font-style="italic" font-size="7" fill="#E8C060">D</text>
+        <!-- Functional group notations -->
+        <text x="-20" y="20" font-family="'Cormorant Garamond', serif" font-size="7" fill="#9AB88A">HO—</text>
+        <text x="170" y="20" font-family="'Cormorant Garamond', serif" font-size="7" fill="#9AB88A">—OH</text>
+        <text x="75"  y="55" font-family="'Cormorant Garamond', serif" font-size="6" fill="#C47A1E" text-anchor="middle" letter-spacing="0.5">STEROID NUCLEUS</text>
       </g>
 
-      <!-- Molecule label -->
-      <text x="350" y="138" text-anchor="middle" font-family="'IM Fell English SC', serif" font-size="10" letter-spacing="3" fill="rgba(160,220,100,0.5)">CORTISONE  ·  C₂₁H₂₈O₅</text>
+      <!-- ── DIMENSION / ANNOTATION LINES ── -->
+      <!-- Shelf dimension lines -->
+      <line x1="20" y1="88"  x2="20" y2="268" stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <line x1="15" y1="88"  x2="25" y2="88"  stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <line x1="15" y1="268" x2="25" y2="268" stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <text x="10" y="180" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="7" fill="#6B8F5A" transform="rotate(-90,10,180)" text-anchor="middle" opacity="0.65">REAGENT STORAGE</text>
 
-      <!-- ── UPPER SHELVING (background) ───────────────── -->
-      <rect x="390" y="350" width="270" height="8" rx="1" fill="#2A3E1A" stroke="#3A5222" stroke-width="0.8"/>
-      <!-- Bottles on shelf -->
-      <!-- Bottle 1 -->
-      <rect x="400" y="310" width="18" height="42" rx="3" fill="rgba(100,160,80,0.25)" stroke="rgba(120,180,80,0.5)" stroke-width="1"/>
-      <rect x="403" y="306" width="12" height="8" rx="2" fill="rgba(100,160,80,0.3)" stroke="rgba(120,180,80,0.5)" stroke-width="0.8"/>
-      <rect x="398" y="303" width="22" height="6" rx="1" fill="#5A4020" stroke="#3A2810" stroke-width="0.7"/>
-      <!-- Bottle 2 -->
-      <rect x="425" y="318" width="16" height="34" rx="3" fill="rgba(200,150,40,0.22)" stroke="rgba(210,160,50,0.45)" stroke-width="1"/>
-      <rect x="428" y="314" width="10" height="7" rx="2" fill="rgba(200,150,40,0.28)" stroke="rgba(210,160,50,0.45)" stroke-width="0.8"/>
-      <rect x="423" y="311" width="20" height="5" rx="1" fill="#5A4020" stroke="#3A2810" stroke-width="0.7"/>
-      <!-- Bottle 3 -->
-      <rect x="448" y="308" width="20" height="44" rx="3" fill="rgba(80,140,180,0.18)" stroke="rgba(100,160,200,0.4)" stroke-width="1"/>
-      <rect x="451" y="303" width="14" height="8" rx="2" fill="rgba(80,140,180,0.22)" stroke="rgba(100,160,200,0.4)" stroke-width="0.8"/>
-      <rect x="446" y="300" width="24" height="6" rx="1" fill="#5A4020" stroke="#3A2810" stroke-width="0.7"/>
-      <!-- Bottle 4 small -->
-      <rect x="476" y="320" width="14" height="32" rx="3" fill="rgba(180,100,60,0.2)" stroke="rgba(200,120,70,0.4)" stroke-width="1"/>
-      <rect x="479" y="316" width="8" height="7" rx="2" fill="rgba(180,100,60,0.25)" stroke="rgba(200,120,70,0.4)" stroke-width="0.8"/>
-      <!-- Bottle 5 -->
-      <rect x="498" y="312" width="18" height="40" rx="3" fill="rgba(120,180,90,0.22)" stroke="rgba(140,200,100,0.45)" stroke-width="1"/>
-      <rect x="501" y="308" width="12" height="8" rx="2" fill="rgba(120,180,90,0.28)" stroke="rgba(140,200,100,0.45)" stroke-width="0.8"/>
-      <rect x="496" y="305" width="22" height="5" rx="1" fill="#5A4020" stroke="#3A2810" stroke-width="0.7"/>
-      <!-- Bottle 6 tall -->
-      <rect x="525" y="296" width="16" height="56" rx="3" fill="rgba(160,200,140,0.2)" stroke="rgba(180,220,150,0.4)" stroke-width="1"/>
-      <rect x="528" y="290" width="10" height="9" rx="2" fill="rgba(160,200,140,0.25)" stroke="rgba(180,220,150,0.4)" stroke-width="0.8"/>
-      <!-- Bottle 7 -->
-      <rect x="549" y="318" width="15" height="34" rx="3" fill="rgba(200,180,80,0.2)" stroke="rgba(210,190,90,0.4)" stroke-width="1"/>
-      <rect x="552" y="314" width="9" height="7" rx="2" fill="rgba(200,180,80,0.25)" stroke="rgba(210,190,90,0.4)" stroke-width="0.8"/>
-      <!-- Bottle 8 -->
-      <rect x="572" y="308" width="19" height="44" rx="3" fill="rgba(100,160,100,0.22)" stroke="rgba(120,180,110,0.42)" stroke-width="1"/>
-      <rect x="575" y="303" width="13" height="8" rx="2" fill="rgba(100,160,100,0.28)" stroke="rgba(120,180,110,0.42)" stroke-width="0.8"/>
+      <!-- Side annotation line for bench -->
+      <line x1="680" y1="500" x2="680" y2="524" stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <line x1="675" y1="500" x2="685" y2="500" stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <line x1="675" y1="524" x2="685" y2="524" stroke="#4A6A38" stroke-width="0.6" opacity="0.5"/>
+      <text x="692" y="514" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="6" fill="#6B8F5A" opacity="0.65" text-anchor="middle" transform="rotate(90,692,514)">BENCH SURFACE</text>
 
-      <!-- Second shelf -->
-      <rect x="30" y="480" width="200" height="7" rx="1" fill="#2A3E1A" stroke="#3A5222" stroke-width="0.8"/>
-      <rect x="38" y="448" width="14" height="34" rx="2" fill="rgba(140,200,100,0.2)" stroke="rgba(160,220,110,0.4)" stroke-width="1"/>
-      <rect x="58" y="440" width="14" height="42" rx="2" fill="rgba(200,160,60,0.2)" stroke="rgba(220,180,70,0.38)" stroke-width="1"/>
-      <rect x="78" y="452" width="12" height="30" rx="2" fill="rgba(120,100,180,0.18)" stroke="rgba(140,120,200,0.35)" stroke-width="1"/>
-      <rect x="96" y="445" width="13" height="37" rx="2" fill="rgba(80,160,140,0.2)" stroke="rgba(100,180,160,0.38)" stroke-width="1"/>
-      <rect x="115" y="450" width="12" height="32" rx="2" fill="rgba(180,80,80,0.18)" stroke="rgba(200,100,100,0.35)" stroke-width="1"/>
-      <rect x="133" y="442" width="14" height="40" rx="2" fill="rgba(160,200,80,0.2)" stroke="rgba(180,220,100,0.38)" stroke-width="1"/>
-      <rect x="153" y="455" width="11" height="27" rx="2" fill="rgba(200,140,40,0.2)" stroke="rgba(220,160,60,0.38)" stroke-width="1"/>
-      <rect x="170" y="447" width="15" height="35" rx="2" fill="rgba(80,120,200,0.18)" stroke="rgba(100,140,220,0.35)" stroke-width="1"/>
-      <rect x="191" y="453" width="13" height="29" rx="2" fill="rgba(140,180,100,0.2)" stroke="rgba(160,200,110,0.38)" stroke-width="1"/>
+      <!-- ── TITLE BLOCK (bottom right) ── -->
+      <rect x="490" y="820" width="200" height="72" fill="none" stroke="#3A6028" stroke-width="1"/>
+      <line x1="490" y1="835" x2="690" y2="835" stroke="#3A6028" stroke-width="0.6"/>
+      <line x1="490" y1="852" x2="690" y2="852" stroke="#3A6028" stroke-width="0.6"/>
+      <text x="590" y="831" font-family="'Cinzel', serif" font-size="6.5" fill="#9AB88A" text-anchor="middle" letter-spacing="1.5">MUSEUM OF MINDS</text>
+      <text x="590" y="847" font-family="'Cormorant Garamond', serif" font-size="8.5" fill="#E8C878" text-anchor="middle" letter-spacing="0.5" font-weight="bold">PERCY L. JULIAN</text>
+      <text x="590" y="862" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="6" fill="#6B8F5A" text-anchor="middle">Laboratory of Synthesis — Vienna, 1929</text>
+      <text x="590" y="875" font-family="'Cinzel', serif" font-size="5" fill="#6B8F5A" text-anchor="middle" letter-spacing="1">ORGANIC CHEMISTRY · INDUSTRIAL SCALE</text>
+      <text x="590" y="886" font-family="'Cinzel', serif" font-size="5" fill="#4A6A38" text-anchor="middle" letter-spacing="1.5">PJ–1899–2026</text>
 
-      <!-- ── BENCH LAMP ───────────────────────────────── -->
-      <!-- Lamp pole -->
-      <rect x="618" y="520" width="6" height="125" fill="#3A3828" stroke="#5A5848" stroke-width="0.7"/>
-      <!-- Lamp arm -->
-      <path d="M621 530 Q640 520 650 510 Q660 500 658 490" stroke="#3A3828" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <!-- Lamp shade -->
-      <ellipse cx="658" cy="486" rx="24" ry="14" fill="#6A5018" stroke="#8A7028" stroke-width="1"/>
-      <ellipse cx="658" cy="482" rx="18" ry="8"  fill="#8A6820" stroke="#AA8838" stroke-width="0.8"/>
-      <!-- Lamp glow on bench surface -->
-      <ellipse cx="648" cy="642" rx="60" ry="18" fill="url(#lampGlow)" opacity="0.6"/>
+      <!-- ── FLOOR / SHADOW ── -->
+      <ellipse cx="242" cy="720" rx="90" ry="18" fill="#000" opacity="0.35"/>
+      <ellipse cx="480" cy="730" rx="80" ry="16" fill="#000" opacity="0.35"/>
 
-      <!-- ── TITLE BLOCK (lower right of composition) ── -->
-      <rect x="395" y="760" width="270" height="100" fill="rgba(15,30,8,0.7)" stroke="rgba(100,160,60,0.35)" stroke-width="1"/>
-      <rect x="397" y="762" width="266" height="96" fill="none" stroke="rgba(100,160,60,0.18)" stroke-width="0.6"/>
-      <text x="530" y="785" text-anchor="middle" font-family="'IM Fell English SC', serif" font-size="8.5" letter-spacing="2.5" fill="rgba(200,160,60,0.8)">GLIDDEN  COMPANY  RESEARCH</text>
-      <text x="530" y="800" text-anchor="middle" font-family="'IM Fell English SC', serif" font-size="7.5" letter-spacing="2" fill="rgba(160,220,100,0.6)">SOYBEAN  EXTRACTION  LABORATORY</text>
-      <line x1="412" y1="808" x2="648" y2="808" stroke="rgba(100,160,60,0.3)" stroke-width="0.6"/>
-      <text x="530" y="820" text-anchor="middle" font-family="serif" font-style="italic" font-size="7" fill="rgba(180,220,130,0.45)">Chicago, Illinois  ·  c. 1940–1953</text>
-      <text x="530" y="834" text-anchor="middle" font-family="serif" font-style="italic" font-size="7" fill="rgba(180,220,130,0.38)">Dr. Percy L. Julian, Director of Research</text>
-      <line x1="412" y1="842" x2="648" y2="842" stroke="rgba(100,160,60,0.3)" stroke-width="0.6"/>
-      <text x="530" y="852" text-anchor="middle" font-family="serif" font-size="6.5" fill="rgba(160,200,100,0.3)" letter-spacing="1.5">PLJ  ·  MOM  ·  2026</text>
-
-      <!-- ── DIMENSION / ANNOTATION LINES ───────────── -->
-      <!-- Annotation: Flask temperature -->
-      <path d="M422 570 L262 510" stroke="rgba(200,160,60,0.3)" stroke-width="0.7" stroke-dasharray="3,3" fill="none"/>
-      <circle cx="262" cy="510" r="2" fill="rgba(200,160,60,0.5)"/>
-      <text x="248" y="507" text-anchor="end" font-family="serif" font-style="italic" font-size="8" fill="rgba(200,160,60,0.5)">~ 195°C</text>
-
-      <!-- Annotation: molecule label -->
-      <path d="M350 148 L350 158" stroke="rgba(160,220,100,0.3)" stroke-width="0.7" fill="none"/>
-
-      <!-- Annotation: soybean origin arrow -->
-      <path d="M85 395 L195 290" stroke="rgba(120,200,80,0.28)" stroke-width="0.7" stroke-dasharray="4,3" fill="none"/>
-      <text x="195" y="285" font-family="serif" font-style="italic" font-size="8" fill="rgba(120,200,80,0.4)">Glycine max</text>
-
-      <!-- ── DECORATIVE CORNER MARKS ─────────────────── -->
-      <g stroke="rgba(100,160,60,0.25)" stroke-width="0.8" fill="none">
-        <path d="M20 20 L20 50 M20 20 L50 20"/>
-        <path d="M680 20 L680 50 M680 20 L650 20"/>
-        <path d="M20 880 L20 850 M20 880 L50 880"/>
-        <path d="M680 880 L680 850 M680 880 L650 880"/>
+      <!-- ── COMPASS ROSE (lower left corner) ── -->
+      <g transform="translate(70, 840)" opacity="0.5">
+        <circle cx="0" cy="0" r="22" fill="none" stroke="#4A6A38" stroke-width="0.8"/>
+        <line x1="0" y1="-22" x2="0" y2="22"  stroke="#4A6A38" stroke-width="0.7"/>
+        <line x1="-22" y1="0" x2="22" y2="0"  stroke="#4A6A38" stroke-width="0.7"/>
+        <line x1="-15" y1="-15" x2="15" y2="15" stroke="#3A5828" stroke-width="0.5"/>
+        <line x1="15" y1="-15" x2="-15" y2="15" stroke="#3A5828" stroke-width="0.5"/>
+        <polygon points="0,-22 -5,-10 0,-14 5,-10" fill="#C47A1E"/>
+        <text x="0"  y="-26" font-family="'Cinzel', serif" font-size="7" fill="#6B8F5A" text-anchor="middle">N</text>
+        <text x="26" y="4"   font-family="'Cinzel', serif" font-size="6" fill="#6B8F5A" text-anchor="middle">E</text>
+        <text x="0"  y="32"  font-family="'Cinzel', serif" font-size="6" fill="#6B8F5A" text-anchor="middle">S</text>
+        <text x="-27" y="4"  font-family="'Cinzel', serif" font-size="6" fill="#6B8F5A" text-anchor="middle">W</text>
+        <circle cx="0" cy="0" r="3" fill="#C47A1E"/>
       </g>
 
-      <!-- ── AMBIENT PARTICLES / SPORES ─────────────── -->
-      <g fill="rgba(160,220,100,0.15)">
-        <circle cx="580" cy="250" r="2"/>
-        <circle cx="560" cy="280" r="1.5"/>
-        <circle cx="600" cy="230" r="1"/>
-        <circle cx="545" cy="265" r="2"/>
-        <circle cx="615" cy="258" r="1.5"/>
-        <circle cx="570" cy="300" r="1"/>
-        <circle cx="200" cy="310" r="1.5"/>
-        <circle cx="220" cy="295" r="1"/>
-        <circle cx="185" cy="325" r="2"/>
-        <circle cx="210" cy="340" r="1"/>
-      </g>
+      <!-- ── LIGHT RAYS from overhead lamp ── -->
+      <line x1="350" y1="0" x2="242" y2="500" stroke="#F5E890" stroke-width="0.4" opacity="0.06"/>
+      <line x1="350" y1="0" x2="350" y2="500" stroke="#F5E890" stroke-width="0.5" opacity="0.07"/>
+      <line x1="350" y1="0" x2="480" y2="500" stroke="#F5E890" stroke-width="0.4" opacity="0.06"/>
+
+      <!-- ── SMALL SUPPLEMENTAL FLASK (right bench edge) ── -->
+      <path d="M 600 500 L 588 494 L 578 514 L 574 545 Q 572 560 590 563 L 620 563 Q 638 560 636 545 L 632 514 L 622 494 L 610 500 Z"
+            fill="#1E3018" stroke="#3A5830" stroke-width="1"/>
+      <path d="M 580 540 L 575 552 Q 574 562 592 564 L 618 564 Q 636 560 634 550 L 628 540 Z"
+            fill="#7A5010" opacity="0.75"/>
+      <ellipse cx="605" cy="542" rx="26" ry="8" fill="#C88820" opacity="0.35"/>
+      <rect x="594" y="472" width="12" height="30" fill="#1E3018" stroke="#3A5830" stroke-width="0.8"/>
+      <rect x="591" y="467" width="18" height="8" fill="#2E1808" rx="1"/>
+      <!-- label -->
+      <rect x="580" y="545" width="50" height="12" fill="#F5F0E8" opacity="0.8"/>
+      <text x="605" y="554" font-family="'Cinzel', serif" font-size="5.5" fill="#1A1C14" text-anchor="middle" letter-spacing="0.8">SOYBEAN</text>
+
+      <!-- ── MARGINALIA TEXT ── -->
+      <text x="15" y="310" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="8" fill="#4A6A38" opacity="0.5" transform="rotate(-90,15,310)" text-anchor="middle">synthesis through nature's abundance</text>
+      <text x="685" y="280" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="8" fill="#4A6A38" opacity="0.45" transform="rotate(90,685,280)" text-anchor="middle">Glycine max · 1940 — Chicago, Illinois</text>
+
     </svg>
   </div>
 
-  <!-- RIGHT: Bio panel -->
+  <!-- RIGHT: BIO PANEL -->
   <div class="hero-bio-panel">
-
     <div class="photo-frame">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Percy_Lavon_Julian_%281899-1975%29_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
         alt="Portrait of Percy Lavon Julian"
-        onerror="this.style.display='none'"
-      />
+        onerror="this.style.display='none'; this.parentElement.style.background='#2C4A1E'; this.parentElement.style.minHeight='220px';"
+      >
     </div>
 
     <div class="placard">
-      <div class="placard-label">Museum of Minds — Portrait</div>
-      <div class="placard-name">Percy Lavon<br>Julian</div>
+      <div class="placard-label">Chemist &amp; Industrialist</div>
+      <div class="placard-name">Percy Lavon Julian</div>
       <div class="placard-dates">1899 — 1975</div>
-      <div class="placard-rule"></div>
-      <div class="placard-tagline">
-        He synthesized the molecules that eased the world's suffering — and a nation tried to stop him at every turn.
+      <div class="placard-tagline">He synthesized the molecules that eased the world's suffering — and a nation tried to stop him at every turn.</div>
+
+      <p class="placard-bio">Born in Montgomery, Alabama, to a father who was a railway mail clerk and a grandfather who had been enslaved, Percy Julian entered DePauw University with a deficient preparatory education and graduated at its top. When no graduate fellowship would take a Black chemist, a professor of his own pocket sent him to Vienna. He returned with a doctorate — and nowhere to teach.</p>
+
+      <p class="placard-bio">At Glidden Company he transformed soybeans into a pharmaceutical arsenal: industrial cortisone, progesterone, testosterone, and the first total synthesis of physostigmine for glaucoma. He made drugs that had cost hundreds of dollars per dose available for pennies, rewriting the economics of medicine.</p>
+
+      <p class="placard-bio">When he bought a home in Oak Park, Illinois, in 1950, the house was bombed — twice. He built a laboratory instead and held more than 130 patents when he died. He was offered honorary doctorates from universities that had refused to hire him.</p>
+
+      <div class="placard-fields">
+        <span class="field-tag">Organic Chemistry</span>
+        <span class="field-tag">Steroid Synthesis</span>
+        <span class="field-tag">Soybean Science</span>
+        <span class="field-tag">Physostigmine</span>
+        <span class="field-tag">Cortisone</span>
+        <span class="field-tag">Civil Rights</span>
       </div>
     </div>
-
   </div>
+
 </section>
 
-<!-- ── TRANSITION BAND ────────────────────────────────────── -->
+<!-- ─── TRANSITION BAND ──────────────────────────────── -->
 <div class="transition-band">
-  <div class="transition-band-rule"></div>
-  <div>
-    <div class="transition-ornament" style="text-align:center; margin-bottom:0.3rem">⬡</div>
-    <div class="transition-band-text">
-      Chemist · Inventor · Pioneer<br>
-      From Soybean to Cortisone
-    </div>
-    <div class="transition-ornament" style="text-align:center; margin-top:0.3rem">⬡</div>
-  </div>
-  <div class="transition-band-rule"></div>
+  <div class="band-rule"></div>
+  <div class="band-ornament">◆ &nbsp; Begin the Conversation &nbsp; ◆</div>
+  <div class="band-rule"></div>
 </div>
 
-<!-- ── CHATBOT SECTION ────────────────────────────────────── -->
+<!-- ─── CHATBOT SECTION ──────────────────────────────── -->
 <section class="chatbot-section">
 
   <div class="chatbot-intro">
-    <h2>Converse with Percy Julian</h2>
+    <h2>Engage the Mind</h2>
+    <h3>Ask Percy Julian what it cost — and what it was worth.</h3>
 
-    <p>Percy Lavon Julian was born in Montgomery, Alabama, in 1899, the grandson of an enslaved man who had two fingers cut off as punishment for learning to write. He enrolled at DePauw University, where he slept in the attic of a fraternity house because no dormitory would take him, and graduated as valedictorian. When American graduate schools turned him away, he crossed the Atlantic and earned his doctorate from the University of Vienna — one of the greatest centers of organic chemistry in the world.</p>
+    <p>Percy Julian synthesized cortisone for pennies per gram at a time pharmaceutical companies sold it for hundreds of dollars per dose. He holds more than 130 patents. He was twice denied professorships on racial grounds and twice had his home bombed. He built an empire from soybeans and changed the price of suffering.</p>
 
-    <p>Back in the United States, he synthesized physostigmine — a treatment for glaucoma — becoming the first to accomplish it from scratch and vindicating a method that a team at Oxford had abandoned. He applied to teach at DePauw. The offer was rescinded. He was hired as director of research at Glidden, a paint company, and proceeded to transform its soybean extraction unit into one of the most productive pharmaceutical chemistry operations in the world.</p>
+    <p>His is not merely a story of scientific genius — it is a reckoning with what American institutions choose to reward and what they choose to destroy. Julian lived the full contradiction: celebrated by industry, targeted by neighbors, honored by presidents who governed systems that excluded him.</p>
 
     <div class="featured-quote">
-      <p>"From soybeans he created progesterone and testosterone precursors, cortisone, and compounds that treated arthritis and eye disease. Treatments that had cost hundreds of dollars per gram became available for cents."</p>
-      <cite>Museum of Minds — Curatorial Note, 2026</cite>
+      "I have had one goal in my life — to prove that the Negro mind has the capacity to cope with the best minds in the world."
+      <cite>— Percy Lavon Julian, c. 1960s</cite>
     </div>
 
-    <p>In 1950, he and his wife Anna became the first Black family to buy a home in Oak Park, Illinois. Someone threw a smoke bomb through his window. Two months later, someone tried to dynamite his garage while his children slept. He stayed. He founded Julian Laboratories. He became a millionaire. He held more than 130 patents. He fought for civil rights until his death in 1975.</p>
-
-    <p>Speak with him below. Ask him about cortisone, about Vienna, about Oak Park, about the Nobel Prize he never received, about the America that built barricades around his talent and watched him dismantle them one molecule at a time.</p>
+    <p>Pose the hard questions. Ask him about drug pricing, about the firebombing, about the choice of industry over academia. He will answer from the record of a life fully lived at the intersection of brilliance and obstruction.</p>
 
     <div class="domain-tags">
-      <span class="domain-tag">Organic Chemistry</span>
-      <span class="domain-tag">Soybean Science</span>
-      <span class="domain-tag">Cortisone Synthesis</span>
-      <span class="domain-tag">Physostigmine</span>
-      <span class="domain-tag">Industrial Research</span>
-      <span class="domain-tag">Civil Rights</span>
-      <span class="domain-tag">Jim Crow America</span>
+      <span class="domain-tag">Drug Synthesis</span>
+      <span class="domain-tag">Racial Justice</span>
+      <span class="domain-tag">Industrial Science</span>
       <span class="domain-tag">University of Vienna</span>
-      <span class="domain-tag">Patent Law</span>
-      <span class="domain-tag">Entrepreneurship</span>
+      <span class="domain-tag">Pharmaceutical Pricing</span>
+      <span class="domain-tag">Glidden Company</span>
+      <span class="domain-tag">Oak Park, 1950</span>
+      <span class="domain-tag">Soybean Chemistry</span>
     </div>
   </div>
 
   <div class="chatbot-embed" id="chatbot-container">
       <link rel="stylesheet" href="https://museumofminds.com/percy-julian/widget/percy-julian-widget.css">
       <script src="https://museumofminds.com/percy-julian/widget/percy-julian-widget.js"
-              data-api-url="https://percy-lavon-julian-production.up.railway.app"
+              data-api-url="https://percy-julian-production.up.railway.app"
               data-persona-id="percy-julian"></script>
     </div>
 
 </section>
 
-<!-- ── PULL QUOTE ─────────────────────────────────────────── -->
+<!-- ─── PULL QUOTE ────────────────────────────────────── -->
 <section class="pull-quote">
   <blockquote>
-    "When I think of what I might have accomplished had I been given the same access to education, to laboratories, to professorships that my white colleagues enjoyed — I do not feel self-pity. I feel anger on behalf of those who came after me and found the same walls still standing."
+    "God and hard work — these have been the lodestars of my life. That and the stubborn conviction that the Negro's rightful place is wherever his talents can serve humanity best."
+    <cite>— Percy Lavon Julian · Acceptance Address, Spingarn Medal, NAACP, 1947</cite>
   </blockquote>
-  <div class="pull-quote-rule"></div>
-  <cite>Percy Lavon Julian — attributed, ca. 1960s</cite>
 </section>
 
-<!-- ── CORPUS STRIP ───────────────────────────────────────── -->
+<!-- ─── CORPUS STRIP ──────────────────────────────────── -->
 <div class="corpus-strip">
-  <h3>Primary Corpus &amp; Source Materials</h3>
+  <div class="corpus-label">Corpus &amp; Source Materials</div>
   <ul class="corpus-list">
-    <li>Julian, P. L. — Original research papers, <em>Journal of the American Chemical Society</em>, 1932–1955</li>
-    <li>Julian, P. L. &amp; Pikl, J. — "Studies in the Indole Series: Synthesis of Physostigmine," <em>JACS</em>, 1935</li>
-    <li>Julian, P. L. — "The Synthesis of Cortisone," Glidden Company Research Reports, 1949</li>
-    <li>Julian, P. L. — Oral history recordings, Chemical Heritage Foundation (now Science History Institute), 1971</li>
-    <li>Witkop, B. — "Percy Lavon Julian," <em>Biographical Memoirs of the National Academy of Sciences</em>, 1980</li>
-    <li>Worthy, W. — "Percy L. Julian: Synthesis of Humanity," <em>Chemical &amp; Engineering News</em>, 1975</li>
-    <li>Lewis, J. — <em>The Other Brainiacs</em>, profiles in African American science, 2001</li>
-    <li>Percy Julian Patent Portfolio — 130+ U.S. Patents, USPTO Archives, 1935–1975</li>
-    <li>Julian, P. L. — "On Being a Negro Scientist in America," unpublished draft, ca. 1965</li>
-    <li>DePauw University Special Collections — Julian Papers and Correspondence, 1916–1975</li>
-    <li>NAACP Archives — Percy Julian civil rights correspondence, 1950–1968</li>
-    <li>PBS <em>Nova</em> — "Forgotten Genius," documentary transcript and research materials, 2007</li>
+    <li>Julian, Percy L. — Published Papers in the Journal of the American Chemical Society (1935–1955)</li>
+    <li>Spingarn Medal Acceptance Address, NAACP (1947)</li>
+    <li>U.S. Patent Records — 130+ Patents in Steroid and Alkaloid Synthesis</li>
+    <li>Strickland, Arvarh — "Percy L. Julian: Pioneering Chemist" (1975)</li>
+    <li>McGrayne, Sharon Bertsch — Nobel Prize Women in Science (contextual)</li>
+    <li>PBS American Experience — "Percy Julian: Forgotten Genius" (2007)</li>
+    <li>DePauw University Archives — Julian Correspondence and Theses</li>
+    <li>University of Vienna Dissertation, "Untersuchungen in der Indol-Gruppe" (1929)</li>
+    <li>Glidden Company Industrial Records — Chicago, Illinois (1936–1953)</li>
+    <li>Oak Park, Illinois — Historical Society Records &amp; Press Coverage (1950–1951)</li>
+    <li>Julian Laboratories — Corporate Papers and Patent Filings (1953–1975)</li>
+    <li>National Inventors Hall of Fame Induction Materials (1990)</li>
   </ul>
 </div>
 
-<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<!-- ─── FOOTER ────────────────────────────────────────── -->
 <footer>
-  <div>
-    <div class="footer-name">Percy Lavon Julian</div>
-    <div class="footer-dates">Montgomery, Alabama, 1899 — Waukegan, Illinois, 1975</div>
+  <div class="footer-name">
+    Percy Lavon Julian
+    <span>1899 — 1975 · Montgomery, Alabama</span>
   </div>
   <div class="footer-credit">
-    Museum of Minds<br>
-    A Living Archive of Human Thought<br>
-    &copy; 2026
+    A Museum of Minds Portrait<br>
+    <em>Conversations with history's defining intellects</em>
   </div>
   <div class="footer-powered">
-    Powered by His Own Words &amp; Work
+    Powered by His Own Words
   </div>
 </footer>
 
