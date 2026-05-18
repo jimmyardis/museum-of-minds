@@ -41,11 +41,11 @@
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
     .card-frame { position: relative; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
-    .portrait-card:hover .card-frame { border-color: rgba(196,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px var(--card-glow, rgba(196,168,76,0.08)); }
+    .portrait-card:hover
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
     .portrait-card:hover .card-frame::before { border-color: rgba(196,168,76,0.18); }
     .card-light { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 120px; height: 80px; background: radial-gradient(ellipse at top, rgba(196,168,76,0.12) 0%, transparent 70%); pointer-events: none; opacity: 0; transition: opacity 0.4s ease; z-index: 3; }
-    .portrait-card:hover .card-light { opacity: 1; }
+    .portrait-card:hover
     .card-image { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; background: var(--wall-mid); }
     .card-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: grayscale(100%) brightness(0.7) contrast(1.1); transition: filter 0.5s ease, transform 0.5s ease; }
     .portrait-card:hover .card-image img { filter: grayscale(55%) brightness(0.85) contrast(1.1); transform: scale(1.03); }
@@ -53,7 +53,7 @@
     .portrait-card:hover .card-image::after { opacity: 0.4; }
     .card-image::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(transparent, rgba(0,0,0,0.7)); z-index: 1; pointer-events: none; }
     .card-nameplate { padding: 1rem 1.1rem 1.2rem; border-top: 1px solid rgba(196,168,76,0.1); background: var(--wall); transition: background 0.4s ease; }
-    .portrait-card:hover .card-nameplate { background: var(--card-plate, #222230); }
+    .portrait-card:hover
     .nameplate-accent { width: 20px; height: 2px; background: var(--card-accent, var(--brass-dim)); margin-bottom: 0.55rem; transition: width 0.4s ease; }
     .portrait-card:hover .nameplate-accent { width: 36px; }
     .nameplate-name { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.15rem; line-height: 1.2; }
@@ -238,12 +238,6 @@
     .card-julian { --card-wash: #2C4A1E; --card-accent: #C49A3C; --card-plate: #1A1A18; --card-glow: rgba(44,74,30,0.15); }
   
     .card-latimer { --card-wash: #1C2B3A; --card-accent: #C49A3C; --card-plate: #1A1A1A; --card-glow: rgba(28,43,58,0.15); }
-  
-    .card-latimer { --card-wash: #1C2B3A; --card-accent: #C49A3C; --card-plate: #1A1A1A; --card-glow: rgba(28,43,58,0.15); }
-  
-    .card-julian { --card-wash: #2C4A1E; --card-accent: #C49A3C; --card-plate: #1A1A18; --card-glow: rgba(44,74,30,0.15); }
-  
-    .card-julian { --card-wash: #2C4A1E; --card-accent: #C49A3C; --card-plate: #1A1A18; --card-glow: rgba(44,74,30,0.15); }
   </style>
 </head>
 <body>
@@ -428,63 +422,6 @@
             <div class="nameplate-name">Lewis Howard Latimer</div>
             <div class="nameplate-dates">1848 — 1928</div>
             <div class="nameplate-desc">Lewis Howard Latimer was a self-taught draftsman, inventor, and engineer who refined the carbon filament that made Edison's incandescent bulb commercially viable, then personally supervised the instal…</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      
-      <a href="https://museumofminds.com/lewis-latimer/" class="portrait-card card-latimer">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/THE_LEWIS_LATIMER_HOUSE.jpg/500px-THE_LEWIS_LATIMER_HOUSE.jpg"
-                 alt="Lewis Howard Latimer"
-                 onerror="this.style.background='#1A1A1A'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Lewis Howard Latimer</div>
-            <div class="nameplate-dates">1848 — 1928</div>
-            <div class="nameplate-desc">Lewis Howard Latimer was a self-taught draftsman, inventor, and engineer who refined the carbon filament that made Edison's incandescent bulb commercially viable, then personally supervised the instal…</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      
-      <a href="https://museumofminds.com/percy-julian/" class="portrait-card card-julian">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Percy_Lavon_Julian_%281899-1975%29_portrait.jpg"
-                 alt="Percy Lavon Julian"
-                 onerror="this.style.background='#1A1A18'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Percy Lavon Julian</div>
-            <div class="nameplate-dates">1899 — 1975</div>
-            <div class="nameplate-desc">Percy Lavon Julian was an African American chemist who pioneered the synthesis of medicinal compounds from soybeans, producing cortisone, progesterone, and physostigmine at industrial scale and transf…</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      
-      <a href="https://museumofminds.com/percy-julian/" class="portrait-card card-julian">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Percy_Lavon_Julian_%281899-1975%29_portrait.jpg"
-                 alt="Percy Lavon Julian"
-                 onerror="this.style.background='#1A1A18'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Percy Lavon Julian</div>
-            <div class="nameplate-dates">1899 — 1975</div>
-            <div class="nameplate-desc">Percy Lavon Julian was an African American chemist who pioneered the synthesis of medicinal compounds from soybeans, producing cortisone, progesterone, and physostigmine at industrial scale and transf…</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
