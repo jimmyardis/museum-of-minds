@@ -6,38 +6,37 @@
 <title>Franklin D. Roosevelt — Museum of Minds</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 
 <style>
   :root {
     --navy:        #1B3A5C;
-    --navy-deep:   #0F2236;
-    --navy-mid:    #1E4470;
-    --navy-light:  #2C5F8A;
+    --navy-deep:   #0E2238;
+    --navy-mid:    #2A4E78;
+    --navy-light:  #3A6496;
     --ivory:       #F5F0E8;
     --ivory-warm:  #EDE6D4;
-    --ivory-dim:   #D4C9B0;
-    --gold:        #B8933A;
-    --gold-light:  #D4AD52;
-    --gold-pale:   #E8D38A;
+    --ivory-dark:  #D8CEBC;
+    --brass:       #B8943A;
+    --brass-light: #D4AE56;
+    --brass-dark:  #8A6C24;
     --crimson:     #7A1C2E;
-    --smoke:       #8FA8C0;
-    --text-dark:   #0F1E2D;
-    --text-mid:    #2C4A62;
-    --text-light:  #F5F0E8;
+    --smoke:       #8A9BAC;
+    --text-dark:   #1A2A38;
+    --text-mid:    #3A4E5E;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { font-size: 16px; scroll-behavior: smooth; }
 
   body {
     background-color: var(--ivory);
     color: var(--text-dark);
-    font-family: 'IM Fell English', Georgia, serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
-    position: relative;
   }
 
   body::before {
@@ -46,8 +45,8 @@
     inset: 0;
     z-index: 1000;
     pointer-events: none;
-    opacity: 0.055;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   @keyframes fadeIn {
@@ -59,40 +58,39 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
+    from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes rotateSlow {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
 
-  /* ─── HEADER ─────────────────────────────────────────── */
+  /* ── HEADER ─────────────────────────────────────── */
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.1rem 3rem;
+    padding: 0.85rem 2.5rem;
     background-color: var(--navy-deep);
-    border-bottom: 2px solid var(--gold);
+    border-bottom: 2px solid var(--brass);
     animation: fadeDown 0.7s ease both;
   }
-  header .museum-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.58rem;
-    letter-spacing: 0.38em;
-    color: var(--gold-light);
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    color: var(--ivory-dark);
     text-transform: uppercase;
   }
-  header .accession {
+  .header-left span {
+    color: var(--brass-light);
+  }
+  .header-right {
     font-family: 'Cinzel', serif;
-    font-size: 0.54rem;
+    font-size: 0.55rem;
     letter-spacing: 0.28em;
     color: var(--smoke);
     text-transform: uppercase;
   }
 
-  /* ─── HERO ────────────────────────────────────────────── */
+  /* ── HERO ────────────────────────────────────────── */
   .hero {
     display: grid;
     grid-template-columns: 1.28fr 0.72fr;
@@ -114,335 +112,325 @@
 
   .hero-bio-panel {
     background-color: var(--ivory);
-    border-left: 3px solid var(--gold);
-    padding: 3.5rem 2.8rem 3rem 2.8rem;
+    border-left: 3px solid var(--brass);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.8rem;
-    animation: fadeUp 1s ease 0.5s both;
+    padding: 3rem 2.6rem 2.5rem 2.8rem;
+    animation: fadeUp 0.9s ease 0.5s both;
   }
 
-  .bio-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 0.54rem;
-    letter-spacing: 0.38em;
-    color: var(--navy-light);
+  .museum-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    color: var(--brass-dark);
     text-transform: uppercase;
-    margin-bottom: -0.8rem;
+    margin-bottom: 0.7rem;
   }
 
   .persona-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4.2vw, 4.6rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--navy-deep);
-    letter-spacing: -0.01em;
-  }
-  .persona-dates {
     font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    margin-top: 0.4rem;
+    font-size: clamp(1.7rem, 3.2vw, 3.4rem);
+    font-weight: 700;
+    color: var(--navy-deep);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+
+  .persona-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    color: var(--text-mid);
+    margin-bottom: 1.4rem;
   }
 
   /* Photo frame */
   .photo-frame {
     position: relative;
-    max-width: 270px;
-    margin: 0 auto;
-    align-self: center;
+    max-width: 260px;
+    margin: 0 auto 1.6rem auto;
+    display: block;
   }
   .photo-frame::before {
     content: '';
     position: absolute;
-    inset: -6px;
-    border: 1.5px solid var(--gold);
+    inset: -5px;
+    border: 1px solid var(--brass);
     pointer-events: none;
     z-index: 2;
   }
   .photo-frame::after {
     content: '';
     position: absolute;
-    inset: -13px;
-    border: 1px solid var(--navy-light);
+    inset: -12px;
+    border: 1px solid var(--brass-dark);
     pointer-events: none;
     z-index: 1;
   }
   .photo-frame img {
     display: block;
     width: 100%;
-    filter: grayscale(30%) sepia(25%) contrast(1.06) brightness(0.92);
+    height: auto;
+    filter: grayscale(25%) sepia(22%) contrast(1.06) brightness(0.91);
     position: relative;
-    z-index: 0;
+    z-index: 3;
   }
 
   /* Placard */
   .placard {
-    border-top: 1px solid var(--ivory-dim);
+    border-top: 1px solid var(--ivory-dark);
     padding-top: 1.2rem;
   }
-  .placard-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.35em;
-    color: var(--navy-light);
-    text-transform: uppercase;
-    margin-bottom: 0.55rem;
-  }
   .placard-tagline {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.96rem;
     font-style: italic;
-    font-size: 0.88rem;
+    font-weight: 400;
     color: var(--crimson);
     line-height: 1.55;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
   }
-  .placard-bio {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.82rem;
+  .placard-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    font-weight: 400;
     color: var(--text-mid);
-    line-height: 1.7;
+    line-height: 1.72;
   }
 
-  /* ─── TRANSITION BAND ─────────────────────────────────── */
+  /* ── TRANSITION BAND ─────────────────────────────── */
   .transition-band {
-    background-color: var(--navy-deep);
-    padding: 1.1rem 3rem;
+    background-color: var(--navy);
+    padding: 0.95rem 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.8rem;
-    border-top: 2px solid var(--gold);
-    border-bottom: 2px solid var(--gold);
+    gap: 1.5rem;
+    border-top: 2px solid var(--brass-dark);
+    border-bottom: 2px solid var(--brass-dark);
   }
   .band-rule {
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    background: linear-gradient(to right, transparent, var(--brass), transparent);
   }
   .band-ornament {
-    font-family: 'Cinzel', serif;
-    font-size: 0.56rem;
-    letter-spacing: 0.42em;
-    color: var(--gold-light);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.38em;
+    color: var(--brass-light);
     text-transform: uppercase;
-    white-space: nowrap;
   }
 
-  /* ─── CHATBOT SECTION ─────────────────────────────────── */
+  /* ── CHATBOT SECTION ──────────────────────────────── */
   .chatbot-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 560px;
+    min-height: 520px;
     background-color: var(--ivory-warm);
   }
 
   .chatbot-intro {
-    padding: 3.5rem 3rem 3.5rem 3.5rem;
-    border-right: 1px solid var(--ivory-dim);
+    padding: 3.5rem 3rem 3.5rem 3rem;
+    border-right: 1px solid var(--ivory-dark);
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 1.2rem;
   }
+
   .chatbot-intro h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2.1rem);
-    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
     color: var(--navy-deep);
-    line-height: 1.25;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
   }
+
   .chatbot-intro p {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.88rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.96rem;
     color: var(--text-mid);
-    line-height: 1.75;
+    line-height: 1.78;
   }
 
   .featured-quote {
-    border-left: 3px solid var(--gold);
-    padding: 0.9rem 1.2rem;
-    background-color: var(--ivory);
-    margin: 0.4rem 0;
+    border-left: 3px solid var(--brass);
+    padding: 0.8rem 1.2rem;
+    background-color: rgba(27, 58, 92, 0.05);
+    margin: 0.5rem 0;
   }
   .featured-quote p {
-    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 0.92rem;
-    color: var(--navy-deep);
-    line-height: 1.6;
-    margin-bottom: 0.3rem;
+    font-size: 1.02rem;
+    color: var(--navy);
+    line-height: 1.65;
   }
   .featured-quote cite {
-    font-family: 'Cinzel', serif;
-    font-size: 0.5rem;
+    display: block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.56rem;
     letter-spacing: 0.28em;
-    color: var(--gold);
+    color: var(--brass-dark);
+    margin-top: 0.5rem;
     text-transform: uppercase;
+    font-style: normal;
   }
 
   .domain-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem;
     margin-top: 0.4rem;
   }
   .domain-tag {
-    font-family: 'Cinzel', serif;
-    font-size: 0.5rem;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.56rem;
     letter-spacing: 0.25em;
-    color: var(--navy-light);
-    border: 1px solid var(--navy-light);
-    padding: 0.28rem 0.75rem;
     text-transform: uppercase;
+    color: var(--navy);
+    border: 1px solid var(--navy-mid);
+    padding: 0.28rem 0.7rem;
+    background: transparent;
   }
 
   .chatbot-embed {
     padding: 3rem 2.5rem;
     display: flex;
     align-items: stretch;
+    justify-content: stretch;
+    min-height: 460px;
     background-color: var(--ivory);
   }
-  #chatbot-container {
-    width: 100%;
-    min-height: 400px;
-  }
+  .chatbot-embed > * { width: 100%; }
 
-  /* ─── PULL QUOTE ──────────────────────────────────────── */
+  /* ── PULL QUOTE ──────────────────────────────────── */
   .pull-quote {
     background-color: var(--navy-deep);
-    padding: 4.5rem 6rem;
+    padding: 4rem 6rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .pull-quote::before {
-    content: '\201C';
-    position: absolute;
-    top: -1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 18rem;
-    color: var(--navy-mid);
-    line-height: 1;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.35;
+    border-top: 2px solid var(--brass-dark);
+    border-bottom: 2px solid var(--brass-dark);
   }
   .pull-quote blockquote {
-    position: relative;
-    z-index: 1;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+    font-weight: 300;
     font-style: italic;
-    font-size: clamp(1.2rem, 2.4vw, 1.95rem);
-    font-weight: 400;
     color: var(--ivory);
-    line-height: 1.55;
+    line-height: 1.65;
     max-width: 820px;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1.2rem auto;
+    position: relative;
+  }
+  .pull-quote blockquote::before {
+    content: '\201C';
+    font-size: 4rem;
+    color: var(--brass);
+    line-height: 0;
+    position: absolute;
+    top: 0.5rem;
+    left: -2.5rem;
+    font-style: normal;
   }
   .pull-quote cite {
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.38em;
-    color: var(--gold-light);
-    text-transform: uppercase;
     display: block;
-  }
-  .quote-rule {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.2rem auto;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.32em;
+    color: var(--brass-light);
+    text-transform: uppercase;
   }
 
-  /* ─── CORPUS STRIP ────────────────────────────────────── */
+  /* ── CORPUS STRIP ────────────────────────────────── */
   .corpus-strip {
     background-color: var(--navy);
-    padding: 2.4rem 3rem;
-    border-top: 1px solid var(--navy-light);
+    padding: 2.2rem 3rem;
+    border-top: 1px solid var(--brass-dark);
   }
   .corpus-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.52rem;
-    letter-spacing: 0.42em;
-    color: var(--gold);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.38em;
+    color: var(--brass-light);
     text-transform: uppercase;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     text-align: center;
   }
   .corpus-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem 2rem;
+    gap: 0.4rem 1.2rem;
     list-style: none;
-    max-width: 960px;
+    max-width: 880px;
     margin: 0 auto;
   }
   .corpus-list li {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.78rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    font-style: italic;
     color: var(--smoke);
-    position: relative;
-    padding-left: 1rem;
   }
   .corpus-list li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    font-size: 0.35rem;
-    color: var(--gold);
-    top: 0.38em;
+    content: '— ';
+    color: var(--brass-dark);
   }
 
-  /* ─── FOOTER ──────────────────────────────────────────── */
+  /* ── FOOTER ──────────────────────────────────────── */
   footer {
     background-color: var(--navy-deep);
-    border-top: 2px solid var(--gold);
-    padding: 2rem 3rem;
+    border-top: 2px solid var(--brass-dark);
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1.8rem 2.5rem;
     gap: 1rem;
+    align-items: center;
   }
   .footer-name {
     font-family: 'Cinzel', serif;
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    color: var(--ivory-warm);
-    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ivory);
+    letter-spacing: 0.1em;
   }
   .footer-name span {
     display: block;
-    font-size: 0.5rem;
-    color: var(--smoke);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-weight: 300;
     letter-spacing: 0.22em;
-    margin-top: 0.25rem;
+    color: var(--smoke);
+    margin-top: 0.2rem;
   }
   .footer-credit {
-    font-family: 'Cinzel', serif;
-    font-size: 0.52rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    color: var(--smoke);
     text-align: center;
-    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-credit a {
+    color: var(--brass-light);
+    text-decoration: none;
   }
   .footer-powered {
-    font-family: 'IM Fell English', serif;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
     font-style: italic;
-    font-size: 0.76rem;
-    color: var(--smoke);
+    color: var(--brass);
     text-align: right;
+    letter-spacing: 0.06em;
   }
 
-  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  /* ── RESPONSIVE ──────────────────────────────────── */
   @media (max-width: 900px) {
-    header { padding: 1rem 1.5rem; }
-
     .hero {
       grid-template-columns: 1fr;
       min-height: auto;
@@ -450,464 +438,417 @@
     .hero-svg-panel {
       height: 55vw;
       min-height: 300px;
-    }
-    .hero-svg-panel svg {
+      max-height: 480px;
       position: relative;
-      width: 100%;
-      height: 100%;
     }
     .hero-bio-panel {
       border-left: none;
-      border-top: 3px solid var(--gold);
+      border-top: 3px solid var(--brass);
       padding: 2rem 1.5rem;
     }
     .chatbot-section {
       grid-template-columns: 1fr;
     }
     .chatbot-intro {
-      padding: 2rem 1.5rem;
       border-right: none;
-      border-bottom: 1px solid var(--ivory-dim);
+      border-bottom: 1px solid var(--ivory-dark);
+      padding: 2rem 1.5rem;
     }
-    .chatbot-embed { padding: 2rem 1.5rem; }
-    .pull-quote { padding: 3rem 1.5rem; }
-    .corpus-strip { padding: 2rem 1.5rem; }
+    .chatbot-embed {
+      padding: 1.5rem;
+      min-height: 380px;
+    }
+    .pull-quote {
+      padding: 2.5rem 1.8rem;
+    }
+    .pull-quote blockquote::before {
+      left: -0.5rem;
+      top: 0.2rem;
+    }
     footer {
       grid-template-columns: 1fr;
       text-align: center;
       padding: 1.5rem;
-      gap: 0.8rem;
     }
     .footer-powered { text-align: center; }
-    .transition-band { padding: 1rem 1.5rem; }
+    .corpus-strip { padding: 1.8rem 1.5rem; }
   }
 </style>
 </head>
+
 <body>
 
-<!-- ─── HEADER ─────────────────────────────────────────── -->
+<!-- ── HEADER ────────────────────────────────────────── -->
 <header>
-  <div class="museum-label">In Conversation With</div>
-  <div class="accession">FDR–1882–2026</div>
+  <div class="header-left">
+    <span>Museum of Minds</span> &nbsp;·&nbsp; In Conversation With
+  </div>
+  <div class="header-right">FDR–1882–2026</div>
 </header>
 
-<!-- ─── HERO ──────────────────────────────────────────────── -->
+<!-- ── HERO ──────────────────────────────────────────── -->
 <section class="hero">
 
-  <!-- LEFT: SVG ILLUSTRATION -->
-  <!-- Visual world: The Oval Office in wartime, 1942–44 -->
-  <!-- Palette: midnight navy, warm lamp-amber, Roosevelt red, archive ivory -->
+  <!-- LEFT: Fireside Chat Radio Broadcast Scene SVG -->
   <div class="hero-svg-panel">
     <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice"
-         xmlns="http://www.w3.org/2000/svg" aria-label="Wartime Oval Office — a fireside chat broadcast scene, 1942">
+         xmlns="http://www.w3.org/2000/svg" aria-label="Oval Office fireside chat — radio microphones and New Deal era study">
+
       <defs>
-        <!-- Room gradient -->
-        <linearGradient id="roomBg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#0A1A2E"/>
-          <stop offset="60%"  stop-color="#12243D"/>
-          <stop offset="100%" stop-color="#0D1E34"/>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0A1828"/>
+          <stop offset="55%" stop-color="#0E2238"/>
+          <stop offset="100%" stop-color="#162E4A"/>
         </linearGradient>
-        <!-- Lamp glow -->
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1A3050"/>
+          <stop offset="100%" stop-color="#0E1C2E"/>
+        </linearGradient>
         <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#E8C060" stop-opacity="0.9"/>
-          <stop offset="40%"  stop-color="#C47820" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#0A1A2E"  stop-opacity="0"/>
+          <stop offset="0%" stop-color="#D4AE56" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#B8943A" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#B8943A" stop-opacity="0"/>
         </radialGradient>
-        <!-- Firelight -->
-        <radialGradient id="fireGlow" cx="50%" cy="30%" r="70%">
-          <stop offset="0%"   stop-color="#E07030" stop-opacity="0.7"/>
-          <stop offset="60%"  stop-color="#8B2010" stop-opacity="0.2"/>
-          <stop offset="100%" stop-color="#0A1A2E"  stop-opacity="0"/>
+        <radialGradient id="firGlow" cx="50%" cy="30%" r="55%">
+          <stop offset="0%" stop-color="#E8762A" stop-opacity="0.5"/>
+          <stop offset="60%" stop-color="#C84A1A" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#C84A1A" stop-opacity="0"/>
         </radialGradient>
-        <!-- Window light -->
-        <linearGradient id="windowLight" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#1A3A5C" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#0D2440" stop-opacity="1"/>
-        </linearGradient>
-        <!-- Desk surface -->
-        <linearGradient id="deskGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#5A3010"/>
-          <stop offset="100%" stop-color="#3A1C08"/>
-        </linearGradient>
-        <!-- Flag red stripe -->
-        <linearGradient id="flagStripe" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stop-color="#7A1C2E"/>
-          <stop offset="100%" stop-color="#9A2A3E"/>
-        </linearGradient>
+        <filter id="blur3" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3"/>
+        </filter>
+        <filter id="blur8" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="8"/>
+        </filter>
       </defs>
 
-      <!-- BACKGROUND — deep navy room -->
-      <rect width="700" height="900" fill="url(#roomBg)"/>
+      <!-- Background -->
+      <rect width="700" height="900" fill="url(#bgGrad)"/>
 
-      <!-- BACK WALL — panelled wainscot -->
-      <rect x="0" y="80" width="700" height="640" fill="#0E2035" opacity="0.95"/>
+      <!-- Distant wall texture — wainscoting panels -->
+      <rect x="0" y="80" width="700" height="520" fill="#12233A" opacity="0.6"/>
+      <!-- Wainscot lower rail -->
+      <rect x="0" y="540" width="700" height="8" fill="#0E1C2E"/>
+      <rect x="0" y="548" width="700" height="3" fill="#B8943A" opacity="0.4"/>
 
-      <!-- Wall panel mouldings -->
-      <!-- Main centre panel -->
-      <rect x="180" y="100" width="340" height="380" fill="none" stroke="#1E3A58" stroke-width="1.5"/>
-      <rect x="190" y="110" width="320" height="360" fill="none" stroke="#162E48" stroke-width="0.8"/>
-      <!-- Left panel -->
-      <rect x="30"  y="110" width="130" height="350" fill="none" stroke="#1A3450" stroke-width="1.2"/>
-      <rect x="40"  y="120" width="110" height="330" fill="none" stroke="#142840" stroke-width="0.6"/>
-      <!-- Right panel -->
-      <rect x="540" y="110" width="130" height="350" fill="none" stroke="#1A3450" stroke-width="1.2"/>
-      <rect x="550" y="120" width="110" height="330" fill="none" stroke="#142840" stroke-width="0.6"/>
+      <!-- Upper wall paneling — vertical shadow lines -->
+      <line x1="80" y1="80" x2="80" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
+      <line x1="200" y1="80" x2="200" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
+      <line x1="320" y1="80" x2="320" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
+      <line x1="440" y1="80" x2="440" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
+      <line x1="560" y1="80" x2="560" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
+      <line x1="620" y1="80" x2="620" y2="540" stroke="#0A1828" stroke-width="1.5" opacity="0.5"/>
 
-      <!-- SEAL OF THE PRESIDENT — on back wall, centre -->
-      <!-- Outer ring -->
-      <circle cx="350" cy="230" r="72" fill="#0C1E33" stroke="#C8922A" stroke-width="1.8"/>
-      <circle cx="350" cy="230" r="65" fill="none" stroke="#8A5A18" stroke-width="0.8"/>
-      <!-- Stars around ring (13) -->
-      <g fill="#C8922A" opacity="0.85">
-        <polygon points="350,162 352.5,169 360,169 354,173.5 356.5,181 350,176.5 343.5,181 346,173.5 340,169 347.5,169" transform="translate(0,0)"/>
-        <circle cx="385" cy="168" r="2.2"/>
-        <circle cx="414" cy="180" r="2.2"/>
-        <circle cx="428" cy="207" r="2.2"/>
-        <circle cx="428" cy="254" r="2.2"/>
-        <circle cx="414" cy="281" r="2.2"/>
-        <circle cx="385" cy="293" r="2.2"/>
-        <circle cx="315" cy="168" r="2.2"/>
-        <circle cx="286" cy="180" r="2.2"/>
-        <circle cx="272" cy="207" r="2.2"/>
-        <circle cx="272" cy="254" r="2.2"/>
-        <circle cx="286" cy="281" r="2.2"/>
-        <circle cx="315" cy="293" r="2.2"/>
-        <circle cx="350" cy="298" r="2.2"/>
-      </g>
-      <!-- Eagle body -->
-      <ellipse cx="350" cy="232" rx="30" ry="22" fill="#8A5A18" opacity="0.7"/>
-      <!-- Eagle wings -->
-      <path d="M300,218 Q320,210 350,215 Q380,210 400,218 Q390,235 370,230 L350,238 L330,230 Q310,235 300,218Z"
-            fill="#7A4A10" opacity="0.8"/>
-      <!-- Eagle head -->
-      <circle cx="350" cy="210" r="10" fill="#E8C060" opacity="0.6"/>
-      <!-- Shield on breast -->
-      <path d="M342,220 L358,220 L360,242 L350,248 L340,242Z" fill="#1B3A5C" stroke="#C8922A" stroke-width="0.6"/>
-      <!-- Motto ribbon -->
-      <path d="M308,252 Q350,262 392,252" fill="#1A3050" stroke="#C8922A" stroke-width="0.7"/>
-      <text x="350" y="259" text-anchor="middle" font-family="serif" font-size="4.5" fill="#C8922A" letter-spacing="0.5">E PLURIBUS UNUM</text>
-      <!-- Outer motto -->
-      <text x="350" y="177" text-anchor="middle" font-family="serif" font-size="5.5" fill="#C8922A" letter-spacing="1.8" opacity="0.7">SEAL OF THE PRESIDENT</text>
+      <!-- Lamp glow — upper left -->
+      <ellipse cx="98" cy="185" rx="120" ry="130" fill="url(#lampGlow)" filter="url(#blur8)"/>
 
-      <!-- LAMP GLOW (upper right) -->
-      <ellipse cx="570" cy="340" rx="140" ry="200" fill="url(#lampGlow)" opacity="0.55"/>
+      <!-- Fireplace glow — lower right -->
+      <ellipse cx="580" cy="480" rx="140" ry="100" fill="url(#firGlow)" filter="url(#blur8)"/>
 
-      <!-- DESK LAMP (right) -->
-      <!-- Lamp base -->
-      <rect x="556" y="530" width="28" height="6"  rx="3" fill="#2A1A08"/>
-      <rect x="564" y="490" width="10" height="42" fill="#3A2210" rx="2"/>
-      <!-- Lamp arm -->
-      <path d="M569,490 Q560,465 545,450" stroke="#3A2210" stroke-width="6" fill="none" stroke-linecap="round"/>
-      <!-- Lamp shade -->
-      <path d="M530,428 L562,442 L554,458 L524,444Z" fill="#B8600A" opacity="0.9"/>
-      <path d="M530,428 L562,442 L554,458 L524,444Z" fill="none" stroke="#8A4A08" stroke-width="0.8"/>
-      <!-- Lamp light cone -->
-      <path d="M537,450 L510,540 L580,540 L557,450Z" fill="#E8C060" opacity="0.08"/>
-
-      <!-- FIREPLACE (lower left) -->
-      <!-- Mantle surround -->
-      <rect x="30" y="490" width="180" height="200" rx="4" fill="#1A1008" stroke="#3A2808" stroke-width="2"/>
+      <!-- ── FIREPLACE ── -->
+      <!-- Mantle surround outer -->
+      <rect x="490" y="390" width="210" height="180" rx="0" fill="#1A2E48"/>
+      <rect x="490" y="390" width="210" height="6" fill="#B8943A" opacity="0.7"/>
       <!-- Mantle shelf -->
-      <rect x="20" y="484" width="200" height="14" rx="2" fill="#2A1A08" stroke="#4A3010" stroke-width="1.2"/>
-      <!-- Inner arch -->
-      <path d="M55,660 L55,540 Q55,510 90,510 Q125,510 125,540 L125,660Z" fill="#0A0806" stroke="#2A1A08" stroke-width="1"/>
-      <!-- Fireback -->
-      <rect x="58" y="545" width="64" height="110" fill="#1A0808"/>
-      <!-- Fire flames -->
-      <ellipse cx="90" cy="648" rx="30" ry="18" fill="#1A0808"/>
-      <path d="M70,648 Q75,620 80,635 Q82,615 88,628 Q92,608 94,625 Q100,610 104,630 Q108,618 110,648Z"
-            fill="#E07030" opacity="0.85"/>
-      <path d="M76,648 Q79,628 83,638 Q87,622 90,632 Q95,616 98,634 Q102,624 106,648Z"
-            fill="#F0A030" opacity="0.65"/>
-      <path d="M82,648 Q85,635 88,640 Q91,628 94,638 Q97,632 100,648Z"
-            fill="#F8E060" opacity="0.5"/>
-      <!-- Fire glow on floor -->
-      <ellipse cx="90" cy="665" rx="45" ry="8" fill="#E07030" opacity="0.12"/>
-      <!-- Firelight wash -->
-      <ellipse cx="160" cy="580" rx="180" ry="220" fill="url(#fireGlow)" opacity="0.3"/>
+      <rect x="480" y="385" width="220" height="14" fill="#2A3E58"/>
+      <rect x="480" y="385" width="220" height="2" fill="#D4AE56" opacity="0.5"/>
+      <!-- Fireplace opening -->
+      <rect x="512" y="410" width="164" height="130" rx="4" fill="#080E18"/>
+      <!-- Fire glow inside -->
+      <ellipse cx="594" cy="530" rx="65" ry="22" fill="#C84A1A" opacity="0.5" filter="url(#blur3)"/>
+      <ellipse cx="594" cy="522" rx="48" ry="18" fill="#E8762A" opacity="0.45" filter="url(#blur3)"/>
+      <ellipse cx="594" cy="515" rx="30" ry="12" fill="#F5A020" opacity="0.5" filter="url(#blur3)"/>
+      <!-- Fire flames — simple paths -->
+      <path d="M565,535 Q572,505 580,518 Q585,498 594,510 Q598,492 610,516 Q618,503 626,530 Z" fill="#E8762A" opacity="0.7"/>
+      <path d="M576,535 Q581,512 590,520 Q597,504 604,525 Z" fill="#F5C040" opacity="0.6"/>
       <!-- Andirons -->
-      <rect x="73" y="645" width="5" height="12" rx="2" fill="#4A3A28"/>
-      <rect x="102" y="645" width="5" height="12" rx="2" fill="#4A3A28"/>
-      <!-- Mantle clock -->
-      <rect x="75" y="462" width="32" height="20" rx="2" fill="#3A2808" stroke="#6A4810" stroke-width="0.8"/>
-      <circle cx="91" cy="471" r="7" fill="#0A0806" stroke="#8A6820" stroke-width="0.6"/>
-      <line x1="91" y1="471" x2="91" y2="465" stroke="#E8C060" stroke-width="0.8"/>
-      <line x1="91" y1="471" x2="95" y2="473" stroke="#E8C060" stroke-width="0.6"/>
-      <!-- Mantle ornaments -->
-      <rect x="40"  y="464" width="18" height="18" rx="1" fill="#1A3050" stroke="#C8922A" stroke-width="0.5" opacity="0.7"/>
-      <rect x="122" y="464" width="18" height="18" rx="1" fill="#1A3050" stroke="#C8922A" stroke-width="0.5" opacity="0.7"/>
-      <!-- Photo frames on mantle -->
-      <rect x="48" y="452" width="22" height="28" fill="#3A2808" stroke="#7A5820" stroke-width="0.8"/>
-      <rect x="51" y="455" width="16" height="20" fill="#1A2838" opacity="0.7"/>
-      <rect x="130" y="452" width="22" height="28" fill="#3A2808" stroke="#7A5820" stroke-width="0.8"/>
-      <rect x="133" y="455" width="16" height="20" fill="#1A2838" opacity="0.7"/>
+      <rect x="548" y="525" width="6" height="18" rx="2" fill="#3A5070"/>
+      <rect x="634" y="525" width="6" height="18" rx="2" fill="#3A5070"/>
+      <!-- Mantle decoration — small clock -->
+      <rect x="570" y="370" width="46" height="16" rx="2" fill="#2A3E58"/>
+      <ellipse cx="593" cy="374" rx="10" ry="10" fill="#1A2E48" stroke="#B8943A" stroke-width="1"/>
+      <line x1="593" y1="374" x2="593" y2="368" stroke="#D4AE56" stroke-width="1" opacity="0.8"/>
+      <line x1="593" y1="374" x2="598" y2="376" stroke="#D4AE56" stroke-width="1" opacity="0.8"/>
 
-      <!-- RESOLUTE DESK -->
-      <!-- Main desk body -->
-      <path d="M80,720 L620,720 L640,900 L60,900Z" fill="url(#deskGrad)"/>
-      <!-- Desk top surface -->
-      <path d="M80,720 L620,720 L610,734 L90,734Z" fill="#6A3818" opacity="0.9"/>
-      <!-- Desk surface sheen -->
-      <path d="M80,720 L200,720 L196,734 L90,734Z" fill="#7A4820" opacity="0.4"/>
-      <!-- Leather desk pad -->
-      <rect x="220" y="720" width="260" height="12" rx="1" fill="#1A2838" opacity="0.8"/>
-      <rect x="222" y="721" width="256" height="10" rx="1" fill="none" stroke="#3A5878" stroke-width="0.5"/>
-      <!-- Desk front panels -->
-      <rect x="105" y="740" width="80" height="100" rx="2" fill="#4A2810" stroke="#3A1808" stroke-width="0.8"/>
-      <rect x="112" y="748" width="66" height="84" fill="none" stroke="#5A3010" stroke-width="0.6"/>
-      <rect x="310" y="740" width="80" height="100" rx="2" fill="#4A2810" stroke="#3A1808" stroke-width="0.8"/>
-      <rect x="317" y="748" width="66" height="84" fill="none" stroke="#5A3010" stroke-width="0.6"/>
-      <rect x="515" y="740" width="80" height="100" rx="2" fill="#4A2810" stroke="#3A1808" stroke-width="0.8"/>
-      <rect x="522" y="748" width="66" height="84" fill="none" stroke="#5A3010" stroke-width="0.6"/>
-      <!-- Drawer pulls -->
-      <ellipse cx="145" cy="794" rx="10" ry="4" fill="none" stroke="#C8922A" stroke-width="1.2"/>
-      <ellipse cx="350" cy="794" rx="10" ry="4" fill="none" stroke="#C8922A" stroke-width="1.2"/>
-      <ellipse cx="555" cy="794" rx="10" ry="4" fill="none" stroke="#C8922A" stroke-width="1.2"/>
-      <!-- Brass corner details -->
-      <circle cx="105" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
-      <circle cx="185" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
-      <circle cx="310" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
-      <circle cx="390" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
-      <circle cx="515" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
-      <circle cx="595" cy="740" r="4" fill="#C8922A" opacity="0.7"/>
+      <!-- ── FLOOR ── -->
+      <rect x="0" y="551" width="700" height="349" fill="url(#floorGrad)"/>
+      <!-- Floor boards — horizontal lines -->
+      <line x1="0" y1="572" x2="700" y2="572" stroke="#0A1828" stroke-width="1.2" opacity="0.6"/>
+      <line x1="0" y1="596" x2="700" y2="596" stroke="#0A1828" stroke-width="1.2" opacity="0.5"/>
+      <line x1="0" y1="622" x2="700" y2="622" stroke="#0A1828" stroke-width="1.2" opacity="0.4"/>
+      <line x1="0" y1="650" x2="700" y2="650" stroke="#0A1828" stroke-width="1.2" opacity="0.35"/>
+      <!-- Area rug -->
+      <ellipse cx="350" cy="660" rx="300" ry="95" fill="#1A2E48" opacity="0.7"/>
+      <ellipse cx="350" cy="660" rx="285" ry="80" fill="none" stroke="#B8943A" stroke-width="1.5" opacity="0.35"/>
+      <ellipse cx="350" cy="660" rx="260" ry="66" fill="none" stroke="#B8943A" stroke-width="0.8" opacity="0.2"/>
 
-      <!-- DESK OBJECTS -->
-      <!-- Documents / papers -->
-      <rect x="155" y="710" width="100" height="12" rx="1" fill="#F0E8D0" opacity="0.85" transform="rotate(-3,205,716)"/>
-      <rect x="160" y="712" width="90" height="10" rx="1" fill="#F5EDD8" opacity="0.6" transform="rotate(1,205,716)"/>
-      <!-- Text lines on paper -->
-      <line x1="162" y1="714" x2="245" y2="714" stroke="#1A2838" stroke-width="0.6" opacity="0.5"/>
-      <line x1="162" y1="717" x2="238" y2="717" stroke="#1A2838" stroke-width="0.6" opacity="0.4"/>
-      <line x1="162" y1="720" x2="230" y2="720" stroke="#1A2838" stroke-width="0.6" opacity="0.3"/>
-      <!-- Telephone (Bakelite) -->
-      <ellipse cx="460" cy="716" rx="36" ry="10" fill="#1A1208" opacity="0.95"/>
-      <rect x="440" y="706" width="40" height="12" rx="3" fill="#1A1208"/>
-      <ellipse cx="455" cy="707" rx="8" ry="5" fill="#0A0A08"/>
-      <ellipse cx="475" cy="707" rx="8" ry="5" fill="#0A0A08"/>
-      <rect x="450" y="703" width="10" height="8" rx="1" fill="#1A1208" stroke="#3A3028" stroke-width="0.5"/>
-      <!-- Ashtray + cigarette holder -->
-      <ellipse cx="390" cy="720" rx="16" ry="6" fill="#2A1A08" stroke="#7A5820" stroke-width="0.8"/>
-      <line x1="382" y1="714" x2="376" y2="700" stroke="#F5EDD8" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-      <line x1="376" y1="700" x2="372" y2="688" stroke="#F5EDD8" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <!-- Cigarette smoke wisps -->
-      <path d="M372,688 Q368,678 373,668 Q378,658 372,648" stroke="#8A9090" stroke-width="1" fill="none" opacity="0.35" stroke-linecap="round"/>
-      <path d="M374,686 Q371,675 376,664" stroke="#8A9090" stroke-width="0.6" fill="none" opacity="0.2" stroke-linecap="round"/>
-      <!-- Inkwell and pen -->
-      <circle cx="305" cy="717" r="8" fill="#1A1208" stroke="#4A3820" stroke-width="0.8"/>
-      <circle cx="305" cy="717" r="5" fill="#0A0808"/>
-      <line x1="305" y1="714" x2="318" y2="700" stroke="#8A6820" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- ── DESK ── -->
+      <!-- Desk surface -->
+      <rect x="110" y="530" width="400" height="22" rx="2" fill="#1E3452"/>
+      <rect x="110" y="528" width="400" height="5" fill="#2A4468" rx="1"/>
+      <rect x="110" y="528" width="400" height="1.5" fill="#D4AE56" opacity="0.4"/>
+      <!-- Desk legs (implied) -->
+      <rect x="120" y="552" width="18" height="80" fill="#1A2E48"/>
+      <rect x="480" y="552" width="18" height="80" fill="#1A2E48"/>
 
-      <!-- RADIO MICROPHONE (CBS/NBC) — fireside chat era -->
-      <rect x="318" y="656" width="64" height="58" rx="4" fill="#1A1208" stroke="#4A3820" stroke-width="1.2"/>
-      <!-- Mic grille -->
-      <rect x="322" y="660" width="56" height="50" rx="3" fill="#0A0A08" stroke="#2A1A08" stroke-width="0.6"/>
-      <!-- Grille lines -->
-      <line x1="322" y1="668" x2="378" y2="668" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="674" x2="378" y2="674" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="680" x2="378" y2="680" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="686" x2="378" y2="686" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="692" x2="378" y2="692" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="698" x2="378" y2="698" stroke="#3A2A18" stroke-width="0.5"/>
-      <line x1="322" y1="704" x2="378" y2="704" stroke="#3A2A18" stroke-width="0.5"/>
-      <!-- Network placards on mic -->
-      <rect x="329" y="663" width="20" height="7" rx="1" fill="#7A1C2E"/>
-      <text x="339" y="669.5" text-anchor="middle" font-family="serif" font-size="4.5" fill="#F5F0E8" letter-spacing="0.5">CBS</text>
-      <rect x="351" y="663" width="20" height="7" rx="1" fill="#1B3A5C"/>
-      <text x="361" y="669.5" text-anchor="middle" font-family="serif" font-size="4.5" fill="#F5F0E8" letter-spacing="0.5">NBC</text>
-      <!-- Mic stand -->
-      <rect x="346" y="714" width="8" height="8" rx="1" fill="#2A1A08" stroke="#4A3820" stroke-width="0.6"/>
+      <!-- Desk items: paper stacks -->
+      <rect x="130" y="510" width="60" height="22" rx="1" fill="#E8DFCC" opacity="0.85"/>
+      <rect x="134" y="514" width="52" height="1.5" fill="#1A2E48" opacity="0.3"/>
+      <rect x="134" y="518" width="44" height="1.5" fill="#1A2E48" opacity="0.3"/>
+      <rect x="134" y="522" width="48" height="1.5" fill="#1A2E48" opacity="0.3"/>
+      <!-- Second paper -->
+      <rect x="200" y="514" width="50" height="18" rx="1" fill="#E2D8C0" opacity="0.75"/>
+      <rect x="204" y="518" width="42" height="1.2" fill="#1A2E48" opacity="0.3"/>
+      <rect x="204" y="522" width="36" height="1.2" fill="#1A2E48" opacity="0.3"/>
 
-      <!-- AMERICAN FLAG (right side) -->
-      <!-- Pole -->
-      <rect x="600" y="110" width="5" height="460" rx="2" fill="#7A5828"/>
-      <!-- Finial -->
-      <polygon points="602.5,105 606,113 599,113" fill="#C8922A"/>
+      <!-- Ink well -->
+      <ellipse cx="310" cy="524" rx="12" ry="8" fill="#0D1828"/>
+      <ellipse cx="310" cy="521" rx="10" ry="6" fill="#142238"/>
+      <ellipse cx="310" cy="520" rx="8" ry="4" fill="#1A3050" opacity="0.8"/>
+
+      <!-- Cigarette holder & ashtray — FDR signature prop -->
+      <ellipse cx="355" cy="526" rx="14" ry="5" fill="#1A2C44"/>
+      <rect x="350" y="512" width="2" height="14" rx="1" fill="#D4AE56" opacity="0.8" transform="rotate(-8,351,519)"/>
+      <!-- Smoke wisps -->
+      <path d="M349,510 Q345,502 349,496 Q354,490 350,484" stroke="#8A9BAC" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M351,508 Q357,500 353,494" stroke="#8A9BAC" stroke-width="0.8" fill="none" opacity="0.3"/>
+
+      <!-- ── RADIO MICROPHONES (NBC / CBS fireside chat mics) ── -->
+      <!-- Mic stand left -->
+      <rect x="258" y="440" width="4" height="90" fill="#2A4060"/>
+      <rect x="246" y="527" width="28" height="6" rx="2" fill="#1E3452"/>
+      <!-- Mic head left — classic RCA ribbon mic shape -->
+      <rect x="250" y="400" width="20" height="42" rx="8" fill="#2A4060"/>
+      <rect x="253" y="404" width="14" height="34" rx="6" fill="#3A5278"/>
+      <!-- Horizontal grille lines on mic -->
+      <line x1="252" y1="410" x2="268" y2="410" stroke="#1E3050" stroke-width="1" opacity="0.7"/>
+      <line x1="252" y1="415" x2="268" y2="415" stroke="#1E3050" stroke-width="1" opacity="0.7"/>
+      <line x1="252" y1="420" x2="268" y2="420" stroke="#1E3050" stroke-width="1" opacity="0.7"/>
+      <line x1="252" y1="425" x2="268" y2="425" stroke="#1E3050" stroke-width="1" opacity="0.7"/>
+      <line x1="252" y1="430" x2="268" y2="430" stroke="#1E3050" stroke-width="1" opacity="0.7"/>
+      <!-- NBC badge on mic -->
+      <rect x="253" y="437" width="14" height="5" rx="1" fill="#D4AE56" opacity="0.8"/>
+      <text x="260" y="441" font-family="serif" font-size="3.5" fill="#0E1C2E" text-anchor="middle" font-weight="bold">NBC</text>
+
+      <!-- Mic stand right -->
+      <rect x="420" y="440" width="4" height="90" fill="#2A4060"/>
+      <rect x="408" y="527" width="28" height="6" rx="2" fill="#1E3452"/>
+      <!-- Mic head right — CBS oval mic shape -->
+      <ellipse cx="422" cy="422" rx="14" ry="22" fill="#2A4060"/>
+      <ellipse cx="422" cy="422" rx="10" ry="17" fill="#3A5278"/>
+      <line x1="413" y1="412" x2="431" y2="412" stroke="#1E3050" stroke-width="1" opacity="0.6"/>
+      <line x1="412" y1="418" x2="432" y2="418" stroke="#1E3050" stroke-width="1" opacity="0.6"/>
+      <line x1="412" y1="424" x2="432" y2="424" stroke="#1E3050" stroke-width="1" opacity="0.6"/>
+      <line x1="413" y1="430" x2="431" y2="430" stroke="#1E3050" stroke-width="1" opacity="0.6"/>
+      <!-- CBS badge -->
+      <rect x="414" y="436" width="16" height="5" rx="1" fill="#B8943A" opacity="0.8"/>
+      <text x="422" y="440" font-family="serif" font-size="3.5" fill="#0E1C2E" text-anchor="middle" font-weight="bold">CBS</text>
+
+      <!-- Broadcast cable -->
+      <path d="M260,530 Q280,580 310,575 Q340,570 360,575 Q390,582 420,530" stroke="#2A4060" stroke-width="3" fill="none" opacity="0.7"/>
+
+      <!-- ── LAMP (left desk) ── -->
+      <!-- Lamp base -->
+      <ellipse cx="100" cy="526" rx="20" ry="6" fill="#1E3452"/>
+      <rect x="97" y="440" width="6" height="90" fill="#2A4060"/>
+      <!-- Lamp shade -->
+      <path d="M68,440 L132,440 L120,398 L80,398 Z" fill="#2A4060"/>
+      <path d="M68,440 L132,440 L120,398 L80,398 Z" fill="none" stroke="#B8943A" stroke-width="1.2" opacity="0.5"/>
+      <!-- Warm light cone from lamp -->
+      <path d="M80,440 L132,440 L155,540 L55,540 Z" fill="#D4AE56" opacity="0.07" filter="url(#blur3)"/>
+
+      <!-- ── BOOKSHELVES — left side ── -->
+      <rect x="0" y="80" width="68" height="460" fill="#0E1C2E"/>
+      <rect x="0" y="80" width="68" height="460" fill="#0A1828" opacity="0.4"/>
+      <!-- Shelf lines -->
+      <rect x="0" y="158" width="68" height="4" fill="#1A2E48"/>
+      <rect x="0" y="240" width="68" height="4" fill="#1A2E48"/>
+      <rect x="0" y="322" width="68" height="4" fill="#1A2E48"/>
+      <rect x="0" y="404" width="68" height="4" fill="#1A2E48"/>
+      <!-- Books row 1 -->
+      <rect x="4" y="90" width="8" height="65" rx="1" fill="#7A1C2E"/>
+      <rect x="13" y="95" width="6" height="60" rx="1" fill="#2A4E78"/>
+      <rect x="20" y="88" width="9" height="67" rx="1" fill="#3A5278"/>
+      <rect x="30" y="93" width="7" height="62" rx="1" fill="#8A6C24"/>
+      <rect x="38" y="90" width="8" height="65" rx="1" fill="#1A3A3A"/>
+      <rect x="47" y="96" width="6" height="59" rx="1" fill="#4A2A48"/>
+      <rect x="54" y="91" width="9" height="64" rx="1" fill="#2A4060"/>
+      <!-- Books row 2 -->
+      <rect x="4" y="166" width="7" height="70" rx="1" fill="#2A4060"/>
+      <rect x="12" y="170" width="9" height="66" rx="1" fill="#3A2A18"/>
+      <rect x="22" y="165" width="6" height="71" rx="1" fill="#7A1C2E"/>
+      <rect x="29" y="168" width="8" height="68" rx="1" fill="#1E3452"/>
+      <rect x="38" y="166" width="7" height="70" rx="1" fill="#8A6C24"/>
+      <rect x="46" y="170" width="9" height="66" rx="1" fill="#2A4060"/>
+      <rect x="56" y="167" width="7" height="69" rx="1" fill="#3A5278"/>
+      <!-- Books row 3 -->
+      <rect x="5" y="248" width="8" height="68" rx="1" fill="#3A2A18"/>
+      <rect x="14" y="252" width="7" height="64" rx="1" fill="#1A3A3A"/>
+      <rect x="22" y="247" width="9" height="70" rx="1" fill="#2A4E78"/>
+      <rect x="32" y="250" width="6" height="67" rx="1" fill="#4A2A48"/>
+      <rect x="39" y="248" width="8" height="68" rx="1" fill="#7A1C2E"/>
+      <rect x="48" y="252" width="7" height="64" rx="1" fill="#8A6C24"/>
+      <rect x="56" y="249" width="8" height="67" rx="1" fill="#2A4060"/>
+      <!-- Books row 4 -->
+      <rect x="4" y="330" width="9" height="68" rx="1" fill="#2A4060"/>
+      <rect x="14" y="334" width="7" height="64" rx="1" fill="#7A1C2E"/>
+      <rect x="22" y="330" width="8" height="68" rx="1" fill="#3A5278"/>
+      <rect x="31" y="333" width="6" height="65" rx="1" fill="#8A6C24"/>
+      <rect x="38" y="331" width="9" height="67" rx="1" fill="#1E3452"/>
+      <rect x="48" y="335" width="7" height="63" rx="1" fill="#3A2A18"/>
+      <rect x="56" y="330" width="8" height="68" rx="1" fill="#2A4E78"/>
+
+      <!-- ── AMERICAN FLAG — far right wall ── -->
+      <!-- Flag pole -->
+      <rect x="635" y="82" width="4" height="300" fill="#2A4060"/>
+      <!-- Eagle finial -->
+      <ellipse cx="637" cy="80" rx="9" ry="7" fill="#B8943A"/>
+      <path d="M628,78 Q637,68 646,78" fill="#B8943A"/>
       <!-- Flag body -->
-      <rect x="605" y="115" width="72" height="115" fill="#7A1C2E"/>
-      <!-- White stripes -->
-      <rect x="605" y="124" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
-      <rect x="605" y="142" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
-      <rect x="605" y="160" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
-      <rect x="605" y="178" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
-      <rect x="605" y="196" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
-      <rect x="605" y="214" width="72" height="9"  fill="#F5F0E8" opacity="0.9"/>
+      <rect x="639" y="90" width="52" height="88" fill="#6B1A1A"/>
+      <!-- Stripes -->
+      <rect x="639" y="96" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
+      <rect x="639" y="108" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
+      <rect x="639" y="120" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
+      <rect x="639" y="132" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
+      <rect x="639" y="144" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
+      <rect x="639" y="156" width="52" height="6" fill="#F5F0E8" opacity="0.8"/>
       <!-- Canton blue -->
-      <rect x="605" y="115" width="38" height="62" fill="#1B3A5C"/>
-      <!-- Stars (simplified grid) -->
-      <g fill="#F5F0E8" opacity="0.85">
-        <circle cx="611" cy="121" r="1.5"/><circle cx="619" cy="121" r="1.5"/><circle cx="627" cy="121" r="1.5"/><circle cx="635" cy="121" r="1.5"/><circle cx="643" cy="121" r="1.5"/>
-        <circle cx="615" cy="127" r="1.5"/><circle cx="623" cy="127" r="1.5"/><circle cx="631" cy="127" r="1.5"/><circle cx="639" cy="127" r="1.5"/>
-        <circle cx="611" cy="133" r="1.5"/><circle cx="619" cy="133" r="1.5"/><circle cx="627" cy="133" r="1.5"/><circle cx="635" cy="133" r="1.5"/><circle cx="643" cy="133" r="1.5"/>
-        <circle cx="615" cy="139" r="1.5"/><circle cx="623" cy="139" r="1.5"/><circle cx="631" cy="139" r="1.5"/><circle cx="639" cy="139" r="1.5"/>
-        <circle cx="611" cy="145" r="1.5"/><circle cx="619" cy="145" r="1.5"/><circle cx="627" cy="145" r="1.5"/><circle cx="635" cy="145" r="1.5"/><circle cx="643" cy="145" r="1.5"/>
-        <circle cx="615" cy="151" r="1.5"/><circle cx="623" cy="151" r="1.5"/><circle cx="631" cy="151" r="1.5"/><circle cx="639" cy="151" r="1.5"/>
-        <circle cx="611" cy="157" r="1.5"/><circle cx="619" cy="157" r="1.5"/><circle cx="627" cy="157" r="1.5"/><circle cx="635" cy="157" r="1.5"/><circle cx="643" cy="157" r="1.5"/>
-        <circle cx="615" cy="163" r="1.5"/><circle cx="623" cy="163" r="1.5"/><circle cx="631" cy="163" r="1.5"/><circle cx="639" cy="163" r="1.5"/>
-        <circle cx="611" cy="169" r="1.5"/><circle cx="619" cy="169" r="1.5"/><circle cx="627" cy="169" r="1.5"/><circle cx="635" cy="169" r="1.5"/><circle cx="643" cy="169" r="1.5"/>
+      <rect x="639" y="90" width="22" height="42" fill="#1B3A5C"/>
+      <!-- Stars (simplified) -->
+      <text x="650" y="108" font-family="serif" font-size="6" fill="#F5F0E8" opacity="0.9">★★★</text>
+      <text x="648" y="116" font-family="serif" font-size="6" fill="#F5F0E8" opacity="0.9">★★★</text>
+      <text x="650" y="124" font-family="serif" font-size="6" fill="#F5F0E8" opacity="0.9">★★★</text>
+
+      <!-- ── WHEELCHAIR — subtle, partial, behind desk edge ── -->
+      <!-- Wheel rim suggestion (just peeking at left) -->
+      <circle cx="90" cy="620" r="38" fill="none" stroke="#2A4060" stroke-width="3" opacity="0.6"/>
+      <circle cx="90" cy="620" r="30" fill="none" stroke="#1E3050" stroke-width="1" opacity="0.4"/>
+      <!-- Spokes -->
+      <line x1="90" y1="582" x2="90" y2="658" stroke="#2A4060" stroke-width="1.5" opacity="0.5"/>
+      <line x1="52" y1="620" x2="128" y2="620" stroke="#2A4060" stroke-width="1.5" opacity="0.5"/>
+      <line x1="63" y1="593" x2="117" y2="647" stroke="#2A4060" stroke-width="1.5" opacity="0.5"/>
+      <line x1="117" y1="593" x2="63" y2="647" stroke="#2A4060" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- ── RADIO BROADCAST NOTE on desk ── -->
+      <rect x="385" y="509" width="68" height="22" rx="1" fill="#E8DFCC" opacity="0.9"/>
+      <text x="419" y="519" font-family="serif" font-size="5.5" fill="#1A2E48" text-anchor="middle" font-style="italic" opacity="0.85">Fireside Chat</text>
+      <text x="419" y="526" font-family="serif" font-size="4.5" fill="#1A2E48" text-anchor="middle" opacity="0.65">March 12, 1933</text>
+
+      <!-- ── ANNOTATION LAYER ── -->
+      <!-- Title block bottom -->
+      <rect x="0" y="840" width="700" height="60" fill="#0A1828" opacity="0.85"/>
+      <line x1="0" y1="840" x2="700" y2="840" stroke="#B8943A" stroke-width="1" opacity="0.6"/>
+      <text x="350" y="862" font-family="'Cinzel', serif" font-size="11" fill="#D4AE56" text-anchor="middle" letter-spacing="4">THE OVAL OFFICE — FIRESIDE BROADCAST</text>
+      <text x="350" y="880" font-family="serif" font-size="8" fill="#8A9BAC" text-anchor="middle" font-style="italic" letter-spacing="2">Washington, D.C. · 1933–1944</text>
+      <text x="30" y="892" font-family="serif" font-size="7" fill="#8A9BAC" opacity="0.5" font-style="italic">Pl. IV</text>
+      <text x="670" y="892" font-family="serif" font-size="7" fill="#8A9BAC" opacity="0.5" font-style="italic" text-anchor="end">Museum of Minds</text>
+
+      <!-- Compass rose — subtle, lower right of main area -->
+      <g transform="translate(650, 690)" opacity="0.4">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#B8943A" stroke-width="0.8"/>
+        <polygon points="0,-16 3,-6 0,-9 -3,-6" fill="#B8943A"/>
+        <polygon points="0,16 3,6 0,9 -3,6" fill="#3A5278"/>
+        <polygon points="-16,0 -6,-3 -9,0 -6,3" fill="#3A5278"/>
+        <polygon points="16,0 6,-3 9,0 6,3" fill="#3A5278"/>
+        <text x="0" y="-20" font-family="serif" font-size="7" fill="#D4AE56" text-anchor="middle">N</text>
       </g>
-      <!-- Flag shadow fold -->
-      <line x1="625" y1="115" x2="628" y2="230" stroke="#0A1428" stroke-width="1.5" opacity="0.35"/>
 
-      <!-- WINDOW (upper centre) — wartime blackout curtain parted slightly -->
-      <!-- Window frame -->
-      <rect x="270" y="95" width="160" height="180" rx="3" fill="#0A1428" stroke="#2A3A50" stroke-width="2"/>
-      <rect x="274" y="99" width="152" height="172" fill="#0E1E34"/>
-      <!-- Window panes -->
-      <line x1="350" y1="99" x2="350" y2="271" stroke="#2A3A50" stroke-width="1.5"/>
-      <line x1="274" y1="183" x2="426" y2="183" stroke="#2A3A50" stroke-width="1.5"/>
-      <!-- Blackout curtains -->
-      <rect x="274" y="99" width="40" height="172" fill="#0A0E18" opacity="0.92"/>
-      <rect x="392" y="99" width="34" height="172" fill="#0A0E18" opacity="0.92"/>
-      <!-- Night sky glimpse through gap -->
-      <rect x="314" y="99" width="78" height="172" fill="#0C1830" opacity="0.85"/>
-      <!-- Stars in night sky -->
-      <circle cx="330" cy="128" r="1.2" fill="#F5F0E8" opacity="0.7"/>
-      <circle cx="358" cy="114" r="0.9" fill="#F5F0E8" opacity="0.5"/>
-      <circle cx="375" cy="140" r="1.1" fill="#F5F0E8" opacity="0.6"/>
-      <circle cx="345" cy="155" r="0.8" fill="#F5F0E8" opacity="0.4"/>
-      <circle cx="368" cy="168" r="1.0" fill="#F5F0E8" opacity="0.55"/>
-      <circle cx="325" cy="190" r="0.7" fill="#F5F0E8" opacity="0.4"/>
-      <circle cx="383" cy="110" r="0.8" fill="#F5F0E8" opacity="0.5"/>
-      <!-- Curtain folds -->
-      <path d="M274,99 Q278,160 276,271" stroke="#1A2030" stroke-width="1" fill="none" opacity="0.5"/>
-      <path d="M314,99 Q316,180 314,271" stroke="#1A2030" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <!-- Dimension lines — mic spacing -->
+      <line x1="260" y1="380" x2="422" y2="380" stroke="#B8943A" stroke-width="0.7" stroke-dasharray="4,3" opacity="0.4"/>
+      <line x1="260" y1="375" x2="260" y2="385" stroke="#B8943A" stroke-width="0.8" opacity="0.4"/>
+      <line x1="422" y1="375" x2="422" y2="385" stroke="#B8943A" stroke-width="0.8" opacity="0.4"/>
+      <text x="341" y="376" font-family="serif" font-size="7" fill="#B8943A" text-anchor="middle" font-style="italic" opacity="0.5">Broadcast array</text>
 
-      <!-- BOOKSHELF (far right wall, partial) -->
-      <rect x="0" y="120" width="28" height="360" fill="#0E1A28" stroke="#1A2A40" stroke-width="0.8"/>
-      <!-- Book spines -->
-      <rect x="3"  y="128" width="22" height="30" rx="1" fill="#5A2810"/>
-      <rect x="3"  y="160" width="22" height="22" rx="1" fill="#1A3050"/>
-      <rect x="3"  y="184" width="22" height="35" rx="1" fill="#3A1A08"/>
-      <rect x="3"  y="221" width="22" height="28" rx="1" fill="#0E2838"/>
-      <rect x="3"  y="251" width="22" height="20" rx="1" fill="#4A2018"/>
-      <rect x="3"  y="273" width="22" height="32" rx="1" fill="#1A4030"/>
-      <rect x="3"  y="307" width="22" height="25" rx="1" fill="#2A1040"/>
-      <rect x="3"  y="334" width="22" height="38" rx="1" fill="#5A1818"/>
-      <rect x="3"  y="374" width="22" height="24" rx="1" fill="#1A2A50"/>
-      <rect x="3"  y="400" width="22" height="30" rx="1" fill="#3A2808"/>
-      <rect x="3"  y="432" width="22" height="28" rx="1" fill="#1A4038"/>
-      <!-- Book title gold lines -->
-      <line x1="5" y1="135" x2="23" y2="135" stroke="#C8922A" stroke-width="0.5" opacity="0.5"/>
-      <line x1="5" y1="167" x2="23" y2="167" stroke="#C8922A" stroke-width="0.5" opacity="0.5"/>
+      <!-- Marginalia -->
+      <text x="695" y="420" font-family="serif" font-size="7.5" fill="#8A9BAC" text-anchor="end" font-style="italic" opacity="0.45" transform="rotate(-90,695,420)">NBC · CBS · Mutual</text>
 
-      <!-- FLOOR -->
-      <path d="M0,850 L700,850 L700,900 L0,900Z" fill="#0A0E18"/>
-      <!-- Parquet floor lines -->
-      <path d="M0,850 L700,850" stroke="#1A2030" stroke-width="0.5"/>
-      <g stroke="#1A2030" stroke-width="0.3" opacity="0.5">
-        <line x1="0" y1="860" x2="700" y2="860"/>
-        <line x1="0" y1="870" x2="700" y2="870"/>
-        <line x1="0" y1="880" x2="700" y2="880"/>
-        <line x1="100" y1="850" x2="80" y2="900"/>
-        <line x1="200" y1="850" x2="180" y2="900"/>
-        <line x1="300" y1="850" x2="280" y2="900"/>
-        <line x1="400" y1="850" x2="380" y2="900"/>
-        <line x1="500" y1="850" x2="480" y2="900"/>
-        <line x1="600" y1="850" x2="580" y2="900"/>
-      </g>
-      <!-- Presidential rug edge -->
-      <path d="M30,720 L670,720 L670,855 L30,855Z" fill="none" stroke="#7A1C2E" stroke-width="2" opacity="0.35"/>
-      <path d="M38,728 L662,728 L662,847 L38,847Z" fill="none" stroke="#C8922A" stroke-width="0.7" opacity="0.3"/>
-
-      <!-- CHAIR (wheelchair/desk chair — FDR's leg braces under desk implied) -->
-      <!-- Chair back -->
-      <path d="M310,620 L390,620 L400,660 L300,660Z" fill="#1A2838" stroke="#2A3A50" stroke-width="1"/>
-      <!-- Chair top rail -->
-      <rect x="305" y="614" width="90" height="10" rx="5" fill="#1E3050" stroke="#2A3A58" stroke-width="0.8"/>
-      <!-- Chair arms (implied) -->
-      <rect x="298" y="630" width="14" height="38" rx="4" fill="#1A2838" stroke="#2A3850" stroke-width="0.8"/>
-      <rect x="388" y="630" width="14" height="38" rx="4" fill="#1A2838" stroke="#2A3850" stroke-width="0.8"/>
-
-      <!-- ANNOTATION LAYER — title block style -->
-      <!-- Bottom label panel -->
-      <rect x="0" y="832" width="700" height="18" fill="#0A1428" opacity="0.85"/>
-      <line x1="0" y1="832" x2="700" y2="832" stroke="#C8922A" stroke-width="0.7"/>
-      <text x="350" y="843.5" text-anchor="middle" font-family="Georgia, serif" font-size="7"
-            fill="#C8922A" letter-spacing="2.5" opacity="0.9">THE OVAL OFFICE — WARTIME BROADCAST — WASHINGTON, D.C. — 1942</text>
-      <!-- Side annotation -->
-      <text x="12" y="600" font-family="Georgia, serif" font-size="6.5"
-            fill="#4A6A8A" letter-spacing="1" transform="rotate(-90,12,600)" opacity="0.6">FIRESIDE CHAT SERIES · RADIO ADDRESS</text>
-      <!-- Corner accession -->
-      <text x="688" y="848" text-anchor="end" font-family="Georgia, serif" font-size="5.5"
-            fill="#4A6A8A" opacity="0.5">FDR–1882–2026</text>
     </svg>
   </div>
 
-  <!-- RIGHT: BIO PANEL -->
+  <!-- RIGHT: Bio Panel -->
   <div class="hero-bio-panel">
-    <div class="bio-eyebrow">Museum of Minds</div>
+    <div class="museum-label">Museum of Minds &nbsp;·&nbsp; Gallery IV</div>
 
-    <div>
-      <h1 class="persona-name">Franklin D.<br>Roosevelt</h1>
-      <div class="persona-dates">1882 — 1945</div>
-    </div>
+    <h1 class="persona-name">Franklin<br>D. Roosevelt</h1>
+    <div class="persona-dates">1882 &ensp;—&ensp; 1945</div>
 
     <div class="photo-frame">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Franklin_D._Roosevelt%2C_a_formal_portrait_in_Groton%2C_Massachusetts_-_NARA_-_196688.jpg/500px-Franklin_D._Roosevelt%2C_a_formal_portrait_in_Groton%2C_Massachusetts_-_NARA_-_196688.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
         alt="Franklin D. Roosevelt formal portrait"
-        onerror="this.style.background='#1B3A5C';this.style.minHeight='320px';this.removeAttribute('src')"
-      >
+        onerror="this.style.background='#1B3A5C';this.style.minHeight='320px';this.alt='Portrait unavailable';"
+      />
     </div>
 
     <div class="placard">
-      <div class="placard-title">Curatorial Note</div>
-      <p class="placard-tagline">The patrician who saved capitalism by making its victims believe in it again.</p>
-      <p class="placard-bio">
-        The 32nd President of the United States, elected four times and serving from 1933 to 1945
-        through the twin catastrophes of the Great Depression and the Second World War. He built
-        the modern American regulatory and welfare state through the New Deal, shattered the
-        isolationist consensus to forge a global coalition against fascism, and died with victory
-        in sight but the postwar order unfinished. He governed from a wheelchair he refused to let
-        the public see, broadcast his intentions directly into thirty million living rooms, and
-        wielded executive power with a suppleness that left the republic transformed — and the
-        question of how much transformation democracy could bear permanently open.
+      <p class="placard-tagline">
+        "The patrician who saved capitalism by making its victims believe in it again."
+      </p>
+      <p class="placard-body">
+        The 32nd President of the United States served four terms through the twin
+        catastrophes of the Great Depression and World War II. He built the modern
+        American regulatory and welfare state, shattered isolationism to lead a global
+        coalition against fascism, and perfected the art of democratic leadership
+        over radio — speaking directly into the homes and fears of ordinary Americans.
+        He governed in a wheelchair he rarely let be photographed, and died at Warm Springs
+        with victory in sight but the postwar order still unwritten.
       </p>
     </div>
   </div>
 
 </section>
 
-<!-- ─── TRANSITION BAND ────────────────────────────────── -->
+<!-- ── TRANSITION BAND ──────────────────────────────── -->
 <div class="transition-band">
   <div class="band-rule"></div>
-  <div class="band-ornament">Enter the Conversation</div>
+  <div class="band-ornament">Enter the Conversation &nbsp;✦&nbsp; 32nd President &nbsp;✦&nbsp; 1933–1945</div>
   <div class="band-rule"></div>
 </div>
 
-<!-- ─── CHATBOT SECTION ────────────────────────────────── -->
+<!-- ── CHATBOT SECTION ─────────────────────────────── -->
 <section class="chatbot-section">
 
   <div class="chatbot-intro">
-    <h2>Speak With the<br>Architect of the<br>Modern State</h2>
+    <h2>Speak With Roosevelt</h2>
 
     <p>
-      Franklin Roosevelt governed at the intersection of catastrophe and possibility. He inherited
-      an economy in freefall — one quarter of Americans unemployed, banks closing by the hundreds,
-      the democratic experiment itself in question — and he met the crisis with an unparalleled
-      torrent of legislation, institution-building, and sheer rhetorical will.
+      He delivered 30 fireside chats to a nation in crisis. He remade the relationship
+      between government and citizen. He won the war and built the institutions —
+      Social Security, the SEC, the FDIC, the UN — that shaped the world you live in now.
+      And he made choices that haunt the American conscience still.
     </p>
 
     <div class="featured-quote">
-      <p>"The only thing we have to fear is fear itself — nameless, unreasoning, unjustified terror which paralyzes needed efforts to convert retreat into advance."</p>
-      <cite>— First Inaugural Address, March 4, 1933</cite>
+      <p>"The only thing we have to fear is fear itself — nameless, unreasoning, unjustified
+      terror which paralyzes needed efforts to convert retreat into advance."</p>
+      <cite>— First Inaugural Address &nbsp;·&nbsp; March 4, 1933</cite>
     </div>
 
     <p>
-      He was also a man of profound contradiction: the Hyde Park aristocrat who championed the
-      forgotten man; the liberal internationalist who interned Japanese Americans; the humanitarian
-      who left the St. Louis and its nine hundred Jewish refugees to turn back toward their doom.
-      Ask him about power, about failure, about what endures and what was squandered.
+      Ask Roosevelt about the wielding — and the limits — of executive power. About
+      what it means to save a system by transforming it. About the refugees turned away
+      at the harbor, the Japanese Americans interned, the compromises made with Southern
+      Democrats to pass programs that excluded millions. About whether the New Deal's
+      architecture can hold against the inequality of 2026.
+    </p>
+
+    <p>
+      He was a man of magnificent contradictions: a Hudson Valley aristocrat who spoke
+      for the forgotten man; a polio survivor who built a public persona of irrepressible
+      vigor; a pragmatist who kept his philosophy deliberately vague — and a statesman
+      whose improvisations became the foundations of an era.
     </p>
 
     <div class="domain-tags">
-      <span class="domain-tag">The New Deal</span>
       <span class="domain-tag">Executive Power</span>
+      <span class="domain-tag">New Deal</span>
+      <span class="domain-tag">Great Depression</span>
       <span class="domain-tag">World War II</span>
-      <span class="domain-tag">Depression Economics</span>
-      <span class="domain-tag">American Liberalism</span>
-      <span class="domain-tag">Civil Rights</span>
-      <span class="domain-tag">The Atlantic Charter</span>
+      <span class="domain-tag">Welfare State</span>
+      <span class="domain-tag">Civil Liberties</span>
+      <span class="domain-tag">Foreign Policy</span>
+      <span class="domain-tag">Fireside Chats</span>
     </div>
   </div>
 
@@ -920,44 +861,50 @@
 
 </section>
 
-<!-- ─── PULL QUOTE ─────────────────────────────────────── -->
+<!-- ── PULL QUOTE ─────────────────────────────────── -->
 <section class="pull-quote">
   <blockquote>
-    "We have always known that heedless self-interest was bad morals; we know now that it is bad economics."
+    We have always known that heedless self-interest was bad morals; we know now
+    that it is bad economics. Out of the collapse of a prosperity whose builders
+    boasted their practicality has come the call for the return of old-time honesty
+    and old-time morality.
   </blockquote>
-  <div class="quote-rule"></div>
-  <cite>Second Inaugural Address — January 20, 1937</cite>
+  <cite>— Second Inaugural Address &nbsp;·&nbsp; January 20, 1937</cite>
 </section>
 
-<!-- ─── CORPUS STRIP ───────────────────────────────────── -->
-<section class="corpus-strip">
-  <div class="corpus-label">Corpus of Knowledge</div>
+<!-- ── CORPUS STRIP ───────────────────────────────── -->
+<div class="corpus-strip">
+  <div class="corpus-label">Corpus &nbsp;·&nbsp; Primary Sources</div>
   <ul class="corpus-list">
-    <li>First through Fourth Inaugural Addresses (1933, 1937, 1941, 1945)</li>
-    <li>Fireside Chat Radio Broadcasts, Complete Series (1933–1944)</li>
-    <li>State of the Union Addresses — All Twelve Sessions</li>
+    <li>Fireside Chats, 1933–1944 (30 broadcasts)</li>
+    <li>First, Second, Third &amp; Fourth Inaugural Addresses</li>
+    <li>Annual Messages to Congress, 1933–1945</li>
+    <li>State Department Cables &amp; War Correspondence</li>
     <li>The Public Papers and Addresses of Franklin D. Roosevelt (13 vols.)</li>
-    <li>War Message to Congress, December 8, 1941</li>
-    <li>The Atlantic Charter — Joint Declaration with Churchill, 1941</li>
-    <li>Executive Order 9066 and Surrounding Correspondence</li>
-    <li>Four Freedoms Address to Congress, January 6, 1941</li>
-    <li>Correspondence with Winston Churchill (Selected)</li>
-    <li>Correspondence with Joseph Stalin — Tehran and Yalta</li>
-    <li>Press Conference Transcripts, Selected 1933–1945</li>
-    <li>Personal Letters and Hyde Park Papers</li>
-    <li>New Deal Legislation — Major Acts and Signing Statements</li>
-    <li>Quarantine Speech, Chicago, October 5, 1937</li>
+    <li>Letters to Eleanor Roosevelt, 1933–1945</li>
+    <li>The Atlantic Charter, 1941</li>
+    <li>Declaration of War Address, December 8, 1941</li>
+    <li>Four Freedoms Address, January 6, 1941</li>
+    <li>Executive Order 9066, 1942</li>
+    <li>Letters to Winston Churchill &amp; Joseph Stalin</li>
+    <li>Press Conference Transcripts, 1933–1945 (998 sessions)</li>
   </ul>
-</section>
+</div>
 
-<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<!-- ── FOOTER ─────────────────────────────────────── -->
 <footer>
   <div class="footer-name">
     Franklin D. Roosevelt
-    <span>1882 — 1945 · 32nd President of the United States</span>
+    <span>Hyde Park, New York &nbsp;·&nbsp; 1882 – 1945</span>
   </div>
-  <div class="footer-credit">Museum of Minds · 2026</div>
-  <div class="footer-powered">Powered by His Own Words</div>
+  <div class="footer-credit">
+    Museum of Minds<br>
+    A Project of <a href="#">The Conversational History Initiative</a><br>
+    <span style="color:var(--brass-dark); letter-spacing:0.18em;">FDR–1882–2026</span>
+  </div>
+  <div class="footer-powered">
+    Powered by His Own Words
+  </div>
 </footer>
 
 </body>
