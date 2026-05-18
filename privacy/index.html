@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Museum of Minds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:       #0A090C;
+      --deep:       #111018;
+      --wall:       #1A1825;
+      --mid:        #232135;
+      --brass:      #C49A3C;
+      --brass-dim:  #7A5E20;
+      --brass-pale: #E8C96A;
+      --cream:      #EDE8D8;
+      --text:       #D4CEB8;
+      --dim:        #6B6455;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(196,154,60,0.18);
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 1.2rem; }
+    .back-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--brass-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--brass); }
+    .header-divider { width: 1px; height: 24px; background: rgba(196,154,60,0.2); }
+    .header-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+    }
+    .header-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      color: var(--dim);
+      letter-spacing: 0.06em;
+    }
+
+    .hero-band {
+      background: linear-gradient(180deg, var(--deep) 0%, var(--void) 100%);
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+      padding: 3.5rem 3rem 3rem;
+      position: relative;
+      z-index: 5;
+    }
+    .hero-band::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brass-dim), transparent);
+    }
+    .hero-rule { width: 48px; height: 2px; background: var(--brass-dim); margin-bottom: 1.2rem; }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.8rem;
+    }
+    .hero-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.15;
+      max-width: 600px;
+      margin-bottom: 1rem;
+    }
+    .hero-body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+    .effective-date {
+      margin-top: 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.6rem;
+    }
+    .section-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 0.6rem 0 1rem 1.4rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    li { margin-bottom: 0.4rem; }
+
+    .highlight-box {
+      background: rgba(196,154,60,0.06);
+      border: 1px solid rgba(196,154,60,0.18);
+      border-left: 3px solid var(--brass-dim);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--cream);
+    }
+
+    a { color: var(--brass); text-decoration: none; }
+    a:hover { color: var(--brass-pale); text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid rgba(196,154,60,0.1);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--brass); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a href="/" class="back-link">&#8592; Museum of Minds</a>
+      <div class="header-divider"></div>
+      <div>
+        <div class="header-title">Privacy Policy</div>
+        <div class="header-sub">How we handle data — and what we don't collect</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero-band">
+    <div class="hero-rule"></div>
+    <div class="hero-eyebrow">Data &amp; Privacy</div>
+    <h1 class="hero-heading">Privacy Policy</h1>
+    <p class="hero-body">
+      Museum of Minds is built for classrooms. That means our approach to data is simple:
+      we collect as little as possible, we hold it briefly, and we never use it for anything
+      other than making the product work.
+    </p>
+    <div class="effective-date">Effective date: May 18, 2026 &nbsp;·&nbsp; museumofminds.com</div>
+  </div>
+
+  <main>
+
+    <div class="section">
+      <div class="section-label">The Short Version</div>
+      <h2 class="section-heading">What You Need to Know in 30 Seconds</h2>
+      <div class="highlight-box">
+        Students do not create accounts. No name, email address, or other personally
+        identifiable information is collected from any user of this platform. Conversations
+        auto-delete after 90 days. We do not sell, share, or monetize any user data.
+      </div>
+      <p>
+        If you are a district administrator evaluating this platform for FERPA compliance,
+        our architecture is designed to remain outside FERPA's scope entirely: because we
+        never hold education records, we are not an educational agency or institution,
+        and we do not act as a "school official" under FERPA. No student-level data of
+        any kind is collected, retained, or transmitted.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 1</div>
+      <h2 class="section-heading">What We Collect</h2>
+      <p>
+        Museum of Minds collects only what is technically necessary to operate the platform.
+        Specifically:
+      </p>
+      <ul>
+        <li><strong>Conversation text.</strong> When a user types a message and receives a response,
+        that exchange is held in temporary server memory for the duration of the session.
+        It is used solely to maintain conversational context (so the historical figure remembers
+        what was said earlier in the same session). It is not associated with any user identifier.</li>
+        <li><strong>Session identifiers.</strong> A randomly generated session ID is used to link
+        messages within a single conversation. This ID is not tied to a person, a device,
+        or an IP address in any persistent way.</li>
+        <li><strong>Aggregate usage counts.</strong> We count the number of conversations started
+        and messages sent, in aggregate, to understand platform load. These counts contain
+        no user-level information.</li>
+      </ul>
+      <p>
+        We do not collect: names, email addresses, school names, grade levels, IP addresses
+        stored beyond a request, device identifiers, location data, or any information about
+        the individual using the platform.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 2</div>
+      <h2 class="section-heading">Student Access and Classroom Use</h2>
+      <p>
+        In classroom pilots, students access the platform through a classroom passcode
+        provided by their teacher. No student account is created. Students do not enter
+        their name, student ID, school name, or any other identifying information.
+      </p>
+      <p>
+        Teachers who participate in a pilot program receive access to an aggregate dashboard
+        showing engagement metrics for their classroom as a whole — for example, how many
+        conversations were started, which historical figures were consulted, and how long
+        sessions typically ran. This dashboard contains no student-level data. Individual
+        students are not identifiable from any data we hold.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 3</div>
+      <h2 class="section-heading">Data Retention</h2>
+      <p>
+        Conversation data (the text of messages sent and received) is automatically deleted
+        after 90 days. This deletion is unconditional — it applies to all sessions regardless
+        of whether a pilot is active, ended, or ongoing.
+      </p>
+      <p>
+        If a district or teacher ends a pilot early and requests immediate deletion, we will
+        confirm deletion in writing within five business days.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 4</div>
+      <h2 class="section-heading">Cookies and Tracking</h2>
+      <p>
+        Museum of Minds does not use advertising cookies, cross-site tracking, or third-party
+        analytics scripts. We do not use Google Analytics, Meta Pixel, or any comparable
+        tracking technology.
+      </p>
+      <p>
+        The only browser storage we use is a session cookie or local storage item to maintain
+        conversational context within a single visit. This item expires when the browser tab
+        is closed or at session end.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 5</div>
+      <h2 class="section-heading">Third-Party Services</h2>
+      <p>
+        Museum of Minds uses the following third-party services to operate:
+      </p>
+      <ul>
+        <li><strong>Anthropic (Claude API).</strong> Conversation messages are sent to Anthropic's
+        API to generate responses. Anthropic's data processing practices are governed by their
+        enterprise API privacy policy. API data is not used by Anthropic to train models unless
+        separately agreed in writing.</li>
+        <li><strong>Pinecone.</strong> Our vector database, used to retrieve passages from historical
+        primary sources. Only text excerpts from public-domain historical documents are stored here.
+        No user data is stored in Pinecone.</li>
+        <li><strong>Railway.</strong> Our cloud hosting provider. Server logs may include IP addresses
+        in transit; these are not retained or linked to user sessions.</li>
+      </ul>
+      <p>
+        We do not share any user data — including conversation text — with any third party
+        for advertising, marketing, analytics, or any purpose other than operating the platform.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 6</div>
+      <h2 class="section-heading">FERPA, COPPA, and State Privacy Laws</h2>
+      <p>
+        <strong>FERPA.</strong> Because Museum of Minds does not collect or maintain education
+        records as defined by FERPA (20 U.S.C. § 1232g), FERPA's requirements regarding
+        consent, access, and disclosure do not apply to our platform in the traditional sense.
+        We are not a party to any student-school record relationship. Districts may nonetheless
+        reference our data practices in their own FERPA compliance documentation.
+      </p>
+      <p>
+        <strong>COPPA.</strong> Museum of Minds is not directed at children under 13 and
+        does not knowingly collect personal information from children under 13. Because we
+        collect no personal information from any user, COPPA's verifiable parental consent
+        requirements are not triggered. Classroom use is under the supervision of a teacher
+        who has accepted our Terms of Service.
+      </p>
+      <p>
+        <strong>State laws.</strong> We are aware of student data privacy laws in South Carolina
+        and other states. Our no-PII-by-design architecture is intended to remain compliant
+        with these laws as a matter of principle, not just legal obligation.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Section 7</div>
+      <h2 class="section-heading">Contact</h2>
+      <p>
+        Questions about this policy, requests for data deletion confirmation, or inquiries
+        from district privacy officers may be directed to:
+      </p>
+      <p>
+        <strong>Jimmy Ardis</strong><br />
+        Founder, Museum of Minds<br />
+        <a href="mailto:jimmy@museumofminds.com">jimmy@museumofminds.com</a><br />
+        213-361-5658
+      </p>
+      <p>
+        We will respond to privacy-related inquiries within two business days.
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">Museum of Minds &copy; 2026</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/educator">Educator Portal</a>
+      <a href="/terms">Terms of Service</a>
+    </div>
+  </footer>
+
+</body>
+</html>
