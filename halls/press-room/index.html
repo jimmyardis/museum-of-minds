@@ -260,7 +260,7 @@
       <span class="hall-era">1880 — 2006</span>
       <div class="hero-rule"></div>
       <p class="hall-desc">A satirist who skewered democracy from the right. An urbanist who fought city hall from the sidewalk. Their weapons were sentences. Their targets were the comfortable, the credulous, and the expert who had never walked the block they were redesigning.</p>
-      <span class="hall-figure-count">2 Figures in Residence</span>
+      <span class="hall-figure-count">Figures in Residence</span>
     </div>
   </section>
 
@@ -359,6 +359,12 @@
     <span class="footer-center"><a href="/" style="color:inherit;text-decoration:none">← Return to the Museum</a></span>
     <span class="footer-right">museumofminds.com</span>
   </footer>
+
+  <script>
+    const n = document.querySelectorAll('.portrait-card').length;
+    const el = document.querySelector('.hall-figure-count');
+    if (el && n > 0) el.textContent = n + ' Figures in Residence';
+  </script>
 
 </body>
 </html>

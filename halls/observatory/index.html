@@ -247,10 +247,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall III</span>
       <h1 class="hall-title">The Observatory</h1>
-      <span class="hall-era">1875 — 1961</span>
+      <span class="hall-era">1643 — 2001</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">One dismantled the certainties of Newtonian physics. The other dismantled the certainties of the rational mind. Both left human beings with a larger, stranger, and more vertiginous picture of what they were and where they lived.</p>
-      <span class="hall-figure-count">2 Figures in Residence</span>
+      <p class="hall-desc">They mapped the territories no instrument could reach — the structure of matter, the laws of motion, the logic of computation, the nature of life and uncertainty. Each left a before and after in what human beings thought possible to know.</p>
+      <span class="hall-figure-count">Figures in Residence</span>
     </div>
   </section>
 
@@ -436,6 +436,12 @@
     <span class="footer-center"><a href="/" style="color:inherit;text-decoration:none">← Return to the Museum</a></span>
     <span class="footer-right">museumofminds.com</span>
   </footer>
+
+  <script>
+    const n = document.querySelectorAll('.portrait-card').length;
+    const el = document.querySelector('.hall-figure-count');
+    if (el && n > 0) el.textContent = n + ' Figures in Residence';
+  </script>
 
 </body>
 </html>

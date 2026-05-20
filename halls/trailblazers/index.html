@@ -239,10 +239,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall V</span>
       <h1 class="hall-title">The Trailblazers' Wing</h1>
-      <span class="hall-era">1880 — 1968</span>
+      <span class="hall-era">1731 — 2020</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">One flew across oceans that had never been crossed by a woman alone. The other navigated a world designed to exclude her — and wrote twelve books about it. Neither asked for permission. Both left the door open behind them.</p>
-      <span class="hall-figure-count">4 Figures in Residence</span>
+      <p class="hall-desc">They did not belong in the rooms they entered. Some forced the door. Others built new rooms entirely. Their work changed what was considered possible — for themselves, and for everyone who came after.</p>
+      <span class="hall-figure-count">Figures in Residence</span>
     
     </div>
   </section>
@@ -358,6 +358,12 @@
     <span class="footer-center"><a href="/" style="color:inherit;text-decoration:none">← Return to the Museum</a></span>
     <span class="footer-right">museumofminds.com</span>
   </footer>
+
+  <script>
+    const n = document.querySelectorAll('.portrait-card').length;
+    const el = document.querySelector('.hall-figure-count');
+    if (el && n > 0) el.textContent = n + ' Figures in Residence';
+  </script>
 
 </body>
 </html>

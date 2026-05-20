@@ -249,10 +249,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall I</span>
       <h1 class="hall-title">The Republic Room</h1>
-      <span class="hall-era">1743 — 1826</span>
+      <span class="hall-era">1706 — 1945</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">Eight voices who argued a republic into existence — then argued about it for the rest of their lives. They disagreed on nearly everything: federal power, debt, liberty, land, and the nature of self-governance. The record is intact.</p>
-      <span class="hall-figure-count">8 Figures in Residence</span>
+      <p class="hall-desc">Voices who argued a republic into existence — then argued about it for the rest of their lives. They disagreed on nearly everything: federal power, debt, liberty, land, and the nature of self-governance. The record is intact.</p>
+      <span class="hall-figure-count">Figures in Residence</span>
 
     </div>
   </section>
@@ -459,6 +459,12 @@
     <span class="footer-center"><a href="/" style="color:inherit;text-decoration:none">← Return to the Museum</a></span>
     <span class="footer-right">museumofminds.com</span>
   </footer>
+
+  <script>
+    const n = document.querySelectorAll('.portrait-card').length;
+    const el = document.querySelector('.hall-figure-count');
+    if (el && n > 0) el.textContent = n + ' Figures in Residence';
+  </script>
 
 </body>
 </html>
