@@ -415,10 +415,25 @@
       main { padding: 1.5rem; }
     }
     @media print {
-      header, .panel, footer, .output-actions, .hero-band { display: none !important; }
-      main { display: block; padding: 0; }
-      .output-card { border: none; }
-      .output-body { max-height: none; overflow: visible; }
+      * { color: #111 !important; background: white !important; border-color: #ccc !important; }
+      header, .panel, footer, .output-actions, .hero-band, #state-empty, #state-loading { display: none !important; }
+      body { background: white !important; }
+      main { display: block; padding: 0; max-width: none; }
+      .output-card { border: 1px solid #ccc !important; display: block !important; }
+      .output-card.visible { display: block !important; }
+      .output-body { max-height: none !important; overflow: visible !important; }
+      .rendered h1, .rendered h2, .rendered h3 { color: #111 !important; }
+      .rendered p, .rendered li { color: #222 !important; }
+      .rendered strong { color: #000 !important; }
+      .rendered em { color: #333 !important; }
+      .rendered blockquote { border-left: 2px solid #666 !important; color: #444 !important; }
+      .rendered code { background: #f4f4f4 !important; color: #333 !important; }
+      .dok-badge { background: #f0f0f0 !important; border-color: #999 !important; color: #333 !important; }
+      .standards-callout { background: #f8f8f8 !important; border-color: #999 !important; }
+      .output-header { border-bottom: 1px solid #ccc !important; }
+      .output-type { color: #666 !important; }
+      .output-title { color: #111 !important; }
+      .output-grade { color: #555 !important; }
     }
   </style>
 </head>
