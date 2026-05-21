@@ -812,3 +812,33 @@
     color: var(--persona-warm-gray, #8a8070);
     font-style: italic;
 }
+
+/* ── Educator course/level seg buttons ── */
+.jj-edu-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.jj-edu-seg {
+    display: flex;
+    flex: 1;
+}
+.jj-seg-btn {
+    flex: 1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-right: none;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--persona-font-secondary);
+    font-size: 11px;
+    padding: 4px 6px;
+    cursor: pointer;
+    outline: none;
+}
+.jj-seg-btn:last-child { border-right: 1px solid rgba(255,255,255,0.2); }
+.jj-seg-btn.active {
+    background: rgba(255,255,255,0.18);
+    color: var(--persona-cream);
+    border-color: rgba(255,255,255,0.4);
+}
