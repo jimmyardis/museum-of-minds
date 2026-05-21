@@ -222,6 +222,10 @@
         document.getElementById('jj-voice').addEventListener('click', toggleVoice);
         document.getElementById('jj-download').addEventListener('click', exportChat);
         document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
+        document.getElementById('jj-settings').addEventListener('click', toggleSettings);
+        document.querySelectorAll('.jj-setting-opt').forEach(btn => {
+            btn.addEventListener('click', () => applySettingOpt(btn));
+        });
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
         document.getElementById('jj-input').addEventListener('keypress', e => {

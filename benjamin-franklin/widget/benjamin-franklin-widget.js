@@ -236,6 +236,10 @@
         document.getElementById('jj-level-std').addEventListener('click', function() { setEduLevel('standard', this); });
         document.getElementById('jj-level-hon').addEventListener('click', function() { setEduLevel('honors', this); });
         document.getElementById('jj-level-ap').addEventListener('click', function() { setEduLevel('ap', this); });
+        document.getElementById('jj-settings').addEventListener('click', toggleSettings);
+        document.querySelectorAll('.jj-setting-opt').forEach(btn => {
+            btn.addEventListener('click', () => applySettingOpt(btn));
+        });
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
         document.getElementById('jj-input').addEventListener('keypress', e => {
