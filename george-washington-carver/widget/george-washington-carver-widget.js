@@ -21,6 +21,8 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let eduCourse = 'us-history';
+    let eduLevel  = 'standard';
     let settingsPanelOpen = false;
     // html2pdfLoaded removed — using print-in-new-window instead
 
@@ -148,13 +150,20 @@
 
                 <div id="jj-edu-panel" class="jj-edu-panel jj-hidden">
                     <div class="jj-edu-header">Educator Tools</div>
-                    <div class="jj-edu-grade">
-                        <span class="jj-edu-label">Grade level</span>
-                        <select id="jj-grade" class="jj-grade-select">
-                            <option value="middle-school">Middle School</option>
-                            <option value="high-school" selected>High School</option>
-                            <option value="college">College / University</option>
-                        </select>
+                    <div class="jj-edu-row">
+                        <span class="jj-edu-label">Course</span>
+                        <div class="jj-edu-seg">
+                            <button class="jj-seg-btn active" id="jj-course-ush">US History</button>
+                            <button class="jj-seg-btn" id="jj-course-gov">US Govt</button>
+                        </div>
+                    </div>
+                    <div class="jj-edu-row">
+                        <span class="jj-edu-label">Level</span>
+                        <div class="jj-edu-seg">
+                            <button class="jj-seg-btn active" id="jj-level-std">Std</button>
+                            <button class="jj-seg-btn" id="jj-level-hon">Hon</button>
+                            <button class="jj-seg-btn" id="jj-level-ap">AP</button>
+                        </div>
                     </div>
                     <div class="jj-edu-btns">
                         <button id="jj-lesson-btn" class="jj-edu-btn">Lesson Plan</button>
@@ -223,6 +232,11 @@
         document.getElementById('jj-download').addEventListener('click', exportChat);
         document.getElementById('jj-edu-toggle').addEventListener('click', toggleEduPanel);
         document.getElementById('jj-settings').addEventListener('click', toggleSettings);
+        document.getElementById('jj-course-ush').addEventListener('click', function() { setEduCourse('us-history', this); });
+        document.getElementById('jj-course-gov').addEventListener('click', function() { setEduCourse('us-government', this); });
+        document.getElementById('jj-level-std').addEventListener('click', function() { setEduLevel('standard', this); });
+        document.getElementById('jj-level-hon').addEventListener('click', function() { setEduLevel('honors', this); });
+        document.getElementById('jj-level-ap').addEventListener('click', function() { setEduLevel('ap', this); });
         document.querySelectorAll('.jj-setting-opt').forEach(btn => {
             btn.addEventListener('click', () => applySettingOpt(btn));
         });
@@ -339,23 +353,39 @@
         btn.classList.add('jj-setting-active');
     }
 
+    function setEduCourse(course, btn) {
+        eduCourse = course;
+        document.querySelectorAll('#jj-course-ush, #jj-course-gov').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function setEduLevel(level, btn) {
+        eduLevel = level;
+        document.querySelectorAll('#jj-level-std, #jj-level-hon, #jj-level-ap').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
     async function fetchEduContent(type) {
-        const grade = document.getElementById('jj-grade').value;
+        const courseLabels = {
+            'us-history':    { standard: 'US History', honors: 'US History Honors', ap: 'APUSH' },
+            'us-government': { standard: 'US Government', honors: 'US Government Honors', ap: 'AP Gov' },
+        };
+        const label = courseLabels[eduCourse]?.[eduLevel] || 'US History';
         const lastUserMsg = [...document.querySelectorAll('.jj-message-user .jj-message-content')]
             .map(el => el.textContent).pop() || '';
 
-        // Close panel + show loading in chat
         toggleEduPanel();
-        addSystemMessage(`Generating ${type === 'lesson-plan' ? 'lesson plan' : 'discussion questions'} for ${grade}…`);
+        addSystemMessage(`Generating ${type === 'lesson-plan' ? 'lesson plan' : 'discussion questions'} for ${label}…`);
 
         try {
             const resp = await fetch(`${API_URL}/educator/${type}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    persona_id:  PERSONA_ID,
-                    topic:       lastUserMsg || null,
-                    grade_level: grade,
+                    persona_id: PERSONA_ID,
+                    topic:      lastUserMsg || null,
+                    course:     eduCourse,
+                    level:      eduLevel,
                 }),
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
