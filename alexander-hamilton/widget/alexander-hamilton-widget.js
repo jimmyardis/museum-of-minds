@@ -22,6 +22,7 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let educatorMode = false;
     let eduCourse = 'us-history';
     let eduLevel  = 'standard';
     let settingsPanelOpen = false;
@@ -128,6 +129,7 @@
                         <p class="jj-subtitle">${ui.header_subtitle}</p>
                         ${config.trust_score && config.trust_score.score ? `<p class="jj-trust-line"><span class="jj-trust-score-badge">${config.trust_score.score}/100</span><span class="jj-trust-score-label">${config.trust_score.coverage_label || ''}</span></p>` : ''}
                         <p class="jj-tagline">${ui.header_tagline}</p>
+                        <span id="jj-edu-mode-badge" class="jj-edu-mode-badge jj-hidden">Educator Mode</span>
                     </div>
                     <div class="jj-header-actions">
                         <button id="jj-download" class="jj-download-btn" title="Download conversation as PDF" disabled>
@@ -357,8 +359,11 @@
 
     function toggleEduPanel() {
         eduPanelOpen = !eduPanelOpen;
+        educatorMode = eduPanelOpen;
         document.getElementById('jj-edu-panel').classList.toggle('jj-hidden', !eduPanelOpen);
         document.getElementById('jj-edu-toggle').classList.toggle('jj-edu-active', eduPanelOpen);
+        const badge = document.getElementById('jj-edu-mode-badge');
+        if (badge) badge.classList.toggle('jj-hidden', !educatorMode);
     }
 
     function setEduCourse(course, btn) {
@@ -462,6 +467,7 @@
                     mode:          chatMode,
                     length:        chatLength,
                     reading_level: chatLevel,
+                    educator_mode: educatorMode,
                 }),
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -475,6 +481,7 @@
                 confidence_score:             data.confidence_score || 50,
                 historical_confidence:        data.historical_confidence || 'low',
                 historical_confidence_score:  data.historical_confidence_score || 0,
+                standards_alignment:          data.standards_alignment || [],
             });
             enableDownload();
 
@@ -581,6 +588,20 @@
 
             wrap.appendChild(srcBtn);
             wrap.appendChild(panel);
+        }
+
+        // SC Standards alignment tags (educator mode only)
+        if (meta.standards_alignment && meta.standards_alignment.length > 0) {
+            const stdRow = document.createElement('div');
+            stdRow.className = 'jj-standards-row';
+            meta.standards_alignment.forEach(code => {
+                const tag = document.createElement('span');
+                tag.className = 'jj-standard-tag';
+                tag.textContent = code;
+                tag.title = 'SC Standard Indicator';
+                stdRow.appendChild(tag);
+            });
+            wrap.appendChild(stdRow);
         }
 
         return wrap;

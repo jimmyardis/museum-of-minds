@@ -866,3 +866,40 @@
     content: "·";
     margin-right: 6px;
 }
+
+/* Educator Mode badge in header */
+.jj-edu-mode-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-family: var(--persona-font-secondary);
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--persona-primary-color);
+    background: rgba(184,144,64,0.15);
+    border: 1px solid rgba(184,144,64,0.35);
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin-top: 4px;
+}
+.jj-edu-mode-badge.jj-hidden { display: none; }
+
+/* SC Standards alignment tags */
+.jj-standards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+}
+.jj-standard-tag {
+    font-size: 9px;
+    font-family: var(--persona-font-secondary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1e5a8a;
+    background: rgba(30,90,138,0.10);
+    border: 1px solid rgba(30,90,138,0.25);
+    border-radius: 3px;
+    padding: 2px 5px;
+    cursor: default;
+}
