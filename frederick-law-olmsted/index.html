@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frederick Law Olmsted — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --void:        #080E06;
+    --deep-night:  #0F1A0C;
+    --dusk:        #1A2A15;
+    --twilight:    #2D5016;
+    --smoke:       #6B7A60;
+    --parchment:   #F5F0E8;
+    --cream:       #EDE8DC;
+    --warm-white:  #FAF7F2;
+    --ember:       #7A9B3A;
+    --ember-dim:   #4A6B20;
+    --gold:        #C9A84C;
+    --gold-dim:    #8A6E2E;
+    --violet:      #5A7A3A;
+    --violet-dim:  #3A5020;
+    --text-light:  #F5F0E8;
+    --text-muted:  #B8C0A8;
+    --text-dark:   #0F1A0C;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--deep-night);
+    color: var(--text-light);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-18px)} to{opacity:1;transform:translateY(0)} }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 3rem;
+    border-bottom: 1px solid rgba(122,155,58,0.22);
+    background: var(--void);
+    animation: fadeDown 0.8s ease both;
+    position: relative;
+    z-index: 10;
+  }
+  header .museum-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  header .accession {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--smoke);
+    text-transform: uppercase;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    min-height: 92vh;
+    animation: fadeIn 1.2s ease 0.2s both;
+  }
+  .hero-svg-panel { position: relative; overflow: hidden; background: var(--void); }
+  .hero-svg-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-bio-panel {
+    background: var(--deep-night);
+    border-left: 1px solid rgba(122,155,58,0.18);
+    padding: 3.5rem 2.8rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bio-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(45,80,22,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .panel-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .photo-frame {
+    position: relative;
+    max-width: 280px;
+    margin: 0 auto;
+    align-self: center;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid rgba(122,155,58,0.45);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid rgba(122,155,58,0.18);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(55%) sepia(15%) contrast(1.06) brightness(0.88);
+  }
+  .placard { border-top: 1px solid rgba(122,155,58,0.25); padding-top: 1.5rem; }
+  .placard .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3.2vw, 3rem);
+    font-weight: 500;
+    color: var(--parchment);
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+  .placard .persona-dates {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .placard .persona-tagline {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+  .placard .persona-bio { font-size: 0.875rem; color: var(--text-muted); line-height: 1.72; }
+  .placard .persona-bio p + p { margin-top: 0.7rem; }
+
+  .transition-band {
+    background: var(--void);
+    border-top: 1px solid rgba(122,155,58,0.35);
+    border-bottom: 1px solid rgba(122,155,58,0.35);
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .transition-band .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(122,155,58,0.45), transparent);
+  }
+  .transition-band .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.45em;
+    color: var(--ember);
+    text-transform: uppercase;
+  }
+
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+    background: var(--void);
+  }
+  .chatbot-intro {
+    padding: 4rem 3.5rem 4rem 3rem;
+    border-right: 1px solid rgba(122,155,58,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-weight: 500;
+    color: var(--parchment);
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+  }
+  .chatbot-intro p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.78; }
+  .chatbot-intro .featured-quote {
+    border-left: 3px solid var(--ember);
+    padding: 1rem 1.5rem;
+    background: rgba(122,155,58,0.06);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--parchment);
+    line-height: 1.6;
+  }
+  .chatbot-intro .featured-quote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+  .domain-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }
+  .domain-tags .tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--ember);
+    border: 1px solid rgba(122,155,58,0.35);
+    padding: 0.3rem 0.8rem;
+    text-transform: uppercase;
+  }
+  .chatbot-embed {
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    min-height: 500px;
+  }
+  .chatbot-embed > * { flex: 1; }
+
+  .pull-quote {
+    background: var(--deep-night);
+    padding: 5rem 8rem;
+    text-align: center;
+    border-top: 1px solid rgba(122,155,58,0.15);
+    border-bottom: 1px solid rgba(122,155,58,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14rem;
+    color: rgba(45,80,22,0.07);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .pull-quote blockquote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    color: var(--parchment);
+    line-height: 1.65;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .pull-quote cite {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .corpus-strip {
+    background: var(--void);
+    padding: 3rem 3rem;
+    border-top: 1px solid rgba(122,155,58,0.2);
+  }
+  .corpus-strip .corpus-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.42em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    text-align: center;
+  }
+  .corpus-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .corpus-list li {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 1rem;
+  }
+  .corpus-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    font-size: 0.45rem;
+    color: var(--ember-dim);
+    top: 0.35em;
+  }
+
+  footer {
+    background: var(--void);
+    border-top: 1px solid rgba(122,155,58,0.22);
+    padding: 2.2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  footer .footer-name { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 500; color: var(--parchment); letter-spacing: 0.12em; }
+  footer .footer-dates { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--smoke); }
+  footer .footer-credit { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.28em; color: var(--smoke); text-align: center; text-transform: uppercase; line-height: 1.8; }
+  footer .footer-powered { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--gold-dim); text-align: right; }
+
+  @media (max-width: 900px) {
+    header { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-svg-panel { height: 55vw; min-height: 300px; position: relative; }
+    .hero-bio-panel { border-left: none; border-top: 1px solid rgba(122,155,58,0.18); padding: 2.5rem 1.5rem; }
+    .chatbot-section { grid-template-columns: 1fr; }
+    .chatbot-intro { padding: 2.5rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(122,155,58,0.12); }
+    .chatbot-embed { padding: 2rem 1.5rem; min-height: 400px; }
+    .pull-quote { padding: 3.5rem 1.5rem; }
+    .corpus-strip { padding: 2.5rem 1.5rem; }
+    footer { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 1.5rem; text-align: center; }
+    footer .footer-powered { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="museum-label">In Conversation With</span>
+  <span class="accession">FLO–1822–2026</span>
+</header>
+
+<section class="hero">
+
+  <!-- LEFT: SVG — Central Park plan, landscape design aesthetic -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#080E06"/>
+          <stop offset="40%" stop-color="#0F1A0C"/>
+          <stop offset="100%" stop-color="#1A2A15"/>
+        </linearGradient>
+        <radialGradient id="meadowGlow" cx="50%" cy="60%" r="50%">
+          <stop offset="0%"   stop-color="#4A7A2A" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#0F1A0C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="pondGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#2A4A6A" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#0F1A0C" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="treeSoft"><feGaussianBlur stdDeviation="1"/></filter>
+      </defs>
+
+      <!-- SKY -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- ── PLAN-VIEW LANDSCAPE (lower two-thirds) ── -->
+      <!-- Ground plane -->
+      <rect x="0" y="340" width="700" height="560" fill="#0D160A"/>
+
+      <!-- Great Lawn / meadow -->
+      <ellipse cx="350" cy="560" rx="220" ry="100" fill="#1A2A12" opacity="0.9"/>
+      <ellipse cx="350" cy="560" rx="200" ry="88" fill="#223818" opacity="0.7"/>
+      <ellipse cx="350" cy="560" rx="180" ry="76" fill="#2D5016" opacity="0.4"/>
+      <ellipse cx="350" cy="555" rx="200" ry="90" fill="url(#meadowGlow)"/>
+
+      <!-- The Pond (Naturalistic) -->
+      <ellipse cx="200" cy="700" rx="130" ry="60" fill="#1A2A3A" opacity="0.9"/>
+      <ellipse cx="200" cy="700" rx="120" ry="54" fill="#1C3250" opacity="0.7"/>
+      <ellipse cx="195" cy="696" rx="110" ry="48" fill="url(#pondGlow)" opacity="0.8"/>
+      <!-- water shimmer lines -->
+      <g stroke="#3A5A7A" stroke-width="0.6" opacity="0.4">
+        <line x1="100" y1="695" x2="170" y2="693"/>
+        <line x1="110" y1="705" x2="200" y2="703"/>
+        <line x1="140" y1="715" x2="240" y2="712"/>
+        <line x1="220" y1="718" x2="290" y2="716"/>
+        <line x1="175" y1="685" x2="250" y2="684"/>
+      </g>
+      <!-- Pond label -->
+      <text x="195" y="703" text-anchor="middle" fill="#6A9AB0" font-family="Georgia, serif" font-style="italic" font-size="8" opacity="0.65" letter-spacing="1.5">The Pond</text>
+
+      <!-- Curved Carriage Drive — main loop -->
+      <path d="M80,420 Q120,360 250,350 Q400,340 520,360 Q620,375 650,430 Q670,500 640,580 Q610,660 530,720 Q430,780 300,790 Q180,795 110,730 Q60,680 70,600 Q75,520 80,420"
+            fill="none" stroke="#2A3A20" stroke-width="14" opacity="0.8"/>
+      <path d="M80,420 Q120,360 250,350 Q400,340 520,360 Q620,375 650,430 Q670,500 640,580 Q610,660 530,720 Q430,780 300,790 Q180,795 110,730 Q60,680 70,600 Q75,520 80,420"
+            fill="none" stroke="#3A5028" stroke-width="8" opacity="0.6"/>
+
+      <!-- Transverse road (cuts through, sunken) -->
+      <path d="M0,540 Q100,535 200,532 Q350,528 500,530 Q600,533 700,538" fill="none" stroke="#1E2A16" stroke-width="10" opacity="0.7"/>
+
+      <!-- Pedestrian paths — naturalistic curves -->
+      <path d="M350,380 Q280,420 240,480 Q200,540 190,600 Q185,640 200,700" fill="none" stroke="#2A3A20" stroke-width="4" opacity="0.5"/>
+      <path d="M350,380 Q420,430 450,500 Q480,570 460,640 Q440,700 400,750" fill="none" stroke="#2A3A20" stroke-width="4" opacity="0.5"/>
+      <path d="M130,480 Q200,460 300,455 Q400,450 490,465 Q560,480 600,510" fill="none" stroke="#2A3A20" stroke-width="3" opacity="0.4"/>
+      <path d="M240,650 Q300,660 370,655 Q440,648 500,640" fill="none" stroke="#2A3A20" stroke-width="3" opacity="0.4"/>
+
+      <!-- Tree canopy masses — irregular naturalistic groupings -->
+      <!-- Northwest grove -->
+      <ellipse cx="120" cy="450" rx="55" ry="40" fill="#1A3A10" opacity="0.85"/>
+      <ellipse cx="90"  cy="460" rx="35" ry="28" fill="#22481A" opacity="0.7"/>
+      <ellipse cx="145" cy="440" rx="30" ry="22" fill="#1E4016" opacity="0.7"/>
+      <ellipse cx="115" cy="480" rx="25" ry="18" fill="#265020" opacity="0.6"/>
+
+      <!-- Northeast grove -->
+      <ellipse cx="560" cy="420" rx="60" ry="42" fill="#1C3E12" opacity="0.85"/>
+      <ellipse cx="590" cy="435" rx="38" ry="28" fill="#245018" opacity="0.7"/>
+      <ellipse cx="535" cy="440" rx="32" ry="24" fill="#203816" opacity="0.7"/>
+
+      <!-- Southeast grove -->
+      <ellipse cx="580" cy="650" rx="65" ry="45" fill="#1A3A10" opacity="0.85"/>
+      <ellipse cx="615" cy="670" rx="40" ry="30" fill="#22481A" opacity="0.7"/>
+      <ellipse cx="555" cy="680" rx="35" ry="25" fill="#1E4016" opacity="0.65"/>
+
+      <!-- Southwest grove / Ramble suggestion -->
+      <ellipse cx="110" cy="640" rx="70" ry="50" fill="#183810" opacity="0.8"/>
+      <ellipse cx="85"  cy="660" rx="45" ry="32" fill="#1E4416" opacity="0.7"/>
+      <ellipse cx="135" cy="670" rx="38" ry="28" fill="#224A18" opacity="0.65"/>
+      <ellipse cx="100" cy="700" rx="30" ry="20" fill="#1A3C12" opacity="0.6"/>
+
+      <!-- Central park trees flanking mall -->
+      <ellipse cx="310" cy="490" rx="22" ry="16" fill="#2A5018" opacity="0.7"/>
+      <ellipse cx="390" cy="490" rx="22" ry="16" fill="#2A5018" opacity="0.7"/>
+      <ellipse cx="300" cy="530" rx="18" ry="13" fill="#265016" opacity="0.6"/>
+      <ellipse cx="400" cy="530" rx="18" ry="13" fill="#265016" opacity="0.6"/>
+
+      <!-- The Bethesda Terrace area — central feature -->
+      <ellipse cx="350" cy="480" rx="40" ry="25" fill="#223020" opacity="0.6"/>
+      <rect x="330" y="468" width="40" height="24" rx="3" fill="#1A2A18" stroke="#3A5028" stroke-width="0.8" opacity="0.7"/>
+      <text x="350" y="482" text-anchor="middle" fill="#7A9B3A" font-family="Georgia, serif" font-style="italic" font-size="7" opacity="0.7" letter-spacing="1">Bethesda</text>
+
+      <!-- ── ELEVATION / PLAN DRAWING AESTHETIC — upper third ── -->
+      <!-- Blueprint grid (subtle) -->
+      <g fill="none" stroke="#1A2A16" stroke-width="0.4" opacity="0.3">
+        <line x1="0" y1="50" x2="700" y2="50"/>
+        <line x1="0" y1="100" x2="700" y2="100"/>
+        <line x1="0" y1="150" x2="700" y2="150"/>
+        <line x1="0" y1="200" x2="700" y2="200"/>
+        <line x1="0" y1="250" x2="700" y2="250"/>
+        <line x1="0" y1="300" x2="700" y2="300"/>
+        <line x1="100" y1="0" x2="100" y2="340"/>
+        <line x1="200" y1="0" x2="200" y2="340"/>
+        <line x1="300" y1="0" x2="300" y2="340"/>
+        <line x1="400" y1="0" x2="400" y2="340"/>
+        <line x1="500" y1="0" x2="500" y2="340"/>
+        <line x1="600" y1="0" x2="600" y2="340"/>
+      </g>
+
+      <!-- Elevation drawing: tree line silhouette -->
+      <g fill="#1A2A12" opacity="0.6">
+        <!-- Elm allee suggestion in elevation -->
+        <ellipse cx="50"  cy="240" rx="28" ry="45"/>
+        <ellipse cx="110" cy="235" rx="32" ry="52"/>
+        <ellipse cx="175" cy="230" rx="28" ry="48"/>
+        <ellipse cx="240" cy="238" rx="26" ry="44"/>
+        <ellipse cx="300" cy="225" rx="30" ry="55"/>
+        <ellipse cx="365" cy="230" rx="28" ry="50"/>
+        <ellipse cx="430" cy="228" rx="32" ry="52"/>
+        <ellipse cx="495" cy="235" rx="28" ry="48"/>
+        <ellipse cx="555" cy="230" rx="30" ry="52"/>
+        <ellipse cx="618" cy="240" rx="26" ry="44"/>
+        <ellipse cx="672" cy="235" rx="22" ry="40"/>
+        <!-- trunks -->
+        <rect x="47" y="280" width="6" height="60"/>
+        <rect x="107" y="282" width="6" height="58"/>
+        <rect x="172" y="278" width="6" height="62"/>
+        <rect x="237" y="280" width="6" height="60"/>
+        <rect x="297" y="275" width="6" height="65"/>
+        <rect x="362" y="277" width="6" height="63"/>
+        <rect x="427" y="276" width="6" height="64"/>
+        <rect x="492" y="280" width="6" height="60"/>
+        <rect x="552" y="278" width="6" height="62"/>
+        <rect x="615" y="280" width="6" height="60"/>
+        <rect x="669" y="282" width="6" height="58"/>
+      </g>
+
+      <!-- Ground plane line for elevation -->
+      <line x1="0" y1="338" x2="700" y2="338" stroke="#2A4A18" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- Title block — architectural drawing convention -->
+      <rect x="18" y="18" width="280" height="90" fill="none" stroke="#2A4A18" stroke-width="0.8" opacity="0.6"/>
+      <line x1="18" y1="40" x2="298" y2="40" stroke="#2A4A18" stroke-width="0.5" opacity="0.5"/>
+      <text x="28" y="34" fill="#7A9B3A" font-family="Georgia, serif" font-style="italic" font-size="9.5" opacity="0.8" letter-spacing="1.5">CENTRAL PARK — NEW YORK CITY</text>
+      <text x="28" y="58" fill="#5A7A3A" font-family="Georgia, serif" font-size="8" opacity="0.6" letter-spacing="1">Olmsted &amp; Vaux, Landscape Architects</text>
+      <text x="28" y="72" fill="#4A6A2A" font-family="Georgia, serif" font-size="7.5" opacity="0.5" letter-spacing="1">Greensward Plan — 1858</text>
+      <text x="28" y="88" fill="#3A5820" font-family="Georgia, serif" font-style="italic" font-size="7" opacity="0.4" letter-spacing="1">"A democratic institution of the first necessity"</text>
+
+      <!-- North arrow -->
+      <g transform="translate(640, 48)" opacity="0.5">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#2A4A18" stroke-width="0.7"/>
+        <polygon points="0,-14 2,-4 0,-7 -2,-4" fill="#7A9B3A" opacity="0.8"/>
+        <polygon points="0,14 2,4 0,7 -2,4" fill="#2A4A18" opacity="0.5"/>
+        <text x="0" y="-17" text-anchor="middle" fill="#7A9B3A" font-family="Georgia, serif" font-size="6" letter-spacing="0.5">N</text>
+      </g>
+
+      <!-- Scale bar -->
+      <g transform="translate(420, 20)" opacity="0.45">
+        <text x="0" y="10" fill="#5A7A3A" font-family="Georgia, serif" font-size="6.5" letter-spacing="0.5">0</text>
+        <line x1="10" y1="14" x2="110" y2="14" stroke="#3A5820" stroke-width="1"/>
+        <rect x="10" y="10" width="25" height="7" fill="#3A5820"/>
+        <rect x="35" y="10" width="25" height="7" fill="none" stroke="#3A5820" stroke-width="0.7"/>
+        <rect x="60" y="10" width="25" height="7" fill="#3A5820"/>
+        <rect x="85" y="10" width="25" height="7" fill="none" stroke="#3A5820" stroke-width="0.7"/>
+        <text x="105" y="10" fill="#5A7A3A" font-family="Georgia, serif" font-size="6.5">500ft</text>
+        <text x="35" y="26" fill="#3A5020" font-family="Georgia, serif" font-size="6" letter-spacing="0.3">SCALE OF FEET</text>
+      </g>
+
+      <!-- Annotation lines — landscape elements labeled -->
+      <g opacity="0.4" fill="#5A7A3A" font-family="Georgia, serif" font-style="italic" font-size="7.5">
+        <text x="540" y="540" letter-spacing="0.5">Ramble</text>
+        <line x1="535" y1="542" x2="525" y2="555" stroke="#3A5820" stroke-width="0.8"/>
+
+        <text x="30" y="600" letter-spacing="0.5">The Lake</text>
+        <line x1="80" y1="602" x2="95" y2="612" stroke="#3A5820" stroke-width="0.8"/>
+
+        <text x="420" y="620" letter-spacing="0.5">Sheep Meadow</text>
+        <line x1="415" y1="622" x2="400" y2="570" stroke="#3A5820" stroke-width="0.8"/>
+      </g>
+
+      <!-- Subtle vignette -->
+      <rect width="700" height="900" fill="url(#skyGrad)" opacity="0.12"/>
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio-panel">
+    <span class="panel-eyebrow">Museum of Minds — Portrait</span>
+
+    <div class="photo-frame">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Frederick_Law_Olmsted_-_1895.jpg/440px-Frederick_Law_Olmsted_-_1895.jpg"
+        alt="Frederick Law Olmsted, 1895"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="photo-missing" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="23" stroke="#2A4A18" stroke-width="1"/>
+          <circle cx="24" cy="20" r="8" stroke="#3A5A28" stroke-width="1" fill="none"/>
+          <path d="M8 40 Q16 28 24 28 Q32 28 40 40" stroke="#3A5A28" stroke-width="1" fill="none"/>
+        </svg>
+        <span>Portrait — not available</span>
+      </div>
+    </div>
+
+    <div class="placard">
+      <h1 class="persona-name">Frederick Law<br>Olmsted</h1>
+      <p class="persona-dates">1822 — 1903 &nbsp;·&nbsp; Hartford & New York</p>
+      <p class="persona-tagline">He designed Central Park as a democratic necessity — proof that the poor deserved beauty as much as the rich.</p>
+      <div class="persona-bio">
+        <p>Frederick Law Olmsted was, improbably, a Connecticut farmer who taught himself landscape design by walking the English countryside for three months in 1850. What he observed there — the way public parks softened class division and quieted the industrial city — became the organizing principle of his life's work.</p>
+        <p>With Calvert Vaux he won the 1858 Greensward competition for Central Park, and over the next forty years designed the landscape systems of dozens of American cities. Prospect Park, Boston's Emerald Necklace, the grounds of the U.S. Capitol, the campus of Stanford University — Olmsted's hand shaped how Americans move through their shared world.</p>
+        <p>But Olmsted was also a journalist whose pre-war dispatches from the slave states became <em>The Cotton Kingdom</em> (1861), the most comprehensive account of slavery's economic brutality written by a Northerner before the war. He understood that landscape and liberty were connected — that the ability to move freely through shared public space was not a luxury but a democratic condition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <span class="band-ornament">Enter the Conversation</span>
+  <div class="band-rule"></div>
+</div>
+
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>Speak with Olmsted<br>Across the Distance</h2>
+
+    <p>Olmsted argued that public parks were not amenities but necessities — that a city without shared green space was structurally hostile to democratic life. His corpus includes his design principles, his public lectures, his extensive correspondence, and his devastating journalism on slavery and the American South.</p>
+
+    <p>He was precise about the politics of landscape: who could enter a park mattered as much as how it looked. He designed Central Park's paths to be too narrow for carriages, deliberately excluding the wealthy from spaces meant for pedestrians. He thought in systems — the Emerald Necklace, the parkway, the greenway — long before the vocabulary existed.</p>
+
+    <div class="featured-quote">
+      "We want a ground to which people may easily go after their day's work is done... where they shall, in effect, find the city put far away from them."
+      <cite>— Frederick Law Olmsted · Public Parks and the Enlargement of Towns, 1870</cite>
+    </div>
+
+    <p>Some questions worth bringing:</p>
+
+    <p style="font-family: 'IM Fell English', serif; font-style: italic; color: var(--parchment); font-size: 0.92rem; line-height: 1.8;">
+      You designed Central Park to be democratic — and within a generation it was ringed by the wealthiest addresses in America. Did you fail, or did the city? ·
+      Your Cotton Kingdom reporting was damning about slavery's economics. How did that journalism connect to your landscape work? ·
+      The Highline opened in 2009, an abandoned rail line turned park — is that what you had in mind?
+    </p>
+
+    <div class="domain-tags">
+      <span class="tag">Landscape Architecture</span>
+      <span class="tag">Democratic Space</span>
+      <span class="tag">Urban Design</span>
+      <span class="tag">The Cotton Kingdom</span>
+      <span class="tag">Parks as Politics</span>
+      <span class="tag">American Cities</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/frederick-law-olmsted/widget/frederick-law-olmsted-widget.css">
+      <script src="https://museumofminds.com/frederick-law-olmsted/widget/frederick-law-olmsted-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="frederick-law-olmsted"></script>
+    </div>
+
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    "A park is a work of art, designed to produce certain effects upon the minds of men."
+  </blockquote>
+  <cite>— Frederick Law Olmsted &nbsp;·&nbsp; Notes on the Plan of Franklin Park, 1886</cite>
+</section>
+
+<div class="corpus-strip">
+  <p class="corpus-label">Corpus — Primary Sources</p>
+  <ul class="corpus-list">
+    <li>Public Parks and the Enlargement of Towns (1870)</li>
+    <li>Central Park: Design Principles & Greensward Plan (1858)</li>
+    <li>The Cotton Kingdom: A Traveller's Observations on Cotton and Slavery (1861)</li>
+    <li>A Journey in the Seaboard Slave States (1856)</li>
+    <li>Landscape Architecture as Applied to the Wants of the West (1873)</li>
+    <li>Notes on the Plan of Franklin Park (1886)</li>
+    <li>Report of the Landscape Architect upon the Projected Park (1866)</li>
+    <li>Spoils of the Park (1882)</li>
+  </ul>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-name">Frederick Law Olmsted</div>
+    <div class="footer-dates">April 26, 1822 — August 28, 1903</div>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds<br>
+    A Project in Preserved Voices<br>
+    <span style="color: var(--gold-dim);">2026</span>
+  </div>
+  <div class="footer-powered">
+    Powered by His Own Words
+  </div>
+</footer>
+
+</body>
+</html>
