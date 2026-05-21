@@ -22,6 +22,8 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let eduCourse = 'us-history';
+    let eduLevel  = 'standard';
     let settingsPanelOpen = false;
     let chatMode     = 'modern';       // 'modern' | 'historical'
     let chatLength   = 'detailed';     // 'brief' | 'conversational' | 'detailed'
@@ -153,13 +155,20 @@
 
                 <div id="jj-edu-panel" class="jj-edu-panel jj-hidden">
                     <div class="jj-edu-header">Educator Tools</div>
-                    <div class="jj-edu-grade">
-                        <span class="jj-edu-label">Grade level</span>
-                        <select id="jj-grade" class="jj-grade-select">
-                            <option value="middle-school">Middle School</option>
-                            <option value="high-school" selected>High School</option>
-                            <option value="college">College / University</option>
-                        </select>
+                    <div class="jj-edu-row">
+                        <span class="jj-edu-label">Course</span>
+                        <div class="jj-edu-seg">
+                            <button class="jj-seg-btn active" id="jj-course-ush" onclick="setEduCourse('us-history', this)">US History</button>
+                            <button class="jj-seg-btn" id="jj-course-gov" onclick="setEduCourse('us-government', this)">US Govt</button>
+                        </div>
+                    </div>
+                    <div class="jj-edu-row">
+                        <span class="jj-edu-label">Level</span>
+                        <div class="jj-edu-seg">
+                            <button class="jj-seg-btn active" id="jj-level-std" onclick="setEduLevel('standard', this)">Std</button>
+                            <button class="jj-seg-btn" id="jj-level-hon" onclick="setEduLevel('honors', this)">Hon</button>
+                            <button class="jj-seg-btn" id="jj-level-ap" onclick="setEduLevel('ap', this)">AP</button>
+                        </div>
                     </div>
                     <div class="jj-edu-btns">
                         <button id="jj-lesson-btn" class="jj-edu-btn">Lesson Plan</button>
@@ -346,23 +355,39 @@
         document.getElementById('jj-edu-toggle').classList.toggle('jj-edu-active', eduPanelOpen);
     }
 
+    function setEduCourse(course, btn) {
+        eduCourse = course;
+        document.querySelectorAll('#jj-course-ush, #jj-course-gov').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function setEduLevel(level, btn) {
+        eduLevel = level;
+        document.querySelectorAll('#jj-level-std, #jj-level-hon, #jj-level-ap').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
     async function fetchEduContent(type) {
-        const grade = document.getElementById('jj-grade').value;
+        const courseLabels = {
+            'us-history':    { standard: 'US History', honors: 'US History Honors', ap: 'APUSH' },
+            'us-government': { standard: 'US Government', honors: 'US Government Honors', ap: 'AP Gov' },
+        };
+        const label = courseLabels[eduCourse]?.[eduLevel] || 'US History';
         const lastUserMsg = [...document.querySelectorAll('.jj-message-user .jj-message-content')]
             .map(el => el.textContent).pop() || '';
 
-        // Close panel + show loading in chat
         toggleEduPanel();
-        addSystemMessage(`Generating ${type === 'lesson-plan' ? 'lesson plan' : 'discussion questions'} for ${grade}…`);
+        addSystemMessage(`Generating ${type === 'lesson-plan' ? 'lesson plan' : 'discussion questions'} for ${label}…`);
 
         try {
             const resp = await fetch(`${API_URL}/educator/${type}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    persona_id:  PERSONA_ID,
-                    topic:       lastUserMsg || null,
-                    grade_level: grade,
+                    persona_id: PERSONA_ID,
+                    topic:      lastUserMsg || null,
+                    course:     eduCourse,
+                    level:      eduLevel,
                 }),
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
