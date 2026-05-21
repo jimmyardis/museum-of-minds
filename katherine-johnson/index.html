@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katherine Johnson — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --void:         #0A0F1E;
+    --deep-space:   #1B2A4A;
+    --mid-space:    #243555;
+    --horizon:      #2E4A7A;
+    --star-white:   #F5F0E8;
+    --warm-cream:   #EDE5D0;
+    --parchment:    #D8CCAE;
+    --gold:         #C8A84C;
+    --gold-dim:     #8A6E28;
+    --orbit-blue:   #4A7AB5;
+    --orbit-pale:   #7AAED8;
+    --chalk:        #E8F0F8;
+    --text-main:    #F5F0E8;
+    --text-dim:     #A8B8CC;
+    --text-dark:    #1B2A4A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+
+  @keyframes traceGrow {
+    from { stroke-dashoffset: 1200; }
+    to   { stroke-dashoffset: 0; }
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: var(--void);
+    color: var(--text-main);
+    line-height: 1.7;
+    overflow-x: hidden;
+    animation: fadeIn 0.9s ease both;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.8rem;
+    border-bottom: 1px solid rgba(74, 122, 181, 0.28);
+    background: rgba(10, 15, 30, 0.92);
+    position: relative;
+    z-index: 10;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.28fr 0.72fr;
+    min-height: 92vh;
+    position: relative;
+  }
+
+  /* LEFT — SVG PANEL */
+  .hero-svg-panel {
+    position: relative;
+    overflow: hidden;
+    background: var(--void);
+  }
+
+  .hero-svg-panel svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* RIGHT — BIO PANEL */
+  .hero-bio {
+    background: rgba(27, 42, 74, 0.55);
+    border-left: 1px solid rgba(74, 122, 181, 0.3);
+    padding: 3.2rem 2.6rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+    animation: fadeIn 1.1s 0.3s ease both;
+    backdrop-filter: blur(2px);
+  }
+
+  .persona-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    color: var(--orbit-pale);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.9rem, 3.8vw, 4.2rem);
+    font-weight: 500;
+    color: var(--star-white);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+
+  .persona-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* PHOTO FRAME */
+  .photo-frame {
+    position: relative;
+    max-width: 272px;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid rgba(200, 168, 76, 0.55);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -13px;
+    border: 1px solid rgba(74, 122, 181, 0.3);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(30%) sepia(22%) contrast(1.06) brightness(0.88);
+    background: var(--deep-space);
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--deep-space) 0%, var(--mid-space) 60%, var(--void) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .photo-placeholder svg {
+    width: 64px;
+    height: 64px;
+    opacity: 0.35;
+  }
+
+  .photo-placeholder span {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* PLACARD */
+  .placard {
+    border-top: 1px solid rgba(74, 122, 181, 0.3);
+    padding-top: 1.3rem;
+  }
+
+  .placard-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.3em;
+    color: var(--orbit-pale);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .placard-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.02rem;
+    font-style: italic;
+    color: var(--warm-cream);
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+
+  .placard-body {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+  }
+
+  .placard-body p + p {
+    margin-top: 0.7rem;
+  }
+
+  /* ─── TRANSITION BAND ─────────────────────────────────── */
+  .transition-band {
+    background: linear-gradient(90deg, var(--void) 0%, var(--deep-space) 40%, var(--mid-space) 60%, var(--void) 100%);
+    border-top: 1px solid rgba(200, 168, 76, 0.22);
+    border-bottom: 1px solid rgba(200, 168, 76, 0.22);
+    padding: 1.1rem 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,168,76,0.4), transparent);
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─────────────────────────────────── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 540px;
+  }
+
+  .chatbot-intro {
+    padding: 3.8rem 3.2rem;
+    border-right: 1px solid rgba(74, 122, 181, 0.2);
+    background: linear-gradient(160deg, rgba(27,42,74,0.4) 0%, rgba(10,15,30,0.8) 100%);
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    font-weight: 400;
+    color: var(--star-white);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.3rem;
+    line-height: 1.3;
+  }
+
+  .chatbot-intro h2 em {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1em;
+  }
+
+  .chatbot-intro p {
+    font-size: 0.96rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+  }
+
+  .featured-quote-callout {
+    border-left: 2px solid var(--gold);
+    padding: 1rem 1.3rem;
+    margin: 1.6rem 0;
+    background: rgba(200, 168, 76, 0.07);
+  }
+
+  .featured-quote-callout p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--warm-cream);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+
+  .domain-tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    color: var(--orbit-pale);
+    border: 1px solid rgba(74, 122, 181, 0.4);
+    padding: 0.28rem 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .chatbot-embed {
+    background: var(--void);
+    min-height: 480px;
+    position: relative;
+  }
+
+  /* ─── PULL QUOTE ──────────────────────────────────────── */
+  .pull-quote {
+    padding: 5rem 2.8rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--void) 0%, var(--deep-space) 50%, var(--void) 100%);
+    border-top: 1px solid rgba(74, 122, 181, 0.18);
+    border-bottom: 1px solid rgba(74, 122, 181, 0.18);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(74,122,181,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pull-quote blockquote {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pull-quote blockquote::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    color: rgba(200, 168, 76, 0.18);
+    position: absolute;
+    top: -1.8rem;
+    left: -1.5rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    font-style: italic;
+    color: var(--star-white);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 1.4rem;
+  }
+
+  .pull-quote cite {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  /* ─── CORPUS STRIP ────────────────────────────────────── */
+  .corpus-strip {
+    background: rgba(10, 15, 30, 0.96);
+    border-top: 1px solid rgba(200, 168, 76, 0.2);
+    padding: 2.8rem 2.8rem;
+  }
+
+  .corpus-strip h3 {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    text-align: center;
+  }
+
+  .corpus-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 2.8rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .corpus-item {
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(74, 122, 181, 0.12);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .corpus-item::before {
+    content: '◦';
+    color: var(--orbit-pale);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--void);
+    border-top: 1px solid rgba(74, 122, 181, 0.2);
+    padding: 2.2rem 2.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--star-white);
+    letter-spacing: 0.12em;
+  }
+
+  .footer-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 0.1em;
+    margin-top: 0.18rem;
+  }
+
+  .footer-credit {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    color: var(--text-dim);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.9;
+  }
+
+  .footer-powered {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--orbit-pale);
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-svg-panel {
+      height: 55vw;
+      min-height: 300px;
+    }
+
+    .hero-svg-panel svg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-bio {
+      border-left: none;
+      border-top: 1px solid rgba(74, 122, 181, 0.3);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      border-right: none;
+      border-bottom: 1px solid rgba(74, 122, 181, 0.2);
+      padding: 2.2rem 1.5rem;
+    }
+
+    .chatbot-embed {
+      min-height: 380px;
+    }
+
+    .corpus-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 1.6rem;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+    }
+
+    .footer-powered {
+      text-align: center;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+    }
+
+    .pull-quote {
+      padding: 3.2rem 1.5rem;
+    }
+
+    .transition-band {
+      padding: 1rem 1.5rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ─── HEADER ───────────────────────────────────────────── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-right">KJ–1918–2026</div>
+</header>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+
+  <!-- LEFT: SVG ILLUSTRATION — Chalkboard trajectory calculation with orbital mechanics -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Orbital mechanics chalkboard with trajectory equations — Katherine Johnson's workspace at NASA">
+
+      <defs>
+        <linearGradient id="boardGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#0D1A2E"/>
+          <stop offset="100%" stop-color="#060D18"/>
+        </linearGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="8%" r="55%">
+          <stop offset="0%"   stop-color="#4A7AB5" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <radialGradient id="earthGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#2E5A8A" stop-opacity="0.9"/>
+          <stop offset="70%"  stop-color="#1B3A6A" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#0D1A2E"/>
+        </radialGradient>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#D8CCAE"/>
+          <stop offset="100%" stop-color="#A89878"/>
+        </radialGradient>
+        <filter id="chalkyBlur">
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+        <filter id="softGlow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background: deep blackboard -->
+      <rect width="700" height="900" fill="url(#boardGrad)"/>
+      <rect width="700" height="900" fill="url(#lampGlow)"/>
+
+      <!-- Board texture — faint chalk smears -->
+      <rect x="0" y="0" width="700" height="900" fill="none" stroke="#1A3050" stroke-width="0" opacity="0.4"/>
+      <!-- horizontal texture lines -->
+      <line x1="0" y1="180" x2="700" y2="182" stroke="#1A304A" stroke-width="0.4" opacity="0.3"/>
+      <line x1="0" y1="420" x2="700" y2="419" stroke="#1A304A" stroke-width="0.4" opacity="0.25"/>
+      <line x1="0" y1="660" x2="700" y2="658" stroke="#1A304A" stroke-width="0.4" opacity="0.2"/>
+
+      <!-- Stars scattered in corners / background -->
+      <circle cx="38"  cy="28"  r="1.1" fill="#F5F0E8" opacity="0.5"/>
+      <circle cx="92"  cy="55"  r="0.7" fill="#F5F0E8" opacity="0.4"/>
+      <circle cx="620" cy="18"  r="1.2" fill="#F5F0E8" opacity="0.55"/>
+      <circle cx="660" cy="44"  r="0.7" fill="#F5F0E8" opacity="0.35"/>
+      <circle cx="672" cy="80"  r="1.0" fill="#F5F0E8" opacity="0.45"/>
+      <circle cx="18"  cy="110" r="0.9" fill="#F5F0E8" opacity="0.3"/>
+      <circle cx="680" cy="160" r="0.8" fill="#F5F0E8" opacity="0.35"/>
+      <circle cx="645" cy="240" r="1.1" fill="#F5F0E8" opacity="0.28"/>
+      <circle cx="22"  cy="290" r="0.7" fill="#F5F0E8" opacity="0.3"/>
+      <circle cx="655" cy="380" r="0.9" fill="#F5F0E8" opacity="0.25"/>
+
+      <!-- ── MAIN CHALKBOARD PANEL ── -->
+      <rect x="35" y="55" width="630" height="790" rx="3" fill="#0F1E32" stroke="#243555" stroke-width="1.2" opacity="0.85"/>
+      <!-- board frame outer -->
+      <rect x="28" y="48" width="644" height="804" rx="4" fill="none" stroke="#1E3050" stroke-width="2.5"/>
+      <!-- board frame inner highlight -->
+      <rect x="32" y="52" width="636" height="796" rx="3" fill="none" stroke="#2A4068" stroke-width="0.8"/>
+
+      <!-- ── TITLE BLOCK top of board ── -->
+      <text x="350" y="100" font-family="serif" font-size="11" fill="#C8A84C" opacity="0.9" text-anchor="middle" letter-spacing="4" font-style="italic">TRAJECTORY ANALYSIS — MERCURY ORBITAL INSERTION</text>
+      <line x1="80" y1="110" x2="620" y2="110" stroke="#C8A84C" stroke-width="0.6" opacity="0.4"/>
+
+      <!-- ── EARTH (lower center) ── -->
+      <circle cx="350" cy="710" r="130" fill="url(#earthGlow)" opacity="0.92"/>
+      <!-- Earth outline / terminator chalk -->
+      <circle cx="350" cy="710" r="130" fill="none" stroke="#7AAED8" stroke-width="0.7" stroke-dasharray="3,4" opacity="0.4"/>
+      <!-- Land masses — simplified chalk outlines -->
+      <ellipse cx="320" cy="680" rx="28" ry="18" fill="none" stroke="#7AAED8" stroke-width="0.8" opacity="0.5" transform="rotate(-20,320,680)"/>
+      <ellipse cx="370" cy="720" rx="18" ry="24" fill="none" stroke="#7AAED8" stroke-width="0.7" opacity="0.45" transform="rotate(10,370,720)"/>
+      <path d="M290 700 Q310 695 325 708 Q315 718 295 715 Z" fill="#7AAED8" opacity="0.15"/>
+      <path d="M355 685 Q378 679 388 692 Q376 700 358 697 Z" fill="#7AAED8" opacity="0.12"/>
+      <!-- Earth label -->
+      <text x="350" y="715" font-family="serif" font-size="10" fill="#7AAED8" text-anchor="middle" opacity="0.65" font-style="italic">Earth</text>
+
+      <!-- ── MOON ── -->
+      <circle cx="560" cy="200" r="36" fill="url(#moonGlow)" opacity="0.88"/>
+      <circle cx="560" cy="200" r="36" fill="none" stroke="#EDE5D0" stroke-width="0.7" stroke-dasharray="2,3" opacity="0.5"/>
+      <!-- Moon craters chalk -->
+      <circle cx="548" cy="192" r="6"  fill="none" stroke="#A89878" stroke-width="0.6" opacity="0.6"/>
+      <circle cx="568" cy="208" r="4"  fill="none" stroke="#A89878" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="555" cy="214" r="3"  fill="none" stroke="#A89878" stroke-width="0.5" opacity="0.45"/>
+      <text x="560" y="249" font-family="serif" font-size="10" fill="#D8CCAE" text-anchor="middle" opacity="0.7" font-style="italic">Moon</text>
+
+      <!-- ── ORBITAL ELLIPSES ── -->
+      <!-- Parking orbit (small, close to Earth) -->
+      <ellipse cx="350" cy="710" rx="170" ry="30" fill="none" stroke="#7AAED8" stroke-width="0.85" stroke-dasharray="5,4" opacity="0.45" transform="rotate(-12,350,710)"/>
+      <!-- Transfer ellipse (large, reaches moon region) -->
+      <ellipse cx="350" cy="710" rx="310" ry="260" fill="none" stroke="#C8A84C" stroke-width="1.1" stroke-dasharray="8,5" opacity="0.55" transform="rotate(-35,350,710)"/>
+      <!-- Final lunar orbit (dashed circle around moon) -->
+      <circle cx="560" cy="200" r="56" fill="none" stroke="#EDE5D0" stroke-width="0.8" stroke-dasharray="4,4" opacity="0.4"/>
+
+      <!-- ── TRAJECTORY PATH (chalk arc from Earth to Moon) ── -->
+      <path d="M 390 595 Q 520 420 555 248" fill="none" stroke="#F5F0E8" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.72" filter="url(#chalkyBlur)"/>
+      <!-- Direction arrow at Moon end -->
+      <polygon points="555,232 548,252 562,252" fill="#F5F0E8" opacity="0.65" transform="rotate(-15,555,242)"/>
+
+      <!-- Launch point marker -->
+      <circle cx="390" cy="595" r="4.5" fill="#C8A84C" opacity="0.8"/>
+      <circle cx="390" cy="595" r="7.5" fill="none" stroke="#C8A84C" stroke-width="0.7" opacity="0.45"/>
+      <!-- small rocket shape at launch -->
+      <polygon points="390,580 385,596 395,596" fill="#EDE5D0" opacity="0.7"/>
+      <rect x="386" y="596" width="8" height="5" rx="1" fill="#C8A84C" opacity="0.65"/>
+
+      <!-- ── EQUATION BLOCK LEFT ── -->
+      <!-- Section heading -->
+      <text x="78" y="148" font-family="serif" font-size="9.5" fill="#7AAED8" opacity="0.75" letter-spacing="2">EQUATIONS OF MOTION</text>
+      <line x1="78" y1="153" x2="310" y2="153" stroke="#7AAED8" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- r double-dot equation -->
+      <text x="82" y="178" font-family="serif" font-size="13" fill="#E8F0F8" opacity="0.82" font-style="italic">r̈  −  rθ̇²  =  − μ/r²</text>
+      <text x="82" y="202" font-family="serif" font-size="13" fill="#E8F0F8" opacity="0.78" font-style="italic">r²θ̇  =  h  =  const.</text>
+
+      <!-- vis-viva -->
+      <text x="82" y="233" font-family="serif" font-size="9.5" fill="#7AAED8" opacity="0.6" letter-spacing="1.5">VIS-VIVA EQUATION</text>
+      <text x="82" y="255" font-family="serif" font-size="13" fill="#E8F0F8" opacity="0.8" font-style="italic">v²  =  μ ( 2/r  −  1/a )</text>
+
+      <!-- Hohmann transfer -->
+      <text x="82" y="285" font-family="serif" font-size="9.5" fill="#7AAED8" opacity="0.6" letter-spacing="1.5">HOHMANN TRANSFER  Δv</text>
+      <text x="82" y="307" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.78" font-style="italic">Δv₁  =  √(μ/r₁) · (√(2r₂/(r₁+r₂)) − 1)</text>
+
+      <!-- vertical divider -->
+      <line x1="350" y1="130" x2="350" y2="580" stroke="#2A4068" stroke-width="0.8" opacity="0.5" stroke-dasharray="3,5"/>
+
+      <!-- ── EQUATION BLOCK RIGHT ── -->
+      <text x="370" y="148" font-family="serif" font-size="9.5" fill="#C8A84C" opacity="0.75" letter-spacing="2">REENTRY PARAMETERS</text>
+      <line x1="370" y1="153" x2="618" y2="153" stroke="#C8A84C" stroke-width="0.5" opacity="0.3"/>
+
+      <text x="374" y="178" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.78" font-style="italic">γ  =  arctan(v_r / v_⊥)</text>
+      <text x="374" y="202" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.75" font-style="italic">T_reentry  =  2πa³/² / √μ</text>
+
+      <text x="374" y="232" font-family="serif" font-size="9.5" fill="#C8A84C" opacity="0.6" letter-spacing="1.5">SPLASHDOWN  COORDINATES</text>
+      <text x="374" y="254" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.78" font-style="italic">φ  =  arcsin(sin δ sin i)</text>
+      <text x="374" y="275" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.74" font-style="italic">λ  =  Ω  +  arctan(cos i · tan u)</text>
+
+      <text x="374" y="305" font-family="serif" font-size="9.5" fill="#C8A84C" opacity="0.6" letter-spacing="1.5">WINDOW  TIMING  (sec)</text>
+      <text x="374" y="327" font-family="serif" font-size="12.5" fill="#E8F0F8" opacity="0.78" font-style="italic">Δt  =  (λ_target − λ_node) / ω_E</text>
+
+      <!-- ── ANNOTATION / WORKING AREA ── -->
+      <!-- Horizontal rule beneath equations -->
+      <line x1="68" y1="355" x2="632" y2="355" stroke="#2A4068" stroke-width="0.7" opacity="0.5"/>
+
+      <!-- Diagram annotation labels -->
+      <!-- Left working notes -->
+      <text x="82" y="378" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.58" font-style="italic">μ_Earth  =  3.986 × 10⁵ km³ s⁻²</text>
+      <text x="82" y="396" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.55" font-style="italic">R_E  =  6,371 km  ·  R_Moon  =  1,737 km</text>
+      <text x="82" y="414" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.52" font-style="italic">a (transfer)  =  (R_E + h_orbit + d_Moon) / 2</text>
+      <text x="82" y="432" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.5" font-style="italic">T  =  2π √( a³/μ )  →  5.15 days</text>
+
+      <!-- Right working notes -->
+      <text x="374" y="378" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.58" font-style="italic">i_orbit  =  28.5°  (KSC latitude)</text>
+      <text x="374" y="396" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.55" font-style="italic">RAAN: Ω  =  f(t_launch, θ_Sun)</text>
+      <text x="374" y="414" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.52" font-style="italic">v_circular  =  7.78 km/s  @ 200 km</text>
+      <text x="374" y="432" font-family="serif" font-size="9" fill="#D8CCAE" opacity="0.5" font-style="italic">Δv_total  =  3.14 km/s  (TLI burn)</text>
+
+      <!-- ── COORDINATE AXES for diagram ── -->
+      <!-- Origin at Earth center ish -->
+      <line x1="350" y1="580" x2="350" y2="455" stroke="#7AAED8" stroke-width="0.7" opacity="0.35"/>
+      <line x1="220" y1="580" x2="500" y2="580" stroke="#7AAED8" stroke-width="0.7" opacity="0.35"/>
+      <!-- Axis arrows -->
+      <polygon points="350,452 346,462 354,462" fill="#7AAED8" opacity="0.35"/>
+      <polygon points="503,580 493,576 493,584" fill="#7AAED8" opacity="0.35"/>
+      <text x="356" y="450" font-family="serif" font-size="9" fill="#7AAED8" opacity="0.45" font-style="italic">+z</text>
+      <text x="508" y="584" font-family="serif" font-size="9" fill="#7AAED8" opacity="0.45" font-style="italic">+x</text>
+
+      <!-- ── ANNOTATION ARROWS on diagram ── -->
+      <!-- Label for transfer ellipse -->
+      <line x1="200" y1="540" x2="180" y2="510" stroke="#C8A84C" stroke-width="0.7" opacity="0.5"/>
+      <text x="118" y="505" font-family="serif" font-size="9" fill="#C8A84C" opacity="0.7" font-style="italic">Transfer orbit</text>
+
+      <!-- Label for parking orbit -->
+      <line x1="220" y1="697" x2="200" y2="720" stroke="#7AAED8" stroke-width="0.7" opacity="0.45"/>
+      <text x="110" y="730" font-family="serif" font-size="9" fill="#7AAED8" opacity="0.65" font-style="italic">Parking orbit (185 km)</text>
+
+      <!-- Label for lunar orbit -->
+      <line x1="598" y1="220" x2="622" y2="235" stroke="#EDE5D0" stroke-width="0.7" opacity="0.4"/>
+      <text x="600" y="250" font-family="serif" font-size="9" fill="#EDE5D0" opacity="0.6" font-style="italic">Lunar orbit</text>
+
+      <!-- Δv₁ marker -->
+      <circle cx="385" cy="595" r="3" fill="none" stroke="#C8A84C" stroke-width="0.8" opacity="0.6"/>
+      <text x="358" y="574" font-family="serif" font-size="9" fill="#C8A84C" opacity="0.65" font-style="italic">Δv₁  TLI</text>
+
+      <!-- ── COMPASS ROSE (bottom-right corner) ── -->
+      <g transform="translate(590,820) scale(0.85)" opacity="0.45">
+        <circle cx="0" cy="0" r="20" fill="none" stroke="#7AAED8" stroke-width="0.7"/>
+        <line x1="0" y1="-20" x2="0" y2="20" stroke="#7AAED8" stroke-width="0.8"/>
+        <line x1="-20" y1="0" x2="20" y2="0" stroke="#7AAED8" stroke-width="0.8"/>
+        <line x1="-14" y1="-14" x2="14" y2="14" stroke="#7AAED8" stroke-width="0.4"/>
+        <line x1="14" y1="-14" x2="-14" y2="14" stroke="#7AAED8" stroke-width="0.4"/>
+        <polygon points="0,-22 -3,-8 3,-8" fill="#C8A84C" opacity="0.85"/>
+        <text x="0" y="-26" font-family="serif" font-size="8" fill="#C8A84C" text-anchor="middle" opacity="0.9">N</text>
+      </g>
+
+      <!-- ── TITLE BLOCK LOWER ── -->
+      <line x1="68" y1="825" x2="632" y2="825" stroke="#2A4068" stroke-width="0.8" opacity="0.5"/>
+      <text x="82" y="843" font-family="serif" font-size="8.5" fill="#7AAED8" opacity="0.6" letter-spacing="1.5">LANGLEY RESEARCH CENTER  ·  NACA / NASA</text>
+      <text x="82" y="858" font-family="serif" font-size="8" fill="#D8CCAE" opacity="0.45" font-style="italic">Computed: K. Johnson  ·  Checked: K. Johnson  ·  1962</text>
+      <text x="530" y="843" font-family="serif" font-size="8" fill="#C8A84C" opacity="0.55" text-anchor="end">Sheet 4 of 7</text>
+      <text x="530" y="858" font-family="serif" font-size="7.5" fill="#D8CCAE" opacity="0.4" text-anchor="end" font-style="italic">Friendship 7  —  Orbit Calc.</text>
+
+      <!-- ── CHALK SMUDGE / ERASED AREA hint ── -->
+      <ellipse cx="155" cy="488" rx="60" ry="18" fill="#0F1E32" opacity="0.55"/>
+      <text x="155" y="484" font-family="serif" font-size="8.5" fill="#D8CCAE" opacity="0.35" text-anchor="middle" font-style="italic">[ see sheet 5 ]</text>
+
+      <!-- ── SMALL MARGIN ANNOTATION ── -->
+      <text x="638" y="400" font-family="serif" font-size="8" fill="#D8CCAE" opacity="0.32" font-style="italic" transform="rotate(90,638,400)">Check vs. IBM 7090 — agrees</text>
+
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio">
+    <div>
+      <div class="persona-label">Museum of Minds — Biography</div>
+      <div class="persona-name">Katherine<br>Johnson</div>
+      <div class="persona-dates">1918 — 2020</div>
+    </div>
+
+    <!-- PORTRAIT -->
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="32" cy="22" r="11" stroke="#7AAED8" stroke-width="1.5" opacity="0.6"/>
+          <path d="M10 54 Q10 38 32 38 Q54 38 54 54" stroke="#7AAED8" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+        <span>Portrait unavailable</span>
+      </div>
+    </div>
+
+    <!-- PLACARD -->
+    <div class="placard">
+      <div class="placard-title">On the Record</div>
+      <p class="placard-tagline">She computed the trajectories that put men on the moon — and had to fight to be in the room where it happened.</p>
+      <div class="placard-body">
+        <p>Katherine Johnson was a mathematician at NACA and NASA whose orbital mechanics calculations were so trusted that John Glenn refused to launch until she personally verified the computer's numbers.</p>
+        <p>Working in a segregated "colored computing" pool before breaking into all-white, all-male flight research teams, she combined an almost supernatural gift for analytic geometry with the dogged determination to attend the briefings, author the reports, and receive the credit that had long been withheld.</p>
+        <p>Her equations flew on every crewed Mercury mission, on Apollo 11's lunar trajectory, and on the contingency return paths that would have guided the astronauts home should the onboard computer fail.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── TRANSITION BAND ────────────────────────────────────── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-ornament">✦ &nbsp; In Conversation &nbsp; ✦</div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ────────────────────────────────────── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>Speak with<br><em>Katherine Johnson</em></h2>
+
+    <p>
+      This conversational exhibit draws on Johnson's published papers, NASA technical reports, congressional testimony, oral history interviews, and the memoir she contributed to <em>Reaching for the Moon</em>. Her voice here is reconstructed from the record she left: careful, precise, quietly proud, and entirely unwilling to minimize what she accomplished.
+    </p>
+
+    <p>
+      Ask her about the mathematics of orbital mechanics, the experience of racial segregation inside one of America's premier scientific institutions, or what she makes of the pace at which things have — and have not — changed since the Apollo era.
+    </p>
+
+    <div class="featured-quote-callout">
+      <p>"Tell me where you want the thing to come down, and I'll tell you where to send it up."</p>
+    </div>
+
+    <p>
+      She knew the answer before the computer finished running. The question the exhibit invites you to put to her is: how does a mind like that survive in a system designed not to see it?
+    </p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Orbital Mechanics</span>
+      <span class="domain-tag">Analytic Geometry</span>
+      <span class="domain-tag">Mercury Program</span>
+      <span class="domain-tag">Apollo 11</span>
+      <span class="domain-tag">Segregation &amp; Science</span>
+      <span class="domain-tag">NACA / NASA</span>
+      <span class="domain-tag">Human Computing</span>
+      <span class="domain-tag">Space Race</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/katherine-johnson/widget/katherine-johnson-widget.css">
+      <script src="https://museumofminds.com/katherine-johnson/widget/katherine-johnson-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="katherine-johnson"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ─────────────────────────────────────────── -->
+<section class="pull-quote">
+  <blockquote>
+    <p>"We needed to be assertive as women in those days — assertive and aggressive — and the men had to get used to us."</p>
+    <cite>Katherine Johnson — Oral History Interview, NASA History Division, 1992</cite>
+  </blockquote>
+</section>
+
+<!-- ─── CORPUS STRIP ───────────────────────────────────────── -->
+<div class="corpus-strip">
+  <h3>Corpus &amp; Source Materials</h3>
+  <div class="corpus-list">
+    <div class="corpus-item">Determination of Azimuth Angle at Burnout (NASA TN D-233, 1960)</div>
+    <div class="corpus-item">NASA Oral History Project — KJ Interviews, 1992 &amp; 2008</div>
+    <div class="corpus-item">Friendship 7 Trajectory Verification Documents (1962)</div>
+    <div class="corpus-item">Apollo 11 Mission Planning Trajectory Notes (1969)</div>
+    <div class="corpus-item"><em>Reaching for the Moon</em> — Memoir (2019)</div>
+    <div class="corpus-item">Presidential Medal of Freedom Citation (2015)</div>
+    <div class="corpus-item">NACA Flight Research Division Technical Memoranda (1953–58)</div>
+    <div class="corpus-item">Congressional Testimony on STEM Education (2016)</div>
+    <div class="corpus-item">West Virginia State University Commencement Addresses</div>
+    <div class="corpus-item"><em>Hidden Figures</em> Source Research (Shetterly, 2016)</div>
+    <div class="corpus-item">Katherine G. Johnson Computational Research Facility Dedication (2017)</div>
+    <div class="corpus-item">NASA Langley Research Center Internal Performance Reviews (1958–1983)</div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div>
+    <div class="footer-name">Katherine Johnson</div>
+    <div class="footer-dates">White Sulphur Springs, 1918 — Newport News, 2020</div>
+  </div>
+
+  <div class="footer-credit">
+    Museum of Minds<br>
+    A Living Archive of Human Intelligence<br>
+    &copy; 2026
+  </div>
+
+  <div class="footer-powered">
+    Powered by Her Own Words<br>
+    <span style="font-size:0.72rem; color: var(--gold-dim); font-style:normal; font-family:'IM Fell English SC', serif; letter-spacing:0.2em;">and her own numbers</span>
+  </div>
+</footer>
+
+</body>
+</html>
