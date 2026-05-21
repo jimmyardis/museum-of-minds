@@ -21,6 +21,7 @@
     let personaConfig = null;
     let voiceEnabled = false;
     let eduPanelOpen = false;
+    let settingsPanelOpen = false;
     // html2pdfLoaded removed — using print-in-new-window instead
 
     // Size mode: 'compact' | 'medium' | 'full'
@@ -128,6 +129,12 @@
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
                         </button>
+                        <button id="jj-settings" class="jj-settings-btn" title="Settings">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </button>
                         <button id="jj-size" class="jj-size-btn" title="${SIZE_TITLES[currentSize]}">${SIZE_ICONS[currentSize]}</button>
                         <button id="jj-close" class="jj-close-btn">&times;</button>
                     </div>
@@ -155,6 +162,29 @@
                     </div>
                 </div>
 
+                <div id="jj-settings-panel" class="jj-settings-panel jj-hidden">
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Historical</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt jj-setting-active" data-setting="mode" data-value="modern">Modern</button>
+                            <button class="jj-setting-opt" data-setting="mode" data-value="historical">Historical</button>
+                        </div>
+                    </div>
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Length</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt" data-setting="length" data-value="brief">Brief</button>
+                            <button class="jj-setting-opt jj-setting-active" data-setting="length" data-value="detailed">Standard</button>
+                        </div>
+                    </div>
+                    <div class="jj-settings-row">
+                        <span class="jj-settings-label">Reading level</span>
+                        <div class="jj-setting-group">
+                            <button class="jj-setting-opt jj-setting-active" data-setting="level" data-value="general">General</button>
+                            <button class="jj-setting-opt" data-setting="level" data-value="middle_school">Middle School</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="jj-input-container">
                     <button id="jj-voice" class="jj-voice-btn" title="Enable voice" aria-label="Toggle voice output">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -286,6 +316,23 @@
         eduPanelOpen = !eduPanelOpen;
         document.getElementById('jj-edu-panel').classList.toggle('jj-hidden', !eduPanelOpen);
         document.getElementById('jj-edu-toggle').classList.toggle('jj-edu-active', eduPanelOpen);
+    }
+
+    function toggleSettings() {
+        settingsPanelOpen = !settingsPanelOpen;
+        document.getElementById('jj-settings-panel').classList.toggle('jj-hidden', !settingsPanelOpen);
+        document.getElementById('jj-settings').classList.toggle('jj-settings-active', settingsPanelOpen);
+        if (settingsPanelOpen && eduPanelOpen) {
+            eduPanelOpen = false;
+            document.getElementById('jj-edu-panel').classList.add('jj-hidden');
+            document.getElementById('jj-edu-toggle').classList.remove('jj-edu-active');
+        }
+    }
+
+    function applySettingOpt(btn) {
+        const group = btn.closest('.jj-setting-group');
+        if (group) group.querySelectorAll('.jj-setting-opt').forEach(b => b.classList.remove('jj-setting-active'));
+        btn.classList.add('jj-setting-active');
     }
 
     async function fetchEduContent(type) {

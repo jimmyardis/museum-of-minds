@@ -158,16 +158,16 @@
                     <div class="jj-edu-row">
                         <span class="jj-edu-label">Course</span>
                         <div class="jj-edu-seg">
-                            <button class="jj-seg-btn active" id="jj-course-ush" onclick="setEduCourse('us-history', this)">US History</button>
-                            <button class="jj-seg-btn" id="jj-course-gov" onclick="setEduCourse('us-government', this)">US Govt</button>
+                            <button class="jj-seg-btn active" id="jj-course-ush">US History</button>
+                            <button class="jj-seg-btn" id="jj-course-gov">US Govt</button>
                         </div>
                     </div>
                     <div class="jj-edu-row">
                         <span class="jj-edu-label">Level</span>
                         <div class="jj-edu-seg">
-                            <button class="jj-seg-btn active" id="jj-level-std" onclick="setEduLevel('standard', this)">Std</button>
-                            <button class="jj-seg-btn" id="jj-level-hon" onclick="setEduLevel('honors', this)">Hon</button>
-                            <button class="jj-seg-btn" id="jj-level-ap" onclick="setEduLevel('ap', this)">AP</button>
+                            <button class="jj-seg-btn active" id="jj-level-std">Std</button>
+                            <button class="jj-seg-btn" id="jj-level-hon">Hon</button>
+                            <button class="jj-seg-btn" id="jj-level-ap">AP</button>
                         </div>
                     </div>
                     <div class="jj-edu-btns">
@@ -241,6 +241,11 @@
         document.querySelectorAll('.jj-setting-opt').forEach(btn => {
             btn.addEventListener('click', () => applySettingOpt(btn));
         });
+                document.getElementById('jj-course-ush').addEventListener('click', function() { setEduCourse('us-history', this); });
+        document.getElementById('jj-course-gov').addEventListener('click', function() { setEduCourse('us-government', this); });
+        document.getElementById('jj-level-std').addEventListener('click', function() { setEduLevel('standard', this); });
+        document.getElementById('jj-level-hon').addEventListener('click', function() { setEduLevel('honors', this); });
+        document.getElementById('jj-level-ap').addEventListener('click', function() { setEduLevel('ap', this); });
         document.getElementById('jj-lesson-btn').addEventListener('click', () => fetchEduContent('lesson-plan'));
         document.getElementById('jj-questions-btn').addEventListener('click', () => fetchEduContent('discussion-questions'));
         document.getElementById('jj-input').addEventListener('keypress', e => {
