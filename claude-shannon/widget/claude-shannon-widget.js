@@ -121,6 +121,7 @@
                     <div class="jj-header-content">
                         <h3>${ui.header_title}</h3>
                         <p class="jj-subtitle">${ui.header_subtitle}</p>
+                        ${config.trust_score && config.trust_score.score ? `<p class="jj-trust-line"><span class="jj-trust-score-badge">${config.trust_score.score}/100</span><span class="jj-trust-score-label">${config.trust_score.coverage_label || ''}</span></p>` : ''}
                         <p class="jj-tagline">${ui.header_tagline}</p>
                     </div>
                     <div class="jj-header-actions">

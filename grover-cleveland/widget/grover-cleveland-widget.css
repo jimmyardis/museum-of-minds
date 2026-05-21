@@ -801,3 +801,27 @@
     color: var(--persona-cream);
     border-color: rgba(255,255,255,0.4);
 }
+
+.jj-trust-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 10px;
+}
+.jj-trust-score-badge {
+    font-size: 10px;
+    font-weight: 600;
+    font-family: var(--persona-font-secondary);
+    opacity: 0.85;
+    letter-spacing: 0.3px;
+}
+.jj-trust-score-label {
+    font-size: 10px;
+    font-family: var(--persona-font-secondary);
+    opacity: 0.55;
+    letter-spacing: 0.3px;
+}
+.jj-trust-score-label::before {
+    content: "·";
+    margin-right: 6px;
+}
