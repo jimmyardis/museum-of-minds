@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Washington Carver — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --soil-deep:       #2C1F14;
+    --soil-mid:        #4A3728;
+    --soil-warm:       #6B4E35;
+    --clay-red:        #8B4513;
+    --clay-light:      #A0522D;
+    --parchment:       #F5F0E8;
+    --parchment-warm:  #EDE4D0;
+    --parchment-deep:  #D4C8B0;
+    --sage:            #5A7A4A;
+    --sage-light:      #7A9E68;
+    --sage-pale:       #B8C9A8;
+    --cream-text:      #F2EBD8;
+    --ink-dark:        #1A1208;
+    --gold-harvest:    #C8922A;
+    --gold-light:      #E4B84A;
+    --accent-vine:     #3D5C2E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--soil-deep);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slowSway {
+    0%   { transform: rotate(-0.8deg) translateX(0px); }
+    50%  { transform: rotate(0.6deg) translateX(2px); }
+    100% { transform: rotate(-0.8deg) translateX(0px); }
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.8rem;
+    background-color: var(--soil-deep);
+    border-bottom: 1px solid rgba(200,146,42,0.25);
+    animation: fadeDown 0.8s ease both;
+    position: relative;
+    z-index: 10;
+  }
+
+  .header-left {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    color: var(--gold-harvest);
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    color: rgba(200,146,42,0.55);
+    text-transform: uppercase;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    min-height: 92vh;
+    animation: fadeIn 1.1s ease 0.2s both;
+  }
+
+  /* Left SVG Panel */
+  .hero-illustration {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--soil-mid);
+  }
+
+  .hero-illustration svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Right Bio Panel */
+  .hero-bio {
+    background-color: var(--parchment);
+    color: var(--soil-deep);
+    padding: 3.5rem 2.8rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 3px solid var(--gold-harvest);
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .museum-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.38em;
+    color: var(--clay-red);
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+
+  .persona-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--soil-deep);
+    margin-bottom: 0.35rem;
+  }
+
+  .persona-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.18em;
+    color: var(--soil-warm);
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    color: var(--clay-red);
+    line-height: 1.55;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--parchment-deep);
+  }
+
+  /* Photo Frame */
+  .photo-frame {
+    position: relative;
+    max-width: 240px;
+    margin: 0 auto 1.8rem auto;
+    display: block;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--gold-harvest);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(200,146,42,0.35);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    filter: grayscale(45%) sepia(30%) contrast(1.05) brightness(0.92);
+  }
+
+  .photo-missing {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(160deg, var(--soil-mid) 0%, var(--soil-warm) 60%, var(--clay-red) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+
+  .photo-missing-icon {
+    opacity: 0.35;
+  }
+
+  .photo-missing-text {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--parchment-deep);
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  /* Placard */
+  .placard {
+    background-color: var(--parchment-warm);
+    border-left: 3px solid var(--sage);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .placard-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.32em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .placard p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--soil-mid);
+    font-weight: 400;
+  }
+
+  .placard p + p { margin-top: 0.6rem; }
+
+  .bio-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .bio-field-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    color: var(--clay-red);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .bio-field-value {
+    font-size: 0.8rem;
+    color: var(--soil-mid);
+    font-weight: 500;
+  }
+
+  /* ─── TRANSITION BAND ─── */
+  .transition-band {
+    background: linear-gradient(90deg, var(--soil-deep) 0%, var(--soil-warm) 35%, var(--sage) 65%, var(--soil-deep) 100%);
+    padding: 0.9rem 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    border-top: 1px solid rgba(200,146,42,0.2);
+    border-bottom: 1px solid rgba(200,146,42,0.2);
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,146,42,0.5), transparent);
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.42em;
+    color: var(--gold-harvest);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ─── CHATBOT SECTION ─── */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 580px;
+    background-color: var(--parchment);
+  }
+
+  .chatbot-intro {
+    padding: 3.5rem 3rem 3rem 3rem;
+    background-color: var(--parchment-warm);
+    border-right: 1px solid var(--parchment-deep);
+    color: var(--soil-deep);
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+    font-weight: 600;
+    color: var(--soil-deep);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--gold-harvest);
+    margin: 0.9rem 0 1.3rem 0;
+  }
+
+  .chatbot-intro p {
+    font-size: 0.93rem;
+    line-height: 1.72;
+    color: var(--soil-mid);
+    margin-bottom: 0.9rem;
+  }
+
+  .featured-quote {
+    border-left: 3px solid var(--gold-harvest);
+    padding: 0.9rem 1.2rem;
+    margin: 1.4rem 0;
+    background-color: var(--parchment);
+  }
+
+  .featured-quote p {
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--soil-deep);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+
+  .domain-tag {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.25em;
+    color: var(--parchment);
+    background-color: var(--soil-warm);
+    padding: 0.3rem 0.7rem;
+    text-transform: uppercase;
+    border: 1px solid var(--clay-red);
+  }
+
+  .chatbot-embed {
+    background-color: var(--parchment);
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    min-height: 520px;
+  }
+
+  .chatbot-embed > * { flex: 1; }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    background-color: var(--soil-deep);
+    padding: 4.5rem 10vw;
+    text-align: center;
+    border-top: 1px solid rgba(200,146,42,0.2);
+    border-bottom: 1px solid rgba(200,146,42,0.2);
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.55;
+    max-width: 820px;
+    margin: 0 auto 1.2rem auto;
+  }
+
+  .quote-ornament {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold-harvest);
+    opacity: 0.35;
+    line-height: 0.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .pull-quote cite {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-harvest);
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ─── CORPUS STRIP ─── */
+  .corpus-strip {
+    background-color: var(--soil-mid);
+    padding: 2.5rem 3rem;
+    border-top: 1px solid rgba(200,146,42,0.15);
+  }
+
+  .corpus-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    color: var(--gold-harvest);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .corpus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.7rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .corpus-item {
+    font-size: 0.8rem;
+    color: var(--parchment-deep);
+    padding-left: 1rem;
+    border-left: 1px solid rgba(200,146,42,0.3);
+    line-height: 1.45;
+  }
+
+  .corpus-item em {
+    font-style: italic;
+    color: var(--parchment);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background-color: var(--ink-dark);
+    border-top: 1px solid rgba(200,146,42,0.25);
+    padding: 2rem 2.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    color: var(--parchment);
+    line-height: 1.5;
+  }
+
+  .footer-name span {
+    display: block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    color: rgba(200,146,42,0.55);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .footer-credit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    color: rgba(242,235,216,0.45);
+    text-align: center;
+    line-height: 1.55;
+  }
+
+  .footer-powered {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-harvest);
+    text-align: right;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    header { padding: 1rem 1.5rem; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-illustration {
+      height: 55vw;
+      min-height: 320px;
+      max-height: 480px;
+    }
+
+    .hero-bio {
+      padding: 2rem 1.5rem;
+      border-left: none;
+      border-top: 3px solid var(--gold-harvest);
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      padding: 2rem 1.5rem;
+      border-right: none;
+      border-bottom: 1px solid var(--parchment-deep);
+    }
+
+    .chatbot-embed {
+      min-height: 420px;
+    }
+
+    .pull-quote {
+      padding: 3rem 1.5rem;
+    }
+
+    .corpus-strip { padding: 2rem 1.5rem; }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 0.8rem;
+      padding: 1.5rem;
+    }
+
+    .footer-powered { text-align: center; }
+    .footer-name { text-align: center; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-left">In Conversation With</div>
+  <div class="header-right">GWC–1864–2026</div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+
+  <!-- LEFT: SVG ILLUSTRATION — Tuskegee Laboratory Interior -->
+  <div class="hero-illustration">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Warm amber lantern glow -->
+        <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#E8B840" stop-opacity="0.85"/>
+          <stop offset="40%" stop-color="#C88820" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#2C1F14" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Window light from upper right -->
+        <radialGradient id="windowLight" cx="80%" cy="15%" r="55%">
+          <stop offset="0%" stop-color="#F5E8C0" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#B8924A" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#2C1F14" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Deep soil gradient for floor -->
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3A2518"/>
+          <stop offset="100%" stop-color="#1A0E08"/>
+        </linearGradient>
+        <!-- Wall texture gradient -->
+        <linearGradient id="wallGrad" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#4A3522"/>
+          <stop offset="50%" stop-color="#3A2818"/>
+          <stop offset="100%" stop-color="#2C1F12"/>
+        </linearGradient>
+        <!-- Plant leaf glow -->
+        <radialGradient id="leafGlow" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#7AB85A" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#2E4A1E" stop-opacity="0.1"/>
+        </radialGradient>
+        <!-- Blur filter for soft glow effects -->
+        <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="8"/>
+        </filter>
+        <filter id="tinyBlur">
+          <feGaussianBlur stdDeviation="2.5"/>
+        </filter>
+      </defs>
+
+      <!-- ── BACKGROUND: Deep warm laboratory wall ── -->
+      <rect width="700" height="900" fill="url(#wallGrad)"/>
+
+      <!-- Window light wash -->
+      <ellipse cx="560" cy="110" rx="280" ry="240" fill="url(#windowLight)"/>
+
+      <!-- ── BACK WALL: Horizontal wood planks ── -->
+      <!-- Individual plank lines -->
+      <rect x="0" y="0" width="700" height="900" fill="none"/>
+      <line x1="0" y1="120" x2="700" y2="115" stroke="rgba(80,50,25,0.4)" stroke-width="1"/>
+      <line x1="0" y1="145" x2="700" y2="140" stroke="rgba(80,50,25,0.35)" stroke-width="0.8"/>
+      <line x1="0" y1="170" x2="700" y2="165" stroke="rgba(80,50,25,0.35)" stroke-width="0.8"/>
+      <line x1="0" y1="195" x2="700" y2="191" stroke="rgba(80,50,25,0.3)" stroke-width="0.8"/>
+      <line x1="0" y1="220" x2="700" y2="217" stroke="rgba(80,50,25,0.3)" stroke-width="0.8"/>
+      <line x1="0" y1="248" x2="700" y2="245" stroke="rgba(60,38,18,0.35)" stroke-width="1"/>
+      <line x1="0" y1="276" x2="700" y2="274" stroke="rgba(60,38,18,0.3)" stroke-width="0.8"/>
+      <line x1="0" y1="305" x2="700" y2="304" stroke="rgba(60,38,18,0.28)" stroke-width="0.8"/>
+      <line x1="0" y1="336" x2="700" y2="335" stroke="rgba(60,38,18,0.25)" stroke-width="0.8"/>
+      <line x1="0" y1="370" x2="700" y2="370" stroke="rgba(50,32,15,0.3)" stroke-width="1"/>
+      <line x1="0" y1="406" x2="700" y2="407" stroke="rgba(50,32,15,0.25)" stroke-width="0.8"/>
+      <line x1="0" y1="444" x2="700" y2="445" stroke="rgba(50,32,15,0.22)" stroke-width="0.8"/>
+      <line x1="0" y1="484" x2="700" y2="486" stroke="rgba(40,26,12,0.3)" stroke-width="0.8"/>
+      <line x1="0" y1="526" x2="700" y2="528" stroke="rgba(40,26,12,0.25)" stroke-width="0.8"/>
+      <line x1="0" y1="570" x2="700" y2="572" stroke="rgba(35,22,10,0.28)" stroke-width="0.8"/>
+
+      <!-- ── WINDOW (upper right) ── -->
+      <!-- Window frame outer -->
+      <rect x="450" y="28" width="195" height="260" rx="2" fill="#1A100A" stroke="#6B4E2A" stroke-width="3"/>
+      <!-- Window panes — top-left -->
+      <rect x="458" y="36" width="85" height="116" rx="1" fill="#C8A850" fill-opacity="0.12" stroke="#4A3018" stroke-width="1.5"/>
+      <!-- Window panes — top-right -->
+      <rect x="552" y="36" width="85" height="116" rx="1" fill="#C8A850" fill-opacity="0.16" stroke="#4A3018" stroke-width="1.5"/>
+      <!-- Window panes — bottom-left -->
+      <rect x="458" y="160" width="85" height="116" rx="1" fill="#6B4A20" fill-opacity="0.1" stroke="#4A3018" stroke-width="1.5"/>
+      <!-- Window panes — bottom-right -->
+      <rect x="552" y="160" width="85" height="116" rx="1" fill="#6B4A20" fill-opacity="0.08" stroke="#4A3018" stroke-width="1.5"/>
+      <!-- Window cross-bar horizontal -->
+      <rect x="454" y="152" width="193" height="8" fill="#4A3018"/>
+      <!-- Window cross-bar vertical -->
+      <rect x="543" y="32" width="8" height="252" fill="#4A3018"/>
+      <!-- Window sill -->
+      <rect x="442" y="286" width="215" height="14" rx="1" fill="#5A3A1A" stroke="#3A2210" stroke-width="1"/>
+      <!-- Warm light streaming through window — glare effect -->
+      <polygon points="458,36 543,36 420,900 300,900" fill="#C8921A" fill-opacity="0.04"/>
+      <polygon points="552,36 637,36 550,900 420,900" fill="#E8C050" fill-opacity="0.05"/>
+
+      <!-- Window light glow blur -->
+      <ellipse cx="548" cy="180" rx="90" ry="130" fill="#D4A840" fill-opacity="0.06" filter="url(#softBlur)"/>
+
+      <!-- ── WOODEN LAB SHELF — upper left ── -->
+      <rect x="20" y="88" width="390" height="14" rx="2" fill="#5A3C20" stroke="#3A2510" stroke-width="1.5"/>
+      <rect x="20" y="88" width="390" height="5" rx="1" fill="#7A5230"/>
+
+      <!-- Shelf bracket left -->
+      <path d="M 48,88 L 48,130 L 28,130" stroke="#4A3018" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Shelf bracket right -->
+      <path d="M 365,88 L 365,130 L 385,130" stroke="#4A3018" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- ── OBJECTS ON UPPER SHELF ── -->
+      <!-- Glass jars with peanut/plant specimens -->
+      <!-- Jar 1 -->
+      <rect x="38" y="46" width="28" height="44" rx="3" fill="rgba(180,160,100,0.15)" stroke="#7A6040" stroke-width="1.5"/>
+      <rect x="34" y="43" width="36" height="8" rx="2" fill="#5A4028" stroke="#3A2810" stroke-width="1"/>
+      <ellipse cx="52" cy="68" rx="9" ry="14" fill="rgba(90,120,60,0.5)" stroke="none"/>
+      <ellipse cx="52" cy="72" rx="7" ry="6" fill="rgba(120,160,70,0.4)"/>
+
+      <!-- Jar 2 (taller) -->
+      <rect x="80" y="36" width="32" height="54" rx="3" fill="rgba(160,140,80,0.18)" stroke="#7A6040" stroke-width="1.5"/>
+      <rect x="76" y="32" width="40" height="9" rx="2" fill="#5A4028" stroke="#3A2810" stroke-width="1"/>
+      <ellipse cx="96" cy="62" rx="8" ry="18" fill="rgba(180,140,60,0.45)" stroke="none"/>
+      <path d="M 88,74 Q 96,58 104,72" stroke="#C8A040" stroke-width="1" fill="none" stroke-opacity="0.6"/>
+
+      <!-- Jar 3 -->
+      <rect x="126" y="50" width="26" height="40" rx="3" fill="rgba(170,150,90,0.15)" stroke="#7A6040" stroke-width="1.5"/>
+      <rect x="122" y="47" width="34" height="7" rx="2" fill="#5A4028" stroke="#3A2810" stroke-width="1"/>
+      <circle cx="139" cy="70" r="10" fill="rgba(140,100,50,0.5)"/>
+
+      <!-- Jar 4 — larger with peanut oil amber colour -->
+      <rect x="166" y="38" width="36" height="52" rx="3" fill="rgba(200,150,60,0.2)" stroke="#8A6830" stroke-width="1.5"/>
+      <rect x="162" y="34" width="44" height="9" rx="2" fill="#5A3A18" stroke="#3A2210" stroke-width="1"/>
+      <rect x="170" y="78" width="28" height="12" rx="1" fill="rgba(180,130,50,0.7)"/>
+
+      <!-- Small mortar & pestle -->
+      <ellipse cx="240" cy="81" rx="22" ry="10" fill="#4A3218" stroke="#3A2210" stroke-width="1.5"/>
+      <path d="M 220,78 Q 218,60 262,60 Q 266,78 260,81" fill="#3A2210" stroke="#2A1808" stroke-width="1"/>
+      <!-- pestle -->
+      <line x1="248" y1="62" x2="270" y2="45" stroke="#6A4A28" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="271" cy="44" rx="6" ry="4" fill="#5A3A1A"/>
+
+      <!-- Rolled paper / scroll -->
+      <rect x="290" y="62" width="55" height="22" rx="8" fill="#D4C090" stroke="#8A7040" stroke-width="1.5"/>
+      <rect x="290" y="62" width="12" height="22" rx="6" fill="#B8A070" stroke="#7A6030" stroke-width="1"/>
+      <rect x="333" y="62" width="12" height="22" rx="6" fill="#B8A070" stroke="#7A6030" stroke-width="1"/>
+      <!-- Paper lines on scroll -->
+      <line x1="306" y1="70" x2="330" y2="70" stroke="#8A7840" stroke-width="0.8" stroke-opacity="0.7"/>
+      <line x1="306" y1="75" x2="330" y2="75" stroke="#8A7840" stroke-width="0.8" stroke-opacity="0.7"/>
+      <line x1="306" y1="80" x2="330" y2="80" stroke="#8A7840" stroke-width="0.8" stroke-opacity="0.7"/>
+
+      <!-- Hanging dried herb bundles -->
+      <line x1="355" y1="88" x2="355" y2="60" stroke="#5A4028" stroke-width="1"/>
+      <path d="M 342,60 Q 355,46 368,60" stroke="#7A6030" stroke-width="1.5" fill="rgba(90,110,50,0.5)"/>
+      <path d="M 345,58 Q 350,40 358,52" stroke="#6A8840" stroke-width="1" fill="rgba(80,100,40,0.5)"/>
+      <path d="M 350,58 Q 358,38 364,55" stroke="#6A8840" stroke-width="1" fill="rgba(80,100,40,0.5)"/>
+
+      <!-- ── SECOND SHELF ── -->
+      <rect x="20" y="335" width="420" height="12" rx="2" fill="#5A3C20" stroke="#3A2510" stroke-width="1.5"/>
+      <!-- Bracket -->
+      <path d="M 50,335 L 50,378 L 30,378" stroke="#4A3018" stroke-width="3" fill="none"/>
+      <path d="M 390,335 L 390,378 L 410,378" stroke="#4A3018" stroke-width="3" fill="none"/>
+
+      <!-- Books on second shelf -->
+      <!-- Book 1 — dark green spine -->
+      <rect x="38" y="275" width="22" height="60" rx="1" fill="#2A4A2A" stroke="#1A3018" stroke-width="1"/>
+      <rect x="38" y="275" width="4" height="60" fill="#1A3018"/>
+      <text x="61" y="312" font-family="IM Fell English SC, serif" font-size="6" fill="#7AB870" transform="rotate(-90,61,312)" text-anchor="middle" opacity="0.8">CHEMISTRY</text>
+
+      <!-- Book 2 — brown -->
+      <rect x="62" y="280" width="19" height="55" rx="1" fill="#5A3A18" stroke="#3A2210" stroke-width="1"/>
+      <rect x="62" y="280" width="3" height="55" fill="#3A2210"/>
+
+      <!-- Book 3 — deep red -->
+      <rect x="83" y="272" width="24" height="63" rx="1" fill="#6B2A18" stroke="#4A1810" stroke-width="1"/>
+      <rect x="83" y="272" width="4" height="63" fill="#4A1810"/>
+      <text x="108" y="308" font-family="IM Fell English SC, serif" font-size="6" fill="#D4906A" transform="rotate(-90,108,308)" text-anchor="middle" opacity="0.8">BOTANY</text>
+
+      <!-- Book 4 — olive -->
+      <rect x="109" y="285" width="18" height="50" rx="1" fill="#4A5A28" stroke="#2A3818" stroke-width="1"/>
+
+      <!-- Book 5 — tan/parchment -->
+      <rect x="129" y="278" width="21" height="57" rx="1" fill="#8A7040" stroke="#6A5030" stroke-width="1"/>
+
+      <!-- Book 6 — thick navy -->
+      <rect x="152" y="270" width="28" height="65" rx="1" fill="#1E2A4A" stroke="#121A30" stroke-width="1"/>
+      <rect x="152" y="270" width="5" height="65" fill="#121A30"/>
+      <text x="183" y="306" font-family="IM Fell English SC, serif" font-size="6" fill="#7A9AB8" transform="rotate(-90,183,306)" text-anchor="middle" opacity="0.8">AGRICULTURE</text>
+
+      <!-- Small apparatus between books and jars -->
+      <!-- Beaker with amber liquid -->
+      <path d="M 230,298 L 222,335 L 266,335 L 258,298 Z" fill="rgba(180,120,30,0.2)" stroke="#8A6820" stroke-width="1.5"/>
+      <path d="M 222,335 L 266,335 L 258,310 L 230,310 Z" fill="rgba(200,150,40,0.45)"/>
+      <rect x="234" y="293" width="24" height="8" rx="2" fill="#7A5C20" stroke="#5A4010" stroke-width="1"/>
+
+      <!-- Small oil lamp / bunsen-style lamp -->
+      <ellipse cx="310" cy="334" rx="24" ry="7" fill="#3A2818" stroke="#2A1808" stroke-width="1.5"/>
+      <rect x="302" y="296" width="16" height="38" rx="1" fill="#6A4820" stroke="#4A3010" stroke-width="1"/>
+      <ellipse cx="310" cy="296" rx="10" ry="4" fill="#5A3A18"/>
+      <!-- Flame -->
+      <ellipse cx="310" cy="289" rx="5" ry="8" fill="#E8A020" fill-opacity="0.7"/>
+      <ellipse cx="310" cy="287" rx="3" ry="5" fill="#F8D060" fill-opacity="0.8"/>
+      <!-- Flame glow -->
+      <ellipse cx="310" cy="290" rx="18" ry="18" fill="url(#lanternGlow)" filter="url(#tinyBlur)"/>
+
+      <!-- Peanut plants in pot — left foreground -->
+      <!-- Large clay pot -->
+      <path d="M 42,720 Q 32,650 28,600 Q 36,588 100,588 Q 152,588 158,600 Q 155,650 148,720 Z" fill="#7A4A28" stroke="#5A3218" stroke-width="2"/>
+      <ellipse cx="93" cy="588" rx="58" ry="14" fill="#8A5530" stroke="#5A3218" stroke-width="2"/>
+      <ellipse cx="93" cy="588" rx="50" ry="9" fill="#5A3218"/>
+      <!-- Pot rim highlight -->
+      <path d="M 36,590 Q 93,580 150,590" stroke="#A06A3A" stroke-width="2" fill="none" stroke-opacity="0.5"/>
+      <!-- Soil in pot -->
+      <ellipse cx="93" cy="590" rx="48" ry="8" fill="#2C1A0A"/>
+
+      <!-- Peanut plant stems and leaves in pot -->
+      <!-- Main stem -->
+      <path d="M 93,590 Q 85,540 78,480 Q 72,430 80,380" stroke="#5A7A30" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Branch left -->
+      <path d="M 83,500 Q 55,470 35,450 Q 22,430 30,400" stroke="#4A6A28" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Branch right -->
+      <path d="M 78,450 Q 115,420 140,390 Q 158,370 155,340" stroke="#4A6A28" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Small branch upper -->
+      <path d="M 80,390 Q 55,365 45,340 Q 38,318 50,300" stroke="#4A6828" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Leaves -->
+      <!-- Leaf cluster 1 — lower branch -->
+      <ellipse cx="28" cy="422" rx="22" ry="12" fill="#5A8A30" transform="rotate(-35,28,422)" opacity="0.9"/>
+      <ellipse cx="18" cy="438" rx="18" ry="9" fill="#4A7A28" transform="rotate(-55,18,438)" opacity="0.8"/>
+      <ellipse cx="42" cy="408" rx="20" ry="10" fill="#6A9A38" transform="rotate(-20,42,408)" opacity="0.85"/>
+
+      <!-- Leaf cluster 2 — right branch -->
+      <ellipse cx="152" cy="355" rx="24" ry="11" fill="#5A8A30" transform="rotate(25,152,355)" opacity="0.9"/>
+      <ellipse cx="165" cy="368" rx="20" ry="10" fill="#4A7828" transform="rotate(40,165,368)" opacity="0.8"/>
+      <ellipse cx="138" cy="345" rx="18" ry="9" fill="#6A9A38" transform="rotate(10,138,345)" opacity="0.85"/>
+
+      <!-- Leaf cluster 3 — upper small branch -->
+      <ellipse cx="44" cy="308" rx="20" ry="9" fill="#5A8A30" transform="rotate(-40,44,308)" opacity="0.9"/>
+      <ellipse cx="30" cy="320" rx="16" ry="8" fill="#4A7828" transform="rotate(-55,30,320)" opacity="0.8"/>
+
+      <!-- Leaf cluster 4 — top main stem -->
+      <ellipse cx="82" cy="372" rx="25" ry="11" fill="#6A9838" transform="rotate(-15,82,372)" opacity="0.88"/>
+      <ellipse cx="72" cy="358" rx="20" ry="9" fill="#5A8830" transform="rotate(-30,72,358)" opacity="0.85"/>
+
+      <!-- Leaf glow overlay -->
+      <ellipse cx="88" cy="460" rx="90" ry="120" fill="url(#leafGlow)" filter="url(#softBlur)" opacity="0.4"/>
+
+      <!-- Small peanut pods on lower stems (the actual peanuts grow underground but showing stylized pods) -->
+      <ellipse cx="60" cy="455" rx="8" ry="5" fill="#C8A040" transform="rotate(25,60,455)" opacity="0.7"/>
+      <ellipse cx="66" cy="466" rx="7" ry="4" fill="#B89030" transform="rotate(-15,66,466)" opacity="0.65"/>
+      <ellipse cx="105" cy="430" rx="8" ry="5" fill="#C8A840" transform="rotate(35,105,430)" opacity="0.7"/>
+
+      <!-- ── LAB WORKBENCH ── -->
+      <!-- Bench top surface -->
+      <rect x="0" y="720" width="700" height="22" rx="1" fill="#4A3018" stroke="#2A1A08" stroke-width="1.5"/>
+      <rect x="0" y="720" width="700" height="5" rx="1" fill="#6A4828"/>
+      <!-- Bench front face -->
+      <rect x="0" y="742" width="700" height="80" fill="#3A2410" stroke="#2A1808" stroke-width="1"/>
+      <!-- Bench wood grain lines -->
+      <line x1="0" y1="760" x2="700" y2="760" stroke="rgba(70,45,20,0.5)" stroke-width="0.7"/>
+      <line x1="0" y1="778" x2="700" y2="778" stroke="rgba(70,45,20,0.4)" stroke-width="0.7"/>
+      <line x1="0" y1="796" x2="700" y2="796" stroke="rgba(70,45,20,0.35)" stroke-width="0.7"/>
+      <!-- Bench leg left -->
+      <rect x="35" y="742" width="20" height="160" rx="2" fill="#2A1A08"/>
+      <!-- Bench leg right -->
+      <rect x="645" y="742" width="20" height="160" rx="2" fill="#2A1A08"/>
+
+      <!-- ── OBJECTS ON BENCH ── -->
+      <!-- Open notebook / journal -->
+      <rect x="200" y="690" width="130" height="30" rx="2" fill="#E8E0C0" stroke="#8A7A50" stroke-width="1.5" transform="rotate(-3,265,705)"/>
+      <line x1="265" y1="691" x2="260" y2="719" stroke="#8A7A50" stroke-width="1.5"/>
+      <!-- Written lines in notebook -->
+      <line x1="210" y1="698" x2="258" y2="696" stroke="#5A4830" stroke-width="0.8" opacity="0.7" transform="rotate(-3,265,705)"/>
+      <line x1="210" y1="704" x2="258" y2="702" stroke="#5A4830" stroke-width="0.8" opacity="0.6" transform="rotate(-3,265,705)"/>
+      <line x1="210" y1="710" x2="258" y2="708" stroke="#5A4830" stroke-width="0.8" opacity="0.5" transform="rotate(-3,265,705)"/>
+      <!-- Right page lines -->
+      <line x1="270" y1="697" x2="322" y2="697" stroke="#5A4830" stroke-width="0.8" opacity="0.5" transform="rotate(-3,265,705)"/>
+      <line x1="270" y1="703" x2="322" y2="703" stroke="#5A4830" stroke-width="0.8" opacity="0.4" transform="rotate(-3,265,705)"/>
+
+      <!-- Small sketch of peanut plant in notebook -->
+      <path d="M 280,700 Q 278,695 282,690" stroke="#6A5838" stroke-width="0.8" fill="none" opacity="0.7" transform="rotate(-3,265,705)"/>
+      <ellipse cx="282" cy="689" rx="4" ry="3" fill="none" stroke="#6A5838" stroke-width="0.7" opacity="0.6" transform="rotate(-3,265,705)"/>
+
+      <!-- Quill pen / writing implement -->
+      <path d="M 340,714 Q 355,695 380,670 Q 390,658 398,645" stroke="#C8B870" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 340,714 Q 342,710 345,708 Q 348,714 340,714 Z" fill="#C8A840"/>
+      <!-- Feather barbs -->
+      <path d="M 365,690 Q 370,682 375,678" stroke="#D4C880" stroke-width="1" fill="none" opacity="0.7"/>
+      <path d="M 372,682 Q 378,676 381,671" stroke="#D4C880" stroke-width="1" fill="none" opacity="0.6"/>
+      <path d="M 358,698 Q 361,690 363,686" stroke="#C8B870" stroke-width="1" fill="none" opacity="0.6"/>
+
+      <!-- Glass vial with amber peanut oil -->
+      <path d="M 420,692 Q 418,680 420,660 Q 422,648 428,645 Q 434,648 436,660 Q 438,680 436,692 Z" fill="rgba(200,150,40,0.7)" stroke="#8A6820" stroke-width="1.5"/>
+      <rect x="422" y="641" width="12" height="8" rx="2" fill="#6A5020" stroke="#4A3810" stroke-width="1"/>
+      <!-- Cork -->
+      <rect x="423" y="637" width="10" height="6" rx="2" fill="#8A6828"/>
+      <!-- Liquid fill line in vial -->
+      <path d="M 420,676 Q 428,672 436,676" stroke="#C8A030" stroke-width="0.8" fill="none" opacity="0.5"/>
+
+      <!-- Sweet potato specimen on bench -->
+      <ellipse cx="490" cy="710" rx="38" ry="16" fill="#A05A28" stroke="#7A3A10" stroke-width="1.5"/>
+      <ellipse cx="490" cy="707" rx="36" ry="13" fill="#B86830"/>
+      <!-- Root tendrils -->
+      <path d="M 466,716 Q 455,724 450,730" stroke="#7A4020" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 514,716 Q 525,724 528,732" stroke="#7A4020" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 478,718 Q 472,728 468,738" stroke="#6A3818" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M 502,717 Q 510,726 514,736" stroke="#6A3818" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+      <!-- Peanuts scattered on bench -->
+      <ellipse cx="575" cy="710" rx="12" ry="7" fill="#C8A840" transform="rotate(20,575,710)"/>
+      <ellipse cx="598" cy="706" rx="11" ry="6" fill="#B89830" transform="rotate(-15,598,706)"/>
+      <ellipse cx="560" cy="702" rx="10" ry="6" fill="#C0A038" transform="rotate(35,560,702)"/>
+      <ellipse cx="616" cy="712" rx="9" ry="5" fill="#C8A440" transform="rotate(-5,616,712)"/>
+      <!-- Peanut texture marks -->
+      <path d="M 569,709 Q 575,706 581,709" stroke="#8A6820" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M 593,705 Q 598,702 603,705" stroke="#8A6820" stroke-width="0.8" fill="none" opacity="0.5"/>
+
+      <!-- ── FLOOR ── -->
+      <rect x="0" y="820" width="700" height="80" fill="url(#floorGrad)"/>
+      <!-- Floor board lines -->
+      <line x1="0" y1="838" x2="700" y2="836" stroke="rgba(60,35,15,0.6)" stroke-width="1.5"/>
+      <line x1="0" y1="857" x2="700" y2="855" stroke="rgba(50,28,12,0.5)" stroke-width="1"/>
+      <line x1="0" y1="876" x2="700" y2="874" stroke="rgba(45,25,10,0.45)" stroke-width="1"/>
+      <!-- Vertical board separators -->
+      <line x1="140" y1="820" x2="138" y2="900" stroke="rgba(40,22,8,0.5)" stroke-width="1"/>
+      <line x1="310" y1="820" x2="308" y2="900" stroke="rgba(40,22,8,0.45)" stroke-width="1"/>
+      <line x1="490" y1="820" x2="488" y2="900" stroke="rgba(40,22,8,0.4)" stroke-width="1"/>
+      <line x1="620" y1="820" x2="618" y2="900" stroke="rgba(40,22,8,0.35)" stroke-width="1"/>
+
+      <!-- ── ANNOTATION LAYER — Title block style ── -->
+      <!-- Lower right annotation box -->
+      <rect x="540" y="820" width="148" height="72" rx="1" fill="rgba(42,28,12,0.85)" stroke="rgba(200,146,42,0.4)" stroke-width="1"/>
+      <line x1="540" y1="836" x2="688" y2="836" stroke="rgba(200,146,42,0.3)" stroke-width="0.7"/>
+      <line x1="540" y1="852" x2="688" y2="852" stroke="rgba(200,146,42,0.2)" stroke-width="0.5"/>
+      <text x="614" y="831" font-family="IM Fell English SC, serif" font-size="7" fill="rgba(200,146,42,0.9)" text-anchor="middle" letter-spacing="2">TUSKEGEE INSTITUTE</text>
+      <text x="614" y="847" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(240,225,185,0.7)" text-anchor="middle" font-style="italic">Laboratory, c. 1910</text>
+      <text x="614" y="863" font-family="IM Fell English SC, serif" font-size="6" fill="rgba(200,146,42,0.6)" text-anchor="middle" letter-spacing="1">MACON COUNTY, ALABAMA</text>
+      <text x="614" y="879" font-family="Cormorant Garamond, serif" font-size="5.5" fill="rgba(200,180,120,0.5)" text-anchor="middle" font-style="italic">Department of Agriculture</text>
+
+      <!-- Small compass rose in lower left -->
+      <g transform="translate(55, 850)">
+        <circle cx="0" cy="0" r="22" fill="rgba(42,28,12,0.8)" stroke="rgba(200,146,42,0.35)" stroke-width="1"/>
+        <line x1="0" y1="-16" x2="0" y2="16" stroke="rgba(200,146,42,0.6)" stroke-width="1"/>
+        <line x1="-16" y1="0" x2="16" y2="0" stroke="rgba(200,146,42,0.6)" stroke-width="1"/>
+        <polygon points="0,-16 -3,-8 0,-6 3,-8" fill="rgba(200,146,42,0.8)"/>
+        <polygon points="0,6 -3,8 0,16 3,8" fill="rgba(200,146,42,0.4)"/>
+        <text x="0" y="-18" font-family="IM Fell English SC, serif" font-size="6" fill="rgba(200,146,42,0.7)" text-anchor="middle">N</text>
+      </g>
+
+      <!-- Ambient vignette overlay -->
+      <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+        <stop offset="55%" stop-color="#2C1F14" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#1A0E08" stop-opacity="0.75"/>
+      </radialGradient>
+      <rect width="700" height="900" fill="url(#vignette)"/>
+
+      <!-- Warm lantern atmospheric light in center lower area -->
+      <ellipse cx="310" cy="720" rx="180" ry="80" fill="#C88820" fill-opacity="0.07" filter="url(#softBlur)"/>
+
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio">
+
+    <div class="museum-label">Museum of Minds &nbsp;·&nbsp; Natural Philosophy</div>
+
+    <h1 class="persona-name">George Washington Carver</h1>
+    <div class="persona-dates">c. 1864 — 1943</div>
+
+    <p class="persona-tagline">
+      The man who fed the South with a peanut while the South refused to feed him at its table.
+    </p>
+
+    <!-- Portrait -->
+    <div class="photo-frame">
+      <div class="photo-missing">
+        <svg class="photo-missing-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="22" r="12" stroke="#D4C8A8" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <path d="M 8,50 Q 8,36 28,36 Q 48,36 48,50" stroke="#D4C8A8" stroke-width="1.5" fill="none" opacity="0.4"/>
+        </svg>
+        <span class="photo-missing-text">Portrait Not Available</span>
+      </div>
+    </div>
+
+    <!-- Placard -->
+    <div class="placard">
+      <div class="placard-label">Biographical Note</div>
+      <p>
+        Born into slavery in Diamond Grove, Missouri, and orphaned as an infant when raiders abducted him,
+        George Washington Carver became the foremost agricultural chemist of his age. He earned his master's
+        degree from Iowa State and then surrendered a promising academic career to join Booker T. Washington
+        at the underfunded Tuskegee Institute — a decision that would define American science for a generation.
+      </p>
+      <p>
+        Working from a makeshift laboratory assembled largely from refuse, Carver identified over 300 uses
+        for the peanut, 118 for the sweet potato, and dozens more for the soybean and cowpea — transforming
+        the crop ecology of a South that cotton had exhausted and sharecropping had impoverished. He was
+        offered positions by Thomas Edison and Henry Ford; he declined both, returning always to Tuskegee.
+      </p>
+    </div>
+
+    <!-- Bio Fields -->
+    <div class="bio-fields">
+      <div>
+        <span class="bio-field-label">Born</span>
+        <span class="bio-field-value">c. 1864, Diamond Grove, MO</span>
+      </div>
+      <div>
+        <span class="bio-field-label">Died</span>
+        <span class="bio-field-value">January 5, 1943, Tuskegee, AL</span>
+      </div>
+      <div>
+        <span class="bio-field-label">Discipline</span>
+        <span class="bio-field-value">Agricultural Chemistry</span>
+      </div>
+      <div>
+        <span class="bio-field-label">Institution</span>
+        <span class="bio-field-value">Tuskegee Institute, 1896–1943</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ─── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-ornament">Engage the Mind &nbsp;✦&nbsp; Begin Conversation</div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ─── -->
+<section class="chatbot-section">
+
+  <div class="chatbot-intro">
+    <h2>A Conversation With<br>Professor Carver</h2>
+    <div class="section-rule"></div>
+
+    <p>
+      Carver spoke in parables drawn from the red soil. He believed that nature concealed abundance
+      within the humblest organisms — that the peanut, a legume that Black sharecroppers could grow
+      on land too depleted for cotton, contained enough chemistry to rebuild an entire regional economy.
+      He was proven correct, though rarely acknowledged for it in his lifetime.
+    </p>
+    <p>
+      Ask him about the science of necessity — how deprivation forced invention, how the empty
+      laboratory became a philosophical stance. Ask him about the politics he navigated silently,
+      the racial accommodations he made and the principles he never surrendered. Ask him what
+      he would say to industrial farming, to the GMO revolution, to the monoculture world that
+      rose in his wake.
+    </p>
+
+    <div class="featured-quote">
+      <p>"When you can do the common things of life in an uncommon way, you will command the attention of the world."</p>
+    </div>
+
+    <p>
+      He will answer as he lived — with patience, with precision, and with the quiet authority
+      of a man who never needed to raise his voice because the chemistry was always on his side.
+    </p>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Agricultural Chemistry</span>
+      <span class="domain-tag">Botany</span>
+      <span class="domain-tag">Post-Reconstruction South</span>
+      <span class="domain-tag">Tuskegee Institute</span>
+      <span class="domain-tag">Industrial Innovation</span>
+      <span class="domain-tag">Food Systems</span>
+      <span class="domain-tag">Race & Science</span>
+      <span class="domain-tag">Mycology</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/george-washington-carver/widget/george-washington-carver-widget.css">
+      <script src="https://museumofminds.com/george-washington-carver/widget/george-washington-carver-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="george-washington-carver"></script>
+    </div>
+
+</section>
+
+<!-- ─── PULL QUOTE ─── -->
+<section class="pull-quote">
+  <blockquote>
+    <span class="quote-ornament">"</span>
+    How far you go in life depends on your being tender with the young,
+    compassionate with the aged, sympathetic with the striving, and tolerant
+    of the weak and strong — because someday in life you will have been all of these.
+  </blockquote>
+  <cite>George Washington Carver &nbsp;·&nbsp; Commencement Address, Tuskegee Institute, c. 1930</cite>
+</section>
+
+<!-- ─── CORPUS STRIP ─── -->
+<div class="corpus-strip">
+  <div class="corpus-label">Knowledge Corpus — Primary & Archival Sources</div>
+  <div class="corpus-grid">
+    <div class="corpus-item">
+      <em>Bulletin No. 31: How to Grow the Peanut and 105 Ways of Preparing It for Human Consumption</em> — Tuskegee Experiment Station, 1916
+    </div>
+    <div class="corpus-item">
+      <em>Bulletin No. 35: How to Grow the Cowpea and 40 Ways of Preparing It as a Table Delicacy</em> — Tuskegee Experiment Station, 1908
+    </div>
+    <div class="corpus-item">
+      <em>Congressional Testimony Before the Ways and Means Committee</em> — United States House of Representatives, January 1921
+    </div>
+    <div class="corpus-item">
+      <em>Selected Correspondence with Booker T. Washington</em> — Tuskegee Institute Archives, 1896–1915
+    </div>
+    <div class="corpus-item">
+      <em>How to Make Sweet Potato Flour, Starch, Sugar, Bread, and Mock Coconut</em> — Tuskegee Experiment Station Bulletin, 1918
+    </div>
+    <div class="corpus-item">
+      <em>Correspondence with Henry Ford and Thomas Edison</em> — 1920s–1940s, Library of Congress
+    </div>
+    <div class="corpus-item">
+      <em>Being Kind to the Soil</em> — Tuskegee Experiment Station Circular, 1899
+    </div>
+    <div class="corpus-item">
+      <em>Personal Letters, Speeches, and Published Interviews</em> — George Washington Carver Papers, National Archives
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-name">
+    George Washington Carver
+    <span>c. 1864–1943 &nbsp;·&nbsp; Agricultural Chemist</span>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds &nbsp;·&nbsp; An experiment in<br>posthumous dialogue &amp; historical imagination
+  </div>
+  <div class="footer-powered">Powered by His Own Words</div>
+</footer>
+
+</body>
+</html>
