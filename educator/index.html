@@ -246,6 +246,69 @@
       margin-bottom: 0.3rem;
     }
 
+    /* ── COURSE / LEVEL TOGGLES ── */
+    .seg-group { display: flex; gap: 0; width: 100%; }
+    .seg-btn {
+      flex: 1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.4rem;
+      background: var(--wall);
+      border: 1px solid rgba(196,154,60,0.15);
+      color: var(--dim);
+      cursor: pointer;
+      transition: all 0.18s;
+      text-align: center;
+    }
+    .seg-btn + .seg-btn { border-left: none; }
+    .seg-btn.active {
+      background: var(--brass-dim);
+      color: var(--void);
+      border-color: var(--brass-dim);
+    }
+    .seg-btn:hover:not(.active) { color: var(--brass-dim); border-color: rgba(196,154,60,0.35); }
+
+    .mixed-row {
+      display: none;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+      padding: 0.7rem 0.9rem;
+      background: rgba(196,154,60,0.04);
+      border: 1px solid rgba(196,154,60,0.12);
+    }
+    .mixed-row.visible { display: flex; }
+    .mixed-row input[type="checkbox"] {
+      width: 14px; height: 14px;
+      accent-color: var(--brass-dim);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .mixed-row label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    .ap-badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      padding: 0.1rem 0.4rem;
+      background: rgba(196,154,60,0.12);
+      border: 1px solid rgba(196,154,60,0.25);
+      color: var(--brass-dim);
+      vertical-align: middle;
+      margin-left: 0.3rem;
+    }
+
     /* ── OUTPUT AREA ── */
     .output-area { min-height: 400px; }
     .output-state {
@@ -463,6 +526,7 @@
     <div class="standards-chips">
       <span class="chip">NCSS C3 Framework</span>
       <span class="chip">CCSS ELA-Literacy in History</span>
+      <span class="chip">College Board AP Aligned</span>
       <span class="chip">DOK-Leveled Questions</span>
       <span class="chip">Primary Source Grounded</span>
     </div>
@@ -487,17 +551,29 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label" for="select-grade">Grade Level</label>
-        <select id="select-grade">
-          <option value="high-school">High School (9–12)</option>
-          <option value="middle-school">Middle School (6–8)</option>
-          <option value="elementary">Elementary (4–5)</option>
-        </select>
+        <span class="field-label">Course</span>
+        <div class="seg-group">
+          <button class="seg-btn active" id="course-ush" onclick="setCourse('us-history', this)">US History</button>
+          <button class="seg-btn" id="course-gov" onclick="setCourse('us-government', this)">US Government</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <span class="field-label">Level</span>
+        <div class="seg-group">
+          <button class="seg-btn active" id="level-standard" onclick="setLevel('standard', this)">Standard</button>
+          <button class="seg-btn" id="level-honors" onclick="setLevel('honors', this)">Honors</button>
+          <button class="seg-btn" id="level-ap" onclick="setLevel('ap', this)">AP <span class="ap-badge">CB</span></button>
+        </div>
+        <div class="mixed-row" id="mixed-row">
+          <input type="checkbox" id="mixed-class" />
+          <label for="mixed-class">Mixed AP + Standard class — generate a differentiated plan with both tracks</label>
+        </div>
       </div>
 
       <div class="field-group">
         <label class="field-label" for="input-topic">Topic Focus <span style="color:var(--dim);font-family:serif;font-style:italic;text-transform:none;letter-spacing:0">(optional)</span></label>
-        <input type="text" id="input-topic" placeholder="e.g. federalism, abolition, natural selection…" />
+        <input type="text" id="input-topic" placeholder="e.g. federalism, executive power, abolition…" />
       </div>
 
       <div class="btn-group">
@@ -505,7 +581,7 @@
           <span class="btn-icon">📋</span> Generate Lesson Plan
         </button>
         <button class="btn btn-secondary" id="btn-questions" disabled>
-          <span class="btn-icon">💬</span> Generate Discussion Questions
+          <span class="btn-icon">💬</span> Discussion Questions
         </button>
       </div>
     </aside>
@@ -554,8 +630,30 @@
 
   <script>
     const API = 'https://museum-api-production-8ce6.up.railway.app';
-    let personaMap = {}; // id -> {display_name, years}
+    let personaMap = {};
     let currentOutput = '';
+    let state = { course: 'us-history', level: 'standard' };
+
+    const COURSE_LABELS = {
+      'us-history':    { standard: 'US History — Standard', honors: 'US History — Honors', ap: 'AP US History (APUSH)' },
+      'us-government': { standard: 'US Government — Standard', honors: 'US Government — Honors', ap: 'AP US Government & Politics' },
+    };
+
+    // ── Course / Level toggles ──
+    function setCourse(course, btn) {
+      state.course = course;
+      document.querySelectorAll('#course-ush, #course-gov').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function setLevel(level, btn) {
+      state.level = level;
+      document.querySelectorAll('#level-standard, #level-honors, #level-ap').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mixedRow = document.getElementById('mixed-row');
+      if (level === 'ap') mixedRow.classList.add('visible');
+      else { mixedRow.classList.remove('visible'); document.getElementById('mixed-class').checked = false; }
+    }
 
     // ── Load personas ──
     async function loadPersonas() {
@@ -564,11 +662,7 @@
         const data = await r.json();
         const sel = document.getElementById('select-persona');
         sel.innerHTML = '<option value="">— Select a figure —</option>';
-
-        // Group by hall using PERSONA_HALL map (approximated by ordering)
-        const sorted = (data.personas || []).sort((a, b) =>
-          a.display_name.localeCompare(b.display_name));
-
+        const sorted = (data.personas || []).sort((a, b) => a.display_name.localeCompare(b.display_name));
         for (const p of sorted) {
           personaMap[p.id] = p;
           const opt = document.createElement('option');
@@ -577,9 +671,7 @@
           sel.appendChild(opt);
         }
       } catch (e) {
-        console.error('Failed to load personas:', e);
-        document.getElementById('select-persona').innerHTML =
-          '<option value="">Failed to load — check API</option>';
+        document.getElementById('select-persona').innerHTML = '<option value="">Failed to load — check API</option>';
       }
     }
 
@@ -588,40 +680,28 @@
       const pid = this.value;
       const infoEl = document.getElementById('persona-info');
       const btns = [document.getElementById('btn-lesson'), document.getElementById('btn-questions')];
-
-      if (!pid) {
-        infoEl.classList.remove('visible');
-        btns.forEach(b => b.disabled = true);
-        return;
-      }
-
+      if (!pid) { infoEl.classList.remove('visible'); btns.forEach(b => b.disabled = true); return; }
       btns.forEach(b => b.disabled = false);
-
       try {
         const r = await fetch(`${API}/persona/${pid}/config`);
         const cfg = await r.json();
         const meta = cfg.metadata || {};
         document.getElementById('info-name').textContent =
-          `${meta.name || pid} ${meta.birth_year ? '(' + meta.birth_year + '–' + (meta.death_year || 'present') + ')' : ''}`;
+          `${meta.name || pid}${meta.birth_year ? ' (' + meta.birth_year + '–' + (meta.death_year || 'present') + ')' : ''}`;
         document.getElementById('info-desc').textContent =
           (meta.description || '').slice(0, 180) + ((meta.description || '').length > 180 ? '…' : '');
         infoEl.classList.add('visible');
-      } catch(e) {
-        infoEl.classList.remove('visible');
-      }
+      } catch(e) { infoEl.classList.remove('visible'); }
     });
 
     // ── Generate handlers ──
-    document.getElementById('btn-lesson').addEventListener('click', () =>
-      generate('lesson-plan'));
-    document.getElementById('btn-questions').addEventListener('click', () =>
-      generate('discussion-questions'));
+    document.getElementById('btn-lesson').addEventListener('click', () => generate('lesson-plan'));
+    document.getElementById('btn-questions').addEventListener('click', () => generate('discussion-questions'));
 
     async function generate(type) {
       const pid = document.getElementById('select-persona').value;
-      const grade = document.getElementById('select-grade').value;
       const topic = document.getElementById('input-topic').value.trim();
-
+      const mixedClass = document.getElementById('mixed-class').checked;
       if (!pid) return;
 
       showState('loading');
@@ -632,7 +712,9 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             persona_id: pid,
-            grade_level: grade,
+            course: state.course,
+            level: state.level,
+            mixed_class: mixedClass,
             topic: topic || undefined,
           }),
         });
@@ -642,19 +724,14 @@
         const raw = type === 'lesson-plan' ? data.lesson_plan : data.questions;
         currentOutput = raw;
 
-        const gradeLabel = {
-          'high-school': 'High School (9–12)',
-          'middle-school': 'Middle School (6–8)',
-          'elementary': 'Elementary (4–5)',
-        }[grade] || grade;
-
-        const typeLabel = type === 'lesson-plan' ? 'Lesson Plan' : 'Discussion Questions';
-        const persona = personaMap[pid] || { display_name: pid };
+        const courseLabel = COURSE_LABELS[state.course]?.[state.level] || 'US History';
+        const mixedLabel  = mixedClass ? ' · Mixed AP/Standard' : '';
+        const typeLabel   = type === 'lesson-plan' ? 'Lesson Plan' : 'Discussion Questions';
+        const persona     = personaMap[pid] || { display_name: pid };
 
         document.getElementById('out-type').textContent = typeLabel;
         document.getElementById('out-title').textContent = persona.display_name;
-        document.getElementById('out-grade').textContent =
-          `${gradeLabel}${topic ? ' · ' + topic : ''}`;
+        document.getElementById('out-grade').textContent = `${courseLabel}${mixedLabel}${topic ? ' · ' + topic : ''}`;
 
         document.getElementById('output-content').innerHTML = renderMarkdown(raw);
         showState('result');
@@ -666,45 +743,34 @@
     }
 
     // ── States ──
-    function showState(state) {
-      document.getElementById('state-empty').style.display   = state === 'empty'   ? '' : 'none';
-      document.getElementById('state-loading').style.display = state === 'loading' ? '' : 'none';
+    function showState(s) {
+      document.getElementById('state-empty').style.display   = s === 'empty'   ? '' : 'none';
+      document.getElementById('state-loading').style.display = s === 'loading' ? '' : 'none';
       const card = document.getElementById('output-card');
-      if (state === 'result') card.classList.add('visible');
-      else card.classList.remove('visible');
+      if (s === 'result') card.classList.add('visible'); else card.classList.remove('visible');
     }
 
-    // ── Minimal markdown renderer ──
+    // ── Markdown renderer ──
     function renderMarkdown(md) {
       return md
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        // Headers
         .replace(/^### (.+)$/gm, '<h3>$1</h3>')
         .replace(/^## (.+)$/gm, '<h2>$1</h2>')
         .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-        // Bold / italic
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/_(.+?)_/g, '<em>$1</em>')
-        // Inline code
         .replace(/`(.+?)`/g, '<code>$1</code>')
-        // DOK badges - highlight DOK mentions
-        .replace(/—\s*(DOK\s*(?:Level\s*)?[\d–]+)/g,
-          '— <span class="dok-badge">$1</span>')
-        // Unordered lists
+        .replace(/\[([A-Z][^\]]+)\]/g, '<span class="dok-badge">$1</span>')
+        .replace(/—\s*(DOK\s*(?:Level\s*)?[\d–]+)/g, '— <span class="dok-badge">$1</span>')
         .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
-        .replace(/(<li>.*<\/li>)/s, function(m) {
-          return '<ul>' + m + '</ul>';
-        })
-        // Ordered lists
+        .replace(/(<li>.*<\/li>)/s, m => '<ul>' + m + '</ul>')
         .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-        // Paragraphs - wrap lines not already wrapped
         .replace(/^(?!<[hul]|<li|<\/|$)(.+)$/gm, '<p>$1</p>')
-        // Line breaks
         .replace(/\n{2,}/g, '\n');
     }
 
-    // ── Copy to clipboard ──
+    // ── Copy ──
     function copyOutput() {
       navigator.clipboard.writeText(currentOutput).then(() => {
         const btn = document.getElementById('btn-copy');
@@ -713,7 +779,6 @@
       });
     }
 
-    // Init
     loadPersonas();
   </script>
 </body>
