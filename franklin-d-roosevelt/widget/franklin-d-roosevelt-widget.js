@@ -610,25 +610,13 @@
         await renderPdf(html, filename);
     }
 
-    async function renderPdf(html, filename) {
-        try {
-            await loadHtml2Pdf();
-            const el = document.createElement('div');
-            el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:750px;';
-            el.innerHTML = html;
-            document.body.appendChild(el);
-            await window.html2pdf().set({
-                margin: 15,
-                filename,
-                image: { type: 'jpeg', quality: 0.95 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            }).from(el).save();
-            document.body.removeChild(el);
-        } catch (e) {
-            console.error('PDF export failed:', e);
-            alert('PDF export failed. Please try again.');
-        }
+    function renderPdf(html, filename) {
+        const win = window.open('', '_blank', 'width=820,height=700');
+        if (!win) { alert('Allow popups to download this document.'); return; }
+        win.document.write(html);
+        win.document.close();
+        win.focus();
+        setTimeout(() => { win.print(); }, 400);
     }
 
     function escapeHtml(str) {
