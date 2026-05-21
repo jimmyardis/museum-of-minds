@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grover Cleveland — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:       #2C3E2D;
+    --forest-deep:  #1A2A1B;
+    --forest-mid:   #3A5240;
+    --cream:        #F5F0E8;
+    --cream-warm:   #EDE5D4;
+    --cream-dark:   #D8CEBA;
+    --mahogany:     #5C2A1A;
+    --mahogany-mid: #7A3820;
+    --gold:         #B8973A;
+    --gold-light:   #D4AF5A;
+    --pewter:       #7A8070;
+    --pewter-light: #A8B09A;
+    --ink:          #1A1E18;
+    --text-body:    #2A2E26;
+    --text-muted:   #5A6050;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-body);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slowPan {
+    0%   { transform: scale(1.02) translateX(0px); }
+    50%  { transform: scale(1.04) translateX(-6px); }
+    100% { transform: scale(1.02) translateX(0px); }
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: relative;
+    z-index: 10;
+    background-color: var(--forest-deep);
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 2.5rem;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .header-left {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pewter-light);
+  }
+
+  .header-right {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    min-height: 92vh;
+  }
+
+  /* LEFT: SVG PANEL */
+  .hero-svg-panel {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--forest-deep);
+  }
+
+  .hero-svg-panel svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: slowPan 22s ease-in-out infinite;
+  }
+
+  /* RIGHT: BIO PANEL */
+  .hero-bio-panel {
+    background-color: var(--cream);
+    border-left: 3px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2.5rem 3rem 2.8rem;
+    animation: fadeIn 0.9s ease 0.3s both;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-bio-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .photo-frame {
+    position: relative;
+    max-width: 280px;
+    margin: 0 auto 2.2rem auto;
+    display: block;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--gold);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid var(--pewter);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(40%) sepia(30%) contrast(1.08) brightness(0.88);
+    position: relative;
+    z-index: 0;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--forest-mid) 0%, var(--forest-deep) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .photo-placeholder svg {
+    opacity: 0.35;
+    position: relative;
+    animation: none;
+    inset: auto;
+    width: 64px;
+    height: 64px;
+  }
+
+  .photo-placeholder span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    color: var(--pewter-light);
+    text-transform: uppercase;
+  }
+
+  .placard {
+    text-align: center;
+  }
+
+  .placard-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--mahogany);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .placard h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 3.8vw, 3.4rem);
+    font-weight: 700;
+    color: var(--forest-deep);
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .placard-dates {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    color: var(--pewter);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .placard-rule {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 1rem auto;
+  }
+
+  .placard-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-style: italic;
+    letter-spacing: 0.12em;
+    color: var(--mahogany-mid);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .placard-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.5;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.9rem;
+    text-align: left;
+    margin-bottom: 1.6rem;
+  }
+
+  .placard-bio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    text-align: left;
+  }
+
+  /* ─── TRANSITION BAND ─── */
+  .transition-band {
+    position: relative;
+    z-index: 2;
+    background-color: var(--forest-deep);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding: 0.85rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    overflow: hidden;
+  }
+
+  .transition-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 48px,
+      rgba(184,151,58,0.06) 48px,
+      rgba(184,151,58,0.06) 49px
+    );
+  }
+
+  .band-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .band-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    max-width: 220px;
+  }
+
+  .band-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ─── CHATBOT SECTION ─── */
+  .chatbot-section {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+  }
+
+  .chatbot-intro {
+    background-color: var(--forest);
+    color: var(--cream);
+    padding: 3.5rem 3rem 3.5rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    animation: fadeIn 0.8s ease 0.5s both;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+
+  .chatbot-intro h2 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .intro-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .chatbot-intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.96rem;
+    line-height: 1.78;
+    color: var(--cream-warm);
+    opacity: 0.9;
+  }
+
+  .featured-quote {
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 1.2rem;
+    background: rgba(0,0,0,0.2);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.55;
+  }
+
+  .featured-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.62rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.22em;
+    color: var(--pewter-light);
+    margin-top: 0.55rem;
+    text-transform: uppercase;
+  }
+
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .domain-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid var(--pewter);
+    padding: 0.3rem 0.75rem;
+    opacity: 0.75;
+  }
+
+  .chatbot-embed {
+    background-color: var(--cream-warm);
+    border-left: 1px solid var(--cream-dark);
+    min-height: 520px;
+    position: relative;
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    position: relative;
+    z-index: 1;
+    background-color: var(--cream-warm);
+    border-top: 1px solid var(--cream-dark);
+    border-bottom: 1px solid var(--cream-dark);
+    padding: 4rem 2rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 14rem;
+    color: var(--cream-dark);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pull-quote blockquote {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+    font-style: italic;
+    color: var(--forest-deep);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 1.4rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    font-style: normal;
+    color: var(--mahogany);
+    text-transform: uppercase;
+  }
+
+  /* ─── CORPUS STRIP ─── */
+  .corpus-strip {
+    position: relative;
+    z-index: 1;
+    background-color: var(--ink);
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+    border-top: 2px solid var(--mahogany);
+  }
+
+  .corpus-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    text-align: center;
+  }
+
+  .corpus-rule {
+    width: 100%;
+    max-width: 700px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pewter), transparent);
+    margin: 0 auto;
+  }
+
+  .corpus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: center;
+    max-width: 820px;
+    list-style: none;
+  }
+
+  .corpus-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    color: var(--cream-warm);
+    opacity: 0.7;
+    font-style: italic;
+    position: relative;
+    padding-left: 0.9rem;
+  }
+
+  .corpus-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 1;
+    background-color: var(--forest-deep);
+    border-top: 2px solid var(--gold);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1.8rem 3rem;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cream);
+  }
+
+  .footer-dates {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.28em;
+    color: var(--pewter-light);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .footer-credit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    color: var(--pewter-light);
+    text-align: center;
+    font-style: italic;
+    opacity: 0.75;
+  }
+
+  .footer-right {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: right;
+    opacity: 0.85;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-svg-panel {
+      height: 55vw;
+      min-height: 320px;
+      max-height: 480px;
+    }
+
+    .hero-bio-panel {
+      border-left: none;
+      border-top: 3px solid var(--gold);
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-section {
+      grid-template-columns: 1fr;
+    }
+
+    .chatbot-intro {
+      padding: 2rem 1.5rem;
+    }
+
+    .chatbot-embed {
+      min-height: 420px;
+    }
+
+    .transition-band {
+      padding: 0.7rem 1.5rem;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 1.5rem;
+      gap: 0.7rem;
+    }
+
+    .footer-right { text-align: center; }
+
+    header {
+      padding: 0.6rem 1.2rem;
+    }
+
+    .corpus-strip {
+      padding: 2rem 1.5rem;
+    }
+
+    .pull-quote {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <span class="header-left">In Conversation With</span>
+  <span class="header-right">GC–1837–2026</span>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+
+  <!-- LEFT: HERO SVG — Buffalo City Hall Interior / Executive Office, 1880s -->
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0E1A10"/>
+          <stop offset="100%" stop-color="#2C3E2D"/>
+        </linearGradient>
+        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1E2C1F"/>
+          <stop offset="60%" stop-color="#2C3E2D"/>
+          <stop offset="100%" stop-color="#1A2A1B"/>
+        </linearGradient>
+        <linearGradient id="deskGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5C3018"/>
+          <stop offset="100%" stop-color="#3A1C08"/>
+        </linearGradient>
+        <linearGradient id="lampGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#D4AF5A" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#B8973A" stop-opacity="0.2"/>
+        </linearGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="30%" r="55%">
+          <stop offset="0%" stop-color="#D4AF5A" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#2C3E2D" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="windowLight" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C8D4C0" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#1A2A1B" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="blur2">
+          <feGaussianBlur stdDeviation="2.5"/>
+        </filter>
+        <filter id="blur1">
+          <feGaussianBlur stdDeviation="1.2"/>
+        </filter>
+      </defs>
+
+      <!-- BACKGROUND WALL -->
+      <rect x="0" y="0" width="700" height="900" fill="url(#wallGrad)"/>
+
+      <!-- SUBTLE WALL PANELING TEXTURE -->
+      <rect x="0" y="0" width="700" height="900" fill="none" stroke="#3A5240" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- WAINSCOTING LOWER -->
+      <rect x="0" y="680" width="700" height="220" fill="#1A2A1B"/>
+      <rect x="0" y="678" width="700" height="4" fill="#3A5240"/>
+      <rect x="0" y="676" width="700" height="1" fill="#B8973A" opacity="0.6"/>
+      <rect x="0" y="683" width="700" height="1" fill="#B8973A" opacity="0.3"/>
+
+      <!-- WAINSCOTING PANELS -->
+      <rect x="20" y="694" width="155" height="176" fill="none" stroke="#3A5240" stroke-width="1.2" opacity="0.8"/>
+      <rect x="28" y="702" width="139" height="160" fill="none" stroke="#3A5240" stroke-width="0.6" opacity="0.5"/>
+      <rect x="185" y="694" width="155" height="176" fill="none" stroke="#3A5240" stroke-width="1.2" opacity="0.8"/>
+      <rect x="193" y="702" width="139" height="160" fill="none" stroke="#3A5240" stroke-width="0.6" opacity="0.5"/>
+      <rect x="360" y="694" width="155" height="176" fill="none" stroke="#3A5240" stroke-width="1.2" opacity="0.8"/>
+      <rect x="368" y="702" width="139" height="160" fill="none" stroke="#3A5240" stroke-width="0.6" opacity="0.5"/>
+      <rect x="525" y="694" width="155" height="176" fill="none" stroke="#3A5240" stroke-width="1.2" opacity="0.8"/>
+      <rect x="533" y="702" width="139" height="160" fill="none" stroke="#3A5240" stroke-width="0.6" opacity="0.5"/>
+
+      <!-- CROWN MOLDING TOP -->
+      <rect x="0" y="58" width="700" height="6" fill="#3A5240" opacity="0.9"/>
+      <rect x="0" y="62" width="700" height="2" fill="#B8973A" opacity="0.4"/>
+      <rect x="0" y="52" width="700" height="6" fill="#2C3E2D"/>
+      <rect x="0" y="64" width="700" height="10" fill="#243328"/>
+
+      <!-- UPPER WALL PANEL FRAMES -->
+      <rect x="20"  y="80" width="148" height="310" fill="none" stroke="#3A5240" stroke-width="1.4" opacity="0.7"/>
+      <rect x="27"  y="87" width="134" height="296" fill="none" stroke="#3A5240" stroke-width="0.5" opacity="0.4"/>
+      <rect x="178" y="80" width="148" height="310" fill="none" stroke="#3A5240" stroke-width="1.4" opacity="0.7"/>
+      <rect x="185" y="87" width="134" height="296" fill="none" stroke="#3A5240" stroke-width="0.5" opacity="0.4"/>
+      <rect x="374" y="80" width="148" height="310" fill="none" stroke="#3A5240" stroke-width="1.4" opacity="0.7"/>
+      <rect x="381" y="87" width="134" height="296" fill="none" stroke="#3A5240" stroke-width="0.5" opacity="0.4"/>
+      <rect x="532" y="80" width="148" height="310" fill="none" stroke="#3A5240" stroke-width="1.4" opacity="0.7"/>
+      <rect x="539" y="87" width="134" height="296" fill="none" stroke="#3A5240" stroke-width="0.5" opacity="0.4"/>
+
+      <!-- LARGE CENTER WINDOW -->
+      <rect x="246" y="76" width="208" height="316" fill="#0E160F"/>
+      <rect x="246" y="76" width="208" height="316" fill="url(#windowLight)"/>
+      <!-- Window panes -->
+      <line x1="350" y1="76" x2="350" y2="392" stroke="#3A5240" stroke-width="2.5"/>
+      <line x1="246" y1="234" x2="454" y2="234" stroke="#3A5240" stroke-width="2.5"/>
+      <line x1="350" y1="76" x2="350" y2="392" stroke="#B8973A" stroke-width="0.6" opacity="0.5"/>
+      <!-- Window outer frame -->
+      <rect x="244" y="74" width="212" height="320" fill="none" stroke="#B8973A" stroke-width="1.5" opacity="0.6"/>
+      <rect x="240" y="70" width="220" height="328" fill="none" stroke="#3A5240" stroke-width="2.5"/>
+      <!-- Window sill -->
+      <rect x="234" y="394" width="232" height="8" fill="#3A5240"/>
+      <rect x="234" y="402" width="232" height="3" fill="#B8973A" opacity="0.4"/>
+
+      <!-- DAYLIGHT GLOW FROM WINDOW -->
+      <ellipse cx="350" cy="200" rx="200" ry="230" fill="url(#windowLight)" filter="url(#blur2)"/>
+
+      <!-- BOOKCASE LEFT -->
+      <rect x="20" y="80" width="148" height="310" fill="#1A2518" opacity="0.9"/>
+      <!-- Book spines -->
+      <rect x="28" y="92" width="130" height="12" fill="#5C3018" rx="1"/>
+      <rect x="28" y="106" width="130" height="12" fill="#3A4828" rx="1"/>
+      <rect x="28" y="120" width="130" height="12" fill="#4A3020" rx="1"/>
+      <rect x="28" y="134" width="130" height="12" fill="#2A3820" rx="1"/>
+      <rect x="28" y="148" width="130" height="12" fill="#5A2A18" rx="1"/>
+      <rect x="28" y="162" width="130" height="12" fill="#3A4020" rx="1"/>
+      <rect x="28" y="176" width="130" height="12" fill="#4A2818" rx="1"/>
+      <rect x="28" y="190" width="130" height="12" fill="#2A3028" rx="1"/>
+      <rect x="28" y="204" width="130" height="12" fill="#5C3818" rx="1"/>
+      <rect x="28" y="218" width="130" height="12" fill="#3A4830" rx="1"/>
+      <rect x="28" y="232" width="130" height="12" fill="#4A2820" rx="1"/>
+      <rect x="28" y="246" width="130" height="12" fill="#2A3028" rx="1"/>
+      <rect x="28" y="260" width="130" height="14" fill="#5C3018" rx="1"/>
+      <rect x="28" y="276" width="130" height="12" fill="#3A4020" rx="1"/>
+      <rect x="28" y="290" width="130" height="12" fill="#4A3828" rx="1"/>
+      <rect x="28" y="304" width="130" height="12" fill="#2A2818" rx="1"/>
+      <rect x="28" y="318" width="130" height="12" fill="#5A3018" rx="1"/>
+      <rect x="28" y="332" width="130" height="12" fill="#3A3828" rx="1"/>
+      <rect x="28" y="346" width="130" height="16" fill="#4A2820" rx="1"/>
+      <!-- Book shelf lines -->
+      <line x1="20" y1="104" x2="168" y2="104" stroke="#3A5240" stroke-width="1.2" opacity="0.6"/>
+      <line x1="20" y1="258" x2="168" y2="258" stroke="#3A5240" stroke-width="1.5" opacity="0.7"/>
+      <!-- Gold highlights on book spines -->
+      <rect x="30" y="92" width="3" height="12" fill="#B8973A" opacity="0.5"/>
+      <rect x="90" y="106" width="2" height="12" fill="#B8973A" opacity="0.4"/>
+      <rect x="60" y="148" width="3" height="12" fill="#B8973A" opacity="0.5"/>
+      <rect x="120" y="218" width="2" height="12" fill="#B8973A" opacity="0.35"/>
+      <rect x="45" y="276" width="3" height="12" fill="#B8973A" opacity="0.45"/>
+
+      <!-- BOOKCASE RIGHT (MIRROR) -->
+      <rect x="532" y="80" width="148" height="310" fill="#1A2518" opacity="0.9"/>
+      <rect x="540" y="92" width="132" height="12" fill="#3A4828" rx="1"/>
+      <rect x="540" y="106" width="132" height="12" fill="#5C3018" rx="1"/>
+      <rect x="540" y="120" width="132" height="12" fill="#2A3820" rx="1"/>
+      <rect x="540" y="134" width="132" height="12" fill="#4A3020" rx="1"/>
+      <rect x="540" y="148" width="132" height="12" fill="#3A4020" rx="1"/>
+      <rect x="540" y="162" width="132" height="12" fill="#5A2A18" rx="1"/>
+      <rect x="540" y="176" width="132" height="12" fill="#2A3028" rx="1"/>
+      <rect x="540" y="190" width="132" height="12" fill="#4A2818" rx="1"/>
+      <rect x="540" y="204" width="132" height="12" fill="#3A4830" rx="1"/>
+      <rect x="540" y="218" width="132" height="12" fill="#5C3818" rx="1"/>
+      <rect x="540" y="232" width="132" height="12" fill="#4A2820" rx="1"/>
+      <rect x="540" y="246" width="132" height="12" fill="#2A3028" rx="1"/>
+      <rect x="540" y="260" width="132" height="14" fill="#5C3018" rx="1"/>
+      <rect x="540" y="276" width="132" height="12" fill="#4A3828" rx="1"/>
+      <rect x="540" y="290" width="132" height="12" fill="#3A4020" rx="1"/>
+      <rect x="540" y="304" width="132" height="12" fill="#5A3018" rx="1"/>
+      <rect x="540" y="318" width="132" height="12" fill="#2A2818" rx="1"/>
+      <rect x="540" y="332" width="132" height="12" fill="#4A2820" rx="1"/>
+      <rect x="540" y="346" width="132" height="16" fill="#3A3828" rx="1"/>
+      <line x1="532" y1="104" x2="680" y2="104" stroke="#3A5240" stroke-width="1.2" opacity="0.6"/>
+      <line x1="532" y1="258" x2="680" y2="258" stroke="#3A5240" stroke-width="1.5" opacity="0.7"/>
+      <rect x="542" y="92" width="3" height="12" fill="#B8973A" opacity="0.5"/>
+      <rect x="610" y="134" width="2" height="12" fill="#B8973A" opacity="0.4"/>
+      <rect x="570" y="204" width="3" height="12" fill="#B8973A" opacity="0.45"/>
+
+      <!-- FLOOR -->
+      <rect x="0" y="670" width="700" height="230" fill="#16200F"/>
+      <!-- Floor planks -->
+      <line x1="0" y1="685" x2="700" y2="685" stroke="#1E2C18" stroke-width="1.2"/>
+      <line x1="0" y1="700" x2="700" y2="700" stroke="#1E2C18" stroke-width="1"/>
+      <line x1="0" y1="715" x2="700" y2="715" stroke="#1E2C18" stroke-width="0.8"/>
+      <line x1="0" y1="730" x2="700" y2="730" stroke="#1E2C18" stroke-width="1"/>
+      <!-- Floor highlight near window -->
+      <ellipse cx="350" cy="680" rx="160" ry="20" fill="#D4AF5A" opacity="0.06" filter="url(#blur2)"/>
+
+      <!-- EXECUTIVE DESK -->
+      <!-- Desk top surface -->
+      <polygon points="100,570 600,570 640,640 60,640" fill="url(#deskGrad)"/>
+      <polygon points="100,570 600,570 640,640 60,640" fill="none" stroke="#7A4020" stroke-width="1.2" opacity="0.8"/>
+      <!-- Desk top highlight -->
+      <polygon points="102,572 598,572 636,636 64,636" fill="none" stroke="#9A5828" stroke-width="0.5" opacity="0.4"/>
+      <!-- Desk green baize surface -->
+      <polygon points="120,572 580,572 618,630 82,630" fill="#1E3020"/>
+      <polygon points="120,572 580,572 618,630 82,630" fill="none" stroke="#2C4028" stroke-width="0.8"/>
+      <!-- Desk front face -->
+      <polygon points="60,640 640,640 640,700 60,700" fill="#3A1C08"/>
+      <polygon points="60,640 640,640 640,700 60,700" fill="none" stroke="#5C3018" stroke-width="1"/>
+      <!-- Desk legs -->
+      <rect x="70" y="640" width="18" height="62" fill="#2A1608"/>
+      <rect x="612" y="640" width="18" height="62" fill="#2A1608"/>
+      <rect x="180" y="638" width="14" height="62" fill="#2A1608"/>
+      <rect x="506" y="638" width="14" height="62" fill="#2A1608"/>
+
+      <!-- DESK ITEMS: stacked papers -->
+      <rect x="150" y="556" width="100" height="14" fill="#F5F0E8" rx="1" transform="rotate(-3,200,563)"/>
+      <rect x="152" y="554" width="98" height="13" fill="#EDE5D4" rx="1" transform="rotate(-3,201,560)"/>
+      <rect x="154" y="552" width="96" height="13" fill="#F5F0E8" rx="1" transform="rotate(-2,202,558)"/>
+      <!-- Paper text lines -->
+      <line x1="162" y1="548" x2="238" y2="546" stroke="#2C3E2D" stroke-width="0.8" opacity="0.4" transform="rotate(-2,200,547)"/>
+      <line x1="162" y1="552" x2="236" y2="550" stroke="#2C3E2D" stroke-width="0.6" opacity="0.3" transform="rotate(-2,199,551)"/>
+      <line x1="162" y1="556" x2="234" y2="554" stroke="#2C3E2D" stroke-width="0.6" opacity="0.3" transform="rotate(-2,198,555)"/>
+
+      <!-- INK WELL -->
+      <ellipse cx="310" cy="562" rx="14" ry="8" fill="#0A0E0A"/>
+      <ellipse cx="310" cy="560" rx="12" ry="6" fill="#1A2018" stroke="#3A4A38" stroke-width="0.8"/>
+      <ellipse cx="310" cy="559" rx="8" ry="3" fill="#050808"/>
+
+      <!-- QUILL PEN -->
+      <line x1="310" y1="558" x2="380" y2="520" stroke="#D4AF5A" stroke-width="1.2" opacity="0.8"/>
+      <path d="M380,520 Q395,512 405,516 Q395,520 385,524 Z" fill="#F5F0E8" opacity="0.7"/>
+      <path d="M380,520 Q392,510 402,515" stroke="#EDE5D4" stroke-width="0.8" fill="none" opacity="0.6"/>
+
+      <!-- OIL LAMP -->
+      <ellipse cx="480" cy="558" rx="22" ry="8" fill="#4A3010"/>
+      <rect x="466" y="528" width="28" height="30" fill="#3A2808" rx="3"/>
+      <ellipse cx="480" cy="528" rx="14" ry="5" fill="#5C3A10"/>
+      <!-- Lamp glass chimney -->
+      <rect x="472" y="490" width="16" height="40" fill="#D4AF5A" opacity="0.18" rx="3"/>
+      <rect x="474" y="492" width="12" height="36" fill="#F5F0E8" opacity="0.05" rx="2"/>
+      <!-- Flame glow -->
+      <ellipse cx="480" cy="494" rx="18" ry="28" fill="url(#lampGrad)" filter="url(#blur1)"/>
+      <ellipse cx="480" cy="490" rx="8" ry="12" fill="#D4AF5A" opacity="0.45"/>
+      <ellipse cx="480" cy="488" rx="4" ry="7" fill="#F0C060" opacity="0.7"/>
+      <!-- Lamp room glow -->
+      <ellipse cx="480" cy="520" rx="80" ry="60" fill="url(#lampGlow)" filter="url(#blur2)"/>
+
+      <!-- VETO DOCUMENT STACK — prominently on desk -->
+      <rect x="390" y="546" width="130" height="18" fill="#EDE5D4" rx="1" transform="rotate(4,455,555)"/>
+      <rect x="392" y="543" width="128" height="17" fill="#F5F0E8" rx="1" transform="rotate(3,456,551)"/>
+      <rect x="394" y="540" width="126" height="17" fill="#EDE5D4" rx="1" transform="rotate(2,457,548)"/>
+      <!-- "VETO" text on top sheet -->
+      <text x="415" y="552" font-family="'Playfair Display', serif" font-size="7" font-weight="700" fill="#5C2A1A" opacity="0.9" transform="rotate(2,415,552)">VETO</text>
+      <line x1="400" y1="556" x2="505" y2="553" stroke="#2C3E2D" stroke-width="0.7" opacity="0.35" transform="rotate(2,452,554)"/>
+      <line x1="400" y1="559" x2="504" y2="556" stroke="#2C3E2D" stroke-width="0.5" opacity="0.25" transform="rotate(2,452,557)"/>
+
+      <!-- CHAIR (partial, behind desk) -->
+      <!-- Chair back -->
+      <rect x="302" y="470" width="96" height="92" fill="#3A1C08" rx="4"/>
+      <rect x="306" y="474" width="88" height="84" fill="#2A1408" rx="3"/>
+      <!-- Chair back panels -->
+      <rect x="310" y="478" width="38" height="74" fill="#321808" rx="2" stroke="#4A2810" stroke-width="0.8"/>
+      <rect x="352" y="478" width="38" height="74" fill="#321808" rx="2" stroke="#4A2810" stroke-width="0.8"/>
+      <!-- Chair posts -->
+      <rect x="302" y="462" width="8" height="100" fill="#2A1608"/>
+      <rect x="390" y="462" width="8" height="100" fill="#2A1608"/>
+      <!-- Chair top rail -->
+      <rect x="298" y="456" width="104" height="14" fill="#3A1C08" rx="2"/>
+      <rect x="300" y="458" width="100" height="10" fill="#4A2410" rx="1"/>
+      <!-- Upholstery texture hint -->
+      <ellipse cx="350" cy="515" rx="40" ry="32" fill="#1E1008" opacity="0.5"/>
+
+      <!-- SEAL / CREST on wall above window -->
+      <circle cx="350" cy="46" r="18" fill="none" stroke="#B8973A" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="350" cy="46" r="14" fill="none" stroke="#B8973A" stroke-width="0.7" opacity="0.4"/>
+      <text x="350" y="50" text-anchor="middle" font-family="'Cinzel', serif" font-size="7" fill="#B8973A" opacity="0.7" letter-spacing="0.05em">✦</text>
+
+      <!-- ANNOTATION OVERLAYS -->
+      <!-- Title block bottom-left -->
+      <rect x="18" y="845" width="190" height="46" fill="#0E160F" stroke="#3A5240" stroke-width="0.8" opacity="0.85"/>
+      <text x="28" y="860" font-family="'Cinzel', serif" font-size="5.5" fill="#B8973A" letter-spacing="0.2em" opacity="0.9">BUFFALO EXECUTIVE OFFICE</text>
+      <line x1="18" y1="865" x2="208" y2="865" stroke="#3A5240" stroke-width="0.5" opacity="0.7"/>
+      <text x="28" y="875" font-family="'Cormorant Garamond', serif" font-size="5" font-style="italic" fill="#7A8070" opacity="0.8">City Hall, Albany Street — c. 1882</text>
+      <text x="28" y="885" font-family="'Cormorant Garamond', serif" font-size="4.8" font-style="italic" fill="#7A8070" opacity="0.6">Mayor's Office, Erie County</text>
+
+      <!-- Compass rose, bottom right -->
+      <g transform="translate(640,870)" opacity="0.55">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#3A5240" stroke-width="0.8"/>
+        <line x1="0" y1="-16" x2="0" y2="16" stroke="#7A8070" stroke-width="0.8"/>
+        <line x1="-16" y1="0" x2="16" y2="0" stroke="#7A8070" stroke-width="0.8"/>
+        <polygon points="0,-16 -3,-8 0,-11 3,-8" fill="#B8973A"/>
+        <text x="0" y="-19" text-anchor="middle" font-family="'Cinzel', serif" font-size="5" fill="#B8973A">N</text>
+      </g>
+
+      <!-- Dimension line, right edge -->
+      <line x1="688" y1="80" x2="688" y2="670" stroke="#3A5240" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.45"/>
+      <line x1="684" y1="80" x2="692" y2="80" stroke="#3A5240" stroke-width="0.6" opacity="0.45"/>
+      <line x1="684" y1="670" x2="692" y2="670" stroke="#3A5240" stroke-width="0.6" opacity="0.45"/>
+      <text x="693" y="378" font-family="'Cinzel', serif" font-size="4.5" fill="#7A8070" opacity="0.5" transform="rotate(90,693,378)" text-anchor="middle" letter-spacing="0.15em">INTERIOR ELEVATION</text>
+
+      <!-- Marginal note -->
+      <text x="546" y="860" font-family="'Cormorant Garamond', serif" font-size="6" font-style="italic" fill="#7A8070" opacity="0.55" text-anchor="middle">«He said no, and meant it.»</text>
+    </svg>
+  </div>
+
+  <!-- RIGHT: BIO PANEL -->
+  <div class="hero-bio-panel">
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="22" r="12" fill="none" stroke="#7A8070" stroke-width="1.5"/>
+          <path d="M10 58 Q10 42 32 42 Q54 42 54 58" fill="none" stroke="#7A8070" stroke-width="1.5"/>
+        </svg>
+        <span>Portrait Not Available</span>
+      </div>
+    </div>
+
+    <div class="placard">
+      <span class="placard-label">Museum of Minds — Exhibit XXII/XXIV</span>
+      <h1>Grover Cleveland</h1>
+      <span class="placard-dates">1837 — 1908</span>
+      <div class="placard-rule"></div>
+      <span class="placard-title">22nd &amp; 24th President of the United States &nbsp;·&nbsp; Governor of New York &nbsp;·&nbsp; Sheriff of Erie County</span>
+      <p class="placard-tagline">The only man stubborn enough to be president twice — and principled enough to be hated for it both times.</p>
+      <p class="placard-bio">Stephen Grover Cleveland rose from a small-town Presbyterian minister's son to the most powerful office in the land on nothing more than a reputation for saying what he meant and meaning what he said. As Erie County Sheriff he carried out executions himself rather than delegate the unpleasant duty. As Buffalo's mayor, he vetoed a corrupt street-cleaning contract. As Governor of New York, he blocked Tammany Hall at every turn. In Washington, he wielded the presidential veto with a frequency that had never been seen — signing 414 vetoes in his first term alone, more than all previous presidents combined. He offended veterans' lobbies, currency inflationists, railroad speculators, and sugar trust barons with equal impartiality. He blocked Hawaiian annexation on constitutional grounds, knowing his successor would undo it anyway. In an era of gilded corruption, Cleveland was a democratic anachronism: a man who believed the office was a public trust, not a personal opportunity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRANSITION BAND ─── -->
+<div class="transition-band">
+  <div class="band-rule"></div>
+  <div class="band-diamond"></div>
+  <span class="band-ornament">Engage the Record</span>
+  <div class="band-diamond"></div>
+  <div class="band-rule"></div>
+</div>
+
+<!-- ─── CHATBOT SECTION ─── -->
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <span class="intro-label">Conversation Terminal — Exhibit GC–1837</span>
+    <h2>Put the Question<br><em>to Cleveland Himself</em></h2>
+
+    <p>This exhibit draws on Cleveland's presidential messages, veto messages, state papers, personal correspondence, and contemporaneous accounts to reconstruct the reasoning of a man who governed by principle in an age of patronage. He will not flatter you. He did not flatter anyone.</p>
+
+    <p>Ask him about the Texas drought relief veto of 1887, about the Pullman Strike and federal intervention, about the silver question and the gold standard, about his battles with the Pension Bureau — or about what it felt like to lose the 1888 election despite winning the popular vote, and then return four years later to finish the argument.</p>
+
+    <div class="featured-quote">
+      "I have considered the Constitution of the United States as a solemn covenant to be observed in letter and spirit; and when I find a measure not authorized therein, no personal sympathy, no popular demand, will induce me to stretch that instrument for the sake of present convenience."
+      <cite>— Grover Cleveland, Veto Message, 1887</cite>
+    </div>
+
+    <div class="domain-tags">
+      <span class="domain-tag">Constitutional Limits</span>
+      <span class="domain-tag">Executive Power</span>
+      <span class="domain-tag">Laissez-Faire</span>
+      <span class="domain-tag">Monetary Policy</span>
+      <span class="domain-tag">Labor &amp; Capital</span>
+      <span class="domain-tag">Reform</span>
+      <span class="domain-tag">Anti-Imperialism</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/grover-cleveland/widget/grover-cleveland-widget.css">
+      <script src="https://museumofminds.com/grover-cleveland/widget/grover-cleveland-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="grover-cleveland"></script>
+    </div>
+</section>
+
+<!-- ─── PULL QUOTE ─── -->
+<div class="pull-quote">
+  <blockquote>
+    "A man is known by the company he keeps, and also by the company from which he is kept out."
+    <cite>— Grover Cleveland &nbsp;·&nbsp; Personal Correspondence, c. 1890</cite>
+  </blockquote>
+</div>
+
+<!-- ─── CORPUS STRIP ─── -->
+<div class="corpus-strip">
+  <span class="corpus-label">Primary Sources &amp; Corpus Materials</span>
+  <div class="corpus-rule"></div>
+  <ul class="corpus-list">
+    <li>Presidential Messages and State Papers, 1885–1897 (8 vols.)</li>
+    <li>Veto Messages to Congress, 1885–1889 &amp; 1893–1897</li>
+    <li>The Independence of the Executive (Princeton Address, 1913)</li>
+    <li>Letters of Grover Cleveland, ed. Allan Nevins (1933)</li>
+    <li>First and Second Inaugural Addresses (1885, 1893)</li>
+    <li>Annual Messages to Congress, 1885–1888 &amp; 1893–1896</li>
+    <li>Presidential Problems (1904)</li>
+    <li>The Venezuelan Message, Dec. 17, 1895</li>
+    <li>Hawaiian Investigation Report (Morgan Report Response, 1893)</li>
+    <li>Grover Cleveland: A Study in Courage, Allan Nevins (1932)</li>
+  </ul>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div>
+    <div class="footer-name">Grover Cleveland</div>
+    <span class="footer-dates">1837 — 1908 &nbsp;·&nbsp; 22nd &amp; 24th President</span>
+  </div>
+  <div class="footer-credit">
+    Museum of Minds &mdash; A Living Archive of Historical Intelligence<br>
+    <span style="font-size:0.68rem; opacity:0.6;">Exhibit GC–1837–2026</span>
+  </div>
+  <div class="footer-right">Powered by<br>His Own Words</div>
+</footer>
+
+</body>
+</html>
