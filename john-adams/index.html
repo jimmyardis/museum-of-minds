@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Adams — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0E1824;
+      --navy-mid:    #152030;
+      --navy-light:  #1A2B42;
+      --steel:       #2C3C4E;
+      --silver:      #B0BFC8;
+      --white:       #EEF2F6;
+      --white-dim:   #8A9BAA;
+      --gold:        #B89040;
+      --gold-dim:    #7A6230;
+      --text:        #CDD8E4;
+      --text-dim:    #8AABCC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(184,144,64,0.25);
+      background: rgba(14,24,36,0.95);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      border-bottom: 1px solid rgba(184,144,64,0.2);
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .hall-panel {
+      position: relative;
+      background: var(--navy-mid);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .hall-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(176,191,200,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176,191,200,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .hall-panel svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-title h1 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+      font-size: 0.75em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-top: 0.8rem;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 2.5rem;
+      border-left: 1px solid rgba(184,144,64,0.2);
+      background: var(--navy-mid);
+      position: relative;
+    }
+
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      left: 3.8rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(139,26,26,0.3);
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      opacity: 0.88;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(184,144,64,0.35);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(184,144,64,0.12);
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+      z-index: 2;
+    }
+    .frame-corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.15) brightness(0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .placard {
+      border-top: 1px solid rgba(184,144,64,0.25);
+      padding-top: 1.8rem;
+      margin-top: auto;
+    }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .placard-bio {
+      font-size: 1.05rem;
+      line-height: 1.88;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .placard-bio em {
+      font-style: italic;
+      color: var(--silver);
+    }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 2rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.08);
+      background: var(--navy);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.9;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .section-rule::before, .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,144,64,0.2), transparent);
+    }
+
+    .chatbot-section {
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+      background: var(--navy-mid);
+      animation: fadeIn 1s ease 0.4s both;
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .chatbot-intro p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .chatbot-intro .domain-tags {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,144,64,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      border: 1px solid rgba(184,144,64,0.35);
+      padding: 0.3rem 0.8rem;
+      opacity: 0.92;
+    }
+
+    .chatbot-embed {
+      border: 1px solid rgba(184,144,64,0.2);
+      min-height: 580px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      box-shadow: 0 0 50px rgba(14,24,36,0.8), inset 0 0 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .chatbot-embed::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(184,144,64,0.08);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chatbot-embed .hall-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.18;
+    }
+
+    .chatbot-embed .panel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: rgba(14,24,36,0.9);
+      border-top: 1px solid rgba(184,144,64,0.1);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(184,144,64,0.7);
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+    }
+
+    .pull-quote {
+      padding: 7rem 3rem;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+    }
+
+    .quote-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 3rem;
+      opacity: 0.6;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.2rem, 2.3vw, 1.8rem);
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.88;
+      text-transform: uppercase;
+    }
+
+    .corpus-strip {
+      background: var(--navy-light);
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.12);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .corpus-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      opacity: 0.92;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      min-width: 100px;
+      text-transform: uppercase;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.8rem;
+    }
+
+    .corpus-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 400;
+      opacity: 0.88;
+    }
+
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy);
+      border-top: 1px solid rgba(184,144,64,0.1);
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--text);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hall-panel { min-height: 360px; }
+      .bio-panel { border-left: none; border-top: 1px solid rgba(184,144,64,0.2); padding: 2.5rem 1.5rem; }
+      .chatbot-section { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      header { padding: 1rem 1.5rem; }
+      .hero-title { left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+      .corpus-strip { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .section-rule { padding: 1.5rem; }
+      .pull-quote { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="header-label">In Conversation With</span>
+    <span class="header-right">Accession No. &nbsp;JA–1735–2026</span>
+  </header>
+
+  <section class="hero">
+
+    <div class="hall-panel">
+      <!-- Massachusetts State House elevation drawing -->
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="700" height="900" fill="rgba(15,28,44,0.95)"/>
+
+        <!-- Ground line -->
+        <line x1="40" y1="760" x2="660" y2="760" stroke="rgba(176,191,200,0.5)" stroke-width="1.5"/>
+
+        <!-- Stylobate / steps -->
+        <rect x="90"  y="735" width="520" height="12" fill="none" stroke="rgba(176,191,200,0.4)" stroke-width="1"/>
+        <rect x="75"  y="747" width="550" height="13" fill="none" stroke="rgba(176,191,200,0.35)" stroke-width="1"/>
+
+        <!-- Main building body -->
+        <rect x="110" y="310" width="480" height="425" fill="none" stroke="rgba(176,191,200,0.35)" stroke-width="1"/>
+
+        <!-- Central projecting pavilion -->
+        <rect x="260" y="290" width="180" height="445" fill="none" stroke="rgba(176,191,200,0.45)" stroke-width="1.2"/>
+
+        <!-- Central door -->
+        <rect x="315" y="600" width="70" height="130" fill="none" stroke="rgba(176,191,200,0.55)" stroke-width="1.2"/>
+        <!-- Fanlight -->
+        <path d="M315,600 A35,35 0 0,1 385,600" fill="none" stroke="rgba(176,191,200,0.5)" stroke-width="1"/>
+        <line x1="350" y1="600" x2="350" y2="567" stroke="rgba(176,191,200,0.3)" stroke-width="0.7"/>
+        <line x1="350" y1="567" x2="319" y2="586" stroke="rgba(176,191,200,0.25)" stroke-width="0.6"/>
+        <line x1="350" y1="567" x2="381" y2="586" stroke="rgba(176,191,200,0.25)" stroke-width="0.6"/>
+
+        <!-- Side wings windows — lower floor -->
+        <g stroke="rgba(176,191,200,0.4)" stroke-width="1" fill="none">
+          <rect x="130" y="580" width="55" height="75"/>
+          <line x1="157" y1="580" x2="157" y2="655" stroke-width="0.5"/>
+          <line x1="130" y1="617" x2="185" y2="617" stroke-width="0.5"/>
+          <rect x="205" y="580" width="55" height="75"/>
+          <line x1="232" y1="580" x2="232" y2="655" stroke-width="0.5"/>
+          <line x1="205" y1="617" x2="260" y2="617" stroke-width="0.5"/>
+          <rect x="440" y="580" width="55" height="75"/>
+          <line x1="467" y1="580" x2="467" y2="655" stroke-width="0.5"/>
+          <line x1="440" y1="617" x2="495" y2="617" stroke-width="0.5"/>
+          <rect x="515" y="580" width="55" height="75"/>
+          <line x1="542" y1="580" x2="542" y2="655" stroke-width="0.5"/>
+          <line x1="515" y1="617" x2="570" y2="617" stroke-width="0.5"/>
+        </g>
+
+        <!-- Upper windows all zones -->
+        <g stroke="rgba(176,191,200,0.35)" stroke-width="1" fill="none">
+          <rect x="130" y="430" width="55" height="70"/>
+          <line x1="157" y1="430" x2="157" y2="500" stroke-width="0.5"/>
+          <line x1="130" y1="465" x2="185" y2="465" stroke-width="0.5"/>
+          <rect x="205" y="430" width="55" height="70"/>
+          <line x1="232" y1="430" x2="232" y2="500" stroke-width="0.5"/>
+          <line x1="205" y1="465" x2="260" y2="465" stroke-width="0.5"/>
+          <rect x="440" y="430" width="55" height="70"/>
+          <line x1="467" y1="430" x2="467" y2="500" stroke-width="0.5"/>
+          <line x1="440" y1="465" x2="495" y2="465" stroke-width="0.5"/>
+          <rect x="515" y="430" width="55" height="70"/>
+          <line x1="542" y1="430" x2="542" y2="500" stroke-width="0.5"/>
+          <line x1="515" y1="465" x2="570" y2="465" stroke-width="0.5"/>
+          <!-- Pavilion windows -->
+          <rect x="276" y="430" width="50" height="70"/>
+          <line x1="301" y1="430" x2="301" y2="500" stroke-width="0.5"/>
+          <rect x="374" y="430" width="50" height="70"/>
+          <line x1="399" y1="430" x2="399" y2="500" stroke-width="0.5"/>
+          <rect x="276" y="330" width="50" height="70"/>
+          <line x1="301" y1="330" x2="301" y2="400" stroke-width="0.5"/>
+          <rect x="374" y="330" width="50" height="70"/>
+          <line x1="399" y1="330" x2="399" y2="400" stroke-width="0.5"/>
+        </g>
+
+        <!-- Colonnade — portico with 6 columns on pavilion -->
+        <rect x="255" y="255" width="190" height="35" fill="none" stroke="rgba(176,191,200,0.6)" stroke-width="1.5"/>
+        <!-- Columns -->
+        <g stroke="rgba(176,191,200,0.5)" stroke-width="1.2" fill="none">
+          <rect x="268" y="290" width="16" height="440" fill="rgba(15,28,44,0.3)"/>
+          <rect x="304" y="290" width="16" height="440" fill="rgba(15,28,44,0.3)"/>
+          <rect x="340" y="290" width="16" height="440" fill="rgba(15,28,44,0.3)"/>
+          <rect x="376" y="290" width="16" height="440" fill="rgba(15,28,44,0.3)"/>
+          <rect x="412" y="290" width="16" height="440" fill="rgba(15,28,44,0.3)"/>
+        </g>
+
+        <!-- Pediment over pavilion -->
+        <path d="M255,255 L350,175 L445,255" fill="none" stroke="rgba(176,191,200,0.65)" stroke-width="1.8"/>
+
+        <!-- Main cornice -->
+        <rect x="100" y="305" width="500" height="5" fill="none" stroke="rgba(176,191,200,0.4)" stroke-width="1"/>
+
+        <!-- Dome drum -->
+        <rect x="308" y="145" width="84" height="30" fill="none" stroke="rgba(176,191,200,0.55)" stroke-width="1.2"/>
+        <!-- Dome -->
+        <path d="M308,175 Q350,100 392,175" fill="none" stroke="rgba(176,191,200,0.65)" stroke-width="1.8"/>
+        <!-- Lantern -->
+        <rect x="336" y="88" width="28" height="20" fill="none" stroke="rgba(176,191,200,0.5)" stroke-width="1"/>
+        <path d="M336,88 Q350,72 364,88" fill="none" stroke="rgba(176,191,200,0.55)" stroke-width="1.2"/>
+        <!-- Gold dome finial -->
+        <line x1="350" y1="72" x2="350" y2="58" stroke="rgba(176,191,200,0.5)" stroke-width="1"/>
+        <circle cx="350" cy="56" r="4" fill="none" stroke="rgba(184,144,64,0.7)" stroke-width="1.2"/>
+
+        <!-- Dimension lines -->
+        <g stroke="rgba(184,144,64,0.3)" stroke-width="0.6" fill="none">
+          <line x1="110" y1="790" x2="590" y2="790"/>
+          <line x1="110" y1="784" x2="110" y2="796"/>
+          <line x1="590" y1="784" x2="590" y2="796"/>
+          <line x1="110" y1="760" x2="110" y2="793"/>
+          <line x1="590" y1="760" x2="590" y2="793"/>
+          <line x1="645" y1="255" x2="645" y2="730"/>
+          <line x1="639" y1="255" x2="651" y2="255"/>
+          <line x1="639" y1="730" x2="651" y2="730"/>
+          <line x1="590" y1="255" x2="649" y2="255"/>
+          <line x1="590" y1="730" x2="649" y2="730"/>
+        </g>
+
+        <!-- Annotations -->
+        <g fill="rgba(184,144,64,0.45)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11">
+          <text x="275" y="808" letter-spacing="1">Principal Facade · Beacon Hill, Boston · 1798</text>
+          <text x="655" y="505" font-size="10" transform="rotate(90 655 505)">Height · 185ft to gilded dome</text>
+          <text x="320" y="162" font-size="10">Domed Rotunda</text>
+          <text x="145" y="300" font-size="10">Corinthian Order</text>
+          <text x="145" y="425" font-size="10">Upper story</text>
+        </g>
+
+        <!-- Title block -->
+        <rect x="40" y="790" width="220" height="90" fill="none" stroke="rgba(176,191,200,0.2)" stroke-width="0.8"/>
+        <line x1="40" y1="808" x2="260" y2="808" stroke="rgba(176,191,200,0.15)" stroke-width="0.5"/>
+        <line x1="40" y1="828" x2="260" y2="828" stroke="rgba(176,191,200,0.15)" stroke-width="0.5"/>
+        <line x1="40" y1="850" x2="260" y2="850" stroke="rgba(176,191,200,0.15)" stroke-width="0.5"/>
+        <text x="50" y="803" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(176,191,200,0.35)" letter-spacing="1">ELEVATION</text>
+        <text x="50" y="822" font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="rgba(176,191,200,0.5)">Massachusetts State House</text>
+        <text x="50" y="842" font-family="Cormorant Garamond, serif" font-size="7" fill="rgba(176,191,200,0.3)" letter-spacing="0.5">Beacon Hill, Boston</text>
+        <text x="50" y="858" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(176,191,200,0.25)">Charles Bulfinch, Architect · 1798</text>
+        <text x="50" y="872" font-family="Cormorant Garamond, serif" font-size="6" fill="rgba(184,144,64,0.3)">Original dome sheathed in copper · later gilded</text>
+
+        <!-- Marginalia -->
+        <g fill="rgba(176,191,200,0.2)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="7.5">
+          <text x="42" y="310" transform="rotate(-2 42 310)">cf. Bulfinch · neoclassical</text>
+          <text x="42" y="450" transform="rotate(1 42 450)">Paul Revere copper · 1802</text>
+          <text x="42" y="600" transform="rotate(-1 42 600)">Dade marble · Quincy granite</text>
+        </g>
+
+        <!-- Compass rose -->
+        <g transform="translate(628,60)" stroke="rgba(184,144,64,0.3)" stroke-width="0.7" fill="none">
+          <circle cx="0" cy="0" r="18"/>
+          <line x1="0" y1="-18" x2="0" y2="18"/>
+          <line x1="-18" y1="0" x2="18" y2="0"/>
+          <line x1="-12" y1="-12" x2="12" y2="12"/>
+          <line x1="12" y1="-12" x2="-12" y2="12"/>
+          <polygon points="0,-18 -4,-6 0,-10 4,-6" fill="rgba(184,144,64,0.4)" stroke="none"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(184,144,64,0.4)" stroke="none">N</text>
+        </g>
+      </svg>
+
+      <div class="hero-title">
+        <h1>John<br/><em>Adams</em></h1>
+        <span class="years">1735 &nbsp;—&nbsp; 1826</span>
+      </div>
+    </div>
+
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg/440px-Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg" alt="John Adams" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">John Adams</div>
+        <div class="placard-dates">Braintree, Massachusetts, 1735 &nbsp;·&nbsp; Quincy, 1826</div>
+        <p class="placard-bio">
+          <strong>Lawyer, diplomat, author of the Massachusetts Constitution, first Vice President, second President of the United States.</strong>
+          Adams defended the British soldiers after the Boston Massacre because he believed every man deserved a fair trial — even unpopular men, even enemies. He spent years in Paris and London negotiating treaties while Jefferson wrote philosophy in Virginia. He built the rule of law while others built monuments to themselves.
+          <br/><br/>
+          He believed governments must be designed for the worst men, not the best — because the worst men will always find their way to power. He wrote the Massachusetts Constitution in 1779, which became the template for every constitution that followed. He was the first occupant of the White House, which was still unfinished.
+          <br/><br/>
+          He chose peace with France in 1800, knowing it would cost him re-election, because he thought a war was wrong. He was probably the most principled and least appreciated man of the founding generation. He is <em>acutely aware of this.</em>
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="section-rule">
+    <span>Consultation</span>
+  </div>
+
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Argue with<br/><em>the Lawyer.</em></h2>
+      <p>
+        Adams speaks from over 6,000 chunks of his own words —
+        the Defence of the Constitutions, Novanglus, Thoughts on Government,
+        his Diary, and years of diplomatic correspondence.
+      </p>
+      <p>
+        He knows what Hamilton said about him. He knows that Jefferson
+        managed his reputation better than his record deserved.
+        He has spent 291 years being underestimated and has settled views about it.
+      </p>
+      <p>
+        Ask him about the rule of law, the nature of aristocracy,
+        why he defended British soldiers, what he thinks of Hamilton's
+        treatment of him, or whether his choice for peace was worth it.
+      </p>
+      <p>
+        He will not flatter you. He never did.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Rule of Law</span>
+        <span class="domain-tag">The Massachusetts Constitution</span>
+        <span class="domain-tag">Balance of Powers</span>
+        <span class="domain-tag">Executive Independence</span>
+        <span class="domain-tag">Foreign Policy</span>
+        <span class="domain-tag">Natural Aristocracy</span>
+        <span class="domain-tag">Alien &amp; Sedition Acts</span>
+        <span class="domain-tag">The Founding in 2026</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+
+      <svg class="hall-bg" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Floor plan — State House -->
+        <rect x="60" y="60" width="380" height="460" fill="none" stroke="rgba(176,191,200,1)" stroke-width="2"/>
+        <rect x="75" y="75" width="350" height="430" fill="none" stroke="rgba(176,191,200,0.4)" stroke-width="1"/>
+        <!-- Interior column positions -->
+        <g fill="rgba(176,191,200,0.9)">
+          <circle cx="140" cy="160" r="6"/>
+          <circle cx="250" cy="160" r="6"/>
+          <circle cx="360" cy="160" r="6"/>
+          <circle cx="140" cy="290" r="6"/>
+          <circle cx="250" cy="290" r="6"/>
+          <circle cx="360" cy="290" r="6"/>
+          <circle cx="140" cy="420" r="6"/>
+          <circle cx="250" cy="420" r="6"/>
+          <circle cx="360" cy="420" r="6"/>
+        </g>
+        <!-- Senate Chamber projection -->
+        <rect x="175" y="30" width="150" height="30" fill="none" stroke="rgba(176,191,200,0.7)" stroke-width="1.5"/>
+        <g fill="rgba(176,191,200,0.7)">
+          <circle cx="200" cy="45" r="5"/>
+          <circle cx="250" cy="45" r="5"/>
+          <circle cx="300" cy="45" r="5"/>
+        </g>
+        <!-- Dimension lines -->
+        <g stroke="rgba(184,144,64,0.5)" stroke-width="0.7">
+          <line x1="60" y1="560" x2="440" y2="560"/>
+          <line x1="60" y1="555" x2="60" y2="565"/>
+          <line x1="440" y1="555" x2="440" y2="565"/>
+        </g>
+        <text x="250" y="575" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="rgba(184,144,64,0.5)" letter-spacing="1">Beacon Hill, Boston</text>
+        <g fill="rgba(184,144,64,0.5)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12">
+          <text x="250" y="295" text-anchor="middle">House Chamber</text>
+          <text x="250" y="165" text-anchor="middle">Senate Chamber</text>
+          <text x="250" y="430" text-anchor="middle">Hall of the Republic</text>
+        </g>
+      </svg>
+
+      <span class="panel-caption">Floor Plan &nbsp;·&nbsp; Massachusetts State House &nbsp;·&nbsp; Seat of the Commonwealth &nbsp;·&nbsp; 1798</span>
+
+      <!-- chatbot-embed -->
+      <link rel="stylesheet" href="https://museumofminds.com/john-adams/widget/john-adams-widget.css">
+      <script src="https://museumofminds.com/john-adams/widget/john-adams-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="john-adams" data-portrait-url="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg/440px-Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg"></script>
+
+    </div>
+
+  </section>
+
+  <div class="pull-quote">
+    <div class="quote-rule"></div>
+    <blockquote>
+      "Our constitution was made only for a moral and religious people.
+      It is wholly inadequate to the government of any other."
+    </blockquote>
+    <cite>— John Adams &nbsp;·&nbsp; Letter to the Massachusetts Militia &nbsp;·&nbsp; October 11, 1798</cite>
+  </div>
+
+  <div class="corpus-strip">
+    <div class="corpus-label">Corpus Sources</div>
+    <div class="corpus-list">
+      <span class="corpus-item">A Defence of the Constitutions of Government of the United States · 1787–1788</span>
+      <span class="corpus-item">Novanglus, or A History of the Dispute with America · 1775</span>
+      <span class="corpus-item">Thoughts on Government · 1776</span>
+      <span class="corpus-item">Diary and Autobiography, Vols. I–II · Adams Papers</span>
+      <span class="corpus-item">Letters and State Papers, Vols. IX–X · 1854–1856</span>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-text">John Adams &nbsp;·&nbsp; 1735 – 1826</span>
+    <span class="footer-text">Powered by His Own Words</span>
+    <span class="footer-text">Accession No. JA–1735–2026</span>
+  </footer>
+
+</body>
+</html>

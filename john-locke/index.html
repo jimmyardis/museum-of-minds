@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Locke — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brown:       #1A120A;
+      --brown-mid:   #221810;
+      --brown-light: #2E2016;
+      --stone:       #4A3828;
+      --silver:      #C0B09C;
+      --white:       #F0EBE0;
+      --white-dim:   #9A8A78;
+      --gold:        #B89040;
+      --gold-dim:    #7A6230;
+      --text:        #D8CABC;
+      --text-dim:    #9A8878;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--brown);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(184,144,64,0.25);
+      background: rgba(26,18,10,0.95);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      border-bottom: 1px solid rgba(184,144,64,0.2);
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .hall-panel {
+      position: relative;
+      background: var(--brown-mid);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .hall-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(192,176,156,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(192,176,156,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .hall-panel svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-title h1 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+      font-size: 0.75em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-top: 0.8rem;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 2.5rem;
+      border-left: 1px solid rgba(184,144,64,0.2);
+      background: var(--brown-mid);
+      position: relative;
+    }
+
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      left: 3.8rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(74,56,40,0.4);
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      opacity: 0.88;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(184,144,64,0.35);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(184,144,64,0.12);
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+      z-index: 2;
+    }
+    .frame-corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.15) brightness(0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .placard {
+      border-top: 1px solid rgba(184,144,64,0.25);
+      padding-top: 1.8rem;
+      margin-top: auto;
+    }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .placard-bio {
+      font-size: 1.05rem;
+      line-height: 1.88;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .placard-bio em {
+      font-style: italic;
+      color: var(--silver);
+    }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 2rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.08);
+      background: var(--brown);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.9;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .section-rule::before, .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,144,64,0.2), transparent);
+    }
+
+    .chatbot-section {
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+      background: var(--brown-mid);
+      animation: fadeIn 1s ease 0.4s both;
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .chatbot-intro p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .chatbot-intro .domain-tags {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,144,64,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      border: 1px solid rgba(184,144,64,0.35);
+      padding: 0.3rem 0.8rem;
+      opacity: 0.92;
+    }
+
+    .chatbot-embed {
+      border: 1px solid rgba(184,144,64,0.2);
+      min-height: 580px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brown);
+      box-shadow: 0 0 50px rgba(26,18,10,0.8), inset 0 0 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .chatbot-embed::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(184,144,64,0.08);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chatbot-embed .hall-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+    }
+
+    .chatbot-embed .panel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: rgba(26,18,10,0.9);
+      border-top: 1px solid rgba(184,144,64,0.1);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(184,144,64,0.7);
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+    }
+
+    .pull-quote {
+      padding: 7rem 3rem;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+    }
+
+    .quote-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 3rem;
+      opacity: 0.6;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.2rem, 2.3vw, 1.8rem);
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.88;
+      text-transform: uppercase;
+    }
+
+    .corpus-strip {
+      background: var(--brown-light);
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.12);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .corpus-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      opacity: 0.92;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      min-width: 100px;
+      text-transform: uppercase;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.8rem;
+    }
+
+    .corpus-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 400;
+      opacity: 0.88;
+    }
+
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--brown);
+      border-top: 1px solid rgba(184,144,64,0.1);
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--text);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hall-panel { min-height: 360px; }
+      .bio-panel { border-left: none; border-top: 1px solid rgba(184,144,64,0.2); padding: 2.5rem 1.5rem; }
+      .chatbot-section { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      header { padding: 1rem 1.5rem; }
+      .hero-title { left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+      .corpus-strip { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .section-rule { padding: 1.5rem; }
+      .pull-quote { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="header-label">In Conversation With</span>
+    <span class="header-right">Accession No. &nbsp;JL–1632–2026</span>
+  </header>
+
+  <section class="hero">
+
+    <div class="hall-panel">
+      <!-- Christ Church Oxford — Tom Tower elevation -->
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="700" height="900" fill="rgba(26,16,8,0.95)"/>
+
+        <!-- Ground line -->
+        <line x1="40" y1="760" x2="660" y2="760" stroke="rgba(192,176,156,0.5)" stroke-width="1.5"/>
+
+        <!-- Base and steps -->
+        <rect x="120" y="740" width="460" height="10" fill="none" stroke="rgba(192,176,156,0.4)" stroke-width="1"/>
+        <rect x="100" y="750" width="500" height="10" fill="none" stroke="rgba(192,176,156,0.35)" stroke-width="1"/>
+
+        <!-- Main gate tower body -->
+        <rect x="240" y="200" width="220" height="560" fill="none" stroke="rgba(192,176,156,0.4)" stroke-width="1.2"/>
+
+        <!-- Flanking walls -->
+        <rect x="120" y="420" width="120" height="340" fill="none" stroke="rgba(192,176,156,0.3)" stroke-width="1"/>
+        <rect x="460" y="420" width="120" height="340" fill="none" stroke="rgba(192,176,156,0.3)" stroke-width="1"/>
+
+        <!-- Great gate arch -->
+        <rect x="300" y="500" width="100" height="150" fill="none" stroke="rgba(192,176,156,0.55)" stroke-width="1.2"/>
+        <!-- Pointed arch above gate -->
+        <path d="M298,500 Q350,420 402,500" fill="none" stroke="rgba(192,176,156,0.6)" stroke-width="1.5"/>
+
+        <!-- Gate heraldic panel -->
+        <rect x="318" y="440" width="64" height="55" fill="none" stroke="rgba(192,176,156,0.35)" stroke-width="0.8"/>
+
+        <!-- Upper windows — tower -->
+        <g stroke="rgba(192,176,156,0.45)" stroke-width="1" fill="none">
+          <!-- Level 1 windows -->
+          <rect x="268" y="330" width="42" height="60"/>
+          <path d="M268,330 Q289,312 310,330" fill="none" stroke-width="0.8"/>
+          <rect x="390" y="330" width="42" height="60"/>
+          <path d="M390,330 Q411,312 432,330" fill="none" stroke-width="0.8"/>
+          <!-- Level 2 windows -->
+          <rect x="268" y="240" width="42" height="60"/>
+          <path d="M268,240 Q289,222 310,240" fill="none" stroke-width="0.8"/>
+          <rect x="390" y="240" width="42" height="60"/>
+          <path d="M390,240 Q411,222 432,240" fill="none" stroke-width="0.8"/>
+          <!-- Side wall windows -->
+          <rect x="135" y="450" width="40" height="50"/>
+          <path d="M135,450 Q155,435 175,450" fill="none" stroke-width="0.7"/>
+          <rect x="135" y="540" width="40" height="50"/>
+          <rect x="135" y="630" width="40" height="50"/>
+          <rect x="475" y="450" width="40" height="50"/>
+          <path d="M475,450 Q495,435 515,450" fill="none" stroke-width="0.7"/>
+          <rect x="475" y="540" width="40" height="50"/>
+          <rect x="475" y="630" width="40" height="50"/>
+        </g>
+
+        <!-- Battlements on top of tower -->
+        <g stroke="rgba(192,176,156,0.5)" stroke-width="1" fill="none">
+          <rect x="240" y="185" width="220" height="15"/>
+          <!-- Merlons -->
+          <rect x="245" y="170" width="22" height="15"/>
+          <rect x="283" y="170" width="22" height="15"/>
+          <rect x="321" y="170" width="22" height="15"/>
+          <rect x="359" y="170" width="22" height="15"/>
+          <rect x="397" y="170" width="22" height="15"/>
+          <rect x="435" y="170" width="22" height="15"/>
+        </g>
+
+        <!-- Octagonal lantern / Tom Tower upper stage -->
+        <rect x="308" y="100" width="84" height="70" fill="none" stroke="rgba(192,176,156,0.55)" stroke-width="1.2"/>
+        <!-- Lantern windows -->
+        <g stroke="rgba(192,176,156,0.4)" stroke-width="0.8" fill="none">
+          <rect x="318" y="112" width="20" height="30"/>
+          <path d="M318,112 Q328,104 338,112" fill="none"/>
+          <rect x="362" y="112" width="20" height="30"/>
+          <path d="M362,112 Q372,104 382,112" fill="none"/>
+        </g>
+        <!-- Dome on lantern -->
+        <path d="M308,100 Q350,55 392,100" fill="none" stroke="rgba(192,176,156,0.65)" stroke-width="1.8"/>
+        <!-- Finial cross -->
+        <line x1="350" y1="55" x2="350" y2="38" stroke="rgba(192,176,156,0.5)" stroke-width="1.2"/>
+        <line x1="342" y1="45" x2="358" y2="45" stroke="rgba(192,176,156,0.4)" stroke-width="1"/>
+
+        <!-- Decorative string courses -->
+        <line x1="240" y1="320" x2="460" y2="320" stroke="rgba(192,176,156,0.25)" stroke-width="0.8"/>
+        <line x1="240" y1="410" x2="460" y2="410" stroke="rgba(192,176,156,0.2)" stroke-width="0.8"/>
+        <line x1="240" y1="490" x2="460" y2="490" stroke="rgba(192,176,156,0.2)" stroke-width="0.8"/>
+
+        <!-- Dimension lines -->
+        <g stroke="rgba(184,144,64,0.3)" stroke-width="0.6" fill="none">
+          <line x1="240" y1="790" x2="460" y2="790"/>
+          <line x1="240" y1="784" x2="240" y2="796"/>
+          <line x1="460" y1="784" x2="460" y2="796"/>
+          <line x1="240" y1="760" x2="240" y2="793"/>
+          <line x1="460" y1="760" x2="460" y2="793"/>
+        </g>
+
+        <!-- Annotations -->
+        <g fill="rgba(184,144,64,0.45)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11">
+          <text x="290" y="808" letter-spacing="1">Tom Tower · Christ Church · Oxford · 1681</text>
+          <text x="152" y="415" font-size="10">Great Hall</text>
+          <text x="358" y="490" font-size="10">Perpendicular Gothic</text>
+          <text x="310" y="165" font-size="10">Battlements</text>
+        </g>
+
+        <!-- Title block -->
+        <rect x="40" y="790" width="215" height="90" fill="none" stroke="rgba(192,176,156,0.2)" stroke-width="0.8"/>
+        <line x1="40" y1="808" x2="255" y2="808" stroke="rgba(192,176,156,0.15)" stroke-width="0.5"/>
+        <line x1="40" y1="828" x2="255" y2="828" stroke="rgba(192,176,156,0.15)" stroke-width="0.5"/>
+        <text x="50" y="803" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(192,176,156,0.35)" letter-spacing="1">ELEVATION</text>
+        <text x="50" y="822" font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="rgba(192,176,156,0.5)">Christ Church, Oxford</text>
+        <text x="50" y="842" font-family="Cormorant Garamond, serif" font-size="7" fill="rgba(192,176,156,0.3)">Tom Tower · Wren, 1681</text>
+        <text x="50" y="858" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(192,176,156,0.25)">Locke resident · Christ Church, 1658��1684</text>
+        <text x="50" y="872" font-family="Cormorant Garamond, serif" font-size="6" fill="rgba(184,144,64,0.3)">Censured by Dean · exiled 1684</text>
+
+        <!-- Marginalia -->
+        <g fill="rgba(192,176,156,0.2)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="7.5">
+          <text x="42" y="440" transform="rotate(-1 42 440)">cf. Wren · Baroque Gothic</text>
+          <text x="42" y="570" transform="rotate(1 42 570)">Perpendicular tracery</text>
+          <text x="42" y="680" transform="rotate(-1 42 680)">Oxford limestone · Headington</text>
+        </g>
+
+        <!-- Compass rose -->
+        <g transform="translate(628,60)" stroke="rgba(184,144,64,0.3)" stroke-width="0.7" fill="none">
+          <circle cx="0" cy="0" r="18"/>
+          <line x1="0" y1="-18" x2="0" y2="18"/>
+          <line x1="-18" y1="0" x2="18" y2="0"/>
+          <line x1="-12" y1="-12" x2="12" y2="12"/>
+          <line x1="12" y1="-12" x2="-12" y2="12"/>
+          <polygon points="0,-18 -4,-6 0,-10 4,-6" fill="rgba(184,144,64,0.4)" stroke="none"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(184,144,64,0.4)" stroke="none">N</text>
+        </g>
+      </svg>
+
+      <div class="hero-title">
+        <h1>John<br/><em>Locke</em></h1>
+        <span class="years">1632 &nbsp;—&nbsp; 1704</span>
+      </div>
+    </div>
+
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/JohnLocke.png/440px-JohnLocke.png" alt="John Locke" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">John Locke</div>
+        <div class="placard-dates">Wrington, Somerset, 1632 &nbsp;·&nbsp; High Laver, Essex, 1704</div>
+        <p class="placard-bio">
+          <strong>Physician, empiricist philosopher, political theorist — the intellectual architect of 1776.</strong>
+          He lived through four regime changes in one lifetime: Civil War, Interregnum, Restoration, Glorious Revolution. He fled to the Netherlands in 1683 when his patron, Lord Shaftesbury, was suspected of treason. He returned with William of Orange in 1689 and published three of the most consequential books in English in a single year.
+          <br/><br/>
+          His Second Treatise argued that natural rights — to life, liberty, and property — precede government and cannot be taken away. That government exists by the <em>consent of the governed</em>. That when a government violates the trust placed in it, the people have the right — and the duty — to dissolve it.
+          <br/><br/>
+          Thomas Jefferson read him closely. The Declaration of Independence is, in substantial part, Locke's Second Treatise translated into the language of colonial grievance. He finds this gratifying, and <em>complicated.</em>
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="section-rule">
+    <span>Consultation</span>
+  </div>
+
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Question<br/><em>the Empiricist.</em></h2>
+      <p>
+        Locke speaks from 983 chunks of his own writings —
+        the Two Treatises, the Essay Concerning Human Understanding,
+        the Letter Concerning Toleration, Some Thoughts Concerning Education,
+        and the Reasonableness of Christianity.
+      </p>
+      <p>
+        He is careful, methodical, and genuinely modest about the
+        limits of what any mind can know. He has watched his ideas
+        be applied, misapplied, and stretched beyond recognition
+        for three centuries. He has thoughts about this.
+      </p>
+      <p>
+        Ask him about natural rights, the social contract, what
+        "property" really meant in his usage, why he excluded
+        Catholics from toleration, or what he makes of the republic
+        his ideas helped build.
+      </p>
+      <p>
+        He will give you evidence. He always does.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Natural Rights</span>
+        <span class="domain-tag">Consent of the Governed</span>
+        <span class="domain-tag">Right of Revolution</span>
+        <span class="domain-tag">Toleration</span>
+        <span class="domain-tag">Tabula Rasa</span>
+        <span class="domain-tag">Labor Theory of Property</span>
+        <span class="domain-tag">Empiricism</span>
+        <span class="domain-tag">The Glorious Revolution</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+
+      <svg class="hall-bg" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Floor plan — Christ Church quadrangle -->
+        <rect x="60" y="60" width="380" height="380" fill="none" stroke="rgba(192,176,156,1)" stroke-width="2"/>
+        <rect x="75" y="75" width="350" height="350" fill="none" stroke="rgba(192,176,156,0.4)" stroke-width="1"/>
+        <!-- Inner courtyard -->
+        <rect x="150" y="150" width="200" height="200" fill="none" stroke="rgba(192,176,156,0.6)" stroke-width="1.5"/>
+        <!-- Cloister walkway dots -->
+        <g fill="rgba(192,176,156,0.7)">
+          <circle cx="130" cy="130" r="4"/>
+          <circle cx="200" cy="130" r="4"/>
+          <circle cx="300" cy="130" r="4"/>
+          <circle cx="370" cy="130" r="4"/>
+          <circle cx="130" cy="200" r="4"/>
+          <circle cx="130" cy="300" r="4"/>
+          <circle cx="130" cy="370" r="4"/>
+          <circle cx="370" cy="200" r="4"/>
+          <circle cx="370" cy="300" r="4"/>
+          <circle cx="370" cy="370" r="4"/>
+        </g>
+        <!-- Tom Tower gateway -->
+        <rect x="215" y="30" width="70" height="30" fill="none" stroke="rgba(192,176,156,0.7)" stroke-width="1.5"/>
+        <g fill="rgba(192,176,156,0.7)">
+          <circle cx="235" cy="45" r="4"/>
+          <circle cx="265" cy="45" r="4"/>
+          <circle cx="295" cy="45" r="4"/>
+        </g>
+        <!-- Dimension line -->
+        <g stroke="rgba(184,144,64,0.5)" stroke-width="0.7">
+          <line x1="60" y1="470" x2="440" y2="470"/>
+          <line x1="60" y1="465" x2="60" y2="475"/>
+          <line x1="440" y1="465" x2="440" y2="475"/>
+        </g>
+        <text x="250" y="490" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="rgba(184,144,64,0.5)" letter-spacing="1">Tom Quad</text>
+        <g fill="rgba(184,144,64,0.5)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11">
+          <text x="250" y="256" text-anchor="middle">Tom Quad</text>
+          <text x="250" y="140" text-anchor="middle" font-size="9">Hall · Library</text>
+        </g>
+      </svg>
+
+      <span class="panel-caption">Plan &nbsp;·&nbsp; Christ Church, Oxford &nbsp;·&nbsp; Locke's Residence 1658–1684</span>
+
+      <!-- chatbot-embed -->
+      <link rel="stylesheet" href="https://museumofminds.com/john-locke/widget/john-locke-widget.css">
+      <script src="https://museumofminds.com/john-locke/widget/john-locke-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="john-locke" data-portrait-url="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/JohnLocke.png/440px-JohnLocke.png"></script>
+
+    </div>
+
+  </section>
+
+  <div class="pull-quote">
+    <div class="quote-rule"></div>
+    <blockquote>
+      "Being all equal and independent, no one ought to harm another
+      in his life, health, liberty, or possessions."
+    </blockquote>
+    <cite>— John Locke &nbsp;·&nbsp; Second Treatise of Government &nbsp;·&nbsp; 1689</cite>
+  </div>
+
+  <div class="corpus-strip">
+    <div class="corpus-label">Corpus Sources</div>
+    <div class="corpus-list">
+      <span class="corpus-item">Two Treatises of Government · 1689</span>
+      <span class="corpus-item">An Essay Concerning Human Understanding · 1689</span>
+      <span class="corpus-item">A Letter Concerning Toleration · 1689</span>
+      <span class="corpus-item">Some Thoughts Concerning Education · 1693</span>
+      <span class="corpus-item">The Reasonableness of Christianity · 1695</span>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-text">John Locke &nbsp;·&nbsp; 1632 – 1704</span>
+    <span class="footer-text">Powered by His Own Words</span>
+    <span class="footer-text">Accession No. JL–1632–2026</span>
+  </footer>
+
+</body>
+</html>

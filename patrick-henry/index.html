@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrick Henry — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #130808;
+      --navy-mid:    #1C0E0E;
+      --navy-light:  #271515;
+      --steel:       #3A2222;
+      --silver:      #C8B4B0;
+      --white:       #F5EDEA;
+      --white-dim:   #9A8680;
+      --gold:        #B89040;
+      --gold-dim:    #7A6230;
+      --rust:        #7A1B1B;
+      --text:        #DDD0C8;
+      --text-dim:    #A09088;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(184,144,64,0.25);
+      background: rgba(19,8,8,0.95);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      border-bottom: 1px solid rgba(184,144,64,0.2);
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .hall-panel {
+      position: relative;
+      background: var(--navy-mid);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .hall-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(220,190,180,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(220,190,180,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .hall-panel svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-title h1 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+      font-size: 0.75em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-top: 0.8rem;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 2.5rem;
+      border-left: 1px solid rgba(184,144,64,0.2);
+      background: var(--navy-mid);
+      position: relative;
+    }
+
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      left: 3.8rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(122,27,27,0.35);
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      opacity: 0.88;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(184,144,64,0.35);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(184,144,64,0.12);
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: var(--gold);
+      border-style: solid;
+      z-index: 2;
+    }
+    .frame-corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.15) brightness(0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .placard {
+      border-top: 1px solid rgba(184,144,64,0.25);
+      padding-top: 1.8rem;
+      margin-top: auto;
+    }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      opacity: 1;
+      margin-bottom: 1.4rem;
+    }
+
+    .placard-bio {
+      font-size: 1.05rem;
+      line-height: 1.88;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .placard-bio em {
+      font-style: italic;
+      color: var(--silver);
+    }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 2rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.08);
+      background: var(--navy);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.32em;
+      color: var(--gold);
+      opacity: 0.9;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .section-rule::before,
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,144,64,0.2), transparent);
+    }
+
+    .chatbot-section {
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+      background: var(--navy-mid);
+      animation: fadeIn 1s ease 0.4s both;
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .chatbot-intro p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .chatbot-intro .domain-tags {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,144,64,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      border: 1px solid rgba(184,144,64,0.35);
+      padding: 0.3rem 0.8rem;
+      opacity: 0.92;
+    }
+
+    .chatbot-embed {
+      border: 1px solid rgba(184,144,64,0.2);
+      min-height: 580px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      box-shadow: 0 0 50px rgba(19,8,8,0.8), inset 0 0 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .chatbot-embed::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(184,144,64,0.08);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chatbot-embed .hall-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.18;
+    }
+
+    .chatbot-embed .panel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 1rem;
+      background: rgba(19,8,8,0.9);
+      border-top: 1px solid rgba(184,144,64,0.1);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(184,144,64,0.7);
+      text-align: center;
+      z-index: 2;
+      text-transform: uppercase;
+    }
+
+    .pull-quote {
+      padding: 7rem 3rem;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(184,144,64,0.15);
+    }
+
+    .quote-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 3rem;
+      opacity: 0.6;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.2rem, 2.3vw, 1.8rem);
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      font-style: normal;
+      color: var(--gold);
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    .corpus-strip {
+      background: var(--navy-light);
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid rgba(184,144,64,0.12);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .corpus-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      opacity: 0.92;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      min-width: 100px;
+      text-transform: uppercase;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.8rem;
+    }
+
+    .corpus-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy);
+      border-top: 1px solid rgba(184,144,64,0.1);
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--text);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hall-panel { min-height: 360px; }
+      .bio-panel { border-left: none; border-top: 1px solid rgba(184,144,64,0.2); padding: 2.5rem 1.5rem; }
+      .chatbot-section { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      header { padding: 1rem 1.5rem; }
+      .hero-title { left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+      .corpus-strip { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .section-rule { padding: 1.5rem; }
+      .pull-quote { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <span class="header-label">In Conversation With</span>
+    <span class="header-right">Accession No. &nbsp;PH–1736–2026</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Left: St. John's Church Richmond Elevation Drawing -->
+    <div class="hall-panel">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="700" height="900" fill="rgba(28,14,14,0.95)"/>
+
+        <!-- ═══ ST. JOHN'S CHURCH, RICHMOND — FRONT ELEVATION ═══ -->
+        <!-- Ground line -->
+        <line x1="40" y1="760" x2="660" y2="760" stroke="rgba(220,190,180,0.5)" stroke-width="1.5"/>
+
+        <!-- Steps — 3 risers, centered -->
+        <rect x="255" y="732" width="190" height="12" fill="none" stroke="rgba(220,190,180,0.4)" stroke-width="1"/>
+        <rect x="238" y="744" width="224" height="12" fill="none" stroke="rgba(220,190,180,0.4)" stroke-width="1"/>
+        <rect x="218" y="756" width="264" height="4"  fill="none" stroke="rgba(220,190,180,0.3)" stroke-width="1"/>
+
+        <!-- Main nave body -->
+        <rect x="100" y="330" width="500" height="402" fill="none" stroke="rgba(220,190,180,0.38)" stroke-width="1.2"/>
+
+        <!-- Clapboard siding — horizontal lines at 14px intervals -->
+        <g stroke="rgba(220,190,180,0.10)" stroke-width="0.6">
+          <line x1="100" y1="344" x2="600" y2="344"/>
+          <line x1="100" y1="358" x2="600" y2="358"/>
+          <line x1="100" y1="372" x2="600" y2="372"/>
+          <line x1="100" y1="386" x2="600" y2="386"/>
+          <line x1="100" y1="400" x2="600" y2="400"/>
+          <line x1="100" y1="414" x2="600" y2="414"/>
+          <line x1="100" y1="428" x2="600" y2="428"/>
+          <line x1="100" y1="442" x2="600" y2="442"/>
+          <line x1="100" y1="456" x2="600" y2="456"/>
+          <line x1="100" y1="470" x2="600" y2="470"/>
+          <line x1="100" y1="484" x2="600" y2="484"/>
+          <line x1="100" y1="498" x2="600" y2="498"/>
+          <line x1="100" y1="512" x2="600" y2="512"/>
+          <line x1="100" y1="526" x2="600" y2="526"/>
+          <line x1="100" y1="540" x2="600" y2="540"/>
+          <line x1="100" y1="554" x2="600" y2="554"/>
+          <line x1="100" y1="568" x2="600" y2="568"/>
+          <line x1="100" y1="582" x2="600" y2="582"/>
+          <line x1="100" y1="596" x2="600" y2="596"/>
+          <line x1="100" y1="610" x2="600" y2="610"/>
+          <line x1="100" y1="624" x2="600" y2="624"/>
+          <line x1="100" y1="638" x2="600" y2="638"/>
+          <line x1="100" y1="652" x2="600" y2="652"/>
+          <line x1="100" y1="666" x2="600" y2="666"/>
+          <line x1="100" y1="680" x2="600" y2="680"/>
+          <line x1="100" y1="694" x2="600" y2="694"/>
+          <line x1="100" y1="708" x2="600" y2="708"/>
+          <line x1="100" y1="722" x2="600" y2="722"/>
+        </g>
+
+        <!-- Corner pilasters -->
+        <rect x="97"  y="330" width="12" height="402" fill="none" stroke="rgba(220,190,180,0.5)" stroke-width="1"/>
+        <rect x="591" y="330" width="12" height="402" fill="none" stroke="rgba(220,190,180,0.5)" stroke-width="1"/>
+
+        <!-- Cornice / eave board -->
+        <rect x="90" y="324" width="520" height="8" fill="none" stroke="rgba(220,190,180,0.52)" stroke-width="1"/>
+
+        <!-- ═══ GABLED ROOF ═══ -->
+        <path d="M90,328 L350,148 L610,328" fill="none" stroke="rgba(220,190,180,0.65)" stroke-width="1.8"/>
+        <path d="M102,328 L350,156 L598,328" fill="none" stroke="rgba(220,190,180,0.12)" stroke-width="0.5"/>
+
+        <!-- ═══ BELL TOWER ═══ -->
+        <!-- Tower shaft, rises from roof peak -->
+        <rect x="308" y="92" width="84" height="160" fill="none" stroke="rgba(220,190,180,0.5)" stroke-width="1.2"/>
+        <!-- Tower plinth base -->
+        <rect x="302" y="148" width="96" height="18" fill="none" stroke="rgba(220,190,180,0.45)" stroke-width="1"/>
+        <!-- Cap of tower -->
+        <rect x="304" y="90" width="92" height="12" fill="none" stroke="rgba(220,190,180,0.42)" stroke-width="1"/>
+
+        <!-- Belfry arched openings -->
+        <g stroke="rgba(220,190,180,0.5)" stroke-width="1" fill="none">
+          <rect x="318" y="164" width="26" height="44" rx="13"/>
+          <rect x="356" y="164" width="26" height="44" rx="13"/>
+          <!-- Louver slats (left) -->
+          <line x1="319" y1="175" x2="343" y2="175" stroke-width="0.4"/>
+          <line x1="319" y1="183" x2="343" y2="183" stroke-width="0.4"/>
+          <line x1="319" y1="191" x2="343" y2="191" stroke-width="0.4"/>
+          <line x1="319" y1="199" x2="343" y2="199" stroke-width="0.4"/>
+          <!-- Louver slats (right) -->
+          <line x1="357" y1="175" x2="381" y2="175" stroke-width="0.4"/>
+          <line x1="357" y1="183" x2="381" y2="183" stroke-width="0.4"/>
+          <line x1="357" y1="191" x2="381" y2="191" stroke-width="0.4"/>
+          <line x1="357" y1="199" x2="381" y2="199" stroke-width="0.4"/>
+        </g>
+
+        <!-- Octagonal spire -->
+        <path d="M316,90 L350,38 L384,90" fill="none" stroke="rgba(220,190,180,0.62)" stroke-width="1.5"/>
+        <!-- Weathervane -->
+        <line x1="350" y1="38" x2="350" y2="20" stroke="rgba(220,190,180,0.45)" stroke-width="1"/>
+        <circle cx="350" cy="18" r="3.5" fill="none" stroke="rgba(184,144,64,0.55)" stroke-width="1"/>
+        <line x1="342" y1="23" x2="358" y2="23" stroke="rgba(184,144,64,0.4)" stroke-width="0.8"/>
+
+        <!-- ═══ GROUND-FLOOR WINDOWS (6-over-6) ═══ -->
+        <!-- Left pair -->
+        <g stroke="rgba(220,190,180,0.45)" stroke-width="1" fill="none">
+          <rect x="122" y="550" width="72" height="100"/>
+          <line x1="158" y1="550" x2="158" y2="650" stroke-width="0.5"/>
+          <line x1="122" y1="600" x2="194" y2="600" stroke-width="0.5"/>
+          <line x1="140" y1="550" x2="140" y2="600" stroke-width="0.3"/>
+          <line x1="176" y1="550" x2="176" y2="600" stroke-width="0.3"/>
+          <line x1="122" y1="575" x2="194" y2="575" stroke-width="0.3"/>
+          <line x1="140" y1="600" x2="140" y2="650" stroke-width="0.3"/>
+          <line x1="176" y1="600" x2="176" y2="650" stroke-width="0.3"/>
+          <line x1="122" y1="625" x2="194" y2="625" stroke-width="0.3"/>
+        </g>
+        <g stroke="rgba(220,190,180,0.45)" stroke-width="1" fill="none">
+          <rect x="210" y="550" width="72" height="100"/>
+          <line x1="246" y1="550" x2="246" y2="650" stroke-width="0.5"/>
+          <line x1="210" y1="600" x2="282" y2="600" stroke-width="0.5"/>
+          <line x1="228" y1="550" x2="228" y2="600" stroke-width="0.3"/>
+          <line x1="264" y1="550" x2="264" y2="600" stroke-width="0.3"/>
+          <line x1="210" y1="575" x2="282" y2="575" stroke-width="0.3"/>
+          <line x1="228" y1="600" x2="228" y2="650" stroke-width="0.3"/>
+          <line x1="264" y1="600" x2="264" y2="650" stroke-width="0.3"/>
+          <line x1="210" y1="625" x2="282" y2="625" stroke-width="0.3"/>
+        </g>
+        <!-- Right pair -->
+        <g stroke="rgba(220,190,180,0.45)" stroke-width="1" fill="none">
+          <rect x="418" y="550" width="72" height="100"/>
+          <line x1="454" y1="550" x2="454" y2="650" stroke-width="0.5"/>
+          <line x1="418" y1="600" x2="490" y2="600" stroke-width="0.5"/>
+          <line x1="436" y1="550" x2="436" y2="600" stroke-width="0.3"/>
+          <line x1="472" y1="550" x2="472" y2="600" stroke-width="0.3"/>
+          <line x1="418" y1="575" x2="490" y2="575" stroke-width="0.3"/>
+          <line x1="436" y1="600" x2="436" y2="650" stroke-width="0.3"/>
+          <line x1="472" y1="600" x2="472" y2="650" stroke-width="0.3"/>
+          <line x1="418" y1="625" x2="490" y2="625" stroke-width="0.3"/>
+        </g>
+        <g stroke="rgba(220,190,180,0.45)" stroke-width="1" fill="none">
+          <rect x="506" y="550" width="72" height="100"/>
+          <line x1="542" y1="550" x2="542" y2="650" stroke-width="0.5"/>
+          <line x1="506" y1="600" x2="578" y2="600" stroke-width="0.5"/>
+          <line x1="524" y1="550" x2="524" y2="600" stroke-width="0.3"/>
+          <line x1="560" y1="550" x2="560" y2="600" stroke-width="0.3"/>
+          <line x1="506" y1="575" x2="578" y2="575" stroke-width="0.3"/>
+          <line x1="524" y1="600" x2="524" y2="650" stroke-width="0.3"/>
+          <line x1="560" y1="600" x2="560" y2="650" stroke-width="0.3"/>
+          <line x1="506" y1="625" x2="578" y2="625" stroke-width="0.3"/>
+        </g>
+
+        <!-- ═══ UPPER WINDOWS ═══ -->
+        <g stroke="rgba(220,190,180,0.38)" stroke-width="0.9" fill="none">
+          <rect x="130" y="392" width="65" height="88"/>
+          <line x1="162" y1="392" x2="162" y2="480" stroke-width="0.45"/>
+          <line x1="130" y1="436" x2="195" y2="436" stroke-width="0.45"/>
+          <line x1="148" y1="392" x2="148" y2="436" stroke-width="0.28"/>
+          <line x1="178" y1="392" x2="178" y2="436" stroke-width="0.28"/>
+          <line x1="130" y1="414" x2="195" y2="414" stroke-width="0.28"/>
+        </g>
+        <g stroke="rgba(220,190,180,0.38)" stroke-width="0.9" fill="none">
+          <rect x="215" y="392" width="65" height="88"/>
+          <line x1="247" y1="392" x2="247" y2="480" stroke-width="0.45"/>
+          <line x1="215" y1="436" x2="280" y2="436" stroke-width="0.45"/>
+          <line x1="233" y1="392" x2="233" y2="436" stroke-width="0.28"/>
+          <line x1="263" y1="392" x2="263" y2="436" stroke-width="0.28"/>
+          <line x1="215" y1="414" x2="280" y2="414" stroke-width="0.28"/>
+        </g>
+        <g stroke="rgba(220,190,180,0.38)" stroke-width="0.9" fill="none">
+          <rect x="420" y="392" width="65" height="88"/>
+          <line x1="452" y1="392" x2="452" y2="480" stroke-width="0.45"/>
+          <line x1="420" y1="436" x2="485" y2="436" stroke-width="0.45"/>
+          <line x1="438" y1="392" x2="438" y2="436" stroke-width="0.28"/>
+          <line x1="468" y1="392" x2="468" y2="436" stroke-width="0.28"/>
+          <line x1="420" y1="414" x2="485" y2="414" stroke-width="0.28"/>
+        </g>
+        <g stroke="rgba(220,190,180,0.38)" stroke-width="0.9" fill="none">
+          <rect x="505" y="392" width="65" height="88"/>
+          <line x1="537" y1="392" x2="537" y2="480" stroke-width="0.45"/>
+          <line x1="505" y1="436" x2="570" y2="436" stroke-width="0.45"/>
+          <line x1="523" y1="392" x2="523" y2="436" stroke-width="0.28"/>
+          <line x1="553" y1="392" x2="553" y2="436" stroke-width="0.28"/>
+          <line x1="505" y1="414" x2="570" y2="414" stroke-width="0.28"/>
+        </g>
+
+        <!-- Gable Palladian window -->
+        <path d="M313,234 A37,37 0 0,1 387,234" fill="none" stroke="rgba(220,190,180,0.42)" stroke-width="1"/>
+        <rect x="313" y="234" width="74" height="52" fill="none" stroke="rgba(220,190,180,0.40)" stroke-width="1"/>
+        <line x1="350" y1="234" x2="350" y2="286" stroke="rgba(220,190,180,0.22)" stroke-width="0.6"/>
+        <line x1="350" y1="197" x2="350" y2="208" stroke="rgba(220,190,180,0.28)" stroke-width="1.5"/>
+
+        <!-- ═══ CENTRAL DOOR with fanlight ═══ -->
+        <rect x="300" y="540" width="100" height="192" fill="none" stroke="rgba(220,190,180,0.28)" stroke-width="0.8"/>
+        <rect x="309" y="568" width="42" height="162" fill="none" stroke="rgba(220,190,180,0.55)" stroke-width="1.2"/>
+        <rect x="349" y="568" width="42" height="162" fill="none" stroke="rgba(220,190,180,0.55)" stroke-width="1.2"/>
+        <!-- Door panels -->
+        <rect x="314" y="575" width="32" height="60" fill="none" stroke="rgba(220,190,180,0.28)" stroke-width="0.6"/>
+        <rect x="354" y="575" width="32" height="60" fill="none" stroke="rgba(220,190,180,0.28)" stroke-width="0.6"/>
+        <rect x="314" y="642" width="32" height="56" fill="none" stroke="rgba(220,190,180,0.28)" stroke-width="0.6"/>
+        <rect x="354" y="642" width="32" height="56" fill="none" stroke="rgba(220,190,180,0.28)" stroke-width="0.6"/>
+        <!-- Fanlight -->
+        <path d="M309,568 A41,34 0 0,1 391,568" fill="none" stroke="rgba(220,190,180,0.52)" stroke-width="1"/>
+        <line x1="350" y1="534" x2="350" y2="568" stroke="rgba(220,190,180,0.30)" stroke-width="0.7"/>
+        <line x1="350" y1="534" x2="317" y2="556" stroke="rgba(220,190,180,0.22)" stroke-width="0.6"/>
+        <line x1="350" y1="534" x2="383" y2="556" stroke="rgba(220,190,180,0.22)" stroke-width="0.6"/>
+        <line x1="350" y1="534" x2="324" y2="545" stroke="rgba(220,190,180,0.16)" stroke-width="0.5"/>
+        <line x1="350" y1="534" x2="376" y2="545" stroke="rgba(220,190,180,0.16)" stroke-width="0.5"/>
+        <!-- Door pediment -->
+        <path d="M296,540 L300,514 L400,514 L404,540" fill="none" stroke="rgba(220,190,180,0.45)" stroke-width="1"/>
+        <line x1="300" y1="514" x2="328" y2="514" stroke="rgba(220,190,180,0.45)" stroke-width="1"/>
+        <line x1="372" y1="514" x2="400" y2="514" stroke="rgba(220,190,180,0.45)" stroke-width="1"/>
+
+        <!-- DIMENSION LINES -->
+        <g stroke="rgba(184,144,64,0.30)" stroke-width="0.6" fill="none">
+          <line x1="100" y1="790" x2="600" y2="790"/>
+          <line x1="100" y1="784" x2="100" y2="796"/>
+          <line x1="600" y1="784" x2="600" y2="796"/>
+          <line x1="100" y1="760" x2="100" y2="793"/>
+          <line x1="600" y1="760" x2="600" y2="793"/>
+          <line x1="648" y1="330" x2="648" y2="730"/>
+          <line x1="642" y1="330" x2="654" y2="330"/>
+          <line x1="642" y1="730" x2="654" y2="730"/>
+          <line x1="600" y1="330" x2="652" y2="330"/>
+          <line x1="600" y1="730" x2="652" y2="730"/>
+        </g>
+
+        <!-- ANNOTATIONS -->
+        <g fill="rgba(184,144,64,0.45)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11">
+          <text x="268" y="808" letter-spacing="1">Principal Facade · Broad Street, Richmond · est. 1741</text>
+          <text x="658" y="545" font-size="10" transform="rotate(90 658 545)">Height · 78ft</text>
+          <text x="314" y="32" font-size="10">Octagonal Spire</text>
+          <text x="138" y="320" font-size="10">Cornice</text>
+          <text x="138" y="382" font-size="10">Clapboard siding</text>
+        </g>
+
+        <!-- Title block -->
+        <rect x="40" y="790" width="215" height="92" fill="none" stroke="rgba(220,190,180,0.2)" stroke-width="0.8"/>
+        <line x1="40" y1="808" x2="255" y2="808" stroke="rgba(220,190,180,0.15)" stroke-width="0.5"/>
+        <line x1="40" y1="828" x2="255" y2="828" stroke="rgba(220,190,180,0.15)" stroke-width="0.5"/>
+        <line x1="40" y1="848" x2="255" y2="848" stroke="rgba(220,190,180,0.15)" stroke-width="0.5"/>
+        <text x="50" y="803" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(220,190,180,0.35)" letter-spacing="1">ELEVATION</text>
+        <text x="50" y="822" font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="rgba(220,190,180,0.5)">St. John's Church</text>
+        <text x="50" y="842" font-family="Cormorant Garamond, serif" font-size="7" fill="rgba(220,190,180,0.3)" letter-spacing="0.5">Broad Street, Richmond, Virginia</text>
+        <text x="50" y="858" font-family="Cormorant Garamond, serif" font-size="6.5" fill="rgba(220,190,180,0.25)">Henrico Parish Church · Established 1741</text>
+        <text x="50" y="874" font-family="Cormorant Garamond, serif" font-size="6" fill="rgba(184,144,64,0.30)">Give me liberty, or give me death · March 23, 1775</text>
+
+        <!-- Compass rose -->
+        <g transform="translate(628,60)" stroke="rgba(184,144,64,0.3)" stroke-width="0.7" fill="none">
+          <circle cx="0" cy="0" r="18"/>
+          <line x1="0" y1="-18" x2="0" y2="18"/>
+          <line x1="-18" y1="0" x2="18" y2="0"/>
+          <line x1="-12" y1="-12" x2="12" y2="12"/>
+          <line x1="12" y1="-12" x2="-12" y2="12"/>
+          <polygon points="0,-18 -4,-6 0,-10 4,-6" fill="rgba(184,144,64,0.4)" stroke="none"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(184,144,64,0.4)" stroke="none">N</text>
+        </g>
+
+        <!-- Marginalia -->
+        <g fill="rgba(220,190,180,0.18)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="7.5">
+          <text x="42" y="365" transform="rotate(-2 42 365)">cf. Wren · Colonial frame</text>
+          <text x="42" y="502" transform="rotate(1 42 502)">vide · Henrico Parish</text>
+          <text x="42" y="638" transform="rotate(-1 42 638)">original timber · 1741</text>
+        </g>
+
+      </svg>
+
+      <div class="hero-title">
+        <h1>Patrick<br/><em>Henry</em></h1>
+        <span class="years">1736 &nbsp;—&nbsp; 1799</span>
+      </div>
+    </div>
+
+    <!-- Right: Bio -->
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Patrick_henry.JPG/440px-Patrick_henry.JPG" alt="Patrick Henry" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">Patrick Henry</div>
+        <div class="placard-dates">Hanover County, Virginia, 1736 &nbsp;·&nbsp; Red Hill, Virginia, 1799</div>
+        <p class="placard-bio">
+          Failed farmer. Failed storekeeper. Self-taught lawyer. The most dangerous orator in Revolutionary America.
+          Henry read law after failing at everything else and discovered that what he could not build with crops or merchandise
+          he could build with words. He built everything else on words.
+          <br/><br/>
+          The Stamp Act Resolves (1765). The Second Virginia Convention speech (March 23, 1775).
+          Three terms as Governor of Virginia. He refused to attend the Constitutional Convention in Philadelphia,
+          saying he <em>smelt a rat.</em> He was right. At the Virginia ratifying convention in 1788 he delivered
+          the most sustained Anti-Federalist argument any state had heard, lost by ten votes, and demanded a
+          Bill of Rights as the price of his acquiescence.
+          <br/><br/>
+          Madison built the Bill of Rights to honor that demand. Henry acknowledged it.
+          He is alive in 2026, still watching what became of the liberties he fought to protect,
+          and he has <em>a great deal to say about all of it.</em>
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-rule">
+    <span>Consultation</span>
+  </div>
+
+  <!-- CHATBOT SECTION -->
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Question<br/><em>the Orator.</em></h2>
+      <p>
+        Henry speaks from 1,437 chunks drawn from William Wirt's
+        biography — the fullest account of his speeches — the
+        Anti-Federalist Papers, and a second biographical account
+        from 1887. The closest thing we have to his actual voice,
+        filtered through those who heard him in the room.
+      </p>
+      <p>
+        He knows what Madison said about him. He knows the Constitution
+        he opposed has outlasted every republic he could have imagined.
+        He has been watching the balance between federal and state power
+        for 290 years and he has not changed his mind about the danger.
+      </p>
+      <p>
+        Ask him about the Bill of Rights, about whether the federal
+        government has become what he feared, about standing armies,
+        about the price of liberty, or about what he would say to
+        the Virginia ratifying convention if he could address it again today.
+      </p>
+      <p>
+        He will not be brief. He never was. That was his strength.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Anti-Federalism</span>
+        <span class="domain-tag">Bill of Rights</span>
+        <span class="domain-tag">State Sovereignty</span>
+        <span class="domain-tag">Liberty &amp; Tyranny</span>
+        <span class="domain-tag">Oratory</span>
+        <span class="domain-tag">Virginia Politics</span>
+        <span class="domain-tag">Right of Revolution</span>
+        <span class="domain-tag">Standing Armies</span>
+        <span class="domain-tag">Consent of the Governed</span>
+        <span class="domain-tag">The Republic in 2026</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+
+      <!-- St. John's Church floor plan as background -->
+      <svg class="hall-bg" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Rectangular nave outline -->
+        <rect x="60" y="60" width="380" height="460" fill="none" stroke="rgba(220,190,180,1)" stroke-width="2"/>
+        <rect x="75" y="75" width="350" height="430" fill="none" stroke="rgba(220,190,180,0.4)" stroke-width="1"/>
+        <!-- Box pews — left block -->
+        <g stroke="rgba(220,190,180,0.65)" stroke-width="1.2" fill="none">
+          <rect x="90" y="120" width="130" height="12"/>
+          <rect x="90" y="146" width="130" height="12"/>
+          <rect x="90" y="172" width="130" height="12"/>
+          <rect x="90" y="198" width="130" height="12"/>
+          <rect x="90" y="224" width="130" height="12"/>
+          <rect x="90" y="250" width="130" height="12"/>
+          <rect x="90" y="276" width="130" height="12"/>
+          <rect x="90" y="302" width="130" height="12"/>
+          <rect x="90" y="328" width="130" height="12"/>
+          <rect x="90" y="354" width="130" height="12"/>
+          <rect x="90" y="380" width="130" height="12"/>
+          <rect x="90" y="406" width="130" height="12"/>
+          <rect x="90" y="432" width="130" height="12"/>
+        </g>
+        <!-- Box pews — right block -->
+        <g stroke="rgba(220,190,180,0.65)" stroke-width="1.2" fill="none">
+          <rect x="280" y="120" width="130" height="12"/>
+          <rect x="280" y="146" width="130" height="12"/>
+          <rect x="280" y="172" width="130" height="12"/>
+          <rect x="280" y="198" width="130" height="12"/>
+          <rect x="280" y="224" width="130" height="12"/>
+          <rect x="280" y="250" width="130" height="12"/>
+          <rect x="280" y="276" width="130" height="12"/>
+          <rect x="280" y="302" width="130" height="12"/>
+          <rect x="280" y="328" width="130" height="12"/>
+          <rect x="280" y="354" width="130" height="12"/>
+          <rect x="280" y="380" width="130" height="12"/>
+          <rect x="280" y="406" width="130" height="12"/>
+          <rect x="280" y="432" width="130" height="12"/>
+        </g>
+        <!-- Center aisle -->
+        <line x1="250" y1="75" x2="250" y2="505" stroke="rgba(220,190,180,0.3)" stroke-width="0.8"/>
+        <!-- Pulpit (right of chancel) -->
+        <rect x="345" y="84" width="65" height="28" stroke="rgba(220,190,180,0.7)" stroke-width="1.2" fill="none"/>
+        <!-- Chancel rail -->
+        <rect x="90" y="75" width="320" height="38" fill="none" stroke="rgba(220,190,180,0.5)" stroke-width="1"/>
+        <!-- Vestibule entrance -->
+        <rect x="160" y="505" width="180" height="28" fill="none" stroke="rgba(220,190,180,0.4)" stroke-width="1"/>
+        <!-- Dimension lines -->
+        <g stroke="rgba(184,144,64,0.5)" stroke-width="0.7">
+          <line x1="60"  y1="555" x2="440" y2="555"/>
+          <line x1="60"  y1="550" x2="60"  y2="560"/>
+          <line x1="440" y1="550" x2="440" y2="560"/>
+        </g>
+        <text x="250" y="572" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="rgba(184,144,64,0.5)" letter-spacing="1">72 feet</text>
+        <!-- Labels -->
+        <g fill="rgba(184,144,64,0.5)" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12">
+          <text x="155" y="292" text-anchor="middle">Box Pews</text>
+          <text x="345" y="292" text-anchor="middle">Box Pews</text>
+          <text x="250" y="102" text-anchor="middle" font-size="11">Chancel</text>
+          <text x="377" y="104" text-anchor="middle" font-size="10">Pulpit</text>
+        </g>
+      </svg>
+
+      <span class="panel-caption">Floor Plan &nbsp;·&nbsp; St. John's Church, Richmond &nbsp;·&nbsp; Second Virginia Convention, March 1775</span>
+
+      <link rel="stylesheet" href="https://museumofminds.com/patrick-henry/widget/patrick-henry-widget.css">
+      <script src="https://museumofminds.com/patrick-henry/widget/patrick-henry-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="patrick-henry"></script>
+
+    </div>
+
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <div class="quote-rule"></div>
+    <blockquote>
+      "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?
+      Forbid it, Almighty God! I know not what course others may take;
+      but as for me, give me liberty, or give me death!"
+    </blockquote>
+    <cite>— Patrick Henry &nbsp;·&nbsp; Second Virginia Convention &nbsp;·&nbsp; St. John's Church, Richmond &nbsp;·&nbsp; March 23, 1775</cite>
+  </div>
+
+  <!-- CORPUS STRIP -->
+  <div class="corpus-strip">
+    <div class="corpus-label">Corpus Sources</div>
+    <div class="corpus-list">
+      <span class="corpus-item">Sketches of the Life and Character of Patrick Henry, Vol. I &amp; II · Wirt, 1817</span>
+      <span class="corpus-item">The Anti-Federalist Papers · 1787–1788</span>
+      <span class="corpus-item">The Life of Patrick Henry · Henry, 1887</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">Patrick Henry &nbsp;·&nbsp; 1736 – 1799</span>
+    <span class="footer-text">Powered by His Own Words</span>
+    <span class="footer-text">Accession No. PH–1736–2026</span>
+  </footer>
+
+</body>
+</html>
