@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With Montesquieu — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Upright:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #3A1A2E;
+    --deep-plum: #1A0D18;
+    --darker-plum: #0E0710;
+    --gold: #B89040;
+    --gold-bright: #D4AE5E;
+    --gold-dim: #786020;
+    --stone: #C4B8A8;
+    --stone-dim: #887868;
+    --stone-pale: #E0D4C0;
+    --text: #D4C8B8;
+    --text-dim: #988878;
+    --shadow: rgba(10,5,10,0.6);
+    --candle: #E8B860;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { background: var(--deep-plum); color: var(--text); }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.7  0 0 0 0 0.6  0 0 0 0 0.4  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.85; }
+    45% { opacity: 1; }
+    55% { opacity: 0.78; }
+    70% { opacity: 0.95; }
+  }
+
+  /* Header */
+  .museum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 2.5rem;
+    background: var(--darker-plum);
+    border-bottom: 1px solid rgba(184,144,64,0.25);
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    animation: fadeDown 1.4s ease both;
+    position: relative;
+    z-index: 10;
+  }
+
+  .museum-header .accession { color: var(--stone-dim); letter-spacing: 0.28em; }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.75fr;
+    min-height: 92vh;
+    background: var(--deep-plum);
+    animation: fadeIn 1.8s ease both;
+  }
+
+  .hero-art {
+    position: relative;
+    overflow: hidden;
+    background: var(--darker-plum);
+    border-right: 1px solid rgba(184,144,64,0.2);
+  }
+
+  .hero-art svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero-bio {
+    padding: 3.5rem 2.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--deep-plum) 0%, #211220 100%);
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .photo-frame {
+    position: relative;
+    max-width: 270px;
+    margin: 0 auto 2rem;
+  }
+
+  .photo-frame::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--gold);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: -13px;
+    border: 1px solid var(--gold-dim);
+    pointer-events: none;
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(45%) sepia(28%) contrast(1.05) brightness(0.92);
+    background: var(--plum);
+  }
+
+  .photo-fallback {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--plum) 0%, var(--deep-plum) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+  }
+
+  .placard {
+    text-align: center;
+  }
+
+  .name {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+    color: var(--gold-bright);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+
+  .full-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+
+  .dates {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.34em;
+    color: var(--stone-dim);
+    margin-bottom: 1.6rem;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 1rem 0 1.5rem;
+    color: var(--gold-dim);
+  }
+
+  .ornament::before, .ornament::after {
+    content: "";
+    height: 1px;
+    width: 38px;
+    background: var(--gold-dim);
+  }
+
+  .ornament-mark {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+  }
+
+  .placard-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .placard-text p { margin-bottom: 0.85rem; }
+  .placard-text p:last-child { margin-bottom: 0; }
+
+  /* Transition band */
+  .transition-band {
+    background: var(--darker-plum);
+    border-top: 1px solid var(--gold-dim);
+    border-bottom: 1px solid var(--gold-dim);
+    padding: 1.4rem 2rem;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .transition-band::before,
+  .transition-band::after {
+    content: "❦";
+    color: var(--gold-dim);
+    margin: 0 1.4rem;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+  }
+
+  /* Chatbot section */
+  .chatbot-section {
+    display: grid;
+    grid-template-columns: 0.95fr 1.1fr;
+    gap: 3.5rem;
+    padding: 5rem 3rem;
+    background: linear-gradient(180deg, var(--deep-plum) 0%, #1F1020 100%);
+    align-items: start;
+  }
+
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+    color: var(--gold-bright);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .chatbot-intro p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 1.1rem;
+  }
+
+  .featured-quote {
+    border-left: 2px solid var(--gold);
+    padding: 0.8rem 0 0.8rem 1.4rem;
+    margin: 1.8rem 0;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--stone-pale);
+    line-height: 1.6;
+  }
+
+  .featured-quote-cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-top: 0.6rem;
+  }
+
+  .domain-tags {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 0.4rem 0.8rem;
+    background: rgba(184,144,64,0.05);
+  }
+
+  .chatbot-embed {
+    min-height: 600px;
+    background: var(--darker-plum);
+    border: 1px solid var(--gold-dim);
+    position: relative;
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  .chatbot-embed::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(184,144,64,0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    background: var(--darker-plum);
+    padding: 6rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--gold-dim);
+    border-bottom: 1px solid var(--gold-dim);
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: "“";
+    font-family: 'Cinzel', serif;
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: var(--gold-dim);
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .pull-quote blockquote {
+    max-width: 880px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+    line-height: 1.5;
+    color: var(--stone-pale);
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 2rem;
+    font-family: 'Cormorant Upright', serif;
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* Corpus strip */
+  .corpus-strip {
+    background: #0A0608;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid rgba(184,144,64,0.15);
+  }
+
+  .corpus-title {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .corpus-list {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    list-style: none;
+  }
+
+  .corpus-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    padding-left: 1rem;
+    border-left: 1px solid var(--gold-dim);
+    line-height: 1.4;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--darker-plum);
+    padding: 3rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    border-top: 1px solid var(--gold-dim);
+  }
+
+  .footer-col {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .footer-col.center { text-align: center; color: var(--gold-dim); }
+  .footer-col.right { text-align: right; }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-art { min-height: 70vh; border-right: none; border-bottom: 1px solid rgba(184,144,64,0.2); }
+    .hero-bio { padding: 2.5rem 1.5rem; }
+    .chatbot-section { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; }
+    .museum-header { padding: 1rem 1.5rem; font-size: 0.55rem; letter-spacing: 0.24em; }
+    .pull-quote { padding: 4rem 1.5rem; }
+    footer { grid-template-columns: 1fr; text-align: center; }
+    .footer-col.right, .footer-col.center { text-align: center; }
+    .transition-band { letter-spacing: 0.3em; font-size: 0.62rem; }
+    .transition-band::before, .transition-band::after { margin: 0 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div>In Conversation With</div>
+  <div class="accession">MON–1689–2026</div>
+</header>
+
+<section class="hero">
+  <div class="hero-art" aria-label="Château de la Brède at twilight, reflected in its moat">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3A1A2E"/>
+          <stop offset="40%" stop-color="#2A1224"/>
+          <stop offset="75%" stop-color="#1A0D18"/>
+          <stop offset="100%" stop-color="#120810"/>
+        </linearGradient>
+        <linearGradient id="moat" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1A0D18"/>
+          <stop offset="30%" stop-color="#0E0710"/>
+          <stop offset="100%" stop-color="#080406"/>
+        </linearGradient>
+        <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8C7A64"/>
+          <stop offset="50%" stop-color="#5A4838"/>
+          <stop offset="100%" stop-color="#352818"/>
+        </linearGradient>
+        <linearGradient id="stoneShadow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1A0D18"/>
+          <stop offset="100%" stop-color="#5A4838"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#E8D8B0" stop-opacity="0.55"/>
+          <stop offset="50%" stop-color="#B89040" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#3A1A2E" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#E8B860" stop-opacity="0.9"/>
+          <stop offset="50%" stop-color="#B89040" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#B89040" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softBlur"><feGaussianBlur stdDeviation="2"/></filter>
+        <filter id="reflBlur"><feGaussianBlur stdDeviation="3.2"/></filter>
+      </defs>
+
+      <!-- Sky -->
+      <rect width="700" height="560" fill="url(#sky)"/>
+
+      <!-- Moon -->
+      <circle cx="540" cy="120" r="120" fill="url(#moonGlow)"/>
+      <circle cx="540" cy="120" r="26" fill="#E8D8B0" opacity="0.85"/>
+      <circle cx="534" cy="115" r="22" fill="#3A1A2E" opacity="0.35"/>
+
+      <!-- Distant stars -->
+      <circle cx="80" cy="80" r="0.8" fill="#D4C8B8" opacity="0.7"/>
+      <circle cx="160" cy="50" r="0.6" fill="#D4C8B8" opacity="0.5"/>
+      <circle cx="240" cy="110" r="0.7" fill="#D4C8B8" opacity="0.6"/>
+      <circle cx="340" cy="60" r="0.5" fill="#D4C8B8" opacity="0.5"/>
+      <circle cx="420" cy="180" r="0.6" fill="#D4C8B8" opacity="0.6"/>
+      <circle cx="640" cy="220" r="0.5" fill="#D4C8B8" opacity="0.5"/>
+      <circle cx="120" cy="200" r="0.5" fill="#D4C8B8" opacity="0.4"/>
+      <circle cx="290" cy="240" r="0.6" fill="#D4C8B8" opacity="0.5"/>
+      <circle cx="60" cy="320" r="0.5" fill="#D4C8B8" opacity="0.4"/>
+
+      <!-- Distant tree line / Gascon horizon -->
+      <path d="M 0 480 L 40 470 L 75 475 L 120 465 L 180 472 L 240 460 L 310 470 L 380 455 L 460 468 L 540 458 L 620 470 L 700 462 L 700 510 L 0 510 Z" fill="#180A14" opacity="0.85"/>
+
+      <!-- Clouds -->
+      <ellipse cx="180" cy="140" rx="120" ry="14" fill="#3A1A2E" opacity="0.5" filter="url(#softBlur)"/>
+      <ellipse cx="380" cy="200" rx="160" ry="12" fill="#3A1A2E" opacity="0.4" filter="url(#softBlur)"/>
+
+      <!-- ============== CASTLE MAIN MASS ============== -->
+      <!-- Curtain wall between towers -->
+      <rect x="220" y="340" width="260" height="170" fill="url(#stoneG)"/>
+      <rect x="220" y="340" width="260" height="170" fill="url(#stoneShadow)" opacity="0.35"/>
+
+      <!-- Crenellations on curtain wall -->
+      <g fill="#5A4838">
+        <rect x="222" y="332" width="12" height="10"/>
+        <rect x="244" y="332" width="12" height="10"/>
+        <rect x="266" y="332" width="12" height="10"/>
+        <rect x="288" y="332" width="12" height="10"/>
+        <rect x="310" y="332" width="12" height="10"/>
+        <rect x="332" y="332" width="12" height="10"/>
+        <rect x="354" y="332" width="12" height="10"/>
+        <rect x="376" y="332" width="12" height="10"/>
+        <rect x="398" y="332" width="12" height="10"/>
+        <rect x="420" y="332" width="12" height="10"/>
+        <rect x="442" y="332" width="12" height="10"/>
+        <rect x="464" y="332" width="12" height="10"/>
+      </g>
+
+      <!-- LEFT ROUND TOWER -->
+      <rect x="160" y="240" width="80" height="270" fill="url(#stoneG)"/>
+      <ellipse cx="200" cy="240" rx="40" ry="14" fill="#6A5848"/>
+      <!-- Tower conical roof -->
+      <path d="M 160 240 L 200 160 L 240 240 Z" fill="#2A1224"/>
+      <path d="M 200 160 L 240 240 L 220 240 Z" fill="#1A0D18"/>
+      <!-- Tower flag pole -->
+      <line x1="200" y1="160" x2="200" y2="130" stroke="#B89040" stroke-width="1.2"/>
+      <path d="M 200 132 L 218 138 L 200 145 Z" fill="#B89040"/>
+      <!-- Shadow side -->
+      <rect x="210" y="240" width="30" height="270" fill="#1A0D18" opacity="0.45"/>
+      <!-- Narrow Gothic windows -->
+      <path d="M 180 290 L 180 310 Q 180 304 184 304 Q 188 304 188 310 L 188 290 Z" fill="#0E0710"/>
+      <path d="M 180 340 L 180 360 Q 180 354 184 354 Q 188 354 188 360 L 188 340 Z" fill="#0E0710"/>
+      <path d="M 180 400 L 180 420 Q 180 414 184 414 Q 188 414 188 420 L 188 400 Z" fill="#0E0710"/>
+      <!-- Stone band -->
+      <line x1="160" y1="380" x2="240" y2="380" stroke="#352818" stroke-width="1.5"/>
+
+      <!-- RIGHT ROUND TOWER -->
+      <rect x="460" y="220" width="80" height="290" fill="url(#stoneG)"/>
+      <ellipse cx="500" cy="220" rx="40" ry="14" fill="#6A5848"/>
+      <path d="M 460 220 L 500 132 L 540 220 Z" fill="#2A1224"/>
+      <path d="M 500 132 L 540 220 L 520 220 Z" fill="#1A0D18"/>
+      <line x1="500" y1="132" x2="500" y2="100" stroke="#B89040" stroke-width="1.2"/>
+      <path d="M 500 102 L 520 108 L 500 116 Z" fill="#B89040"/>
+      <rect x="510" y="220" width="30" height="290" fill="#1A0D18" opacity="0.45"/>
+      <!-- Gothic windows right -->
+      <path d="M 480 265 L 480 285 Q 480 279 484 279 Q 488 279 488 285 L 488 265 Z" fill="#0E0710"/>
+      <!-- THE LIT WINDOW — Spirit of the Laws study -->
+      <rect x="478" y="320" width="14" height="22" fill="#0E0710"/>
+      <rect x="478" y="320" width="14" height="22" fill="url(#candleGlow)" opacity="0.95"/>
+      <rect x="478" y="320" width="14" height="22" fill="#E8B860" opacity="0.55" style="animation: flicker 4s ease-in-out infinite;"/>
+      <!-- Window mullion -->
+      <line x1="485" y1="320" x2="485" y2="342" stroke="#3A1A2E" stroke-width="0.8"/>
+      <line x1="478" y1="331" x2="492" y2="331" stroke="#3A1A2E" stroke-width="0.6"/>
+      <!-- Glow halo around lit window -->
+      <ellipse cx="485" cy="331" rx="42" ry="34" fill="url(#candleGlow)" opacity="0.55"/>
+      <!-- Silhouette of desk / quill behind the lit window -->
+      <rect x="481" y="335" width="8" height="3" fill="#1A0D18" opacity="0.75"/>
+      <line x1="488" y1="335" x2="492" y2="325" stroke="#1A0D18" stroke-width="0.6" opacity="0.85"/>
+
+      <path d="M 480 380 L 480 400 Q 480 394 484 394 Q 488 394 488 400 L 488 380 Z" fill="#0E0710"/>
+      <path d="M 480 430 L 480 450 Q 480 444 484 444 Q 488 444 488 450 L 488 430 Z" fill="#0E0710"/>
+      <line x1="460" y1="380" x2="540" y2="380" stroke="#352818" stroke-width="1.5"/>
+
+      <!-- CENTRAL KEEP — taller mass behind curtain -->
+      <rect x="300" y="270" width="100" height="80" fill="#4A3828"/>
+      <rect x="300" y="270" width="100" height="80" fill="url(#stoneShadow)" opacity="0.4"/>
+      <!-- Keep crenellations -->
+      <g fill="#3A2818">
+        <rect x="302" y="262" width="10" height="10"/>
+        <rect x="320" y="262" width="10" height="10"/>
+        <rect x="338" y="262" width="10" height="10"/>
+        <rect x="356" y="262" width="10" height="10"/>
+        <rect x="374" y="262" width="10" height="10"/>
+        <rect x="392" y="262" width="10" height="10"/>
+      </g>
+      <!-- Keep central window -->
+      <path d="M 345 295 L 345 320 Q 345 312 350 312 Q 355 312 355 320 L 355 295 Z" fill="#0E0710"/>
+
+      <!-- Curtain wall windows -->
+      <path d="M 252 400 L 252 425 Q 252 418 257 418 Q 262 418 262 425 L 262 400 Z" fill="#0E0710"/>
+      <path d="M 290 400 L 290 425 Q 290 418 295 418 Q 300 418 300 425 L 300 400 Z" fill="#0E0710"/>
+      <path d="M 410 400 L 410 425 Q 410 418 415 418 Q 420 418 420 425 L 420 400 Z" fill="#0E0710"/>
+      <path d="M 448 400 L 448 425 Q 448 418 453 418 Q 458 418 458 425 L 458 400 Z" fill="#0E0710"/>
+
+      <!-- ARCHED GATEWAY with drawbridge -->
+      <path d="M 330 440 L 330 510 L 370 510 L 370 440 Q 370 425 350 425 Q 330 425 330 440 Z" fill="#0E0710"/>
+      <path d="M 330 440 Q 330 425 350 425 Q 370 425 370 440" fill="none" stroke="#352818" stroke-width="2"/>
+      <!-- Drawbridge -->
+      <path d="M 330 510 L 370 510 L 372 558 L 328 558 Z" fill="#3A2818"/>
+      <line x1="332" y1="520" x2="368" y2="520" stroke="#1A0D18" stroke-width="0.6"/>
+      <line x1="331" y1="535" x2="369" y2="535" stroke="#1A0D18" stroke-width="0.6"/>
+      <line x1="330" y1="550" x2="370" y2="550" stroke="#1A0D18" stroke-width="0.6"/>
+      <!-- Drawbridge chains -->
+      <line x1="330" y1="510" x2="325" y2="445" stroke="#352818" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <line x1="370" y1="510" x2="375" y2="445" stroke="#352818" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+      <!-- Stone block courses (texture) -->
+      <g stroke="#352818" stroke-width="0.4" opacity="0.5">
+        <line x1="220" y1="360" x2="480" y2="360"/>
+        <line x1="220" y1="395" x2="480" y2="395"/>
+        <line x1="220" y1="450" x2="330" y2="450"/>
+        <line x1="370" y1="450" x2="480" y2="450"/>
+        <line x1="220" y1="480" x2="330" y2="480"/>
+        <line x1="370" y1="480" x2="480" y2="480"/>
+      </g>
+
+      <!-- =========== WATER LINE =========== -->
+      <rect x="0" y="510" width="700" height="3" fill="#5A4838" opacity="0.5"/>
+
+      <!-- =========== MOAT =========== -->
+      <rect x="0" y="513" width="700" height="387" fill="url(#moat)"/>
+
+      <!-- REFLECTIONS — castle mirrored in moat -->
+      <g filter="url(#reflBlur)" opacity="0.45">
+        <!-- Left tower reflection -->
+        <rect x="160" y="513" width="80" height="270" fill="#3A2818"/>
+        <path d="M 160 783 L 200 863 L 240 783 Z" fill="#2A1224"/>
+        <!-- Right tower reflection -->
+        <rect x="460" y="513" width="80" height="290" fill="#3A2818"/>
+        <path d="M 460 803 L 500 891 L 540 803 Z" fill="#2A1224"/>
+        <!-- Curtain wall reflection -->
+        <rect x="220" y="513" width="260" height="170" fill="#3A2818"/>
+        <!-- Keep reflection -->
+        <rect x="300" y="673" width="100" height="80" fill="#2A1F18"/>
+        <!-- Gateway reflection -->
+        <path d="M 330 513 L 370 513 L 370 583 Q 370 598 350 598 Q 330 598 330 583 Z" fill="#0E0710"/>
+        <!-- Lit window reflection -->
+        <ellipse cx="485" cy="690" rx="32" ry="28" fill="#B89040" opacity="0.55"/>
+        <rect x="478" y="681" width="14" height="22" fill="#E8B860" opacity="0.75"/>
+        <!-- Moon reflection -->
+        <circle cx="540" cy="900" r="22" fill="#E8D8B0" opacity="0.6"/>
+      </g>
+
+      <!-- Horizontal water ripples (sharp lines breaking the reflection) -->
+      <g stroke="#3A1A2E" stroke-width="0.7" opacity="0.6">
+        <line x1="0" y1="530" x2="700" y2="530"/>
+        <line x1="0" y1="555" x2="700" y2="555"/>
+        <line x1="0" y1="590" x2="700" y2="590"/>
+        <line x1="0" y1="630" x2="700" y2="630"/>
+        <line x1="0" y1="680" x2="700" y2="680"/>
+        <line x1="0" y1="740" x2="700" y2="740"/>
+        <line x1="0" y1="810" x2="700" y2="810"/>
+        <line x1="0" y1="870" x2="700" y2="870"/>
+      </g>
+      <g stroke="#B89040" stroke-width="0.4" opacity="0.25">
+        <line x1="80" y1="540" x2="280" y2="540"/>
+        <line x1="320" y1="568" x2="560" y2="568"/>
+        <line x1="100" y1="608" x2="320" y2="608"/>
+        <line x1="380" y1="648" x2="600" y2="648"/>
+        <line x1="60" y1="700" x2="320" y2="700"/>
+        <line x1="380" y1="760" x2="620" y2="760"/>
+      </g>
+
+      <!-- Reeds along moat edge -->
+      <g stroke="#1A0D18" stroke-width="1" fill="none">
+        <path d="M 30 513 Q 32 500 30 488"/>
+        <path d="M 38 513 Q 40 502 42 492"/>
+        <path d="M 55 513 Q 53 500 55 490"/>
+        <path d="M 640 513 Q 642 500 640 490"/>
+        <path d="M 650 513 Q 648 502 650 492"/>
+        <path d="M 665 513 Q 667 502 665 492"/>
+        <path d="M 678 513 Q 680 504 678 494"/>
+      </g>
+
+      <!-- =========== TITLE BLOCK / MARGINALIA =========== -->
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.78">
+        <text x="48" y="60" font-size="11" letter-spacing="4">CHÂTEAU DE LA BRÈDE</text>
+        <text x="48" y="76" font-size="8" letter-spacing="3" fill="#988878">GIRONDE · GASCOGNE</text>
+      </g>
+      <g font-family="Cormorant Garamond, serif" font-style="italic" fill="#988878" opacity="0.75">
+        <text x="48" y="855" font-size="10">«  En vingt ans, l'Esprit des Lois  »</text>
+        <text x="48" y="872" font-size="8.5">Composed within these walls, 1728 — 1748</text>
+      </g>
+
+      <!-- Compass rose lower right -->
+      <g transform="translate(640, 850)" stroke="#B89040" stroke-width="0.6" fill="none" opacity="0.6">
+        <circle r="18"/>
+        <path d="M 0 -18 L 3 0 L 0 18 L -3 0 Z" fill="#B89040"/>
+        <path d="M -18 0 L 0 3 L 18 0 L 0 -3 Z" fill="#B89040" opacity="0.6"/>
+        <text x="0" y="-22" text-anchor="middle" font-family="Cormorant Upright, serif" font-size="7" fill="#B89040" stroke="none">N</text>
+      </g>
+
+      <!-- Subtle vignette -->
+      <rect width="700" height="900" fill="url(#sky)" opacity="0" pointer-events="none"/>
+      <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+        <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+      </radialGradient>
+      <rect width="700" height="900" fill="url(#vignette)" pointer-events="none"/>
+    </svg>
+  </div>
+
+  <aside class="hero-bio">
+    <div class="eyebrow">Gallery of the Enlightenment · Hall III</div>
+
+    <div class="photo-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Bordeaux_-_Buste_de_Montesquieu_02.jpg/500px-Bordeaux_-_Buste_de_Montesquieu_02.jpg" alt="Portrait of Montesquieu" onerror="this.outerHTML='<div class=&quot;photo-fallback&quot;>M</div>'">
+    </div>
+
+    <div class="placard">
+      <div class="name">MONTESQUIEU</div>
+      <div class="full-name">Charles-Louis de Secondat, Baron de La Brède</div>
+      <div class="dates">1689 — 1755</div>
+
+      <div class="ornament">
+        <span class="ornament-mark">❦</span>
+      </div>
+
+      <div class="placard-text">
+        <p>French jurist, baron, and philosopher of the laws. President à mortier of the Bordeaux parlement; author of the most cited book at the American Constitutional Convention.</p>
+        <p>His <em>Spirit of the Laws</em> (1748) gave the Founders their working vocabulary for separated powers, checks and balances, and the conditions under which liberty can survive its own government.</p>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="transition-band">L'Esprit des Lois</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <h2>A Conversation Across Two Centuries of Republics</h2>
+    <p>Montesquieu spent twenty years writing a book that changed the vocabulary of government. <em>The Spirit of the Laws</em> (1748) did not invent separation of powers — that idea had English ancestors — but it formalized it into a constitutional principle that every subsequent republic would have to grapple with. Madison cited him at the Convention. Hamilton cited him. Anti-Federalists cited him. Both sides of nearly every founding-era debate invoked Montesquieu as authority, which tells you either that he was right in a way that transcended faction, or that he was capacious enough to support contradictory readings. Both are partly true.</p>
+    <p>He wrote <em>Persian Letters</em> at thirty-two — a satirical epistolary novel in which two Persian travelers observe French society with bewildered clarity. It made him famous before he was serious. <em>The Spirit of the Laws</em> made him permanent. Between them, the books argue a single proposition: that laws are not universal abstractions but emerge from the specific geography, climate, history, and character of the people they govern.</p>
+
+    <div class="featured-quote">
+      "When the legislative and executive powers are united in the same person, or in the same body of magistrates, there can be no liberty."
+      <span class="featured-quote-cite">— The Spirit of the Laws, Book XI · 1748</span>
+    </div>
+
+    <p>He answers questions about republican government, the conditions for liberty, how climate and culture shape laws, and the philosophical foundations of the American constitutional design — from the perspective of a man who watched the ancien régime up close and concluded that arbitrary power was the primary enemy of both liberty and good government.</p>
+
+    <div class="domain-tags">
+      <span class="tag">Separation of Powers</span>
+      <span class="tag">Checks and Balances</span>
+      <span class="tag">Comparative Government</span>
+      <span class="tag">Republicanism</span>
+      <span class="tag">Liberty and Law</span>
+      <span class="tag">Tyranny</span>
+      <span class="tag">Constitutional Theory</span>
+      <span class="tag">Political Philosophy</span>
+      <span class="tag">French Enlightenment</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/montesquieu/widget/montesquieu-widget.css">
+      <script src="https://museumofminds.com/montesquieu/widget/montesquieu-widget.js"
+              data-api-url="https://montesquieu-production.up.railway.app"
+              data-persona-id="montesquieu"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    There is no greater tyranny than that which is perpetrated under the shield of the law and in the name of justice.
+  </blockquote>
+  <cite>— The Spirit of the Laws, Book VI · 1748</cite>
+</section>
+
+<section class="corpus-strip">
+  <div class="corpus-title">— Drawn From The Corpus —</div>
+  <ul class="corpus-list">
+    <li>The Spirit of the Laws (English translation, 1750 &amp; 1770)</li>
+    <li>Persian Letters (English translation, 1892)</li>
+    <li>Considerations on the Causes of the Greatness of the Romans and their Decline (1734)</li>
+    <li>My Thoughts (Mes Pensées, posthumous)</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="footer-col">
+    <div class="footer-name">Montesquieu</div>
+    1689 — 1755 · La Brède, Gironde
+  </div>
+  <div class="footer-col center">
+    The Museum of Minds<br>
+    A Project in Historical Dialogue · MMXXVI
+  </div>
+  <div class="footer-col right">
+    Powered by<br>His Own Words
+  </div>
+</footer>
+
+</body>
+</html>
