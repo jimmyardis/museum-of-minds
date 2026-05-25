@@ -17,7 +17,7 @@
 
 ## Current State
 
-51 personas live across republic-room, observatory, press-room, trailblazers, counting-house, library, and founding-documents. Sprint 2 complete: George Mason, John Jay, Montesquieu, and Bill of Rights deployed with pages, widgets, hall cards, and correct multi-tenant API URL. Pinecone index `museum-of-minds` holds ~106,000 vectors. Sprint 1 chatbots repaired (Railway redeployed with new persona.json commits).
+51 personas live across six halls plus library. Founding Documents hall now has its own landing page (`halls/founding-documents/`) and is the 6th portal on the main museum index. Main index grid changed to 3×2 (was 5-column). Sprint 2 complete: George Mason, John Jay, Montesquieu, and Bill of Rights have pages, widgets, hall cards, and correct multi-tenant API URL. Portrait pipeline now deterministic: persona.json `portrait_url` is authoritative (Wikimedia search only as last resort, with HTTP 200 verification before accept).
 
 ## Next Action
 
@@ -26,7 +26,6 @@ Re-audition and replace Lincoln's voice (currently conflicts with Hayek — both
 ## Blockers
 
 - Lincoln voice conflict with Hayek (same ElevenLabs voice ID — needs re-audition before Lincoln TTS goes live)
-- No founding-documents hall page yet (Bill of Rights placed in republic-room as stopgap)
 
 ## Open Questions
 
@@ -37,7 +36,15 @@ Re-audition and replace Lincoln's voice (currently conflicts with Hayek — both
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
 
-### 2026-05-25
+### 2026-05-25 (session 2)
+
+- Created Founding Documents hall page (`halls/founding-documents/`): 3 live docs (Constitution, Declaration, Bill of Rights) + 5 coming soon
+- Added Founding Documents as 6th portal on main index.html; grid changed from repeat(5,1fr) to repeat(3,1fr) for 2×3 layout
+- Fixed portrait pipeline determinism: persona.json `portrait_url` is now authoritative; `find_portrait.py` added HTTP 200 verification before accepting any Wikimedia URL
+- Moved Bill of Rights hall designation from `republic-room*` to `founding-documents` in PLATFORM_STATUS.md
+- All commits pushed to `jimmyardis/museum-of-minds` and `jimmyardis/jane-jacobs-bot`
+
+### 2026-05-25 (session 1)
 
 - Completed Sprint 2 deploy: George Mason, John Jay, Montesquieu, Bill of Rights pages live
 - Fixed widget API URLs: per-persona placeholder Railway URLs → multi-tenant `museum-api-production-8ce6.up.railway.app`
