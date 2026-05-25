@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With John Jay — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2E4A;
+    --deep-navy: #0D1824;
+    --darker-navy: #08111C;
+    --silver: #A8B8C8;
+    --silver-dim: #687888;
+    --gold: #B89040;
+    --gold-bright: #D4A858;
+    --gold-dim: #786020;
+    --text: #C4D0DC;
+    --text-dim: #788898;
+    --paper: #E8E0CC;
+    --shadow: rgba(0,0,0,0.55);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { background: var(--deep-navy); }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--text);
+    line-height: 1.7;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lanternFlicker {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
+
+  /* ── HEADER ── */
+  header.museum-header {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 2.5rem;
+    border-bottom: 1px solid rgba(184, 144, 64, 0.22);
+    background: var(--darker-navy);
+    animation: fadeDown 1.2s ease both;
+  }
+  .header-left, .header-right {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+  .header-right {
+    color: var(--gold);
+    font-style: normal;
+    letter-spacing: 0.28em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.3fr 0.75fr;
+    min-height: 92vh;
+    animation: fadeIn 1.6s ease both;
+  }
+
+  .hero-svg-panel {
+    position: relative;
+    background: var(--deep-navy);
+    overflow: hidden;
+    border-right: 1px solid rgba(184,144,64,0.22);
+  }
+  .hero-svg-panel svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero-bio {
+    background: var(--darker-navy);
+    padding: 3rem 2.6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .hero-bio::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.55;
+  }
+
+  .eyebrow {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  h1.persona-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 3.4vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    margin-bottom: 0.4rem;
+    animation: fadeDown 1.4s ease both;
+  }
+
+  .lifespan {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--silver-dim);
+    font-size: 0.92rem;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .photo-frame {
+    position: relative;
+    max-width: 270px;
+    margin: 0.6rem auto 1.8rem;
+    background: var(--navy);
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--gold-dim);
+    pointer-events: none;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(184,144,64,0.22);
+    pointer-events: none;
+  }
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(35%) sepia(18%) contrast(1.04) brightness(0.94);
+  }
+  .photo-frame .photo-fallback {
+    display: none;
+    aspect-ratio: 3/4;
+    width: 100%;
+    background: linear-gradient(160deg, var(--navy), var(--deep-navy));
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.1em;
+  }
+  .photo-frame img[data-failed="true"] + .photo-fallback { display: flex; }
+
+  .placard {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .placard p { margin-bottom: 0.95rem; }
+  .placard p:last-child { margin-bottom: 0; }
+  .placard strong { color: var(--gold-bright); font-weight: 700; }
+
+  .placard-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem 0 1.4rem;
+    opacity: 0.7;
+  }
+
+  /* ── TRANSITION BAND ── */
+  .transition-band {
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(90deg, var(--deep-navy), var(--navy), var(--deep-navy));
+    border-top: 1px solid rgba(184,144,64,0.3);
+    border-bottom: 1px solid rgba(184,144,64,0.3);
+    padding: 1.3rem 2rem;
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--gold);
+  }
+  .transition-band span.ornament {
+    color: var(--silver-dim);
+    margin: 0 1.4rem;
+    font-style: normal;
+  }
+
+  /* ── CHATBOT SECTION ── */
+  .chatbot-section {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 0;
+    padding: 4.5rem 3rem;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .chatbot-intro {
+    padding-right: 3rem;
+    border-right: 1px solid rgba(184,144,64,0.18);
+  }
+  .chatbot-intro h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    color: var(--paper);
+    margin-bottom: 1.4rem;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+  }
+  .chatbot-intro p {
+    font-size: 0.96rem;
+    color: var(--text);
+    margin-bottom: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .featured-quote {
+    margin: 2rem 0;
+    padding: 1.4rem 1.6rem;
+    border-left: 2px solid var(--gold);
+    background: rgba(13,24,36,0.6);
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--silver);
+    line-height: 1.7;
+  }
+  .featured-quote span.attrib {
+    display: block;
+    margin-top: 0.7rem;
+    font-style: normal;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .domain-label {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.66rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 2rem 0 1rem;
+  }
+  .domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .domain-tags span {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.78rem;
+    padding: 0.32rem 0.85rem;
+    border: 1px solid rgba(184,144,64,0.35);
+    color: var(--text);
+    background: rgba(26,46,74,0.4);
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+  }
+  .domain-tags span:hover {
+    border-color: var(--gold);
+    color: var(--gold-bright);
+  }
+
+  .chatbot-embed {
+    padding-left: 3rem;
+    min-height: 600px;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 2rem;
+    text-align: center;
+    background: var(--darker-navy);
+    border-top: 1px solid rgba(184,144,64,0.22);
+    border-bottom: 1px solid rgba(184,144,64,0.22);
+  }
+  .pull-quote::before {
+    content: '“';
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    line-height: 0.4;
+    margin-bottom: 1.6rem;
+    opacity: 0.7;
+  }
+  .pull-quote blockquote {
+    max-width: 920px;
+    margin: 0 auto;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.7vw, 1.55rem);
+    line-height: 1.65;
+    color: var(--paper);
+    font-weight: 400;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 2rem;
+    font-family: 'IM Fell English', serif;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── CORPUS STRIP ── */
+  .corpus-strip {
+    position: relative;
+    z-index: 2;
+    background: var(--darker-navy);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(184,144,64,0.18);
+  }
+  .corpus-strip h3 {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.6rem;
+  }
+  .corpus-strip ul {
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .corpus-strip li {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(184,144,64,0.1);
+  }
+  .corpus-strip li:last-child { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 2;
+    background: var(--darker-navy);
+    padding: 2.4rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    border-top: 2px solid var(--gold-dim);
+  }
+  footer > div { font-size: 0.78rem; color: var(--text-dim); }
+  footer .f-left {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.12em;
+    color: var(--silver);
+  }
+  footer .f-left span {
+    display: block;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--silver-dim);
+    margin-top: 0.3rem;
+    letter-spacing: 0.06em;
+  }
+  footer .f-center {
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    letter-spacing: 0.18em;
+  }
+  footer .f-right {
+    text-align: right;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-svg-panel { min-height: 60vh; border-right: none; border-bottom: 1px solid rgba(184,144,64,0.22); }
+    .hero-bio { padding: 2rem 1.5rem; }
+    .chatbot-section { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 2.5rem; }
+    .chatbot-intro { padding-right: 0; border-right: none; padding-bottom: 2rem; border-bottom: 1px solid rgba(184,144,64,0.18); }
+    .chatbot-embed { padding-left: 0; }
+    header.museum-header { padding: 1rem 1.4rem; flex-direction: column; gap: 0.5rem; }
+    .header-left, .header-right { font-size: 0.66rem; letter-spacing: 0.24em; }
+    footer { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
+    footer .f-right, footer .f-center { text-align: center; }
+    .pull-quote { padding: 3rem 1.5rem; }
+    .transition-band { font-size: 0.6rem; letter-spacing: 0.28em; padding: 1rem; }
+    .transition-band span.ornament { margin: 0 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div class="header-left">In Conversation With</div>
+  <div class="header-right">JJ–1745–2026</div>
+</header>
+
+<section class="hero">
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1A2E4A"/>
+          <stop offset="45%" stop-color="#243E5E"/>
+          <stop offset="80%" stop-color="#3A5878"/>
+          <stop offset="100%" stop-color="#5A7898"/>
+        </linearGradient>
+        <linearGradient id="harborGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3A5878"/>
+          <stop offset="100%" stop-color="#0D1824"/>
+        </linearGradient>
+        <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#D4C49C"/>
+          <stop offset="60%" stop-color="#B8A47C"/>
+          <stop offset="100%" stop-color="#8C7A55"/>
+        </linearGradient>
+        <linearGradient id="stoneGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#9C8862"/>
+          <stop offset="50%" stop-color="#C0AC80"/>
+          <stop offset="100%" stop-color="#8E7A55"/>
+        </linearGradient>
+        <radialGradient id="lanternGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#FFE4A8" stop-opacity="0.9"/>
+          <stop offset="40%" stop-color="#D4A858" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#D4A858" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#E8E0CC" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#E8E0CC" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="cobbleGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2A3A4E"/>
+          <stop offset="100%" stop-color="#101A28"/>
+        </linearGradient>
+      </defs>
+
+      <!-- SKY -->
+      <rect x="0" y="0" width="700" height="540" fill="url(#skyGrad)"/>
+
+      <!-- Stars / faint -->
+      <circle cx="80" cy="60" r="0.8" fill="#E8E0CC" opacity="0.6"/>
+      <circle cx="160" cy="110" r="0.6" fill="#E8E0CC" opacity="0.4"/>
+      <circle cx="240" cy="45" r="0.7" fill="#E8E0CC" opacity="0.5"/>
+      <circle cx="340" cy="80" r="0.5" fill="#E8E0CC" opacity="0.35"/>
+      <circle cx="450" cy="40" r="0.9" fill="#E8E0CC" opacity="0.55"/>
+      <circle cx="530" cy="120" r="0.6" fill="#E8E0CC" opacity="0.4"/>
+      <circle cx="610" cy="70" r="0.7" fill="#E8E0CC" opacity="0.5"/>
+      <circle cx="120" cy="160" r="0.5" fill="#E8E0CC" opacity="0.3"/>
+      <circle cx="380" cy="180" r="0.6" fill="#E8E0CC" opacity="0.4"/>
+      <circle cx="600" cy="200" r="0.5" fill="#E8E0CC" opacity="0.3"/>
+
+      <!-- Moon -->
+      <circle cx="560" cy="130" r="60" fill="url(#moonGlow)"/>
+      <circle cx="560" cy="130" r="22" fill="#E8E0CC" opacity="0.85"/>
+      <circle cx="555" cy="126" r="3" fill="#A8B8C8" opacity="0.4"/>
+      <circle cx="568" cy="135" r="2" fill="#A8B8C8" opacity="0.4"/>
+      <circle cx="552" cy="138" r="1.5" fill="#A8B8C8" opacity="0.3"/>
+
+      <!-- Distant city silhouette at harbor end of street -->
+      <g opacity="0.5">
+        <rect x="0" y="430" width="40" height="110" fill="#0D1824"/>
+        <rect x="35" y="450" width="28" height="90" fill="#0D1824"/>
+        <polygon points="60,450 75,430 90,450 90,540 60,540" fill="#0D1824"/>
+        <rect x="90" y="455" width="22" height="85" fill="#0D1824"/>
+        <polygon points="588,440 600,420 612,440 612,540 588,540" fill="#0D1824"/>
+        <rect x="612" y="445" width="30" height="95" fill="#0D1824"/>
+        <rect x="640" y="460" width="26" height="80" fill="#0D1824"/>
+        <rect x="664" y="450" width="36" height="90" fill="#0D1824"/>
+      </g>
+
+      <!-- HARBOR strip visible at end of street, with ship masts -->
+      <rect x="240" y="440" width="220" height="60" fill="url(#harborGrad)" opacity="0.85"/>
+      <!-- Ship masts -->
+      <g stroke="#0D1824" stroke-width="1.2" opacity="0.85">
+        <line x1="280" y1="395" x2="280" y2="465"/>
+        <line x1="268" y1="430" x2="292" y2="430"/>
+        <line x1="272" y1="415" x2="288" y2="415"/>
+        <polygon points="280,420 290,420 280,432" fill="#D4C49C" opacity="0.6"/>
+        <polygon points="270,415 280,415 280,425" fill="#D4C49C" opacity="0.5"/>
+
+        <line x1="335" y1="385" x2="335" y2="468"/>
+        <line x1="320" y1="420" x2="350" y2="420"/>
+        <line x1="324" y1="402" x2="346" y2="402"/>
+        <polygon points="335,408 348,408 335,425" fill="#D4C49C" opacity="0.6"/>
+        <polygon points="322,420 335,420 335,438" fill="#D4C49C" opacity="0.55"/>
+
+        <line x1="395" y1="400" x2="395" y2="465"/>
+        <line x1="382" y1="430" x2="408" y2="430"/>
+        <polygon points="395,432 408,432 395,448" fill="#D4C49C" opacity="0.55"/>
+
+        <line x1="440" y1="408" x2="440" y2="465"/>
+        <line x1="430" y1="435" x2="450" y2="435"/>
+      </g>
+      <!-- Ship hulls -->
+      <path d="M 260 466 Q 280 478 305 466 Z" fill="#0D1824"/>
+      <path d="M 318 468 Q 338 482 365 468 Z" fill="#0D1824"/>
+      <path d="M 380 468 Q 400 478 420 468 Z" fill="#0D1824"/>
+      <path d="M 428 470 Q 440 476 458 470 Z" fill="#0D1824"/>
+
+      <!-- harbor reflections -->
+      <line x1="280" y1="475" x2="280" y2="495" stroke="#E8E0CC" stroke-width="0.6" opacity="0.3"/>
+      <line x1="335" y1="475" x2="335" y2="495" stroke="#E8E0CC" stroke-width="0.6" opacity="0.3"/>
+      <line x1="560" y1="490" x2="558" y2="500" stroke="#E8E0CC" stroke-width="0.4" opacity="0.2"/>
+
+      <!-- STREET / cobblestone foreground - perspective convergence to harbor -->
+      <polygon points="0,540 240,440 460,440 700,540 700,900 0,900" fill="url(#cobbleGrad)"/>
+
+      <!-- cobblestone texture (perspective rows) -->
+      <g stroke="#1A2E4A" stroke-width="0.5" opacity="0.6">
+        <path d="M 0 560 L 700 560"/>
+        <path d="M 0 590 L 700 590"/>
+        <path d="M 0 625 L 700 625"/>
+        <path d="M 0 665 L 700 665"/>
+        <path d="M 0 710 L 700 710"/>
+        <path d="M 0 760 L 700 760"/>
+        <path d="M 0 815 L 700 815"/>
+        <path d="M 0 870 L 700 870"/>
+      </g>
+      <g fill="#1A2E4A" opacity="0.35">
+        <ellipse cx="60" cy="575" rx="14" ry="5"/>
+        <ellipse cx="120" cy="572" rx="14" ry="5"/>
+        <ellipse cx="180" cy="578" rx="14" ry="5"/>
+        <ellipse cx="240" cy="574" rx="14" ry="5"/>
+        <ellipse cx="80" cy="610" rx="18" ry="6"/>
+        <ellipse cx="160" cy="615" rx="18" ry="6"/>
+        <ellipse cx="240" cy="612" rx="18" ry="6"/>
+        <ellipse cx="540" cy="608" rx="18" ry="6"/>
+        <ellipse cx="620" cy="615" rx="18" ry="6"/>
+        <ellipse cx="50" cy="650" rx="22" ry="7"/>
+        <ellipse cx="140" cy="655" rx="22" ry="7"/>
+        <ellipse cx="240" cy="650" rx="22" ry="7"/>
+        <ellipse cx="560" cy="652" rx="22" ry="7"/>
+        <ellipse cx="660" cy="658" rx="22" ry="7"/>
+        <ellipse cx="90" cy="700" rx="28" ry="8"/>
+        <ellipse cx="220" cy="705" rx="28" ry="8"/>
+        <ellipse cx="490" cy="702" rx="28" ry="8"/>
+        <ellipse cx="610" cy="708" rx="28" ry="8"/>
+        <ellipse cx="60" cy="755" rx="34" ry="10"/>
+        <ellipse cx="180" cy="760" rx="34" ry="10"/>
+        <ellipse cx="540" cy="758" rx="34" ry="10"/>
+        <ellipse cx="660" cy="762" rx="34" ry="10"/>
+        <ellipse cx="80" cy="820" rx="40" ry="12"/>
+        <ellipse cx="220" cy="825" rx="40" ry="12"/>
+        <ellipse cx="490" cy="822" rx="40" ry="12"/>
+        <ellipse cx="630" cy="828" rx="40" ry="12"/>
+      </g>
+
+      <!-- MAIN BUILDING: The Royal Exchange -->
+      <!-- Building base structure -->
+      <g>
+        <!-- foundation / stylobate -->
+        <rect x="140" y="430" width="420" height="14" fill="#6E5E3E"/>
+        <rect x="140" y="444" width="420" height="6" fill="#3A2F1E"/>
+
+        <!-- main facade -->
+        <rect x="150" y="170" width="400" height="270" fill="url(#buildingGrad)"/>
+
+        <!-- horizontal stone courses -->
+        <g stroke="#6E5E3E" stroke-width="0.4" opacity="0.55">
+          <line x1="150" y1="200" x2="550" y2="200"/>
+          <line x1="150" y1="230" x2="550" y2="230"/>
+          <line x1="150" y1="260" x2="550" y2="260"/>
+          <line x1="150" y1="290" x2="550" y2="290"/>
+        </g>
+
+        <!-- ARCADE: street-level arched openings -->
+        <!-- arcade base band -->
+        <rect x="150" y="340" width="400" height="100" fill="#1A1208" opacity="0.4"/>
+
+        <!-- Pillars between arches -->
+        <g fill="#8C7A55">
+          <rect x="150" y="340" width="22" height="100"/>
+          <rect x="528" y="340" width="22" height="100"/>
+          <rect x="222" y="340" width="18" height="100"/>
+          <rect x="290" y="340" width="18" height="100"/>
+          <rect x="358" y="340" width="18" height="100"/>
+          <rect x="426" y="340" width="18" height="100"/>
+        </g>
+
+        <!-- Arches (5 arches) -->
+        <g>
+          <path d="M 172 440 L 172 380 A 25 25 0 0 1 222 380 L 222 440 Z" fill="#0D1824"/>
+          <path d="M 240 440 L 240 380 A 25 25 0 0 1 290 380 L 290 440 Z" fill="#0D1824"/>
+          <path d="M 308 440 L 308 380 A 25 25 0 0 1 358 380 L 358 440 Z" fill="#0D1824"/>
+          <path d="M 376 440 L 376 380 A 25 25 0 0 1 426 380 L 426 440 Z" fill="#0D1824"/>
+          <path d="M 444 440 L 444 380 A 25 25 0 0 1 494 380 L 494 440 Z" fill="#0D1824"/>
+        </g>
+        <!-- Arch keystones -->
+        <g fill="#9C8862">
+          <polygon points="194,355 200,355 198,365 196,365"/>
+          <polygon points="262,355 268,355 266,365 264,365"/>
+          <polygon points="330,355 336,355 334,365 332,365"/>
+          <polygon points="398,355 404,355 402,365 400,365"/>
+          <polygon points="466,355 472,355 470,365 468,365"/>
+        </g>
+        <!-- Faint light inside arcades -->
+        <ellipse cx="197" cy="420" rx="14" ry="10" fill="url(#lanternGlow)" opacity="0.4"/>
+        <ellipse cx="333" cy="420" rx="14" ry="10" fill="url(#lanternGlow)" opacity="0.4"/>
+        <ellipse cx="469" cy="420" rx="14" ry="10" fill="url(#lanternGlow)" opacity="0.4"/>
+
+        <!-- String course above arcade -->
+        <rect x="148" y="330" width="404" height="6" fill="#6E5E3E"/>
+        <rect x="148" y="336" width="404" height="3" fill="#3A2F1E"/>
+
+        <!-- SECOND STORY -->
+        <!-- Windows row (4 small windows flanking Palladian) -->
+        <g>
+          <rect x="180" y="245" width="28" height="55" fill="#0D1824" stroke="#6E5E3E" stroke-width="1"/>
+          <line x1="194" y1="245" x2="194" y2="300" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="180" y1="270" x2="208" y2="270" stroke="#6E5E3E" stroke-width="0.6"/>
+          <ellipse cx="194" cy="272" rx="10" ry="22" fill="url(#lanternGlow)" opacity="0.5"/>
+
+          <rect x="225" y="245" width="28" height="55" fill="#0D1824" stroke="#6E5E3E" stroke-width="1"/>
+          <line x1="239" y1="245" x2="239" y2="300" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="225" y1="270" x2="253" y2="270" stroke="#6E5E3E" stroke-width="0.6"/>
+
+          <rect x="447" y="245" width="28" height="55" fill="#0D1824" stroke="#6E5E3E" stroke-width="1"/>
+          <line x1="461" y1="245" x2="461" y2="300" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="447" y1="270" x2="475" y2="270" stroke="#6E5E3E" stroke-width="0.6"/>
+          <ellipse cx="461" cy="272" rx="10" ry="22" fill="url(#lanternGlow)" opacity="0.5"/>
+
+          <rect x="492" y="245" width="28" height="55" fill="#0D1824" stroke="#6E5E3E" stroke-width="1"/>
+          <line x1="506" y1="245" x2="506" y2="300" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="492" y1="270" x2="520" y2="270" stroke="#6E5E3E" stroke-width="0.6"/>
+        </g>
+
+        <!-- PALLADIAN WINDOW (central, second story) -->
+        <g>
+          <!-- side panels -->
+          <rect x="290" y="230" width="30" height="80" fill="#0D1824" stroke="#6E5E3E" stroke-width="1.2"/>
+          <line x1="305" y1="230" x2="305" y2="310" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="290" y1="265" x2="320" y2="265" stroke="#6E5E3E" stroke-width="0.6"/>
+
+          <rect x="380" y="230" width="30" height="80" fill="#0D1824" stroke="#6E5E3E" stroke-width="1.2"/>
+          <line x1="395" y1="230" x2="395" y2="310" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="380" y1="265" x2="410" y2="265" stroke="#6E5E3E" stroke-width="0.6"/>
+
+          <!-- central arched window -->
+          <path d="M 320 310 L 320 230 A 30 30 0 0 1 380 230 L 380 310 Z" fill="#0D1824" stroke="#6E5E3E" stroke-width="1.4"/>
+          <!-- mullions -->
+          <line x1="350" y1="200" x2="350" y2="310" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="320" y1="245" x2="380" y2="245" stroke="#6E5E3E" stroke-width="0.6"/>
+          <line x1="320" y1="278" x2="380" y2="278" stroke="#6E5E3E" stroke-width="0.6"/>
+
+          <!-- soft inner glow -->
+          <ellipse cx="350" cy="270" rx="22" ry="38" fill="url(#lanternGlow)" opacity="0.55"/>
+          <ellipse cx="305" cy="270" rx="9" ry="22" fill="url(#lanternGlow)" opacity="0.45"/>
+          <ellipse cx="395" cy="270" rx="9" ry="22" fill="url(#lanternGlow)" opacity="0.45"/>
+
+          <!-- pilasters flanking Palladian -->
+          <rect x="278" y="220" width="6" height="100" fill="#9C8862"/>
+          <rect x="416" y="220" width="6" height="100" fill="#9C8862"/>
+          <!-- caps -->
+          <rect x="275" y="216" width="12" height="6" fill="#6E5E3E"/>
+          <rect x="413" y="216" width="12" height="6" fill="#6E5E3E"/>
+
+          <!-- entablature above palladian -->
+          <rect x="270" y="210" width="160" height="8" fill="#6E5E3E"/>
+        </g>
+
+        <!-- PEDIMENT with SEAL -->
+        <polygon points="150,170 350,90 550,170" fill="url(#stoneGrad)" stroke="#6E5E3E" stroke-width="1"/>
+        <polygon points="155,170 350,98 545,170 545,176 155,176" fill="#6E5E3E" opacity="0.5"/>
+
+        <!-- Seal of the United States in tympanum -->
+        <g transform="translate(350,140)">
+          <circle cx="0" cy="0" r="26" fill="#1A2E4A" stroke="#B89040" stroke-width="1.4"/>
+          <circle cx="0" cy="0" r="22" fill="none" stroke="#B89040" stroke-width="0.5" opacity="0.7"/>
+          <!-- Eagle silhouette -->
+          <g fill="#B89040">
+            <!-- body -->
+            <ellipse cx="0" cy="2" rx="3" ry="6"/>
+            <!-- wings spread -->
+            <path d="M -3 -1 Q -12 -6 -18 -2 Q -14 0 -10 1 Q -6 1 -3 2 Z"/>
+            <path d="M 3 -1 Q 12 -6 18 -2 Q 14 0 10 1 Q 6 1 3 2 Z"/>
+            <!-- head -->
+            <circle cx="0" cy="-5" r="2"/>
+            <!-- tail -->
+            <polygon points="-2,7 2,7 0,12"/>
+            <!-- shield on chest -->
+            <rect x="-2" y="1" width="4" height="5" fill="#D4C49C"/>
+            <line x1="-2" y1="3" x2="2" y2="3" stroke="#1A2E4A" stroke-width="0.4"/>
+            <line x1="-2" y1="4.5" x2="2" y2="4.5" stroke="#1A2E4A" stroke-width="0.4"/>
+          </g>
+          <!-- arrows / olive sprig (suggested) -->
+          <line x1="-9" y1="6" x2="-13" y2="10" stroke="#B89040" stroke-width="0.5"/>
+          <line x1="9" y1="6" x2="13" y2="10" stroke="#B89040" stroke-width="0.5"/>
+          <!-- thirteen stars (suggested) -->
+          <g fill="#D4C49C">
+            <circle cx="-14" cy="-12" r="0.7"/>
+            <circle cx="-10" cy="-15" r="0.7"/>
+            <circle cx="-5" cy="-17" r="0.7"/>
+            <circle cx="0" cy="-18" r="0.7"/>
+            <circle cx="5" cy="-17" r="0.7"/>
+            <circle cx="10" cy="-15" r="0.7"/>
+            <circle cx="14" cy="-12" r="0.7"/>
+          </g>
+        </g>
+
+        <!-- Acroterion at peak -->
+        <rect x="346" y="84" width="8" height="10" fill="#6E5E3E"/>
+        <circle cx="350" cy="82" r="3" fill="#B89040"/>
+
+        <!-- Cornice along roofline of facade (under pediment) -->
+        <rect x="146" y="168" width="408" height="6" fill="#6E5E3E"/>
+        <rect x="143" y="174" width="414" height="3" fill="#3A2F1E"/>
+
+        <!-- Pilasters on second story (corner) -->
+        <rect x="156" y="180" width="8" height="150" fill="#9C8862" opacity="0.7"/>
+        <rect x="536" y="180" width="8" height="150" fill="#9C8862" opacity="0.7"/>
+      </g>
+
+      <!-- LANTERNS flanking arcade entrance -->
+      <!-- Left lantern -->
+      <g>
+        <line x1="155" y1="380" x2="172" y2="380" stroke="#3A2F1E" stroke-width="1.4"/>
+        <line x1="158" y1="380" x2="158" y2="395" stroke="#3A2F1E" stroke-width="1"/>
+        <rect x="153" y="395" width="10" height="14" fill="#3A2F1E"/>
+        <circle cx="158" cy="402" r="10" fill="url(#lanternGlow)">
+          <animate attributeName="opacity" values="0.85;1;0.9;1;0.85" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="156" y="399" width="4" height="7" fill="#FFE4A8" opacity="0.95"/>
+      </g>
+      <!-- Right lantern -->
+      <g>
+        <line x1="528" y1="380" x2="545" y2="380" stroke="#3A2F1E" stroke-width="1.4"/>
+        <line x1="542" y1="380" x2="542" y2="395" stroke="#3A2F1E" stroke-width="1"/>
+        <rect x="537" y="395" width="10" height="14" fill="#3A2F1E"/>
+        <circle cx="542" cy="402" r="10" fill="url(#lanternGlow)">
+          <animate attributeName="opacity" values="0.9;1;0.85;1;0.9" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="540" y="399" width="4" height="7" fill="#FFE4A8" opacity="0.95"/>
+      </g>
+
+      <!-- Street lanterns (foreground, perspective) -->
+      <g>
+        <!-- left street lantern -->
+        <line x1="70" y1="500" x2="70" y2="600" stroke="#1A1208" stroke-width="2"/>
+        <line x1="70" y1="510" x2="92" y2="510" stroke="#1A1208" stroke-width="1.4"/>
+        <rect x="86" y="510" width="12" height="16" fill="#1A1208"/>
+        <circle cx="92" cy="518" r="11" fill="url(#lanternGlow)">
+          <animate attributeName="opacity" values="0.9;1;0.85;1;0.9" dur="4.5s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="90" y="514" width="4" height="8" fill="#FFE4A8" opacity="0.95"/>
+
+        <!-- right street lantern -->
+        <line x1="630" y1="495" x2="630" y2="610" stroke="#1A1208" stroke-width="2"/>
+        <line x1="630" y1="505" x2="608" y2="505" stroke="#1A1208" stroke-width="1.4"/>
+        <rect x="602" y="505" width="12" height="16" fill="#1A1208"/>
+        <circle cx="608" cy="513" r="11" fill="url(#lanternGlow)">
+          <animate attributeName="opacity" values="0.85;1;0.9;1;0.85" dur="5.5s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="606" y="509" width="4" height="8" fill="#FFE4A8" opacity="0.95"/>
+      </g>
+
+      <!-- Flanking lower buildings (suggestion of street wall) -->
+      <g>
+        <rect x="0" y="280" width="140" height="160" fill="#4A3E2A"/>
+        <rect x="20" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="50" y="320" width="14" height="20" fill="#0D1824"/>
+        <ellipse cx="57" cy="332" rx="5" ry="8" fill="url(#lanternGlow)" opacity="0.5"/>
+        <rect x="80" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="110" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="20" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="50" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="80" y="360" width="14" height="20" fill="#0D1824"/>
+        <ellipse cx="87" cy="372" rx="5" ry="8" fill="url(#lanternGlow)" opacity="0.45"/>
+        <rect x="110" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="20" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="50" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="80" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="110" y="400" width="14" height="20" fill="#0D1824"/>
+        <polygon points="0,280 70,260 140,280" fill="#3A2F1E"/>
+
+        <rect x="560" y="280" width="140" height="160" fill="#4A3E2A"/>
+        <rect x="580" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="610" y="320" width="14" height="20" fill="#0D1824"/>
+        <ellipse cx="617" cy="332" rx="5" ry="8" fill="url(#lanternGlow)" opacity="0.5"/>
+        <rect x="640" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="670" y="320" width="14" height="20" fill="#0D1824"/>
+        <rect x="580" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="610" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="640" y="360" width="14" height="20" fill="#0D1824"/>
+        <rect x="670" y="360" width="14" height="20" fill="#0D1824"/>
+        <ellipse cx="677" cy="372" rx="5" ry="8" fill="url(#lanternGlow)" opacity="0.45"/>
+        <rect x="580" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="610" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="640" y="400" width="14" height="20" fill="#0D1824"/>
+        <rect x="670" y="400" width="14" height="20" fill="#0D1824"/>
+        <polygon points="560,280 630,260 700,280" fill="#3A2F1E"/>
+      </g>
+
+      <!-- Atmospheric haze over building -->
+      <rect x="0" y="160" width="700" height="280" fill="#1A2E4A" opacity="0.18"/>
+
+      <!-- ANNOTATION OVERLAY: title block / cartouche bottom-right -->
+      <g transform="translate(450,830)">
+        <rect x="0" y="0" width="230" height="50" fill="none" stroke="#B89040" stroke-width="0.5" opacity="0.55"/>
+        <line x1="0" y1="14" x2="230" y2="14" stroke="#B89040" stroke-width="0.3" opacity="0.55"/>
+        <text x="115" y="11" text-anchor="middle" font-family="IM Fell English, serif" font-size="6" letter-spacing="2" fill="#B89040" font-style="italic">PLATE I</text>
+        <text x="115" y="28" text-anchor="middle" font-family="Cinzel, serif" font-size="8" letter-spacing="3" fill="#C4D0DC">THE ROYAL EXCHANGE</text>
+        <text x="115" y="40" text-anchor="middle" font-family="IM Fell English, serif" font-size="6" letter-spacing="1.6" fill="#788898" font-style="italic">Broad Street · New York · A.D. 1790</text>
+      </g>
+
+      <!-- Compass rose, top-left, faint -->
+      <g transform="translate(60,820)" opacity="0.55">
+        <circle cx="0" cy="0" r="22" fill="none" stroke="#B89040" stroke-width="0.4"/>
+        <circle cx="0" cy="0" r="16" fill="none" stroke="#B89040" stroke-width="0.3"/>
+        <polygon points="0,-20 3,0 0,20 -3,0" fill="#B89040" opacity="0.7"/>
+        <polygon points="-20,0 0,3 20,0 0,-3" fill="#B89040" opacity="0.5"/>
+        <text x="0" y="-26" text-anchor="middle" font-family="IM Fell English, serif" font-size="7" fill="#B89040">N</text>
+        <text x="28" y="3" text-anchor="middle" font-family="IM Fell English, serif" font-size="7" fill="#B89040">E</text>
+        <text x="0" y="32" text-anchor="middle" font-family="IM Fell English, serif" font-size="7" fill="#B89040">S</text>
+        <text x="-28" y="3" text-anchor="middle" font-family="IM Fell English, serif" font-size="7" fill="#B89040">W</text>
+      </g>
+
+      <!-- Marginalia inscription, lower-left -->
+      <g transform="translate(60,880)" opacity="0.6">
+        <text font-family="IM Fell English, serif" font-style="italic" font-size="8" fill="#A8B8C8">
+          <tspan x="0" y="0">where the first Supreme Court convened,</tspan>
+          <tspan x="0" y="11">Feb. 1, 1790 — Chief Justice presiding</tspan>
+        </text>
+      </g>
+    </svg>
+  </div>
+
+  <aside class="hero-bio">
+    <div class="eyebrow">Museum of Minds · Gallery IX</div>
+    <h1 class="persona-name">John Jay</h1>
+    <div class="lifespan">1745 — 1829</div>
+
+    <div class="photo-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/John_Jay_Engraving_by_Cornelius_Tiebout_Cropped.png" alt="Portrait of John Jay" onerror="this.setAttribute('data-failed','true');this.style.display='none';">
+      <div class="photo-fallback">JJ</div>
+    </div>
+
+    <div class="placard">
+      <p>The only Founder who negotiated the peace, wrote the supreme law, sat as its <strong>first judge</strong>, and then retired to his farm — having completed what he considered a coherent life's work.</p>
+      <div class="placard-rule"></div>
+      <p>He wrote five of the eighty-five Federalist Papers, negotiated the <strong>Treaty of Paris</strong> that ended the Revolutionary War, served as the first Chief Justice, and negotiated Jay's Treaty with Britain in 1794 — a treaty that probably prevented another war and that his fellow citizens hated so much they burned him in effigy. He was indifferent to the burning.</p>
+      <p>His jurisprudence established that the United States was a nation before it was a collection of states. He spent his final decades managing his farm in Westchester and corresponding with former colleagues about the slow, difficult project of abolition — believing the institution would eventually destroy the republic if it did not destroy the institution first.</p>
+    </div>
+  </aside>
+</section>
+
+<div class="transition-band">
+  ✦ <span class="ornament">·</span> Enter into Correspondence <span class="ornament">·</span> ✦
+</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <h2>Address the Chief Justice</h2>
+    <p>John Jay engages questions about the founding, the early Court, foreign policy, and the tension between national sovereignty and individual liberty with the precision of a trained lawyer who had also been a practicing diplomat — two disciplines that share a commitment to getting the exact words right.</p>
+    <p>Ask him about the burning in effigy and he will tell you, mildly, that the people misunderstood the alternative. Ask him about the Treaty of Paris and he will explain the difference between the war one wins on a battlefield and the war one wins at a table.</p>
+
+    <div class="featured-quote">
+      "Those who own the country ought to govern it" — and yet he resigned the Chief Justiceship to govern New York, freed his enslaved people before the law required it, and considered abolition the unfinished work of the Revolution.
+      <span class="attrib">— from his letters, c. 1798</span>
+    </div>
+
+    <p>He speaks from a republic that has just outlasted its first crisis, and from the certainty — earned at Paris, at the Supreme Court, and on his farm — that a constitution without a foreign policy is a parchment, and a foreign policy without a judiciary is a sword without a sheath.</p>
+
+    <div class="domain-label">— Domains of Inquiry —</div>
+    <div class="domain-tags">
+      <span>Foreign Policy</span>
+      <span>Federal Judiciary</span>
+      <span>Constitutional Ratification</span>
+      <span>Treaty Negotiation</span>
+      <span>The Federalist Papers</span>
+      <span>First Supreme Court</span>
+      <span>New York Politics</span>
+      <span>Atlantic Diplomacy</span>
+      <span>Abolitionism</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/john-jay/widget/john-jay-widget.css">
+      <script src="https://museumofminds.com/john-jay/widget/john-jay-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="john-jay"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    Nothing is more certain than the indispensable necessity of government, and it is equally undeniable, that whenever and however it is instituted, the people must cede to it some of their natural liberty in order to vest it with requisite powers.
+  </blockquote>
+  <cite>— Federalist No. 2 · October 31, 1787</cite>
+</section>
+
+<section class="corpus-strip">
+  <h3>— Drawn From the Corpus —</h3>
+  <ul>
+    <li>The Federalist Papers — Nos. 2, 3, 4, 5, 64 (1787–1788)</li>
+    <li>Correspondence and Public Papers of John Jay, Vols. 1–4 (1890–1893)</li>
+    <li>The Life of John Jay with Selections from His Correspondence (1833)</li>
+    <li>Address to the People of the State of New York (1788)</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="f-left">
+    JOHN JAY
+    <span>1745 — 1829</span>
+  </div>
+  <div class="f-center">The Museum of Minds · Gallery IX · MMXXVI</div>
+  <div class="f-right">Powered by His Own Words</div>
+</footer>
+
+</body>
+</html>
