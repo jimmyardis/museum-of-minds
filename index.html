@@ -160,7 +160,7 @@
     /* ── PORTAL DOORS ── */
     .halls-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.6rem;
       max-width: 1100px;
       margin: 0 auto;
@@ -174,7 +174,7 @@
     }
     .portal-link:nth-child(1){animation-delay:0.1s} .portal-link:nth-child(2){animation-delay:0.2s}
     .portal-link:nth-child(3){animation-delay:0.3s} .portal-link:nth-child(4){animation-delay:0.4s}
-    .portal-link:nth-child(5){animation-delay:0.5s}
+    .portal-link:nth-child(5){animation-delay:0.5s} .portal-link:nth-child(6){animation-delay:0.6s}
     @keyframes cardReveal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     .portal-door {
@@ -298,6 +298,7 @@
     .door-observatory { --df:#2A4060; --da:#C07848; --di:rgba(80,100,140,0.2); --da-dim:rgba(192,120,72,0.28); --dg:rgba(192,120,72,0.18); --dh:rgba(42,64,96,0.5); --dw:#1B3A5C; }
     .door-press       { --df:#3C3022; --da:#C8A050; --di:rgba(150,120,40,0.18); --da-dim:rgba(200,160,80,0.28); --dg:rgba(200,160,80,0.15); --dh:rgba(60,48,34,0.5); --dw:#204030; }
     .door-trailblazers{ --df:#2A4258; --da:#8AB8D0; --di:rgba(80,120,160,0.2); --da-dim:rgba(138,184,208,0.28); --dg:rgba(138,184,208,0.18); --dh:rgba(42,66,88,0.5); --dw:#2B4C7E; }
+    .door-documents   { --df:#6B5530; --da:#C8A050; --di:rgba(160,130,60,0.22); --da-dim:rgba(200,160,80,0.3); --dg:rgba(200,160,80,0.18); --dh:rgba(107,85,48,0.55); --dw:#3D2B0E; }
 
     /* ── ARENA ── */
     .arena-section {
@@ -359,7 +360,7 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1050px) { .halls-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1050px) { .halls-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 700px) {
       .halls-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
       .halls-section, .arena-section { padding: 4rem 1.5rem; }
@@ -406,7 +407,7 @@
       <span class="room-tag">The Collection</span>
       <h2>The Halls of History</h2>
       <p class="halls-intro">
-        The collection is organized into five halls, each gathering figures by era,
+        The collection is organized into six halls, each gathering figures by era,
         discipline, and disposition. Choose a hall to enter — every portrait inside
         is a door into a world built entirely from their own words.
       </p>
@@ -517,6 +518,27 @@
             <p class="door-era">1880 — 1968</p>
             <p class="door-tagline">First through doors that hadn't been opened yet.</p>
             <span class="door-count">4 Figures</span>
+            <span class="door-cta">Enter Hall</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Hall VI: Founding Documents -->
+      <a href="/halls/founding-documents/" class="portal-link">
+        <div class="portal-door door-documents">
+          <img class="door-portrait"
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/United_States_Declaration_of_Independence.jpg/440px-United_States_Declaration_of_Independence.jpg"
+               alt="Declaration of Independence"
+               onerror="this.style.display='none'" />
+          <div class="door-wash"></div>
+          <div class="door-frame"></div>
+          <div class="door-inner">
+            <span class="door-num">Hall VI</span>
+            <h3 class="door-name">Founding<br>Documents</h3>
+            <div class="door-rule"></div>
+            <p class="door-era">1776 — 1791</p>
+            <p class="door-tagline">The Constitution, the Declaration, the Bill of Rights — each one a voice.</p>
+            <span class="door-count">3 Documents</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>

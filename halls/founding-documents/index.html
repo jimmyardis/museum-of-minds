@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Founding Documents — Museum of Minds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:        #0C0C0E;
+      --slate:       #1B2435;
+      --slate-mid:   #253046;
+      --parchment:   #EFE6D2;
+      --parchment-d: #E5D9BD;
+      --ink:         #0E0E0E;
+      --gold:        #B89040;
+      --gold-pale:   #C9A84C;
+      --gold-dim:    #7A6020;
+      --brass:       #B89040;
+      --text:        #2C1F0A;
+      --text-mid:    #5C4A28;
+      --text-dim:    #8A7450;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--parchment);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--slate);
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold-dim);
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--parchment);
+    }
+    .header-brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      color: var(--parchment);
+      opacity: 0.85;
+    }
+    .header-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .header-nav a {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.92rem;
+      color: rgba(239,230,210,0.7);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover, .header-nav a.active { color: var(--gold-pale); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--slate);
+      color: var(--parchment);
+      padding: 5rem 3rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold-dim);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+    }
+    .hero-eyebrow {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      color: var(--parchment);
+      margin-bottom: 1.2rem;
+      line-height: 1.1;
+    }
+    .hero-rule {
+      width: 48px; height: 1px;
+      background: var(--gold-pale);
+      margin: 1.2rem auto;
+    }
+    .hero-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(239,230,210,0.75);
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    /* ── IN RESIDENCE ── */
+    .in-residence {
+      background: var(--parchment-d);
+      border-bottom: 1px solid rgba(168,132,37,0.25);
+      padding: 3.5rem 3rem;
+    }
+    .in-residence-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .in-residence-seal svg { width: 130px; height: 130px; display: block; }
+    .in-residence-seal-label {
+      display: block;
+      text-align: center;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-top: 0.6rem;
+    }
+    .in-residence-eyebrow {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.6rem;
+    }
+    .in-residence-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.15;
+    }
+    .in-residence-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 1rem;
+    }
+    .in-residence-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .in-residence-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .in-res-stat-num {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--gold-dim);
+    }
+    .in-res-stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--text-mid);
+      text-transform: uppercase;
+    }
+    .in-residence-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.6rem;
+      background: var(--slate);
+      color: var(--parchment);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .in-residence-cta:hover { background: var(--gold-dim); }
+
+    /* ── DOCUMENTS GRID ── */
+    .documents-section {
+      padding: 4rem 3rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(168,132,37,0.2);
+    }
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+    .doc-card {
+      background: white;
+      border: 1px solid rgba(168,132,37,0.2);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .doc-card:hover { border-color: rgba(168,132,37,0.5); box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .doc-card.live { cursor: pointer; }
+    .doc-card-seal {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .doc-card-seal-icon { width: 44px; height: 44px; flex-shrink: 0; }
+    .doc-card-year {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+    .doc-card-body { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .doc-card-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .doc-card-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+    .doc-card-desc {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-mid);
+      flex: 1;
+    }
+    .doc-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+      color: var(--gold-dim);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .doc-card-cta:hover { color: var(--slate); }
+    .doc-card-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
+    .doc-card-cta:hover svg { transform: translateX(3px); }
+    .doc-card.coming-soon { opacity: 0.55; cursor: default; }
+    .doc-card.coming-soon:hover { transform: none; box-shadow: none; border-color: rgba(168,132,37,0.2); }
+    .coming-soon-badge {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    .trust-badge {
+      display: inline-block;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid rgba(168,132,37,0.35);
+      padding: 0.2rem 0.55rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      background: var(--slate);
+      color: var(--parchment);
+      padding: 4rem 3rem;
+      border-top: 2px solid var(--gold-dim);
+    }
+    .about-inner { max-width: 720px; margin: 0 auto; }
+    .about-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--gold-pale);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(239,230,210,0.8);
+      margin-bottom: 1rem;
+    }
+    .about-link { color: var(--gold-pale); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      background: var(--void);
+      border-top: 1px solid rgba(168,132,37,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: rgba(239,230,210,0.45);
+    }
+    .footer-back {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.88rem;
+      color: rgba(184,144,64,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-back:hover { color: var(--gold-pale); }
+
+    @media (max-width: 900px) {
+      header { padding: 1rem 1.5rem; }
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+      .in-residence { padding: 2.5rem 1.5rem; }
+      .in-residence-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .in-residence-seal { display: none; }
+      .in-residence-stats { flex-wrap: wrap; gap: 1.2rem; }
+      .documents-section { padding: 3rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="header-brand">
+    <span class="header-brand-name">Museum of Minds</span>
+  </a>
+  <nav class="header-nav">
+    <a href="/">The Museum</a>
+    <a href="./" class="active">Founding Documents</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">Museum of Minds · Documents Wing</p>
+  <h1 class="hero-title">The Founding Documents</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-subtitle">Documents that quote themselves</p>
+  <p class="hero-desc">Primary sources that speak in their own voice — quoting their own text, surfacing the debates that shaped them, citing how courts and history have read them.</p>
+</section>
+
+<section class="in-residence">
+  <div class="in-residence-inner">
+    <div class="in-residence-seal">
+      <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="70" r="62" stroke="#A88425" stroke-width="1.5" fill="none"/>
+        <circle cx="70" cy="70" r="55" stroke="#A88425" stroke-width="0.6" fill="rgba(168,132,37,0.05)"/>
+        <circle cx="70" cy="70" r="46" stroke="#A88425" stroke-width="0.4" fill="none" stroke-dasharray="4 3"/>
+        <line x1="70" y1="38" x2="70" y2="102" stroke="#A88425" stroke-width="1.2"/>
+        <path d="M70 38 C58 50 54 62 70 70 C86 62 82 50 70 38Z" fill="rgba(168,132,37,0.15)" stroke="#A88425" stroke-width="0.8"/>
+        <text x="70" y="120" text-anchor="middle" font-family="serif" font-size="9" fill="#A88425" letter-spacing="6">★ ★ ★</text>
+        <text x="70" y="32" text-anchor="middle" font-family="serif" font-size="7.5" fill="#A88425" letter-spacing="1.5">WE THE PEOPLE</text>
+      </svg>
+      <span class="in-residence-seal-label">Document in Residence</span>
+    </div>
+    <div class="in-residence-content">
+      <p class="in-residence-eyebrow">Now available · Documents Wing</p>
+      <h2 class="in-residence-title">The Constitution of the United States</h2>
+      <p class="in-residence-subtitle">Ratified 1788 · Articles I–VII + 27 Amendments</p>
+      <p class="in-residence-desc">The supreme law of the land speaks in its own voice. Ask about any article, clause, or amendment — it quotes itself verbatim, surfaces the Federalist and Anti-Federalist debates behind each provision, and cites fifteen landmark Supreme Court cases that defined its meaning. It takes no political position. It holds the competing interpretations in tension and presents them honestly.</p>
+      <div class="in-residence-stats">
+        <div class="in-res-stat">
+          <span class="in-res-stat-num">27</span>
+          <span class="in-res-stat-label">Amendments</span>
+        </div>
+        <div class="in-res-stat">
+          <span class="in-res-stat-num">1,640+</span>
+          <span class="in-res-stat-label">Indexed passages</span>
+        </div>
+        <div class="in-res-stat">
+          <span class="in-res-stat-num">15</span>
+          <span class="in-res-stat-label">Landmark SCOTUS cases</span>
+        </div>
+        <div class="in-res-stat">
+          <span class="in-res-stat-num">99/100</span>
+          <span class="in-res-stat-label">Primary source score</span>
+        </div>
+      </div>
+      <a href="https://museumofminds.com/constitution/" class="in-residence-cta">
+        Open document
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="documents-section">
+  <p class="section-label">Documents in the collection</p>
+  <div class="documents-grid">
+
+    <!-- LIVE: The Constitution -->
+    <div class="doc-card live" onclick="window.location.href='https://museumofminds.com/constitution/'">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none"/>
+          <circle cx="22" cy="22" r="14" stroke="#A88425" stroke-width="0.8" fill="rgba(168,132,37,0.08)"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="14" fill="#A88425" font-weight="bold">US</text>
+        </svg>
+        <span class="doc-card-year">RATIFIED 1788</span>
+      </div>
+      <div class="doc-card-body">
+        <div class="trust-badge">99 / 100 · Primary Source</div>
+        <h2 class="doc-card-title">The Constitution of the United States</h2>
+        <p class="doc-card-subtitle">Articles I–VII + 27 Amendments</p>
+        <p class="doc-card-desc">Ask the Constitution about any article, section, or amendment. It quotes itself, surfaces the Federalist and Anti-Federalist debates, and cites how the Supreme Court has read each clause. It does not opine.</p>
+        <a href="https://museumofminds.com/constitution/" class="doc-card-cta">Open document <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+
+    <!-- LIVE: Declaration of Independence -->
+    <div class="doc-card live" onclick="window.location.href='https://museumofminds.com/declaration-of-independence/'">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none"/>
+          <circle cx="22" cy="22" r="14" stroke="#A88425" stroke-width="0.8" fill="rgba(168,132,37,0.08)"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="10" fill="#A88425" font-weight="bold">1776</text>
+        </svg>
+        <span class="doc-card-year">JULY 4, 1776</span>
+      </div>
+      <div class="doc-card-body">
+        <div class="trust-badge">Primary Source</div>
+        <h2 class="doc-card-title">The Declaration of Independence</h2>
+        <p class="doc-card-subtitle">Jefferson · Continental Congress · 1776</p>
+        <p class="doc-card-desc">Jefferson's self-evident truths, the list of grievances against the Crown, and two centuries of commentary on what "all men are created equal" actually meant — and has come to mean.</p>
+        <a href="https://museumofminds.com/declaration-of-independence/" class="doc-card-cta">Open document <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+
+    <!-- LIVE: Bill of Rights -->
+    <div class="doc-card live" onclick="window.location.href='https://museumofminds.com/bill-of-rights/'">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none"/>
+          <circle cx="22" cy="22" r="14" stroke="#A88425" stroke-width="0.8" fill="rgba(168,132,37,0.08)"/>
+          <text x="22" y="22" text-anchor="middle" font-family="serif" font-size="8" fill="#A88425" font-weight="bold">Amend</text>
+          <text x="22" y="31" text-anchor="middle" font-family="serif" font-size="9" fill="#A88425" font-weight="bold">I – X</text>
+        </svg>
+        <span class="doc-card-year">RATIFIED 1791</span>
+      </div>
+      <div class="doc-card-body">
+        <div class="trust-badge">Primary Source</div>
+        <h2 class="doc-card-title">The Bill of Rights</h2>
+        <p class="doc-card-subtitle">The First Ten Amendments · Ratified December 15, 1791</p>
+        <p class="doc-card-desc">Speech, religion, the press, arms, search and seizure, self-incrimination, jury trial, cruel punishment, reserved powers. Two and a quarter centuries of contested application.</p>
+        <a href="https://museumofminds.com/bill-of-rights/" class="doc-card-cta">Open document <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+
+    <!-- COMING SOON: Federalist Papers -->
+    <div class="doc-card coming-soon">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="9" fill="#A88425">Fed 51</text>
+        </svg>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+      <div class="doc-card-body">
+        <h2 class="doc-card-title">The Federalist Papers</h2>
+        <p class="doc-card-subtitle">Hamilton, Madison, Jay — 1787–1788</p>
+        <p class="doc-card-desc">Eighty-five essays arguing for ratification. The most important American political theory document, available as a standalone speaker with cross-references to the Constitution's text.</p>
+      </div>
+    </div>
+
+    <!-- COMING SOON: Emancipation Proclamation -->
+    <div class="doc-card coming-soon">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="10" fill="#A88425">1863</text>
+        </svg>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+      <div class="doc-card-body">
+        <h2 class="doc-card-title">The Emancipation Proclamation</h2>
+        <p class="doc-card-subtitle">January 1, 1863</p>
+        <p class="doc-card-desc">Lincoln's executive order, the debates over its legal authority, and its relationship to the Thirteenth Amendment — the document that started the end of American slavery.</p>
+      </div>
+    </div>
+
+    <!-- COMING SOON: Magna Carta -->
+    <div class="doc-card coming-soon">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="10" fill="#A88425">1215</text>
+        </svg>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+      <div class="doc-card-body">
+        <h2 class="doc-card-title">Magna Carta</h2>
+        <p class="doc-card-subtitle">1215 · Runnymede</p>
+        <p class="doc-card-desc">The foundational limit on royal power — due process, habeas corpus, the principle that no person is above the law. The text from which eight centuries of Anglo-American law descends.</p>
+      </div>
+    </div>
+
+    <!-- COMING SOON: 14th Amendment -->
+    <div class="doc-card coming-soon">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="9" fill="#A88425">XIV</text>
+        </svg>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+      <div class="doc-card-body">
+        <h2 class="doc-card-title">The Fourteenth Amendment</h2>
+        <p class="doc-card-subtitle">Ratified July 9, 1868</p>
+        <p class="doc-card-desc">Equal protection. Due process. Citizenship for the formerly enslaved. The most litigated amendment in American history, presented as a standalone document with the full arc of its interpretation.</p>
+      </div>
+    </div>
+
+    <!-- COMING SOON: SCOTUS Landmark Cases -->
+    <div class="doc-card coming-soon">
+      <div class="doc-card-seal">
+        <svg class="doc-card-seal-icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#A88425" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+          <line x1="22" y1="13" x2="22" y2="31" stroke="#A88425" stroke-width="1"/>
+          <line x1="14" y1="17" x2="30" y2="17" stroke="#A88425" stroke-width="1"/>
+          <path d="M14 17 L11 23 L17 23 Z" stroke="#A88425" stroke-width="0.8" fill="none"/>
+          <path d="M30 17 L27 23 L33 23 Z" stroke="#A88425" stroke-width="0.8" fill="none"/>
+        </svg>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
+      <div class="doc-card-body">
+        <h2 class="doc-card-title">Supreme Court Landmark Cases</h2>
+        <p class="doc-card-subtitle">Marbury to Dobbs · 1803–2022</p>
+        <p class="doc-card-desc">The cases that remade America — judicial review, segregation, Miranda rights, abortion, marriage equality, gun rights. Majority and dissent in dialogue.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner">
+    <h2 class="about-title">About the Documents Wing</h2>
+    <div class="about-body">
+      <p>Every document in this collection quotes itself. It does not paraphrase. When you ask about a clause, it gives you the clause — verbatim. When the question is contested, it surfaces the debate on both sides and refuses to declare a winner.</p>
+      <p>The Constitution quotes itself, the Federalist Papers, the Anti-Federalist arguments, and the majority and dissenting opinions of fifteen landmark Supreme Court cases. It takes no political position. It has no party affiliation. It predates both major American political parties.</p>
+      <p>The Bill of Rights quotes its ten amendments and the two centuries of Supreme Court decisions that have interpreted, expanded, and contested each one — from Schenck to Brandenburg, from Heller to Bruen, from Miranda to Gideon.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">Museum of Minds · The Documents Wing · Est. 2025</span>
+  <a href="/" class="footer-back">← Return to the Museum</a>
+</footer>
+
+</body>
+</html>
