@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SC Curriculum Alignment — Museum of Minds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:       #0A090C;
+      --deep:       #111018;
+      --wall:       #1A1825;
+      --mid:        #232135;
+      --brass:      #C49A3C;
+      --brass-dim:  #7A5E20;
+      --brass-pale: #E8C96A;
+      --cream:      #EDE8D8;
+      --text:       #D4CEB8;
+      --dim:        #6B6455;
+      --green:      #5A9A5A;
+      --green-dim:  #3A6A3A;
+      --blue:       #4A7AA0;
+      --blue-dim:   #2A4A6A;
+      --red:        #8B2020;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid rgba(196,154,60,0.18);
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .header-nav { display: flex; align-items: center; gap: 1.2rem; }
+    .back-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--brass-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--brass); }
+    .header-divider { width: 1px; height: 24px; background: rgba(196,154,60,0.2); }
+    .header-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+    }
+    .header-actions { display: flex; gap: 0.6rem; align-items: center; }
+    .btn-print {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.1rem;
+      background: var(--brass-dim);
+      color: var(--void);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-print:hover { background: var(--brass); }
+    .btn-outline {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.1rem;
+      background: transparent;
+      color: var(--brass-dim);
+      border: 1px solid rgba(196,154,60,0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover { color: var(--brass); border-color: var(--brass-dim); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(180deg, var(--deep) 0%, var(--void) 100%);
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+      padding: 3rem 3rem 2.5rem;
+      position: relative;
+      z-index: 5;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brass-dim), transparent);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.75rem;
+    }
+    .hero-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 680px;
+      margin-bottom: 1.4rem;
+    }
+    .hero-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      display: flex;
+      gap: 2rem;
+    }
+    .hero-meta span { color: var(--brass-dim); }
+
+    /* ── TOC ── */
+    .toc-band {
+      background: var(--deep);
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+      padding: 1.2rem 3rem;
+      position: relative;
+      z-index: 5;
+    }
+    .toc-inner {
+      max-width: 900px;
+      display: flex;
+      gap: 0.5rem 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .toc-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      flex-shrink: 0;
+      margin-right: 0.5rem;
+    }
+    .toc-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover { color: var(--brass); }
+    .toc-sep { color: var(--dim); font-size: 0.6rem; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-block { margin-bottom: 4rem; }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.5rem;
+    }
+    .section-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(196,154,60,0.14);
+    }
+    .section-intro {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
+      font-style: italic;
+    }
+
+    .subsection-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(196,154,60,0.08);
+    }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.97rem;
+    }
+    thead tr {
+      background: var(--deep);
+      border-bottom: 1px solid rgba(196,154,60,0.2);
+    }
+    th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      padding: 0.8rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(196,154,60,0.06);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(196,154,60,0.02); }
+
+    .code-pill {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.5rem;
+      background: rgba(90,154,90,0.12);
+      border: 1px solid rgba(90,154,90,0.25);
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .law-pill {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.5rem;
+      background: rgba(74,122,160,0.12);
+      border: 1px solid rgba(74,122,160,0.25);
+      color: var(--blue);
+      white-space: nowrap;
+    }
+    .ap-pill {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.5rem;
+      background: rgba(139,32,32,0.12);
+      border: 1px solid rgba(139,32,32,0.3);
+      color: #C46060;
+      white-space: nowrap;
+    }
+    .check { color: var(--green); font-weight: 600; }
+    .dash { color: var(--dim); }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      padding: 1.4rem 1.6rem;
+      margin: 1.8rem 0;
+      border-left: 3px solid;
+    }
+    .callout-law {
+      background: rgba(74,122,160,0.06);
+      border-color: var(--blue-dim);
+    }
+    .callout-green {
+      background: rgba(90,154,90,0.06);
+      border-color: var(--green-dim);
+    }
+    .callout-brass {
+      background: rgba(196,154,60,0.05);
+      border-color: var(--brass-dim);
+    }
+    .callout-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .callout-law .callout-title { color: var(--blue); }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-brass .callout-title { color: var(--brass-dim); }
+    .callout p { font-size: 1rem; color: var(--text); line-height: 1.7; }
+    .callout p + p { margin-top: 0.5rem; }
+    .callout strong { color: var(--cream); }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: flex;
+      gap: 1px;
+      margin: 1.5rem 0;
+      background: rgba(196,154,60,0.1);
+    }
+    .stat-cell {
+      flex: 1;
+      background: var(--deep);
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--brass-pale);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* ── FEDERALIST COMPARISON ── */
+    .fed-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(196,154,60,0.1);
+      margin: 1.5rem 0;
+    }
+    .fed-cell {
+      background: var(--deep);
+      padding: 0.75rem 1rem;
+    }
+    .fed-head {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(196,154,60,0.1);
+    }
+    .fed-item {
+      font-size: 0.9rem;
+      color: var(--text);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(196,154,60,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fed-item:last-child { border-bottom: none; }
+    .fed-item .paper { font-weight: 500; color: var(--cream); }
+
+    /* ── PRIVACY GRID ── */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .privacy-item {
+      background: var(--deep);
+      border: 1px solid rgba(196,154,60,0.1);
+      padding: 1.2rem;
+    }
+    .privacy-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .privacy-body { font-size: 0.95rem; color: var(--text); line-height: 1.65; }
+
+    /* ── BOTTOM LINE ── */
+    .bottom-line {
+      background: var(--deep);
+      border: 1px solid rgba(196,154,60,0.18);
+      padding: 2rem 2.4rem;
+      margin-top: 3rem;
+    }
+    .bottom-line-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass-dim);
+      margin-bottom: 0.75rem;
+    }
+    .bottom-line p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .bottom-line strong { color: var(--cream); }
+
+    /* ── SOURCES FOOTER ── */
+    .sources-block {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(196,154,60,0.1);
+    }
+    .sources-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.8rem;
+    }
+    .sources-list { list-style: none; }
+    .sources-list li {
+      font-size: 0.88rem;
+      color: var(--dim);
+      line-height: 1.6;
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .sources-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--brass-dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(196,154,60,0.08);
+      padding: 1.8rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 760px) {
+      header, .hero, .toc-band, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      main { padding: 2rem 1.5rem 4rem; }
+      .privacy-grid { grid-template-columns: 1fr; }
+      .fed-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-wrap: wrap; }
+      .hero-heading { font-size: 1.5rem; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white !important; color: #111 !important; font-size: 10pt; }
+      body::before { display: none; }
+      header .header-actions { display: none; }
+      .toc-band { display: none; }
+      .hero { background: white !important; border-bottom: 1pt solid #ccc !important; padding: 1rem 1.5rem !important; }
+      main { max-width: none; padding: 0 1.5rem; }
+      .section-block { page-break-inside: avoid; margin-bottom: 2rem; }
+      .section-heading { color: #111 !important; border-bottom: 1pt solid #999 !important; font-size: 13pt; }
+      .subsection-heading { color: #222 !important; font-size: 10pt; }
+      .section-intro, td, .callout p, .privacy-body { color: #222 !important; }
+      .hero-heading { color: #111 !important; font-size: 18pt; }
+      .hero-sub { color: #333 !important; }
+      .hero-meta, .hero-eyebrow { color: #666 !important; }
+      thead tr { background: #f5f5f5 !important; }
+      th { color: #444 !important; }
+      td { border-bottom: 0.5pt solid #ddd !important; }
+      .code-pill { background: #eafaea !important; border-color: #999 !important; color: #2a6a2a !important; }
+      .law-pill { background: #eaf0fa !important; border-color: #999 !important; color: #2a4a7a !important; }
+      .ap-pill { background: #faeeee !important; border-color: #999 !important; color: #8b2020 !important; }
+      .callout { border-left: 2pt solid #999 !important; background: #f9f9f9 !important; }
+      .callout-title { color: #444 !important; }
+      .stat-cell { background: #f5f5f5 !important; }
+      .stat-number { color: #444 !important; }
+      .stat-label { color: #666 !important; }
+      .fed-cell { background: #f9f9f9 !important; }
+      .fed-head { color: #555 !important; border-color: #ccc !important; }
+      .fed-item .paper { color: #111 !important; }
+      .privacy-item { background: #f9f9f9 !important; border-color: #ccc !important; }
+      .privacy-title { color: #2a5a2a !important; }
+      .bottom-line { background: #f5f5f5 !important; border-color: #ccc !important; }
+      .bottom-line p { color: #222 !important; }
+      .bottom-line strong { color: #111 !important; }
+      .sources-list li, .sources-title { color: #666 !important; }
+      footer { display: none; }
+      .section-eyebrow { color: #888 !important; }
+      .check { color: #2a7a2a !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-nav">
+      <a href="/educator/" class="back-link">← Educator Portal</a>
+      <div class="header-divider"></div>
+      <div class="header-title">SC Curriculum Alignment</div>
+    </div>
+    <div class="header-actions">
+      <a href="/educator/" class="btn-outline">Educator Portal</a>
+      <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Museum of Minds — Standards Documentation</div>
+    <h1 class="hero-heading">South Carolina Curriculum<br>Alignment Brief</h1>
+    <p class="hero-sub">
+      A complete mapping of Museum of Minds to SC Social Studies standards, state legislative mandates,
+      College Board AP frameworks, the SC AI Standards Framework, and the Profile of the SC Graduate.
+    </p>
+    <div class="hero-meta">
+      <span>Prepared for <span>LexRich 5 School District · Office of Academics</span></span>
+      <span>Version <span>2.0</span></span>
+      <span>Updated <span>May 2026</span></span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-band">
+    <div class="toc-inner">
+      <span class="toc-label">Sections</span>
+      <a href="#sc-standards" class="toc-link">SC Social Studies Standards</a>
+      <span class="toc-sep">·</span>
+      <a href="#legislative" class="toc-link">Legislative Mandates</a>
+      <span class="toc-sep">·</span>
+      <a href="#ai-framework" class="toc-link">SC AI Framework</a>
+      <span class="toc-sep">·</span>
+      <a href="#grad-profile" class="toc-link">Graduate Profile</a>
+      <span class="toc-sep">·</span>
+      <a href="#bill-5253" class="toc-link">Bill 5253 Compliance</a>
+      <span class="toc-sep">·</span>
+      <a href="#privacy" class="toc-link">Privacy</a>
+      <span class="toc-sep">·</span>
+      <a href="#ap" class="toc-link">AP Alignment</a>
+      <span class="toc-sep">·</span>
+      <a href="#appendix" class="toc-link">Appendix</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- OVERVIEW STATS -->
+    <div class="stat-row">
+      <div class="stat-cell">
+        <span class="stat-number">51</span>
+        <span class="stat-label">Historical Figures</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">106K+</span>
+        <span class="stat-label">Primary Source Vectors</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">21</span>
+        <span class="stat-label">USHC Indicators Covered</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">14</span>
+        <span class="stat-label">Required AP Gov SCOTUS Cases</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">85</span>
+        <span class="stat-label">Federalist Papers in Corpus</span>
+      </div>
+    </div>
+
+    <!-- SECTION 1: SC STANDARDS -->
+    <div class="section-block" id="sc-standards">
+      <div class="section-eyebrow">Section 1</div>
+      <h2 class="section-heading">SC Social Studies Standards Alignment</h2>
+      <p class="section-intro">
+        Standards mapped to official indicator names from the SCDOE US History and the Constitution Alignment Guide (August 2024)
+        and the United States Government Alignment Guide (2019/2020).
+      </p>
+
+      <h3 class="subsection-heading">United States History and the Constitution — Grade 11 (USHC)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Museum of Minds Feature</th>
+              <th>SC Standard</th>
+              <th>Official Topic / Indicator Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chat with Hamilton, Madison, Paine on colonial identity and regional differences</td>
+              <td><span class="code-pill">USHC.1.CO</span></td>
+              <td><strong>Comparison of Colonial Regions</strong> — Analyze development of American identity through founding principles and social/economic differences of Northern and Southern colonies, 1607–1763</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Madison on Federalist Papers &amp; Constitution</td>
+              <td><span class="code-pill">USHC.1.CE</span></td>
+              <td><strong>Causes and Effects of the American Revolution</strong> — Assess major developments through founding documents: Declaration of Independence, Constitution, Federalist Papers, Bill of Rights</td>
+            </tr>
+            <tr>
+              <td>Chat with Jefferson, Hamilton, Washington on federalism</td>
+              <td><span class="code-pill">USHC.1.P</span></td>
+              <td><strong>Development of Federalism</strong> — Summarize changing relationship between individuals and government, 1607–1800</td>
+            </tr>
+            <tr>
+              <td>Chat with Franklin, Paine on Atlantic World republicanism</td>
+              <td><span class="code-pill">USHC.1.CX</span></td>
+              <td><strong>Atlantic World's Impact on Development of Republicanism</strong> — Contextualize significant republican developments within North America's Atlantic connection</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Madison on role of the federal government</td>
+              <td><span class="code-pill">USHC.1.CC</span></td>
+              <td><strong>Role of the Federal Government</strong> — Analyze debates over proper role of central government and neutrality, 1789–1815</td>
+            </tr>
+            <tr>
+              <td>Any conversation using source-cited primary text</td>
+              <td><span class="code-pill">USHC.1.E</span></td>
+              <td><strong>Primary and Secondary Source Analysis</strong> — Utilize primary and secondary sources to investigate Atlantic influence on Republicanism and Federalism</td>
+            </tr>
+            <tr>
+              <td>Chat with Lincoln, Douglass on antebellum North and South</td>
+              <td><span class="code-pill">USHC.2.CO</span></td>
+              <td><strong>Comparison of the Antebellum North and South</strong> — Compare social, economic, and political differences between antebellum regions, 1803–1861</td>
+            </tr>
+            <tr>
+              <td>Chat with Lincoln, Douglass on geographic expansion and sectionalism</td>
+              <td><span class="code-pill">USHC.2.CE</span></td>
+              <td><strong>Causes and Effects of Geographic Expansion</strong> — Evaluate causes and consequences of expansion and sectional conflict, 1803–1865</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Tubman, Anthony on reform movements</td>
+              <td><span class="code-pill">USHC.2.P</span></td>
+              <td><strong>Technological Changes and Social Reform Movements</strong> — Summarize impact of changes including Abolitionist and Women's Rights Movements</td>
+            </tr>
+            <tr>
+              <td>Chat with Lincoln, Douglass on federal power vs. states</td>
+              <td><span class="code-pill">USHC.2.CX</span></td>
+              <td><strong>Federal Government's Role in Securing Natural Rights</strong> — Contextualize perspectives on the role of federal government, 1830–1877</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Lincoln on Reconstruction</td>
+              <td><span class="code-pill">USHC.2.CC</span></td>
+              <td><strong>Development of Sectionalism and Reunion</strong> — Differentiate patterns of continuity and change through the Civil War and Reconstruction</td>
+            </tr>
+            <tr>
+              <td>Any primary-source conversation (Standard 2 topics)</td>
+              <td><span class="code-pill">USHC.2.E</span></td>
+              <td><strong>Primary and Secondary Source Analysis</strong> — Utilize primary and secondary sources for Expansion and Union era inquiry</td>
+            </tr>
+            <tr>
+              <td>Chat with Smith, Marx, Hayek on capitalism and labor</td>
+              <td><span class="code-pill">USHC.3.CO</span></td>
+              <td><strong>Comparisons of Industrial and Labor Leaders</strong> — Compare strategies of Captains of Industry vs. leaders of the labor movement</td>
+            </tr>
+            <tr>
+              <td>Chat with Marx, Keller, Hayek on Populist and Progressive reform</td>
+              <td><span class="code-pill">USHC.3.CE</span></td>
+              <td><strong>Causes and Effects of Populist and Progressive Movements</strong> — Analyze causes and effects of reform movements, 1862–1924</td>
+            </tr>
+            <tr>
+              <td>Chat with Smith, Hayek, Keynes on government and corporate economy</td>
+              <td><span class="code-pill">USHC.3.P</span></td>
+              <td><strong>Government Policies, Corporate Expansion, and Impacts</strong> — Examine relationship between expanding corporate economy and American government, 1862–1924</td>
+            </tr>
+            <tr>
+              <td>Chat with Du Bois, Mencken on Gilded Age demographics and culture</td>
+              <td><span class="code-pill">USHC.3.CX</span></td>
+              <td><strong>Demographic Changes in the Gilded Age</strong> — Contextualize migration, immigration, urbanization, and cultural change</td>
+            </tr>
+            <tr>
+              <td>Chat with Latimer, Carver, Julian, Bath, Drew on innovation</td>
+              <td><span class="code-pill">USHC.3.E</span></td>
+              <td><strong>Primary and Secondary Source Analysis</strong> — Utilize primary/secondary sources to analyze innovation and industrialization</td>
+            </tr>
+            <tr>
+              <td>Chat with FDR on U.S. foreign intervention, WWI/WWII</td>
+              <td><span class="code-pill">USHC.4.CO</span></td>
+              <td><strong>Comparison of Motives for and Outcomes of U.S. Foreign Intervention</strong> — Compare motivations and results, 1893–1945</td>
+            </tr>
+            <tr>
+              <td>Chat with Hayek, Keynes on Great Depression / New Deal</td>
+              <td><span class="code-pill">USHC.4.CE</span></td>
+              <td><strong>Causes and Effects of Boom and Bust Cycles</strong> — Evaluate causes and effects of capitalism's business cycles</td>
+            </tr>
+            <tr>
+              <td>Chat with FDR, Hayek on government's role in economy</td>
+              <td><span class="code-pill">USHC.4.P</span></td>
+              <td><strong>Changing Role of the Government in the Economy</strong> — Summarize changing role, 1917–1945</td>
+            </tr>
+            <tr>
+              <td>Chat with FDR on WWII homefront and mobilization</td>
+              <td><span class="code-pill">USHC.4.CC</span></td>
+              <td><strong>U.S. Homefront During the World Wars</strong> — Analyze domestic mobilization, rationing, and societal changes during wartime</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Du Bois, Baldwin, Keller, Anthony on civil rights</td>
+              <td><span class="code-pill">USHC.5.CC</span></td>
+              <td><strong>Movements for Civil Rights</strong> — Evaluate continuities and changes during the Civil Rights Movement and equal rights movements, 1945–present</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-heading">United States Government — Grade 12 (USG)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Museum of Minds Feature</th>
+              <th>SC Standard</th>
+              <th>Official Topic / Indicator Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chat with Hamilton, Madison, Jefferson, Paine on philosophical origins</td>
+              <td><span class="code-pill">USG.1.ER</span></td>
+              <td><strong>Philosophical Origins of American Democracy</strong> — Analyze philosophical influences (Locke, Montesquieu, Rousseau, Hobbes, Blackstone) on core political principles: natural rights, social contract, separation of powers, representative government</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Madison, The Constitution on founding documents</td>
+              <td><span class="code-pill">USG.1.IN</span></td>
+              <td><strong>Interpreting Founding Documents</strong> — Interpret Constitution, Bill of Rights, Declaration of Independence, Articles of Confederation, and Federalist Papers [4, 10, 37, 47, 51, 84]</td>
+            </tr>
+            <tr>
+              <td>Debate Arena: Hamilton vs. Madison on ratification debates</td>
+              <td><span class="code-pill">USG.1.CC</span></td>
+              <td><strong>Formation and Ratification of the Constitution</strong> — Analyze major debates and compromises: Constitutional Convention, Federalists vs. Antifederalists, Federalist Papers [4, 10, 37, 47, 51, 84]; Marbury v. Madison (1803)</td>
+            </tr>
+            <tr>
+              <td>Chat with The Constitution persona on real-world application</td>
+              <td><span class="code-pill">USG.1.IP</span></td>
+              <td><strong>Constitutional Principles in Real-World Situations</strong> — Investigate and communicate importance of constitutional principles; amendment process, living document concept, judicial review</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Madison on Articles I–III</td>
+              <td><span class="code-pill">USG.2.ER</span></td>
+              <td><strong>Three Branches of Government</strong> — Explain authority, organization, and responsibilities per Articles I–III; Gibbons v. Ogden (1824), McCulloch v. Maryland (1819)</td>
+            </tr>
+            <tr>
+              <td>Chat with Madison, Hamilton on Bill of Rights / power distribution</td>
+              <td><span class="code-pill">USG.2.IN</span></td>
+              <td><strong>Distribution of Power</strong> — Analyze how power is distributed, shared, and limited; all Amendments, Elastic/Necessary &amp; Proper Clause, Supremacy Clause, Federalism</td>
+            </tr>
+            <tr>
+              <td>Chat with Taylor, Madison on federalism and state government</td>
+              <td><span class="code-pill">USG.2.CC</span></td>
+              <td><strong>State and Local Government</strong> — Explain how SC and local governments function within constitutional government; concurrent, expressed, reserved, and implied powers</td>
+            </tr>
+            <tr>
+              <td>The Constitution persona (living document, judicial review)</td>
+              <td><span class="code-pill">USG.2.IP</span></td>
+              <td><strong>Rule of Law</strong> — Synthesize why rule of law has a central place in American society; judicial review, federal court system, types of jurisdiction</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Jefferson on policy making and political ideology</td>
+              <td><span class="code-pill">USG.3.IN</span></td>
+              <td><strong>The Political Process</strong> — Interpret how American political beliefs are shaped by founding principles, core values, and changing demographics</td>
+            </tr>
+            <tr>
+              <td>Chat with Jefferson, Hamilton on Electoral College</td>
+              <td><span class="code-pill">USG.3.IP</span></td>
+              <td><strong>Electoral Process</strong> — Explain how the electoral process works in federal elections</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Du Bois, Baldwin, Keller, Anthony on civil rights</td>
+              <td><span class="code-pill">USG.4.CC</span></td>
+              <td><strong>Equal Rights and Civil Rights</strong> — Analyze contemporary issues and governmental responses regarding equal protection and access</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-heading">Grade 8 — South Carolina and the United States</h3>
+      <div class="callout callout-green">
+        <div class="callout-title">The E Indicator</div>
+        <p>The E indicator (Primary and Secondary Source Analysis) appears in <strong>every Grade 8 standard</strong> — 8.1.E through 8.5.E. It is the core disciplinary skill the state tests. Every Museum of Minds conversation that surfaces source citations satisfies this indicator.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Museum of Minds Feature</th>
+              <th>SC Standard</th>
+              <th>Topic Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Any conversation with primary source citations</td>
+              <td><span class="code-pill">8.1.E–8.5.E</span></td>
+              <td>Primary and Secondary Source Analysis — core disciplinary skill at every grade 8 standard</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Moultrie, Washington on Revolution</td>
+              <td><span class="code-pill">8.2.CO</span></td>
+              <td>Compare motives and demographics of Loyalists and Patriots within South Carolina and the colonies</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Madison, Jefferson on founding principles</td>
+              <td><span class="code-pill">8.2.P</span></td>
+              <td>Analyze significant founding principles that led to the development of federalism in South Carolina and the United States</td>
+            </tr>
+            <tr>
+              <td>Chat with Moultrie, Jefferson, Hamilton on SC's role in independence</td>
+              <td><span class="code-pill">8.2.CX</span></td>
+              <td>Contextualize the roles of various groups of South Carolinians as the colonies moved toward independence</td>
+            </tr>
+            <tr>
+              <td>Chat with Hamilton, Taylor, Jefferson on slavery and federalism</td>
+              <td><span class="code-pill">8.3.CO</span></td>
+              <td>Compare the debates between South Carolina and the federal government regarding slavery, federalism, and the Constitution</td>
+            </tr>
+            <tr>
+              <td>Chat with Lincoln on Civil War</td>
+              <td><span class="code-pill">8.3.CE</span></td>
+              <td>Examine consequences of major Civil War military strategies</td>
+            </tr>
+            <tr>
+              <td>Chat with Lincoln, Douglass on Civil War Amendments</td>
+              <td><span class="code-pill">8.3.P</span></td>
+              <td>Analyze the Civil War Amendments (13th, 14th, 15th) as a turning point</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Tubman, Du Bois on marginalized groups</td>
+              <td><span class="code-pill">8.3.CC</span></td>
+              <td>Analyze debates and efforts to recognize the natural rights of marginalized groups during expansion and sectionalism</td>
+            </tr>
+            <tr>
+              <td>Chat with Douglass, Du Bois, Baldwin on Reconstruction / Jim Crow</td>
+              <td><span class="code-pill">8.4.CC</span></td>
+              <td>Analyze continuities and change in the African American experience in Reconstruction and Jim Crow eras within South Carolina</td>
+            </tr>
+            <tr>
+              <td>Chat with FDR on WWII and the homefront</td>
+              <td><span class="code-pill">8.5.CO</span></td>
+              <td>Compare South Carolina and US wartime contributions and demobilization after World War II</td>
+            </tr>
+            <tr>
+              <td>Chat with Du Bois, Baldwin on the Civil Rights Movement</td>
+              <td><span class="code-pill">8.5.CX</span></td>
+              <td>Analyze the correlation between the Modern Civil Rights Movement in South Carolina and the US</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 2: LEGISLATIVE MANDATES -->
+    <div class="section-block" id="legislative">
+      <div class="section-eyebrow">Section 2</div>
+      <h2 class="section-heading">SC Legislative Mandates Directly Satisfied</h2>
+      <p class="section-intro">Four specific SC statutes impose curriculum requirements that Museum of Minds directly addresses. These are not aspirational alignments — they are requirements every SC district must satisfy.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>SC Law</th>
+              <th>Requirement</th>
+              <th>Museum of Minds Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="law-pill">§ 59-29-120</span></td>
+              <td>No student may receive a graduation certificate without passing a satisfactory examination on the Constitution, Declaration of Independence, and <strong>Federalist Papers</strong></td>
+              <td>USG Alignment Guide names Federalist Papers <strong>4, 10, 37, 47, 51, 84</strong>. Hamilton persona (6,231+ corpus chunks); Madison persona (3,593+ chunks, authored Federalist 10 &amp; 51); The Constitution persona (1,640 vectors including all 85 Federalist Papers in discourse corpus). Every paper named in the alignment guide is in corpus.</td>
+            </tr>
+            <tr>
+              <td><span class="law-pill">§ 59-29-155</span></td>
+              <td>Founding Principles Act — Instruction must include the Federalist Papers, separation of powers, Bill of Rights, and structure of government</td>
+              <td>Hamilton, Madison, Jefferson, Washington, Paine, The Constitution, Bill of Rights, George Mason, John Jay — all nine founding-era personas cover these topics with corpus-grounded responses. USG.1.IN, USG.1.CC, USG.2.ER, and USG.2.IN map directly to these requirements.</td>
+            </tr>
+            <tr>
+              <td><span class="law-pill">§ 59-29-55</span></td>
+              <td>Black history must be infused in SC social studies curriculum at all grade levels; every school must instruct in the history of Black people</td>
+              <td>Douglass, Tubman, Du Bois, Baldwin, Banneker, Carver, Latimer, Julian, Bath, Drew, Johnson — 11 figures spanning the full arc from the antebellum period through the 20th century, mapped to USHC.2.P, USHC.5.CC, 8.3.CC, 8.4.CC, and USG.4.CC</td>
+            </tr>
+            <tr>
+              <td><span class="law-pill">§ 59-29-10</span></td>
+              <td>Teaching of US and SC history required</td>
+              <td>28+ figures spanning colonial SC (Moultrie), founding era, Civil War, Reconstruction, Progressive Era, and 20th century</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3: SC AI FRAMEWORK -->
+    <div class="section-block" id="ai-framework">
+      <div class="section-eyebrow">Section 3</div>
+      <h2 class="section-heading">SC AI Standards Framework Alignment</h2>
+      <p class="section-intro">Framework authored by Andrew Cook, SCDOE Education Associate. Museum of Minds was designed with this framework in mind: the platform is not only a tool that uses AI, it is a demonstration of responsible AI use that students can observe and interrogate.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>SC AI Theme</th>
+              <th>How Museum of Minds Demonstrates It</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Computing Systems</strong></td>
+              <td>Students witness a real-world AI system (RAG — retrieval-augmented generation) operating transparently: retrieve → ground → generate. The architecture is visible, not hidden behind a consumer interface.</td>
+            </tr>
+            <tr>
+              <td><strong>Data and Analytics</strong></td>
+              <td>Source citation on every response teaches data provenance literacy — where did this claim come from, and how reliable is that source? The Trust Score (0–100 corpus depth rating) teaches confidence calibration. Students learn to ask "what is this AI's source?" rather than accepting outputs uncritically.</td>
+            </tr>
+            <tr>
+              <td><strong>Algorithms and Programming</strong></td>
+              <td>The pipeline is pedagogically visible: student question → semantic search of 106,000+ primary source passages → grounded AI response. Students can observe the algorithm at work. The <em>How It Works</em> section of the platform walks through each stage explicitly.</td>
+            </tr>
+            <tr>
+              <td><strong>Impacts of Computing</strong></td>
+              <td>Demonstrates responsible AI use in a discipline where misinformation is especially consequential — history. Students see how grounding in primary sources constrains AI behavior and why that constraint matters for truth and civic knowledge.</td>
+            </tr>
+            <tr>
+              <td><strong>Security and Privacy</strong></td>
+              <td>Architectural data minimization: no PII collected, conversation data auto-deleted, no student accounts required at the classroom level. The platform models privacy-by-design rather than privacy-by-policy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 4: GRADUATE PROFILE -->
+    <div class="section-block" id="grad-profile">
+      <div class="section-eyebrow">Section 4</div>
+      <h2 class="section-heading">Profile of the South Carolina Graduate</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>SC Graduate Profile Element</th>
+              <th>Museum of Minds Connection</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Critical thinking and problem solving</strong></td>
+              <td>Students must evaluate primary source claims, interrogate historical figures, and form evidence-based positions — not passively receive summaries</td>
+            </tr>
+            <tr>
+              <td><strong>Communication, information, media, and technology</strong></td>
+              <td>Students engage AI as a research tool, critically evaluating source quality and citation rather than accepting AI outputs uncritically</td>
+            </tr>
+            <tr>
+              <td><strong>Creativity and innovation</strong></td>
+              <td>Open-ended conversation format encourages students to formulate original questions and pursue unexpected lines of inquiry</td>
+            </tr>
+            <tr>
+              <td><strong>Knowing how to learn</strong></td>
+              <td>Students direct their own inquiry within structured primary-source constraints — self-direction within evidence-based bounds</td>
+            </tr>
+            <tr>
+              <td><strong>Self-direction</strong></td>
+              <td>Students choose which figures to engage, which topics to explore, and how deeply to pursue a line of argument</td>
+            </tr>
+            <tr>
+              <td><strong>Global perspective</strong></td>
+              <td>Figures span American founding, European intellectual tradition, African American history, and scientific discovery</td>
+            </tr>
+            <tr>
+              <td><strong>Integrity</strong></td>
+              <td>When a question goes beyond documented sources, the figure says so explicitly. No fabrication; transparent sourcing throughout</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 5: BILL 5253 -->
+    <div class="section-block" id="bill-5253">
+      <div class="section-eyebrow">Section 5</div>
+      <h2 class="section-heading">SC Bill 5253 Compliance Readiness</h2>
+      <p class="section-intro">Pending legislation in the 2025–2026 SC General Assembly session. Museum of Minds was built for the regulatory direction South Carolina is heading. Districts that pilot now are already aligned with what Bill 5253 will require if it passes.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Bill 5253 Requirement</th>
+              <th>Museum of Minds Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Written parental opt-in consent before students use AI for instruction</td>
+              <td><span class="check">✓ Ready</span> — Teacher dashboard controls student access. Students only access via teacher-issued classroom passcode. Parental notice template available on request.</td>
+            </tr>
+            <tr>
+              <td>Annual written disclosure to parents listing all AI tools, educational purpose, and vendor details</td>
+              <td><span class="check">✓ Ready</span> — Privacy policy, terms of service, and vendor disclosure language available at museumofminds.com/privacy</td>
+            </tr>
+            <tr>
+              <td>AI-generated content requires teacher review/approval before students see it</td>
+              <td><span class="check">✓ Compliant by design</span> — Source citations are visible on every response. Teacher can preview any conversation. No content is hidden from teacher oversight.</td>
+            </tr>
+            <tr>
+              <td>AI cannot replace a licensed teacher in core instruction or final grading</td>
+              <td><span class="check">✓ Not applicable</span> — Museum of Minds is a discussion and primary source engagement tool, not an instruction or assessment platform. Teachers assign and assess; the platform facilitates inquiry.</td>
+            </tr>
+            <tr>
+              <td>Data minimization — only minimum data necessary for educational purpose</td>
+              <td><span class="check">✓ Architectural</span> — No PII collected. No student accounts. No behavioral tracking. Conversation data auto-deleted.</td>
+            </tr>
+            <tr>
+              <td>Students may not use generative AI for graded assignments unless teacher authorizes</td>
+              <td><span class="check">✓ Compliant</span> — The platform generates discussion responses, not student work product. No "submit as assignment" feature exists.</td>
+            </tr>
+            <tr>
+              <td>Public list of approved AI tools and intended uses</td>
+              <td><span class="check">✓ Ready to supply</span> — Full tool description, data handling statement, and educational purpose documentation available for district technology review.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 6: PRIVACY -->
+    <div class="section-block" id="privacy">
+      <div class="section-eyebrow">Section 6</div>
+      <h2 class="section-heading">Privacy &amp; Data Posture</h2>
+      <div class="privacy-grid">
+        <div class="privacy-item">
+          <div class="privacy-title">No Student PII Collected</div>
+          <div class="privacy-body">Architectural, not policy. No student accounts, no name/email fields, no tracking. Privacy is built into the infrastructure, not enforced by a policy that could be changed.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-title">No AI Training on Conversations</div>
+          <div class="privacy-body">Conversation data is not retained for model training. Student interactions do not improve or inform the underlying AI models in any way.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-title">Conversation Auto-Deletion</div>
+          <div class="privacy-body">Session data is not persisted beyond the active session at the classroom tier. No conversation logs are stored on our servers after the session ends.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-title">FERPA-Aligned</div>
+          <div class="privacy-body">No student education records are created or maintained. The platform cannot become subject to a FERPA request because no student records exist to request.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-title">COPPA-Aligned</div>
+          <div class="privacy-body">No data is collected from users under 13. The architectural no-PII posture applies equally to younger students.</div>
+        </div>
+        <div class="privacy-item">
+          <div class="privacy-title">No Student-to-Student Communication</div>
+          <div class="privacy-body">Compliant with SC Bill 3244 expectations for school-device software approval. No social or communication features exist on the platform.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: AP ALIGNMENT -->
+    <div class="section-block" id="ap">
+      <div class="section-eyebrow">Section 7</div>
+      <h2 class="section-heading">AP Course Alignment</h2>
+      <p class="section-intro">Schools offering AP courses use College Board frameworks. This section maps Museum of Minds to AP content requirements so AP teachers can evaluate the platform alongside their state-credentialed colleagues.</p>
+
+      <h3 class="subsection-heading">AP U.S. Government &amp; Politics — Required Foundational Documents</h3>
+      <p style="font-size:1rem;color:var(--text);margin-bottom:1.2rem;line-height:1.7;">The AP Gov CED lists 9 Required Foundational Documents every student must know. Museum of Minds directly supports 8 of 9.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Required AP Gov Foundational Document</th>
+              <th>Museum of Minds Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>The Declaration of Independence</strong></td>
+              <td>Jefferson persona (3,871+ corpus chunks); Declaration of Independence persona (document speaks directly)</td>
+            </tr>
+            <tr>
+              <td><strong>The U.S. Constitution</strong> (incl. Bill of Rights &amp; Amendments)</td>
+              <td>The Constitution persona (26 corpus chunks + 1,614 discourse chunks including all 85 Federalist Papers and 15+ landmark SCOTUS cases)</td>
+            </tr>
+            <tr>
+              <td><strong>Federalist No. 10</strong> (Madison — factions)</td>
+              <td>Madison persona (3,593+ chunks, authored No. 10); Hamilton persona (6,231+ chunks). Both in corpus.</td>
+            </tr>
+            <tr>
+              <td><strong>Federalist No. 51</strong> (Madison — checks and balances)</td>
+              <td>Madison persona (authored No. 51); Hamilton persona. Both in corpus.</td>
+            </tr>
+            <tr>
+              <td><strong>Federalist No. 70</strong> (Hamilton — executive energy)</td>
+              <td>Hamilton persona. In corpus.</td>
+            </tr>
+            <tr>
+              <td><strong>Federalist No. 78</strong> (Hamilton — judiciary)</td>
+              <td>Hamilton persona; The Constitution persona discourse. In corpus.</td>
+            </tr>
+            <tr>
+              <td><strong>Brutus No. 1</strong> (Anti-Federalist — dangers of centralization)</td>
+              <td>Patrick Henry persona (the leading Anti-Federalist voice at the Virginia ratifying convention); The Constitution persona discourse includes Anti-Federalist Papers</td>
+            </tr>
+            <tr>
+              <td><strong>Articles of Confederation</strong></td>
+              <td>Hamilton, Madison personas address Articles' failures directly; The Constitution persona</td>
+            </tr>
+            <tr>
+              <td><strong>"Letter from Birmingham Jail"</strong> (King)</td>
+              <td>Baldwin persona (discourse); Douglass, Du Bois, Tubman personas for full arc of Black civil rights argument</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-heading">AP Gov — Required Supreme Court Cases</h3>
+      <p style="font-size:1rem;color:var(--text);margin-bottom:1.2rem;line-height:1.7;">The AP Gov CED requires 14 SCOTUS cases. The Constitution persona's discourse collection includes majority opinions and dissents for all 14.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Required SCOTUS Case</th>
+              <th>Museum of Minds Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Marbury v. Madison (1803)</td><td>The Constitution persona (discourse); Hamilton persona (Federalist 78 predicts judicial review)</td></tr>
+            <tr><td>McCulloch v. Maryland (1819)</td><td>The Constitution persona; Hamilton persona (implied powers / national bank)</td></tr>
+            <tr><td>Schenck v. United States (1919)</td><td>The Constitution persona (1st Amendment discourse)</td></tr>
+            <tr><td>Brown v. Board of Education (1954)</td><td>The Constitution persona; Douglass, Du Bois, Baldwin personas on equal protection</td></tr>
+            <tr><td>Baker v. Carr (1962)</td><td>The Constitution persona</td></tr>
+            <tr><td>Engel v. Vitale (1962)</td><td>The Constitution persona (Establishment Clause)</td></tr>
+            <tr><td>Gideon v. Wainwright (1963)</td><td>The Constitution persona (6th Amendment / selective incorporation)</td></tr>
+            <tr><td>Tinker v. Des Moines (1969)</td><td>The Constitution persona (student speech / 1st Amendment)</td></tr>
+            <tr><td>New York Times Co. v. United States (1971)</td><td>The Constitution persona (prior restraint / 1st Amendment)</td></tr>
+            <tr><td>Wisconsin v. Yoder (1972)</td><td>The Constitution persona (Free Exercise Clause)</td></tr>
+            <tr><td>Shaw v. Reno (1993)</td><td>The Constitution persona (Equal Protection / redistricting)</td></tr>
+            <tr><td>United States v. Lopez (1995)</td><td>The Constitution persona (Commerce Clause limits)</td></tr>
+            <tr><td>McDonald v. Chicago (2010)</td><td>The Constitution persona (2nd Amendment / selective incorporation)</td></tr>
+            <tr><td>Citizens United v. FEC (2010)</td><td>The Constitution persona (political speech / campaign finance)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-heading">AP Gov — Unit Coverage</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>AP Gov Unit</th>
+              <th>Exam Weight</th>
+              <th>Museum of Minds Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unit 1: Foundations of American Democracy</strong></td>
+              <td>15–22%</td>
+              <td>Hamilton, Madison (Federalist 10, 51); Jefferson, Paine (natural rights, Declaration); The Constitution; Patrick Henry (Anti-Federalist); John Locke (named in CED Topic 1.1)</td>
+            </tr>
+            <tr>
+              <td><strong>Unit 2: Interactions Among Branches</strong></td>
+              <td>25–36%</td>
+              <td>Hamilton (Federalist 70, 78); Madison (Federalist 51); The Constitution (Articles I–III, all 14 required SCOTUS cases); Jefferson (executive vs. legislative tension)</td>
+            </tr>
+            <tr>
+              <td><strong>Unit 3: Civil Liberties and Civil Rights</strong></td>
+              <td>13–18%</td>
+              <td>The Constitution (Bill of Rights, all 14 required SCOTUS cases); Douglass, Du Bois, Baldwin, Tubman, Keller, Anthony (civil liberties claims by excluded groups)</td>
+            </tr>
+            <tr>
+              <td><strong>Unit 4: Political Ideologies and Beliefs</strong></td>
+              <td>10–15%</td>
+              <td>Hamilton vs. Jefferson (Federalist vs. Republican-Democrat spectrum); Hayek vs. Keynes vs. Marx (economic ideology); Mencken, Orwell (political culture commentary)</td>
+            </tr>
+            <tr>
+              <td><strong>Unit 5: Political Participation</strong></td>
+              <td>20–27%</td>
+              <td>Douglass, Anthony, Tubman (voting rights / exclusion); Du Bois, Baldwin, Johnson (Civil Rights movement and political mobilization)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- APPENDIX -->
+    <div class="section-block" id="appendix">
+      <div class="section-eyebrow">Appendix</div>
+      <h2 class="section-heading">Figures by SC Standard Coverage &amp; Federalist Papers Comparison</h2>
+
+      <h3 class="subsection-heading">Figures by Primary Grade Target</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Primary Grade Target</th>
+              <th>Figures Available</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Grade 4–5 (US &amp; SC Studies Pts I &amp; II)</td>
+              <td>Washington, Jefferson, Hamilton, Paine, Franklin, Douglass, Tubman, Banneker</td>
+            </tr>
+            <tr>
+              <td>Grade 8 (SC &amp; US History)</td>
+              <td>All founding figures + Lincoln, Douglass, Du Bois, Tubman, Carver, Latimer, FDR</td>
+            </tr>
+            <tr>
+              <td>Grade 11 USHC</td>
+              <td>All 28+ figures map to at least one USHC indicator; 5 standards × 6 indicators = 30 indicators — Museum of Minds covers 21</td>
+            </tr>
+            <tr>
+              <td>Grade 12 USG</td>
+              <td>Hamilton, Madison, Jefferson, Washington, The Constitution, Taylor, Locke, Montesquieu, Jay — every major constitutional debate figure</td>
+            </tr>
+            <tr>
+              <td>Economics &amp; Personal Finance</td>
+              <td>Smith, Marx, Hayek, Keynes</td>
+            </tr>
+            <tr>
+              <td><span class="law-pill">§ 59-29-120</span> Graduation Requirement</td>
+              <td>Hamilton, Madison, The Constitution — Federalist Papers 4, 10, 37, 47, 51, 84 all in corpus</td>
+            </tr>
+            <tr>
+              <td><span class="law-pill">§ 59-29-55</span> Black History Mandate</td>
+              <td>Douglass, Tubman, Du Bois, Baldwin, Banneker, Carver, Latimer, Julian, Bath, Drew, Johnson (11 figures)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-heading">The Critical Differentiator: AP vs. SC Required Federalist Papers</h3>
+      <p style="font-size:1rem;color:var(--text);margin-bottom:1.2rem;line-height:1.7;">AP Gov and SC state standards require <em>different</em> Federalist Papers. Museum of Minds covers all 8 papers across both lists — a teacher switching between AP and SC-standard classes uses the same platform.</p>
+
+      <div class="fed-grid">
+        <div class="fed-cell">
+          <div class="fed-head">Paper</div>
+          <div class="fed-item"><span class="paper">Federalist No. 4</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 10</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 37</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 47</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 51</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 70</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 78</span></div>
+          <div class="fed-item"><span class="paper">Federalist No. 84</span></div>
+        </div>
+        <div class="fed-cell">
+          <div class="fed-head">SC Required</div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="dash">—</span></div>
+          <div class="fed-item"><span class="dash">—</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+        </div>
+        <div class="fed-cell">
+          <div class="fed-head">AP Required</div>
+          <div class="fed-item"><span class="dash">—</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="dash">—</span></div>
+          <div class="fed-item"><span class="dash">—</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="check">✓</span></div>
+          <div class="fed-item"><span class="dash">—</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-brass">
+        <div class="callout-title">All 8 Papers Covered</div>
+        <p>Hamilton and Madison personas have all 8 papers in their corpus. The Constitution persona's discourse collection contains all 85 Federalist Papers. Whether a teacher is preparing students for the AP exam or the SC graduation requirement, the same platform serves both.</p>
+      </div>
+    </div>
+
+    <!-- BOTTOM LINE -->
+    <div class="bottom-line">
+      <div class="bottom-line-eyebrow">Summary</div>
+      <p>Museum of Minds was built for the regulatory direction South Carolina is heading. <strong>Every SC legislative mandate is directly addressed. Every major USHC and USG indicator has at least one figure who covers it from primary-source corpus.</strong> The platform satisfies AP Gov's 9 required foundational documents, all 14 required SCOTUS cases, and all 8 Federalist Papers required by either SC or AP frameworks. Districts that pilot now are already aligned with what SC's pending AI legislation will require if it passes.</p>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="sources-block">
+      <div class="sources-title">Sources</div>
+      <ul class="sources-list">
+        <li>2019 SC Social Studies College- and Career-Ready Standards (SCDOE)</li>
+        <li>US History and the Constitution Alignment Guide, August 2024 (SCDOE)</li>
+        <li>United States Government Alignment Guide, 2019/2020 (SCDOE)</li>
+        <li>SC AI Standards Framework, 2023 (SCDOE, Andrew Cook)</li>
+        <li>AP U.S. History Course and Exam Description, Fall 2023 (College Board)</li>
+        <li>AP U.S. Government and Politics Course and Exam Description, Fall 2023 (College Board)</li>
+        <li>SC Code Ann. §§ 59-29-10, 59-29-55, 59-29-120, 59-29-155</li>
+        <li>SC General Assembly Bill 5253, 2025–2026 Session</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Museum of Minds &nbsp;·&nbsp; SC Curriculum Alignment</span>
+    <span>museumofminds.com/educator/alignment/</span>
+    <span>Updated May 2026 · Version 2.0</span>
+  </footer>
+
+</body>
+</html>

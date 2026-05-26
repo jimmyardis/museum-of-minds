@@ -117,6 +117,47 @@
     animation: fadeUp 1s ease 0.4s both;
   }
 
+  .doc-photo-frame {
+    max-width: 220px;
+    margin: 0 auto;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .doc-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px solid var(--gold);
+    pointer-events: none;
+  }
+  .doc-photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(168,132,37,0.35);
+    pointer-events: none;
+  }
+  .doc-photo-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(40%) contrast(1.05) brightness(0.95);
+  }
+  .doc-photo-fallback {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, var(--vault-mid), var(--vault-light));
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-pale);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
   .museum-label {
     font-family: 'Cinzel', serif;
     font-size: 0.58rem;
@@ -918,6 +959,13 @@
     <div class="trust-badge">
       <span class="trust-score">99 / 100</span>
       <span class="trust-label">Primary Source</span>
+    </div>
+
+    <div class="doc-photo-frame">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Constitution_of_the_United_States%2C_page_1.jpg/500px-Constitution_of_the_United_States%2C_page_1.jpg"
+           alt="The United States Constitution, page 1, 1787"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="doc-photo-fallback">We<br>the<br>People</div>
     </div>
 
     <div class="artifact-frame">
