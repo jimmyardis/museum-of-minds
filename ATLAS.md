@@ -10,31 +10,45 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 51 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-25 |
+| **Last Active** | 2026-05-26 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-51 personas live across six halls plus library. Founding Documents hall now has its own landing page (`halls/founding-documents/`) and is the 6th portal on the main museum index. Main index grid changed to 3×2 (was 5-column). Sprint 2 complete: George Mason, John Jay, Montesquieu, and Bill of Rights have pages, widgets, hall cards, and correct multi-tenant API URL. Portrait pipeline now deterministic: persona.json `portrait_url` is authoritative (Wikimedia search only as last resort, with HTTP 200 verification before accept).
+51 personas live. SC Curriculum Alignment Brief published at `museumofminds.com/educator/alignment/` — full USHC/USG/AP/legislative mandates/AI Framework coverage. Founding Documents hall portrait images fixed (Constitution + Declaration were 400-erroring due to bad Wikimedia hashes; corrected). Constitution persona page now has document photo in hero panel. Comprehensive Federalist/Anti-Federalist Papers build spec written at `/home/wner/FEDERALIST_BUILD_SPEC.md` — 9-phase full-vision build covering 170+ paper pages, collection chatbots, Debate View, Topic Clusters, and educator integration. Anti-Federalist corpus confirmed broken (Spinoza text ingested in error); fix is Phase 0 of the spec.
 
 ## Next Action
 
-Re-audition and replace Lincoln's voice (currently conflicts with Hayek — both use Josh `TxGEqnHWrfWFTfGW9XjX`) before enabling Lincoln TTS in the widget.
+Execute FEDERALIST_BUILD_SPEC.md Phase 0: write the Federalist Papers parser, source the correct Anti-Federalist Papers text, fix bad Pinecone vectors, and build the per-paper ingest pipeline. This is the prerequisite for all visible build work.
 
 ## Blockers
 
-- Lincoln voice conflict with Hayek (same ElevenLabs voice ID — needs re-audition before Lincoln TTS goes live)
+- Anti-Federalist corpus is wrong (Spinoza text in Pinecone under Constitution discourse) — must fix before any Anti-Fed pages
+- Lincoln voice conflict with Hayek (same ElevenLabs voice ID `TxGEqnHWrfWFTfGW9XjX`) — needs re-audition before Lincoln TTS
 
 ## Open Questions
 
-- Which persona should be built next (KG 3D/VR phase — 3d-force-graph integration on persona pages)?
-- Dorkstation and urban-productivity are local-only pipelines — should they feed museum context?
+- Which Anti-Federalist edition to use? Spec recommends Avalon Project / public domain (Storing collection is copyrighted). Confirm with user before Phase 0B.
+- Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist build?
+- AI literacy "How It Works" page — scoped and designed in conversation, not yet built. Prioritize?
 
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-26
+
+- Published SC Curriculum Alignment Brief at `/educator/alignment/index.html` — all SC USHC/USG/Grade 8 standards tables, 4 SC legislative mandates, SC AI Framework, SC Graduate Profile, Bill 5253 compliance, full AP Gov alignment (9 foundational docs, 14 SCOTUS cases), Federalist Papers AP vs SC comparison, print/PDF button
+- Added "View SC Curriculum Alignment Brief" link to educator portal hero band
+- Fixed founding documents hall portrait cards: Constitution URL had wrong Wikimedia hash (f/f0 → 6/6c); Declaration URL needed 500px (was 440px, 400-erroring)
+- Added document photo to Constitution persona page hero panel (was SVG-only; now has `doc-photo-frame` with sepia-filtered document scan)
+- Fixed Declaration portrait on its own page + in main index Hall VI portal card
+- Discovered: Anti-Federalist corpus file (`ANTI_Anti_Federalist_Papers_1787.txt`) is Spinoza text, not Anti-Federalist Papers — bad ingest from earlier session
+- Confirmed: Federalist Papers corpus (`FED_Federalist_Papers_1788.txt`) is clean, all 85 papers, parseable header format documented
+- Wrote comprehensive Federalist/Anti-Federalist build spec at `/home/wner/FEDERALIST_BUILD_SPEC.md` — 9 phases, full architecture, file structure, cross-reference network, educator integration, API changes
+- Decisions made and locked: four-tier persona stack, author-based Anti-Fed slugs, Federalist navy aesthetic vs Anti-Fed broadside aesthetic, collection-level Pinecone filter (`{"collection":"federalist"}`), multi-tenant API handles all 170+ papers with no new Railway services
 
 ### 2026-05-25 (session 2)
 
