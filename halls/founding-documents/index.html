@@ -376,6 +376,126 @@
     }
     .footer-back:hover { color: var(--gold-pale); }
 
+    /* ── PORTRAIT GALLERY ── */
+    .gallery-section {
+      background: #111115;
+      padding: 4rem 3rem 5rem;
+      border-top: 1px solid rgba(184,144,64,0.15);
+      border-bottom: 1px solid rgba(184,144,64,0.08);
+    }
+    .gallery-inner { max-width: 900px; margin: 0 auto; }
+    .gallery-eyebrow {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(184,144,64,0.7);
+      margin-bottom: 2.2rem;
+      display: block;
+    }
+    .portrait-grid-docs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .portrait-card-doc {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .portrait-card-doc .card-frame {
+      position: relative;
+      border: 1px solid rgba(184,144,64,0.14);
+      background: #18181E;
+      transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .portrait-card-doc:hover .card-frame {
+      border-color: rgba(184,144,64,0.5);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px rgba(184,144,64,0.08);
+    }
+    .portrait-card-doc .card-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #222230;
+    }
+    .portrait-card-doc .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: sepia(60%) contrast(1.05) brightness(0.75);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .portrait-card-doc:hover .card-image img {
+      filter: sepia(25%) contrast(1.05) brightness(0.9);
+      transform: scale(1.03);
+    }
+    .portrait-card-doc .card-image::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .portrait-card-doc .card-nameplate {
+      padding: 1rem 1.1rem 1.2rem;
+      border-top: 1px solid rgba(184,144,64,0.1);
+      background: #18181E;
+      transition: background 0.4s ease;
+    }
+    .portrait-card-doc:hover .card-nameplate { background: #1E1A10; }
+    .portrait-card-doc .nameplate-accent {
+      width: 20px; height: 2px;
+      background: rgba(184,144,64,0.55);
+      margin-bottom: 0.55rem;
+      transition: width 0.4s ease;
+    }
+    .portrait-card-doc:hover .nameplate-accent { width: 36px; }
+    .portrait-card-doc .nameplate-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #EFE6D2;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+    .portrait-card-doc .nameplate-dates {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: rgba(184,144,64,0.8);
+      margin-bottom: 0.5rem;
+    }
+    .portrait-card-doc .nameplate-desc {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: rgba(192,180,152,0.85);
+    }
+    .portrait-card-doc .nameplate-enter {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: rgba(184,144,64,0.6);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    }
+    .portrait-card-doc:hover .nameplate-enter {
+      opacity: 1;
+      transform: translateX(0);
+      color: #B89040;
+    }
+
     @media (max-width: 900px) {
       header { padding: 1rem 1.5rem; }
       .hero { padding: 3.5rem 1.5rem 3rem; }
@@ -383,7 +503,12 @@
       .in-residence-inner { grid-template-columns: 1fr; gap: 2rem; }
       .in-residence-seal { display: none; }
       .in-residence-stats { flex-wrap: wrap; gap: 1.2rem; }
+      .gallery-section { padding: 3rem 1.5rem 4rem; }
+      .portrait-grid-docs { grid-template-columns: 1fr 1fr; }
       .documents-section { padding: 3rem 1.5rem 4rem; }
+    }
+    @media (max-width: 560px) {
+      .portrait-grid-docs { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -450,6 +575,66 @@
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <span class="gallery-eyebrow">Documents in Residence &nbsp;·&nbsp; Open for Conversation</span>
+    <div class="portrait-grid-docs">
+
+      <a href="https://museumofminds.com/constitution/" class="portrait-card-doc">
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Constitution_of_the_United_States%2C_page_1.jpg/402px-Constitution_of_the_United_States%2C_page_1.jpg"
+                 alt="The United States Constitution"
+                 onerror="this.style.background='#1A1A14'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">The Constitution</div>
+            <div class="nameplate-dates">Ratified 1788</div>
+            <div class="nameplate-desc">The supreme law of the land — Articles I–VII, twenty-seven amendments, and fifteen landmark SCOTUS cases in dialogue.</div>
+            <span class="nameplate-enter">Open Document →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/declaration-of-independence/" class="portrait-card-doc">
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/United_States_Declaration_of_Independence.jpg/440px-United_States_Declaration_of_Independence.jpg"
+                 alt="The Declaration of Independence"
+                 onerror="this.style.background='#1A1A14'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">The Declaration of Independence</div>
+            <div class="nameplate-dates">July 4, 1776</div>
+            <div class="nameplate-desc">Jefferson's self-evident truths and the list of grievances that severed a nation from its crown.</div>
+            <span class="nameplate-enter">Open Document →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/bill-of-rights/" class="portrait-card-doc">
+        <div class="card-frame">
+          <div class="card-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Bill_of_Rights_Pg1of1_AC.jpg/500px-Bill_of_Rights_Pg1of1_AC.jpg"
+                 alt="The Bill of Rights"
+                 onerror="this.style.background='#1A1A14'" />
+          </div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">The Bill of Rights</div>
+            <div class="nameplate-dates">Ratified 1791</div>
+            <div class="nameplate-desc">The First Ten Amendments — speech, religion, arms, search, trial, and the rights reserved to the people.</div>
+            <span class="nameplate-enter">Open Document →</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
