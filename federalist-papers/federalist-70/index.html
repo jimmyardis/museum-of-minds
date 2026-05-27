@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 70 — Energy in the Executive — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 70: The Executive Department Further Considered by Alexander Hamilton, March 15, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '70'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;70
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 70 · Published by Independent Journal</p>
+  <h1>The Executive Department Further Considered</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; March 15, 1788 &bull; 3,340 words</p>
+  <div class="chips">
+    <span class="chip chip-ap">★ AP Gov Required</span>
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-69/" class="nav-btn">← No.&thinsp;69</a>
+    <a href="/federalist-papers/federalist-71/" class="nav-btn">No.&thinsp;71 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">3,340 words &bull; Executive Power &bull; March 15, 1788</p>
+
+<p>THERE is an idea, which is not without its advocates, that a vigorous Executive is inconsistent with the genius of republican government. The enlightened well-wishers to this species of government must at least hope that the supposition is destitute of foundation; since they can never admit its truth, without at the same time admitting the condemnation of their own principles. Energy in the Executive is a leading character in the definition of good government. It is essential to the protection of the community against foreign attacks; it is not less essential to the steady administration of the laws; to the protection of property against those irregular and high-handed combinations which sometimes interrupt the ordinary course of justice; to the security of liberty against the enterprises and assaults of ambition, of faction, and of anarchy. Every man the least conversant in Roman history, knows how often that republic was obliged to take refuge in the absolute power of a single man, under the formidable title of Dictator, as well against the intrigues of ambitious individuals who aspired to the tyranny, and the seditions of whole classes of the community whose conduct threatened the existence of all government, as against the invasions of external enemies who menaced the conquest and destruction of Rome.</p>
+<p>There can be no need, however, to multiply arguments or examples on this head. A feeble Executive implies a feeble execution of the government. A feeble execution is but another phrase for a bad execution; and a government ill executed, whatever it may be in theory, must be, in practice, a bad government.</p>
+<p>Taking it for granted, therefore, that all men of sense will agree in the necessity of an energetic Executive, it will only remain to inquire, what are the ingredients which constitute this energy? How far can they be combined with those other ingredients which constitute safety in the republican sense? And how far does this combination characterize the plan which has been reported by the convention?</p>
+<p>The ingredients which constitute energy in the Executive are, first, unity; secondly, duration; thirdly, an adequate provision for its support; fourthly, competent powers.</p>
+<p>The ingredients which constitute safety in the republican sense are, first, a due dependence on the people, secondly, a due responsibility.</p>
+<p>Those politicians and statesmen who have been the most celebrated for the soundness of their principles and for the justice of their views, have declared in favor of a single Executive and a numerous legislature. They have with great propriety, considered energy as the most necessary qualification of the former, and have regarded this as most applicable to power in a single hand, while they have, with equal propriety, considered the latter as best adapted to deliberation and wisdom, and best calculated to conciliate the confidence of the people and to secure their privileges and interests.</p>
+<p>That unity is conducive to energy will not be disputed. Decision, activity, secrecy, and despatch will generally characterize the proceedings of one man in a much more eminent degree than the proceedings of any greater number; and in proportion as the number is increased, these qualities will be diminished.</p>
+<p>This unity may be destroyed in two ways: either by vesting the power in two or more magistrates of equal dignity and authority; or by vesting it ostensibly in one man, subject, in whole or in part, to the control and co-operation of others, in the capacity of counsellors to him. Of the first, the two Consuls of Rome may serve as an example; of the last, we shall find examples in the constitutions of several of the States. New York and New Jersey, if I recollect right, are the only States which have intrusted the executive authority wholly to single men.(1) Both these methods of destroying the unity of the Executive have their partisans; but the votaries of an executive council are the most numerous. They are both liable, if not to equal, to similar objections, and may in most lights be examined in conjunction.</p>
+<p>The experience of other nations will afford little instruction on this head. As far, however, as it teaches any thing, it teaches us not to be enamoured of plurality in the Executive. We have seen that the Achaeans, on an experiment of two Praetors, were induced to abolish one. The Roman history records many instances of mischiefs to the republic from the dissensions between the Consuls, and between the military Tribunes, who were at times substituted for the Consuls. But it gives us no specimens of any peculiar advantages derived to the state from the circumstance of the plurality of those magistrates. That the dissensions between them were not more frequent or more fatal, is a matter of astonishment, until we advert to the singular position in which the republic was almost continually placed, and to the prudent policy pointed out by the circumstances of the state, and pursued by the Consuls, of making a division of the government between them. The patricians engaged in a perpetual struggle with the plebeians for the preservation of their ancient authorities and dignities; the Consuls, who were generally chosen out of the former body, were commonly united by the personal interest they had in the defense of the privileges of their order. In addition to this motive of union, after the arms of the republic had considerably expanded the bounds of its empire, it became an established custom with the Consuls to divide the administration between themselves by lot--one of them remaining at Rome to govern the city and its environs, the other taking the command in the more distant provinces. This expedient must, no doubt, have had great influence in preventing those collisions and rivalships which might otherwise have embroiled the peace of the republic.</p>
+<p>But quitting the dim light of historical research, attaching ourselves purely to the dictates of reason and good sense, we shall discover much greater cause to reject than to approve the idea of plurality in the Executive, under any modification whatever.</p>
+<p>Wherever two or more persons are engaged in any common enterprise or pursuit, there is always danger of difference of opinion. If it be a public trust or office, in which they are clothed with equal dignity and authority, there is peculiar danger of personal emulation and even animosity. From either, and especially from all these causes, the most bitter dissensions are apt to spring. Whenever these happen, they lessen the respectability, weaken the authority, and distract the plans and operation of those whom they divide. If they should unfortunately assail the supreme executive magistracy of a country, consisting of a plurality of persons, they might impede or frustrate the most important measures of the government, in the most critical emergencies of the state. And what is still worse, they might split the community into the most violent and irreconcilable factions, adhering differently to the different individuals who composed the magistracy.</p>
+<p>Men often oppose a thing, merely because they have had no agency in planning it, or because it may have been planned by those whom they dislike. But if they have been consulted, and have happened to disapprove, opposition then becomes, in their estimation, an indispensable duty of self-love. They seem to think themselves bound in honor, and by all the motives of personal infallibility, to defeat the success of what has been resolved upon contrary to their sentiments. Men of upright, benevolent tempers have too many opportunities of remarking, with horror, to what desperate lengths this disposition is sometimes carried, and how often the great interests of society are sacrificed to the vanity, to the conceit, and to the obstinacy of individuals, who have credit enough to make their passions and their caprices interesting to mankind. Perhaps the question now before the public may, in its consequences, afford melancholy proofs of the effects of this despicable frailty, or rather detestable vice, in the human character.</p>
+<p>Upon the principles of a free government, inconveniences from the source just mentioned must necessarily be submitted to in the formation of the legislature; but it is unnecessary, and therefore unwise, to introduce them into the constitution of the Executive. It is here too that they may be most pernicious. In the legislature, promptitude of decision is oftener an evil than a benefit. The differences of opinion, and the jarrings of parties in that department of the government, though they may sometimes obstruct salutary plans, yet often promote deliberation and circumspection, and serve to check excesses in the majority. When a resolution too is once taken, the opposition must be at an end. That resolution is a law, and resistance to it punishable. But no favorable circumstances palliate or atone for the disadvantages of dissension in the executive department. Here, they are pure and unmixed. There is no point at which they cease to operate. They serve to embarrass and weaken the execution of the plan or measure to which they relate, from the first step to the final conclusion of it. They constantly counteract those qualities in the Executive which are the most necessary ingredients in its composition--vigor and expedition, and this without any counterbalancing good. In the conduct of war, in which the energy of the Executive is the bulwark of the national security, every thing would be to be apprehended from its plurality.</p>
+<p>It must be confessed that these observations apply with principal weight to the first case supposed--that is, to a plurality of magistrates of equal dignity and authority a scheme, the advocates for which are not likely to form a numerous sect; but they apply, though not with equal, yet with considerable weight to the project of a council, whose concurrence is made constitutionally necessary to the operations of the ostensible Executive. An artful cabal in that council would be able to distract and to enervate the whole system of administration. If no such cabal should exist, the mere diversity of views and opinions would alone be sufficient to tincture the exercise of the executive authority with a spirit of habitual feebleness and dilatoriness.</p>
+<p>(But one of the weightiest objections to a plurality in the Executive, and which lies as much against the last as the first plan, is, that it tends to conceal faults and destroy responsibility. Responsibility is of two kinds--to censure and to punishment. The first is the more important of the two, especially in an elective office. Man, in public trust, will much oftener act in such a manner as to render him unworthy of being any longer trusted, than in such a manner as to make him obnoxious to legal punishment. But the multiplication of the Executive adds to the difficulty of detection in either case. It often becomes impossible, amidst mutual accusations, to determine on whom the blame or the punishment of a pernicious measure, or series of pernicious measures, ought really to fall. It is shifted from one to another with so much dexterity, and under such plausible appearances, that the public opinion is left in suspense about the real author. The circumstances which may have led to any national miscarriage or misfortune are sometimes so complicated that, where there are a number of actors who may have had different degrees and kinds of agency, though we may clearly see upon the whole that there has been mismanagement, yet it may be impracticable to pronounce to whose account the evil which may have been incurred is truly chargeable.)(E1)</p>
+<p>(But one of the weightiest objections to a plurality in the Executive, and which lies as much against the last as the first plan, is, that it tends to conceal faults and destroy responsibility.</p>
+<p>Responsibility is of two kinds--to censure and to punishment. The first is the more important of the two, especially in an elective office. Man, in public trust, will much oftener act in such a manner as to render him unworthy of being any longer trusted, than in such a manner as to make him obnoxious to legal punishment. But the multiplication of the Executive adds to the difficulty of detection in either case. It often becomes impossible, amidst mutual accusations, to determine on whom the blame or the punishment of a pernicious measure, or series of pernicious measures, ought really to fall. It is shifted from one to another with so much dexterity, and under such plausible appearances, that the public opinion is left in suspense about the real author. The circumstances which may have led to any national miscarriage or misfortune are sometimes so complicated that, where there are a number of actors who may have had different degrees and kinds of agency, though we may clearly see upon the whole that there has been mismanagement, yet it may be impracticable to pronounce to whose account the evil which may have been incurred is truly chargeable.)(E1)</p>
+<p>&quot;I was overruled by my council. The council were so divided in their opinions that it was impossible to obtain any better resolution on the point.&quot; These and similar pretexts are constantly at hand, whether true or false. And who is there that will either take the trouble or incur the odium, of a strict scrutiny into the secret springs of the transaction? Should there be found a citizen zealous enough to undertake the unpromising task, if there happen to be collusion between the parties concerned, how easy it is to clothe the circumstances with so much ambiguity, as to render it uncertain what was the precise conduct of any of those parties?</p>
+<p>In the single instance in which the governor of this State is coupled with a council--that is, in the appointment to offices, we have seen the mischiefs of it in the view now under consideration. Scandalous appointments to important offices have been made. Some cases, indeed, have been so flagrant that ALL PARTIES have agreed in the impropriety of the thing. When inquiry has been made, the blame has been laid by the governor on the members of the council, who, on their part, have charged it upon his nomination; while the people remain altogether at a loss to determine, by whose influence their interests have been committed to hands so unqualified and so manifestly improper. In tenderness to individuals, I forbear to descend to particulars.</p>
+<p>It is evident from these considerations, that the plurality of the Executive tends to deprive the people of the two greatest securities they can have for the faithful exercise of any delegated power, first, the restraints of public opinion, which lose their efficacy, as well on account of the division of the censure attendant on bad measures among a number, as on account of the uncertainty on whom it ought to fall; and, second, the opportunity of discovering with facility and clearness the misconduct of the persons they trust, in order either to their removal from office or to their actual punishment in cases which admit of it.</p>
+<p>In England, the king is a perpetual magistrate; and it is a maxim which has obtained for the sake of the public peace, that he is unaccountable for his administration, and his person sacred. Nothing, therefore, can be wiser in that kingdom, than to annex to the king a constitutional council, who may be responsible to the nation for the advice they give. Without this, there would be no responsibility whatever in the executive department an idea inadmissible in a free government. But even there the king is not bound by the resolutions of his council, though they are answerable for the advice they give. He is the absolute master of his own conduct in the exercise of his office, and may observe or disregard the counsel given to him at his sole discretion.</p>
+<p>But in a republic, where every magistrate ought to be personally responsible for his behavior in office the reason which in the British Constitution dictates the propriety of a council, not only ceases to apply, but turns against the institution. In the monarchy of Great Britain, it furnishes a substitute for the prohibited responsibility of the chief magistrate, which serves in some degree as a hostage to the national justice for his good behavior. In the American republic, it would serve to destroy, or would greatly diminish, the intended and necessary responsibility of the Chief Magistrate himself.</p>
+<p>The idea of a council to the Executive, which has so generally obtained in the State constitutions, has been derived from that maxim of republican jealousy which considers power as safer in the hands of a number of men than of a single man. If the maxim should be admitted to be applicable to the case, I should contend that the advantage on that side would not counterbalance the numerous disadvantages on the opposite side. But I do not think the rule at all applicable to the executive power. I clearly concur in opinion, in this particular, with a writer whom the celebrated Junius pronounces to be &quot;deep, solid, and ingenious,&quot; that &quot;the executive power is more easily confined when it is ONE&quot;;(2) that it is far more safe there should be a single object for the jealousy and watchfulness of the people; and, in a word, that all multiplication of the Executive is rather dangerous than friendly to liberty.</p>
+<p>A little consideration will satisfy us, that the species of security sought for in the multiplication of the Executive, is unattainable. Numbers must be so great as to render combination difficult, or they are rather a source of danger than of security. The united credit and influence of several individuals must be more formidable to liberty, than the credit and influence of either of them separately. When power, therefore, is placed in the hands of so small a number of men, as to admit of their interests and views being easily combined in a common enterprise, by an artful leader, it becomes more liable to abuse, and more dangerous when abused, than if it be lodged in the hands of one man; who, from the very circumstance of his being alone, will be more narrowly watched and more readily suspected, and who cannot unite so great a mass of influence as when he is associated with others. The Decemvirs of Rome, whose name denotes their number,(3) were more to be dreaded in their usurpation than any ONE of them would have been. No person would think of proposing an Executive much more numerous than that body; from six to a dozen have been suggested for the number of the council. The extreme of these numbers, is not too great for an easy combination; and from such a combination America would have more to fear, than from the ambition of any single individual. A council to a magistrate, who is himself responsible for what he does, are generally nothing better than a clog upon his good intentions, are often the instruments and accomplices of his bad and are almost always a cloak to his faults.</p>
+<p>I forbear to dwell upon the subject of expense; though it be evident that if the council should be numerous enough to answer the principal end aimed at by the institution, the salaries of the members, who must be drawn from their homes to reside at the seat of government, would form an item in the catalogue of public expenditures too serious to be incurred for an object of equivocal utility. I will only add that, prior to the appearance of the Constitution, I rarely met with an intelligent man from any of the States, who did not admit, as the result of experience, that the UNITY of the executive of this State was one of the best of the distinguishing features of our constitution.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. New York has no council except for the single purpose of appointing to offices; New Jersey has a council whom the governor may consult. But I think, from the terms of the constitution, their resolutions do not bind him.</p>
+<p>2. De Lolme.</p>
+<p>3. Ten.</p>
+<p>E1. Two versions of these paragraphs appear in different editions.</p>
+
+      <div class="cross-refs">
+        <p class='cross-refs-label'>Related Papers — Same Side</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-71/" class="cross-ref">On executive duration</a><a href="/federalist-papers/federalist-72/" class="cross-ref">On re-eligibility</a><a href="/federalist-papers/federalist-67/" class="cross-ref">On the executive department</a></div>
+        <p class='cross-refs-section-label'>Anti-Federalist Response</p><div class='cross-refs-grid'><a href="/anti-federalist-papers/cato-4/" class="cross-ref cross-ref-opp">On the dangers of a single executive</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 70</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 70: The Executive Department Further Considered. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">Why does Hamilton argue for a single executive?</button>
+<button class="starter" onclick="sendStarter(this)">What does &#x27;energy in the executive&#x27; mean?</button>
+<button class="starter" onclick="sendStarter(this)">How does this paper respond to Cato&#x27;s fears about executive power?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 70…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 70 &bull; Alexander Hamilton &bull; March 15, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-70";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 70 (Energy in the Executive). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

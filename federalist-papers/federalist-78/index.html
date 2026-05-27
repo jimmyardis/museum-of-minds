@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 78 — The Judiciary — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 78: The Judiciary Department by Alexander Hamilton, May 28, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '78'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;78
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 78 · Published by McLEAN&#x27;S Edition, New York</p>
+  <h1>The Judiciary Department</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; May 28, 1788 &bull; 3,058 words</p>
+  <div class="chips">
+    <span class="chip chip-ap">★ AP Gov Required</span>
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-77/" class="nav-btn">← No.&thinsp;77</a>
+    <a href="/federalist-papers/federalist-79/" class="nav-btn">No.&thinsp;79 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">3,058 words &bull; Judiciary &bull; May 28, 1788</p>
+
+<p>WE PROCEED now to an examination of the judiciary department of the proposed government.</p>
+<p>In unfolding the defects of the existing Confederation, the utility and necessity of a federal judicature have been clearly pointed out. It is the less necessary to recapitulate the considerations there urged, as the propriety of the institution in the abstract is not disputed; the only questions which have been raised being relative to the manner of constituting it, and to its extent. To these points, therefore, our observations shall be confined.</p>
+<p>The manner of constituting it seems to embrace these several objects: 1st. The mode of appointing the judges. 2d. The tenure by which they are to hold their places. 3d. The partition of the judiciary authority between different courts, and their relations to each other.</p>
+<p>First. As to the mode of appointing the judges; this is the same with that of appointing the officers of the Union in general, and has been so fully discussed in the two last numbers, that nothing can be said here which would not be useless repetition.</p>
+<p>Second. As to the tenure by which the judges are to hold their places; this chiefly concerns their duration in office; the provisions for their support; the precautions for their responsibility.</p>
+<p>According to the plan of the convention, all judges who may be appointed by the United States are to hold their offices during good behavior; which is conformable to the most approved of the State constitutions and among the rest, to that of this State. Its propriety having been drawn into question by the adversaries of that plan, is no light symptom of the rage for objection, which disorders their imaginations and judgments. The standard of good behavior for the continuance in office of the judicial magistracy, is certainly one of the most valuable of the modern improvements in the practice of government. In a monarchy it is an excellent barrier to the despotism of the prince; in a republic it is a no less excellent barrier to the encroachments and oppressions of the representative body. And it is the best expedient which can be devised in any government, to secure a steady, upright, and impartial administration of the laws.</p>
+<p>Whoever attentively considers the different departments of power must perceive, that, in a government in which they are separated from each other, the judiciary, from the nature of its functions, will always be the least dangerous to the political rights of the Constitution; because it will be least in a capacity to annoy or injure them. The Executive not only dispenses the honors, but holds the sword of the community. The legislature not only commands the purse, but prescribes the rules by which the duties and rights of every citizen are to be regulated. The judiciary, on the contrary, has no influence over either the sword or the purse; no direction either of the strength or of the wealth of the society; and can take no active resolution whatever. It may truly be said to have neither FORCE nor WILL, but merely judgment; and must ultimately depend upon the aid of the executive arm even for the efficacy of its judgments.</p>
+<p>This simple view of the matter suggests several important consequences. It proves incontestably, that the judiciary is beyond comparison the weakest of the three departments of power(1); that it can never attack with success either of the other two; and that all possible care is requisite to enable it to defend itself against their attacks. It equally proves, that though individual oppression may now and then proceed from the courts of justice, the general liberty of the people can never be endangered from that quarter; I mean so long as the judiciary remains truly distinct from both the legislature and the Executive. For I agree, that &quot;there is no liberty, if the power of judging be not separated from the legislative and executive powers.&quot;(2) And it proves, in the last place, that as liberty can have nothing to fear from the judiciary alone, but would have every thing to fear from its union with either of the other departments; that as all the effects of such a union must ensue from a dependence of the former on the latter, notwithstanding a nominal and apparent separation; that as, from the natural feebleness of the judiciary, it is in continual jeopardy of being overpowered, awed, or influenced by its co-ordinate branches; and that as nothing can contribute so much to its firmness and independence as permanency in office, this quality may therefore be justly regarded as an indispensable ingredient in its constitution, and, in a great measure, as the citadel of the public justice and the public security.</p>
+<p>The complete independence of the courts of justice is peculiarly essential in a limited Constitution. By a limited Constitution, I understand one which contains certain specified exceptions to the legislative authority; such, for instance, as that it shall pass no bills of attainder, no ex post facto laws, and the like. Limitations of this kind can be preserved in practice no other way than through the medium of courts of justice, whose duty it must be to declare all acts contrary to the manifest tenor of the Constitution void. Without this, all the reservations of particular rights or privileges would amount to nothing.</p>
+<p>Some perplexity respecting the rights of the courts to pronounce legislative acts void, because contrary to the Constitution, has arisen from an imagination that the doctrine would imply a superiority of the judiciary to the legislative power. It is urged that the authority which can declare the acts of another void, must necessarily be superior to the one whose acts may be declared void. As this doctrine is of great importance in all the American constitutions, a brief discussion of the ground on which it rests cannot be unacceptable.</p>
+<p>There is no position which depends on clearer principles, than that every act of a delegated authority, contrary to the tenor of the commission under which it is exercised, is void. No legislative act, therefore, contrary to the Constitution, can be valid. To deny this, would be to affirm, that the deputy is greater than his principal; that the servant is above his master; that the representatives of the people are superior to the people themselves; that men acting by virtue of powers, may do not only what their powers do not authorize, but what they forbid.</p>
+<p>If it be said that the legislative body are themselves the constitutional judges of their own powers, and that the construction they put upon them is conclusive upon the other departments, it may be answered, that this cannot be the natural presumption, where it is not to be collected from any particular provisions in the Constitution. It is not otherwise to be supposed, that the Constitution could intend to enable the representatives of the people to substitute their will to that of their constituents. It is far more rational to suppose, that the courts were designed to be an intermediate body between the people and the legislature, in order, among other things, to keep the latter within the limits assigned to their authority. The interpretation of the laws is the proper and peculiar province of the courts. A constitution is, in fact, and must be regarded by the judges, as a fundamental law. It therefore belongs to them to ascertain its meaning, as well as the meaning of any particular act proceeding from the legislative body. If there should happen to be an irreconcilable variance between the two, that which has the superior obligation and validity ought, of course, to be preferred; or, in other words, the Constitution ought to be preferred to the statute, the intention of the people to the intention of their agents.</p>
+<p>Nor does this conclusion by any means suppose a superiority of the judicial to the legislative power. It only supposes that the power of the people is superior to both; and that where the will of the legislature, declared in its statutes, stands in opposition to that of the people, declared in the Constitution, the judges ought to be governed by the latter rather than the former. They ought to regulate their decisions by the fundamental laws, rather than by those which are not fundamental.</p>
+<p>This exercise of judicial discretion, in determining between two contradictory laws, is exemplified in a familiar instance. It not uncommonly happens, that there are two statutes existing at one time, clashing in whole or in part with each other, and neither of them containing any repealing clause or expression. In such a case, it is the province of the courts to liquidate and fix their meaning and operation. So far as they can, by any fair construction, be reconciled to each other, reason and law conspire to dictate that this should be done; where this is impracticable, it becomes a matter of necessity to give effect to one, in exclusion of the other. The rule which has obtained in the courts for determining their relative validity is, that the last in order of time shall be preferred to the first. But this is a mere rule of construction, not derived from any positive law, but from the nature and reason of the thing. It is a rule not enjoined upon the courts by legislative provision, but adopted by themselves, as consonant to truth and propriety, for the direction of their conduct as interpreters of the law. They thought it reasonable, that between the interfering acts of an EQUAL authority, that which was the last indication of its will should have the preference.</p>
+<p>But in regard to the interfering acts of a superior and subordinate authority, of an original and derivative power, the nature and reason of the thing indicate the converse of that rule as proper to be followed. They teach us that the prior act of a superior ought to be preferred to the subsequent act of an inferior and subordinate authority; and that accordingly, whenever a particular statute contravenes the Constitution, it will be the duty of the judicial tribunals to adhere to the latter and disregard the former.</p>
+<p>It can be of no weight to say that the courts, on the pretense of a repugnancy, may substitute their own pleasure to the constitutional intentions of the legislature. This might as well happen in the case of two contradictory statutes; or it might as well happen in every adjudication upon any single statute. The courts must declare the sense of the law; and if they should be disposed to exercise WILL instead of JUDGMENT, the consequence would equally be the substitution of their pleasure to that of the legislative body. The observation, if it prove any thing, would prove that there ought to be no judges distinct from that body.</p>
+<p>If, then, the courts of justice are to be considered as the bulwarks of a limited Constitution against legislative encroachments, this consideration will afford a strong argument for the permanent tenure of judicial offices, since nothing will contribute so much as this to that independent spirit in the judges which must be essential to the faithful performance of so arduous a duty.</p>
+<p>This independence of the judges is equally requisite to guard the Constitution and the rights of individuals from the effects of those ill humors, which the arts of designing men, or the influence of particular conjunctures, sometimes disseminate among the people themselves, and which, though they speedily give place to better information, and more deliberate reflection, have a tendency, in the meantime, to occasion dangerous innovations in the government, and serious oppressions of the minor party in the community. Though I trust the friends of the proposed Constitution will never concur with its enemies,(3) in questioning that fundamental principle of republican government, which admits the right of the people to alter or abolish the established Constitution, whenever they find it inconsistent with their happiness, yet it is not to be inferred from this principle, that the representatives of the people, whenever a momentary inclination happens to lay hold of a majority of their constituents, incompatible with the provisions in the existing Constitution, would, on that account, be justifiable in a violation of those provisions; or that the courts would be under a greater obligation to connive at infractions in this shape, than when they had proceeded wholly from the cabals of the representative body. Until the people have, by some solemn and authoritative act, annulled or changed the established form, it is binding upon themselves collectively, as well as individually; and no presumption, or even knowledge, of their sentiments, can warrant their representatives in a departure from it, prior to such an act. But it is easy to see, that it would require an uncommon portion of fortitude in the judges to do their duty as faithful guardians of the Constitution, where legislative invasions of it had been instigated by the major voice of the community.</p>
+<p>But it is not with a view to infractions of the Constitution only, that the independence of the judges may be an essential safeguard against the effects of occasional ill humors in the society. These sometimes extend no farther than to the injury of the private rights of particular classes of citizens, by unjust and partial laws. Here also the firmness of the judicial magistracy is of vast importance in mitigating the severity and confining the operation of such laws. It not only serves to moderate the immediate mischiefs of those which may have been passed, but it operates as a check upon the legislative body in passing them; who, perceiving that obstacles to the success of iniquitous intention are to be expected from the scruples of the courts, are in a manner compelled, by the very motives of the injustice they meditate, to qualify their attempts. This is a circumstance calculated to have more influence upon the character of our governments, than but few may be aware of. The benefits of the integrity and moderation of the judiciary have already been felt in more States than one; and though they may have displeased those whose sinister expectations they may have disappointed, they must have commanded the esteem and applause of all the virtuous and disinterested. Considerate men, of every description, ought to prize whatever will tend to beget or fortify that temper in the courts: as no man can be sure that he may not be to-morrow the victim of a spirit of injustice, by which he may be a gainer to-day. And every man must now feel, that the inevitable tendency of such a spirit is to sap the foundations of public and private confidence, and to introduce in its stead universal distrust and distress.</p>
+<p>That inflexible and uniform adherence to the rights of the Constitution, and of individuals, which we perceive to be indispensable in the courts of justice, can certainly not be expected from judges who hold their offices by a temporary commission. Periodical appointments, however regulated, or by whomsoever made, would, in some way or other, be fatal to their necessary independence. If the power of making them was committed either to the Executive or legislature, there would be danger of an improper complaisance to the branch which possessed it; if to both, there would be an unwillingness to hazard the displeasure of either; if to the people, or to persons chosen by them for the special purpose, there would be too great a disposition to consult popularity, to justify a reliance that nothing would be consulted but the Constitution and the laws.</p>
+<p>There is yet a further and a weightier reason for the permanency of the judicial offices, which is deducible from the nature of the qualifications they require. It has been frequently remarked, with great propriety, that a voluminous code of laws is one of the inconveniences necessarily connected with the advantages of a free government. To avoid an arbitrary discretion in the courts, it is indispensable that they should be bound down by strict rules and precedents, which serve to define and point out their duty in every particular case that comes before them; and it will readily be conceived from the variety of controversies which grow out of the folly and wickedness of mankind, that the records of those precedents must unavoidably swell to a very considerable bulk, and must demand long and laborious study to acquire a competent knowledge of them. Hence it is, that there can be but few men in the society who will have sufficient skill in the laws to qualify them for the stations of judges. And making the proper deductions for the ordinary depravity of human nature, the number must be still smaller of those who unite the requisite integrity with the requisite knowledge. These considerations apprise us, that the government can have no great option between fit character; and that a temporary duration in office, which would naturally discourage such characters from quitting a lucrative line of practice to accept a seat on the bench, would have a tendency to throw the administration of justice into hands less able, and less well qualified, to conduct it with utility and dignity. In the present circumstances of this country, and in those in which it is likely to be for a long time to come, the disadvantages on this score would be greater than they may at first sight appear; but it must be confessed, that they are far inferior to those which present themselves under the other aspects of the subject.</p>
+<p>Upon the whole, there can be no room to doubt that the convention acted wisely in copying from the models of those constitutions which have established good behavior as the tenure of their judicial offices, in point of duration; and that so far from being blamable on this account, their plan would have been inexcusably defective, if it had wanted this important feature of good government. The experience of Great Britain affords an illustrious comment on the excellence of the institution.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. The celebrated Montesquieu, speaking of them, says: &quot;Of the three powers above mentioned, the judiciary is next to nothing.&quot;--Spirit of Laws. Vol. I, page 186.</p>
+<p>2. Idem, page 181.</p>
+<p>3. Vide Protest of the Minority of the Convention of Pennsylvania, Martin&#x27;s Speech, etc.</p>
+
+      <div class="cross-refs">
+        <p class='cross-refs-label'>Related Papers — Same Side</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-79/" class="cross-ref">On judicial compensation and tenure</a><a href="/federalist-papers/federalist-80/" class="cross-ref">On the extent of judicial power</a><a href="/federalist-papers/federalist-81/" class="cross-ref">On appellate jurisdiction</a></div>
+        <p class='cross-refs-section-label'>Anti-Federalist Response</p><div class='cross-refs-grid'><a href="/anti-federalist-papers/brutus-11/" class="cross-ref cross-ref-opp">On judicial review and judicial power</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 78</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 78: The Judiciary Department. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is Hamilton&#x27;s case for life tenure for judges?</button>
+<button class="starter" onclick="sendStarter(this)">How does this paper establish the principle of judicial review?</button>
+<button class="starter" onclick="sendStarter(this)">Why does Hamilton call the judiciary the &#x27;least dangerous branch&#x27;?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 78…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 78 &bull; Alexander Hamilton &bull; May 28, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-78";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 78 (The Judiciary). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>
