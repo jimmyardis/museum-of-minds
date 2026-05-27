@@ -17,15 +17,16 @@
 
 ## Current State
 
-53 personas + 2 document collections live. Phase 0 (Federalist/Anti-Federalist pipeline) and Phase 1 (collection pages) complete. `museumofminds.com/federalist-papers/` — 85 papers, filter bar, inline chat; `museumofminds.com/anti-federalist-papers/` — 32 essays, filter bar, inline chat. Anti-Federalist Spinoza contamination fixed (99 bad vectors deleted, correct papers ingested). Educator mode fully deployed to the live multi-tenant API: `educator_mode` flag injects SC standards quotation overlay; `standards_alignment` field returns up to 8 SC/AP standard codes per response. SC Curriculum Alignment Brief live at `/educator/alignment/`.
+53 personas + 2 document collections live. Phases 1–3 of the Federalist/Anti-Federalist build complete: Phase 0 (Federalist/Anti-Federalist pipeline) and Phase 1 (collection pages) complete. `museumofminds.com/federalist-papers/` — 85 papers, filter bar, inline chat; `museumofminds.com/anti-federalist-papers/` — 32 essays, filter bar, inline chat. Anti-Federalist Spinoza contamination fixed (99 bad vectors deleted, correct papers ingested). Educator mode fully deployed to the live multi-tenant API: `educator_mode` flag injects SC standards quotation overlay; `standards_alignment` field returns up to 8 SC/AP standard codes per response. SC Curriculum Alignment Brief live at `/educator/alignment/`.
 
 ## Next Action
 
-Phase 2: build 8 canonical individual paper pages — F10, F51, F70, F78, F84 (Federalist) and Brutus 1, Federal Farmer Letter 1, Cato 4 (Anti-Federalist). These are the most-cited pages for AP Gov and SC USG standards.
+Phase 4–5: bulk individual paper pages for the remaining 77 Federalist and 29 Anti-Federalist papers using `execution/build_paper_pages.py --all-papers`. Then Phase 6: filterable index enhancements (topic cluster pages).
 
 ## Blockers
 
-- Lincoln voice conflict with Hayek (same ElevenLabs voice ID `TxGEqnHWrfWFTfGW9XjX`) — needs re-audition before Lincoln TTS
+- Sherlock Holmes voice: `TBD_AFTER_AUDITION`, `enabled: false` — test clips exist at `~/.tmp/holmes_george.mp3` and `holmes_daniel.mp3`. User needs to listen and pick.
+- Frederick Law Olmsted: voice_id not set in persona.json — needs audition before TTS.
 
 ## Open Questions
 
