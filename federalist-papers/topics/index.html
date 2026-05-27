@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topics — The Ratification Debates — Museum of Minds</title>
+  <meta name="description" content="Browse the Federalist and Anti-Federalist Papers by theme: faction, executive power, judiciary, federalism, checks and balances, Bill of Rights, standing armies, Congress." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void: #0B1218; --deep: #121A22; --wall: #1A2430; --parchment: #F0E4C8;
+      --text: #D0C4A4; --text-dim: #8A7E68; --gold: #A88425; --gold-pale: #D4B870; --dim: #5A6070;
+    }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.65; overflow-x: hidden; min-height: 100vh; }
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; text-decoration: none; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+    .hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15); padding: 2.8rem 2.5rem 2.2rem; }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                     text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2.4rem);
+                font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 680px; font-weight: 400; }
+    .topics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; padding: 3rem 2.5rem; }
+    .topic-card { background: var(--wall); border: 1px solid rgba(168,132,37,0.15); padding: 1.4rem;
+                    text-decoration: none; transition: all .2s; display: block; border-radius: 2px; }
+    .topic-card:hover { border-color: rgba(168,132,37,0.45); background: rgba(168,132,37,0.05); transform: translateY(-1px); }
+    .tc-standards { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                      text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 0.5rem; }
+    .tc-title { font-family: 'Cinzel', serif; font-size: 0.92rem; color: var(--parchment);
+                  font-weight: 600; line-height: 1.3; margin-bottom: 0.6rem; }
+    .card-debate-flag { font-family: 'Cinzel', serif; font-size: 0.54rem; letter-spacing: 0.1em;
+                          color: var(--gold); opacity: 0.75; margin-left: 0.4rem; }
+    .tc-question { font-size: 0.9rem; color: var(--text-dim); line-height: 1.45; margin-bottom: 0.7rem; font-style: italic; }
+    .tc-counts { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; display: flex; justify-content: space-between; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    @media (max-width: 1000px) { .topics-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .topics-grid { grid-template-columns: 1fr; padding: 2rem 1rem; } header { padding: 0.8rem 1rem; } .hero { padding: 2rem 1rem 1.5rem; } }
+  </style>
+</head>
+<body>
+<header>
+  <a href="/" class="hdr-brand-name">Museum of Minds</a>
+  <span class="breadcrumb">
+    <a href="/">Museum</a> &rsaquo; <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+    <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo; Topics
+  </span>
+</header>
+<section class="hero">
+  <p class="hero-eyebrow">Ratification Debates · Thematic Clusters</p>
+  <h1>Topics in the Ratification Debate</h1>
+  <p class="hero-sub">Browse the Federalist and Anti-Federalist Papers by theme — each cluster pairs the Federalist argument with the Anti-Federalist response on a single constitutional question.</p>
+</section>
+<div class="topics-grid">
+  
+    <a href="/federalist-papers/topics/faction/" class="topic-card">
+      <div class="tc-standards">USG.1.IN · USG.1.CC · USHC.1.CE</div>
+      <h3 class="tc-title">Faction &amp; Republican Government <span class="card-debate-flag">⚔ Debate</span></h3>
+      <p class="tc-question">How does a republic control faction without destroying liberty?</p>
+      <p class="tc-counts">4 Federalist · 3 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/executive-power/" class="topic-card">
+      <div class="tc-standards">USG.2.ER · §59-29-155</div>
+      <h3 class="tc-title">The Executive <span class="card-debate-flag">⚔ Debate</span></h3>
+      <p class="tc-question">Should the executive have energy — or does a powerful single president become a king?</p>
+      <p class="tc-counts">4 Federalist · 3 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/judiciary/" class="topic-card">
+      <div class="tc-standards">USG.2.IP · USG.2.ER · §59-29-155</div>
+      <h3 class="tc-title">The Judiciary</h3>
+      <p class="tc-question">Should judges have life tenure and the power to strike down laws passed by the people&#x27;s representatives?</p>
+      <p class="tc-counts">4 Federalist · 3 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/federalism/" class="topic-card">
+      <div class="tc-standards">USG.2.ER · USG.2.IN · 8.2.P</div>
+      <h3 class="tc-title">Federalism &amp; State Power</h3>
+      <p class="tc-question">How much power should the central government have — and what is left to the states?</p>
+      <p class="tc-counts">4 Federalist · 2 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/checks-balances/" class="topic-card">
+      <div class="tc-standards">USG.2.ER · USG.2.IN · §59-29-155</div>
+      <h3 class="tc-title">Checks &amp; Balances <span class="card-debate-flag">⚔ Debate</span></h3>
+      <p class="tc-question">Can a government be designed to check itself — or does separation of powers require external enforcement?</p>
+      <p class="tc-counts">4 Federalist · 2 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/bill-of-rights/" class="topic-card">
+      <div class="tc-standards">USG.1.IN · USG.4.IN · §59-29-120</div>
+      <h3 class="tc-title">The Bill of Rights <span class="card-debate-flag">⚔ Debate</span></h3>
+      <p class="tc-question">Is a written declaration of rights necessary — or does listing rights limit the ones not listed?</p>
+      <p class="tc-counts">2 Federalist · 2 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/standing-armies/" class="topic-card">
+      <div class="tc-standards">USG.2.ER · USHC.1.CE</div>
+      <h3 class="tc-title">Standing Armies &amp; Military Power</h3>
+      <p class="tc-question">Can a standing army coexist with republican liberty — or is it always a threat to freedom?</p>
+      <p class="tc-counts">4 Federalist · 2 Anti-Federalist papers</p>
+    </a>
+    <a href="/federalist-papers/topics/legislature/" class="topic-card">
+      <div class="tc-standards">USG.2.ER · USG.2.IN · USHC.1.CE</div>
+      <h3 class="tc-title">Congress &amp; Representation</h3>
+      <p class="tc-question">Is Congress large enough, and close enough to the people, to truly represent them?</p>
+      <p class="tc-counts">4 Federalist · 4 Anti-Federalist papers</p>
+    </a>
+</div>
+<footer>
+  <span>8 Topic Clusters · The Ratification Debates · 1787–1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/anti-federalist-papers/">Anti-Federalist Papers</a> &bull; <a href="/federalist-papers/debate/">Debate View</a></span>
+</footer>
+</body>
+</html>

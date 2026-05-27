@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Judiciary — The Ratification Debates — Museum of Minds</title>
+  <meta name="description" content="Should judges have life tenure and the power to strike down laws passed by the people&#x27;s representatives? Federalist and Anti-Federalist Papers on the judiciary." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0B1218;
+      --deep:      #121A22;
+      --wall:      #1A2430;
+      --wall-mid:  #212E3C;
+      --parchment: #F0E4C8;
+      --text:      #D0C4A4;
+      --text-dim:  #8A7E68;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.65; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    .hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+             padding: 2.8rem 2.5rem 2.2rem; position: relative; overflow: hidden; }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                     text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2.3rem);
+                font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; }
+    .hero-question { font-size: 1.15rem; color: var(--text); max-width: 720px;
+                       margin-bottom: 1.2rem; font-style: italic; font-weight: 400; line-height: 1.55; }
+    .hero-chips { display: flex; gap: 0.55rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.22rem 0.6rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); }
+    .chip-std { border-color: rgba(168,132,37,0.28); color: var(--text-dim); background: transparent; font-size: 0.54rem; }
+    .debate-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                    background: transparent; border: 1px solid rgba(168,132,37,0.4); color: var(--gold);
+                    padding: 0.35rem 0.8rem; border-radius: 2px; text-decoration: none; transition: all .15s; display: inline-block; }
+    .debate-btn:hover { background: rgba(168,132,37,0.12); }
+
+    .framing-section { padding: 2rem 2.5rem; background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.1); }
+    .framing-text { max-width: 800px; font-size: 1.1rem; line-height: 1.7; color: var(--text); font-weight: 400; }
+
+    .main-grid { display: grid; grid-template-columns: 56fr 44fr; min-height: 75vh; }
+
+    .papers-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                    max-height: calc(100vh - 200px); padding: 2rem 2.5rem; }
+    .side-section-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em;
+                             text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.6rem;
+                             border-bottom: 1px solid rgba(168,132,37,0.15); }
+    .side-label-fed { color: var(--gold); opacity: 0.88; }
+    .side-label-anti { color: var(--crimson-pale); opacity: 0.88; border-bottom-color: rgba(122,28,28,0.2); }
+    .papers-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2.5rem; }
+    .paper-item { display: block; padding: 1rem 1.1rem; border: 1px solid rgba(168,132,37,0.15);
+                    border-radius: 2px; text-decoration: none; transition: all .15s; background: var(--wall); }
+    .paper-item:hover { border-color: rgba(168,132,37,0.4); background: rgba(168,132,37,0.05); }
+    .paper-item-anti { border-color: rgba(122,28,28,0.18); }
+    .paper-item-anti:hover { border-color: rgba(122,28,28,0.45); background: rgba(122,28,28,0.05); }
+    .paper-item-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+    .paper-item-num { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.1em;
+                        color: var(--gold); opacity: 0.88; font-weight: 600; }
+    .paper-item-num-anti { color: var(--crimson-pale); }
+    .paper-item-badges { display: flex; gap: 3px; }
+    .badge { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.1em;
+              padding: 1px 4px; border-radius: 2px; line-height: 1.6; font-weight: 700; }
+    .badge-ap { background: rgba(60,120,220,0.18); color: #7AABFF; border: 1px solid rgba(60,120,220,0.3); }
+    .badge-sc { background: rgba(60,160,80,0.18); color: #88D488; border: 1px solid rgba(60,160,80,0.3); }
+    .paper-item-label { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--parchment);
+                          font-weight: 600; letter-spacing: 0.03em; margin-bottom: 0.3rem; line-height: 1.3; }
+    .paper-item-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.45; font-weight: 400; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 75vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex;
+                       flex-direction: column; gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; flex-wrap: wrap; gap: 0.5rem; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .papers-col { max-height: none; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .framing-section { padding: 1.5rem 1rem; }
+      .papers-col { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      <a href="/federalist-papers/topics/">Topics</a> &rsaquo;
+      The Judiciary
+    </span>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">Ratification Debates · Theme Cluster</p>
+  <h1>The Judiciary</h1>
+  <p class="hero-question">Should judges have life tenure and the power to strike down laws passed by the people&#x27;s representatives?</p>
+  <div class="hero-chips">
+    <span class="chip chip-std">USG.2.IP</span><span class="chip chip-std">USG.2.ER</span><span class="chip chip-std">§59-29-155</span>
+  </div>
+  
+</section>
+
+<section class="framing-section">
+  <p class="framing-text">Hamilton called the judiciary the &#x27;least dangerous branch&#x27; — it had neither the sword nor the purse, only judgment. Brutus violently disagreed: a court with life tenure and no check on its power to interpret the Constitution would inevitably become the most powerful branch of all. The debate between Federalist No. 78 and Brutus XI is the founding argument for and against judicial review.</p>
+</section>
+
+<div class="main-grid">
+
+  <div class="papers-col">
+    <p class="side-section-label side-label-fed">The Federalist Argument — Publius</p>
+    <div class="papers-grid">
+      
+      <a href="/federalist-papers/federalist-78/" class="paper-item">
+        <div class="paper-item-head">
+          <span class="paper-item-num">No. 78</span>
+          <span class="paper-item-badges"><span class="badge badge-ap">AP</span></span>
+        </div>
+        <div class="paper-item-label">The Judiciary Department</div>
+        <div class="paper-item-desc">Hamilton&#x27;s case for life tenure, judicial independence, and the power of courts to void unconstitutional acts.</div>
+      </a>
+      <a href="/federalist-papers/federalist-79/" class="paper-item">
+        <div class="paper-item-head">
+          <span class="paper-item-num">No. 79</span>
+          <span class="paper-item-badges"></span>
+        </div>
+        <div class="paper-item-label">Judicial Compensation</div>
+        <div class="paper-item-desc">Why judges must have secure salaries to remain independent of legislative pressure.</div>
+      </a>
+      <a href="/federalist-papers/federalist-80/" class="paper-item">
+        <div class="paper-item-head">
+          <span class="paper-item-num">No. 80</span>
+          <span class="paper-item-badges"></span>
+        </div>
+        <div class="paper-item-label">Extent of Judicial Power</div>
+        <div class="paper-item-desc">Hamilton on the scope of federal judicial jurisdiction — why it must be broad to keep law uniform.</div>
+      </a>
+      <a href="/federalist-papers/federalist-81/" class="paper-item">
+        <div class="paper-item-head">
+          <span class="paper-item-num">No. 81</span>
+          <span class="paper-item-badges"></span>
+        </div>
+        <div class="paper-item-label">Appellate Jurisdiction</div>
+        <div class="paper-item-desc">On the appellate structure and the impossibility of Congress being its own judge.</div>
+      </a>
+    </div>
+
+    <p class="side-section-label side-label-anti">The Anti-Federalist Response</p>
+    <div class="papers-grid">
+      
+      <a href="/anti-federalist-papers/brutus-11/" class="paper-item paper-item-anti">
+        <div class="paper-item-head">
+          <span class="paper-item-num paper-item-num-anti">Brutus</span>
+        </div>
+        <div class="paper-item-label">Essay XI — Judicial Review</div>
+        <div class="paper-item-desc">Brutus predicts that judges will expand federal power without check — their interpretations will be final and unreviewable.</div>
+      </a>
+      <a href="/anti-federalist-papers/brutus-12/" class="paper-item paper-item-anti">
+        <div class="paper-item-head">
+          <span class="paper-item-num paper-item-num-anti">Brutus</span>
+        </div>
+        <div class="paper-item-label">Essay XII — Judicial Power</div>
+        <div class="paper-item-desc">On the consequences of an unchecked court that can void state laws on nearly any pretext.</div>
+      </a>
+      <a href="/anti-federalist-papers/brutus-15/" class="paper-item paper-item-anti">
+        <div class="paper-item-head">
+          <span class="paper-item-num paper-item-num-anti">Brutus</span>
+        </div>
+        <div class="paper-item-label">Essay XV — The Judiciary Continued</div>
+        <div class="paper-item-desc">Brutus&#x27;s final argument: the judiciary will absorb all power, and the Constitution provides no remedy.</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask About The Judiciary</div>
+      <div class="chat-panel-desc">Ask Publius — or the Anti-Federalists — about any argument in this cluster. The chatbot draws from both collections.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">This is the cluster on The Judiciary. The central question: Should judges have life tenure and the power to strike down laws passed by the people&#x27;s representatives? Ask me anything about the Federalist or Anti-Federalist arguments on this theme.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is Hamilton&#x27;s argument that the judiciary is the &#x27;least dangerous branch&#x27;?</button>
+<button class="starter" onclick="sendStarter(this)">How does Brutus predict the Supreme Court will expand federal power?</button>
+<button class="starter" onclick="sendStarter(this)">What does Federalist 78 say is the basis for judicial review — the power to strike down unconstitutional laws?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about the judiciary…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>The Judiciary · The Ratification Debates · 1787–1788</span>
+  <span>
+    <a href="/federalist-papers/topics/">← All Topics</a> &bull;
+    <a href="/federalist-papers/">Federalist Papers</a> &bull;
+    <a href="/anti-federalist-papers/">Anti-Federalist Papers</a>
+  </span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = true;
+  try {
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        message: "On the topic of The Judiciary: " + msg,
+        conversation_id: convId,
+        mode: "modern", length: "detailed", reading_level: "general",
+      }),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+    if (data.sources && data.sources.length) {
+      const s = document.createElement("div");
+      s.className = "msg-sources";
+      s.textContent = "Sources: " + data.sources.slice(0,3).map(x => x.title + (x.year?" ("+x.year+")":"")).join("; ");
+      thinkDiv.appendChild(s);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+function sendStarter(btn) { sendMessage(btn.textContent); }
+</script>
+</body>
+</html>
