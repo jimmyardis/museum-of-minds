@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Ratification Debate — Publius vs. The Anti-Federalists — Museum of Minds</title>
+  <meta name="description" content="Watch the Federalist Papers debate the Anti-Federalist Papers on the four central disputes of ratification: factions, executive power, checks and balances, and the Bill of Rights." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0B1218;
+      --deep:      #121A22;
+      --wall:      #1A2430;
+      --wall-mid:  #212E3C;
+      --parchment: #F0E4C8;
+      --text:      #D0C4A4;
+      --text-dim:  #8A7E68;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A6070;
+      --divider:   rgba(168,132,37,0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+           font-size: 1.125rem; line-height: 1.65; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid var(--divider);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* HERO */
+    .hero { background: var(--deep); border-bottom: 1px solid var(--divider);
+             padding: 2.8rem 2.5rem 2.2rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: 'VS'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 14rem; font-weight: 900;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                     text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2.4rem);
+                font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 700px; margin-bottom: 1.5rem; font-weight: 400; }
+    .combatants { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .combatant-pill { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.12em;
+                        text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; }
+    .cp-fed { background: rgba(168,132,37,0.12); border: 1px solid rgba(168,132,37,0.4); color: var(--gold); }
+    .cp-anti { background: rgba(122,28,28,0.12); border: 1px solid rgba(122,28,28,0.4); color: var(--crimson-pale); }
+    .cp-vs { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--dim); opacity: 0.88; }
+
+    /* TOPIC SELECTOR */
+    .topic-section { padding: 2.5rem 2.5rem; background: var(--deep); border-bottom: 1px solid var(--divider); }
+    .topic-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em;
+                    text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 1.5rem; }
+    .topic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .topic-card {
+      border: 1px solid rgba(168,132,37,0.18); background: var(--wall); padding: 1.2rem;
+      cursor: pointer; transition: all .2s; border-radius: 2px; position: relative;
+    }
+    .topic-card:hover { border-color: rgba(168,132,37,0.45); background: rgba(168,132,37,0.05); }
+    .topic-card.active { border-color: var(--gold); background: rgba(168,132,37,0.08); }
+    .topic-card-num { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+                        text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.5rem; }
+    .topic-card-title { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--parchment);
+                          font-weight: 600; line-height: 1.3; margin-bottom: 0.5rem; }
+    .topic-card-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 0.8rem; }
+    .topic-card-papers { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.1em;
+                           text-transform: uppercase; color: var(--dim); line-height: 1.6; }
+    .topic-card-papers span.fed { color: var(--gold); opacity: 0.88; }
+    .topic-card-papers span.anti { color: var(--crimson-pale); opacity: 0.88; }
+    .topic-start-btn {
+      font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--gold); color: var(--void); border: none; padding: 0.4rem 0.9rem;
+      border-radius: 2px; cursor: pointer; font-weight: 700; opacity: 0; transition: opacity .2s;
+      position: absolute; bottom: 1rem; right: 1rem;
+    }
+    .topic-card.active .topic-start-btn,
+    .topic-card:hover .topic-start-btn { opacity: 0.95; }
+    .topic-start-btn:hover { opacity: 1 !important; }
+
+    /* DEBATE ARENA */
+    .debate-arena { display: none; padding: 0; }
+    .debate-arena.visible { display: block; }
+
+    .arena-header { padding: 1.2rem 2.5rem; background: var(--deep); border-bottom: 1px solid var(--divider);
+                     display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .arena-topic-display { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600;
+                             color: var(--parchment); letter-spacing: 0.05em; }
+    .arena-topic-sub { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                         text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.2rem; }
+    .arena-exchange-count { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.12em;
+                              text-transform: uppercase; color: var(--dim); opacity: 0.88; white-space: nowrap; }
+    .arena-controls { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .ctrl-btn {
+      font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.35rem 0.9rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+      background: transparent; border-radius: 2px; cursor: pointer; transition: all .15s; opacity: 0.88;
+    }
+    .ctrl-btn:hover { background: rgba(168,132,37,0.12); opacity: 1; }
+    .ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .ctrl-btn-primary { background: var(--gold); color: var(--void); border-color: var(--gold); }
+    .ctrl-btn-primary:hover { background: var(--gold-pale); }
+
+    /* DEBATE PANELS */
+    .debate-panels { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+    .debate-side { display: flex; flex-direction: column; }
+    .debate-side-fed { border-right: 1px solid var(--divider); }
+    .side-header {
+      padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid var(--divider);
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .side-header-fed { background: rgba(168,132,37,0.05); border-bottom-color: rgba(168,132,37,0.2); }
+    .side-header-anti { background: rgba(122,28,28,0.05); border-bottom-color: rgba(122,28,28,0.2); }
+    .side-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .side-dot-fed { background: var(--gold); }
+    .side-dot-anti { background: var(--crimson-pale); }
+    .side-name { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.14em;
+                  text-transform: uppercase; color: var(--parchment); font-weight: 600; }
+    .side-pseudonym { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                        text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-left: auto; }
+    .debate-exchanges { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex;
+                          flex-direction: column; gap: 1.5rem; min-height: 400px; }
+    .exchange-block { display: flex; flex-direction: column; gap: 0.4rem; }
+    .exchange-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.14em;
+                        text-transform: uppercase; opacity: 0.55; margin-bottom: 0.2rem; }
+    .exchange-label-fed { color: var(--gold); }
+    .exchange-label-anti { color: var(--crimson-pale); }
+    .exchange-text { font-size: 1.05rem; line-height: 1.65; color: var(--text); font-weight: 400;
+                      padding: 1rem 1.1rem; border-radius: 2px; }
+    .exchange-text-fed { background: rgba(168,132,37,0.07); border-left: 2px solid var(--gold-dim); color: var(--parchment); }
+    .exchange-text-anti { background: rgba(122,28,28,0.09); border-left: 2px solid var(--crimson-dim); color: #DACCB8; }
+    .exchange-sources { font-size: 0.8rem; color: var(--text-dim); opacity: 0.88; margin-top: 0.3rem; padding-left: 0.5rem; }
+    .thinking-block { font-style: italic; color: var(--text-dim); opacity: 0.65; font-size: 0.95rem;
+                        padding: 0.5rem 0.8rem; animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.75; } }
+
+    /* STEER / MODERATOR */
+    .moderator-bar { padding: 0.8rem 1.5rem; border-top: 1px solid var(--divider);
+                      background: var(--wall-mid); grid-column: 1 / -1; }
+    .moderator-row { display: flex; gap: 0.6rem; align-items: center; }
+    .moderator-label { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.12em;
+                         text-transform: uppercase; color: var(--dim); opacity: 0.88; white-space: nowrap; }
+    .moderator-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 0.95rem;
+                         background: var(--wall); color: var(--text); border: 1px solid rgba(168,132,37,0.2);
+                         padding: 0.4rem 0.7rem; border-radius: 2px; outline: none; }
+    .moderator-input:focus { border-color: var(--gold); }
+    .moderator-hint { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.08em;
+                        color: var(--dim); opacity: 0.7; margin-top: 0.35rem; }
+
+    /* CHANGE TOPIC BACK */
+    .change-topic-bar { padding: 0.6rem 2.5rem; background: var(--deep); border-bottom: 1px solid var(--divider);
+                          display: flex; align-items: center; gap: 1rem; }
+    .change-topic-btn { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.12em;
+                          text-transform: uppercase; color: var(--text-dim); background: transparent;
+                          border: 1px solid rgba(255,255,255,0.08); padding: 0.3rem 0.75rem;
+                          border-radius: 2px; cursor: pointer; transition: all .15s; }
+    .change-topic-btn:hover { border-color: rgba(168,132,37,0.3); color: var(--gold); }
+    .active-topic-name { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                           text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid var(--divider);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .topic-grid { grid-template-columns: 1fr 1fr; }
+      .debate-panels { grid-template-columns: 1fr; }
+      .debate-side-fed { border-right: none; border-bottom: 1px solid var(--divider); }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .topic-section { padding: 1.5rem 1rem; }
+      .topic-grid { grid-template-columns: 1fr; }
+      .arena-header { padding: 1rem; }
+      .debate-exchanges { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      Debate
+    </span>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Ratification Debates · 1787–1788</p>
+  <h1>Publius vs. The Anti-Federalists</h1>
+  <p class="hero-sub">The four central disputes of ratification — argued again, in full, grounded in their actual writings. Choose a topic and watch Hamilton, Madison, and Jay answer Brutus, Cato, and the Federal Farmer.</p>
+  <div class="combatants">
+    <span class="combatant-pill cp-fed">Publius — Hamilton, Madison &amp; Jay</span>
+    <span class="cp-vs">vs.</span>
+    <span class="combatant-pill cp-anti">Brutus · Cato · Federal Farmer</span>
+  </div>
+</section>
+
+<!-- TOPIC SELECTOR -->
+<section class="topic-section" id="topic-section">
+  <p class="topic-label">Choose a Debate Topic</p>
+  <div class="topic-grid">
+
+    <div class="topic-card" onclick="startDebate(0)">
+      <p class="topic-card-num">Debate I</p>
+      <h3 class="topic-card-title">Can a Large Republic Preserve Liberty?</h3>
+      <p class="topic-card-desc">Madison argues the extended republic controls faction; Brutus argues it guarantees consolidation and tyranny.</p>
+      <p class="topic-card-papers">
+        <span class="fed">Federalist No. 10</span> vs <span class="anti">Brutus Essay I</span>
+      </p>
+      <button class="topic-start-btn">Begin →</button>
+    </div>
+
+    <div class="topic-card" onclick="startDebate(1)">
+      <p class="topic-card-num">Debate II</p>
+      <h3 class="topic-card-title">Should the Executive Have Energy?</h3>
+      <p class="topic-card-desc">Hamilton defends a single energetic executive; Cato warns it is a monarchy in waiting.</p>
+      <p class="topic-card-papers">
+        <span class="fed">Federalist No. 70</span> vs <span class="anti">Cato Letter IV</span>
+      </p>
+      <button class="topic-start-btn">Begin →</button>
+    </div>
+
+    <div class="topic-card" onclick="startDebate(2)">
+      <p class="topic-card-num">Debate III</p>
+      <h3 class="topic-card-title">Are Checks and Balances Sufficient?</h3>
+      <p class="topic-card-desc">Madison's compound republic vs. the Federal Farmer's demand for more deliberation and stronger state power.</p>
+      <p class="topic-card-papers">
+        <span class="fed">Federalist No. 51</span> vs <span class="anti">Federal Farmer Letter I</span>
+      </p>
+      <button class="topic-start-btn">Begin →</button>
+    </div>
+
+    <div class="topic-card" onclick="startDebate(3)">
+      <p class="topic-card-num">Debate IV</p>
+      <h3 class="topic-card-title">Is a Bill of Rights Necessary?</h3>
+      <p class="topic-card-desc">Hamilton argues the Constitution IS a bill of rights; Brutus and the Federal Farmer insist without explicit guarantees, liberty is at risk.</p>
+      <p class="topic-card-papers">
+        <span class="fed">Federalist No. 84</span> vs <span class="anti">Brutus II · Federal Farmer II</span>
+      </p>
+      <button class="topic-start-btn">Begin →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEBATE ARENA -->
+<div class="debate-arena" id="debate-arena">
+
+  <div class="change-topic-bar">
+    <button class="change-topic-btn" onclick="resetToTopics()">← Choose Different Topic</button>
+    <span class="active-topic-name" id="active-topic-name">—</span>
+  </div>
+
+  <div class="arena-header">
+    <div>
+      <div class="arena-topic-sub">Current Debate</div>
+      <div class="arena-topic-display" id="arena-topic-display">—</div>
+    </div>
+    <div class="arena-controls">
+      <span class="arena-exchange-count" id="exchange-count">Exchange 0</span>
+      <button class="ctrl-btn ctrl-btn-primary" id="btn-next" onclick="nextExchange()" disabled>
+        Open Exchange →
+      </button>
+    </div>
+  </div>
+
+  <div class="debate-panels">
+
+    <!-- FEDERALIST SIDE -->
+    <div class="debate-side debate-side-fed">
+      <div class="side-header side-header-fed">
+        <span class="side-dot side-dot-fed"></span>
+        <span class="side-name">Publius</span>
+        <span class="side-pseudonym">Hamilton · Madison · Jay</span>
+      </div>
+      <div class="debate-exchanges" id="exchanges-fed"></div>
+    </div>
+
+    <!-- ANTI-FEDERALIST SIDE -->
+    <div class="debate-side debate-side-anti">
+      <div class="side-header side-header-anti">
+        <span class="side-dot side-dot-anti"></span>
+        <span class="side-name">The Anti-Federalists</span>
+        <span class="side-pseudonym">Brutus · Cato · Federal Farmer</span>
+      </div>
+      <div class="debate-exchanges" id="exchanges-anti"></div>
+    </div>
+
+  </div>
+
+  <!-- MODERATOR BAR -->
+  <div class="moderator-bar">
+    <div class="moderator-row">
+      <span class="moderator-label">Steer the Debate →</span>
+      <input type="text" class="moderator-input" id="moderator-input"
+             placeholder="e.g. 'Focus on the necessary and proper clause' or leave blank for the natural argument"
+             maxlength="200" />
+      <button class="ctrl-btn" onclick="nextExchange(true)">Apply &amp; Continue</button>
+    </div>
+    <p class="moderator-hint">Leave blank to let the argument develop naturally. Press "Open Exchange" to advance without steering.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>The Ratification Debates · 1787–1788</span>
+  <span><a href="/federalist-papers/">The Federalist Papers</a> &bull; <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_FED  = "federalist-papers";
+const PERSONA_ANTI = "anti-federalist-papers";
+
+const DEBATES = [
+  {
+    id: 0,
+    label: "Debate I",
+    title: "Can a Large Republic Preserve Liberty?",
+    topic: "Can a large republic preserve liberty, or does size guarantee consolidated tyranny? Madison argues the extended republic is the cure for faction; Brutus argues it is the cause of its destruction.",
+    papers: "Federalist No. 10 vs. Brutus Essay I",
+  },
+  {
+    id: 1,
+    label: "Debate II",
+    title: "Should the Executive Have Energy?",
+    topic: "Should the executive be a single energetic person, or does a unitary executive inevitably become a monarchy? Hamilton defends energy in the executive; Cato warns of the danger of a powerful single president.",
+    papers: "Federalist No. 70 vs. Cato Letter IV",
+  },
+  {
+    id: 2,
+    label: "Debate III",
+    title: "Are Checks and Balances Sufficient?",
+    topic: "Is the proposed Constitution's system of checks and balances sufficient to protect liberty, or is a more deliberate process and stronger state power required? Madison argues the compound republic solves the problem; the Federal Farmer argues it does not.",
+    papers: "Federalist No. 51 vs. Federal Farmer Letter I",
+  },
+  {
+    id: 3,
+    label: "Debate IV",
+    title: "Is a Bill of Rights Necessary?",
+    topic: "Is a written Bill of Rights necessary, or does the Constitution itself already protect liberty? Hamilton argues it is unnecessary and even dangerous; Brutus and the Federal Farmer argue that without explicit written guarantees, rights will be lost.",
+    papers: "Federalist No. 84 vs. Brutus II and Federal Farmer II",
+  },
+];
+
+let currentDebate = null;
+let exchangeCount = 0;
+let history = [];
+let seenChunkIds = [];
+let isLoading = false;
+
+function startDebate(idx) {
+  currentDebate = DEBATES[idx];
+  exchangeCount = 0;
+  history = [];
+  seenChunkIds = [];
+
+  document.getElementById("exchanges-fed").innerHTML  = "";
+  document.getElementById("exchanges-anti").innerHTML = "";
+
+  document.getElementById("active-topic-name").textContent = currentDebate.label + " — " + currentDebate.title;
+  document.getElementById("arena-topic-display").textContent = currentDebate.title;
+  document.getElementById("exchange-count").textContent = "Exchange 0 of 5";
+  document.getElementById("btn-next").disabled = false;
+  document.getElementById("btn-next").textContent = "Open Exchange →";
+
+  document.getElementById("topic-section").style.display = "none";
+  const arena = document.getElementById("debate-arena");
+  arena.classList.add("visible");
+  arena.scrollIntoView({ behavior: "smooth" });
+}
+
+function resetToTopics() {
+  document.getElementById("topic-section").style.display = "";
+  document.getElementById("debate-arena").classList.remove("visible");
+  currentDebate = null;
+}
+
+async function nextExchange(withSteer) {
+  if (isLoading || !currentDebate) return;
+  if (exchangeCount >= 5) return;
+
+  isLoading = true;
+  const btn = document.getElementById("btn-next");
+  btn.disabled = true;
+  btn.textContent = "Arguing…";
+
+  const steer = withSteer ? document.getElementById("moderator-input").value.trim() : null;
+  if (withSteer) document.getElementById("moderator-input").value = "";
+
+  const fedExchanges  = document.getElementById("exchanges-fed");
+  const antiExchanges = document.getElementById("exchanges-anti");
+  exchangeCount++;
+  document.getElementById("exchange-count").textContent = `Exchange ${exchangeCount} of 5`;
+
+  // Add thinking placeholders
+  const fedThink  = addThinking(fedExchanges,  exchangeCount, "fed");
+  const antiThink = addThinking(antiExchanges, exchangeCount, "anti");
+
+  fedExchanges.scrollTop  = fedExchanges.scrollHeight;
+  antiExchanges.scrollTop = antiExchanges.scrollHeight;
+
+  try {
+    const body = {
+      persona_a:       PERSONA_FED,
+      persona_b:       PERSONA_ANTI,
+      topic:           currentDebate.topic,
+      history:         history,
+      steer:           steer || null,
+      exchange_num:    exchangeCount,
+      seen_chunk_ids:  seenChunkIds,
+      mode:            "modern",
+      length:          "standard",
+    };
+
+    const resp = await fetch(API + "/debate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+
+    // Update thinking blocks with actual text
+    fedThink.querySelector(".exchange-text").textContent = data.response_a;
+    fedThink.classList.remove("loading");
+    antiThink.querySelector(".exchange-text").textContent = data.response_b;
+    antiThink.classList.remove("loading");
+
+    // Sources
+    if (data.sources_a && data.sources_a.length) {
+      const s = fedThink.querySelector(".exchange-sources");
+      s.textContent = "Sources: " + data.sources_a.slice(0,3).map(src => src.title + (src.year ? " (" + src.year + ")" : "")).join("; ");
+    }
+    if (data.sources_b && data.sources_b.length) {
+      const s = antiThink.querySelector(".exchange-sources");
+      s.textContent = "Sources: " + data.sources_b.slice(0,3).map(src => src.title + (src.year ? " (" + src.year + ")" : "")).join("; ");
+    }
+
+    // Update history
+    history.push({ exchange: exchangeCount, figure_a: data.response_a, figure_b: data.response_b });
+    if (data.chunk_ids) seenChunkIds = seenChunkIds.concat(data.chunk_ids);
+
+    fedExchanges.scrollTop  = fedExchanges.scrollHeight;
+    antiExchanges.scrollTop = antiExchanges.scrollHeight;
+
+  } catch(e) {
+    fedThink.querySelector(".exchange-text").textContent  = "Unable to reach the API. Please try again.";
+    antiThink.querySelector(".exchange-text").textContent = "Unable to reach the API. Please try again.";
+    fedThink.classList.remove("loading");
+    antiThink.classList.remove("loading");
+    exchangeCount--;
+  }
+
+  isLoading = false;
+  if (exchangeCount < 5) {
+    btn.disabled = false;
+    btn.textContent = `Exchange ${exchangeCount + 1} →`;
+  } else {
+    btn.disabled = true;
+    btn.textContent = "Debate Complete";
+  }
+}
+
+function addThinking(container, num, side) {
+  const isFed = side === "fed";
+  const block = document.createElement("div");
+  block.className = "exchange-block loading";
+  block.innerHTML = `
+    <p class="exchange-label ${isFed ? "exchange-label-fed" : "exchange-label-anti"}">Exchange ${num}</p>
+    <div class="exchange-text ${isFed ? "exchange-text-fed" : "exchange-text-anti"} thinking-block">
+      ${isFed ? "Publius considers…" : "The Anti-Federalists consider…"}
+    </div>
+    <p class="exchange-sources"></p>
+  `;
+  container.appendChild(block);
+  return block;
+}
+</script>
+</body>
+</html>
