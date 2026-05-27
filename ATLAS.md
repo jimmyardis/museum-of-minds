@@ -8,35 +8,44 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 51 historical figures, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 53 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-26 |
+| **Last Active** | 2026-05-27 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-51 personas live. SC Curriculum Alignment Brief published at `museumofminds.com/educator/alignment/` — full USHC/USG/AP/legislative mandates/AI Framework coverage. Founding Documents hall portrait images fixed (Constitution + Declaration were 400-erroring due to bad Wikimedia hashes; corrected). Constitution persona page now has document photo in hero panel. Comprehensive Federalist/Anti-Federalist Papers build spec written at `/home/wner/FEDERALIST_BUILD_SPEC.md` — 9-phase full-vision build covering 170+ paper pages, collection chatbots, Debate View, Topic Clusters, and educator integration. Anti-Federalist corpus confirmed broken (Spinoza text ingested in error); fix is Phase 0 of the spec.
+53 personas + 2 document collections live. Phase 0 (Federalist/Anti-Federalist pipeline) and Phase 1 (collection pages) complete. `museumofminds.com/federalist-papers/` — 85 papers, filter bar, inline chat; `museumofminds.com/anti-federalist-papers/` — 32 essays, filter bar, inline chat. Anti-Federalist Spinoza contamination fixed (99 bad vectors deleted, correct papers ingested). Educator mode fully deployed to the live multi-tenant API: `educator_mode` flag injects SC standards quotation overlay; `standards_alignment` field returns up to 8 SC/AP standard codes per response. SC Curriculum Alignment Brief live at `/educator/alignment/`.
 
 ## Next Action
 
-Execute FEDERALIST_BUILD_SPEC.md Phase 0: write the Federalist Papers parser, source the correct Anti-Federalist Papers text, fix bad Pinecone vectors, and build the per-paper ingest pipeline. This is the prerequisite for all visible build work.
+Phase 2: build 8 canonical individual paper pages — F10, F51, F70, F78, F84 (Federalist) and Brutus 1, Federal Farmer Letter 1, Cato 4 (Anti-Federalist). These are the most-cited pages for AP Gov and SC USG standards.
 
 ## Blockers
 
-- Anti-Federalist corpus is wrong (Spinoza text in Pinecone under Constitution discourse) — must fix before any Anti-Fed pages
 - Lincoln voice conflict with Hayek (same ElevenLabs voice ID `TxGEqnHWrfWFTfGW9XjX`) — needs re-audition before Lincoln TTS
 
 ## Open Questions
 
-- Which Anti-Federalist edition to use? Spec recommends Avalon Project / public domain (Storing collection is copyrighted). Confirm with user before Phase 0B.
-- Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist build?
-- AI literacy "How It Works" page — scoped and designed in conversation, not yet built. Prioritize?
+- Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
+- AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
+- Anti-Federalist Papers portrait card image: currently uses inline SVG. Worth finding a real period document scan?
 
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-27
+
+- **Phase 0 complete** (recap from prior session): 85 Federalist Papers parsed into `personas/federalist-papers/papers/` (85 .txt + manifest.json); 32 Anti-Federalist Papers sourced (Avalon Project — Brutus, Cato, Federal Farmer, Centinel, Agrippa, Plainman); Spinoza contamination fixed (99 bad vectors deleted, correct papers ingested via `ingest_papers.py`); 1,102 Federalist + 442 Anti-Federalist vectors in Pinecone; persona.json files created for both collections; `build_collection_pages.py` generator script written
+- **Phase 1 complete**: `museumofminds.com/federalist-papers/` (85 papers, author/topic/AP/SC filter bar, curated reading paths, inline chat) and `museumofminds.com/anti-federalist-papers/` (32 essays, filter bar, editorial notes about retroactive label, inline chat) both live
+- **Founding Documents hall updated**: portrait-grid cards added for both collections; Federalist Papers doc-card promoted from coming-soon to live; Anti-Federalist Papers live doc-card added (crimson/newsprint theme)
+- **Educator mode deployed to live API** (commit `6398e21`): `educator_mode: bool` on ChatRequest → injects `_EDUCATOR_PROMPT_OVERLAY` (mandates verbatim primary-source quotation, inline attribution, no contemporary political commentary); `standards_alignment: List[str]` on ChatResponse returns up to 8 SC/AP codes; `_PERSONA_STANDARDS` covers all 53 personas; `_TOPIC_STANDARDS` adds keyword-triggered codes at query time; pushed to origin and Railway redeployed
+- **Standards tags** for 15 Sprint 1/2 personas added (Adams, Locke, Patrick Henry, Mason, Jay, Montesquieu, Bill of Rights, Declaration, Federalist Papers, Anti-Federalist Papers, and more)
+- **LexRich 5 outreach**: audited site against all 5 Melony links (SC CCRS, US History alignment, SC USG alignment, AP US History CED, AP Gov CED) — confirmed coverage; drafted follow-up email with persona links and feature highlights
+- **PLATFORM_STATUS.md updated**: Phase 1 ✅, totals 53/53
 
 ### 2026-05-26
 
