@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 16 — Defects of the Confederation II — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 16: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union) by Alexander Hamilton, December 4, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '16'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;16
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 16 · Published by New York Packet</p>
+  <h1>The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; December 4, 1787 &bull; 2,033 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-15/" class="nav-btn">← No.&thinsp;15</a>
+    <a href="/federalist-papers/federalist-17/" class="nav-btn">No.&thinsp;17 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,033 words &bull; Federalism &bull; December 4, 1787</p>
+
+<p>THE tendency of the principle of legislation for States, or communities, in their political capacities, as it has been exemplified by the experiment we have made of it, is equally attested by the events which have befallen all other governments of the confederate kind, of which we have any account, in exact proportion to its prevalence in those systems. The confirmations of this fact will be worthy of a distinct and particular examination. I shall content myself with barely observing here, that of all the confederacies of antiquity, which history has handed down to us, the Lycian and Achaean leagues, as far as there remain vestiges of them, appear to have been most free from the fetters of that mistaken principle, and were accordingly those which have best deserved, and have most liberally received, the applauding suffrages of political writers.</p>
+<p>This exceptionable principle may, as truly as emphatically, be styled the parent of anarchy: It has been seen that delinquencies in the members of the Union are its natural and necessary offspring; and that whenever they happen, the only constitutional remedy is force, and the immediate effect of the use of it, civil war.</p>
+<p>It remains to inquire how far so odious an engine of government, in its application to us, would even be capable of answering its end. If there should not be a large army constantly at the disposal of the national government it would either not be able to employ force at all, or, when this could be done, it would amount to a war between parts of the Confederacy concerning the infractions of a league, in which the strongest combination would be most likely to prevail, whether it consisted of those who supported or of those who resisted the general authority. It would rarely happen that the delinquency to be redressed would be confined to a single member, and if there were more than one who had neglected their duty, similarity of situation would induce them to unite for common defense. Independent of this motive of sympathy, if a large and influential State should happen to be the aggressing member, it would commonly have weight enough with its neighbors to win over some of them as associates to its cause. Specious arguments of danger to the common liberty could easily be contrived; plausible excuses for the deficiencies of the party could, without difficulty, be invented to alarm the apprehensions, inflame the passions, and conciliate the good-will, even of those States which were not chargeable with any violation or omission of duty. This would be the more likely to take place, as the delinquencies of the larger members might be expected sometimes to proceed from an ambitious premeditation in their rulers, with a view to getting rid of all external control upon their designs of personal aggrandizement; the better to effect which it is presumable they would tamper beforehand with leading individuals in the adjacent States. If associates could not be found at home, recourse would be had to the aid of foreign powers, who would seldom be disinclined to encouraging the dissensions of a Confederacy, from the firm union of which they had so much to fear. When the sword is once drawn, the passions of men observe no bounds of moderation. The suggestions of wounded pride, the instigations of irritated resentment, would be apt to carry the States against which the arms of the Union were exerted, to any extremes necessary to avenge the affront or to avoid the disgrace of submission. The first war of this kind would probably terminate in a dissolution of the Union.</p>
+<p>This may be considered as the violent death of the Confederacy. Its more natural death is what we now seem to be on the point of experiencing, if the federal system be not speedily renovated in a more substantial form. It is not probable, considering the genius of this country, that the complying States would often be inclined to support the authority of the Union by engaging in a war against the non-complying States. They would always be more ready to pursue the milder course of putting themselves upon an equal footing with the delinquent members by an imitation of their example. And the guilt of all would thus become the security of all. Our past experience has exhibited the operation of this spirit in its full light. There would, in fact, be an insuperable difficulty in ascertaining when force could with propriety be employed. In the article of pecuniary contribution, which would be the most usual source of delinquency, it would often be impossible to decide whether it had proceeded from disinclination or inability. The pretense of the latter would always be at hand. And the case must be very flagrant in which its fallacy could be detected with sufficient certainty to justify the harsh expedient of compulsion. It is easy to see that this problem alone, as often as it should occur, would open a wide field for the exercise of factious views, of partiality, and of oppression, in the majority that happened to prevail in the national council.</p>
+<p>It seems to require no pains to prove that the States ought not to prefer a national Constitution which could only be kept in motion by the instrumentality of a large army continually on foot to execute the ordinary requisitions or decrees of the government. And yet this is the plain alternative involved by those who wish to deny it the power of extending its operations to individuals. Such a scheme, if practicable at all, would instantly degenerate into a military despotism; but it will be found in every light impracticable. The resources of the Union would not be equal to the maintenance of an army considerable enough to confine the larger States within the limits of their duty; nor would the means ever be furnished of forming such an army in the first instance. Whoever considers the populousness and strength of several of these States singly at the present juncture, and looks forward to what they will become, even at the distance of half a century, will at once dismiss as idle and visionary any scheme which aims at regulating their movements by laws to operate upon them in their collective capacities, and to be executed by a coercion applicable to them in the same capacities. A project of this kind is little less romantic than the monster-taming spirit which is attributed to the fabulous heroes and demi-gods of antiquity.</p>
+<p>Even in those confederacies which have been composed of members smaller than many of our counties, the principle of legislation for sovereign States, supported by military coercion, has never been found effectual. It has rarely been attempted to be employed, but against the weaker members; and in most instances attempts to coerce the refractory and disobedient have been the signals of bloody wars, in which one half of the confederacy has displayed its banners against the other half.</p>
+<p>The result of these observations to an intelligent mind must be clearly this, that if it be possible at any rate to construct a federal government capable of regulating the common concerns and preserving the general tranquillity, it must be founded, as to the objects committed to its care, upon the reverse of the principle contended for by the opponents of the proposed Constitution. It must carry its agency to the persons of the citizens. It must stand in need of no intermediate legislations; but must itself be empowered to employ the arm of the ordinary magistrate to execute its own resolutions. The majesty of the national authority must be manifested through the medium of the courts of justice. The government of the Union, like that of each State, must be able to address itself immediately to the hopes and fears of individuals; and to attract to its support those passions which have the strongest influence upon the human heart. It must, in short, possess all the means, and have aright to resort to all the methods, of executing the powers with which it is intrusted, that are possessed and exercised by the government of the particular States.</p>
+<p>To this reasoning it may perhaps be objected, that if any State should be disaffected to the authority of the Union, it could at any time obstruct the execution of its laws, and bring the matter to the same issue of force, with the necessity of which the opposite scheme is reproached.</p>
+<p>The plausibility of this objection will vanish the moment we advert to the essential difference between a mere NON-COMPLIANCE and a DIRECT and ACTIVE RESISTANCE. If the interposition of the State legislatures be necessary to give effect to a measure of the Union, they have only NOT TO ACT, or TO ACT EVASIVELY, and the measure is defeated. This neglect of duty may be disguised under affected but unsubstantial provisions, so as not to appear, and of course not to excite any alarm in the people for the safety of the Constitution. The State leaders may even make a merit of their surreptitious invasions of it on the ground of some temporary convenience, exemption, or advantage.</p>
+<p>But if the execution of the laws of the national government should not require the intervention of the State legislatures, if they were to pass into immediate operation upon the citizens themselves, the particular governments could not interrupt their progress without an open and violent exertion of an unconstitutional power. No omissions nor evasions would answer the end. They would be obliged to act, and in such a manner as would leave no doubt that they had encroached on the national rights. An experiment of this nature would always be hazardous in the face of a constitution in any degree competent to its own defense, and of a people enlightened enough to distinguish between a legal exercise and an illegal usurpation of authority. The success of it would require not merely a factious majority in the legislature, but the concurrence of the courts of justice and of the body of the people. If the judges were not embarked in a conspiracy with the legislature, they would pronounce the resolutions of such a majority to be contrary to the supreme law of the land, unconstitutional, and void. If the people were not tainted with the spirit of their State representatives, they, as the natural guardians of the Constitution, would throw their weight into the national scale and give it a decided preponderancy in the contest. Attempts of this kind would not often be made with levity or rashness, because they could seldom be made without danger to the authors, unless in cases of a tyrannical exercise of the federal authority.</p>
+<p>If opposition to the national government should arise from the disorderly conduct of refractory or seditious individuals, it could be overcome by the same means which are daily employed against the same evil under the State governments. The magistracy, being equally the ministers of the law of the land, from whatever source it might emanate, would doubtless be as ready to guard the national as the local regulations from the inroads of private licentiousness. As to those partial commotions and insurrections, which sometimes disquiet society, from the intrigues of an inconsiderable faction, or from sudden or occasional illhumors that do not infect the great body of the community the general government could command more extensive resources for the suppression of disturbances of that kind than would be in the power of any single member. And as to those mortal feuds which, in certain conjunctures, spread a conflagration through a whole nation, or through a very large proportion of it, proceeding either from weighty causes of discontent given by the government or from the contagion of some violent popular paroxysm, they do not fall within any ordinary rules of calculation. When they happen, they commonly amount to revolutions and dismemberments of empire. No form of government can always either avoid or control them. It is in vain to hope to guard against events too mighty for human foresight or precaution, and it would be idle to object to a government because it could not perform impossibilities.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 16</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 16: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 16…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 16 &bull; Alexander Hamilton &bull; December 4, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-16";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 16 (Defects of the Confederation II). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

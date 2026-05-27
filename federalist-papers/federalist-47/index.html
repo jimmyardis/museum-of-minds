@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 47 — Separation of Powers — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 47: The Particular Structure of the New Government and the Distribution of Power Among Its Different Parts by James Madison, January 30, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '47'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;47
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 47 · Published by Independent Journal</p>
+  <h1>The Particular Structure of the New Government and the Distribution of Power Among Its Different Parts</h1>
+  <p class="paper-hero-meta">By James Madison &bull; January 30, 1788 &bull; 2,736 words</p>
+  <div class="chips">
+    <span class="chip chip-sc">★ SC Graduation Requirement</span><span class="chip chip-std">USG.2.CC</span>
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-46/" class="nav-btn">← No.&thinsp;46</a>
+    <a href="/federalist-papers/federalist-48/" class="nav-btn">No.&thinsp;48 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,736 words &bull; Checks Balances &bull; January 30, 1788</p>
+
+<p>HAVING reviewed the general form of the proposed government and the general mass of power allotted to it, I proceed to examine the particular structure of this government, and the distribution of this mass of power among its constituent parts.</p>
+<p>One of the principal objections inculcated by the more respectable adversaries to the Constitution, is its supposed violation of the political maxim, that the legislative, executive, and judiciary departments ought to be separate and distinct. In the structure of the federal government, no regard, it is said, seems to have been paid to this essential precaution in favor of liberty. The several departments of power are distributed and blended in such a manner as at once to destroy all symmetry and beauty of form, and to expose some of the essential parts of the edifice to the danger of being crushed by the disproportionate weight of other parts.</p>
+<p>No political truth is certainly of greater intrinsic value, or is stamped with the authority of more enlightened patrons of liberty, than that on which the objection is founded. The accumulation of all powers, legislative, executive, and judiciary, in the same hands, whether of one, a few, or many, and whether hereditary, self-appointed, or elective, may justly be pronounced the very definition of tyranny. Were the federal Constitution, therefore, really chargeable with the accumulation of power, or with a mixture of powers, having a dangerous tendency to such an accumulation, no further arguments would be necessary to inspire a universal reprobation of the system. I persuade myself, however, that it will be made apparent to every one, that the charge cannot be supported, and that the maxim on which it relies has been totally misconceived and misapplied. In order to form correct ideas on this important subject, it will be proper to investigate the sense in which the preservation of liberty requires that the three great departments of power should be separate and distinct.</p>
+<p>The oracle who is always consulted and cited on this subject is the celebrated Montesquieu. If he be not the author of this invaluable precept in the science of politics, he has the merit at least of displaying and recommending it most effectually to the attention of mankind. Let us endeavor, in the first place, to ascertain his meaning on this point.</p>
+<p>The British Constitution was to Montesquieu what Homer has been to the didactic writers on epic poetry. As the latter have considered the work of the immortal bard as the perfect model from which the principles and rules of the epic art were to be drawn, and by which all similar works were to be judged, so this great political critic appears to have viewed the Constitution of England as the standard, or to use his own expression, as the mirror of political liberty; and to have delivered, in the form of elementary truths, the several characteristic principles of that particular system. That we may be sure, then, not to mistake his meaning in this case, let us recur to the source from which the maxim was drawn.</p>
+<p>On the slightest view of the British Constitution, we must perceive that the legislative, executive, and judiciary departments are by no means totally separate and distinct from each other. The executive magistrate forms an integral part of the legislative authority. He alone has the prerogative of making treaties with foreign sovereigns, which, when made, have, under certain limitations, the force of legislative acts. All the members of the judiciary department are appointed by him, can be removed by him on the address of the two Houses of Parliament, and form, when he pleases to consult them, one of his constitutional councils. One branch of the legislative department forms also a great constitutional council to the executive chief, as, on another hand, it is the sole depositary of judicial power in cases of impeachment, and is invested with the supreme appellate jurisdiction in all other cases. The judges, again, are so far connected with the legislative department as often to attend and participate in its deliberations, though not admitted to a legislative vote.</p>
+<p>From these facts, by which Montesquieu was guided, it may clearly be inferred that, in saying &quot;There can be no liberty where the legislative and executive powers are united in the same person, or body of magistrates,&quot; or, &quot;if the power of judging be not separated from the legislative and executive powers,&quot; he did not mean that these departments ought to have no PARTIAL AGENCY in, or no CONTROL over, the acts of each other. His meaning, as his own words import, and still more conclusively as illustrated by the example in his eye, can amount to no more than this, that where the WHOLE power of one department is exercised by the same hands which possess the WHOLE power of another department, the fundamental principles of a free constitution are subverted. This would have been the case in the constitution examined by him, if the king, who is the sole executive magistrate, had possessed also the complete legislative power, or the supreme administration of justice; or if the entire legislative body had possessed the supreme judiciary, or the supreme executive authority. This, however, is not among the vices of that constitution. The magistrate in whom the whole executive power resides cannot of himself make a law, though he can put a negative on every law; nor administer justice in person, though he has the appointment of those who do administer it. The judges can exercise no executive prerogative, though they are shoots from the executive stock; nor any legislative function, though they may be advised with by the legislative councils. The entire legislature can perform no judiciary act, though by the joint act of two of its branches the judges may be removed from their offices, and though one of its branches is possessed of the judicial power in the last resort. The entire legislature, again, can exercise no executive prerogative, though one of its branches constitutes the supreme executive magistracy, and another, on the impeachment of a third, can try and condemn all the subordinate officers in the executive department.</p>
+<p>The reasons on which Montesquieu grounds his maxim are a further demonstration of his meaning. &quot;When the legislative and executive powers are united in the same person or body,&quot; says he, &quot;there can be no liberty, because apprehensions may arise lest THE SAME monarch or senate should ENACT tyrannical laws to EXECUTE them in a tyrannical manner.&quot; Again: &quot;Were the power of judging joined with the legislative, the life and liberty of the subject would be exposed to arbitrary control, for THE JUDGE would then be THE LEGISLATOR. Were it joined to the executive power, THE JUDGE might behave with all the violence of AN OPPRESSOR.&quot; Some of these reasons are more fully explained in other passages; but briefly stated as they are here, they sufficiently establish the meaning which we have put on this celebrated maxim of this celebrated author.</p>
+<p>If we look into the constitutions of the several States, we find that, notwithstanding the emphatical and, in some instances, the unqualified terms in which this axiom has been laid down, there is not a single instance in which the several departments of power have been kept absolutely separate and distinct. New Hampshire, whose constitution was the last formed, seems to have been fully aware of the impossibility and inexpediency of avoiding any mixture whatever of these departments, and has qualified the doctrine by declaring &quot;that the legislative, executive, and judiciary powers ought to be kept as separate from, and independent of, each other AS THE NATURE OF A FREE GOVERNMENT WILL ADMIT; OR AS IS CONSISTENT WITH THAT CHAIN OF CONNECTION THAT BINDS THE WHOLE FABRIC OF THE CONSTITUTION IN ONE INDISSOLUBLE BOND OF UNITY AND AMITY.&quot; Her constitution accordingly mixes these departments in several respects. The Senate, which is a branch of the legislative department, is also a judicial tribunal for the trial of impeachments. The President, who is the head of the executive department, is the presiding member also of the Senate; and, besides an equal vote in all cases, has a casting vote in case of a tie. The executive head is himself eventually elective every year by the legislative department, and his council is every year chosen by and from the members of the same department. Several of the officers of state are also appointed by the legislature. And the members of the judiciary department are appointed by the executive department.</p>
+<p>The constitution of Massachusetts has observed a sufficient though less pointed caution, in expressing this fundamental article of liberty. It declares &quot;that the legislative department shall never exercise the executive and judicial powers, or either of them; the executive shall never exercise the legislative and judicial powers, or either of them; the judicial shall never exercise the legislative and executive powers, or either of them.&quot; This declaration corresponds precisely with the doctrine of Montesquieu, as it has been explained, and is not in a single point violated by the plan of the convention. It goes no farther than to prohibit any one of the entire departments from exercising the powers of another department. In the very Constitution to which it is prefixed, a partial mixture of powers has been admitted. The executive magistrate has a qualified negative on the legislative body, and the Senate, which is a part of the legislature, is a court of impeachment for members both of the executive and judiciary departments. The members of the judiciary department, again, are appointable by the executive department, and removable by the same authority on the address of the two legislative branches. Lastly, a number of the officers of government are annually appointed by the legislative department. As the appointment to offices, particularly executive offices, is in its nature an executive function, the compilers of the Constitution have, in this last point at least, violated the rule established by themselves.</p>
+<p>I pass over the constitutions of Rhode Island and Connecticut, because they were formed prior to the Revolution, and even before the principle under examination had become an object of political attention.</p>
+<p>The constitution of New York contains no declaration on this subject; but appears very clearly to have been framed with an eye to the danger of improperly blending the different departments. It gives, nevertheless, to the executive magistrate, a partial control over the legislative department; and, what is more, gives a like control to the judiciary department; and even blends the executive and judiciary departments in the exercise of this control. In its council of appointment members of the legislative are associated with the executive authority, in the appointment of officers, both executive and judiciary. And its court for the trial of impeachments and correction of errors is to consist of one branch of the legislature and the principal members of the judiciary department.</p>
+<p>The constitution of New Jersey has blended the different powers of government more than any of the preceding. The governor, who is the executive magistrate, is appointed by the legislature; is chancellor and ordinary, or surrogate of the State; is a member of the Supreme Court of Appeals, and president, with a casting vote, of one of the legislative branches. The same legislative branch acts again as executive council of the governor, and with him constitutes the Court of Appeals. The members of the judiciary department are appointed by the legislative department and removable by one branch of it, on the impeachment of the other.</p>
+<p>According to the constitution of Pennsylvania, the president, who is the head of the executive department, is annually elected by a vote in which the legislative department predominates. In conjunction with an executive council, he appoints the members of the judiciary department, and forms a court of impeachment for trial of all officers, judiciary as well as executive. The judges of the Supreme Court and justices of the peace seem also to be removable by the legislature; and the executive power of pardoning in certain cases, to be referred to the same department. The members of the executive council are made EX-OFFICIO justices of peace throughout the State.</p>
+<p>In Delaware, the chief executive magistrate is annually elected by the legislative department. The speakers of the two legislative branches are vice-presidents in the executive department. The executive chief, with six others, appointed, three by each of the legislative branches constitutes the Supreme Court of Appeals; he is joined with the legislative department in the appointment of the other judges. Throughout the States, it appears that the members of the legislature may at the same time be justices of the peace; in this State, the members of one branch of it are EX-OFFICIO justices of the peace; as are also the members of the executive council. The principal officers of the executive department are appointed by the legislative; and one branch of the latter forms a court of impeachments. All officers may be removed on address of the legislature.</p>
+<p>Maryland has adopted the maxim in the most unqualified terms; declaring that the legislative, executive, and judicial powers of government ought to be forever separate and distinct from each other. Her constitution, notwithstanding, makes the executive magistrate appointable by the legislative department; and the members of the judiciary by the executive department.</p>
+<p>The language of Virginia is still more pointed on this subject. Her constitution declares, &quot;that the legislative, executive, and judiciary departments shall be separate and distinct; so that neither exercise the powers properly belonging to the other; nor shall any person exercise the powers of more than one of them at the same time, except that the justices of county courts shall be eligible to either House of Assembly.&quot; Yet we find not only this express exception, with respect to the members of the inferior courts, but that the chief magistrate, with his executive council, are appointable by the legislature; that two members of the latter are triennially displaced at the pleasure of the legislature; and that all the principal offices, both executive and judiciary, are filled by the same department. The executive prerogative of pardon, also, is in one case vested in the legislative department.</p>
+<p>The constitution of North Carolina, which declares &quot;that the legislative, executive, and supreme judicial powers of government ought to be forever separate and distinct from each other,&quot; refers, at the same time, to the legislative department, the appointment not only of the executive chief, but all the principal officers within both that and the judiciary department.</p>
+<p>In South Carolina, the constitution makes the executive magistracy eligible by the legislative department. It gives to the latter, also, the appointment of the members of the judiciary department, including even justices of the peace and sheriffs; and the appointment of officers in the executive department, down to captains in the army and navy of the State.</p>
+<p>In the constitution of Georgia, where it is declared &quot;that the legislative, executive, and judiciary departments shall be separate and distinct, so that neither exercise the powers properly belonging to the other,&quot; we find that the executive department is to be filled by appointments of the legislature; and the executive prerogative of pardon to be finally exercised by the same authority. Even justices of the peace are to be appointed by the legislature.</p>
+<p>In citing these cases, in which the legislative, executive, and judiciary departments have not been kept totally separate and distinct, I wish not to be regarded as an advocate for the particular organizations of the several State governments. I am fully aware that among the many excellent principles which they exemplify, they carry strong marks of the haste, and still stronger of the inexperience, under which they were framed. It is but too obvious that in some instances the fundamental principle under consideration has been violated by too great a mixture, and even an actual consolidation, of the different powers; and that in no instance has a competent provision been made for maintaining in practice the separation delineated on paper. What I have wished to evince is, that the charge brought against the proposed Constitution, of violating the sacred maxim of free government, is warranted neither by the real meaning annexed to that maxim by its author, nor by the sense in which it has hitherto been understood in America. This interesting subject will be resumed in the ensuing paper.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 47</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 47: The Particular Structure of the New Government and the Distribution of Power Among Its Different Parts. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 47…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 47 &bull; James Madison &bull; January 30, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-47";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 47 (Separation of Powers). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

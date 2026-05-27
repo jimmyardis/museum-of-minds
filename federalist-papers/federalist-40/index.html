@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 40 — Powers of the Convention — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 40: On the Powers of the Convention to Form a Mixed Government Examined and Sustained by James Madison, January 18, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '40'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;40
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 40 · Published by New York Packet</p>
+  <h1>On the Powers of the Convention to Form a Mixed Government Examined and Sustained</h1>
+  <p class="paper-hero-meta">By James Madison &bull; January 18, 1788 &bull; 3,023 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-39/" class="nav-btn">← No.&thinsp;39</a>
+    <a href="/federalist-papers/federalist-41/" class="nav-btn">No.&thinsp;41 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">3,023 words &bull; Ratification &bull; January 18, 1788</p>
+
+<p>THE SECOND point to be examined is, whether the convention were authorized to frame and propose this mixed Constitution.</p>
+<p>The powers of the convention ought, in strictness, to be determined by an inspection of the commissions given to the members by their respective constituents. As all of these, however, had reference, either to the recommendation from the meeting at Annapolis, in September, 1786, or to that from Congress, in February, 1787, it will be sufficient to recur to these particular acts.</p>
+<p>The act from Annapolis recommends the &quot;appointment of commissioners to take into consideration the situation of the United States; to devise SUCH FURTHER PROVISIONS as shall appear to them necessary to render the Constitution of the federal government ADEQUATE TO THE EXIGENCIES OF THE UNION; and to report such an act for that purpose, to the United States in Congress assembled, as when agreed to by them, and afterwards confirmed by the legislature of every State, will effectually provide for the same.&quot;</p>
+<p>The recommendatory act of Congress is in the words following: &quot;WHEREAS, There is provision in the articles of Confederation and perpetual Union, for making alterations therein, by the assent of a Congress of the United States, and of the legislatures of the several States; and whereas experience hath evinced, that there are defects in the present Confederation; as a mean to remedy which, several of the States, and PARTICULARLY THE STATE OF NEW YORK, by express instructions to their delegates in Congress, have suggested a convention for the purposes expressed in the following resolution; and such convention appearing to be the most probable mean of establishing in these States A FIRM NATIONAL GOVERNMENT:</p>
+<p>&quot;Resolved, That in the opinion of Congress it is expedient, that on the second Monday of May next a convention of delegates, who shall have been appointed by the several States, be held at Philadelphia, for the sole and express purpose OF REVISING THE ARTICLES OF CONFEDERATION, and reporting to Congress and the several legislatures such ALTERATIONS AND PROVISIONS THEREIN, as shall, when agreed to in Congress, and confirmed by the States, render the federal Constitution ADEQUATE TO THE EXIGENCIES OF GOVERNMENT AND THE PRESERVATION OF THE UNION.&quot;</p>
+<p>From these two acts, it appears, 1st, that the object of the convention was to establish, in these States, A FIRM NATIONAL GOVERNMENT; 2d, that this government was to be such as would be ADEQUATE TO THE EXIGENCIES OF GOVERNMENT and THE PRESERVATION OF THE UNION; 3d, that these purposes were to be effected by ALTERATIONS AND PROVISIONS IN THE ARTICLES OF CONFEDERATION, as it is expressed in the act of Congress, or by SUCH FURTHER PROVISIONS AS SHOULD APPEAR NECESSARY, as it stands in the recommendatory act from Annapolis; 4th, that the alterations and provisions were to be reported to Congress, and to the States, in order to be agreed to by the former and confirmed by the latter.</p>
+<p>From a comparison and fair construction of these several modes of expression, is to be deduced the authority under which the convention acted. They were to frame a NATIONAL GOVERNMENT, adequate to the EXIGENCIES OF GOVERNMENT, and OF THE UNION; and to reduce the articles of Confederation into such form as to accomplish these purposes.</p>
+<p>There are two rules of construction, dictated by plain reason, as well as founded on legal axioms. The one is, that every part of the expression ought, if possible, to be allowed some meaning, and be made to conspire to some common end. The other is, that where the several parts cannot be made to coincide, the less important should give way to the more important part; the means should be sacrificed to the end, rather than the end to the means.</p>
+<p>Suppose, then, that the expressions defining the authority of the convention were irreconcilably at variance with each other; that a NATIONAL and ADEQUATE GOVERNMENT could not possibly, in the judgment of the convention, be affected by ALTERATIONS and PROVISIONS in the ARTICLES OF CONFEDERATION; which part of the definition ought to have been embraced, and which rejected? Which was the more important, which the less important part? Which the end; which the means? Let the most scrupulous expositors of delegated powers; let the most inveterate objectors against those exercised by the convention, answer these questions. Let them declare, whether it was of most importance to the happiness of the people of America, that the articles of Confederation should be disregarded, and an adequate government be provided, and the Union preserved; or that an adequate government should be omitted, and the articles of Confederation preserved. Let them declare, whether the preservation of these articles was the end, for securing which a reform of the government was to be introduced as the means; or whether the establishment of a government, adequate to the national happiness, was the end at which these articles themselves originally aimed, and to which they ought, as insufficient means, to have been sacrificed.</p>
+<p>But is it necessary to suppose that these expressions are absolutely irreconcilable to each other; that no ALTERATIONS or PROVISIONS in the articles of the confederation could possibly mould them into a national and adequate government; into such a government as has been proposed by the convention?</p>
+<p>No stress, it is presumed, will, in this case, be laid on the TITLE; a change of that could never be deemed an exercise of ungranted power. ALTERATIONS in the body of the instrument are expressly authorized. NEW PROVISIONS therein are also expressly authorized. Here then is a power to change the title; to insert new articles; to alter old ones. Must it of necessity be admitted that this power is infringed, so long as a part of the old articles remain? Those who maintain the affirmative ought at least to mark the boundary between authorized and usurped innovations; between that degree of change which lies within the compass of ALTERATIONS AND FURTHER PROVISIONS, and that which amounts to a TRANSMUTATION of the government. Will it be said that the alterations ought not to have touched the substance of the Confederation? The States would never have appointed a convention with so much solemnity, nor described its objects with so much latitude, if some SUBSTANTIAL reform had not been in contemplation. Will it be said that the FUNDAMENTAL PRINCIPLES of the Confederation were not within the purview of the convention, and ought not to have been varied? I ask, What are these principles? Do they require that, in the establishment of the Constitution, the States should be regarded as distinct and independent sovereigns? They are so regarded by the Constitution proposed. Do they require that the members of the government should derive their appointment from the legislatures, not from the people of the States? One branch of the new government is to be appointed by these legislatures; and under the Confederation, the delegates to Congress MAY ALL be appointed immediately by the people, and in two States(1) are actually so appointed. Do they require that the powers of the government should act on the States, and not immediately on individuals? In some instances, as has been shown, the powers of the new government will act on the States in their collective characters. In some instances, also, those of the existing government act immediately on individuals. In cases of capture; of piracy; of the post office; of coins, weights, and measures; of trade with the Indians; of claims under grants of land by different States; and, above all, in the case of trials by courts-marshal in the army and navy, by which death may be inflicted without the intervention of a jury, or even of a civil magistrate; in all these cases the powers of the Confederation operate immediately on the persons and interests of individual citizens. Do these fundamental principles require, particularly, that no tax should be levied without the intermediate agency of the States? The Confederation itself authorizes a direct tax, to a certain extent, on the post office. The power of coinage has been so construed by Congress as to levy a tribute immediately from that source also. But pretermitting these instances, was it not an acknowledged object of the convention and the universal expectation of the people, that the regulation of trade should be submitted to the general government in such a form as would render it an immediate source of general revenue? Had not Congress repeatedly recommended this measure as not inconsistent with the fundamental principles of the Confederation? Had not every State but one; had not New York herself, so far complied with the plan of Congress as to recognize the PRINCIPLE of the innovation? Do these principles, in fine, require that the powers of the general government should be limited, and that, beyond this limit, the States should be left in possession of their sovereignty and independence? We have seen that in the new government, as in the old, the general powers are limited; and that the States, in all unenumerated cases, are left in the enjoyment of their sovereign and independent jurisdiction.</p>
+<p>The truth is, that the great principles of the Constitution proposed by the convention may be considered less as absolutely new, than as the expansion of principles which are found in the articles of Confederation. The misfortune under the latter system has been, that these principles are so feeble and confined as to justify all the charges of inefficiency which have been urged against it, and to require a degree of enlargement which gives to the new system the aspect of an entire transformation of the old.</p>
+<p>In one particular it is admitted that the convention have departed from the tenor of their commission. Instead of reporting a plan requiring the confirmation OF THE LEGISLATURES OF ALL THE STATES, they have reported a plan which is to be confirmed by the PEOPLE, and may be carried into effect by NINE STATES ONLY. It is worthy of remark that this objection, though the most plausible, has been the least urged in the publications which have swarmed against the convention. The forbearance can only have proceeded from an irresistible conviction of the absurdity of subjecting the fate of twelve States to the perverseness or corruption of a thirteenth; from the example of inflexible opposition given by a MAJORITY of one sixtieth of the people of America to a measure approved and called for by the voice of twelve States, comprising fifty-nine sixtieths of the people an example still fresh in the memory and indignation of every citizen who has felt for the wounded honor and prosperity of his country. As this objection, therefore, has been in a manner waived by those who have criticised the powers of the convention, I dismiss it without further observation.</p>
+<p>The THIRD point to be inquired into is, how far considerations of duty arising out of the case itself could have supplied any defect of regular authority.</p>
+<p>In the preceding inquiries the powers of the convention have been analyzed and tried with the same rigor, and by the same rules, as if they had been real and final powers for the establishment of a Constitution for the United States. We have seen in what manner they have borne the trial even on that supposition. It is time now to recollect that the powers were merely advisory and recommendatory; that they were so meant by the States, and so understood by the convention; and that the latter have accordingly planned and proposed a Constitution which is to be of no more consequence than the paper on which it is written, unless it be stamped with the approbation of those to whom it is addressed. This reflection places the subject in a point of view altogether different, and will enable us to judge with propriety of the course taken by the convention.</p>
+<p>Let us view the ground on which the convention stood. It may be collected from their proceedings, that they were deeply and unanimously impressed with the crisis, which had led their country almost with one voice to make so singular and solemn an experiment for correcting the errors of a system by which this crisis had been produced; that they were no less deeply and unanimously convinced that such a reform as they have proposed was absolutely necessary to effect the purposes of their appointment. It could not be unknown to them that the hopes and expectations of the great body of citizens, throughout this great empire, were turned with the keenest anxiety to the event of their deliberations. They had every reason to believe that the contrary sentiments agitated the minds and bosoms of every external and internal foe to the liberty and prosperity of the United States. They had seen in the origin and progress of the experiment, the alacrity with which the PROPOSITION, made by a single State (Virginia), towards a partial amendment of the Confederation, had been attended to and promoted. They had seen the LIBERTY ASSUMED by a VERY FEW deputies from a VERY FEW States, convened at Annapolis, of recommending a great and critical object, wholly foreign to their commission, not only justified by the public opinion, but actually carried into effect by twelve out of the thirteen States. They had seen, in a variety of instances, assumptions by Congress, not only of recommendatory, but of operative, powers, warranted, in the public estimation, by occasions and objects infinitely less urgent than those by which their conduct was to be governed. They must have reflected, that in all great changes of established governments, forms ought to give way to substance; that a rigid adherence in such cases to the former, would render nominal and nugatory the transcendent and precious right of the people to &quot;abolish or alter their governments as to them shall seem most likely to effect their safety and happiness,&quot;(2) since it is impossible for the people spontaneously and universally to move in concert towards their object; and it is therefore essential that such changes be instituted by some INFORMAL AND UNAUTHORIZED PROPOSITIONS, made by some patriotic and respectable citizen or number of citizens. They must have recollected that it was by this irregular and assumed privilege of proposing to the people plans for their safety and happiness, that the States were first united against the danger with which they were threatened by their ancient government; that committees and congresses were formed for concentrating their efforts and defending their rights; and that CONVENTIONS were ELECTED in THE SEVERAL STATES for establishing the constitutions under which they are now governed; nor could it have been forgotten that no little ill-timed scruples, no zeal for adhering to ordinary forms, were anywhere seen, except in those who wished to indulge, under these masks, their secret enmity to the substance contended for. They must have borne in mind, that as the plan to be framed and proposed was to be submitted TO THE PEOPLE THEMSELVES, the disapprobation of this supreme authority would destroy it forever; its approbation blot out antecedent errors and irregularities. It might even have occurred to them, that where a disposition to cavil prevailed, their neglect to execute the degree of power vested in them, and still more their recommendation of any measure whatever, not warranted by their commission, would not less excite animadversion, than a recommendation at once of a measure fully commensurate to the national exigencies.</p>
+<p>Had the convention, under all these impressions, and in the midst of all these considerations, instead of exercising a manly confidence in their country, by whose confidence they had been so peculiarly distinguished, and of pointing out a system capable, in their judgment, of securing its happiness, taken the cold and sullen resolution of disappointing its ardent hopes, of sacrificing substance to forms, of committing the dearest interests of their country to the uncertainties of delay and the hazard of events, let me ask the man who can raise his mind to one elevated conception, who can awaken in his bosom one patriotic emotion, what judgment ought to have been pronounced by the impartial world, by the friends of mankind, by every virtuous citizen, on the conduct and character of this assembly? Or if there be a man whose propensity to condemn is susceptible of no control, let me then ask what sentence he has in reserve for the twelve States who USURPED THE POWER of sending deputies to the convention, a body utterly unknown to their constitutions; for Congress, who recommended the appointment of this body, equally unknown to the Confederation; and for the State of New York, in particular, which first urged and then complied with this unauthorized interposition?</p>
+<p>But that the objectors may be disarmed of every pretext, it shall be granted for a moment that the convention were neither authorized by their commission, nor justified by circumstances in proposing a Constitution for their country: does it follow that the Constitution ought, for that reason alone, to be rejected? If, according to the noble precept, it be lawful to accept good advice even from an enemy, shall we set the ignoble example of refusing such advice even when it is offered by our friends? The prudent inquiry, in all cases, ought surely to be, not so much FROM WHOM the advice comes, as whether the advice be GOOD.</p>
+<p>The sum of what has been here advanced and proved is, that the charge against the convention of exceeding their powers, except in one instance little urged by the objectors, has no foundation to support it; that if they had exceeded their powers, they were not only warranted, but required, as the confidential servants of their country, by the circumstances in which they were placed, to exercise the liberty which they assume; and that finally, if they had violated both their powers and their obligations, in proposing a Constitution, this ought nevertheless to be embraced, if it be calculated to accomplish the views and happiness of the people of America. How far this character is due to the Constitution, is the subject under investigation.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. Connecticut and Rhode Island.</p>
+<p>2. Declaration of Independence.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 40</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 40: On the Powers of the Convention to Form a Mixed Government Examined and Sustained. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 40…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 40 &bull; James Madison &bull; January 18, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-40";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 40 (Powers of the Convention). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

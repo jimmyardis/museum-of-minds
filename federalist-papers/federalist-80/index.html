@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 80 — Extent of Judicial Power — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 80: The Powers of the Judiciary by Alexander Hamilton, May 28, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '80'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;80
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 80 · Published by McLEAN&#x27;s Edition, New York</p>
+  <h1>The Powers of the Judiciary</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; May 28, 1788 &bull; 2,451 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-79/" class="nav-btn">← No.&thinsp;79</a>
+    <a href="/federalist-papers/federalist-81/" class="nav-btn">No.&thinsp;81 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,451 words &bull; Judiciary &bull; May 28, 1788</p>
+
+<p>TO JUDGE with accuracy of the proper extent of the federal judicature, it will be necessary to consider, in the first place, what are its proper objects.</p>
+<p>It seems scarcely to admit of controversy, that the judiciary authority of the Union ought to extend to these several descriptions of cases: 1st, to all those which arise out of the laws of the United States, passed in pursuance of their just and constitutional powers of legislation; 2d, to all those which concern the execution of the provisions expressly contained in the articles of Union; 3d, to all those in which the United States are a party; 4th, to all those which involve the PEACE of the CONFEDERACY, whether they relate to the intercourse between the United States and foreign nations, or to that between the States themselves; 5th, to all those which originate on the high seas, and are of admiralty or maritime jurisdiction; and, lastly, to all those in which the State tribunals cannot be supposed to be impartial and unbiased.</p>
+<p>The first point depends upon this obvious consideration, that there ought always to be a constitutional method of giving efficacy to constitutional provisions. What, for instance, would avail restrictions on the authority of the State legislatures, without some constitutional mode of enforcing the observance of them? The States, by the plan of the convention, are prohibited from doing a variety of things, some of which are incompatible with the interests of the Union, and others with the principles of good government. The imposition of duties on imported articles, and the emission of paper money, are specimens of each kind. No man of sense will believe, that such prohibitions would be scrupulously regarded, without some effectual power in the government to restrain or correct the infractions of them. This power must either be a direct negative on the State laws, or an authority in the federal courts to overrule such as might be in manifest contravention of the articles of Union. There is no third course that I can imagine. The latter appears to have been thought by the convention preferable to the former, and, I presume, will be most agreeable to the States.</p>
+<p>As to the second point, it is impossible, by any argument or comment, to make it clearer than it is in itself. If there are such things as political axioms, the propriety of the judicial power of a government being coextensive with its legislative, may be ranked among the number. The mere necessity of uniformity in the interpretation of the national laws, decides the question. Thirteen independent courts of final jurisdiction over the same causes, arising upon the same laws, is a hydra in government, from which nothing but contradiction and confusion can proceed.</p>
+<p>Still less need be said in regard to the third point. Controversies between the nation and its members or citizens, can only be properly referred to the national tribunals. Any other plan would be contrary to reason, to precedent, and to decorum.</p>
+<p>The fourth point rests on this plain proposition, that the peace of the WHOLE ought not to be left at the disposal of a PART. The Union will undoubtedly be answerable to foreign powers for the conduct of its members. And the responsibility for an injury ought ever to be accompanied with the faculty of preventing it. As the denial or perversion of justice by the sentences of courts, as well as in any other manner, is with reason classed among the just causes of war, it will follow that the federal judiciary ought to have cognizance of all causes in which the citizens of other countries are concerned. This is not less essential to the preservation of the public faith, than to the security of the public tranquillity. A distinction may perhaps be imagined between cases arising upon treaties and the laws of nations and those which may stand merely on the footing of the municipal law. The former kind may be supposed proper for the federal jurisdiction, the latter for that of the States. But it is at least problematical, whether an unjust sentence against a foreigner, where the subject of controversy was wholly relative to the lex loci, would not, if unredressed, be an aggression upon his sovereign, as well as one which violated the stipulations of a treaty or the general law of nations. And a still greater objection to the distinction would result from the immense difficulty, if not impossibility, of a practical discrimination between the cases of one complexion and those of the other. So great a proportion of the cases in which foreigners are parties, involve national questions, that it is by far most safe and most expedient to refer all those in which they are concerned to the national tribunals.</p>
+<p>The power of determining causes between two States, between one State and the citizens of another, and between the citizens of different States, is perhaps not less essential to the peace of the Union than that which has been just examined. History gives us a horrid picture of the dissensions and private wars which distracted and desolated Germany prior to the institution of the Imperial Chamber by Maximilian, towards the close of the fifteenth century; and informs us, at the same time, of the vast influence of that institution in appeasing the disorders and establishing the tranquillity of the empire. This was a court invested with authority to decide finally all differences among the members of the Germanic body.</p>
+<p>A method of terminating territorial disputes between the States, under the authority of the federal head, was not unattended to, even in the imperfect system by which they have been hitherto held together. But there are many other sources, besides interfering claims of boundary, from which bickerings and animosities may spring up among the members of the Union. To some of these we have been witnesses in the course of our past experience. It will readily be conjectured that I allude to the fraudulent laws which have been passed in too many of the States. And though the proposed Constitution establishes particular guards against the repetition of those instances which have heretofore made their appearance, yet it is warrantable to apprehend that the spirit which produced them will assume new shapes, that could not be foreseen nor specifically provided against. Whatever practices may have a tendency to disturb the harmony between the States, are proper objects of federal superintendence and control.</p>
+<p>It may be esteemed the basis of the Union, that &quot;the citizens of each State shall be entitled to all the privileges and immunities of citizens of the several States.&quot; And if it be a just principle that every government ought to possess the means of executing its own provisions by its own authority, it will follow, that in order to the inviolable maintenance of that equality of privileges and immunities to which the citizens of the Union will be entitled, the national judiciary ought to preside in all cases in which one State or its citizens are opposed to another State or its citizens. To secure the full effect of so fundamental a provision against all evasion and subterfuge, it is necessary that its construction should be committed to that tribunal which, having no local attachments, will be likely to be impartial between the different States and their citizens, and which, owing its official existence to the Union, will never be likely to feel any bias inauspicious to the principles on which it is founded.</p>
+<p>The fifth point will demand little animadversion. The most bigoted idolizers of State authority have not thus far shown a disposition to deny the national judiciary the cognizances of maritime causes. These so generally depend on the laws of nations, and so commonly affect the rights of foreigners, that they fall within the considerations which are relative to the public peace. The most important part of them are, by the present Confederation, submitted to federal jurisdiction.</p>
+<p>The reasonableness of the agency of the national courts in cases in which the State tribunals cannot be supposed to be impartial, speaks for itself. No man ought certainly to be a judge in his own cause, or in any cause in respect to which he has the least interest or bias. This principle has no inconsiderable weight in designating the federal courts as the proper tribunals for the determination of controversies between different States and their citizens. And it ought to have the same operation in regard to some cases between citizens of the same State. Claims to land under grants of different States, founded upon adverse pretensions of boundary, are of this description. The courts of neither of the granting States could be expected to be unbiased. The laws may have even prejudged the question, and tied the courts down to decisions in favor of the grants of the State to which they belonged. And even where this had not been done, it would be natural that the judges, as men, should feel a strong predilection to the claims of their own government.</p>
+<p>Having thus laid down and discussed the principles which ought to regulate the constitution of the federal judiciary, we will proceed to test, by these principles, the particular powers of which, according to the plan of the convention, it is to be composed. It is to comprehend &quot;all cases in law and equity arising under the Constitution, the laws of the United States, and treaties made, or which shall be made, under their authority; to all cases affecting ambassadors, other public ministers, and consuls; to all cases of admiralty and maritime jurisdiction; to controversies to which the United States shall be a party; to controversies between two or more States; between a State and citizens of another State; between citizens of different States; between citizens of the same State claiming lands and grants of different States; and between a State or the citizens thereof and foreign states, citizens, and subjects.&quot; This constitutes the entire mass of the judicial authority of the Union. Let us now review it in detail. It is, then, to extend:</p>
+<p>First. To all cases in law and equity, arising under the Constitution and the laws of the United States. This corresponds with the two first classes of causes, which have been enumerated, as proper for the jurisdiction of the United States. It has been asked, what is meant by &quot;cases arising under the Constitution,&quot; in contradiction from those &quot;arising under the laws of the United States&quot;? The difference has been already explained. All the restrictions upon the authority of the State legislatures furnish examples of it. They are not, for instance, to emit paper money; but the interdiction results from the Constitution, and will have no connection with any law of the United States. Should paper money, notwithstanding, be emited, the controversies concerning it would be cases arising under the Constitution and not the laws of the United States, in the ordinary signification of the terms. This may serve as a sample of the whole.</p>
+<p>It has also been asked, what need of the word &quot;equity&quot;. What equitable causes can grow out of the Constitution and laws of the United States? There is hardly a subject of litigation between individuals, which may not involve those ingredients of fraud, accident, trust, or hardship, which would render the matter an object of equitable rather than of legal jurisdiction, as the distinction is known and established in several of the States. It is the peculiar province, for instance, of a court of equity to relieve against what are called hard bargains: these are contracts in which, though there may have been no direct fraud or deceit, sufficient to invalidate them in a court of law, yet there may have been some undue and unconscionable advantage taken of the necessities or misfortunes of one of the parties, which a court of equity would not tolerate. In such cases, where foreigners were concerned on either side, it would be impossible for the federal judicatories to do justice without an equitable as well as a legal jurisdiction. Agreements to convey lands claimed under the grants of different States, may afford another example of the necessity of an equitable jurisdiction in the federal courts. This reasoning may not be so palpable in those States where the formal and technical distinction between LAW and EQUITY is not maintained, as in this State, where it is exemplified by every day&#x27;s practice.</p>
+<p>The judiciary authority of the Union is to extend:</p>
+<p>Second. To treaties made, or which shall be made, under the authority of the United States, and to all cases affecting ambassadors, other public ministers, and consuls. These belong to the fourth class of the enumerated cases, as they have an evident connection with the preservation of the national peace.</p>
+<p>Third. To cases of admiralty and maritime jurisdiction. These form, altogether, the fifth of the enumerated classes of causes proper for the cognizance of the national courts.</p>
+<p>Fourth. To controversies to which the United States shall be a party. These constitute the third of those classes.</p>
+<p>Fifth. To controversies between two or more States; between a State and citizens of another State; between citizens of different States. These belong to the fourth of those classes, and partake, in some measure, of the nature of the last.</p>
+<p>Sixth. To cases between the citizens of the same State, claiming lands under grants of different States. These fall within the last class, and are the only instances in which the proposed Constitution directly contemplates the cognizance of disputes between the citizens of the same State.</p>
+<p>Seventh. To cases between a State and the citizens thereof, and foreign States, citizens, or subjects. These have been already explained to belong to the fourth of the enumerated classes, and have been shown to be, in a peculiar manner, the proper subjects of the national judicature.</p>
+<p>From this review of the particular powers of the federal judiciary, as marked out in the Constitution, it appears that they are all conformable to the principles which ought to have governed the structure of that department, and which were necessary to the perfection of the system. If some partial inconveniences should appear to be connected with the incorporation of any of them into the plan, it ought to be recollected that the national legislature will have ample authority to make such exceptions, and to prescribe such regulations as will be calculated to obviate or remove these inconveniences. The possibility of particular mischiefs can never be viewed, by a wellinformed mind, as a solid objection to a general principle, which is calculated to avoid general mischiefs and to obtain general advantages.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 80</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 80: The Powers of the Judiciary. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 80…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 80 &bull; Alexander Hamilton &bull; May 28, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-80";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 80 (Extent of Judicial Power). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

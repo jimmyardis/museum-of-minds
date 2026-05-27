@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 60 — Congressional Control of Elections II — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 60: The Same Subject Continued (Concerning the Power of Congress to Regulate the Election of Members) by Alexander Hamilton, February 23, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '60'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;60
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 60 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (Concerning the Power of Congress to Regulate the Election of Members)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; February 23, 1788 &bull; 2,243 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-59/" class="nav-btn">← No.&thinsp;59</a>
+    <a href="/federalist-papers/federalist-61/" class="nav-btn">No.&thinsp;61 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,243 words &bull; Legislature &bull; February 23, 1788</p>
+
+<p>WE HAVE seen, that an uncontrollable power over the elections to the federal government could not, without hazard, be committed to the State legislatures. Let us now see, what would be the danger on the other side; that is, from confiding the ultimate right of regulating its own elections to the Union itself. It is not pretended, that this right would ever be used for the exclusion of any State from its share in the representation. The interest of all would, in this respect at least, be the security of all. But it is alleged, that it might be employed in such a manner as to promote the election of some favorite class of men in exclusion of others, by confining the places of election to particular districts, and rendering it impracticable to the citizens at large to partake in the choice. Of all chimerical suppositions, this seems to be the most chimerical. On the one hand, no rational calculation of probabilities would lead us to imagine that the disposition which a conduct so violent and extraordinary would imply, could ever find its way into the national councils; and on the other, it may be concluded with certainty, that if so improper a spirit should ever gain admittance into them, it would display itself in a form altogether different and far more decisive.</p>
+<p>The improbability of the attempt may be satisfactorily inferred from this single reflection, that it could never be made without causing an immediate revolt of the great body of the people, headed and directed by the State governments. It is not difficult to conceive that this characteristic right of freedom may, in certain turbulent and factious seasons, be violated, in respect to a particular class of citizens, by a victorious and overbearing majority; but that so fundamental a privilege, in a country so situated and enlightened, should be invaded to the prejudice of the great mass of the people, by the deliberate policy of the government, without occasioning a popular revolution, is altogether inconceivable and incredible.</p>
+<p>In addition to this general reflection, there are considerations of a more precise nature, which forbid all apprehension on the subject. The dissimilarity in the ingredients which will compose the national government, and still more in the manner in which they will be brought into action in its various branches, must form a powerful obstacle to a concert of views in any partial scheme of elections. There is sufficient diversity in the state of property, in the genius, manners, and habits of the people of the different parts of the Union, to occasion a material diversity of disposition in their representatives towards the different ranks and conditions in society. And though an intimate intercourse under the same government will promote a gradual assimilation in some of these respects, yet there are causes, as well physical as moral, which may, in a greater or less degree, permanently nourish different propensities and inclinations in this respect. But the circumstance which will be likely to have the greatest influence in the matter, will be the dissimilar modes of constituting the several component parts of the government. The House of Representatives being to be elected immediately by the people, the Senate by the State legislatures, the President by electors chosen for that purpose by the people, there would be little probability of a common interest to cement these different branches in a predilection for any particular class of electors.</p>
+<p>As to the Senate, it is impossible that any regulation of &quot;time and manner,&quot; which is all that is proposed to be submitted to the national government in respect to that body, can affect the spirit which will direct the choice of its members. The collective sense of the State legislatures can never be influenced by extraneous circumstances of that sort; a consideration which alone ought to satisfy us that the discrimination apprehended would never be attempted. For what inducement could the Senate have to concur in a preference in which itself would not be included? Or to what purpose would it be established, in reference to one branch of the legislature, if it could not be extended to the other? The composition of the one would in this case counteract that of the other. And we can never suppose that it would embrace the appointments to the Senate, unless we can at the same time suppose the voluntary co-operation of the State legislatures. If we make the latter supposition, it then becomes immaterial where the power in question is placed--whether in their hands or in those of the Union.</p>
+<p>But what is to be the object of this capricious partiality in the national councils? Is it to be exercised in a discrimination between the different departments of industry, or between the different kinds of property, or between the different degrees of property? Will it lean in favor of the landed interest, or the moneyed interest, or the mercantile interest, or the manufacturing interest? Or, to speak in the fashionable language of the adversaries to the Constitution, will it court the elevation of &quot;the wealthy and the well-born,&quot; to the exclusion and debasement of all the rest of the society?</p>
+<p>If this partiality is to be exerted in favor of those who are concerned in any particular description of industry or property, I presume it will readily be admitted, that the competition for it will lie between landed men and merchants. And I scruple not to affirm, that it is infinitely less likely that either of them should gain an ascendant in the national councils, than that the one or the other of them should predominate in all the local councils. The inference will be, that a conduct tending to give an undue preference to either is much less to be dreaded from the former than from the latter.</p>
+<p>The several States are in various degrees addicted to agriculture and commerce. In most, if not all of them, agriculture is predominant. In a few of them, however, commerce nearly divides its empire, and in most of them has a considerable share of influence. In proportion as either prevails, it will be conveyed into the national representation; and for the very reason, that this will be an emanation from a greater variety of interests, and in much more various proportions, than are to be found in any single State, it will be much less apt to espouse either of them with a decided partiality, than the representation of any single State.</p>
+<p>In a country consisting chiefly of the cultivators of land, where the rules of an equal representation obtain, the landed interest must, upon the whole, preponderate in the government. As long as this interest prevails in most of the State legislatures, so long it must maintain a correspondent superiority in the national Senate, which will generally be a faithful copy of the majorities of those assemblies. It cannot therefore be presumed, that a sacrifice of the landed to the mercantile class will ever be a favorite object of this branch of the federal legislature. In applying thus particularly to the Senate a general observation suggested by the situation of the country, I am governed by the consideration, that the credulous votaries of State power cannot, upon their own principles, suspect, that the State legislatures would be warped from their duty by any external influence. But in reality the same situation must have the same effect, in the primitive composition at least of the federal House of Representatives: an improper bias towards the mercantile class is as little to be expected from this quarter as from the other.</p>
+<p>In order, perhaps, to give countenance to the objection at any rate, it may be asked, is there not danger of an opposite bias in the national government, which may dispose it to endeavor to secure a monopoly of the federal administration to the landed class? As there is little likelihood that the supposition of such a bias will have any terrors for those who would be immediately injured by it, a labored answer to this question will be dispensed with. It will be sufficient to remark, first, that for the reasons elsewhere assigned, it is less likely that any decided partiality should prevail in the councils of the Union than in those of any of its members. Secondly, that there would be no temptation to violate the Constitution in favor of the landed class, because that class would, in the natural course of things, enjoy as great a preponderancy as itself could desire. And thirdly, that men accustomed to investigate the sources of public prosperity upon a large scale, must be too well convinced of the utility of commerce, to be inclined to inflict upon it so deep a wound as would result from the entire exclusion of those who would best understand its interest from a share in the management of them. The importance of commerce, in the view of revenue alone, must effectually guard it against the enmity of a body which would be continually importuned in its favor, by the urgent calls of public necessity.</p>
+<p>I the rather consult brevity in discussing the probability of a preference founded upon a discrimination between the different kinds of industry and property, because, as far as I understand the meaning of the objectors, they contemplate a discrimination of another kind. They appear to have in view, as the objects of the preference with which they endeavor to alarm us, those whom they designate by the description of &quot;the wealthy and the well-born.&quot; These, it seems, are to be exalted to an odious pre-eminence over the rest of their fellow-citizens. At one time, however, their elevation is to be a necessary consequence of the smallness of the representative body; at another time it is to be effected by depriving the people at large of the opportunity of exercising their right of suffrage in the choice of that body.</p>
+<p>But upon what principle is the discrimination of the places of election to be made, in order to answer the purpose of the meditated preference? Are &quot;the wealthy and the well-born,&quot; as they are called, confined to particular spots in the several States? Have they, by some miraculous instinct or foresight, set apart in each of them a common place of residence? Are they only to be met with in the towns or cities? Or are they, on the contrary, scattered over the face of the country as avarice or chance may have happened to cast their own lot or that of their predecessors? If the latter is the case, (as every intelligent man knows it to be,(1)) is it not evident that the policy of confining the places of election to particular districts would be as subversive of its own aim as it would be exceptionable on every other account? The truth is, that there is no method of securing to the rich the preference apprehended, but by prescribing qualifications of property either for those who may elect or be elected. But this forms no part of the power to be conferred upon the national government. Its authority would be expressly restricted to the regulation of the TIMES, the PLACES, the MANNER of elections. The qualifications of the persons who may choose or be chosen, as has been remarked upon other occasions, are defined and fixed in the Constitution, and are unalterable by the legislature.</p>
+<p>Let it, however, be admitted, for argument sake, that the expedient suggested might be successful; and let it at the same time be equally taken for granted that all the scruples which a sense of duty or an apprehension of the danger of the experiment might inspire, were overcome in the breasts of the national rulers, still I imagine it will hardly be pretended that they could ever hope to carry such an enterprise into execution without the aid of a military force sufficient to subdue the resistance of the great body of the people. The improbability of the existence of a force equal to that object has been discussed and demonstrated in different parts of these papers; but that the futility of the objection under consideration may appear in the strongest light, it shall be conceded for a moment that such a force might exist, and the national government shall be supposed to be in the actual possession of it. What will be the conclusion? With a disposition to invade the essential rights of the community, and with the means of gratifying that disposition, is it presumable that the persons who were actuated by it would amuse themselves in the ridiculous task of fabricating election laws for securing a preference to a favorite class of men? Would they not be likely to prefer a conduct better adapted to their own immediate aggrandizement? Would they not rather boldly resolve to perpetuate themselves in office by one decisive act of usurpation, than to trust to precarious expedients which, in spite of all the precautions that might accompany them, might terminate in the dismission, disgrace, and ruin of their authors? Would they not fear that citizens, not less tenacious than conscious of their rights, would flock from the remote extremes of their respective States to the places of election, to overthrow their tyrants, and to substitute men who would be disposed to avenge the violated majesty of the people?</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. Particularly in the Southern States and in this State.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 60</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 60: The Same Subject Continued (Concerning the Power of Congress to Regulate the Election of Members). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 60…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 60 &bull; Alexander Hamilton &bull; February 23, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-60";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 60 (Congressional Control of Elections II). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 48 — Departmental Boundaries — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 48: These Departments Should Not Be So Far Separated as to Have No Constitutional Control Over Each Other by James Madison, February 1, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '48'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;48
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 48 · Published by New York Packet</p>
+  <h1>These Departments Should Not Be So Far Separated as to Have No Constitutional Control Over Each Other</h1>
+  <p class="paper-hero-meta">By James Madison &bull; February 1, 1788 &bull; 1,858 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-47/" class="nav-btn">← No.&thinsp;47</a>
+    <a href="/federalist-papers/federalist-49/" class="nav-btn">No.&thinsp;49 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,858 words &bull; Checks Balances &bull; February 1, 1788</p>
+
+<p>IT WAS shown in the last paper that the political apothegm there examined does not require that the legislative, executive, and judiciary departments should be wholly unconnected with each other. I shall undertake, in the next place, to show that unless these departments be so far connected and blended as to give to each a constitutional control over the others, the degree of separation which the maxim requires, as essential to a free government, can never in practice be duly maintained.</p>
+<p>It is agreed on all sides, that the powers properly belonging to one of the departments ought not to be directly and completely administered by either of the other departments. It is equally evident, that none of them ought to possess, directly or indirectly, an overruling influence over the others, in the administration of their respective powers. It will not be denied, that power is of an encroaching nature, and that it ought to be effectually restrained from passing the limits assigned to it. After discriminating, therefore, in theory, the several classes of power, as they may in their nature be legislative, executive, or judiciary, the next and most difficult task is to provide some practical security for each, against the invasion of the others. What this security ought to be, is the great problem to be solved.</p>
+<p>Will it be sufficient to mark, with precision, the boundaries of these departments, in the constitution of the government, and to trust to these parchment barriers against the encroaching spirit of power? This is the security which appears to have been principally relied on by the compilers of most of the American constitutions. But experience assures us, that the efficacy of the provision has been greatly overrated; and that some more adequate defense is indispensably necessary for the more feeble, against the more powerful, members of the government. The legislative department is everywhere extending the sphere of its activity, and drawing all power into its impetuous vortex.</p>
+<p>The founders of our republics have so much merit for the wisdom which they have displayed, that no task can be less pleasing than that of pointing out the errors into which they have fallen. A respect for truth, however, obliges us to remark, that they seem never for a moment to have turned their eyes from the danger to liberty from the overgrown and all-grasping prerogative of an hereditary magistrate, supported and fortified by an hereditary branch of the legislative authority. They seem never to have recollected the danger from legislative usurpations, which, by assembling all power in the same hands, must lead to the same tyranny as is threatened by executive usurpations.</p>
+<p>In a government where numerous and extensive prerogatives are placed in the hands of an hereditary monarch, the executive department is very justly regarded as the source of danger, and watched with all the jealousy which a zeal for liberty ought to inspire. In a democracy, where a multitude of people exercise in person the legislative functions, and are continually exposed, by their incapacity for regular deliberation and concerted measures, to the ambitious intrigues of their executive magistrates, tyranny may well be apprehended, on some favorable emergency, to start up in the same quarter. But in a representative republic, where the executive magistracy is carefully limited; both in the extent and the duration of its power; and where the legislative power is exercised by an assembly, which is inspired, by a supposed influence over the people, with an intrepid confidence in its own strength; which is sufficiently numerous to feel all the passions which actuate a multitude, yet not so numerous as to be incapable of pursuing the objects of its passions, by means which reason prescribes; it is against the enterprising ambition of this department that the people ought to indulge all their jealousy and exhaust all their precautions.</p>
+<p>The legislative department derives a superiority in our governments from other circumstances. Its constitutional powers being at once more extensive, and less susceptible of precise limits, it can, with the greater facility, mask, under complicated and indirect measures, the encroachments which it makes on the co-ordinate departments. It is not unfrequently a question of real nicety in legislative bodies, whether the operation of a particular measure will, or will not, extend beyond the legislative sphere. On the other side, the executive power being restrained within a narrower compass, and being more simple in its nature, and the judiciary being described by landmarks still less uncertain, projects of usurpation by either of these departments would immediately betray and defeat themselves. Nor is this all: as the legislative department alone has access to the pockets of the people, and has in some constitutions full discretion, and in all a prevailing influence, over the pecuniary rewards of those who fill the other departments, a dependence is thus created in the latter, which gives still greater facility to encroachments of the former.</p>
+<p>I have appealed to our own experience for the truth of what I advance on this subject. Were it necessary to verify this experience by particular proofs, they might be multiplied without end. I might find a witness in every citizen who has shared in, or been attentive to, the course of public administrations. I might collect vouchers in abundance from the records and archives of every State in the Union. But as a more concise, and at the same time equally satisfactory, evidence, I will refer to the example of two States, attested by two unexceptionable authorities.</p>
+<p>The first example is that of Virginia, a State which, as we have seen, has expressly declared in its constitution, that the three great departments ought not to be intermixed. The authority in support of it is Mr. Jefferson, who, besides his other advantages for remarking the operation of the government, was himself the chief magistrate of it. In order to convey fully the ideas with which his experience had impressed him on this subject, it will be necessary to quote a passage of some length from his very interesting Notes on the State of Virginia, p. 195. &quot;All the powers of government, legislative, executive, and judiciary, result to the legislative body. The concentrating these in the same hands, is precisely the definition of despotic government. It will be no alleviation, that these powers will be exercised by a plurality of hands, and not by a single one. One hundred and seventy-three despots would surely be as oppressive as one. Let those who doubt it, turn their eyes on the republic of Venice. As little will it avail us, that they are chosen by ourselves. An ELECTIVE DESPOTISM was not the government we fought for; but one which should not only be founded on free principles, but in which the powers of government should be so divided and balanced among several bodies of magistracy, as that no one could transcend their legal limits, without being effectually checked and restrained by the others. For this reason, that convention which passed the ordinance of government, laid its foundation on this basis, that the legislative, executive, and judiciary departments should be separate and distinct, so that no person should exercise the powers of more than one of them at the same time. BUT NO BARRIER WAS PROVIDED BETWEEN THESE SEVERAL POWERS. The judiciary and the executive members were left dependent on the legislative for their subsistence in office, and some of them for their continuance in it. If, therefore, the legislature assumes executive and judiciary powers, no opposition is likely to be made; nor, if made, can be effectual; because in that case they may put their proceedings into the form of acts of Assembly, which will render them obligatory on the other branches. They have accordingly, IN MANY instances, DECIDED RIGHTS which should have been left to JUDICIARY CONTROVERSY, and THE DIRECTION OF THE EXECUTIVE, DURING THE WHOLE TIME OF THEIR SESSION, IS BECOMING HABITUAL AND FAMILIAR.&quot;</p>
+<p>The other State which I shall take for an example is Pennsylvania; and the other authority, the Council of Censors, which assembled in the years 1783 and 1784. A part of the duty of this body, as marked out by the constitution, was &quot;to inquire whether the constitution had been preserved inviolate in every part; and whether the legislative and executive branches of government had performed their duty as guardians of the people, or assumed to themselves, or exercised, other or greater powers than they are entitled to by the constitution.&quot; In the execution of this trust, the council were necessarily led to a comparison of both the legislative and executive proceedings, with the constitutional powers of these departments; and from the facts enumerated, and to the truth of most of which both sides in the council subscribed, it appears that the constitution had been flagrantly violated by the legislature in a variety of important instances.</p>
+<p>A great number of laws had been passed, violating, without any apparent necessity, the rule requiring that all bills of a public nature shall be previously printed for the consideration of the people; although this is one of the precautions chiefly relied on by the constitution against improper acts of legislature.</p>
+<p>The constitutional trial by jury had been violated, and powers assumed which had not been delegated by the constitution.</p>
+<p>Executive powers had been usurped.</p>
+<p>The salaries of the judges, which the constitution expressly requires to be fixed, had been occasionally varied; and cases belonging to the judiciary department frequently drawn within legislative cognizance and determination.</p>
+<p>Those who wish to see the several particulars falling under each of these heads, may consult the journals of the council, which are in print. Some of them, it will be found, may be imputable to peculiar circumstances connected with the war; but the greater part of them may be considered as the spontaneous shoots of an ill-constituted government.</p>
+<p>It appears, also, that the executive department had not been innocent of frequent breaches of the constitution. There are three observations, however, which ought to be made on this head: FIRST, a great proportion of the instances were either immediately produced by the necessities of the war, or recommended by Congress or the commander-in-chief; SECOND, in most of the other instances, they conformed either to the declared or the known sentiments of the legislative department; THIRD, the executive department of Pennsylvania is distinguished from that of the other States by the number of members composing it. In this respect, it has as much affinity to a legislative assembly as to an executive council. And being at once exempt from the restraint of an individual responsibility for the acts of the body, and deriving confidence from mutual example and joint influence, unauthorized measures would, of course, be more freely hazarded, than where the executive department is administered by a single hand, or by a few hands.</p>
+<p>The conclusion which I am warranted in drawing from these observations is, that a mere demarcation on parchment of the constitutional limits of the several departments, is not a sufficient guard against those encroachments which lead to a tyrannical concentration of all the powers of government in the same hands.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 48</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 48: These Departments Should Not Be So Far Separated as to Have No Constitutional Control Over Each Other. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 48…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 48 &bull; James Madison &bull; February 1, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-48";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 48 (Departmental Boundaries). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

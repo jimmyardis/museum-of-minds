@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay XV — On the Consolidation of Judicial Power — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay XV — On the Consolidation of Judicial Power, March 20, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 15
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 15 · Published in New-York Journal</p>
+  <h1>Essay XV — On the Consolidation of Judicial Power</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; March 20, 1788 &bull; 2,477 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-14/" class="nav-btn">← Brutus 14</a>
+    <a href="/anti-federalist-papers/brutus-16/" class="nav-btn">Brutus 16 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,477 words &bull; Judiciary &bull; March 20, 1788</p>
+
+<h3 class="paper-section-head">XV</h3>
+<p>20 March 1788</p>
+<p>( Continued. )</p>
+<p>I said in my last number, that the supreme court under this constitution would be exalted above all other power in the government, and subject to no controul. The business of this paper will be to illustrate this, and to shew the danger that will result from it. I question whether the world ever saw, in any period of it, a court of justice invested with such immense powers, and yet placed in a situation so little responsible. Certain it is, that in England, and in the several states, where we have been taught to believe, the courts of law are put upon the most prudent establishment, they are on a very different footing.</p>
+<p>The judges in England, it is true, hold their offices during their good behaviour, but then their determinations are subject to correction by the house of lords; and their power is by no means so extensive as that of the proposed supreme court of the union. — I believe they in no instance assume the authority to set aside an act of parliament under the idea that it is inconsistent with their constitution. They consider themselves bound to decide according to the existing laws of the land, and never undertake to controul them by adjudging that they are inconsistent with the constitution — much less are they vested with the power of giving an equitable construction to the constitution.</p>
+<p>The judges in England are under the controul of the legislature, for they are bound to determine according to the laws passed by them. But the judges under this constitution will controul the legislature, for the supreme court are authorised in the last resort, to determine what is the extent of the powers of the Congress; they are to give the constitution an explanation, and there is no power above them to set aside their judgment. The framers of this constitution appear to have followed that of the British, in rendering the judges independent, by granting them their offices during good behaviour, without following the constitution of England, in instituting a tribunal in which their errors may be corrected; and without adverting to this, that the judicial under this system have a power which is above the legislative, and which indeed transcends any power before given to a judicial by any free government under heaven.</p>
+<p>I do not object to the judges holding their commissions during good behaviour. I suppose it a proper provision provided they were made properly responsible. But I say, this system has followed the English government in this, while it has departed from almost every other principle of their jurisprudence, under the idea, of rendering the judges independent; which, in the British constitution, means no more than that they hold their places during good behaviour, and have fixed salaries, they have made the judges independent , in the fullest sense of the word. There is no power above them, to controul any of their decisions. There is no authority that can remove them, and they cannot be controuled by the laws of the legislature. In short, they are independent of the people, of the legislature, and of every power under heaven. Men placed in this situation will generally soon feel themselves independent of heaven itself. Before I proceed to illustrate the truth of these assertions, I beg liberty to make one remark — Though in my opinion the judges ought to hold their offices during good behaviour, yet I think it is clear, that the reasons in favour of this establishment of the judges in England, do by no means apply to this country.</p>
+<p>The great reason assigned, why the judges in Britain ought to be commissioned during good behaviour, is this, that they may be placed in a situation, not to be influenced by the crown, to give such decisions, as would tend to increase its powers and prerogatives. While the judges held their places at the will and pleasure of the king, on whom they depended not only for their offices, but also for their salaries, they were subject to every undue influence. If the crown wished to carry a favorite point, to accomplish which the aid of the courts of law was necessary, the pleasure of the king would be signified to the judges. And it required the spirit of a martyr, for the judges to determine contrary to the king&#x27;s will. — They were absolutely dependent upon him both for their offices and livings. The king, holding his office during life, and transmitting it to his posterity as an inheritance, has much stronger inducements to increase the prerogatives of his office than those who hold their offices for stated periods, or even for life. Hence the English nation gained a great point, in favour of liberty. When they obtained the appointment of the judges, during good behaviour, they got from the crown a concession, which deprived it of one of the most powerful engines with which it might enlarge the boundaries of the royal prerogative and encroach on the liberties of the people. But these reasons do not apply to this country, we have no hereditary monarch; those who appoint the judges do not hold their offices for life, nor do they descend to their children. The same arguments, therefore, which will conclude in favor of the tenor of the judge&#x27;s offices for good behaviour, lose a considerable part of their weight when applied to the state and condition of America. But much less can it be shewn, that the nature of our government requires that the courts should be placed beyond all account more independent, so much so as to be above controul.</p>
+<p>I have said that the judges under this system will be independent in the strict sense of the word: To prove this I will shew — That there is no power above them that can controul their decisions, or correct their errors. There is no authority that can remove them from office for any errors or want of capacity, or lower their salaries, and in many cases their power is superior to that of the legislature.</p>
+<p>1st. There is no power above them that can correct their errors or controul their decisions — The adjudications of this court are final and irreversible, for there is no court above them to which appeals can lie, either in error or on the merits. — In this respect it differs from the courts in England, for there the house of lords is the highest court, to whom appeals, in error, are carried from the highest of the courts of law.</p>
+<p>2d. They cannot be removed from office or suffer a dimunition of their salaries, for any error in judgement or want of capacity.</p>
+<p>It is expressly declared by the constitution, — &quot;That they shall at stated times receive a compensation for their services which shall not be diminished during their continuance in office.&quot;</p>
+<p>The only clause in the constitution which provides for the removal of the judges from office, is that which declares, that &quot;the president, vice-president, and all civil officers of the United States, shall be removed from office, on impeachment for, and conviction of treason, bribery, or other high crimes and misdemeanors.&quot; By this paragraph, civil officers, in which the judges are included, are removable only for crimes. Treason and bribery are named, and the rest are included under the general terms of high crimes and misdemeanors. — Errors in judgement, or want of capacity to discharge the duties of the office, can never be supposed to be included in these words, high crimes and misdemeanors . A man may mistake a case in giving judgment, or manifest that he is incompetent to the discharge of the duties of a judge, and yet give no evidence of corruption or want of integrity. To support the charge, it will be necessary to give in evidence some facts that will shew, that the judges commited the error from wicked and corrupt motives.</p>
+<p>3d. The power of this court is in many cases superior to that of the legislature. I have shewed, in a former paper, that this court will be authorised to decide upon the meaning of the constitution, and that, not only according to the natural and ob[vious] meaning of the words, but also according to the spirit and intention of it. In the exercise of this power they will not be subordinate to, but above the legislature. For all the departments of this government will receive their powers, so far as they are expressed in the constitution, from the people immediately, who are the source of power. The legislature can only exercise such powers as are given them by the constitution, they cannot assume any of the rights annexed to the judicial, for this plain reason, that the same authority which vested the legislature with their powers, vested the judicial with theirs — both are derived from the same source, both therefore are equally valid, and the judicial hold their powers independently of the legislature, as the legislature do of the judicial. — The supreme court then have a right, independent of the legislature, to give a construction to the constitution and every part of it, and there is no power provided in this system to correct their construction or do it away. If, therefore, the legislature pass any laws, inconsistent with the sense the judges put upon the constitution, they will declare it void; and therefore in this respect their power is superior to that of the legislature. In England the judges are not only subject to have their decisions set aside by the house of lords, for error, but in cases where they give an explanation to the laws or constitution of the country, contrary to the sense of the parliament, though the parliament will not set aside the judgement of the court, yet, they have authority, by a new law, to explain a former one, and by this means to prevent a reception of such decisions. But no such power is in the legislature. The judges are supreme — and no law, explanatory of the constitution, will be binding on them.</p>
+<p>From the preceding remarks, which have been made on the judicial powers proposed in this system, the policy of it may be fully developed.</p>
+<p>I have, in the course of my observation on this constitution, affirmed and endeavored to shew, that it was calculated to abolish entirely the state governments, and to melt down the states into one entire government, for every purpose as well internal and local, as external and national. In this opinion the opposers of the system have generally agreed — and this has been uniformly denied by its advocates in public. Some individuals, indeed, among them, will confess, that it has this tendency, and scruple not to say, it is what they wish; and I will venture to predict, without the spirit of prophecy, that if it is adopted without amendments, or some such precautions as will ensure amendments immediately after its adoption, that the same gentlemen who have employed their talents and abilities with such success to influence the public mind to adopt this plan, will employ the same to persuade the people, that it will be for their good to abolish the state governments as useless and burdensome.</p>
+<p>Perhaps nothing could have been better conceived to facilitate the abolition of the state governments than the constitution of the judicial. They will be able to extend the limits of the general government gradually, and by insensible degrees, and to accomodate themselves to the temper of the people. Their decisions on the meaning of the constitution will commonly take place in cases which arise between individuals, with which the public will not be generally acquainted; one adjudication will form a precedent to the next, and this to a following one. These cases will immediately affect individuals only; so that a series of determinations will probably take place before even the people will be informed of them. In the mean time all the art and address of those who wish for the change will be employed to make converts to their opinion. The people will be told, that their state officers, and state legislatures are a burden and expence without affording any solid advantage, for that all the laws passed by them, might be equally well made by the general legislature. If to those who will be interested in the change, be added, those who will be under their influence, and such who will submit to almost any change of government, which they can be persuaded to believe will ease them of taxes, it is easy to see, the party who will favor the abolition of the state governments would be far from being inconsiderable. — In this situation, the general legislature, might pass one law after another, extending the general and abridging the state jurisdictions, and to sanction their proceedings would have a course of decisions of the judicial to whom the constitution has committed the power of explaining the constitution. — If the states remonstrated, the constitutional mode of deciding upon the validity of the law, is with the supreme court, and neither people, nor state legislatures, nor the general legislature can remove them or reverse their decrees.</p>
+<p>Had the construction of the constitution been left with the legislature, they would have explained it at their peril; if they exceed their powers, or sought to find, in the spirit of the constitution, more than was expressed in the letter, the people from whom they derived their power could remove them, and do themselves right; and indeed I can see no other remedy that the people can have against their rulers for encroachments of this nature. A constitution is a compact of a people with their rulers; if the rulers break the compact, the people have a right and ought to remove them and do themselves justice; but in order to enable them to do this with the greater facility, those whom the people chuse at stated periods, should have the power in the last resort to determine the sense of the compact; if they determine contrary to the understanding of the people, an appeal will lie to the people at the period when the rulers are to be elected, and they will have it in their power to remedy the evil; but when this power is lodged in the hands of men independent of the people, and of their representatives, and who are not, constitutionally, accountable for their opinions, no way is left to controul them but with a high hand and an outstretched arm .</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay XV — On the Consolidation of Judicial Power. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 15 &bull; March 20, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-15";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay XV — On the Consolidation of Judicial Power. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

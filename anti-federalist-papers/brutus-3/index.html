@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay III — On Representation in a Large Republic — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay III — On Representation in a Large Republic, November 15, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 3
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 3 · Published in New-York Journal</p>
+  <h1>Essay III — On Representation in a Large Republic</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; November 15, 1787 &bull; 2,669 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-2/" class="nav-btn">← Brutus 2</a>
+    <a href="/anti-federalist-papers/brutus-4/" class="nav-btn">Brutus 4 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,669 words &bull; Consolidated Government &bull; November 15, 1787</p>
+
+<h3 class="paper-section-head">III</h3>
+<p>15 November 1787</p>
+<p>To the Citizens of the State of New-York.</p>
+<p>In the investigation of the constitution, under your consideration, great care should be taken, that you do not form your opinions respecting it, from unimportant provisions, or fallacious appearances.</p>
+<p>On a careful examination, you will find, that many of its parts, of little moment, are well formed; in these it has a specious resemblance of a free government — but this is not sufficient to justify the adoption of it — the gilded pill, is often found to contain the most deadly poison.</p>
+<p>You are not however to expect, a perfect form of government, any more than to meet with perfection in man: your views therefore, ought to be directed to the main pillars upon which a free government is to rest; if these are well placed, on a foundation that will support the superstructure, you should be satisfied, although the building may want a number of ornaments, which, if your particular tastes were gratified, you would have added to it: on the other hand. if the foundation is insecurely laid. and the main supports are wanting, or not properly fixed, however the fabric may be decorated and adorned, you ought to reject it.</p>
+<p>Under these impressions, it has been my object to turn your attention to the principal defects in this system.</p>
+<p>I have attempted to shew, that a consolidation of this extensive continent, under one government, for internal, as well as external purposes, which is evidently the tendency of this constitution, cannot succeed, without a sacrifice of your liberties; and therefore that the attempt is not only preposterous, but extremely dangerous; and I have shewn, independent of this, that the plan is radically defective in a fundamental principle, which ought to be found in every free government; to wit, a declaration of rights.</p>
+<p>I shall now proceed to take a nearer view of this system, to examine its parts more minutely, and shew that the powers are not properly deposited, for the security of public liberty.</p>
+<p>The first important object that presents itself in the organization of this government, is the legislature. This is to be composed of two branches; the first to be called the general assembly, and is to be chosen by the people of the respective states, in proportion to the number of their inhabitants, and is to consist of sixty five members, with powers in the legislature to encrease the number, not to exceed one for every thirty thousand inhabitants. The second branch is to be called the senate, and is to consist of twenty-six members, two of which are to be chosen by the legislatures of each of the states.</p>
+<p>In the former of these there is an appearance of justice, in the appointment of its members — but if the clause, which provides for this branch, be stripped of its ambiguity, it will be found that there is really no equality of representation, even in this house.</p>
+<p>The words are &quot;representatives and direct taxes, shall be apportioned among the several states, which may be included in this union, according to their respective numbers, which shall be determined by adding to the whole number of free persons, including those bound to service for a term of years, and excluding Indians not taxed, three fifths of all other persons.&quot; — What a strange and unnecessary accumulation of words are here used to conceal from the public eye. what might have been expressed in the following concise manner. Representatives are to be proportioned among the states respectively, according to the number of freemen and slaves inhabiting them, counting five slaves for three free men.</p>
+<p>&quot;In a free state.&quot; says the celebrated Montesquieu, &quot;every man. who is supposed to be a free agent, ought to be concerned in his own government. therefore the legislature should reside in the whole body of the people, or their representatives.&quot; But it has never been alledged that those who are not free agents, can, upon any rational principle, have any thing to do in government, either by themselves or others. If they have no share in government. why is the number of members in the assembly, to be increased on their account? Is it because in some of the states, a considerable part of the property of the inhabitants consists in a number of their fellow men, who are held in bondage, in defiance of every idea of benevolence, justice, and religion, and contrary to all the principles of liberty, which have been publickly avowed in the late glorious revolution? If this be a just ground for representation, the horses in some of the states, and the oxen in others, ought to be represented — for a great share of property in some of them. consists in these animals; and they have as much controul over their own actions, as these poor unhappy creatures, who are intended to be described in the above recited clause, by the words, &quot;all other persons.&quot; By this mode of apportionment, the representatives of the different pans of the union, will be extremely unequal: in some of the southern states, the slaves are nearly equal in number to the free men; and for all these slaves, they will be entitled to a proportionate share in the legislature — this will give them an unreasonable weight in the government, which can derive no additional strength, protection, nor defence from the slaves, but the contrary. Why then should they be represented? What adds to the evil is, that these states are to be permitted to continue the inhuman traffic of importing slaves, until the year 1808 — and for every cargo of these unhappy people, which unfeeling. unprincipled, barbarous, and avaricious wretches, may tear from their country, friends and tender connections, and bring into those states, they are to be rewarded by having an increase of members in the general assembly.</p>
+<p>There appears at the first view a manifest inconsistency, in the apportionment of representatives in the senate, upon the plan of a consolidated government. On every principle of equity, and propriety, representation in a government should be in exact proportion to the numbers, or the aids afforded by the persons represented. How unreasonable, and unjust then is it. that Delaware should have a representation in the senate, equal to Massachusetts, or Virginia? The latter of which contains ten times her numbers. and is to contribute to the aid of the general government in that proportion? This article of the constitution will appear the more objectionable, if it is considered, that the powers vested in this branch of the legislature are very extensive, and greatly surpass those lodged in the assembly, not only for general purposes, but. in many instances, for the internal police of the states. The Other branch of the legislature, in which, if in either, a f[a]int spark of democracy is to be found, should have been properly organized and established — but upon examination you will find, that this branch does not possess the qualities of a just representation, and that there is no kind of security, imperfect as it is. for its remaining in the hands of the people.</p>
+<p>It has been observed, that the happiness of society is the end of government — that every free government is founded in compact: and that, because it is impracticable for the whole community to assemble, or when assembled, to deliberate with wisdom, and decide with dispatch, the mode of legislating by representation was devised.</p>
+<p>The very term, representative, implies, that the person or body chosen for this purpose, should resemble those who appoint them — a representation of the people of America, if it be a true one, must be like the people. It ought to be so constituted, that a person, who is a stranger to the country, might be able to form a just idea of their character, by knowing that of their representatives. They are the sign — the people are the thing signified. It is absurd to speak of one thing being the representative of another, upon any other principle. The ground and reason of representation, in a free government, implies the same thing. Society instituted government to promote the happiness of the whole, and this is the great end always in view in the delegation of powers. It must then have been intended, that those who are placed instead of the people, should possess their sentiments and feelings, and be governed by their interests, or, in other words, should bear the strongest resemblance of those in whose room they are substituted. It is obvious, that for an assembly to be a true likeness of the people of any country, they must be considerably numerous. — One man. or a few men, cannot possibly represent the feelings, opinions, and characters of a great multitude. In this respect, the new constitution is radically defective. — The house of assembly, which is intended as a representation of the people of America, will not, nor cannot, in the nature of things, be a proper one — sixty-five men cannot be found in the United States, who hold the sentiments, possess the feelings, or are acqainted with the wants and interests of this vast country. This extensive continent is made up of a number of different classes of people; and to have a proper representation of them. each class ought to have an opportunity of choosing their best informed men for the purpose; but this cannot possibly be the case in so small a number. The state of New-York, on the present apportionment, will send six members to the assembly: I will venture to affirm, that number cannot be found in the state, who will bear a just resemblance to the several classes of people who compose it. In this assembly, the farmer, merchant, mecanick. and other various orders of people, ought to be represented according to their respective weight and numbers; and the representatives ought to be intimately acquainted with the wants, understand the interests of the several orders in the society, and feel a proper sense and becoming zeal to promote their prosperity. I cannot conceive that any six men in this state can be found properly qualified in these respects to discharge such important duties: but supposing it possible to find them, is there the least degree of probability that the choice of the people will fall upon such men? According to the common course of human affairs, the natural aristocracy of the country will be elected. Wealth always creates influence, and this is generally much increased by large family connections: this class in society will for ever have a great number of dependents; besides, they will always favour each other — it is their interest to combine — they will therefore constantly unite their efforts to procure men of their own rank to be elected — they will concenter all their force in every part of the state into one point, and by acting together, will most generally carry their election. It is probable, that but few of the merchants, and those the most opulent and ambitious, will have a representation from their body — few of them are characters sufficiently conspicuous to attract the notice of the electors of the state in so limited a representation. The great body of the yeomen of the country cannot expect any of their order in this assembly — the station will be too elevated for them to aspire to — the distance between the people and their representatives, will be so very great, that there is no probability that a farmer, however respectable, will be chosen — the mechanicks of every branch, must expect to be excluded from a seat in this Body — It will and must be esteemed a station too high and exalted to be filled by any but the first men in the state, in point of fortune; so that in reality there will be no part of the people represented, but the rich, even in that branch of the legislature, which is called the democratic. — The well born, and highest orders in life, as they term themselves, will be ignorant of the sentiments of the midling class of citizens, strangers to their ability, wants, and difficulties, and void of sympathy, and fellow feeling. This branch of the legislature will not only be an imperfect representation, but there will be no security in so small a body, against bribery, and corruption — It will consist at first, of sixty-five, and can never exceed one for every thirty thousand inhabitants; a majority of these, that is, thirty-three, are a quorum, and a majority of which, or seventeen, may pass any law — so that twenty-five men, will have the power to give away all the property of the citizens of these states — what security therefore can there be for the people, where their liberties and property are at the disposal of so few men? It will literally be a government in the hands of the few to oppress and plunder the many. You may conclude with a great degree of certainty, that it, like all others of a similar nature, will be managed by influence and corruption, and that the period is not far distant, when this will be the case, if it should be adopted; for even now there are some among us, whose characters stand high in the public estimation, and who have had a principal agency in framing this constitution, who do not scruple to say, that this is the only practicable mode of governing a people, who think with that degree of freedom which the Americans do — this government will have in their gift a vast number of offices of great honor and emolument. The members of the legislature are not excluded from appointments; and twenty-five of them, as the case may be, being secured, any measure may be carried.</p>
+<p>The rulers of this country must be composed of very different materials from those of any other, of which history gives us any account, if the majority of the legislature are not, before many years, entirely at the devotion of the executive — and these states will soon be under the absolute domination of one, or a few, with the fallacious appearance of being governed by men of their own election.</p>
+<p>The more I reflect on this subject, the more firmly am I persuaded, that the representation is merely nominal — a mere burlesque; and that no security is provided against corruption and undue influence. No free people on earth, who have elected persons to legislate for them, ever reposed that confidence in so small a number. The British house of commons consists of five hundred and fifty-eight members; the number of inhabitants in Great-Britain, is computed at eight millions — this gives one member for a little more than fourteen thousand, which exceeds double the proportion this country can ever have: and yet we require a larger representation in proportion to our numbers, than Great-Britain, because this country is much more extensive, and differs more in its productions, interests, manners, and habits. The democratic branch of the legislatures of the several states in the union consists, I believe at present, of near two thousand; and this number was not thought too large for the security of liberty by the framers of our state constitutions: some of the states may have erred in this respect, but the difference between two thousand, and sixty-five, is so very great, that it will bear no comparison.</p>
+<p>Other objections offer themselves against this part of the constitution — I shall reserve them for a future paper, when I shall shew, defective as this representation is, no security is provided, that even this shadow of the right, will remain with the people.</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-52/" class="cross-ref cross-ref-opp">On House elections</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay III — On Representation in a Large Republic. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 3 &bull; November 15, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-3";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay III — On Representation in a Large Republic. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

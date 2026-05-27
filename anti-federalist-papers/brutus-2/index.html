@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay II — On Federal Power and State Sovereignty — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay II — On Federal Power and State Sovereignty, November 1, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 2
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 2 · Published in New-York Journal</p>
+  <h1>Essay II — On Federal Power and State Sovereignty</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; November 1, 1787 &bull; 2,694 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-1/" class="nav-btn">← Brutus 1</a>
+    <a href="/anti-federalist-papers/brutus-3/" class="nav-btn">Brutus 3 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,694 words &bull; Consolidated Government &bull; November 1, 1787</p>
+
+<h3 class="paper-section-head">II</h3>
+<p>1 November 1787</p>
+<p>To the Citizens of the State of New-York.</p>
+<p>I flatter myself that my last address established this position, that to reduce the Thirteen States into one government, would prove the destruction of your liberties.</p>
+<p>But lest this truth should be doubted by some, I will now proceed to consider its merits.</p>
+<p>Though it should be admitted, that the argument[s] against reducing all the states into one consolidated government, are not sufficient fully to establish this point; yet they will, at least, justify this conclusion, that in forming a constitution for such a country, great care should be taken to limit and definite its powers, adjust its parts, and guard against an abuse of authority. How far attention has been paid to these objects, shall be the subject of future enquiry. When a building is to be erected which is intended to stand for ages, the foundation should be firmly laid. The constitution proposed to your acceptance, is designed not for yourselves alone, but for generations yet unborn. The principles, therefore, upon which the social compact is founded, ought to have been clearly and precisely stated, and the most express and full declaration of rights to have been made — But on this subject there is almost an entire silence.</p>
+<p>If we may collect the sentiments of the people of America, from their own most solemn declarations, they hold this truth as self evident, that all men are by nature free. No one man, therefore, or any class of men, have a right, by the law of nature, or of God, to assume or exercise authority over their fellows. The origin of society then is to be sought, not in any natural right which one man has to exercise authority over another, but in the united consent of those who associate. The mutual wants of men, at first dictated the propriety of forming societies; and when they were established, protection and defence pointed out the necessity of instituting government. In a state of nature every individual pursues his own interest; in this pursuit it frequently happened, that the possessions or enjoyments of one were sacrificed to the views and designs of another; thus the weak were a prey to the strong, the simple and unwary were subject to impositions from those who were more crafty and designing. In this state of things, every individual was insecure; common interest therefore directed, that government should be established, in which the force of the whole community should be collected, and under such directions, as to protect and defend every one who composed it. The common good, therefore, is the end of civil government, and common consent, the foundation on which it is established. To effect this end, it was necessary that a certain portion of natural liberty should be surrendered, in order, that what remained should be preserved: how great a proportion of natural freedom is necessary to be yielded by individuals, when they submit to government, I shall not now enquire. So much, however, must be given up, as will be sufficient to enable those, to whom the administration of the government is committed, to establish laws for the promoting the happiness of the community, and to carry those laws into effect. But it is not necessary, for this purpose, that individuals should relinquish all their natural rights. Some are of such a nature that they cannot be surrendered. Of this kind are the rights of conscience, the right of enjoying and defending life, etc. Others are not necessary to be resigned, in order to attain the end for which government is instituted, these therefore ought not to be given up. To surrender them, would counteract the very end of government, to wit, the common good. From these observations it appears, that in forming a government on its true principles, the foundation should be laid in the manner I before stated, by expressly reserving to the people such of their essential natural rights, as are not necessary to be parted with. The same reasons which at first induced mankind to associate and institute government, will operate to influence them to observe this precaution. If they had been disposed to conform themselves to the rule of immutable righteousness, government would not have been requisite. It was because one part exercised fraud, oppression, and violence on the other, that men came together, and agreed that certain rules should be formed, to regulate the conduct of all, and the power of the whole community lodged in the hands of rulers to enforce an obedience to them. But rulers have the same propensities as other men; they are as likely to use the power with which they are vested for private purposes, and to the injury and oppression of those over whom they are placed, as individuals in a state of nature are to injure and oppress one another. It is therefore as proper that bounds should be set to their authority, as that government should have at first been instituted to restrain private injuries.</p>
+<p>This principle, which seems so evidently founded in the reason and nature of things, is confirmed by universal experience. Those who have governed, have been found in all ages ever active to enlarge their powers and abridge the public liberty. This has induced the people in all countries, where any sense of freedom remained, to fix barriers against the encroachments of their rulers. The country from which we have derived our origin, is an eminent example of this. Their magna charta and bill of rights have long been the boast, as well as the security, of that nation. I need say no more, I presume, to an American, than, that this principle is a fundamental one, in all the constitutions of our own states; there is not one of them but what is either founded on a declaration or bill of rights, or has certain express reservation of rights interwoven in the body of them. From this it appears, that at a time when the pulse of liberty beat high and when an appeal was made to the people to form constitutions for the government of themselves, it was their universal sense, that such declarations should make a part of their frames of government. It is therefore the more astonishing, that this grand security, to the rights of the people, is not to be found in this constitution.</p>
+<p>It has been said, in answer to this objection, that such declaration[s] of rights, however requisite they might be in the constitutions of the states, are not necessary in the general constitution, because, &quot;in the former case, every thing which is not reserved is given, but in the latter the reverse of the proposition prevails, and every thing which is not given is reserved.&quot; It requires but little attention to discover, that this mode of reasoning is rather specious than solid. The powers, rights, and authority, granted to the general government by this constitution, are as complete, with respect to every object to which they extend, as that of any state government — It reaches to every thing which concerns human happiness — Life, liberty, and property, are under its controul. There is the same reason, therefore, that the exercise of power, in this case, should be restrained within proper limits, as in that of the state governments. To set this matter in a clear light, permit me to instance some of the articles of the bills of rights of the individual states, and apply them to the case in question.</p>
+<p>For the security of life, in criminal prosecutions, the bills of rights of most of the states have declared, that no man shall be held to answer for a crime until he is made fully acquainted with the charge brought against him; he shall not be compelled to accuse, or furnish evidence against himself — The witnesses against him shall be brought face to face, and he shall be fully heard by himself or counsel. That it is essential to the security of life and liberty, that trial of facts be in the vicinity where they happen. Are not provisions of this kind as necessary in the general government, as in that of a particular state? The powers vested in the new Congress extend in many cases to life; they are authorised to provide for the punishment of a variety of capital crimes, and no restraint is laid upon them in its exercise, save only, that &quot;the trial of all crimes, except in cases of impeachment, shall be by jury; and such trial shall be in the state where the said crimes shall have been committed.&quot; No man is secure of a trial in the county where he is charged to have committed a crime; he may be brought from Niagara to New-York, or carried from Kentucky to Richmond for trial for an offence, supposed to be committed. What security is there, that a man shall be furnished with a full and plain description of the charges against him? That he shall be allowed to produce all proof he can in his favor? That he shall see the witnesses against him face to face, or that he shall be fully heard in his own defence by himself or counsel?</p>
+<p>For the security of liberty it has been declared, &quot;that excessive bail should not be required, nor excessive fines imposed, nor cruel or unusual punishments inflicted — That all warrants, without oath or affirmation, to search suspected places, or seize any person, his papers or property, are grievous and oppressive.&quot;</p>
+<p>These provisions are as necessary under the general government as under that of the individual states; for the power of the former is as complete to the purpose of requiring bail. imposing fines, inflicting punishments, granting search warrants, and seizing persons, papers, or property, in certain cases, as the other.</p>
+<p>For the purpose of securing the property of the citizens, it is declared by all the states, &quot;that in all controversies at law, respecting property, the ancient mode of trial by jury is one of the best securities of the rights of the people, and ought to remain sacred and inviolable.&quot;</p>
+<p>Does not the same necessity exist of reserving this right, under this national compact, as in that of these states? Yet nothing is said respecting it. In the bills of rights of the states it is declared, that a well regulated militia is the proper and natural defence of a free government — That as standing armies in time of peace are dangerous, they are not to be kept up, and that the military should be kept under strict subordination to, and controuled by the civil power.</p>
+<p>The same security is as necessary in this constitution, and much more so; for the general government will have the sole power to raise and to pay armies, and are under no controul in the exercise of it; yet nothing of this is to be found in this new system.</p>
+<p>I might proceed to instance a number of other rights, which were as necessary to be reserved, such as, that elections should be free, that the liberty of the press should be held sacred; but the instances adduced, are sufficient to prove, that this argument is without foundation. — Besides, it is evident, that the reason here assigned was not the true one, why the framers of this constitution omitted a bill of rights; if it had been, they would not have made certain reservations, while they totally omitted others of more importance. We find they have, in the 9th section of the 1st article, declared, that the writ of habeas corpus shall not be suspended, unless in cases of rebellion — that no bill of attainder, or expost facto law, shall be passed — that no title of nobility shall be granted by the United States, &amp;c. If every thing which is not given is reserved, what propriety is there in these exceptions? Does this constitution any where grant the power of suspending the habeas corpus, to make expost facto laws, pass bills of attainder, or grant titles of nobility? It certainly does not in express terms. The only answer that can be given is, that these are implied in the general powers granted. With equal truth it may be said, that all the powers, which the bills of right, guard against the abuse of, are contained or implied in the general ones granted by this constitution.</p>
+<p>So far it is from being true, that a bill of rights is less necessary in the general constitution than in those of the states, the contrary is evidently the fact. — This system, if it is possible for the people of America to accede to it, will be an original compact: and being the last, will, in the nature of things, vacate every former agreement inconsistent with it. For it being a plan of government received and ratified by the whole people, all other forms, which are in existence at the time of its adoption, must yield to it. This is expressed in positive and unequivocal terms, in the 6th article, &quot;That this constitution and the laws of the United States, which shall be made in pursuance thereof, and all treaties made, or which shall be made, under the authority of the United States, shall be the supreme law of the land; and the judges in every state shall be bound thereby, any thing in the constitution , or laws of any state, to the contrary notwithstanding.</p>
+<p>&quot;The senators and representatives before-mentioned, and the members of the several state legislatures, and all executive and judicial officers, both of the United States, and of the several states, shall be bound, by oath or affirmation, to support this constitution.&quot;</p>
+<p>It is therefore not only necessarily implied thereby, but positively expressed. that the different state constitutions are repealed and entirely done away. so far as they are inconsistent with this, with the laws which shall be made in pursuance thereof, or with treaties made. or which shall be made, under the authority of the United States; of what avail will the constitutions of the respective states be to preserve the rights of its citizens? should they be plead, the answer would be. the constitution of the United States, and the laws made in pursuance thereof, is the supreme law, and all legislatures and judicial officers, whether of the general or state governments, are bound by oath to support it. No priviledge, reserved by the bills of rights, or secured by the state government, can limit the power granted by this, or restrain any laws made in pursuance of it. It stands therefore on its own bottom, and must receive a construction by itself without any reference to any other — And hence it was of the highest importance, that the most precise and express declarations and reservations of rights should have been made.</p>
+<p>This will appear the more necessary, when it is considered, that not only the constitution and laws made in pursuance thereof, but all treaties made, or which shall be made, under the authority of the United States, are the supreme law of the land, and supersede the constitutions of all the states. The power to make treaties, is vested in the president, by and with the advice and consent of two thirds of the senate. I do not find any limitation, or restriction, to the exercise of this power. The most important article in any constitution may therefore be repealed, even without a legislative act. Ought not a government, vested with such extensive and indefinite authority. to have been restricted by a declaration of rights? It certainly ought.</p>
+<p>So clear a point is this, that I cannot help suspecting, that persons who attempt to persuade people, that such reservations were less necessary under this constitution than under those of the states, are wilfully endeavouring to deceive, and to lead you into an absolute state of vassalage.</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        <p class='cross-refs-label'>Related Anti-Federalist Essays</p><div class='cross-refs-grid'><a href="/anti-federalist-papers/brutus-1/" class="cross-ref">Essay I — the foundational argument</a></div>
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-39/" class="cross-ref cross-ref-opp">On national vs. federal character</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay II — On Federal Power and State Sovereignty. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 2 &bull; November 1, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-2";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay II — On Federal Power and State Sovereignty. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

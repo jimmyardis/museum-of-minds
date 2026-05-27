@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 8 — Effects of Internal War — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 8: The Consequences of Hostilities Between the States by Alexander Hamilton, November 20, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '8'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;8
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 8 · Published by New York Packet</p>
+  <h1>The Consequences of Hostilities Between the States</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; November 20, 1787 &bull; 2,049 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-7/" class="nav-btn">← No.&thinsp;7</a>
+    <a href="/federalist-papers/federalist-9/" class="nav-btn">No.&thinsp;9 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,049 words &bull; Standing Armies &bull; November 20, 1787</p>
+
+<p>ASSUMING it therefore as an established truth that the several States, in case of disunion, or such combinations of them as might happen to be formed out of the wreck of the general Confederacy, would be subject to those vicissitudes of peace and war, of friendship and enmity, with each other, which have fallen to the lot of all neighboring nations not united under one government, let us enter into a concise detail of some of the consequences that would attend such a situation.</p>
+<p>War between the States, in the first period of their separate existence, would be accompanied with much greater distresses than it commonly is in those countries where regular military establishments have long obtained. The disciplined armies always kept on foot on the continent of Europe, though they bear a malignant aspect to liberty and economy, have, notwithstanding, been productive of the signal advantage of rendering sudden conquests impracticable, and of preventing that rapid desolation which used to mark the progress of war prior to their introduction. The art of fortification has contributed to the same ends. The nations of Europe are encircled with chains of fortified places, which mutually obstruct invasion. Campaigns are wasted in reducing two or three frontier garrisons, to gain admittance into an enemy&#x27;s country. Similar impediments occur at every step, to exhaust the strength and delay the progress of an invader. Formerly, an invading army would penetrate into the heart of a neighboring country almost as soon as intelligence of its approach could be received; but now a comparatively small force of disciplined troops, acting on the defensive, with the aid of posts, is able to impede, and finally to frustrate, the enterprises of one much more considerable. The history of war, in that quarter of the globe, is no longer a history of nations subdued and empires overturned, but of towns taken and retaken; of battles that decide nothing; of retreats more beneficial than victories; of much effort and little acquisition.</p>
+<p>In this country the scene would be altogether reversed. The jealousy of military establishments would postpone them as long as possible. The want of fortifications, leaving the frontiers of one state open to another, would facilitate inroads. The populous States would, with little difficulty, overrun their less populous neighbors. Conquests would be as easy to be made as difficult to be retained. War, therefore, would be desultory and predatory. PLUNDER and devastation ever march in the train of irregulars. The calamities of individuals would make the principal figure in the events which would characterize our military exploits.</p>
+<p>This picture is not too highly wrought; though, I confess, it would not long remain a just one. Safety from external danger is the most powerful director of national conduct. Even the ardent love of liberty will, after a time, give way to its dictates. The violent destruction of life and property incident to war, the continual effort and alarm attendant on a state of continual danger, will compel nations the most attached to liberty to resort for repose and security to institutions which have a tendency to destroy their civil and political rights. To be more safe, they at length become willing to run the risk of being less free.</p>
+<p>The institutions chiefly alluded to are STANDING ARMIES and the correspondent appendages of military establishments. Standing armies, it is said, are not provided against in the new Constitution; and it is therefore inferred that they may exist under it.(1) Their existence, however, from the very terms of the proposition, is, at most, problematical and uncertain. But standing armies, it may be replied, must inevitably result from a dissolution of the Confederacy. Frequent war and constant apprehension, which require a state of as constant preparation, will infallibly produce them. The weaker States or confederacies would first have recourse to them, to put themselves upon an equality with their more potent neighbors. They would endeavor to supply the inferiority of population and resources by a more regular and effective system of defense, by disciplined troops, and by fortifications. They would, at the same time, be necessitated to strengthen the executive arm of government, in doing which their constitutions would acquire a progressive direction toward monarchy. It is of the nature of war to increase the executive at the expense of the legislative authority.</p>
+<p>The expedients which have been mentioned would soon give the States or confederacies that made use of them a superiority over their neighbors. Small states, or states of less natural strength, under vigorous governments, and with the assistance of disciplined armies, have often triumphed over large states, or states of greater natural strength, which have been destitute of these advantages. Neither the pride nor the safety of the more important States or confederacies would permit them long to submit to this mortifying and adventitious superiority. They would quickly resort to means similar to those by which it had been effected, to reinstate themselves in their lost pre-eminence. Thus, we should, in a little time, see established in every part of this country the same engines of despotism which have been the scourge of the Old World. This, at least, would be the natural course of things; and our reasonings will be the more likely to be just, in proportion as they are accommodated to this standard.</p>
+<p>These are not vague inferences drawn from supposed or speculative defects in a Constitution, the whole power of which is lodged in the hands of a people, or their representatives and delegates, but they are solid conclusions, drawn from the natural and necessary progress of human affairs.</p>
+<p>It may, perhaps, be asked, by way of objection to this, why did not standing armies spring up out of the contentions which so often distracted the ancient republics of Greece? Different answers, equally satisfactory, may be given to this question. The industrious habits of the people of the present day, absorbed in the pursuits of gain, and devoted to the improvements of agriculture and commerce, are incompatible with the condition of a nation of soldiers, which was the true condition of the people of those republics. The means of revenue, which have been so greatly multiplied by the increase of gold and silver and of the arts of industry, and the science of finance, which is the offspring of modern times, concurring with the habits of nations, have produced an entire revolution in the system of war, and have rendered disciplined armies, distinct from the body of the citizens, the inseparable companions of frequent hostility.</p>
+<p>There is a wide difference, also, between military establishments in a country seldom exposed by its situation to internal invasions, and in one which is often subject to them, and always apprehensive of them. The rulers of the former can have no good pretext, if they are even so inclined, to keep on foot armies so numerous as must of necessity be maintained in the latter. These armies being, in the first case, rarely, if at all, called into activity for interior defense, the people are in no danger of being broken to military subordination. The laws are not accustomed to relaxations, in favor of military exigencies; the civil state remains in full vigor, neither corrupted, nor confounded with the principles or propensities of the other state. The smallness of the army renders the natural strength of the community an overmatch for it; and the citizens, not habituated to look up to the military power for protection, or to submit to its oppressions, neither love nor fear the soldiery; they view them with a spirit of jealous acquiescence in a necessary evil, and stand ready to resist a power which they suppose may be exerted to the prejudice of their rights.</p>
+<p>The army under such circumstances may usefully aid the magistrate to suppress a small faction, or an occasional mob, or insurrection; but it will be unable to enforce encroachments against the united efforts of the great body of the people.</p>
+<p>In a country in the predicament last described, the contrary of all this happens. The perpetual menacings of danger oblige the government to be always prepared to repel it; its armies must be numerous enough for instant defense. The continual necessity for their services enhances the importance of the soldier, and proportionably degrades the condition of the citizen. The military state becomes elevated above the civil. The inhabitants of territories, often the theatre of war, are unavoidably subjected to frequent infringements on their rights, which serve to weaken their sense of those rights; and by degrees the people are brought to consider the soldiery not only as their protectors, but as their superiors. The transition from this disposition to that of considering them masters, is neither remote nor difficult; but it is very difficult to prevail upon a people under such impressions, to make a bold or effectual resistance to usurpations supported by the military power.</p>
+<p>The kingdom of Great Britain falls within the first description. An insular situation, and a powerful marine, guarding it in a great measure against the possibility of foreign invasion, supersede the necessity of a numerous army within the kingdom. A sufficient force to make head against a sudden descent, till the militia could have time to rally and embody, is all that has been deemed requisite. No motive of national policy has demanded, nor would public opinion have tolerated, a larger number of troops upon its domestic establishment. There has been, for a long time past, little room for the operation of the other causes, which have been enumerated as the consequences of internal war. This peculiar felicity of situation has, in a great degree, contributed to preserve the liberty which that country to this day enjoys, in spite of the prevalent venality and corruption. If, on the contrary, Britain had been situated on the continent, and had been compelled, as she would have been, by that situation, to make her military establishments at home coextensive with those of the other great powers of Europe, she, like them, would in all probability be, at this day, a victim to the absolute power of a single man. It is possible, though not easy, that the people of that island may be enslaved from other causes; but it cannot be by the prowess of an army so inconsiderable as that which has been usually kept up within the kingdom.</p>
+<p>If we are wise enough to preserve the Union we may for ages enjoy an advantage similar to that of an insulated situation. Europe is at a great distance from us. Her colonies in our vicinity will be likely to continue too much disproportioned in strength to be able to give us any dangerous annoyance. Extensive military establishments cannot, in this position, be necessary to our security. But if we should be disunited, and the integral parts should either remain separated, or, which is most probable, should be thrown together into two or three confederacies, we should be, in a short course of time, in the predicament of the continental powers of Europe--our liberties would be a prey to the means of defending ourselves against the ambition and jealousy of each other.</p>
+<p>This is an idea not superficial or futile, but solid and weighty. It deserves the most serious and mature consideration of every prudent and honest man of whatever party. If such men will make a firm and solemn pause, and meditate dispassionately on the importance of this interesting idea; if they will contemplate it in all its attitudes, and trace it to all its consequences, they will not hesitate to part with trivial objections to a Constitution, the rejection of which would in all probability put a final period to the Union. The airy phantoms that flit before the distempered imaginations of some of its adversaries would quickly give place to the more substantial forms of dangers, real, certain, and formidable.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. This objection will be fully examined in its proper place, and it will be shown that the only natural precaution which could have been taken on this subject has been taken; and a much better one than is to be found in any constitution that has been heretofore framed in America, most of which contain no guard at all on this subject.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 8</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 8: The Consequences of Hostilities Between the States. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 8…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 8 &bull; Alexander Hamilton &bull; November 20, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-8";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 8 (Effects of Internal War). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

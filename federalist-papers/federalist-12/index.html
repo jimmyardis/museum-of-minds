@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 12 — Union and Revenue — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 12: The Utility of the Union In Respect to Revenue by Alexander Hamilton, November 27, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '12'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;12
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 12 · Published by New York Packet</p>
+  <h1>The Utility of the Union In Respect to Revenue</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; November 27, 1787 &bull; 2,153 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-11/" class="nav-btn">← No.&thinsp;11</a>
+    <a href="/federalist-papers/federalist-13/" class="nav-btn">No.&thinsp;13 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,153 words &bull; Taxation &bull; November 27, 1787</p>
+
+<p>THE effects of Union upon the commercial prosperity of the States have been sufficiently delineated. Its tendency to promote the interests of revenue will be the subject of our present inquiry.</p>
+<p>The prosperity of commerce is now perceived and acknowledged by all enlightened statesmen to be the most useful as well as the most productive source of national wealth, and has accordingly become a primary object of their political cares. By multiplying the means of gratification, by promoting the introduction and circulation of the precious metals, those darling objects of human avarice and enterprise, it serves to vivify and invigorate the channels of industry, and to make them flow with greater activity and copiousness. The assiduous merchant, the laborious husbandman, the active mechanic, and the industrious manufacturer,--all orders of men, look forward with eager expectation and growing alacrity to this pleasing reward of their toils. The often-agitated question between agriculture and commerce has, from indubitable experience, received a decision which has silenced the rivalship that once subsisted between them, and has proved, to the satisfaction of their friends, that their interests are intimately blended and interwoven. It has been found in various countries that, in proportion as commerce has flourished, land has risen in value. And how could it have happened otherwise? Could that which procures a freer vent for the products of the earth, which furnishes new incitements to the cultivation of land, which is the most powerful instrument in increasing the quantity of money in a state--could that, in fine, which is the faithful handmaid of labor and industry, in every shape, fail to augment that article, which is the prolific parent of far the greatest part of the objects upon which they are exerted? It is astonishing that so simple a truth should ever have had an adversary; and it is one, among a multitude of proofs, how apt a spirit of ill-informed jealousy, or of too great abstraction and refinement, is to lead men astray from the plainest truths of reason and conviction.</p>
+<p>The ability of a country to pay taxes must always be proportioned, in a great degree, to the quantity of money in circulation, and to the celerity with which it circulates. Commerce, contributing to both these objects, must of necessity render the payment of taxes easier, and facilitate the requisite supplies to the treasury. The hereditary dominions of the Emperor of Germany contain a great extent of fertile, cultivated, and populous territory, a large proportion of which is situated in mild and luxuriant climates. In some parts of this territory are to be found the best gold and silver mines in Europe. And yet, from the want of the fostering influence of commerce, that monarch can boast but slender revenues. He has several times been compelled to owe obligations to the pecuniary succors of other nations for the preservation of his essential interests, and is unable, upon the strength of his own resources, to sustain a long or continued war.</p>
+<p>But it is not in this aspect of the subject alone that Union will be seen to conduce to the purpose of revenue. There are other points of view, in which its influence will appear more immediate and decisive. It is evident from the state of the country, from the habits of the people, from the experience we have had on the point itself, that it is impracticable to raise any very considerable sums by direct taxation. Tax laws have in vain been multiplied; new methods to enforce the collection have in vain been tried; the public expectation has been uniformly disappointed, and the treasuries of the States have remained empty. The popular system of administration inherent in the nature of popular government, coinciding with the real scarcity of money incident to a languid and mutilated state of trade, has hitherto defeated every experiment for extensive collections, and has at length taught the different legislatures the folly of attempting them.</p>
+<p>No person acquainted with what happens in other countries will be surprised at this circumstance. In so opulent a nation as that of Britain, where direct taxes from superior wealth must be much more tolerable, and, from the vigor of the government, much more practicable, than in America, far the greatest part of the national revenue is derived from taxes of the indirect kind, from imposts, and from excises. Duties on imported articles form a large branch of this latter description.</p>
+<p>In America, it is evident that we must a long time depend for the means of revenue chiefly on such duties. In most parts of it, excises must be confined within a narrow compass. The genius of the people will ill brook the inquisitive and peremptory spirit of excise laws. The pockets of the farmers, on the other hand, will reluctantly yield but scanty supplies, in the unwelcome shape of impositions on their houses and lands; and personal property is too precarious and invisible a fund to be laid hold of in any other way than by the imperceptible agency of taxes on consumption.</p>
+<p>If these remarks have any foundation, that state of things which will best enable us to improve and extend so valuable a resource must be best adapted to our political welfare. And it cannot admit of a serious doubt, that this state of things must rest on the basis of a general Union. As far as this would be conducive to the interests of commerce, so far it must tend to the extension of the revenue to be drawn from that source. As far as it would contribute to rendering regulations for the collection of the duties more simple and efficacious, so far it must serve to answer the purposes of making the same rate of duties more productive, and of putting it into the power of the government to increase the rate without prejudice to trade.</p>
+<p>The relative situation of these States; the number of rivers with which they are intersected, and of bays that wash their shores; the facility of communication in every direction; the affinity of language and manners; the familiar habits of intercourse;--all these are circumstances that would conspire to render an illicit trade between them a matter of little difficulty, and would insure frequent evasions of the commercial regulations of each other. The separate States or confederacies would be necessitated by mutual jealousy to avoid the temptations to that kind of trade by the lowness of their duties. The temper of our governments, for a long time to come, would not permit those rigorous precautions by which the European nations guard the avenues into their respective countries, as well by land as by water; and which, even there, are found insufficient obstacles to the adventurous stratagems of avarice.</p>
+<p>In France, there is an army of patrols (as they are called) constantly employed to secure their fiscal regulations against the inroads of the dealers in contraband trade. Mr. Neckar computes the number of these patrols at upwards of twenty thousand. This shows the immense difficulty in preventing that species of traffic, where there is an inland communication, and places in a strong light the disadvantages with which the collection of duties in this country would be encumbered, if by disunion the States should be placed in a situation, with respect to each other, resembling that of France with respect to her neighbors. The arbitrary and vexatious powers with which the patrols are necessarily armed, would be intolerable in a free country.</p>
+<p>If, on the contrary, there be but one government pervading all the States, there will be, as to the principal part of our commerce, but ONE SIDE to guard--the ATLANTIC COAST. Vessels arriving directly from foreign countries, laden with valuable cargoes, would rarely choose to hazard themselves to the complicated and critical perils which would attend attempts to unlade prior to their coming into port. They would have to dread both the dangers of the coast, and of detection, as well after as before their arrival at the places of their final destination. An ordinary degree of vigilance would be competent to the prevention of any material infractions upon the rights of the revenue. A few armed vessels, judiciously stationed at the entrances of our ports, might at a small expense be made useful sentinels of the laws. And the government having the same interest to provide against violations everywhere, the co-operation of its measures in each State would have a powerful tendency to render them effectual. Here also we should preserve by Union, an advantage which nature holds out to us, and which would be relinquished by separation. The United States lie at a great distance from Europe, and at a considerable distance from all other places with which they would have extensive connections of foreign trade. The passage from them to us, in a few hours, or in a single night, as between the coasts of France and Britain, and of other neighboring nations, would be impracticable. This is a prodigious security against a direct contraband with foreign countries; but a circuitous contraband to one State, through the medium of another, would be both easy and safe. The difference between a direct importation from abroad, and an indirect importation through the channel of a neighboring State, in small parcels, according to time and opportunity, with the additional facilities of inland communication, must be palpable to every man of discernment.</p>
+<p>It is therefore evident, that one national government would be able, at much less expense, to extend the duties on imports, beyond comparison, further than would be practicable to the States separately, or to any partial confederacies. Hitherto, I believe, it may safely be asserted, that these duties have not upon an average exceeded in any State three per cent. In France they are estimated to be about fifteen per cent., and in Britain they exceed this proportion.(1) There seems to be nothing to hinder their being increased in this country to at least treble their present amount. The single article of ardent spirits, under federal regulation, might be made to furnish a considerable revenue. Upon a ratio to the importation into this State, the whole quantity imported into the United States may be estimated at four millions of gallons; which, at a shilling per gallon, would produce two hundred thousand pounds. That article would well bear this rate of duty; and if it should tend to diminish the consumption of it, such an effect would be equally favorable to the agriculture, to the economy, to the morals, and to the health of the society. There is, perhaps, nothing so much a subject of national extravagance as these spirits.</p>
+<p>What will be the consequence, if we are not able to avail ourselves of the resource in question in its full extent? A nation cannot long exist without revenues. Destitute of this essential support, it must resign its independence, and sink into the degraded condition of a province. This is an extremity to which no government will of choice accede. Revenue, therefore, must be had at all events. In this country, if the principal part be not drawn from commerce, it must fall with oppressive weight upon land. It has been already intimated that excises, in their true signification, are too little in unison with the feelings of the people, to admit of great use being made of that mode of taxation; nor, indeed, in the States where almost the sole employment is agriculture, are the objects proper for excise sufficiently numerous to permit very ample collections in that way. Personal estate (as has been before remarked), from the difficulty in tracing it, cannot be subjected to large contributions, by any other means than by taxes on consumption. In populous cities, it may be enough the subject of conjecture, to occasion the oppression of individuals, without much aggregate benefit to the State; but beyond these circles, it must, in a great measure, escape the eye and the hand of the tax-gatherer. As the necessities of the State, nevertheless, must be satisfied in some mode or other, the defect of other resources must throw the principal weight of public burdens on the possessors of land. And as, on the other hand, the wants of the government can never obtain an adequate supply, unless all the sources of revenue are open to its demands, the finances of the community, under such embarrassments, cannot be put into a situation consistent with its respectability or its security. Thus we shall not even have the consolations of a full treasury, to atone for the oppression of that valuable class of the citizens who are employed in the cultivation of the soil. But public and private distress will keep pace with each other in gloomy concert; and unite in deploring the infatuation of those counsels which led to disunion.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. If my memory be right they amount to twenty per cent.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 12</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 12: The Utility of the Union In Respect to Revenue. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 12…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 12 &bull; Alexander Hamilton &bull; November 27, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-12";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 12 (Union and Revenue). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

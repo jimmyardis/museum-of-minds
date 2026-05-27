@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 20 — Dutch Confederation — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 20: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union) by Madison &amp;amp; Hamilton, December 11, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '20'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;20
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 20 · Published by New York Packet</p>
+  <h1>The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union)</h1>
+  <p class="paper-hero-meta">By Madison &amp;amp; Hamilton &bull; December 11, 1787 &bull; 1,514 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-19/" class="nav-btn">← No.&thinsp;19</a>
+    <a href="/federalist-papers/federalist-21/" class="nav-btn">No.&thinsp;21 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,514 words &bull; Articles Of Confederation &bull; December 11, 1787</p>
+
+<p>THE United Netherlands are a confederacy of republics, or rather of aristocracies of a very remarkable texture, yet confirming all the lessons derived from those which we have already reviewed.</p>
+<p>The union is composed of seven coequal and sovereign states, and each state or province is a composition of equal and independent cities. In all important cases, not only the provinces but the cities must be unanimous.</p>
+<p>The sovereignty of the Union is represented by the States-General, consisting usually of about fifty deputies appointed by the provinces. They hold their seats, some for life, some for six, three, and one years; from two provinces they continue in appointment during pleasure.</p>
+<p>The States-General have authority to enter into treaties and alliances; to make war and peace; to raise armies and equip fleets; to ascertain quotas and demand contributions. In all these cases, however, unanimity and the sanction of their constituents are requisite. They have authority to appoint and receive ambassadors; to execute treaties and alliances already formed; to provide for the collection of duties on imports and exports; to regulate the mint, with a saving to the provincial rights; to govern as sovereigns the dependent territories. The provinces are restrained, unless with the general consent, from entering into foreign treaties; from establishing imposts injurious to others, or charging their neighbors with higher duties than their own subjects. A council of state, a chamber of accounts, with five colleges of admiralty, aid and fortify the federal administration.</p>
+<p>The executive magistrate of the union is the stadtholder, who is now an hereditary prince. His principal weight and influence in the republic are derived from this independent title; from his great patrimonial estates; from his family connections with some of the chief potentates of Europe; and, more than all, perhaps, from his being stadtholder in the several provinces, as well as for the union; in which provincial quality he has the appointment of town magistrates under certain regulations, executes provincial decrees, presides when he pleases in the provincial tribunals, and has throughout the power of pardon.</p>
+<p>As stadtholder of the union, he has, however, considerable prerogatives.</p>
+<p>In his political capacity he has authority to settle disputes between the provinces, when other methods fail; to assist at the deliberations of the States-General, and at their particular conferences; to give audiences to foreign ambassadors, and to keep agents for his particular affairs at foreign courts.</p>
+<p>In his military capacity he commands the federal troops, provides for garrisons, and in general regulates military affairs; disposes of all appointments, from colonels to ensigns, and of the governments and posts of fortified towns.</p>
+<p>In his marine capacity he is admiral-general, and superintends and directs every thing relative to naval forces and other naval affairs; presides in the admiralties in person or by proxy; appoints lieutenant-admirals and other officers; and establishes councils of war, whose sentences are not executed till he approves them.</p>
+<p>His revenue, exclusive of his private income, amounts to three hundred thousand florins. The standing army which he commands consists of about forty thousand men.</p>
+<p>Such is the nature of the celebrated Belgic confederacy, as delineated on parchment. What are the characters which practice has stamped upon it? Imbecility in the government; discord among the provinces; foreign influence and indignities; a precarious existence in peace, and peculiar calamities from war.</p>
+<p>It was long ago remarked by Grotius, that nothing but the hatred of his countrymen to the house of Austria kept them from being ruined by the vices of their constitution.</p>
+<p>The union of Utrecht, says another respectable writer, reposes an authority in the States-General, seemingly sufficient to secure harmony, but the jealousy in each province renders the practice very different from the theory.</p>
+<p>The same instrument, says another, obliges each province to levy certain contributions; but this article never could, and probably never will, be executed; because the inland provinces, who have little commerce, cannot pay an equal quota.</p>
+<p>In matters of contribution, it is the practice to waive the articles of the constitution. The danger of delay obliges the consenting provinces to furnish their quotas, without waiting for the others; and then to obtain reimbursement from the others, by deputations, which are frequent, or otherwise, as they can. The great wealth and influence of the province of Holland enable her to effect both these purposes.</p>
+<p>It has more than once happened, that the deficiencies had to be ultimately collected at the point of the bayonet; a thing practicable, though dreadful, in a confederacy where one of the members exceeds in force all the rest, and where several of them are too small to meditate resistance; but utterly impracticable in one composed of members, several of which are equal to each other in strength and resources, and equal singly to a vigorous and persevering defense.</p>
+<p>Foreign ministers, says Sir William Temple, who was himself a foreign minister, elude matters taken ad referendum, by tampering with the provinces and cities. In 1726, the treaty of Hanover was delayed by these means a whole year. Instances of a like nature are numerous and notorious.</p>
+<p>In critical emergencies, the States-General are often compelled to overleap their constitutional bounds. In 1688, they concluded a treaty of themselves at the risk of their heads. The treaty of Westphalia, in 1648, by which their independence was formerly and finally recognized, was concluded without the consent of Zealand. Even as recently as the last treaty of peace with Great Britain, the constitutional principle of unanimity was departed from. A weak constitution must necessarily terminate in dissolution, for want of proper powers, or the usurpation of powers requisite for the public safety. Whether the usurpation, when once begun, will stop at the salutary point, or go forward to the dangerous extreme, must depend on the contingencies of the moment. Tyranny has perhaps oftener grown out of the assumptions of power, called for, on pressing exigencies, by a defective constitution, than out of the full exercise of the largest constitutional authorities.</p>
+<p>Notwithstanding the calamities produced by the stadtholdership, it has been supposed that without his influence in the individual provinces, the causes of anarchy manifest in the confederacy would long ago have dissolved it. &quot;Under such a government,&quot; says the Abbe Mably, &quot;the Union could never have subsisted, if the provinces had not a spring within themselves, capable of quickening their tardiness, and compelling them to the same way of thinking. This spring is the stadtholder.&quot; It is remarked by Sir William Temple, &quot;that in the intermissions of the stadtholdership, Holland, by her riches and her authority, which drew the others into a sort of dependence, supplied the place.&quot;</p>
+<p>These are not the only circumstances which have controlled the tendency to anarchy and dissolution. The surrounding powers impose an absolute necessity of union to a certain degree, at the same time that they nourish by their intrigues the constitutional vices which keep the republic in some degree always at their mercy.</p>
+<p>The true patriots have long bewailed the fatal tendency of these vices, and have made no less than four regular experiments by EXTRAORDINARY ASSEMBLIES, convened for the special purpose, to apply a remedy. As many times has their laudable zeal found it impossible to UNITE THE PUBLIC COUNCILS in reforming the known, the acknowledged, the fatal evils of the existing constitution. Let us pause, my fellow-citizens, for one moment, over this melancholy and monitory lesson of history; and with the tear that drops for the calamities brought on mankind by their adverse opinions and selfish passions, let our gratitude mingle an ejaculation to Heaven, for the propitious concord which has distinguished the consultations for our political happiness.</p>
+<p>A design was also conceived of establishing a general tax to be administered by the federal authority. This also had its adversaries and failed.</p>
+<p>This unhappy people seem to be now suffering from popular convulsions, from dissensions among the states, and from the actual invasion of foreign arms, the crisis of their destiny. All nations have their eyes fixed on the awful spectacle. The first wish prompted by humanity is, that this severe trial may issue in such a revolution of their government as will establish their union, and render it the parent of tranquillity, freedom and happiness: The next, that the asylum under which, we trust, the enjoyment of these blessings will speedily be secured in this country, may receive and console them for the catastrophe of their own.</p>
+<p>I make no apology for having dwelt so long on the contemplation of these federal precedents. Experience is the oracle of truth; and where its responses are unequivocal, they ought to be conclusive and sacred. The important truth, which it unequivocally pronounces in the present case, is that a sovereignty over sovereigns, a government over governments, a legislation for communities, as contradistinguished from individuals, as it is a solecism in theory, so in practice it is subversive of the order and ends of civil polity, by substituting VIOLENCE in place of LAW, or the destructive COERCION of the SWORD in place of the mild and salutary COERCION of the MAGISTRACY.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 20</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 20: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 20…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 20 &bull; Madison &amp;amp; Hamilton &bull; December 11, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-20";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 20 (Dutch Confederation). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

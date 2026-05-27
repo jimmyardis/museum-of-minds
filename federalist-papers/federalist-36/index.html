@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 36 — Taxation: Objections — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 36: The Same Subject Continued (Concerning the General Power of Taxation) by Alexander Hamilton, January 8, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '36'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;36
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 36 · Published by New York Packet</p>
+  <h1>The Same Subject Continued (Concerning the General Power of Taxation)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 8, 1788 &bull; 2,960 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-35/" class="nav-btn">← No.&thinsp;35</a>
+    <a href="/federalist-papers/federalist-37/" class="nav-btn">No.&thinsp;37 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,960 words &bull; Taxation &bull; January 8, 1788</p>
+
+<p>WE HAVE seen that the result of the observations, to which the foregoing number has been principally devoted, is, that from the natural operation of the different interests and views of the various classes of the community, whether the representation of the people be more or less numerous, it will consist almost entirely of proprietors of land, of merchants, and of members of the learned professions, who will truly represent all those different interests and views. If it should be objected that we have seen other descriptions of men in the local legislatures, I answer that it is admitted there are exceptions to the rule, but not in sufficient number to influence the general complexion or character of the government. There are strong minds in every walk of life that will rise superior to the disadvantages of situation, and will command the tribute due to their merit, not only from the classes to which they particularly belong, but from the society in general. The door ought to be equally open to all; and I trust, for the credit of human nature, that we shall see examples of such vigorous plants flourishing in the soil of federal as well as of State legislation; but occasional instances of this sort will not render the reasoning founded upon the general course of things, less conclusive.</p>
+<p>The subject might be placed in several other lights that would all lead to the same result; and in particular it might be asked, What greater affinity or relation of interest can be conceived between the carpenter and blacksmith, and the linen manufacturer or stocking weaver, than between the merchant and either of them? It is notorious that there are often as great rivalships between different branches of the mechanic or manufacturing arts as there are between any of the departments of labor and industry; so that, unless the representative body were to be far more numerous than would be consistent with any idea of regularity or wisdom in its deliberations, it is impossible that what seems to be the spirit of the objection we have been considering should ever be realized in practice. But I forbear to dwell any longer on a matter which has hitherto worn too loose a garb to admit even of an accurate inspection of its real shape or tendency.</p>
+<p>There is another objection of a somewhat more precise nature that claims our attention. It has been asserted that a power of internal taxation in the national legislature could never be exercised with advantage, as well from the want of a sufficient knowledge of local circumstances, as from an interference between the revenue laws of the Union and of the particular States. The supposition of a want of proper knowledge seems to be entirely destitute of foundation. If any question is depending in a State legislature respecting one of the counties, which demands a knowledge of local details, how is it acquired? No doubt from the information of the members of the county. Cannot the like knowledge be obtained in the national legislature from the representatives of each State? And is it not to be presumed that the men who will generally be sent there will be possessed of the necessary degree of intelligence to be able to communicate that information? Is the knowledge of local circumstances, as applied to taxation, a minute topographical acquaintance with all the mountains, rivers, streams, highways, and bypaths in each State; or is it a general acquaintance with its situation and resources, with the state of its agriculture, commerce, manufactures, with the nature of its products and consumptions, with the different degrees and kinds of its wealth, property, and industry?</p>
+<p>Nations in general, even under governments of the more popular kind, usually commit the administration of their finances to single men or to boards composed of a few individuals, who digest and prepare, in the first instance, the plans of taxation, which are afterwards passed into laws by the authority of the sovereign or legislature.</p>
+<p>Inquisitive and enlightened statesmen are deemed everywhere best qualified to make a judicious selection of the objects proper for revenue; which is a clear indication, as far as the sense of mankind can have weight in the question, of the species of knowledge of local circumstances requisite to the purposes of taxation.</p>
+<p>The taxes intended to be comprised under the general denomination of internal taxes may be subdivided into those of the DIRECT and those of the INDIRECT kind. Though the objection be made to both, yet the reasoning upon it seems to be confined to the former branch. And indeed, as to the latter, by which must be understood duties and excises on articles of consumption, one is at a loss to conceive what can be the nature of the difficulties apprehended. The knowledge relating to them must evidently be of a kind that will either be suggested by the nature of the article itself, or can easily be procured from any well-informed man, especially of the mercantile class. The circumstances that may distinguish its situation in one State from its situation in another must be few, simple, and easy to be comprehended. The principal thing to be attended to, would be to avoid those articles which had been previously appropriated to the use of a particular State; and there could be no difficulty in ascertaining the revenue system of each. This could always be known from the respective codes of laws, as well as from the information of the members from the several States.</p>
+<p>The objection, when applied to real property or to houses and lands, appears to have, at first sight, more foundation, but even in this view it will not bear a close examination. Land taxes are commonly laid in one of two modes, either by ACTUAL valuations, permanent or periodical, or by OCCASIONAL assessments, at the discretion, or according to the best judgment, of certain officers whose duty it is to make them. In either case, the EXECUTION of the business, which alone requires the knowledge of local details, must be devolved upon discreet persons in the character of commissioners or assessors, elected by the people or appointed by the government for the purpose. All that the law can do must be to name the persons or to prescribe the manner of their election or appointment, to fix their numbers and qualifications and to draw the general outlines of their powers and duties. And what is there in all this that cannot as well be performed by the national legislature as by a State legislature? The attention of either can only reach to general principles; local details, as already observed, must be referred to those who are to execute the plan.</p>
+<p>But there is a simple point of view in which this matter may be placed that must be altogether satisfactory. The national legislature can make use of the SYSTEM OF EACH STATE WITHIN THAT STATE. The method of laying and collecting this species of taxes in each State can, in all its parts, be adopted and employed by the federal government.</p>
+<p>Let it be recollected that the proportion of these taxes is not to be left to the discretion of the national legislature, but is to be determined by the numbers of each State, as described in the second section of the first article. An actual census or enumeration of the people must furnish the rule, a circumstance which effectually shuts the door to partiality or oppression. The abuse of this power of taxation seems to have been provided against with guarded circumspection. In addition to the precaution just mentioned, there is a provision that &quot;all duties, imposts, and excises shall be UNIFORM throughout the United States.&quot;</p>
+<p>It has been very properly observed by different speakers and writers on the side of the Constitution, that if the exercise of the power of internal taxation by the Union should be discovered on experiment to be really inconvenient, the federal government may then forbear the use of it, and have recourse to requisitions in its stead. By way of answer to this, it has been triumphantly asked, Why not in the first instance omit that ambiguous power, and rely upon the latter resource? Two solid answers may be given. The first is, that the exercise of that power, if convenient, will be preferable, because it will be more effectual; and it is impossible to prove in theory, or otherwise than by the experiment, that it cannot be advantageously exercised. The contrary, indeed, appears most probable. The second answer is, that the existence of such a power in the Constitution will have a strong influence in giving efficacy to requisitions. When the States know that the Union can apply itself without their agency, it will be a powerful motive for exertion on their part.</p>
+<p>As to the interference of the revenue laws of the Union, and of its members, we have already seen that there can be no clashing or repugnancy of authority. The laws cannot, therefore, in a legal sense, interfere with each other; and it is far from impossible to avoid an interference even in the policy of their different systems. An effectual expedient for this purpose will be, mutually, to abstain from those objects which either side may have first had recourse to. As neither can CONTROL the other, each will have an obvious and sensible interest in this reciprocal forbearance. And where there is an IMMEDIATE common interest, we may safely count upon its operation. When the particular debts of the States are done away, and their expenses come to be limited within their natural compass, the possibility almost of interference will vanish. A small land tax will answer the purpose of the States, and will be their most simple and most fit resource.</p>
+<p>Many spectres have been raised out of this power of internal taxation, to excite the apprehensions of the people: double sets of revenue officers, a duplication of their burdens by double taxations, and the frightful forms of odious and oppressive poll-taxes, have been played off with all the ingenious dexterity of political legerdemain.</p>
+<p>As to the first point, there are two cases in which there can be no room for double sets of officers: one, where the right of imposing the tax is exclusively vested in the Union, which applies to the duties on imports; the other, where the object has not fallen under any State regulation or provision, which may be applicable to a variety of objects. In other cases, the probability is that the United States will either wholly abstain from the objects preoccupied for local purposes, or will make use of the State officers and State regulations for collecting the additional imposition. This will best answer the views of revenue, because it will save expense in the collection, and will best avoid any occasion of disgust to the State governments and to the people. At all events, here is a practicable expedient for avoiding such an inconvenience; and nothing more can be required than to show that evils predicted to not necessarily result from the plan.</p>
+<p>As to any argument derived from a supposed system of influence, it is a sufficient answer to say that it ought not to be presumed; but the supposition is susceptible of a more precise answer. If such a spirit should infest the councils of the Union, the most certain road to the accomplishment of its aim would be to employ the State officers as much as possible, and to attach them to the Union by an accumulation of their emoluments. This would serve to turn the tide of State influence into the channels of the national government, instead of making federal influence flow in an opposite and adverse current. But all suppositions of this kind are invidious, and ought to be banished from the consideration of the great question before the people. They can answer no other end than to cast a mist over the truth.</p>
+<p>As to the suggestion of double taxation, the answer is plain. The wants of the Union are to be supplied in one way or another; if to be done by the authority of the federal government, it will not be to be done by that of the State government. The quantity of taxes to be paid by the community must be the same in either case; with this advantage, if the provision is to be made by the Union that the capital resource of commercial imposts, which is the most convenient branch of revenue, can be prudently improved to a much greater extent under federal than under State regulation, and of course will render it less necessary to recur to more inconvenient methods; and with this further advantage, that as far as there may be any real difficulty in the exercise of the power of internal taxation, it will impose a disposition to greater care in the choice and arrangement of the means; and must naturally tend to make it a fixed point of policy in the national administration to go as far as may be practicable in making the luxury of the rich tributary to the public treasury, in order to diminish the necessity of those impositions which might create dissatisfaction in the poorer and most numerous classes of the society. Happy it is when the interest which the government has in the preservation of its own power, coincides with a proper distribution of the public burdens, and tends to guard the least wealthy part of the community from oppression!</p>
+<p>As to poll taxes, I, without scruple, confess my disapprobation of them; and though they have prevailed from an early period in those States(1) which have uniformly been the most tenacious of their rights, I should lament to see them introduced into practice under the national government. But does it follow because there is a power to lay them that they will actually be laid? Every State in the Union has power to impose taxes of this kind; and yet in several of them they are unknown in practice. Are the State governments to be stigmatized as tyrannies, because they possess this power? If they are not, with what propriety can the like power justify such a charge against the national government, or even be urged as an obstacle to its adoption? As little friendly as I am to the species of imposition, I still feel a thorough conviction that the power of having recourse to it ought to exist in the federal government. There are certain emergencies of nations, in which expedients, that in the ordinary state of things ought to be forborne, become essential to the public weal. And the government, from the possibility of such emergencies, ought ever to have the option of making use of them. The real scarcity of objects in this country, which may be considered as productive sources of revenue, is a reason peculiar to itself, for not abridging the discretion of the national councils in this respect. There may exist certain critical and tempestuous conjunctures of the State, in which a poll tax may become an inestimable resource. And as I know nothing to exempt this portion of the globe from the common calamities that have befallen other parts of it, I acknowledge my aversion to every project that is calculated to disarm the government of a single weapon, which in any possible contingency might be usefully employed for the general defense and security.</p>
+<p>(I have now gone through the examination of such of the powers proposed to be vested in the United States, which may be considered as having an immediate relation to the energy of the government; and have endeavored to answer the principal objections which have been made to them. I have passed over in silence those minor authorities, which are either too inconsiderable to have been thought worthy of the hostilities of the opponents of the Constitution, or of too manifest propriety to admit of controversy. The mass of judiciary power, however, might have claimed an investigation under this head, had it not been for the consideration that its organization and its extent may be more advantageously considered in connection. This has determined me to refer it to the branch of our inquiries upon which we shall next enter.)(E1)</p>
+<p>(I have now gone through the examination of those powers proposed to be conferred upon the federal government which relate more peculiarly to its energy, and to its efficiency for answering the great and primary objects of union. There are others which, though omitted here, will, in order to render the view of the subject more complete, be taken notice of under the next head of our inquiries. I flatter myself the progress already made will have sufficed to satisfy the candid and judicious part of the community that some of the objections which have been most strenuously urged against the Constitution, and which were most formidable in their first appearance, are not only destitute of substance, but if they had operated in the formation of the plan, would have rendered it incompetent to the great ends of public happiness and national prosperity. I equally flatter myself that a further and more critical investigation of the system will serve to recommend it still more to every sincere and disinterested advocate for good government and will leave no doubt with men of this character of the propriety and expediency of adopting it. Happy will it be for ourselves, and more honorable for human nature, if we have wisdom and virtue enough to set so glorious an example to mankind!)(E1)</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. The New England States.</p>
+<p>E1. Two versions of this paragraph appear in different editions.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 36</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 36: The Same Subject Continued (Concerning the General Power of Taxation). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 36…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 36 &bull; Alexander Hamilton &bull; January 8, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-36";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 36 (Taxation: Objections). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

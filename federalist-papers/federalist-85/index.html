@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 85 — Concluding Remarks — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 85: Concluding Remarks by Alexander Hamilton, May 28, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '85'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;85
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 85 · Published by MCLEAN&#x27;s Edition, New York</p>
+  <h1>Concluding Remarks</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; May 28, 1788 &bull; 2,704 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-84/" class="nav-btn">← No.&thinsp;84</a>
+    <span class="nav-btn nav-btn-disabled">Last →</span>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,704 words &bull; Ratification &bull; May 28, 1788</p>
+
+<p>ACCORDING to the formal division of the subject of these papers, announced in my first number, there would appear still to remain for discussion two points: &quot;the analogy of the proposed government to your own State constitution,&quot; and &quot;the additional security which its adoption will afford to republican government, to liberty, and to property.&quot; But these heads have been so fully anticipated and exhausted in the progress of the work, that it would now scarcely be possible to do any thing more than repeat, in a more dilated form, what has been heretofore said, which the advanced stage of the question, and the time already spent upon it, conspire to forbid.</p>
+<p>It is remarkable, that the resemblance of the plan of the convention to the act which organizes the government of this State holds, not less with regard to many of the supposed defects, than to the real excellences of the former. Among the pretended defects are the re-eligibility of the Executive, the want of a council, the omission of a formal bill of rights, the omission of a provision respecting the liberty of the press. These and several others which have been noted in the course of our inquiries are as much chargeable on the existing constitution of this State, as on the one proposed for the Union; and a man must have slender pretensions to consistency, who can rail at the latter for imperfections which he finds no difficulty in excusing in the former. Nor indeed can there be a better proof of the insincerity and affectation of some of the zealous adversaries of the plan of the convention among us, who profess to be the devoted admirers of the government under which they live, than the fury with which they have attacked that plan, for matters in regard to which our own constitution is equally or perhaps more vulnerable.</p>
+<p>The additional securities to republican government, to liberty and to property, to be derived from the adoption of the plan under consideration, consist chiefly in the restraints which the preservation of the Union will impose on local factions and insurrections, and on the ambition of powerful individuals in single States, who may acquire credit and influence enough, from leaders and favorites, to become the despots of the people; in the diminution of the opportunities to foreign intrigue, which the dissolution of the Confederacy would invite and facilitate; in the prevention of extensive military establishments, which could not fail to grow out of wars between the States in a disunited situation; in the express guaranty of a republican form of government to each; in the absolute and universal exclusion of titles of nobility; and in the precautions against the repetition of those practices on the part of the State governments which have undermined the foundations of property and credit, have planted mutual distrust in the breasts of all classes of citizens, and have occasioned an almost universal prostration of morals.</p>
+<p>Thus have I, fellow-citizens, executed the task I had assigned to myself; with what success, your conduct must determine. I trust at least you will admit that I have not failed in the assurance I gave you respecting the spirit with which my endeavors should be conducted. I have addressed myself purely to your judgments, and have studiously avoided those asperities which are too apt to disgrace political disputants of all parties, and which have been not a little provoked by the language and conduct of the opponents of the Constitution. The charge of a conspiracy against the liberties of the people, which has been indiscriminately brought against the advocates of the plan, has something in it too wanton and too malignant, not to excite the indignation of every man who feels in his own bosom a refutation of the calumny. The perpetual changes which have been rung upon the wealthy, the well-born, and the great, have been such as to inspire the disgust of all sensible men. And the unwarrantable concealments and misrepresentations which have been in various ways practiced to keep the truth from the public eye, have been of a nature to demand the reprobation of all honest men. It is not impossible that these circumstances may have occasionally betrayed me into intemperances of expression which I did not intend; it is certain that I have frequently felt a struggle between sensibility and moderation; and if the former has in some instances prevailed, it must be my excuse that it has been neither often nor much.</p>
+<p>Let us now pause and ask ourselves whether, in the course of these papers, the proposed Constitution has not been satisfactorily vindicated from the aspersions thrown upon it; and whether it has not been shown to be worthy of the public approbation, and necessary to the public safety and prosperity. Every man is bound to answer these questions to himself, according to the best of his conscience and understanding, and to act agreeably to the genuine and sober dictates of his judgment. This is a duty from which nothing can give him a dispensation. &#x27;T is one that he is called upon, nay, constrained by all the obligations that form the bands of society, to discharge sincerely and honestly. No partial motive, no particular interest, no pride of opinion, no temporary passion or prejudice, will justify to himself, to his country, or to his posterity, an improper election of the part he is to act. Let him beware of an obstinate adherence to party; let him reflect that the object upon which he is to decide is not a particular interest of the community, but the very existence of the nation; and let him remember that a majority of America has already given its sanction to the plan which he is to approve or reject.</p>
+<p>I shall not dissemble that I feel an entire confidence in the arguments which recommend the proposed system to your adoption, and that I am unable to discern any real force in those by which it has been opposed. I am persuaded that it is the best which our political situation, habits, and opinions will admit, and superior to any the revolution has produced.</p>
+<p>Concessions on the part of the friends of the plan, that it has not a claim to absolute perfection, have afforded matter of no small triumph to its enemies. &quot;Why,&quot; say they, &quot;should we adopt an imperfect thing? Why not amend it and make it perfect before it is irrevocably established?&quot; This may be plausible enough, but it is only plausible. In the first place I remark, that the extent of these concessions has been greatly exaggerated. They have been stated as amounting to an admission that the plan is radically defective, and that without material alterations the rights and the interests of the community cannot be safely confided to it. This, as far as I have understood the meaning of those who make the concessions, is an entire perversion of their sense. No advocate of the measure can be found, who will not declare as his sentiment, that the system, though it may not be perfect in every part, is, upon the whole, a good one; is the best that the present views and circumstances of the country will permit; and is such an one as promises every species of security which a reasonable people can desire.</p>
+<p>I answer in the next place, that I should esteem it the extreme of imprudence to prolong the precarious state of our national affairs, and to expose the Union to the jeopardy of successive experiments, in the chimerical pursuit of a perfect plan. I never expect to see a perfect work from imperfect man. The result of the deliberations of all collective bodies must necessarily be a compound, as well of the errors and prejudices, as of the good sense and wisdom, of the individuals of whom they are composed. The compacts which are to embrace thirteen distinct States in a common bond of amity and union, must as necessarily be a compromise of as many dissimilar interests and inclinations. How can perfection spring from such materials?</p>
+<p>The reasons assigned in an excellent little pamphlet lately published in this city,(1) are unanswerable to show the utter improbability of assembling a new convention, under circumstances in any degree so favorable to a happy issue, as those in which the late convention met, deliberated, and concluded. I will not repeat the arguments there used, as I presume the production itself has had an extensive circulation. It is certainly well worthy the perusal of every friend to his country. There is, however, one point of light in which the subject of amendments still remains to be considered, and in which it has not yet been exhibited to public view. I cannot resolve to conclude without first taking a survey of it in this aspect.</p>
+<p>It appears to me susceptible of absolute demonstration, that it will be far more easy to obtain subsequent than previous amendments to the Constitution. The moment an alteration is made in the present plan, it becomes, to the purpose of adoption, a new one, and must undergo a new decision of each State. To its complete establishment throughout the Union, it will therefore require the concurrence of thirteen States. If, on the contrary, the Constitution proposed should once be ratified by all the States as it stands, alterations in it may at any time be effected by nine States. Here, then, the chances are as thirteen to nine(2) in favor of subsequent amendment, rather than of the original adoption of an entire system.</p>
+<p>This is not all. Every Constitution for the United States must inevitably consist of a great variety of particulars, in which thirteen independent States are to be accommodated in their interests or opinions of interest. We may of course expect to see, in any body of men charged with its original formation, very different combinations of the parts upon different points. Many of those who form a majority on one question, may become the minority on a second, and an association dissimilar to either may constitute the majority on a third. Hence the necessity of moulding and arranging all the particulars which are to compose the whole, in such a manner as to satisfy all the parties to the compact; and hence, also, an immense multiplication of difficulties and casualties in obtaining the collective assent to a final act. The degree of that multiplication must evidently be in a ratio to the number of particulars and the number of parties.</p>
+<p>But every amendment to the Constitution, if once established, would be a single proposition, and might be brought forward singly. There would then be no necessity for management or compromise, in relation to any other point--no giving nor taking. The will of the requisite number would at once bring the matter to a decisive issue. And consequently, whenever nine, or rather ten States, were united in the desire of a particular amendment, that amendment must infallibly take place. There can, therefore, be no comparison between the facility of affecting an amendment, and that of establishing in the first instance a complete Constitution.</p>
+<p>In opposition to the probability of subsequent amendments, it has been urged that the persons delegated to the administration of the national government will always be disinclined to yield up any portion of the authority of which they were once possessed. For my own part I acknowledge a thorough conviction that any amendments which may, upon mature consideration, be thought useful, will be applicable to the organization of the government, not to the mass of its powers; and on this account alone, I think there is no weight in the observation just stated. I also think there is little weight in it on another account. The intrinsic difficulty of governing THIRTEEN STATES at any rate, independent of calculations upon an ordinary degree of public spirit and integrity, will, in my opinion constantly impose on the national rulers the necessity of a spirit of accommodation to the reasonable expectations of their constituents. But there is yet a further consideration, which proves beyond the possibility of a doubt, that the observation is futile. It is this that the national rulers, whenever nine States concur, will have no option upon the subject. By the fifth article of the plan, the Congress will be obliged &quot;on the application of the legislatures of two thirds of the States (which at present amount to nine), to call a convention for proposing amendments, which shall be valid, to all intents and purposes, as part of the Constitution, when ratified by the legislatures of three fourths of the States, or by conventions in three fourths thereof.&quot; The words of this article are peremptory. The Congress &quot;shall call a convention.&quot; Nothing in this particular is left to the discretion of that body. And of consequence, all the declamation about the disinclination to a change vanishes in air. Nor however difficult it may be supposed to unite two thirds or three fourths of the State legislatures, in amendments which may affect local interests, can there be any room to apprehend any such difficulty in a union on points which are merely relative to the general liberty or security of the people. We may safely rely on the disposition of the State legislatures to erect barriers against the encroachments of the national authority.</p>
+<p>If the foregoing argument is a fallacy, certain it is that I am myself deceived by it, for it is, in my conception, one of those rare instances in which a political truth can be brought to the test of a mathematical demonstration. Those who see the matter in the same light with me, however zealous they may be for amendments, must agree in the propriety of a previous adoption, as the most direct road to their own object.</p>
+<p>The zeal for attempts to amend, prior to the establishment of the Constitution, must abate in every man who is ready to accede to the truth of the following observations of a writer equally solid and ingenious: &quot;To balance a large state or society (says he), whether monarchical or republican, on general laws, is a work of so great difficulty, that no human genius, however comprehensive, is able, by the mere dint of reason and reflection, to effect it. The judgments of many must unite in the work; EXPERIENCE must guide their labor; TIME must bring it to perfection, and the FEELING of inconveniences must correct the mistakes which they inevitably fall into in their first trials and experiments.&quot;(3) These judicious reflections contain a lesson of moderation to all the sincere lovers of the Union, and ought to put them upon their guard against hazarding anarchy, civil war, a perpetual alienation of the States from each other, and perhaps the military despotism of a victorious demagogue, in the pursuit of what they are not likely to obtain, but from TIME and EXPERIENCE. It may be in me a defect of political fortitude, but I acknowledge that I cannot entertain an equal tranquillity with those who affect to treat the dangers of a longer continuance in our present situation as imaginary. A NATION, without a NATIONAL GOVERNMENT, is, in my view, an awful spectacle. The establishment of a Constitution, in time of profound peace, by the voluntary consent of a whole people, is a PRODIGY, to the completion of which I look forward with trembling anxiety. I can reconcile it to no rules of prudence to let go the hold we now have, in so arduous an enterprise, upon seven out of the thirteen States, and after having passed over so considerable a part of the ground, to recommence the course. I dread the more the consequences of new attempts, because I know that POWERFUL INDIVIDUALS, in this and in other States, are enemies to a general national government in every possible shape.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. Entitled &quot;An Address to the People of the State of New York.&quot;</p>
+<p>2. It may rather be said TEN, for though two thirds may set on foot the measure, three fourths must ratify.</p>
+<p>3. Hume&#x27;s Essays, Vol. I, p. 128: &quot;The Rise of Arts and Sciences.&quot;</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 85</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 85: Concluding Remarks. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 85…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 85 &bull; Alexander Hamilton &bull; May 28, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-85";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 85 (Concluding Remarks). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

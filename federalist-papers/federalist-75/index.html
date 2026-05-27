@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 75 — Treaty Power — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 75: The Treaty-Making Power of the Executive by Alexander Hamilton, March 26, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '75'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;75
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 75 · Published by Independent Journal</p>
+  <h1>The Treaty-Making Power of the Executive</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; March 26, 1788 &bull; 1,939 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-74/" class="nav-btn">← No.&thinsp;74</a>
+    <a href="/federalist-papers/federalist-76/" class="nav-btn">No.&thinsp;76 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,939 words &bull; Foreign Policy &bull; March 26, 1788</p>
+
+<p>THE President is to have power, &quot;by and with the advice and consent of the Senate, to make treaties, provided two thirds of the senators present concur.&quot; Though this provision has been assailed, on different grounds, with no small degree of vehemence, I scruple not to declare my firm persuasion, that it is one of the best digested and most unexceptionable parts of the plan. One ground of objection is the trite topic of the intermixture of powers; some contending that the President ought alone to possess the power of making treaties; others, that it ought to have been exclusively deposited in the Senate. Another source of objection is derived from the small number of persons by whom a treaty may be made. Of those who espouse this objection, a part are of opinion that the House of Representatives ought to have been associated in the business, while another part seem to think that nothing more was necessary than to have substituted two thirds of all the members of the Senate, to two thirds of the members present. As I flatter myself the observations made in a preceding number upon this part of the plan must have sufficed to place it, to a discerning eye, in a very favorable light, I shall here content myself with offering only some supplementary remarks, principally with a view to the objections which have been just stated.</p>
+<p>With regard to the intermixture of powers, I shall rely upon the explanations already given in other places, of the true sense of the rule upon which that objection is founded; and shall take it for granted, as an inference from them, that the union of the Executive with the Senate, in the article of treaties, is no infringement of that rule. I venture to add, that the particular nature of the power of making treaties indicates a peculiar propriety in that union. Though several writers on the subject of government place that power in the class of executive authorities, yet this is evidently an arbitrary disposition; for if we attend carefully to its operation, it will be found to partake more of the legislative than of the executive character, though it does not seem strictly to fall within the definition of either of them. The essence of the legislative authority is to enact laws, or, in other words, to prescribe rules for the regulation of the society; while the execution of the laws, and the employment of the common strength, either for this purpose or for the common defense, seem to comprise all the functions of the executive magistrate. The power of making treaties is, plainly, neither the one nor the other. It relates neither to the execution of the subsisting laws, nor to the enaction of new ones; and still less to an exertion of the common strength. Its objects are CONTRACTS with foreign nations, which have the force of law, but derive it from the obligations of good faith. They are not rules prescribed by the sovereign to the subject, but agreements between sovereign and sovereign. The power in question seems therefore to form a distinct department, and to belong, properly, neither to the legislative nor to the executive. The qualities elsewhere detailed as indispensable in the management of foreign negotiations, point out the Executive as the most fit agent in those transactions; while the vast importance of the trust, and the operation of treaties as laws, plead strongly for the participation of the whole or a portion of the legislative body in the office of making them.</p>
+<p>However proper or safe it may be in governments where the executive magistrate is an hereditary monarch, to commit to him the entire power of making treaties, it would be utterly unsafe and improper to intrust that power to an elective magistrate of four years&#x27; duration. It has been remarked, upon another occasion, and the remark is unquestionably just, that an hereditary monarch, though often the oppressor of his people, has personally too much stake in the government to be in any material danger of being corrupted by foreign powers. But a man raised from the station of a private citizen to the rank of chief magistrate, possessed of a moderate or slender fortune, and looking forward to a period not very remote when he may probably be obliged to return to the station from which he was taken, might sometimes be under temptations to sacrifice his duty to his interest, which it would require superlative virtue to withstand. An avaricious man might be tempted to betray the interests of the state to the acquisition of wealth. An ambitious man might make his own aggrandizement, by the aid of a foreign power, the price of his treachery to his constituents. The history of human conduct does not warrant that exalted opinion of human virtue which would make it wise in a nation to commit interests of so delicate and momentous a kind, as those which concern its intercourse with the rest of the world, to the sole disposal of a magistrate created and circumstanced as would be a President of the United States.</p>
+<p>To have intrusted the power of making treaties to the Senate alone, would have been to relinquish the benefits of the constitutional agency of the President in the conduct of foreign negotiations. It is true that the Senate would, in that case, have the option of employing him in this capacity, but they would also have the option of letting it alone, and pique or cabal might induce the latter rather than the former. Besides this, the ministerial servant of the Senate could not be expected to enjoy the confidence and respect of foreign powers in the same degree with the constitutional representatives of the nation, and, of course, would not be able to act with an equal degree of weight or efficacy. While the Union would, from this cause, lose a considerable advantage in the management of its external concerns, the people would lose the additional security which would result from the co-operation of the Executive. Though it would be imprudent to confide in him solely so important a trust, yet it cannot be doubted that his participation would materially add to the safety of the society. It must indeed be clear to a demonstration that the joint possession of the power in question, by the President and Senate, would afford a greater prospect of security, than the separate possession of it by either of them. And whoever has maturely weighed the circumstances which must concur in the appointment of a President, will be satisfied that the office will always bid fair to be filled by men of such characters as to render their concurrence in the formation of treaties peculiarly desirable, as well on the score of wisdom, as on that of integrity.</p>
+<p>The remarks made in a former number, which have been alluded to in another part of this paper, will apply with conclusive force against the admission of the House of Representatives to a share in the formation of treaties. The fluctuating and, taking its future increase into the account, the multitudinous composition of that body, forbid us to expect in it those qualities which are essential to the proper execution of such a trust. Accurate and comprehensive knowledge of foreign politics; a steady and systematic adherence to the same views; a nice and uniform sensibility to national character; decision, secrecy, and despatch, are incompatible with the genius of a body so variable and so numerous. The very complication of the business, by introducing a necessity of the concurrence of so many different bodies, would of itself afford a solid objection. The greater frequency of the calls upon the House of Representatives, and the greater length of time which it would often be necessary to keep them together when convened, to obtain their sanction in the progressive stages of a treaty, would be a source of so great inconvenience and expense as alone ought to condemn the project.</p>
+<p>The only objection which remains to be canvassed, is that which would substitute the proportion of two thirds of all the members composing the senatorial body, to that of two thirds of the members present. It has been shown, under the second head of our inquiries, that all provisions which require more than the majority of any body to its resolutions, have a direct tendency to embarrass the operations of the government, and an indirect one to subject the sense of the majority to that of the minority. This consideration seems sufficient to determine our opinion, that the convention have gone as far in the endeavor to secure the advantage of numbers in the formation of treaties as could have been reconciled either with the activity of the public councils or with a reasonable regard to the major sense of the community. If two thirds of the whole number of members had been required, it would, in many cases, from the non-attendance of a part, amount in practice to a necessity of unanimity. And the history of every political establishment in which this principle has prevailed, is a history of impotence, perplexity, and disorder. Proofs of this position might be adduced from the examples of the Roman Tribuneship, the Polish Diet, and the States-General of the Netherlands, did not an example at home render foreign precedents unnecessary.</p>
+<p>To require a fixed proportion of the whole body would not, in all probability, contribute to the advantages of a numerous agency, better then merely to require a proportion of the attending members. The former, by making a determinate number at all times requisite to a resolution, diminishes the motives to punctual attendance. The latter, by making the capacity of the body to depend on a proportion which may be varied by the absence or presence of a single member, has the contrary effect. And as, by promoting punctuality, it tends to keep the body complete, there is great likelihood that its resolutions would generally be dictated by as great a number in this case as in the other; while there would be much fewer occasions of delay. It ought not to be forgotten that, under the existing Confederation, two members may, and usually do, represent a State; whence it happens that Congress, who now are solely invested with all the powers of the Union, rarely consist of a greater number of persons than would compose the intended Senate. If we add to this, that as the members vote by States, and that where there is only a single member present from a State, his vote is lost, it will justify a supposition that the active voices in the Senate, where the members are to vote individually, would rarely fall short in number of the active voices in the existing Congress. When, in addition to these considerations, we take into view the co-operation of the President, we shall not hesitate to infer that the people of America would have greater security against an improper use of the power of making treaties, under the new Constitution, than they now enjoy under the Confederation. And when we proceed still one step further, and look forward to the probable augmentation of the Senate, by the erection of new States, we shall not only perceive ample ground of confidence in the sufficiency of the members to whose agency that power will be intrusted, but we shall probably be led to conclude that a body more numerous than the Senate would be likely to become, would be very little fit for the proper discharge of the trust.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 75</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 75: The Treaty-Making Power of the Executive. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 75…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 75 &bull; Alexander Hamilton &bull; March 26, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-75";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 75 (Treaty Power). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

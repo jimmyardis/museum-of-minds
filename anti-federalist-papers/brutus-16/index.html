@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay XVI — On Judicial Supremacy — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay XVI — On Judicial Supremacy, April 10, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 16
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 16 · Published in New-York Journal</p>
+  <h1>Essay XVI — On Judicial Supremacy</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; April 10, 1788 &bull; 2,105 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-15/" class="nav-btn">← Brutus 15</a>
+    <a href="/anti-federalist-papers/cato-1/" class="nav-btn">Cato 1 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,105 words &bull; Judiciary &bull; April 10, 1788</p>
+
+<h3 class="paper-section-head">XVI</h3>
+<p>10 April 1788</p>
+<p>When great and extraordinary powers are vested in any man, or body of men, which in their exercise, may operate to the oppression of the people, it is of high importance that powerful checks should be formed to prevent the abuse of it.</p>
+<p>Perhaps no restraints are more forcible, than such as arise from responsibility to some superior power. — Hence it is that the true policy of a republican government is, to frame it in such manner, that all persons who are concerned in the government, are made accountable to some superior for their conduct in office. — This responsibility should ultimately rest with the People. To have a government well administered in all its parts, it is requisite the different departments of it should be separated and lodged as much as may be in different hands. The legislative power should be in one body, the executive in another, and the judicial in one different from either — But still each of these bodies should be accountable for their conduct. Hence it is impracticable, perhaps, to maintain a perfect distinction between these several departments — For it is difficult, if not impossible, to call to account the several officers in government, without in some degree mixing the legislative and judicial. The legislature in a free republic are chosen by the people at stated periods, and their responsibility consists, in their being amenable to the people. When the term, for which they are chosen, shall expire, who will then have opportunity to displace them if they disapprove of their conduct — but it would be improper that the judicial should be elective, because their business requires that they should possess a degree of law knowledge, which is acquired only by a regular education, and besides it is fit that they should be placed, in a certain degree in an independent situation, that they may maintain firmness and steadiness in their decisions. As the people therefore ought not to elect the judges, they cannot be amenable to them immediately, some other mode of amenability must therefore be devised for these, as well as for all other officers which do not spring from the immediate choice of the people: this is to be effected by making one court subordinate to another, and by giving them cognizance of the behaviour of all officers; but on this plan we at last arrive at some supreme, over whom there is no power to controul but the people themselves. This supreme controling power should be in the choice of the people, or else you establish an authority independent, and not amenable at all, which is repugnant to the principles of a free government. Agreeable to these principles I suppose the supreme judicial ought to be liable to be called to account, for any misconduct, by some body of men, who depend upon the people for their places; and so also should all other great officers in the State, who are not made amenable to some superior officers. This policy seems in some measure to have been in view of the framers of the new system, and to have given rise to the institution of a court of impeachments — How far this Court will be properly qualified to execute the trust which will be reposed in them, will be the business of a future paper to investigate. To prepare the way to do this, it shall be the business of this, to make some remarks upon the constitution and powers of the Senate, with whom the power of trying impeachments is lodged.</p>
+<p>The following things may be observed with respect to the constitution of the Senate.</p>
+<p>1st. They are to be elected by the legislatures of the States and not by the people, and each State is to be represented by an equal number.</p>
+<p>2d. They are to serve for six years, except that one third of those first chosen are to go out of office at the expiration of two years, one third at the expiration of four years, and one third at the expiration of six years, after which this rotation is to be preserved, but still every member will serve for the term of six years.</p>
+<p>3d. If vacancies happen by resignation or otherwise, during the recess of the legislature of any State, the executive is authorised to make temporary appointments until the next meeting of the legislature.</p>
+<p>4. No person can be a senator who has not arrived to the age of thirty years, been nine years a citizen of the United States, and who is not at the time he is elected an inhabitant of the State for which he is elected.</p>
+<p>The apportionment of members of Senate among the States is not according to numbers, or the importance of the States; but is equal. This, on the plan of a consolidated government, is unequal and improper; but is proper on the system of confederation — on this principle I approve of it. It is indeed the only feature of any importance in the constitution of a confederated government. It was obtained after a vigorous struggle of that part of the Convention who were in favor of preserving the state governments. It is to be regretted, that they were not able to have infused other principles into the plan, to have secured the government of the respective states, and to have marked with sufficient precision the line between them and the general government.</p>
+<p>The term for which the senate are to be chosen, is in my judgment too long, and no provision being made for a rotation will, I conceive, be of dangerous consequence.</p>
+<p>It is difficult to fix the precise period for which the senate should be chosen. It is a matter of opinion, and our sentiments on the matter must be formed, by attending to certain principles. Some of the duties which are to be performed by the senate, seem evidently to point out the propriety of their term of service being extended beyond the period of that of the assembly. Besides as they are designed to represent the aristocracy of the country, it seems fit they should possess more stability, and so continue a longer period than that branch who represent the democracy. The business of making treaties and some other which it will be proper to commit to the senate, requires that they should have experience, and therefore that they should remain some time in office to acquire it. — But still it is of equal importance that they should not be so long in office as to be likely to forget the hand that formed them, or be insensible of their interests. Men long in office are very apt to feel themselves independent [and] to form and pursue interests separate from those who appointed them. And this is more likely to be the case with the senate, as they will for the most part of the time be absent from the state they represent, and associate with such company as will possess very little of the feelings of the middling class of people. For it is to be remembered that there is to be a federal city , and the inhabitants of it will be the great and the mighty of the earth. For these reasons I would shorten the term of their service to four years. Six years is a long period for a man to be absent from his home, it would have a tendency to wean him from his constituents.</p>
+<p>A rotation in the senate, would also in my opinion be of great use. It is probable that senators once chosen for a state will, as the system now stands, continue in office for life. The office will be honorable if not lucrative. The persons who occupy it will probably wish to continue in it, and therefore use all their influence and that of their friends to continue in office. — Their friends will be numerous and powerful, for they will have it in their power to confer great favors; besides it will before long be considered as disgraceful not to be re-elected. It will therefore be considered as a matter of delicacy to the character of the senator not to return him again. — Every body acquainted with public affairs knows how difficult it is to remove from office a person who is [has?] long been in it. It is seldom done except in cases of gross misconduct. It is rare that want of competent ability procures it. To prevent this inconvenience I conceive it would be wise to determine, that a senator should not be eligible after he had served for the period assigned by the constitution for a certain number of years; perhaps three would be sufficient. A farther benefit would be derived from such an arrangement; it would give opportunity to bring forward a greater number of men to serve their country, and would return those, who had served, to their state, and afford them the advantage of becoming better acquainted with the condition and politics of their constituents. It farther appears to me proper, that the legislatures should retain the right which they now hold under the confederation, of recalling their members. It seems an evident dictate of reason, that when a person authorises another to do a piece of business for him, he should retain the power to displace him, when he does not conduct according to his pleasure. This power in the state legislatures, under confederation, has not been exercised to the injury of the government, nor do I see any danger of its being so exercised under the new system. It may operate much to the public benefit.</p>
+<p>These brief remarks are all I shall make on the organization of the senate. The powers with which they are invested will require a more minute investigation.</p>
+<p>This body will possess a strange mixture of legislative, executive and judicial powers, which in my opinion will in some cases clash with each other.</p>
+<p>1. They are one branch of the legislature, and in this respect will possess equal powers in all cases with the house of representatives; for I consider the clause which gives the house of representatives the right of originating bills for raising a revenue as merely nominal, seeing the senate be authorised to propose or concur with amendments.</p>
+<p>2. They are a branch of the executive in the appointment of ambassadors and public ministers, and in the appointment of all other officers, not otherwise provided for; whether the forming of treaties, in which they are joined with the president, appertains to the legislative or the executive part of the government, or to neither, is not material.</p>
+<p>3. They are part of the judicial, for they form the court of impeachments. It has been a long established maxim, that the legislative, executive and judicial departments in government should be kept distinct. It is said, I know, that this cannot be done. And therefore that this maxim is not just, or at least that it should only extend to certain leading features in a government. I admit that this distinction cannot be perfectly preserved. In a due ballanced government, it is perhaps absolutely necessary to give the executive qualified legislative powers, and the legislative or a branch of them judicial powers in the last resort. It may possibly also, in some special cases, be adviseable to associate the legislature, or a branch of it, with the executive, in the exercise of acts of great national importance. But still the maxim is a good one, and a separation of these powers should be sought as far as is practicable. I can scarcely imagine that any of the advocates of the system will pretend, that it was necessary to accumulate all these powers in the senate.</p>
+<p>There is a propriety in the senate&#x27;s possessing legislative powers; this is the principal end which should be held in view in their appointment. I need not here repeat what has so often and ably been advanced on the subject of a division of the legislative power into two branches — The arguments in favor of it I think conclusive. But I think it equally evident, that a branch of the legislature should not be invested with the power of appointing officers. This power in the senate is very improperly lodged for a number of reasons — These shall be detailed in a future number.</p>
+<p>Brutus.</p>
+<p>Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay XVI — On Judicial Supremacy. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 16 &bull; April 10, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-16";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay XVI — On Judicial Supremacy. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

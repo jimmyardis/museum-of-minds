@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay XI — On Judicial Review and Judicial Power — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay XI — On Judicial Review and Judicial Power, January 31, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 11
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 11 · Published in New-York Journal</p>
+  <h1>Essay XI — On Judicial Review and Judicial Power</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; January 31, 1788 &bull; 2,546 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-10/" class="nav-btn">← Brutus 10</a>
+    <a href="/anti-federalist-papers/brutus-12/" class="nav-btn">Brutus 12 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,546 words &bull; Judiciary &bull; January 31, 1788</p>
+
+<h3 class="paper-section-head">XI</h3>
+<p>31 January 1788</p>
+<p>The nature and extent of the judicial power of the United States, proposed to be granted by this constitution, claims our particular attention.</p>
+<p>Much has been said and written upon the subject of this new system on both sides, but I have not met with any writer, who has discussed the judicial powers with any degree of accuracy. And yet it is obvious, that we can form but very imperfect ideas of the manner in which this government will work, or the effect it will have in changing the internal police and mode of distributing justice at present subsisting in the respective states, without a thorough investigation of the powers of the judiciary and of the manner in which they will operate. This government is a complete system, not only for making, but for executing laws. And the courts of law, which will be constituted by it, are not only to decide upon the constitution and the laws made in pursuance of it, but by officers subordinate to them to execute all their decisions. The real effect of this system of government, will therefore be brought home to the feelings of the people, through the medium of the judicial power. It is, moreover, of great importance, to examine with care the nature and extent of the judicial power, because those who are to be vested with it, are to be placed in a situation altogether unprecedented in a free country. They are to be rendered totally independent, both of the people and the legislature, both with respect to their offices and salaries. No errors they may commit can be corrected by any power above them, if any such power there be, nor can they be removed from office for making ever so many erroneous adjudications.</p>
+<p>The only causes for which they can be displaced, is, conviction of treason, bribery, and high crimes and misdemeanors.</p>
+<p>This part of the plan is so modelled, as to authorise the courts, not only to carry into execution the powers expressly given, but where these are wanting or ambiguously expressed, to supply what is wanting by their own decisions.</p>
+<p>That we may be enabled to form a just opinion on this subject, I shall, in considering it,</p>
+<p>1st. Examine the nature and extent of the judicial powers — and</p>
+<p>2d. Enquire, whether the courts who are to exercise them, are so constituted as to afford reasonable ground of confidence, that they will exercise them for the general good.</p>
+<p>With a regard to the nature and extent of the judicial powers, I have to regret my want of capacity to give that full and minute explanation of them that the subject merits. To be able to do this, a man should be possessed of a degree of law knowledge far beyond what I pretend to. A number of hard words and technical phrases are used in this part of the system, about the meaning of which gentlemen learned in the law differ.</p>
+<p>Its advocates know how to avail themselves of these phrases. In a number of instances, where objections are made to the powers given to the judicial, they give such an explanation to the technical terms as to avoid them.</p>
+<p>Though I am not competent to give a perfect explanation of the powers granted to this department of the government, I shall yet attempt to trace some of the leading features of it, from which I presume it will appear, that they will operate to a total subversion of the state judiciaries, if not, to the legislative authority of the states.</p>
+<p>In article 3d, sect. 2d, it is said, &quot;The judicial power shall extend to all cases in law and equity arising under this constitution, the laws of the United States, and treaties made, or which shall be made, under their authority, &amp;c.&quot;</p>
+<p>The first article to which this power extends, is, all cases in law and equity arising under this constitution.</p>
+<p>What latitude of construction this clause should receive, it is not easy to say. At first view, one would suppose, that it meant no more than this, that the courts under the general government should exercise, not only the powers of courts of law, but also that of courts of equity, in the manner in which those powers are usually exercised in the different states. But this cannot be the meaning, because the next clause authorises the courts to take cognizance of all cases in law and equity arising under the laws of the United States; this last article, I conceive, conveys as much power to the general judicial as any of the state courts possess.</p>
+<p>The cases arising under the constitution must be different from those arising under the laws, or else the two clauses mean exactly the same thing.</p>
+<p>The cases arising under the constitution must include such, as bring into question its meaning, and will require an explanation of the nature and extent of the powers of the different departments under it.</p>
+<p>This article, therefore, vests the judicial with a power to resolve all questions that may arise on any case on the construction of the constitution, either in law or in equity.</p>
+<p>1st. They are authorised to determine all questions that may arise upon the meaning of the constitution in law. This article vests the courts with authority to give the constitution a legal construction, or to explain it according to the rules laid down for construing a law. — These rules give a certain degree of latitude of explanation. According to this mode of construction, the courts are to give such meaning to the constitution as comports best with the common, and generally received acceptation of the words in which it is expressed, regarding their ordinary and popular use, rather than their grammatical propriety. Where words are dubious, they will be explained by the context. The end of the clause will be attended to, and the words will be understood, as having a view to it; and the words will not be so understood as to bear no meaning or a very absurd one.</p>
+<p>2d. The judicial are not only to decide questions arising upon the meaning of the constitution in law, but also in equity.</p>
+<p>By this they are empowered, to explain the constitution according to the reasoning spirit of it, without being confined to the words or letter.</p>
+<p>&quot;From this method of interpreting laws (says Blackstone) by the reason of them, arises what we call equity;&quot; which is thus defined by Grotius, &quot;the correction of that, wherein the law, by reason of its universality, is deficient[&quot;]; for since in laws all cases cannot be foreseen, or expressed, it is necessary, that when the decrees of the law cannot be applied to particular cases, there should some where be a power vested of defining those circumstances, which had they been foreseen the legislator would have expressed; and these are the cases, which according to Grotius, [&quot;]lex non exacte definit, sed arbitrio boni viri permittet.&quot;</p>
+<p>The same learned author observes, &quot;That equity, thus depending essentially upon each individual case, there can be no established rules and fixed principles of equity laid down, without destroying its very essence, and reducing it to a positive law.&quot;</p>
+<p>From these remarks, the authority and business of the courts of law, under this clause, may be understood.</p>
+<p>They will give the sense of every article of the constitution, that may from time to time come before them. And in their decisions they will not confine themselves to any fixed or established rules, but will determine, according to what appears to them, the reason and spirit of the constitution. The opinions of the supreme court, whatever they may be, will have the force of law; because there is no power provided in the constitution, that can correct their errors, or controul their adjudications. From this court there is no appeal. And I conceive the legislature themselves, cannot set aside a judgment of this court, because they are authorised by the constitution to decide in the last resort. The legislature must be controuled by the constitution, and not the constitution by them. They have therefore no more right to set aside any judgment pronounced upon the construction of the constitution, than they have to take from the president, the chief command of the army and navy, and commit it to some other person. The reason is plain; the judicial and executive derive their authority from the same source, that the legislature do theirs; and therefore in all cases, where the constitution does not make the one responsible to, or controulable by the other, they are altogether independent of each other.</p>
+<p>The judicial power will operate to effect, in the most certain, but yet silent and imperceptible manner, what is evidently the tendency of the constitution: — I mean, an entire subversion of the legislative, executive and judicial powers of the individual states. Every adjudication of the supreme court, on any question that may arise upon the nature and extent of the general government, will affect the limits of the state jurisdiction. In proportion as the former enlarge the exercise of their powers, will that of the latter be restricted.</p>
+<p>That the judicial power of the United States, will lean strongly in favour of the general government, and will give such an explanation to the constitution, as will favour an extension of its jurisdiction, is very evident from a variety of considerations.</p>
+<p>1st. The constitution itself strongly countenances such a mode of construction. Most of the articles in this system, which convey powers of any considerable importance, are conceived in general and indefinite terms, which are either equivocal, ambiguous, or which require long definitions to unfold the extent of their meaning. The two most important powers committed to any government, those of raising money, and of raising and keeping up troops, have already been considered, and shewn to be unlimitted by any thing but the discretion of the legislature. The clause which vests the power to pass all laws which are proper and necessary, to carry the powers given into execution, it has been shewn, leaves the legislature at liberty, to do every thing, which in their judgment is best. It is said, I know, that this clause confers no power on the legislature, which they would not have had without it — though I believe this is not the fact, yet, admitting it to be, it implies that the constitution is not to receive an explanation strictly, according to its letter; but more power is implied than is expressed. And this clause, if it is to be considered, as explanatory of the extent of the powers given, rather than giving a new power, is to be understood as declaring, that in construing any of the articles conveying power, the spirit, intent and design of the clause, should be attended to, as well as the words in their common acceptation.</p>
+<p>This constitution gives sufficient colour for adopting an equitable construction, if we consider the great end and design it professedly has in view — these appear from its preamble to be, &quot;to form a more perfect union, establish justice, insure domestic tranquility, provide for the common defence, promote the general welfare, and secure the blessings of liberty to ourselves and posterity.&quot; The design of this system is here expressed, and it is proper to give such a meaning to the various parts, as will best promote the accomplishment of the end; this idea suggests itself naturally upon reading the preamble, and will countenance the court in giving the several articles such a sense, as will the most effectually promote the ends the constitution had in view — how this manner of explaining the constitution will operate in practice, shall be the subject of future enquiry.</p>
+<p>2d. Not only will the constitution justify the courts in inclining to this mode of explaining it, but they will be interested in using this latitude of interpretation. Every body of men invested with office are tenacious of power; they feel interested, and hence it has become a kind of maxim, to hand down their offices, with all its rights and privileges, unimpared to their successors; the same principle will influence them to extend their power, and increase their rights; this of itself will operate strongly upon the courts to give such a meaning to the constitution in all cases where it can possibly be done, as will enlarge the sphere of their own authority. Every extension of the power of the general legislature, as well as of the judicial powers, will increase the powers of the courts; and the dignity and importance of the judges, will be in proportion to the extent and magnitude of the powers they exercise. I add, it is highly probable the emolument of the judges will be increased, with the increase of the business they will have to transact and its importance. From these considerations the judges will be interested to extend the powers of the courts, and to construe the constitution as much as possible, in such a way as to favour it; and that they will do it, appears probable.</p>
+<p>3d. Because they will have precedent to plead, to justify them in it. It is well known, that the courts in England, have by their own authority, extended their jurisdiction far beyond the limits set them in their original institution, and by the laws of the land.</p>
+<p>The court of exchequer is a remarkable instance of this. It was originally intended principally to recover the king&#x27;s debts, and to order the revenues of the crown. It had a common law jurisdiction, which was established merely for the benefit of the king&#x27;s accomptants. We learn from Blackstone, that the proceedings in this court are grounded on a writ called quo minus, in which the plaintiff suggests, that he is the king&#x27;s farmer or debtor, and that the defendant hath done him the damage complained of, by which he is less able to pay the king. These suits, by the statute of Rutland, are expressly directed to be confined to such matters as specially concern the king, or his ministers in the exchequer. And by the articuli super cartas, it is enacted, that no common pleas be thenceforth held in the exchequer contrary to the form of the great charter: but now any person may sue in the exchequer. The surmise of being debtor to the king being matter of form, and mere words of course; and the court is open to all the nation.</p>
+<p>When the courts will have a precedent before them of a court which extended its jurisdiction in opposition to an act of the legislature, is it not to be expected that they will extend theirs, especially when there is nothing in the constitution expressly against it? and they are authorised to construe its meaning, and are not under any controul?</p>
+<p>This power in the judicial, will enable them to mould the government, into almost any shape they please. — The manner in which this may be effected we will hereafter examine.</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        <p class='cross-refs-label'>Related Anti-Federalist Essays</p><div class='cross-refs-grid'><a href="/anti-federalist-papers/brutus-12/" class="cross-ref">Continuing the judiciary argument</a></div>
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-78/" class="cross-ref cross-ref-opp">On the judiciary — Hamilton&#x27;s defense</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay XI — On Judicial Review and Judicial Power. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 11 &bull; January 31, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-11";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay XI — On Judicial Review and Judicial Power. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

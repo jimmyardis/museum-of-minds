@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 72 — Re-eligibility of Executive — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 72: The Same Subject Continued, and Re-Eligibility of the Executive Considered by Alexander Hamilton, March 19, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '72'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;72
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 72 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued, and Re-Eligibility of the Executive Considered</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; March 19, 1788 &bull; 2,033 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-71/" class="nav-btn">← No.&thinsp;71</a>
+    <a href="/federalist-papers/federalist-73/" class="nav-btn">No.&thinsp;73 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,033 words &bull; Executive Power &bull; March 19, 1788</p>
+
+<p>THE administration of government, in its largest sense, comprehends all the operations of the body politic, whether legislative, executive, or judiciary; but in its most usual, and perhaps its most precise signification. it is limited to executive details, and falls peculiarly within the province of the executive department. The actual conduct of foreign negotiations, the preparatory plans of finance, the application and disbursement of the public moneys in conformity to the general appropriations of the legislature, the arrangement of the army and navy, the directions of the operations of war--these, and other matters of a like nature, constitute what seems to be most properly understood by the administration of government. The persons, therefore, to whose immediate management these different matters are committed, ought to be considered as the assistants or deputies of the chief magistrate, and on this account, they ought to derive their offices from his appointment, at least from his nomination, and ought to be subject to his superintendence. This view of the subject will at once suggest to us the intimate connection between the duration of the executive magistrate in office and the stability of the system of administration. To reverse and undo what has been done by a predecessor, is very often considered by a successor as the best proof he can give of his own capacity and desert; and in addition to this propensity, where the alteration has been the result of public choice, the person substituted is warranted in supposing that the dismission of his predecessor has proceeded from a dislike to his measures; and that the less he resembles him, the more he will recommend himself to the favor of his constituents. These considerations, and the influence of personal confidences and attachments, would be likely to induce every new President to promote a change of men to fill the subordinate stations; and these causes together could not fail to occasion a disgraceful and ruinous mutability in the administration of the government.</p>
+<p>With a positive duration of considerable extent, I connect the circumstance of re-eligibility. The first is necessary to give to the officer himself the inclination and the resolution to act his part well, and to the community time and leisure to observe the tendency of his measures, and thence to form an experimental estimate of their merits. The last is necessary to enable the people, when they see reason to approve of his conduct, to continue him in his station, in order to prolong the utility of his talents and virtues, and to secure to the government the advantage of permanency in a wise system of administration.</p>
+<p>Nothing appears more plausible at first sight, nor more ill-founded upon close inspection, than a scheme which in relation to the present point has had some respectable advocates--I mean that of continuing the chief magistrate in office for a certain time, and then excluding him from it, either for a limited period or forever after. This exclusion, whether temporary or perpetual, would have nearly the same effects, and these effects would be for the most part rather pernicious than salutary.</p>
+<p>One ill effect of the exclusion would be a diminution of the inducements to good behavior. There are few men who would not feel much less zeal in the discharge of a duty when they were conscious that the advantages of the station with which it was connected must be relinquished at a determinate period, than when they were permitted to entertain a hope of obtaining, by meriting, a continuance of them. This position will not be disputed so long as it is admitted that the desire of reward is one of the strongest incentives of human conduct; or that the best security for the fidelity of mankind is to make their interests coincide with their duty. Even the love of fame, the ruling passion of the noblest minds, which would prompt a man to plan and undertake extensive and arduous enterprises for the public benefit, requiring considerable time to mature and perfect them, if he could flatter himself with the prospect of being allowed to finish what he had begun, would, on the contrary, deter him from the undertaking, when he foresaw that he must quit the scene before he could accomplish the work, and must commit that, together with his own reputation, to hands which might be unequal or unfriendly to the task. The most to be expected from the generality of men, in such a situation, is the negative merit of not doing harm, instead of the positive merit of doing good.</p>
+<p>Another ill effect of the exclusion would be the temptation to sordid views, to peculation, and, in some instances, to usurpation. An avaricious man, who might happen to fill the office, looking forward to a time when he must at all events yield up the emoluments he enjoyed, would feel a propensity, not easy to be resisted by such a man, to make the best use of the opportunity he enjoyed while it lasted, and might not scruple to have recourse to the most corrupt expedients to make the harvest as abundant as it was transitory; though the same man, probably, with a different prospect before him, might content himself with the regular perquisites of his situation, and might even be unwilling to risk the consequences of an abuse of his opportunities. His avarice might be a guard upon his avarice. Add to this that the same man might be vain or ambitious, as well as avaricious. And if he could expect to prolong his honors by his good conduct, he might hesitate to sacrifice his appetite for them to his appetite for gain. But with the prospect before him of approaching an inevitable annihilation, his avarice would be likely to get the victory over his caution, his vanity, or his ambition.</p>
+<p>An ambitious man, too, when he found himself seated on the summit of his country&#x27;s honors, when he looked forward to the time at which he must descend from the exalted eminence for ever, and reflected that no exertion of merit on his part could save him from the unwelcome reverse; such a man, in such a situation, would be much more violently tempted to embrace a favorable conjuncture for attempting the prolongation of his power, at every personal hazard, than if he had the probability of answering the same end by doing his duty.</p>
+<p>Would it promote the peace of the community, or the stability of the government to have half a dozen men who had had credit enough to be raised to the seat of the supreme magistracy, wandering among the people like discontented ghosts, and sighing for a place which they were destined never more to possess?</p>
+<p>A third ill effect of the exclusion would be, the depriving the community of the advantage of the experience gained by the chief magistrate in the exercise of his office. That experience is the parent of wisdom, is an adage the truth of which is recognized by the wisest as well as the simplest of mankind. What more desirable or more essential than this quality in the governors of nations? Where more desirable or more essential than in the first magistrate of a nation? Can it be wise to put this desirable and essential quality under the ban of the Constitution, and to declare that the moment it is acquired, its possessor shall be compelled to abandon the station in which it was acquired, and to which it is adapted? This, nevertheless, is the precise import of all those regulations which exclude men from serving their country, by the choice of their fellowcitizens, after they have by a course of service fitted themselves for doing it with a greater degree of utility.</p>
+<p>A fourth ill effect of the exclusion would be the banishing men from stations in which, in certain emergencies of the state, their presence might be of the greatest moment to the public interest or safety. There is no nation which has not, at one period or another, experienced an absolute necessity of the services of particular men in particular situations; perhaps it would not be too strong to say, to the preservation of its political existence. How unwise, therefore, must be every such self-denying ordinance as serves to prohibit a nation from making use of its own citizens in the manner best suited to its exigencies and circumstances! Without supposing the personal essentiality of the man, it is evident that a change of the chief magistrate, at the breaking out of a war, or at any similar crisis, for another, even of equal merit, would at all times be detrimental to the community, inasmuch as it would substitute inexperience to experience, and would tend to unhinge and set afloat the already settled train of the administration.</p>
+<p>A fifth ill effect of the exclusion would be, that it would operate as a constitutional interdiction of stability in the administration. By necessitating a change of men, in the first office of the nation, it would necessitate a mutability of measures. It is not generally to be expected, that men will vary and measures remain uniform. The contrary is the usual course of things. And we need not be apprehensive that there will be too much stability, while there is even the option of changing; nor need we desire to prohibit the people from continuing their confidence where they think it may be safely placed, and where, by constancy on their part, they may obviate the fatal inconveniences of fluctuating councils and a variable policy.</p>
+<p>These are some of the disadvantages which would flow from the principle of exclusion. They apply most forcibly to the scheme of a perpetual exclusion; but when we consider that even a partial exclusion would always render the readmission of the person a remote and precarious object, the observations which have been made will apply nearly as fully to one case as to the other.</p>
+<p>What are the advantages promised to counterbalance these disadvantages? They are represented to be: 1st, greater independence in the magistrate; 2d, greater security to the people. Unless the exclusion be perpetual, there will be no pretense to infer the first advantage. But even in that case, may he have no object beyond his present station, to which he may sacrifice his independence? May he have no connections, no friends, for whom he may sacrifice it? May he not be less willing by a firm conduct, to make personal enemies, when he acts under the impression that a time is fast approaching, on the arrival of which he not only MAY, but MUST, be exposed to their resentments, upon an equal, perhaps upon an inferior, footing? It is not an easy point to determine whether his independence would be most promoted or impaired by such an arrangement.</p>
+<p>As to the second supposed advantage, there is still greater reason to entertain doubts concerning it. If the exclusion were to be perpetual, a man of irregular ambition, of whom alone there could be reason in any case to entertain apprehension, would, with infinite reluctance, yield to the necessity of taking his leave forever of a post in which his passion for power and pre-eminence had acquired the force of habit. And if he had been fortunate or adroit enough to conciliate the good-will of the people, he might induce them to consider as a very odious and unjustifiable restraint upon themselves, a provision which was calculated to debar them of the right of giving a fresh proof of their attachment to a favorite. There may be conceived circumstances in which this disgust of the people, seconding the thwarted ambition of such a favorite, might occasion greater danger to liberty, than could ever reasonably be dreaded from the possibility of a perpetuation in office, by the voluntary suffrages of the community, exercising a constitutional privilege.</p>
+<p>There is an excess of refinement in the idea of disabling the people to continue in office men who had entitled themselves, in their opinion, to approbation and confidence; the advantages of which are at best speculative and equivocal, and are overbalanced by disadvantages far more certain and decisive.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 72</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 72: The Same Subject Continued, and Re-Eligibility of the Executive Considered. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 72…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 72 &bull; Alexander Hamilton &bull; March 19, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-72";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 72 (Re-eligibility of Executive). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

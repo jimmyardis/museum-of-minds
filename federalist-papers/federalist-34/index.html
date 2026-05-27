@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 34 — Taxation: Same Subject — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 34: The Same Subject Continued (Concerning the General Power of Taxation) by Alexander Hamilton, January 5, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '34'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;34
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 34 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (Concerning the General Power of Taxation)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 5, 1788 &bull; 2,210 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-33/" class="nav-btn">← No.&thinsp;33</a>
+    <a href="/federalist-papers/federalist-35/" class="nav-btn">No.&thinsp;35 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,210 words &bull; Taxation &bull; January 5, 1788</p>
+
+<p>I FLATTER myself it has been clearly shown in my last number that the particular States, under the proposed Constitution, would have COEQUAL authority with the Union in the article of revenue, except as to duties on imports. As this leaves open to the States far the greatest part of the resources of the community, there can be no color for the assertion that they would not possess means as abundant as could be desired for the supply of their own wants, independent of all external control. That the field is sufficiently wide will more fully appear when we come to advert to the inconsiderable share of the public expenses for which it will fall to the lot of the State governments to provide.</p>
+<p>To argue upon abstract principles that this co-ordinate authority cannot exist, is to set up supposition and theory against fact and reality. However proper such reasonings might be to show that a thing OUGHT NOT TO EXIST, they are wholly to be rejected when they are made use of to prove that it does not exist contrary to the evidence of the fact itself. It is well known that in the Roman republic the legislative authority, in the last resort, resided for ages in two different political bodies not as branches of the same legislature, but as distinct and independent legislatures, in each of which an opposite interest prevailed: in one the patrician; in the other, the plebian. Many arguments might have been adduced to prove the unfitness of two such seemingly contradictory authorities, each having power to ANNUL or REPEAL the acts of the other. But a man would have been regarded as frantic who should have attempted at Rome to disprove their existence. It will be readily understood that I allude to the COMITIA CENTURIATA and the COMITIA TRIBUTA. The former, in which the people voted by centuries, was so arranged as to give a superiority to the patrician interest; in the latter, in which numbers prevailed, the plebian interest had an entire predominancy. And yet these two legislatures coexisted for ages, and the Roman republic attained to the utmost height of human greatness.</p>
+<p>In the case particularly under consideration, there is no such contradiction as appears in the example cited; there is no power on either side to annul the acts of the other. And in practice there is little reason to apprehend any inconvenience; because, in a short course of time, the wants of the States will naturally reduce themselves within A VERY NARROW COMPASS; and in the interim, the United States will, in all probability, find it convenient to abstain wholly from those objects to which the particular States would be inclined to resort.</p>
+<p>To form a more precise judgment of the true merits of this question, it will be well to advert to the proportion between the objects that will require a federal provision in respect to revenue, and those which will require a State provision. We shall discover that the former are altogether unlimited, and that the latter are circumscribed within very moderate bounds. In pursuing this inquiry, we must bear in mind that we are not to confine our view to the present period, but to look forward to remote futurity. Constitutions of civil government are not to be framed upon a calculation of existing exigencies, but upon a combination of these with the probable exigencies of ages, according to the natural and tried course of human affairs. Nothing, therefore, can be more fallacious than to infer the extent of any power, proper to be lodged in the national government, from an estimate of its immediate necessities. There ought to be a CAPACITY to provide for future contingencies as they may happen; and as these are illimitable in their nature, it is impossible safely to limit that capacity. It is true, perhaps, that a computation might be made with sufficient accuracy to answer the purpose of the quantity of revenue requisite to discharge the subsisting engagements of the Union, and to maintain those establishments which, for some time to come, would suffice in time of peace. But would it be wise, or would it not rather be the extreme of folly, to stop at this point, and to leave the government intrusted with the care of the national defense in a state of absolute incapacity to provide for the protection of the community against future invasions of the public peace, by foreign war or domestic convulsions? If, on the contrary, we ought to exceed this point, where can we stop, short of an indefinite power of providing for emergencies as they may arise? Though it is easy to assert, in general terms, the possibility of forming a rational judgment of a due provision against probable dangers, yet we may safely challenge those who make the assertion to bring forward their data, and may affirm that they would be found as vague and uncertain as any that could be produced to establish the probable duration of the world. Observations confined to the mere prospects of internal attacks can deserve no weight; though even these will admit of no satisfactory calculation: but if we mean to be a commercial people, it must form a part of our policy to be able one day to defend that commerce. The support of a navy and of naval wars would involve contingencies that must baffle all the efforts of political arithmetic.</p>
+<p>Admitting that we ought to try the novel and absurd experiment in politics of tying up the hands of government from offensive war founded upon reasons of state, yet certainly we ought not to disable it from guarding the community against the ambition or enmity of other nations. A cloud has been for some time hanging over the European world. If it should break forth into a storm, who can insure us that in its progress a part of its fury would not be spent upon us? No reasonable man would hastily pronounce that we are entirely out of its reach. Or if the combustible materials that now seem to be collecting should be dissipated without coming to maturity, or if a flame should be kindled without extending to us, what security can we have that our tranquillity will long remain undisturbed from some other cause or from some other quarter? Let us recollect that peace or war will not always be left to our option; that however moderate or unambitious we may be, we cannot count upon the moderation, or hope to extinguish the ambition of others. Who could have imagined at the conclusion of the last war that France and Britain, wearied and exhausted as they both were, would so soon have looked with so hostile an aspect upon each other? To judge from the history of mankind, we shall be compelled to conclude that the fiery and destructive passions of war reign in the human breast with much more powerful sway than the mild and beneficent sentiments of peace; and that to model our political systems upon speculations of lasting tranquillity, is to calculate on the weaker springs of the human character.</p>
+<p>What are the chief sources of expense in every government? What has occasioned that enormous accumulation of debts with which several of the European nations are oppressed? The answers plainly is, wars and rebellions; the support of those institutions which are necessary to guard the body politic against these two most mortal diseases of society. The expenses arising from those institutions which are relative to the mere domestic police of a state, to the support of its legislative, executive, and judicial departments, with their different appendages, and to the encouragement of agriculture and manufactures (which will comprehend almost all the objects of state expenditure), are insignificant in comparison with those which relate to the national defense.</p>
+<p>In the kingdom of Great Britain, where all the ostentatious apparatus of monarchy is to be provided for, not above a fifteenth part of the annual income of the nation is appropriated to the class of expenses last mentioned; the other fourteen fifteenths are absorbed in the payment of the interest of debts contracted for carrying on the wars in which that country has been engaged, and in the maintenance of fleets and armies. If, on the one hand, it should be observed that the expenses incurred in the prosecution of the ambitious enterprises and vainglorious pursuits of a monarchy are not a proper standard by which to judge of those which might be necessary in a republic, it ought, on the other hand, to be remarked that there should be as great a disproportion between the profusion and extravagance of a wealthy kingdom in its domestic administration, and the frugality and economy which in that particular become the modest simplicity of republican government. If we balance a proper deduction from one side against that which it is supposed ought to be made from the other, the proportion may still be considered as holding good.</p>
+<p>But let us advert to the large debt which we have ourselves contracted in a single war, and let us only calculate on a common share of the events which disturb the peace of nations, and we shall instantly perceive, without the aid of any elaborate illustration, that there must always be an immense disproportion between the objects of federal and state expenditures. It is true that several of the States, separately, are encumbered with considerable debts, which are an excrescence of the late war. But this cannot happen again, if the proposed system be adopted; and when these debts are discharged, the only call for revenue of any consequence, which the State governments will continue to experience, will be for the mere support of their respective civil list; to which, if we add all contingencies, the total amount in every State ought to fall considerably short of two hundred thousand pounds.</p>
+<p>In framing a government for posterity as well as ourselves, we ought, in those provisions which are designed to be permanent, to calculate, not on temporary, but on permanent causes of expense. If this principle be a just one our attention would be directed to a provision in favor of the State governments for an annual sum of about two hundred thousand pounds; while the exigencies of the Union could be susceptible of no limits, even in imagination. In this view of the subject, by what logic can it be maintained that the local governments ought to command, in perpetuity, an EXCLUSIVE source of revenue for any sum beyond the extent of two hundred thousand pounds? To extend its power further, in EXCLUSION of the authority of the Union, would be to take the resources of the community out of those hands which stood in need of them for the public welfare, in order to put them into other hands which could have no just or proper occasion for them.</p>
+<p>Suppose, then, the convention had been inclined to proceed upon the principle of a repartition of the objects of revenue, between the Union and its members, in PROPORTION to their comparative necessities; what particular fund could have been selected for the use of the States, that would not either have been too much or too little too little for their present, too much for their future wants? As to the line of separation between external and internal taxes, this would leave to the States, at a rough computation, the command of two thirds of the resources of the community to defray from a tenth to a twentieth part of its expenses; and to the Union, one third of the resources of the community, to defray from nine tenths to nineteen twentieths of its expenses. If we desert this boundary and content ourselves with leaving to the States an exclusive power of taxing houses and lands, there would still be a great disproportion between the MEANS and the END; the possession of one third of the resources of the community to supply, at most, one tenth of its wants. If any fund could have been selected and appropriated, equal to and not greater than the object, it would have been inadequate to the discharge of the existing debts of the particular States, and would have left them dependent on the Union for a provision for this purpose.</p>
+<p>The preceding train of observation will justify the position which has been elsewhere laid down, that &quot;A CONCURRENT JURISDICTION in the article of taxation was the only admissible substitute for an entire subordination, in respect to this branch of power, of State authority to that of the Union.&quot; Any separation of the objects of revenue that could have been fallen upon, would have amounted to a sacrifice of the great INTERESTS of the Union to the POWER of the individual States. The convention thought the concurrent jurisdiction preferable to that subordination; and it is evident that it has at least the merit of reconciling an indefinite constitutional power of taxation in the Federal government with an adequate and independent power in the States to provide for their own necessities. There remain a few other lights, in which this important subject of taxation will claim a further consideration.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 34</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 34: The Same Subject Continued (Concerning the General Power of Taxation). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 34…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 34 &bull; Alexander Hamilton &bull; January 5, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-34";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 34 (Taxation: Same Subject). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

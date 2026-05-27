@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 24 — Standing Armies Objection — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 24: The Powers Necessary to the Common Defense Further Considered by Alexander Hamilton, December 19, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '24'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;24
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 24 · Published by Independent Journal</p>
+  <h1>The Powers Necessary to the Common Defense Further Considered</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; December 19, 1787 &bull; 1,999 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-23/" class="nav-btn">← No.&thinsp;23</a>
+    <a href="/federalist-papers/federalist-25/" class="nav-btn">No.&thinsp;25 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,999 words &bull; Standing Armies &bull; December 19, 1787</p>
+
+<p>TO THE powers proposed to be conferred upon the federal government, in respect to the creation and direction of the national forces, I have met with but one specific objection, which, if I understand it right, is this, that proper provision has not been made against the existence of standing armies in time of peace; an objection which, I shall now endeavor to show, rests on weak and unsubstantial foundations.</p>
+<p>It has indeed been brought forward in the most vague and general form, supported only by bold assertions, without the appearance of argument; without even the sanction of theoretical opinions; in contradiction to the practice of other free nations, and to the general sense of America, as expressed in most of the existing constitutions. The proprietary of this remark will appear, the moment it is recollected that the objection under consideration turns upon a supposed necessity of restraining the LEGISLATIVE authority of the nation, in the article of military establishments; a principle unheard of, except in one or two of our State constitutions, and rejected in all the rest.</p>
+<p>A stranger to our politics, who was to read our newspapers at the present juncture, without having previously inspected the plan reported by the convention, would be naturally led to one of two conclusions: either that it contained a positive injunction, that standing armies should be kept up in time of peace; or that it vested in the EXECUTIVE the whole power of levying troops, without subjecting his discretion, in any shape, to the control of the legislature.</p>
+<p>If he came afterwards to peruse the plan itself, he would be surprised to discover, that neither the one nor the other was the case; that the whole power of raising armies was lodged in the LEGISLATURE, not in the EXECUTIVE; that this legislature was to be a popular body, consisting of the representatives of the people periodically elected; and that instead of the provision he had supposed in favor of standing armies, there was to be found, in respect to this object, an important qualification even of the legislative discretion, in that clause which forbids the appropriation of money for the support of an army for any longer period than two years a precaution which, upon a nearer view of it, will appear to be a great and real security against the keeping up of troops without evident necessity.</p>
+<p>Disappointed in his first surmise, the person I have supposed would be apt to pursue his conjectures a little further. He would naturally say to himself, it is impossible that all this vehement and pathetic declamation can be without some colorable pretext. It must needs be that this people, so jealous of their liberties, have, in all the preceding models of the constitutions which they have established, inserted the most precise and rigid precautions on this point, the omission of which, in the new plan, has given birth to all this apprehension and clamor.</p>
+<p>If, under this impression, he proceeded to pass in review the several State constitutions, how great would be his disappointment to find that TWO ONLY of them(1) contained an interdiction of standing armies in time of peace; that the other eleven had either observed a profound silence on the subject, or had in express terms admitted the right of the Legislature to authorize their existence.</p>
+<p>Still, however he would be persuaded that there must be some plausible foundation for the cry raised on this head. He would never be able to imagine, while any source of information remained unexplored, that it was nothing more than an experiment upon the public credulity, dictated either by a deliberate intention to deceive, or by the overflowings of a zeal too intemperate to be ingenuous. It would probably occur to him, that he would be likely to find the precautions he was in search of in the primitive compact between the States. Here, at length, he would expect to meet with a solution of the enigma. No doubt, he would observe to himself, the existing Confederation must contain the most explicit provisions against military establishments in time of peace; and a departure from this model, in a favorite point, has occasioned the discontent which appears to influence these political champions.</p>
+<p>If he should now apply himself to a careful and critical survey of the articles of Confederation, his astonishment would not only be increased, but would acquire a mixture of indignation, at the unexpected discovery, that these articles, instead of containing the prohibition he looked for, and though they had, with jealous circumspection, restricted the authority of the State legislatures in this particular, had not imposed a single restraint on that of the United States. If he happened to be a man of quick sensibility, or ardent temper, he could now no longer refrain from regarding these clamors as the dishonest artifices of a sinister and unprincipled opposition to a plan which ought at least to receive a fair and candid examination from all sincere lovers of their country! How else, he would say, could the authors of them have been tempted to vent such loud censures upon that plan, about a point in which it seems to have conformed itself to the general sense of America as declared in its different forms of government, and in which it has even superadded a new and powerful guard unknown to any of them? If, on the contrary, he happened to be a man of calm and dispassionate feelings, he would indulge a sigh for the frailty of human nature, and would lament, that in a matter so interesting to the happiness of millions, the true merits of the question should be perplexed and entangled by expedients so unfriendly to an impartial and right determination. Even such a man could hardly forbear remarking, that a conduct of this kind has too much the appearance of an intention to mislead the people by alarming their passions, rather than to convince them by arguments addressed to their understandings.</p>
+<p>But however little this objection may be countenanced, even by precedents among ourselves, it may be satisfactory to take a nearer view of its intrinsic merits. From a close examination it will appear that restraints upon the discretion of the legislature in respect to military establishments in time of peace, would be improper to be imposed, and if imposed, from the necessities of society, would be unlikely to be observed.</p>
+<p>Though a wide ocean separates the United States from Europe, yet there are various considerations that warn us against an excess of confidence or security. On one side of us, and stretching far into our rear, are growing settlements subject to the dominion of Britain. On the other side, and extending to meet the British settlements, are colonies and establishments subject to the dominion of Spain. This situation and the vicinity of the West India Islands, belonging to these two powers create between them, in respect to their American possessions and in relation to us, a common interest. The savage tribes on our Western frontier ought to be regarded as our natural enemies, their natural allies, because they have most to fear from us, and most to hope from them. The improvements in the art of navigation have, as to the facility of communication, rendered distant nations, in a great measure, neighbors. Britain and Spain are among the principal maritime powers of Europe. A future concert of views between these nations ought not to be regarded as improbable. The increasing remoteness of consanguinity is every day diminishing the force of the family compact between France and Spain. And politicians have ever with great reason considered the ties of blood as feeble and precarious links of political connection. These circumstances combined, admonish us not to be too sanguine in considering ourselves as entirely out of the reach of danger.</p>
+<p>Previous to the Revolution, and ever since the peace, there has been a constant necessity for keeping small garrisons on our Western frontier. No person can doubt that these will continue to be indispensable, if it should only be against the ravages and depredations of the Indians. These garrisons must either be furnished by occasional detachments from the militia, or by permanent corps in the pay of the government. The first is impracticable; and if practicable, would be pernicious. The militia would not long, if at all, submit to be dragged from their occupations and families to perform that most disagreeable duty in times of profound peace. And if they could be prevailed upon or compelled to do it, the increased expense of a frequent rotation of service, and the loss of labor and disconcertion of the industrious pursuits of individuals, would form conclusive objections to the scheme. It would be as burdensome and injurious to the public as ruinous to private citizens. The latter resource of permanent corps in the pay of the government amounts to a standing army in time of peace; a small one, indeed, but not the less real for being small. Here is a simple view of the subject, that shows us at once the impropriety of a constitutional interdiction of such establishments, and the necessity of leaving the matter to the discretion and prudence of the legislature.</p>
+<p>In proportion to our increase in strength, it is probable, nay, it may be said certain, that Britain and Spain would augment their military establishments in our neighborhood. If we should not be willing to be exposed, in a naked and defenseless condition, to their insults and encroachments, we should find it expedient to increase our frontier garrisons in some ratio to the force by which our Western settlements might be annoyed. There are, and will be, particular posts, the possession of which will include the command of large districts of territory, and facilitate future invasions of the remainder. It may be added that some of those posts will be keys to the trade with the Indian nations. Can any man think it would be wise to leave such posts in a situation to be at any instant seized by one or the other of two neighboring and formidable powers? To act this part would be to desert all the usual maxims of prudence and policy.</p>
+<p>If we mean to be a commercial people, or even to be secure on our Atlantic side, we must endeavor, as soon as possible, to have a navy. To this purpose there must be dock-yards and arsenals; and for the defense of these, fortifications, and probably garrisons. When a nation has become so powerful by sea that it can protect its dock-yards by its fleets, this supersedes the necessity of garrisons for that purpose; but where naval establishments are in their infancy, moderate garrisons will, in all likelihood, be found an indispensable security against descents for the destruction of the arsenals and dock-yards, and sometimes of the fleet itself.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1 This statement of the matter is taken from the printed collection of State constitutions. Pennsylvania and North Carolina are the two which contain the interdiction in these words: &quot;As standing armies in time of peace are dangerous to liberty, THEY OUGHT NOT to be kept up.&quot; This is, in truth, rather a CAUTION than a PROHIBITION. New Hampshire, Massachusetts, Delaware, and Maryland have, in each of their bills of rights, a clause to this effect: &quot;Standing armies are dangerous to liberty, and ought not to be raised or kept up WITHOUT THE CONSENT OF THE LEGISLATURE&quot;; which is a formal admission of the authority of the Legislature. New York has no bills of rights, and her constitution says not a word about the matter. No bills of rights appear annexed to the constitutions of the other States, except the foregoing, and their constitutions are equally silent. I am told, however that one or two States have bills of rights which do not appear in this collection; but that those also recognize the right of the legislative authority in this respect.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 24</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 24: The Powers Necessary to the Common Defense Further Considered. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 24…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 24 &bull; Alexander Hamilton &bull; December 19, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-24";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 24 (Standing Armies Objection). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 17 — Defects of the Confederation III — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 17: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union) by Alexander Hamilton, December 5, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '17'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;17
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 17 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; December 5, 1787 &bull; 1,563 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-16/" class="nav-btn">← No.&thinsp;16</a>
+    <a href="/federalist-papers/federalist-18/" class="nav-btn">No.&thinsp;18 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,563 words &bull; Federalism &bull; December 5, 1787</p>
+
+<p>AN OBJECTION, of a nature different from that which has been stated and answered, in my last address, may perhaps be likewise urged against the principle of legislation for the individual citizens of America. It may be said that it would tend to render the government of the Union too powerful, and to enable it to absorb those residuary authorities, which it might be judged proper to leave with the States for local purposes. Allowing the utmost latitude to the love of power which any reasonable man can require, I confess I am at a loss to discover what temptation the persons intrusted with the administration of the general government could ever feel to divest the States of the authorities of that description. The regulation of the mere domestic police of a State appears to me to hold out slender allurements to ambition. Commerce, finance, negotiation, and war seem to comprehend all the objects which have charms for minds governed by that passion; and all the powers necessary to those objects ought, in the first instance, to be lodged in the national depository. The administration of private justice between the citizens of the same State, the supervision of agriculture and of other concerns of a similar nature, all those things, in short, which are proper to be provided for by local legislation, can never be desirable cares of a general jurisdiction. It is therefore improbable that there should exist a disposition in the federal councils to usurp the powers with which they are connected; because the attempt to exercise those powers would be as troublesome as it would be nugatory; and the possession of them, for that reason, would contribute nothing to the dignity, to the importance, or to the splendor of the national government.</p>
+<p>But let it be admitted, for argument&#x27;s sake, that mere wantonness and lust of domination would be sufficient to beget that disposition; still it may be safely affirmed, that the sense of the constituent body of the national representatives, or, in other words, the people of the several States, would control the indulgence of so extravagant an appetite. It will always be far more easy for the State governments to encroach upon the national authorities than for the national government to encroach upon the State authorities. The proof of this proposition turns upon the greater degree of influence which the State governments if they administer their affairs with uprightness and prudence, will generally possess over the people; a circumstance which at the same time teaches us that there is an inherent and intrinsic weakness in all federal constitutions; and that too much pains cannot be taken in their organization, to give them all the force which is compatible with the principles of liberty.</p>
+<p>The superiority of influence in favor of the particular governments would result partly from the diffusive construction of the national government, but chiefly from the nature of the objects to which the attention of the State administrations would be directed.</p>
+<p>It is a known fact in human nature, that its affections are commonly weak in proportion to the distance or diffusiveness of the object. Upon the same principle that a man is more attached to his family than to his neighborhood, to his neighborhood than to the community at large, the people of each State would be apt to feel a stronger bias towards their local governments than towards the government of the Union; unless the force of that principle should be destroyed by a much better administration of the latter.</p>
+<p>This strong propensity of the human heart would find powerful auxiliaries in the objects of State regulation.</p>
+<p>The variety of more minute interests, which will necessarily fall under the superintendence of the local administrations, and which will form so many rivulets of influence, running through every part of the society, cannot be particularized, without involving a detail too tedious and uninteresting to compensate for the instruction it might afford.</p>
+<p>There is one transcendant advantage belonging to the province of the State governments, which alone suffices to place the matter in a clear and satisfactory light,--I mean the ordinary administration of criminal and civil justice. This, of all others, is the most powerful, most universal, and most attractive source of popular obedience and attachment. It is that which, being the immediate and visible guardian of life and property, having its benefits and its terrors in constant activity before the public eye, regulating all those personal interests and familiar concerns to which the sensibility of individuals is more immediately awake, contributes, more than any other circumstance, to impressing upon the minds of the people, affection, esteem, and reverence towards the government. This great cement of society, which will diffuse itself almost wholly through the channels of the particular governments, independent of all other causes of influence, would insure them so decided an empire over their respective citizens as to render them at all times a complete counterpoise, and, not unfrequently, dangerous rivals to the power of the Union.</p>
+<p>The operations of the national government, on the other hand, falling less immediately under the observation of the mass of the citizens, the benefits derived from it will chiefly be perceived and attended to by speculative men. Relating to more general interests, they will be less apt to come home to the feelings of the people; and, in proportion, less likely to inspire an habitual sense of obligation, and an active sentiment of attachment.</p>
+<p>The reasoning on this head has been abundantly exemplified by the experience of all federal constitutions with which we are acquainted, and of all others which have borne the least analogy to them.</p>
+<p>Though the ancient feudal systems were not, strictly speaking, confederacies, yet they partook of the nature of that species of association. There was a common head, chieftain, or sovereign, whose authority extended over the whole nation; and a number of subordinate vassals, or feudatories, who had large portions of land allotted to them, and numerous trains of INFERIOR vassals or retainers, who occupied and cultivated that land upon the tenure of fealty or obedience, to the persons of whom they held it. Each principal vassal was a kind of sovereign, within his particular demesnes. The consequences of this situation were a continual opposition to authority of the sovereign, and frequent wars between the great barons or chief feudatories themselves. The power of the head of the nation was commonly too weak, either to preserve the public peace, or to protect the people against the oppressions of their immediate lords. This period of European affairs is emphatically styled by historians, the times of feudal anarchy.</p>
+<p>When the sovereign happened to be a man of vigorous and warlike temper and of superior abilities, he would acquire a personal weight and influence, which answered, for the time, the purpose of a more regular authority. But in general, the power of the barons triumphed over that of the prince; and in many instances his dominion was entirely thrown off, and the great fiefs were erected into independent principalities or States. In those instances in which the monarch finally prevailed over his vassals, his success was chiefly owing to the tyranny of those vassals over their dependents. The barons, or nobles, equally the enemies of the sovereign and the oppressors of the common people, were dreaded and detested by both; till mutual danger and mutual interest effected a union between them fatal to the power of the aristocracy. Had the nobles, by a conduct of clemency and justice, preserved the fidelity and devotion of their retainers and followers, the contests between them and the prince must almost always have ended in their favor, and in the abridgment or subversion of the royal authority.</p>
+<p>This is not an assertion founded merely in speculation or conjecture. Among other illustrations of its truth which might be cited, Scotland will furnish a cogent example. The spirit of clanship which was, at an early day, introduced into that kingdom, uniting the nobles and their dependants by ties equivalent to those of kindred, rendered the aristocracy a constant overmatch for the power of the monarch, till the incorporation with England subdued its fierce and ungovernable spirit, and reduced it within those rules of subordination which a more rational and more energetic system of civil polity had previously established in the latter kingdom.</p>
+<p>The separate governments in a confederacy may aptly be compared with the feudal baronies; with this advantage in their favor, that from the reasons already explained, they will generally possess the confidence and good-will of the people, and with so important a support, will be able effectually to oppose all encroachments of the national government. It will be well if they are not able to counteract its legitimate and necessary authority. The points of similitude consist in the rivalship of power, applicable to both, and in the CONCENTRATION of large portions of the strength of the community into particular DEPOSITORIES, in one case at the disposal of individuals, in the other case at the disposal of political bodies.</p>
+<p>A concise review of the events that have attended confederate governments will further illustrate this important doctrine; an inattention to which has been the great source of our political mistakes, and has given our jealousy a direction to the wrong side. This review shall form the subject of some ensuing papers.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 17</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 17: The Same Subject Continued (The Insufficiency of the Present Confederation to Preserve the Union). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 17…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 17 &bull; Alexander Hamilton &bull; December 5, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-17";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 17 (Defects of the Confederation III). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cato Letter I — Caution Before Ratification — Museum of Minds</title>
+  <meta name="description" content="Cato: Letter I — Caution Before Ratification, September 27, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'CATO'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Cato 1
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Cato · Letter 1 · Published in New-York Journal</p>
+  <h1>Letter I — Caution Before Ratification</h1>
+  <p class="paper-hero-meta">By Cato <span style='font-size:0.88em;opacity:0.75;'>(George Clinton (probable))</span> &bull; September 27, 1787 &bull; 972 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-16/" class="nav-btn">← Brutus 16</a>
+    <a href="/anti-federalist-papers/cato-2/" class="nav-btn">Cato 2 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">972 words &bull; Ratification &bull; September 27, 1787</p>
+
+<h3 class="paper-section-head">THE  NEW  YORK  JOURNAL.</h3>
+<p>(Number  2134)</p>
+<p>Thursday,  September  27,  1787.</p>
+<p>For  the  New  York  Journal.</p>
+<p>To  THE  Citizens  of  the  State  of  New  York:</p>
+<p>The  Convention,  who  sat  at  Philadelphia,  have  at  last  delivered to  Congress  that  system  of  general  government,  which  they  have declared  best  calculated  to  promote  your  safety  and  happiness  as citizens  of  the  United  States.  This  system,  though  not  handed to  you  formally  by  the  authority  of  government,  has  obtained  an introduction  through  divers  channels;  and  the  minds  of  you  all, to  whose  observation  it  has  come,  have  no  doubt  been  contem- plating it ;  and  alternate  joy,  hope,  or  fear  have  preponderated,  as it  conformed  to,  or  differed  from,  your  various  ideas  of  just  gov- ernment.</p>
+<p>Government,  to  an  American,  is  the  science  of  his  political safety  ;  this  then  is  a  moment  to  you  the  most  important — and that  in  various  points — to  your  reputation  as  members  of  a  great nation — to  your  immediate  safet\&#x27;,  and  to  that  of  your  posterity. In  your  private  concerns  and  affairs  of  life  you  deliberate  with caution,  and  act  with  prudence  ;  your  public  concerns  require  a caution  and  prudence,  in  a  ratio  suited  to  the  difference  and  dig- nity of  the  subject.  The  disposal  of  your  reputation,  and  of  your lives  and  property,  is  more  momentous  than  a  contract  for  a  farm, or  the  sale  of  a  bale  of  goods ;  in  the  former,  if  you  are  negligent or  inactive,  the  ambitious  and  despotic  will  entrap  you  in  their toils,  and  bind  you  with  the  cord  of  power  from  which  )&#x27;ou,  and</p>
+<p>(  247 )</p>
+<h3 class="paper-section-head">248  LETTERS</h3>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">CATO.</h3>
+<p>your  posterity  may  never  be  freed ;  and  if  the  possibility  should exist,  it  carries  along  with  it  consequences  that  will  make  your community  totter  to  its  center:  in  the  latter,  it  is  the  mere  loss  of a  little  property,  which  more  circumspection  or  assiduity  may repair.</p>
+<p>Without  directly  engaging  as  an  advocate  for  this  new  form  of national  government,  or  as  an  opponent — let  me  conjure  you  to consider  this  a  very  important  crisis  of  your  safety  and  character. You  have  already,  in  common  with  the  rest  of  your  countrymen, the  citizens  of  the  other  states,  given  to  the  world  astonishing  evi- dence of  your  greatness — you  have  fought  under  peculiar  circum- stances, and  were  successful  against  a  powerful  nation  on  a  specu- lative question,  you  have  established  an  original  compact  between you  and  your  governors,  a  fact  heretofore  unknown  in  the  forma- tion of  the  governments  of  the  world;  your  experience  has  in- formed you,  that  there  are  defects  in  the  federal  system,  and,  to the  astonishment  of  mankind,  your  legislatures  have  concerted measures  for  an  alteration,  with  as  much  ease  as  an  individual would  make  a  disposition  of  his  ordinary  domestic  affairs  :  this alteration  now  lies  before  you,  for  your  consideration  ;  but  beware how  you  determine — do  not,  because  you  admit  that  something must  be  done,  adopt  anything — teach  the  members  of  that  con- vention that  ye  are  capable  of  a  supervision  of  their  conduct, The  same  medium  that  gave  you  this  system,  if  it  is  erroneous, while  the  door  is  now  open,  can  make  amendments,  or  give  you another,  if  it  is  required.  Your  fate,  and  that  of  your  posterity, depends  on  your  present  conduct;  do  not  give  the  latter  reason  to curse  you,  nor  yourselves  cause  of  reprehension;  as  individuals you  are  ambitious  of  leaving  behind  you  a  good  name,  and  it  is the  reflection  that  you  have  done  right  in  this  life,  that  blunts  the sharpness  of  death  ;  the  same  principles  would  be  a  consolation to  you,  as  patriots,  in  the  hour  of  dissolution,  that  you  would leave  to  your  children  a  fair  political  inheritance,  untouched  by the  vultures  of  power,  which  you  had  acquired  by  an  unsJiakcn perseverance  in  the  cause  of  liberty ;  but  how  miserable  the  alter- native— you  would  deprecate  the  ruin  you  had  brought  upon yourselves,  be  the  curse  of  posterity,  and  the  scorn  and  scoff  of nations.</p>
+<h3 class="paper-section-head">LETTERS</h3>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">CATO,  249</h3>
+<p>Delibeiatc,  therefore,  on  tliis  new  national  government  with coolness ;  anahze  it  with  criticism  ;  and  reflect  on  it  with  candor : if  yon  find  that  the  influence  of  a  powerful  few,  or  the  exercise of  a  standing  army,  will  always  be  directed  and  exeited  for  your welfare  alone,  and  not  to  the  aggrandizement  of  themselves,  and that  it  wi&#x27;l  secure  to  )^ou  and  your  posterity  happiness  at  home, and  national  dignity  and  respect  from  abroad,  adopt  it ;  if  it  will not,  reject  it  with  indignation — better  to  be  where  you  are  for  the present,  than  insecure  forever  afterwards.  Turn  your  eyes  to  the United  Netherlands,  at  this  moment,  and  view  their  situation  ; compare  it  with  what  yours  may  be,  under  a  government  substan- tially similar  to  theirs.</p>
+<p>Beware  of  those  who  wish  to  influence  your  passions,  and  to make  you  dupes  to  their  resentments  and  little  interests — personal invectives  can  never  persuade,  but  they  always  fix  prejudices, which  candor  might  have  removed — those  who  deal  in  them  have not  your  happiness  at  heart.  Attach  yourselves  to  measures, not  to  men.</p>
+<p>This  form  of  government  is  handed  to  you  by  the  recommen- dations of  a  man  who  merits  the  confidence  of  the  public  ;  but you  ought  to  recollect  that  the  wisest  and  best  of  men  may  err, and  their  errors,  if  adopted,  may  be  fatal  to  the  community  ; therefore,  in  principles  of  politics,  as  well  as  in  religious  faith, every  man  ought  to  think  for  himself.</p>
+<p>Hereafter,  when  it  will  be  necessary&#x27;,  I  shall  make  such  obser- vations on  this  new  constitution  as  will  tend  to  promote  youJ welfare  and  be  justified  by  reason  and  truth.  Cato.</p>
+<p>Sept.  26,  lyS&quot;].</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-1/" class="cross-ref cross-ref-opp">Hamilton&#x27;s opening argument for ratification</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Cato</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Cato&#x27;s Letter I — Caution Before Ratification. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Cato's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Cato 1 &bull; September 27, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "cato-1";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Cato considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Cato's Letter I — Caution Before Ratification. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

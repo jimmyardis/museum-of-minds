@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 35 — Taxation and Representation — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 35: The Same Subject Continued (Concerning the General Power of Taxation) by Alexander Hamilton, January 5, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '35'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;35
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 35 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (Concerning the General Power of Taxation)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 5, 1788 &bull; 2,249 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-34/" class="nav-btn">← No.&thinsp;34</a>
+    <a href="/federalist-papers/federalist-36/" class="nav-btn">No.&thinsp;36 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,249 words &bull; Taxation &bull; January 5, 1788</p>
+
+<p>BEFORE we proceed to examine any other objections to an indefinite power of taxation in the Union, I shall make one general remark; which is, that if the jurisdiction of the national government, in the article of revenue, should be restricted to particular objects, it would naturally occasion an undue proportion of the public burdens to fall upon those objects. Two evils would spring from this source: the oppression of particular branches of industry; and an unequal distribution of the taxes, as well among the several States as among the citizens of the same State.</p>
+<p>Suppose, as has been contended for, the federal power of taxation were to be confined to duties on imports, it is evident that the government, for want of being able to command other resources, would frequently be tempted to extend these duties to an injurious excess. There are persons who imagine that they can never be carried to too great a length; since the higher they are, the more it is alleged they will tend to discourage an extravagant consumption, to produce a favorable balance of trade, and to promote domestic manufactures. But all extremes are pernicious in various ways. Exorbitant duties on imported articles would beget a general spirit of smuggling; which is always prejudicial to the fair trader, and eventually to the revenue itself: they tend to render other classes of the community tributary, in an improper degree, to the manufacturing classes, to whom they give a premature monopoly of the markets; they sometimes force industry out of its more natural channels into others in which it flows with less advantage; and in the last place, they oppress the merchant, who is often obliged to pay them himself without any retribution from the consumer. When the demand is equal to the quantity of goods at market, the consumer generally pays the duty; but when the markets happen to be overstocked, a great proportion falls upon the merchant, and sometimes not only exhausts his profits, but breaks in upon his capital. I am apt to think that a division of the duty, between the seller and the buyer, more often happens than is commonly imagined. It is not always possible to raise the price of a commodity in exact proportion to every additional imposition laid upon it. The merchant, especially in a country of small commercial capital, is often under a necessity of keeping prices down in order to a more expeditious sale.</p>
+<p>The maxim that the consumer is the payer, is so much oftener true than the reverse of the proposition, that it is far more equitable that the duties on imports should go into a common stock, than that they should redound to the exclusive benefit of the importing States. But it is not so generally true as to render it equitable, that those duties should form the only national fund. When they are paid by the merchant they operate as an additional tax upon the importing State, whose citizens pay their proportion of them in the character of consumers. In this view they are productive of inequality among the States; which inequality would be increased with the increased extent of the duties. The confinement of the national revenues to this species of imposts would be attended with inequality, from a different cause, between the manufacturing and the non-manufacturing States. The States which can go farthest towards the supply of their own wants, by their own manufactures, will not, according to their numbers or wealth, consume so great a proportion of imported articles as those States which are not in the same favorable situation. They would not, therefore, in this mode alone contribute to the public treasury in a ratio to their abilities. To make them do this it is necessary that recourse be had to excises, the proper objects of which are particular kinds of manufactures. New York is more deeply interested in these considerations than such of her citizens as contend for limiting the power of the Union to external taxation may be aware of. New York is an importing State, and is not likely speedily to be, to any great extent, a manufacturing State. She would, of course, suffer in a double light from restraining the jurisdiction of the Union to commercial imposts.</p>
+<p>So far as these observations tend to inculcate a danger of the import duties being extended to an injurious extreme it may be observed, conformably to a remark made in another part of these papers, that the interest of the revenue itself would be a sufficient guard against such an extreme. I readily admit that this would be the case, as long as other resources were open; but if the avenues to them were closed, HOPE, stimulated by necessity, would beget experiments, fortified by rigorous precautions and additional penalties, which, for a time, would have the intended effect, till there had been leisure to contrive expedients to elude these new precautions. The first success would be apt to inspire false opinions, which it might require a long course of subsequent experience to correct. Necessity, especially in politics, often occasions false hopes, false reasonings, and a system of measures correspondingly erroneous. But even if this supposed excess should not be a consequence of the limitation of the federal power of taxation, the inequalities spoken of would still ensue, though not in the same degree, from the other causes that have been noticed. Let us now return to the examination of objections.</p>
+<p>One which, if we may judge from the frequency of its repetition, seems most to be relied on, is, that the House of Representatives is not sufficiently numerous for the reception of all the different classes of citizens, in order to combine the interests and feelings of every part of the community, and to produce a due sympathy between the representative body and its constituents. This argument presents itself under a very specious and seducing form; and is well calculated to lay hold of the prejudices of those to whom it is addressed. But when we come to dissect it with attention, it will appear to be made up of nothing but fair-sounding words. The object it seems to aim at is, in the first place, impracticable, and in the sense in which it is contended for, is unnecessary. I reserve for another place the discussion of the question which relates to the sufficiency of the representative body in respect to numbers, and shall content myself with examining here the particular use which has been made of a contrary supposition, in reference to the immediate subject of our inquiries.</p>
+<p>The idea of an actual representation of all classes of the people, by persons of each class, is altogether visionary. Unless it were expressly provided in the Constitution, that each different occupation should send one or more members, the thing would never take place in practice. Mechanics and manufacturers will always be inclined, with few exceptions, to give their votes to merchants, in preference to persons of their own professions or trades. Those discerning citizens are well aware that the mechanic and manufacturing arts furnish the materials of mercantile enterprise and industry. Many of them, indeed, are immediately connected with the operations of commerce. They know that the merchant is their natural patron and friend; and they are aware, that however great the confidence they may justly feel in their own good sense, their interests can be more effectually promoted by the merchant than by themselves. They are sensible that their habits in life have not been such as to give them those acquired endowments, without which, in a deliberative assembly, the greatest natural abilities are for the most part useless; and that the influence and weight, and superior acquirements of the merchants render them more equal to a contest with any spirit which might happen to infuse itself into the public councils, unfriendly to the manufacturing and trading interests. These considerations, and many others that might be mentioned prove, and experience confirms it, that artisans and manufacturers will commonly be disposed to bestow their votes upon merchants and those whom they recommend. We must therefore consider merchants as the natural representatives of all these classes of the community.</p>
+<p>With regard to the learned professions, little need be observed; they truly form no distinct interest in society, and according to their situation and talents, will be indiscriminately the objects of the confidence and choice of each other, and of other parts of the community.</p>
+<p>Nothing remains but the landed interest; and this, in a political view, and particularly in relation to taxes, I take to be perfectly united, from the wealthiest landlord down to the poorest tenant. No tax can be laid on land which will not affect the proprietor of millions of acres as well as the proprietor of a single acre. Every landholder will therefore have a common interest to keep the taxes on land as low as possible; and common interest may always be reckoned upon as the surest bond of sympathy. But if we even could suppose a distinction of interest between the opulent landholder and the middling farmer, what reason is there to conclude, that the first would stand a better chance of being deputed to the national legislature than the last? If we take fact as our guide, and look into our own senate and assembly, we shall find that moderate proprietors of land prevail in both; nor is this less the case in the senate, which consists of a smaller number, than in the assembly, which is composed of a greater number. Where the qualifications of the electors are the same, whether they have to choose a small or a large number, their votes will fall upon those in whom they have most confidence; whether these happen to be men of large fortunes, or of moderate property, or of no property at all.</p>
+<p>It is said to be necessary, that all classes of citizens should have some of their own number in the representative body, in order that their feelings and interests may be the better understood and attended to. But we have seen that this will never happen under any arrangement that leaves the votes of the people free. Where this is the case, the representative body, with too few exceptions to have any influence on the spirit of the government, will be composed of landholders, merchants, and men of the learned professions. But where is the danger that the interests and feelings of the different classes of citizens will not be understood or attended to by these three descriptions of men? Will not the landholder know and feel whatever will promote or insure the interest of landed property? And will he not, from his own interest in that species of property, be sufficiently prone to resist every attempt to prejudice or encumber it? Will not the merchant understand and be disposed to cultivate, as far as may be proper, the interests of the mechanic and manufacturing arts, to which his commerce is so nearly allied? Will not the man of the learned profession, who will feel a neutrality to the rivalships between the different branches of industry, be likely to prove an impartial arbiter between them, ready to promote either, so far as it shall appear to him conducive to the general interests of the society?</p>
+<p>If we take into the account the momentary humors or dispositions which may happen to prevail in particular parts of the society, and to which a wise administration will never be inattentive, is the man whose situation leads to extensive inquiry and information less likely to be a competent judge of their nature, extent, and foundation than one whose observation does not travel beyond the circle of his neighbors and acquaintances? Is it not natural that a man who is a candidate for the favor of the people, and who is dependent on the suffrages of his fellow-citizens for the continuance of his public honors, should take care to inform himself of their dispositions and inclinations, and should be willing to allow them their proper degree of influence upon his conduct? This dependence, and the necessity of being bound himself, and his posterity, by the laws to which he gives his assent, are the true, and they are the strong chords of sympathy between the representative and the constituent.</p>
+<p>There is no part of the administration of government that requires extensive information and a thorough knowledge of the principles of political economy, so much as the business of taxation. The man who understands those principles best will be least likely to resort to oppressive expedients, or sacrifice any particular class of citizens to the procurement of revenue. It might be demonstrated that the most productive system of finance will always be the least burdensome. There can be no doubt that in order to a judicious exercise of the power of taxation, it is necessary that the person in whose hands it should be acquainted with the general genius, habits, and modes of thinking of the people at large, and with the resources of the country. And this is all that can be reasonably meant by a knowledge of the interests and feelings of the people. In any other sense the proposition has either no meaning, or an absurd one. And in that sense let every considerate citizen judge for himself where the requisite qualification is most likely to be found.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 35</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 35: The Same Subject Continued (Concerning the General Power of Taxation). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 35…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 35 &bull; Alexander Hamilton &bull; January 5, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-35";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 35 (Taxation and Representation). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

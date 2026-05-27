@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 77 — Appointments Continued — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 77: The Appointing Power Continued and Other Powers of the Executive Considered by Alexander Hamilton, April 2, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '77'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;77
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 77 · Published by Independent Journal</p>
+  <h1>The Appointing Power Continued and Other Powers of the Executive Considered</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; April 2, 1788 &bull; 1,984 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-76/" class="nav-btn">← No.&thinsp;76</a>
+    <a href="/federalist-papers/federalist-78/" class="nav-btn">No.&thinsp;78 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,984 words &bull; Executive Power &bull; April 2, 1788</p>
+
+<p>IT HAS been mentioned as one of the advantages to be expected from the co-operation of the Senate, in the business of appointments, that it would contribute to the stability of the administration. The consent of that body would be necessary to displace as well as to appoint. A change of the Chief Magistrate, therefore, would not occasion so violent or so general a revolution in the officers of the government as might be expected, if he were the sole disposer of offices. Where a man in any station had given satisfactory evidence of his fitness for it, a new President would be restrained from attempting a change in favor of a person more agreeable to him, by the apprehension that a discountenance of the Senate might frustrate the attempt, and bring some degree of discredit upon himself. Those who can best estimate the value of a steady administration, will be most disposed to prize a provision which connects the official existence of public men with the approbation or disapprobation of that body which, from the greater permanency of its own composition, will in all probability be less subject to inconstancy than any other member of the government.</p>
+<p>To this union of the Senate with the President, in the article of appointments, it has in some cases been suggested that it would serve to give the President an undue influence over the Senate, and in others that it would have an opposite tendency--a strong proof that neither suggestion is true.</p>
+<p>To state the first in its proper form, is to refute it. It amounts to this: the President would have an improper influence over the Senate, because the Senate would have the power of restraining him. This is an absurdity in terms. It cannot admit of a doubt that the entire power of appointment would enable him much more effectually to establish a dangerous empire over that body, than a mere power of nomination subject to their control.</p>
+<p>Let us take a view of the converse of the proposition: &quot;the Senate would influence the Executive.&quot; As I have had occasion to remark in several other instances, the indistinctness of the objection forbids a precise answer. In what manner is this influence to be exerted? In relation to what objects? The power of influencing a person, in the sense in which it is here used, must imply a power of conferring a benefit upon him. How could the Senate confer a benefit upon the President by the manner of employing their right of negative upon his nominations? If it be said they might sometimes gratify him by an acquiescence in a favorite choice, when public motives might dictate a different conduct, I answer, that the instances in which the President could be personally interested in the result, would be too few to admit of his being materially affected by the compliances of the Senate. The POWER which can originate the disposition of honors and emoluments, is more likely to attract than to be attracted by the POWER which can merely obstruct their course. If by influencing the President be meant restraining him, this is precisely what must have been intended. And it has been shown that the restraint would be salutary, at the same time that it would not be such as to destroy a single advantage to be looked for from the uncontrolled agency of that Magistrate. The right of nomination would produce all the (good, without the ill.)(E1) (good of that of appointment, and would in a great measure avoid its evils.)(E1)</p>
+<p>Upon a comparison of the plan for the appointment of the officers of the proposed government with that which is established by the constitution of this State, a decided preference must be given to the former. In that plan the power of nomination is unequivocally vested in the Executive. And as there would be a necessity for submitting each nomination to the judgment of an entire branch of the legislature, the circumstances attending an appointment, from the mode of conducting it, would naturally become matters of notoriety; and the public would be at no loss to determine what part had been performed by the different actors. The blame of a bad nomination would fall upon the President singly and absolutely. The censure of rejecting a good one would lie entirely at the door of the Senate; aggravated by the consideration of their having counteracted the good intentions of the Executive. If an ill appointment should be made, the Executive for nominating, and the Senate for approving, would participate, though in different degrees, in the opprobrium and disgrace.</p>
+<p>The reverse of all this characterizes the manner of appointment in this State. The council of appointment consists of from three to five persons, of whom the governor is always one. This small body, shut up in a private apartment, impenetrable to the public eye, proceed to the execution of the trust committed to them. It is known that the governor claims the right of nomination, upon the strength of some ambiguous expressions in the constitution; but it is not known to what extent, or in what manner he exercises it; nor upon what occasions he is contradicted or opposed. The censure of a bad appointment, on account of the uncertainty of its author, and for want of a determinate object, has neither poignancy nor duration. And while an unbounded field for cabal and intrigue lies open, all idea of responsibility is lost. The most that the public can know, is that the governor claims the right of nomination; that two out of the inconsiderable number of four men can too often be managed without much difficulty; that if some of the members of a particular council should happen to be of an uncomplying character, it is frequently not impossible to get rid of their opposition by regulating the times of meeting in such a manner as to render their attendance inconvenient; and that from whatever cause it may proceed, a great number of very improper appointments are from time to time made. Whether a governor of this State avails himself of the ascendant he must necessarily have, in this delicate and important part of the administration, to prefer to offices men who are best qualified for them, or whether he prostitutes that advantage to the advancement of persons whose chief merit is their implicit devotion to his will, and to the support of a despicable and dangerous system of personal influence, are questions which, unfortunately for the community, can only be the subjects of speculation and conjecture.</p>
+<p>Every mere council of appointment, however constituted, will be a conclave, in which cabal and intrigue will have their full scope. Their number, without an unwarrantable increase of expense, cannot be large enough to preclude a facility of combination. And as each member will have his friends and connections to provide for, the desire of mutual gratification will beget a scandalous bartering of votes and bargaining for places. The private attachments of one man might easily be satisfied; but to satisfy the private attachments of a dozen, or of twenty men, would occasion a monopoly of all the principal employments of the government in a few families, and would lead more directly to an aristocracy or an oligarchy than any measure that could be contrived. If, to avoid an accumulation of offices, there was to be a frequent change in the persons who were to compose the council, this would involve the mischiefs of a mutable administration in their full extent. Such a council would also be more liable to executive influence than the Senate, because they would be fewer in number, and would act less immediately under the public inspection. Such a council, in fine, as a substitute for the plan of the convention, would be productive of an increase of expense, a multiplication of the evils which spring from favoritism and intrigue in the distribution of public honors, a decrease of stability in the administration of the government, and a diminution of the security against an undue influence of the Executive. And yet such a council has been warmly contended for as an essential amendment in the proposed Constitution.</p>
+<p>I could not with propriety conclude my observations on the subject of appointments without taking notice of a scheme for which there have appeared some, though but few advocates; I mean that of uniting the House of Representatives in the power of making them. I shall, however, do little more than mention it, as I cannot imagine that it is likely to gain the countenance of any considerable part of the community. A body so fluctuating and at the same time so numerous, can never be deemed proper for the exercise of that power. Its unfitness will appear manifest to all, when it is recollected that in half a century it may consist of three or four hundred persons. All the advantages of the stability, both of the Executive and of the Senate, would be defeated by this union, and infinite delays and embarrassments would be occasioned. The example of most of the States in their local constitutions encourages us to reprobate the idea.</p>
+<p>The only remaining powers of the Executive are comprehended in giving information to Congress of the state of the Union; in recommending to their consideration such measures as he shall judge expedient; in convening them, or either branch, upon extraordinary occasions; in adjourning them when they cannot themselves agree upon the time of adjournment; in receiving ambassadors and other public ministers; in faithfully executing the laws; and in commissioning all the officers of the United States.</p>
+<p>Except some cavils about the power of convening either house of the legislature, and that of receiving ambassadors, no objection has been made to this class of authorities; nor could they possibly admit of any. It required, indeed, an insatiable avidity for censure to invent exceptions to the parts which have been excepted to. In regard to the power of convening either house of the legislature, I shall barely remark, that in respect to the Senate at least, we can readily discover a good reason for it. AS this body has a concurrent power with the Executive in the article of treaties, it might often be necessary to call it together with a view to this object, when it would be unnecessary and improper to convene the House of Representatives. As to the reception of ambassadors, what I have said in a former paper will furnish a sufficient answer.</p>
+<p>We have now completed a survey of the structure and powers of the executive department, which, I have endeavored to show, combines, as far as republican principles will admit, all the requisites to energy. The remaining inquiry is: Does it also combine the requisites to safety, in a republican sense--a due dependence on the people, a due responsibility? The answer to this question has been anticipated in the investigation of its other characteristics, and is satisfactorily deducible from these circumstances; from the election of the President once in four years by persons immediately chosen by the people for that purpose; and from his being at all times liable to impeachment, trial, dismission from office, incapacity to serve in any other, and to forfeiture of life and estate by subsequent prosecution in the common course of law. But these precautions, great as they are, are not the only ones which the plan of the convention has provided in favor of the public security. In the only instances in which the abuse of the executive authority was materially to be feared, the Chief Magistrate of the United States would, by that plan, be subjected to the control of a branch of the legislative body. What more could be desired by an enlightened and reasonable people?</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>E1. These two alternate endings of this sentence appear in different editions.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 77</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 77: The Appointing Power Continued and Other Powers of the Executive Considered. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 77…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 77 &bull; Alexander Hamilton &bull; April 2, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-77";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 77 (Appointments Continued). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

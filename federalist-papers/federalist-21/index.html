@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 21 — Defects: Quotas and Sanctions — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 21: Other Defects of the Present Confederation by Alexander Hamilton, December 12, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '21'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;21
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 21 · Published by Independent Journal</p>
+  <h1>Other Defects of the Present Confederation</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; December 12, 1787 &bull; 1,992 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-20/" class="nav-btn">← No.&thinsp;20</a>
+    <a href="/federalist-papers/federalist-22/" class="nav-btn">No.&thinsp;22 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,992 words &bull; Taxation &bull; December 12, 1787</p>
+
+<p>HAVING in the three last numbers taken a summary review of the principal circumstances and events which have depicted the genius and fate of other confederate governments, I shall now proceed in the enumeration of the most important of those defects which have hitherto disappointed our hopes from the system established among ourselves. To form a safe and satisfactory judgment of the proper remedy, it is absolutely necessary that we should be well acquainted with the extent and malignity of the disease.</p>
+<p>The next most palpable defect of the subsisting Confederation, is the total want of a SANCTION to its laws. The United States, as now composed, have no powers to exact obedience, or punish disobedience to their resolutions, either by pecuniary mulcts, by a suspension or divestiture of privileges, or by any other constitutional mode. There is no express delegation of authority to them to use force against delinquent members; and if such a right should be ascribed to the federal head, as resulting from the nature of the social compact between the States, it must be by inference and construction, in the face of that part of the second article, by which it is declared, &quot;that each State shall retain every power, jurisdiction, and right, not EXPRESSLY delegated to the United States in Congress assembled.&quot; There is, doubtless, a striking absurdity in supposing that a right of this kind does not exist, but we are reduced to the dilemma either of embracing that supposition, preposterous as it may seem, or of contravening or explaining away a provision, which has been of late a repeated theme of the eulogies of those who oppose the new Constitution; and the want of which, in that plan, has been the subject of much plausible animadversion, and severe criticism. If we are unwilling to impair the force of this applauded provision, we shall be obliged to conclude, that the United States afford the extraordinary spectacle of a government destitute even of the shadow of constitutional power to enforce the execution of its own laws. It will appear, from the specimens which have been cited, that the American Confederacy, in this particular, stands discriminated from every other institution of a similar kind, and exhibits a new and unexampled phenomenon in the political world.</p>
+<p>The want of a mutual guaranty of the State governments is another capital imperfection in the federal plan. There is nothing of this kind declared in the articles that compose it; and to imply a tacit guaranty from considerations of utility, would be a still more flagrant departure from the clause which has been mentioned, than to imply a tacit power of coercion from the like considerations. The want of a guaranty, though it might in its consequences endanger the Union, does not so immediately attack its existence as the want of a constitutional sanction to its laws.</p>
+<p>Without a guaranty the assistance to be derived from the Union in repelling those domestic dangers which may sometimes threaten the existence of the State constitutions, must be renounced. Usurpation may rear its crest in each State, and trample upon the liberties of the people, while the national government could legally do nothing more than behold its encroachments with indignation and regret. A successful faction may erect a tyranny on the ruins of order and law, while no succor could constitutionally be afforded by the Union to the friends and supporters of the government. The tempestuous situation from which Massachusetts has scarcely emerged, evinces that dangers of this kind are not merely speculative. Who can determine what might have been the issue of her late convulsions, if the malcontents had been headed by a Caesar or by a Cromwell? Who can predict what effect a despotism, established in Massachusetts, would have upon the liberties of New Hampshire or Rhode Island, of Connecticut or New York?</p>
+<p>The inordinate pride of State importance has suggested to some minds an objection to the principle of a guaranty in the federal government, as involving an officious interference in the domestic concerns of the members. A scruple of this kind would deprive us of one of the principal advantages to be expected from union, and can only flow from a misapprehension of the nature of the provision itself. It could be no impediment to reforms of the State constitution by a majority of the people in a legal and peaceable mode. This right would remain undiminished. The guaranty could only operate against changes to be effected by violence. Towards the preventions of calamities of this kind, too many checks cannot be provided. The peace of society and the stability of government depend absolutely on the efficacy of the precautions adopted on this head. Where the whole power of the government is in the hands of the people, there is the less pretense for the use of violent remedies in partial or occasional distempers of the State. The natural cure for an ill-administration, in a popular or representative constitution, is a change of men. A guaranty by the national authority would be as much levelled against the usurpations of rulers as against the ferments and outrages of faction and sedition in the community.</p>
+<p>The principle of regulating the contributions of the States to the common treasury by QUOTAS is another fundamental error in the Confederation. Its repugnancy to an adequate supply of the national exigencies has been already pointed out, and has sufficiently appeared from the trial which has been made of it. I speak of it now solely with a view to equality among the States. Those who have been accustomed to contemplate the circumstances which produce and constitute national wealth, must be satisfied that there is no common standard or barometer by which the degrees of it can be ascertained. Neither the value of lands, nor the numbers of the people, which have been successively proposed as the rule of State contributions, has any pretension to being a just representative. If we compare the wealth of the United Netherlands with that of Russia or Germany, or even of France, and if we at the same time compare the total value of the lands and the aggregate population of that contracted district with the total value of the lands and the aggregate population of the immense regions of either of the three last-mentioned countries, we shall at once discover that there is no comparison between the proportion of either of these two objects and that of the relative wealth of those nations. If the like parallel were to be run between several of the American States, it would furnish a like result. Let Virginia be contrasted with North Carolina, Pennsylvania with Connecticut, or Maryland with New Jersey, and we shall be convinced that the respective abilities of those States, in relation to revenue, bear little or no analogy to their comparative stock in lands or to their comparative population. The position may be equally illustrated by a similar process between the counties of the same State. No man who is acquainted with the State of New York will doubt that the active wealth of King&#x27;s County bears a much greater proportion to that of Montgomery than it would appear to be if we should take either the total value of the lands or the total number of the people as a criterion!</p>
+<p>The wealth of nations depends upon an infinite variety of causes. Situation, soil, climate, the nature of the productions, the nature of the government, the genius of the citizens, the degree of information they possess, the state of commerce, of arts, of industry, these circumstances and many more, too complex, minute, or adventitious to admit of a particular specification, occasion differences hardly conceivable in the relative opulence and riches of different countries. The consequence clearly is that there can be no common measure of national wealth, and, of course, no general or stationary rule by which the ability of a state to pay taxes can be determined. The attempt, therefore, to regulate the contributions of the members of a confederacy by any such rule, cannot fail to be productive of glaring inequality and extreme oppression.</p>
+<p>This inequality would of itself be sufficient in America to work the eventual destruction of the Union, if any mode of enforcing a compliance with its requisitions could be devised. The suffering States would not long consent to remain associated upon a principle which distributes the public burdens with so unequal a hand, and which was calculated to impoverish and oppress the citizens of some States, while those of others would scarcely be conscious of the small proportion of the weight they were required to sustain. This, however, is an evil inseparable from the principle of quotas and requisitions.</p>
+<p>There is no method of steering clear of this inconvenience, but by authorizing the national government to raise its own revenues in its own way. Imposts, excises, and, in general, all duties upon articles of consumption, may be compared to a fluid, which will, in time, find its level with the means of paying them. The amount to be contributed by each citizen will in a degree be at his own option, and can be regulated by an attention to his resources. The rich may be extravagant, the poor can be frugal; and private oppression may always be avoided by a judicious selection of objects proper for such impositions. If inequalities should arise in some States from duties on particular objects, these will, in all probability, be counterbalanced by proportional inequalities in other States, from the duties on other objects. In the course of time and things, an equilibrium, as far as it is attainable in so complicated a subject, will be established everywhere. Or, if inequalities should still exist, they would neither be so great in their degree, so uniform in their operation, nor so odious in their appearance, as those which would necessarily spring from quotas, upon any scale that can possibly be devised.</p>
+<p>It is a signal advantage of taxes on articles of consumption, that they contain in their own nature a security against excess. They prescribe their own limit; which cannot be exceeded without defeating the end proposed, that is, an extension of the revenue. When applied to this object, the saying is as just as it is witty, that, &quot;in political arithmetic, two and two do not always make four.&quot; If duties are too high, they lessen the consumption; the collection is eluded; and the product to the treasury is not so great as when they are confined within proper and moderate bounds. This forms a complete barrier against any material oppression of the citizens by taxes of this class, and is itself a natural limitation of the power of imposing them.</p>
+<p>Impositions of this kind usually fall under the denomination of indirect taxes, and must for a long time constitute the chief part of the revenue raised in this country. Those of the direct kind, which principally relate to land and buildings, may admit of a rule of apportionment. Either the value of land, or the number of the people, may serve as a standard. The state of agriculture and the populousness of a country have been considered as nearly connected with each other. And, as a rule, for the purpose intended, numbers, in the view of simplicity and certainty, are entitled to a preference. In every country it is a herculean task to obtain a valuation of the land; in a country imperfectly settled and progressive in improvement, the difficulties are increased almost to impracticability. The expense of an accurate valuation is, in all situations, a formidable objection. In a branch of taxation where no limits to the discretion of the government are to be found in the nature of things, the establishment of a fixed rule, not incompatible with the end, may be attended with fewer inconveniences than to leave that discretion altogether at large.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 21</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 21: Other Defects of the Present Confederation. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 21…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 21 &bull; Alexander Hamilton &bull; December 12, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-21";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 21 (Defects: Quotas and Sanctions). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

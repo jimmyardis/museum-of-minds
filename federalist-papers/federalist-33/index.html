@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 33 — Necessary and Proper Clause — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 33: The Same Subject Continued (Concerning the General Power of Taxation) by Alexander Hamilton, January 2, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '33'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;33
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 33 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (Concerning the General Power of Taxation)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 2, 1788 &bull; 1,685 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-32/" class="nav-btn">← No.&thinsp;32</a>
+    <a href="/federalist-papers/federalist-34/" class="nav-btn">No.&thinsp;34 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,685 words &bull; Federalism &bull; January 2, 1788</p>
+
+<p>THE residue of the argument against the provisions of the Constitution in respect to taxation is ingrafted upon the following clause. The last clause of the eighth section of the first article of the plan under consideration authorizes the national legislature &quot;to make all laws which shall be NECESSARY and PROPER for carrying into execution THE POWERS by that Constitution vested in the government of the United States, or in any department or officer thereof&quot;; and the second clause of the sixth article declares, &quot;that the Constitution and the laws of the United States made IN PURSUANCE THEREOF, and the treaties made by their authority shall be the SUPREME LAW of the land, any thing in the constitution or laws of any State to the contrary notwithstanding.&quot;</p>
+<p>These two clauses have been the source of much virulent invective and petulant declamation against the proposed Constitution. They have been held up to the people in all the exaggerated colors of misrepresentation as the pernicious engines by which their local governments were to be destroyed and their liberties exterminated; as the hideous monster whose devouring jaws would spare neither sex nor age, nor high nor low, nor sacred nor profane; and yet, strange as it may appear, after all this clamor, to those who may not have happened to contemplate them in the same light, it may be affirmed with perfect confidence that the constitutional operation of the intended government would be precisely the same, if these clauses were entirely obliterated, as if they were repeated in every article. They are only declaratory of a truth which would have resulted by necessary and unavoidable implication from the very act of constituting a federal government, and vesting it with certain specified powers. This is so clear a proposition, that moderation itself can scarcely listen to the railings which have been so copiously vented against this part of the plan, without emotions that disturb its equanimity.</p>
+<p>What is a power, but the ability or faculty of doing a thing? What is the ability to do a thing, but the power of employing the MEANS necessary to its execution? What is a LEGISLATIVE power, but a power of making LAWS? What are the MEANS to execute a LEGISLATIVE power but LAWS? What is the power of laying and collecting taxes, but a LEGISLATIVE POWER, or a power of MAKING LAWS, to lay and collect taxes? What are the proper means of executing such a power, but NECESSARY and PROPER laws?</p>
+<p>This simple train of inquiry furnishes us at once with a test by which to judge of the true nature of the clause complained of. It conducts us to this palpable truth, that a power to lay and collect taxes must be a power to pass all laws NECESSARY and PROPER for the execution of that power; and what does the unfortunate and calumniated provision in question do more than declare the same truth, to wit, that the national legislature, to whom the power of laying and collecting taxes had been previously given, might, in the execution of that power, pass all laws NECESSARY and PROPER to carry it into effect? I have applied these observations thus particularly to the power of taxation, because it is the immediate subject under consideration, and because it is the most important of the authorities proposed to be conferred upon the Union. But the same process will lead to the same result, in relation to all other powers declared in the Constitution. And it is EXPRESSLY to execute these powers that the sweeping clause, as it has been affectedly called, authorizes the national legislature to pass all NECESSARY and PROPER laws. If there is any thing exceptionable, it must be sought for in the specific powers upon which this general declaration is predicated. The declaration itself, though it may be chargeable with tautology or redundancy, is at least perfectly harmless.</p>
+<p>But SUSPICION may ask, Why then was it introduced? The answer is, that it could only have been done for greater caution, and to guard against all cavilling refinements in those who might hereafter feel a disposition to curtail and evade the legitimate authorities of the Union. The Convention probably foresaw, what it has been a principal aim of these papers to inculcate, that the danger which most threatens our political welfare is that the State governments will finally sap the foundations of the Union; and might therefore think it necessary, in so cardinal a point, to leave nothing to construction. Whatever may have been the inducement to it, the wisdom of the precaution is evident from the cry which has been raised against it; as that very cry betrays a disposition to question the great and essential truth which it is manifestly the object of that provision to declare.</p>
+<p>But it may be again asked, Who is to judge of the NECESSITY and PROPRIETY of the laws to be passed for executing the powers of the Union? I answer, first, that this question arises as well and as fully upon the simple grant of those powers as upon the declaratory clause; and I answer, in the second place, that the national government, like every other, must judge, in the first instance, of the proper exercise of its powers, and its constituents in the last. If the federal government should overpass the just bounds of its authority and make a tyrannical use of its powers, the people, whose creature it is, must appeal to the standard they have formed, and take such measures to redress the injury done to the Constitution as the exigency may suggest and prudence justify. The propriety of a law, in a constitutional light, must always be determined by the nature of the powers upon which it is founded. Suppose, by some forced constructions of its authority (which, indeed, cannot easily be imagined), the Federal legislature should attempt to vary the law of descent in any State, would it not be evident that, in making such an attempt, it had exceeded its jurisdiction, and infringed upon that of the State? Suppose, again, that upon the pretense of an interference with its revenues, it should undertake to abrogate a landtax imposed by the authority of a State; would it not be equally evident that this was an invasion of that concurrent jurisdiction in respect to this species of tax, which its Constitution plainly supposes to exist in the State governments? If there ever should be a doubt on this head, the credit of it will be entirely due to those reasoners who, in the imprudent zeal of their animosity to the plan of the convention, have labored to envelop it in a cloud calculated to obscure the plainest and simplest truths.</p>
+<p>But it is said that the laws of the Union are to be the SUPREME LAW of the land. But what inference can be drawn from this, or what would they amount to, if they were not to be supreme? It is evident they would amount to nothing. A LAW, by the very meaning of the term, includes supremacy. It is a rule which those to whom it is prescribed are bound to observe. This results from every political association. If individuals enter into a state of society, the laws of that society must be the supreme regulator of their conduct. If a number of political societies enter into a larger political society, the laws which the latter may enact, pursuant to the powers intrusted to it by its constitution, must necessarily be supreme over those societies, and the individuals of whom they are composed. It would otherwise be a mere treaty, dependent on the good faith of the parties, and not a government, which is only another word for POLITICAL POWER AND SUPREMACY. But it will not follow from this doctrine that acts of the large society which are NOT PURSUANT to its constitutional powers, but which are invasions of the residuary authorities of the smaller societies, will become the supreme law of the land. These will be merely acts of usurpation, and will deserve to be treated as such. Hence we perceive that the clause which declares the supremacy of the laws of the Union, like the one we have just before considered, only declares a truth, which flows immediately and necessarily from the institution of a federal government. It will not, I presume, have escaped observation, that it EXPRESSLY confines this supremacy to laws made PURSUANT TO THE CONSTITUTION; which I mention merely as an instance of caution in the convention; since that limitation would have been to be understood, though it had not been expressed.</p>
+<p>Though a law, therefore, laying a tax for the use of the United States would be supreme in its nature, and could not legally be opposed or controlled, yet a law for abrogating or preventing the collection of a tax laid by the authority of the State, (unless upon imports and exports), would not be the supreme law of the land, but a usurpation of power not granted by the Constitution. As far as an improper accumulation of taxes on the same object might tend to render the collection difficult or precarious, this would be a mutual inconvenience, not arising from a superiority or defect of power on either side, but from an injudicious exercise of power by one or the other, in a manner equally disadvantageous to both. It is to be hoped and presumed, however, that mutual interest would dictate a concert in this respect which would avoid any material inconvenience. The inference from the whole is, that the individual States would, under the proposed Constitution, retain an independent and uncontrollable authority to raise revenue to any extent of which they may stand in need, by every kind of taxation, except duties on imports and exports. It will be shown in the next paper that this CONCURRENT JURISDICTION in the article of taxation was the only admissible substitute for an entire subordination, in respect to this branch of power, of the State authority to that of the Union.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 33</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 33: The Same Subject Continued (Concerning the General Power of Taxation). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 33…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 33 &bull; Alexander Hamilton &bull; January 2, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-33";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 33 (Necessary and Proper Clause). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agrippa Letter III — On State Powers and Commerce — Museum of Minds</title>
+  <meta name="description" content="Agrippa: Letter III — On State Powers and Commerce, December 4, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'AGRIPPA'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Agrippa 3
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Agrippa · Letter 3 · Published in Massachusetts Gazette</p>
+  <h1>Letter III — On State Powers and Commerce</h1>
+  <p class="paper-hero-meta">By Agrippa <span style='font-size:0.88em;opacity:0.75;'>(James Winthrop (probable))</span> &bull; December 4, 1787 &bull; 1,222 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/agrippa-2/" class="nav-btn">← Agrippa 2</a>
+    <a href="/anti-federalist-papers/agrippa-4/" class="nav-btn">Agrippa 4 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,222 words &bull; Consolidated Government &bull; December 4, 1787</p>
+
+<h3 class="paper-section-head">THE  MASSACHUSETTS  GAZETTE,</h3>
+<p>(N\imber</p>
+<p>387)</p>
+<p>Friday,  November  30,  1787.</p>
+<p>For  the  Massachusetts  Gazette.</p>
+<p>To  THE  People.</p>
+<p>It  has  been  proved  from  the  clearest  evidence,  in  two  former papers,  that  a  free  government,  I  mean  one  in  which  the  power frequently  returns  to  the  body  of  the  people,  is  in  principle  the most  stable  and  efficient  of  any  kind;  that  such  a  government affords  the  most  ready  and  effectual  remedy  for  all  injuries  done to  persons  and  the  rights  of  property.  It  is  true  we  have  had  a tender  act.*  But  what  government  has  not  some  law  in  favour of  debtors  ?  The  difficulty  consists  in  finding  one  that  is  not  more unfriendly  to  the  creditors  than  ours.  I  am  far  from  justifying such  things.  On  the  contrary,  I  believe  that  it  is  universally true,  that  acts  made  to  favour  a  part  of  the  community  are  wrong in  principle.  All  that  is  now  intended  is,  to  remark  that  we  are not  worse  than  other  people  in  that  respect  which  we  most  con- demn. Probably  the  inquiry  will  be  made,  whence  the  com- plaints arise.  This  is  easily  answered.  Let  any  man  look  round his  own  neighbourhood,  and  see  if  the  people  are  not,  with  a  ver&gt;&#x27; few  exceptions,  peaceable  and  attached  to  the  government ;  if  the country  had  ever  within  their  knowledge  more  appearance  of  in- dustry, improvement  and  tranquillity;  if  there  was  ever  more  of</p>
+<p>*  Act  of  17S6,  providing  that  executions  issued  for  private  debt  may  be  s.itisficd  by articles  particularly  enumerated,  at  an  .ippraised  value  from  imp.irtial  men. — EJ.</p>
+<p>(59)</p>
+<p>6o  LETTERS</p>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">AGRIPPA.</h3>
+<p>the  produce  of  all  kinds  together  for  the  market;  if  their  stock does  not  rapidly  increase ;  if  there  was  ever  a  more  ready  vent for  their  surplus;  and  if  the  average  of  prices  is  not  about  as  high as  was  usual  in  a  plentiful  year  before  the  war.  These  circum- stances all  denote  a  general  prosperity.  Some  classes  of  citizens indeed  suffer  greatly.  Two  descriptions  I  at  present  recollect. The  publick  creditors  form  the  first  of  these  classes,  and  they ought  to,  and  will  be  provided  for.</p>
+<p>Let  us  for  a  moment  consider  their  situation  and  prospects. The  embarrassments  consequent  upon  a  war,  and  the  usual  re- duction of  prices  immediately  after  a  war,  necessarily  occasioned a  want  of  punctuality  in  publick  payments.  Still,  however,  the publick  debt  has  been  very  considerably  reduced,  not  by  the  dirty and  delusive  scheme  of  depreciation,  but  the  nominal  sum.  Ap- jplications  are  continually  making  for  purchases  in  our  eastern and  western  lands.  Great  exertions  are  making  for  clearing  off the  arrears  of  outstanding  taxes,  so  that  the  certificates*  for  in- terest on  the  state  debt  have  considerably  increased  in  value. This  is  a  certain  indication  of  returning  credit.  Congress  this year  disposed  of  a  large  tract  of  their  lands  towards  paying  the principal  of  their  debt.f  Pennsylvania  has  discharged  the  whole of  their  part  of  the  continental  debt.  New  York  has  nearly cleared  its  state  debt,  and  has  located  a  large  part  of  their  new lands  towards  paying  the  continental  demands. I  Other  states have  made  considerable  payments.  Every  day  from  these  con- siderations the  publick  ability  and  inclination  to  satisfy  their creditors  increases.  The  exertions  of  last  winter  were  as  much to  support  public  as  private  credit.  The  prospect  therefore  of the  publick  creditors  is  brightening  under  the  present  system.  If the  new  system  should  take  effect  without  amendments,  which&#x27; however  is  hardly  probable,  the  increase  of  expense  will  be  death</p>
+<p>*No  attempt  had  been  made  by  Massachusetts  for  several  years  to  pay  the  interest on  its  debt,  except  by  the  State  Treasurer&#x27;s  issuing  &quot;  consolidated  notes  &quot;  or  &quot;  certifi- cates &quot;  of  indebtedness,  bearing  6  per  cent,  interest.  Though  these  were  by  law  re- ceivable for  taxes,  they  had  sold  as  low  as  4/  in  the  pound. — Ed.</p>
+<p>■j-  The  sales  to  the  Ohio  Company. — Ed.</p>
+<p>\  By  Act  of  July  5,  1786. — Ed.</p>
+<h3 class="paper-section-head">LETTFRS</h3>
+<h3 class="paper-section-head">OF</h3>
+<p>AGKIPPA.  6l</p>
+<p>to  the  hopes  of  all  creditors,  both  of  the  continental  and  of  the state.  With  respect,  however,  to  our  publick  delaj&#x27;s  of  pavment we  have  the  precedent  of  the  best  established  countries  in Kurope.</p>
+<p>The  other  class  of  citi/xns  to  wbJch  I  alluded  was  the  ship- carpenters.  All  agree  that  their  business  is  dull ;  but  as  nobody objects  against  a  s\-steni  of  commercial  regulations  for  the  whole continent,  that  business  maj-  be  relieved  without  subverting  all the  ancient  foundations  and  laws  which  have  the  respect  of  the people.  It  is  a  very  serious  question  whether  giving  to  Congress the  unlimited  right  to  regulate  trade  would  not  injure  them  still further.  It  is  evidently  for  the  interest  of  the  state  to  encourage our  own  trade  as  much  as  possible.  But  in  a  very  large  empire, as  the  whole  states  consolidated  must  be,  there  will  always  be  a desire  of  the  government  to  increase  the  trade  of  the  capital,  and to  weaken  the  extremes.  We  should  in  that  case  be  one  of  the extremes,  and  should  feel  all  the  impoverishment  incident  to  that situation.  Besides,  a  jealousy  of  our  enterprising  spirit,  would always  be  an  inducement  to  cramp  our  exertions.  We  must  then be  impoverished  or  we  must  rebel.</p>
+<p>The  alternative  is  dreadful.</p>
+<p>At  present  this  state  is  one  of  the  most  respectable  and  one  of the  most  influential  in  the  union.  If  we  alone  should  object  to receiving  the  system  without  amendments,  there  is  no  doubt  but it  would  be  amended.  But  the  case  is  not  quite  so  bad.  New- York  appears  to  have  no  disposition  even  to  call  a  convention. If  they  should  neglect,  are  we  to  lend  our  assistance  to  compel them  by  arms,  and  thus  to  kindle  a  civil  war  without  any  provo- cation on  their  part?  Virginia  has  put  off  their  convention  till May,  and  appears  to  have  no  disposition  to  receive  the  new  plan without  amendments.  Pennsylvania  does  not  seem  to  be  dis- posed to  receive  it  as  it  is.  The  same  objections  are  made  in  all the  states,  that  the  civil  government  which  they  have  adopted and  which  secures  their  rights  will  be  subverted.  All  the  de- fenders of  this  system  undertake  to  prove  that  the  rights  of  the states  and  of  the  citizens  are  kept  safe.  The  opposers  of  it  agree that  they  will  receive  the  least  burdensome  system  which  shall defend  those  ri^jhts.</p>
+<h3 class="paper-section-head">62  LETTERS</h3>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">AGRIPPA.</h3>
+<p>Both  parties  therefore  found  their  arguments  on  the  idea  that these  rights  ought  to  be  held  sacred.  With  this  disposition  is  it not  in  every  man&#x27;s  mind  better  to  recommit  it  to  a  new  conven- tion, or  to  Congress,  which  is  a  regular  convention  for  the purpose,  and  to  instruct  our  delegates  to  confine  the  system  to the  general  purposes  of  the  union,  than  the  endeavour  to  force it  through  in  its  present  form,  and  with  so  many  opposers  as it  must  have  in  every  state  on  the  continent  ?  The  case  is  not of  such  pressing  necessity  as  some  have  represented.  Europe is  engaged,  and  we  are  tranquil.  Never  therefore  was  an  happier time  for  deliberation.  The  supporters  of  the  measure  are  by  no means  afraid  of  insurrections  taking  place,  but  they  are  afraid that  the  present  government  will  prove  superiour  to  their  as- saults.</p>
+<p>Agrippa.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Agrippa</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Agrippa&#x27;s Letter III — On State Powers and Commerce. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Agrippa's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Agrippa 3 &bull; December 4, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "agrippa-3";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Agrippa considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Agrippa's Letter III — On State Powers and Commerce. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

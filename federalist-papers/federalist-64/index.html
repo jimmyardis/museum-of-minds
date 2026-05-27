@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 64 — Senate and Treaty Power — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 64: The Powers of the Senate by John Jay, March 5, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '64'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;64
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 64 · Published by Independent Journal</p>
+  <h1>The Powers of the Senate</h1>
+  <p class="paper-hero-meta">By John Jay &bull; March 5, 1788 &bull; 2,305 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-63/" class="nav-btn">← No.&thinsp;63</a>
+    <a href="/federalist-papers/federalist-65/" class="nav-btn">No.&thinsp;65 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,305 words &bull; Foreign Policy &bull; March 5, 1788</p>
+
+<p>IT IS a just and not a new observation, that enemies to particular persons, and opponents to particular measures, seldom confine their censures to such things only in either as are worthy of blame. Unless on this principle, it is difficult to explain the motives of their conduct, who condemn the proposed Constitution in the aggregate, and treat with severity some of the most unexceptionable articles in it.</p>
+<p>The second section gives power to the President, &quot;BY AND WITH THE ADVICE AND CONSENT OF THE SENATE, TO MAKE TREATIES, PROVIDED TWO THIRDS OF THE SENATORS PRESENT CONCUR.&quot;</p>
+<p>The power of making treaties is an important one, especially as it relates to war, peace, and commerce; and it should not be delegated but in such a mode, and with such precautions, as will afford the highest security that it will be exercised by men the best qualified for the purpose, and in the manner most conducive to the public good. The convention appears to have been attentive to both these points: they have directed the President to be chosen by select bodies of electors, to be deputed by the people for that express purpose; and they have committed the appointment of senators to the State legislatures. This mode has, in such cases, vastly the advantage of elections by the people in their collective capacity, where the activity of party zeal, taking the advantage of the supineness, the ignorance, and the hopes and fears of the unwary and interested, often places men in office by the votes of a small proportion of the electors.</p>
+<p>As the select assemblies for choosing the President, as well as the State legislatures who appoint the senators, will in general be composed of the most enlightened and respectable citizens, there is reason to presume that their attention and their votes will be directed to those men only who have become the most distinguished by their abilities and virtue, and in whom the people perceive just grounds for confidence. The Constitution manifests very particular attention to this object. By excluding men under thirty-five from the first office, and those under thirty from the second, it confines the electors to men of whom the people have had time to form a judgment, and with respect to whom they will not be liable to be deceived by those brilliant appearances of genius and patriotism, which, like transient meteors, sometimes mislead as well as dazzle. If the observation be well founded, that wise kings will always be served by able ministers, it is fair to argue, that as an assembly of select electors possess, in a greater degree than kings, the means of extensive and accurate information relative to men and characters, so will their appointments bear at least equal marks of discretion and discernment. The inference which naturally results from these considerations is this, that the President and senators so chosen will always be of the number of those who best understand our national interests, whether considered in relation to the several States or to foreign nations, who are best able to promote those interests, and whose reputation for integrity inspires and merits confidence. With such men the power of making treaties may be safely lodged.</p>
+<p>Although the absolute necessity of system, in the conduct of any business, is universally known and acknowledged, yet the high importance of it in national affairs has not yet become sufficiently impressed on the public mind. They who wish to commit the power under consideration to a popular assembly, composed of members constantly coming and going in quick succession, seem not to recollect that such a body must necessarily be inadequate to the attainment of those great objects, which require to be steadily contemplated in all their relations and circumstances, and which can only be approached and achieved by measures which not only talents, but also exact information, and often much time, are necessary to concert and to execute. It was wise, therefore, in the convention to provide, not only that the power of making treaties should be committed to able and honest men, but also that they should continue in place a sufficient time to become perfectly acquainted with our national concerns, and to form and introduce a system for the management of them. The duration prescribed is such as will give them an opportunity of greatly extending their political information, and of rendering their accumulating experience more and more beneficial to their country. Nor has the convention discovered less prudence in providing for the frequent elections of senators in such a way as to obviate the inconvenience of periodically transferring those great affairs entirely to new men; for by leaving a considerable residue of the old ones in place, uniformity and order, as well as a constant succession of official information will be preserved.</p>
+<p>There are a few who will not admit that the affairs of trade and navigation should be regulated by a system cautiously formed and steadily pursued; and that both our treaties and our laws should correspond with and be made to promote it. It is of much consequence that this correspondence and conformity be carefully maintained; and they who assent to the truth of this position will see and confess that it is well provided for by making concurrence of the Senate necessary both to treaties and to laws.</p>
+<p>It seldom happens in the negotiation of treaties, of whatever nature, but that perfect SECRECY and immediate DESPATCH are sometimes requisite. These are cases where the most useful intelligence may be obtained, if the persons possessing it can be relieved from apprehensions of discovery. Those apprehensions will operate on those persons whether they are actuated by mercenary or friendly motives; and there doubtless are many of both descriptions, who would rely on the secrecy of the President, but who would not confide in that of the Senate, and still less in that of a large popular Assembly. The convention have done well, therefore, in so disposing of the power of making treaties, that although the President must, in forming them, act by the advice and consent of the Senate, yet he will be able to manage the business of intelligence in such a manner as prudence may suggest.</p>
+<p>They who have turned their attention to the affairs of men, must have perceived that there are tides in them; tides very irregular in their duration, strength, and direction, and seldom found to run twice exactly in the same manner or measure. To discern and to profit by these tides in national affairs is the business of those who preside over them; and they who have had much experience on this head inform us, that there frequently are occasions when days, nay, even when hours, are precious. The loss of a battle, the death of a prince, the removal of a minister, or other circumstances intervening to change the present posture and aspect of affairs, may turn the most favorable tide into a course opposite to our wishes. As in the field, so in the cabinet, there are moments to be seized as they pass, and they who preside in either should be left in capacity to improve them. So often and so essentially have we heretofore suffered from the want of secrecy and despatch, that the Constitution would have been inexcusably defective, if no attention had been paid to those objects. Those matters which in negotiations usually require the most secrecy and the most despatch, are those preparatory and auxiliary measures which are not otherwise important in a national view, than as they tend to facilitate the attainment of the objects of the negotiation. For these, the President will find no difficulty to provide; and should any circumstance occur which requires the advice and consent of the Senate, he may at any time convene them. Thus we see that the Constitution provides that our negotiations for treaties shall have every advantage which can be derived from talents, information, integrity, and deliberate investigations, on the one hand, and from secrecy and despatch on the other.</p>
+<p>But to this plan, as to most others that have ever appeared, objections are contrived and urged.</p>
+<p>Some are displeased with it, not on account of any errors or defects in it, but because, as the treaties, when made, are to have the force of laws, they should be made only by men invested with legislative authority. These gentlemen seem not to consider that the judgments of our courts, and the commissions constitutionally given by our governor, are as valid and as binding on all persons whom they concern, as the laws passed by our legislature. All constitutional acts of power, whether in the executive or in the judicial department, have as much legal validity and obligation as if they proceeded from the legislature; and therefore, whatever name be given to the power of making treaties, or however obligatory they may be when made, certain it is, that the people may, with much propriety, commit the power to a distinct body from the legislature, the executive, or the judicial. It surely does not follow, that because they have given the power of making laws to the legislature, that therefore they should likewise give them the power to do every other act of sovereignty by which the citizens are to be bound and affected.</p>
+<p>Others, though content that treaties should be made in the mode proposed, are averse to their being the SUPREME laws of the land. They insist, and profess to believe, that treaties like acts of assembly, should be repealable at pleasure. This idea seems to be new and peculiar to this country, but new errors, as well as new truths, often appear. These gentlemen would do well to reflect that a treaty is only another name for a bargain, and that it would be impossible to find a nation who would make any bargain with us, which should be binding on them ABSOLUTELY, but on us only so long and so far as we may think proper to be bound by it. They who make laws may, without doubt, amend or repeal them; and it will not be disputed that they who make treaties may alter or cancel them; but still let us not forget that treaties are made, not by only one of the contracting parties, but by both; and consequently, that as the consent of both was essential to their formation at first, so must it ever afterwards be to alter or cancel them. The proposed Constitution, therefore, has not in the least extended the obligation of treaties. They are just as binding, and just as far beyond the lawful reach of legislative acts now, as they will be at any future period, or under any form of government.</p>
+<p>However useful jealousy may be in republics, yet when like bile in the natural, it abounds too much in the body politic, the eyes of both become very liable to be deceived by the delusive appearances which that malady casts on surrounding objects. From this cause, probably, proceed the fears and apprehensions of some, that the President and Senate may make treaties without an equal eye to the interests of all the States. Others suspect that two thirds will oppress the remaining third, and ask whether those gentlemen are made sufficiently responsible for their conduct; whether, if they act corruptly, they can be punished; and if they make disadvantageous treaties, how are we to get rid of those treaties?</p>
+<p>As all the States are equally represented in the Senate, and by men the most able and the most willing to promote the interests of their constituents, they will all have an equal degree of influence in that body, especially while they continue to be careful in appointing proper persons, and to insist on their punctual attendance. In proportion as the United States assume a national form and a national character, so will the good of the whole be more and more an object of attention, and the government must be a weak one indeed, if it should forget that the good of the whole can only be promoted by advancing the good of each of the parts or members which compose the whole. It will not be in the power of the President and Senate to make any treaties by which they and their families and estates will not be equally bound and affected with the rest of the community; and, having no private interests distinct from that of the nation, they will be under no temptations to neglect the latter.</p>
+<p>As to corruption, the case is not supposable. He must either have been very unfortunate in his intercourse with the world, or possess a heart very susceptible of such impressions, who can think it probable that the President and two thirds of the Senate will ever be capable of such unworthy conduct. The idea is too gross and too invidious to be entertained. But in such a case, if it should ever happen, the treaty so obtained from us would, like all other fraudulent contracts, be null and void by the law of nations.</p>
+<p>With respect to their responsibility, it is difficult to conceive how it could be increased. Every consideration that can influence the human mind, such as honor, oaths, reputations, conscience, the love of country, and family affections and attachments, afford security for their fidelity. In short, as the Constitution has taken the utmost care that they shall be men of talents and integrity, we have reason to be persuaded that the treaties they make will be as advantageous as, all circumstances considered, could be made; and so far as the fear of punishment and disgrace can operate, that motive to good behavior is amply afforded by the article on the subject of impeachments.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 64</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 64: The Powers of the Senate. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 64…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 64 &bull; John Jay &bull; March 5, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-64";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 64 (Senate and Treaty Power). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

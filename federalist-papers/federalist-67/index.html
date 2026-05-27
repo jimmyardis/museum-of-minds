@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 67 — Executive Department — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 67: The Executive Department by Alexander Hamilton, March 11, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '67'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;67
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 67 · Published by New York Packet</p>
+  <h1>The Executive Department</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; March 11, 1788 &bull; 1,649 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-66/" class="nav-btn">← No.&thinsp;66</a>
+    <a href="/federalist-papers/federalist-68/" class="nav-btn">No.&thinsp;68 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,649 words &bull; Executive Power &bull; March 11, 1788</p>
+
+<p>THE constitution of the executive department of the proposed government, claims next our attention.</p>
+<p>There is hardly any part of the system which could have been attended with greater difficulty in the arrangement of it than this; and there is, perhaps, none which has been inveighed against with less candor or criticised with less judgment.</p>
+<p>Here the writers against the Constitution seem to have taken pains to signalize their talent of misrepresentation. Calculating upon the aversion of the people to monarchy, they have endeavored to enlist all their jealousies and apprehensions in opposition to the intended President of the United States; not merely as the embryo, but as the full-grown progeny, of that detested parent. To establish the pretended affinity, they have not scrupled to draw resources even from the regions of fiction. The authorities of a magistrate, in few instances greater, in some instances less, than those of a governor of New York, have been magnified into more than royal prerogatives. He has been decorated with attributes superior in dignity and splendor to those of a king of Great Britain. He has been shown to us with the diadem sparkling on his brow and the imperial purple flowing in his train. He has been seated on a throne surrounded with minions and mistresses, giving audience to the envoys of foreign potentates, in all the supercilious pomp of majesty. The images of Asiatic despotism and voluptuousness have scarcely been wanting to crown the exaggerated scene. We have been taught to tremble at the terrific visages of murdering janizaries, and to blush at the unveiled mysteries of a future seraglio.</p>
+<p>Attempts so extravagant as these to disfigure or, it might rather be said, to metamorphose the object, render it necessary to take an accurate view of its real nature and form: in order as well to ascertain its true aspect and genuine appearance, as to unmask the disingenuity and expose the fallacy of the counterfeit resemblances which have been so insidiously, as well as industriously, propagated.</p>
+<p>In the execution of this task, there is no man who would not find it an arduous effort either to behold with moderation, or to treat with seriousness, the devices, not less weak than wicked, which have been contrived to pervert the public opinion in relation to the subject. They so far exceed the usual though unjustifiable licenses of party artifice, that even in a disposition the most candid and tolerant, they must force the sentiments which favor an indulgent construction of the conduct of political adversaries to give place to a voluntary and unreserved indignation. It is impossible not to bestow the imputation of deliberate imposture and deception upon the gross pretense of a similitude between a king of Great Britain and a magistrate of the character marked out for that of the President of the United States. It is still more impossible to withhold that imputation from the rash and barefaced expedients which have been employed to give success to the attempted imposition.</p>
+<p>In one instance, which I cite as a sample of the general spirit, the temerity has proceeded so far as to ascribe to the President of the United States a power which by the instrument reported is EXPRESSLY allotted to the Executives of the individual States. I mean the power of filling casual vacancies in the Senate.</p>
+<p>This bold experiment upon the discernment of his countrymen has been hazarded by a writer who (whatever may be his real merit) has had no inconsiderable share in the applauses of his party(1); and who, upon this false and unfounded suggestion, has built a series of observations equally false and unfounded. Let him now be confronted with the evidence of the fact, and let him, if he be able, justify or extenuate the shameful outrage he has offered to the dictates of truth and to the rules of fair dealing.</p>
+<p>The second clause of the second section of the second article empowers the President of the United States &quot;to nominate, and by and with the advice and consent of the Senate, to appoint ambassadors, other public ministers and consuls, judges of the Supreme Court, and all other OFFICERS of United States whose appointments are NOT in the Constitution OTHERWISE PROVIDED FOR, and WHICH SHALL BE ESTABLISHED BY LAW.&quot; Immediately after this clause follows another in these words: &quot;The President shall have power to fill up all VACANCIES that may happen DURING THE RECESS OF THE SENATE, by granting commissions which shall EXPIRE AT THE END OF THEIR NEXT SESSION.&quot; It is from this last provision that the pretended power of the President to fill vacancies in the Senate has been deduced. A slight attention to the connection of the clauses, and to the obvious meaning of the terms, will satisfy us that the deduction is not even colorable.</p>
+<p>The first of these two clauses, it is clear, only provides a mode for appointing such officers, &quot;whose appointments are NOT OTHERWISE PROVIDED FOR in the Constitution, and which SHALL BE ESTABLISHED BY LAW&quot;; of course it cannot extend to the appointments of senators, whose appointments are OTHERWISE PROVIDED FOR in the Constitution(2), and who are ESTABLISHED BY THE CONSTITUTION, and will not require a future establishment by law. This position will hardly be contested.</p>
+<p>The last of these two clauses, it is equally clear, cannot be understood to comprehend the power of filling vacancies in the Senate, for the following reasons: First. The relation in which that clause stands to the other, which declares the general mode of appointing officers of the United States, denotes it to be nothing more than a supplement to the other, for the purpose of establishing an auxiliary method of appointment, in cases to which the general method was inadequate. The ordinary power of appointment is confined to the President and Senate JOINTLY, and can therefore only be exercised during the session of the Senate; but as it would have been improper to oblige this body to be continually in session for the appointment of officers and as vacancies might happen IN THEIR RECESS, which it might be necessary for the public service to fill without delay, the succeeding clause is evidently intended to authorize the President, SINGLY, to make temporary appointments &quot;during the recess of the Senate, by granting commissions which shall expire at the end of their next session.&quot; Second. If this clause is to be considered as supplementary to the one which precedes, the VACANCIES of which it speaks must be construed to relate to the &quot;officers&quot; described in the preceding one; and this, we have seen, excludes from its description the members of the Senate. Third. The time within which the power is to operate, &quot;during the recess of the Senate,&quot; and the duration of the appointments, &quot;to the end of the next session&quot; of that body, conspire to elucidate the sense of the provision, which, if it had been intended to comprehend senators, would naturally have referred the temporary power of filling vacancies to the recess of the State legislatures, who are to make the permanent appointments, and not to the recess of the national Senate, who are to have no concern in those appointments; and would have extended the duration in office of the temporary senators to the next session of the legislature of the State, in whose representation the vacancies had happened, instead of making it to expire at the end of the ensuing session of the national Senate. The circumstances of the body authorized to make the permanent appointments would, of course, have governed the modification of a power which related to the temporary appointments; and as the national Senate is the body, whose situation is alone contemplated in the clause upon which the suggestion under examination has been founded, the vacancies to which it alludes can only be deemed to respect those officers in whose appointment that body has a concurrent agency with the President. But last, the first and second clauses of the third section of the first article, not only obviate all possibility of doubt, but destroy the pretext of misconception. The former provides, that &quot;the Senate of the United States shall be composed of two Senators from each State, chosen BY THE LEGISLATURE THEREOF for six years&quot;; and the latter directs, that, &quot;if vacancies in that body should happen by resignation or otherwise, DURING THE RECESS OF THE LEGISLATURE OF ANY STATE, the Executive THEREOF may make temporary appointments until the NEXT MEETING OF THE LEGISLATURE, which shall then fill such vacancies.&quot; Here is an express power given, in clear and unambiguous terms, to the State Executives, to fill casual vacancies in the Senate, by temporary appointments; which not only invalidates the supposition, that the clause before considered could have been intended to confer that power upon the President of the United States, but proves that this supposition, destitute as it is even of the merit of plausibility, must have originated in an intention to deceive the people, too palpable to be obscured by sophistry, too atrocious to be palliated by hypocrisy.</p>
+<p>I have taken the pains to select this instance of misrepresentation, and to place it in a clear and strong light, as an unequivocal proof of the unwarrantable arts which are practiced to prevent a fair and impartial judgment of the real merits of the Constitution submitted to the consideration of the people. Nor have I scrupled, in so flagrant a case, to allow myself a severity of animadversion little congenial with the general spirit of these papers. I hesitate not to submit it to the decision of any candid and honest adversary of the proposed government, whether language can furnish epithets of too much asperity, for so shameless and so prostitute an attempt to impose on the citizens of America.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. See CATO, No. V.</p>
+<p>2. Article I, section 3, clause 1.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 67</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 67: The Executive Department. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 67…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 67 &bull; Alexander Hamilton &bull; March 11, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-67";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 67 (Executive Department). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

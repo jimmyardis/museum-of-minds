@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 45 — Powers of the Federal Government — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 45: The Alleged Danger From the Powers of the Union to the State Governments by James Madison, January 26, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '45'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;45
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 45 · Published by Independent Journal</p>
+  <h1>The Alleged Danger From the Powers of the Union to the State Governments</h1>
+  <p class="paper-hero-meta">By James Madison &bull; January 26, 1788 &bull; 2,116 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-44/" class="nav-btn">← No.&thinsp;44</a>
+    <a href="/federalist-papers/federalist-46/" class="nav-btn">No.&thinsp;46 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,116 words &bull; State Power &bull; January 26, 1788</p>
+
+<p>HAVING shown that no one of the powers transferred to the federal government is unnecessary or improper, the next question to be considered is, whether the whole mass of them will be dangerous to the portion of authority left in the several States.</p>
+<p>The adversaries to the plan of the convention, instead of considering in the first place what degree of power was absolutely necessary for the purposes of the federal government, have exhausted themselves in a secondary inquiry into the possible consequences of the proposed degree of power to the governments of the particular States. But if the Union, as has been shown, be essential to the security of the people of America against foreign danger; if it be essential to their security against contentions and wars among the different States; if it be essential to guard them against those violent and oppressive factions which embitter the blessings of liberty, and against those military establishments which must gradually poison its very fountain; if, in a word, the Union be essential to the happiness of the people of America, is it not preposterous, to urge as an objection to a government, without which the objects of the Union cannot be attained, that such a government may derogate from the importance of the governments of the individual States? Was, then, the American Revolution effected, was the American Confederacy formed, was the precious blood of thousands spilt, and the hard-earned substance of millions lavished, not that the people of America should enjoy peace, liberty, and safety, but that the government of the individual States, that particular municipal establishments, might enjoy a certain extent of power, and be arrayed with certain dignities and attributes of sovereignty? We have heard of the impious doctrine in the Old World, that the people were made for kings, not kings for the people. Is the same doctrine to be revived in the New, in another shape that the solid happiness of the people is to be sacrificed to the views of political institutions of a different form? It is too early for politicians to presume on our forgetting that the public good, the real welfare of the great body of the people, is the supreme object to be pursued; and that no form of government whatever has any other value than as it may be fitted for the attainment of this object. Were the plan of the convention adverse to the public happiness, my voice would be, Reject the plan. Were the Union itself inconsistent with the public happiness, it would be, Abolish the Union. In like manner, as far as the sovereignty of the States cannot be reconciled to the happiness of the people, the voice of every good citizen must be, Let the former be sacrificed to the latter. How far the sacrifice is necessary, has been shown. How far the unsacrificed residue will be endangered, is the question before us.</p>
+<p>Several important considerations have been touched in the course of these papers, which discountenance the supposition that the operation of the federal government will by degrees prove fatal to the State governments. The more I revolve the subject, the more fully I am persuaded that the balance is much more likely to be disturbed by the preponderancy of the last than of the first scale.</p>
+<p>We have seen, in all the examples of ancient and modern confederacies, the strongest tendency continually betraying itself in the members, to despoil the general government of its authorities, with a very ineffectual capacity in the latter to defend itself against the encroachments. Although, in most of these examples, the system has been so dissimilar from that under consideration as greatly to weaken any inference concerning the latter from the fate of the former, yet, as the States will retain, under the proposed Constitution, a very extensive portion of active sovereignty, the inference ought not to be wholly disregarded. In the Achaean league it is probable that the federal head had a degree and species of power, which gave it a considerable likeness to the government framed by the convention. The Lycian Confederacy, as far as its principles and form are transmitted, must have borne a still greater analogy to it. Yet history does not inform us that either of them ever degenerated, or tended to degenerate, into one consolidated government. On the contrary, we know that the ruin of one of them proceeded from the incapacity of the federal authority to prevent the dissensions, and finally the disunion, of the subordinate authorities. These cases are the more worthy of our attention, as the external causes by which the component parts were pressed together were much more numerous and powerful than in our case; and consequently less powerful ligaments within would be sufficient to bind the members to the head, and to each other.</p>
+<p>In the feudal system, we have seen a similar propensity exemplified. Notwithstanding the want of proper sympathy in every instance between the local sovereigns and the people, and the sympathy in some instances between the general sovereign and the latter, it usually happened that the local sovereigns prevailed in the rivalship for encroachments. Had no external dangers enforced internal harmony and subordination, and particularly, had the local sovereigns possessed the affections of the people, the great kingdoms in Europe would at this time consist of as many independent princes as there were formerly feudatory barons.</p>
+<p>The State governments will have the advantage of the Federal government, whether we compare them in respect to the immediate dependence of the one on the other; to the weight of personal influence which each side will possess; to the powers respectively vested in them; to the predilection and probable support of the people; to the disposition and faculty of resisting and frustrating the measures of each other.</p>
+<p>The State governments may be regarded as constituent and essential parts of the federal government; whilst the latter is nowise essential to the operation or organization of the former. Without the intervention of the State legislatures, the President of the United States cannot be elected at all. They must in all cases have a great share in his appointment, and will, perhaps, in most cases, of themselves determine it. The Senate will be elected absolutely and exclusively by the State legislatures. Even the House of Representatives, though drawn immediately from the people, will be chosen very much under the influence of that class of men, whose influence over the people obtains for themselves an election into the State legislatures. Thus, each of the principal branches of the federal government will owe its existence more or less to the favor of the State governments, and must consequently feel a dependence, which is much more likely to beget a disposition too obsequious than too overbearing towards them. On the other side, the component parts of the State governments will in no instance be indebted for their appointment to the direct agency of the federal government, and very little, if at all, to the local influence of its members.</p>
+<p>The number of individuals employed under the Constitution of the United States will be much smaller than the number employed under the particular States. There will consequently be less of personal influence on the side of the former than of the latter. The members of the legislative, executive, and judiciary departments of thirteen and more States, the justices of peace, officers of militia, ministerial officers of justice, with all the county, corporation, and town officers, for three millions and more of people, intermixed, and having particular acquaintance with every class and circle of people, must exceed, beyond all proportion, both in number and influence, those of every description who will be employed in the administration of the federal system. Compare the members of the three great departments of the thirteen States, excluding from the judiciary department the justices of peace, with the members of the corresponding departments of the single government of the Union; compare the militia officers of three millions of people with the military and marine officers of any establishment which is within the compass of probability, or, I may add, of possibility, and in this view alone, we may pronounce the advantage of the States to be decisive. If the federal government is to have collectors of revenue, the State governments will have theirs also. And as those of the former will be principally on the seacoast, and not very numerous, whilst those of the latter will be spread over the face of the country, and will be very numerous, the advantage in this view also lies on the same side. It is true, that the Confederacy is to possess, and may exercise, the power of collecting internal as well as external taxes throughout the States; but it is probable that this power will not be resorted to, except for supplemental purposes of revenue; that an option will then be given to the States to supply their quotas by previous collections of their own; and that the eventual collection, under the immediate authority of the Union, will generally be made by the officers, and according to the rules, appointed by the several States. Indeed it is extremely probable, that in other instances, particularly in the organization of the judicial power, the officers of the States will be clothed with the correspondent authority of the Union. Should it happen, however, that separate collectors of internal revenue should be appointed under the federal government, the influence of the whole number would not bear a comparison with that of the multitude of State officers in the opposite scale. Within every district to which a federal collector would be allotted, there would not be less than thirty or forty, or even more, officers of different descriptions, and many of them persons of character and weight, whose influence would lie on the side of the State.</p>
+<p>The powers delegated by the proposed Constitution to the federal government, are few and defined. Those which are to remain in the State governments are numerous and indefinite. The former will be exercised principally on external objects, as war, peace, negotiation, and foreign commerce; with which last the power of taxation will, for the most part, be connected. The powers reserved to the several States will extend to all the objects which, in the ordinary course of affairs, concern the lives, liberties, and properties of the people, and the internal order, improvement, and prosperity of the State.</p>
+<p>The operations of the federal government will be most extensive and important in times of war and danger; those of the State governments, in times of peace and security. As the former periods will probably bear a small proportion to the latter, the State governments will here enjoy another advantage over the federal government. The more adequate, indeed, the federal powers may be rendered to the national defense, the less frequent will be those scenes of danger which might favor their ascendancy over the governments of the particular States.</p>
+<p>If the new Constitution be examined with accuracy and candor, it will be found that the change which it proposes consists much less in the addition of NEW POWERS to the Union, than in the invigoration of its ORIGINAL POWERS. The regulation of commerce, it is true, is a new power; but that seems to be an addition which few oppose, and from which no apprehensions are entertained. The powers relating to war and peace, armies and fleets, treaties and finance, with the other more considerable powers, are all vested in the existing Congress by the articles of Confederation. The proposed change does not enlarge these powers; it only substitutes a more effectual mode of administering them. The change relating to taxation may be regarded as the most important; and yet the present Congress have as complete authority to REQUIRE of the States indefinite supplies of money for the common defense and general welfare, as the future Congress will have to require them of individual citizens; and the latter will be no more bound than the States themselves have been, to pay the quotas respectively taxed on them. Had the States complied punctually with the articles of Confederation, or could their compliance have been enforced by as peaceable means as may be used with success towards single persons, our past experience is very far from countenancing an opinion, that the State governments would have lost their constitutional powers, and have gradually undergone an entire consolidation. To maintain that such an event would have ensued, would be to say at once, that the existence of the State governments is incompatible with any system whatever that accomplishes the essential purposes of the Union.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 45</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 45: The Alleged Danger From the Powers of the Union to the State Governments. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 45…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 45 &bull; James Madison &bull; January 26, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-45";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 45 (Powers of the Federal Government). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

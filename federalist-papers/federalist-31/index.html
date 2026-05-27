@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 31 — Taxation: Maxims — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 31: The Same Subject Continued (Concerning the General Power of Taxation) by Alexander Hamilton, January 1, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '31'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;31
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 31 · Published by New York Packet</p>
+  <h1>The Same Subject Continued (Concerning the General Power of Taxation)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 1, 1788 &bull; 1,729 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-30/" class="nav-btn">← No.&thinsp;30</a>
+    <a href="/federalist-papers/federalist-32/" class="nav-btn">No.&thinsp;32 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,729 words &bull; Taxation &bull; January 1, 1788</p>
+
+<p>IN DISQUISITIONS of every kind, there are certain primary truths, or first principles, upon which all subsequent reasonings must depend. These contain an internal evidence which, antecedent to all reflection or combination, commands the assent of the mind. Where it produces not this effect, it must proceed either from some defect or disorder in the organs of perception, or from the influence of some strong interest, or passion, or prejudice. Of this nature are the maxims in geometry, that &quot;the whole is greater than its part; things equal to the same are equal to one another; two straight lines cannot enclose a space; and all right angles are equal to each other.&quot; Of the same nature are these other maxims in ethics and politics, that there cannot be an effect without a cause; that the means ought to be proportioned to the end; that every power ought to be commensurate with its object; that there ought to be no limitation of a power destined to effect a purpose which is itself incapable of limitation. And there are other truths in the two latter sciences which, if they cannot pretend to rank in the class of axioms, are yet such direct inferences from them, and so obvious in themselves, and so agreeable to the natural and unsophisticated dictates of common-sense, that they challenge the assent of a sound and unbiased mind, with a degree of force and conviction almost equally irresistible.</p>
+<p>The objects of geometrical inquiry are so entirely abstracted from those pursuits which stir up and put in motion the unruly passions of the human heart, that mankind, without difficulty, adopt not only the more simple theorems of the science, but even those abstruse paradoxes which, however they may appear susceptible of demonstration, are at variance with the natural conceptions which the mind, without the aid of philosophy, would be led to entertain upon the subject. The INFINITE DIVISIBILITY of matter, or, in other words, the INFINITE divisibility of a FINITE thing, extending even to the minutest atom, is a point agreed among geometricians, though not less incomprehensible to common-sense than any of those mysteries in religion, against which the batteries of infidelity have been so industriously leveled.</p>
+<p>But in the sciences of morals and politics, men are found far less tractable. To a certain degree, it is right and useful that this should be the case. Caution and investigation are a necessary armor against error and imposition. But this untractableness may be carried too far, and may degenerate into obstinacy, perverseness, or disingenuity. Though it cannot be pretended that the principles of moral and political knowledge have, in general, the same degree of certainty with those of the mathematics, yet they have much better claims in this respect than, to judge from the conduct of men in particular situations, we should be disposed to allow them. The obscurity is much oftener in the passions and prejudices of the reasoner than in the subject. Men, upon too many occasions, do not give their own understandings fair play; but, yielding to some untoward bias, they entangle themselves in words and confound themselves in subtleties.</p>
+<p>How else could it happen (if we admit the objectors to be sincere in their opposition), that positions so clear as those which manifest the necessity of a general power of taxation in the government of the Union, should have to encounter any adversaries among men of discernment? Though these positions have been elsewhere fully stated, they will perhaps not be improperly recapitulated in this place, as introductory to an examination of what may have been offered by way of objection to them. They are in substance as follows:</p>
+<p>A government ought to contain in itself every power requisite to the full accomplishment of the objects committed to its care, and to the complete execution of the trusts for which it is responsible, free from every other control but a regard to the public good and to the sense of the people.</p>
+<p>As the duties of superintending the national defense and of securing the public peace against foreign or domestic violence involve a provision for casualties and dangers to which no possible limits can be assigned, the power of making that provision ought to know no other bounds than the exigencies of the nation and the resources of the community.</p>
+<p>As revenue is the essential engine by which the means of answering the national exigencies must be procured, the power of procuring that article in its full extent must necessarily be comprehended in that of providing for those exigencies.</p>
+<p>As theory and practice conspire to prove that the power of procuring revenue is unavailing when exercised over the States in their collective capacities, the federal government must of necessity be invested with an unqualified power of taxation in the ordinary modes.</p>
+<p>Did not experience evince the contrary, it would be natural to conclude that the propriety of a general power of taxation in the national government might safely be permitted to rest on the evidence of these propositions, unassisted by any additional arguments or illustrations. But we find, in fact, that the antagonists of the proposed Constitution, so far from acquiescing in their justness or truth, seem to make their principal and most zealous effort against this part of the plan. It may therefore be satisfactory to analyze the arguments with which they combat it.</p>
+<p>Those of them which have been most labored with that view, seem in substance to amount to this: &quot;It is not true, because the exigencies of the Union may not be susceptible of limitation, that its power of laying taxes ought to be unconfined. Revenue is as requisite to the purposes of the local administrations as to those of the Union; and the former are at least of equal importance with the latter to the happiness of the people. It is, therefore, as necessary that the State governments should be able to command the means of supplying their wants, as that the national government should possess the like faculty in respect to the wants of the Union. But an indefinite power of taxation in the LATTER might, and probably would in time, deprive the FORMER of the means of providing for their own necessities; and would subject them entirely to the mercy of the national legislature. As the laws of the Union are to become the supreme law of the land, as it is to have power to pass all laws that may be NECESSARY for carrying into execution the authorities with which it is proposed to vest it, the national government might at any time abolish the taxes imposed for State objects upon the pretense of an interference with its own. It might allege a necessity of doing this in order to give efficacy to the national revenues. And thus all the resources of taxation might by degrees become the subjects of federal monopoly, to the entire exclusion and destruction of the State governments.&quot;</p>
+<p>This mode of reasoning appears sometimes to turn upon the supposition of usurpation in the national government; at other times it seems to be designed only as a deduction from the constitutional operation of its intended powers. It is only in the latter light that it can be admitted to have any pretensions to fairness. The moment we launch into conjectures about the usurpations of the federal government, we get into an unfathomable abyss, and fairly put ourselves out of the reach of all reasoning. Imagination may range at pleasure till it gets bewildered amidst the labyrinths of an enchanted castle, and knows not on which side to turn to extricate itself from the perplexities into which it has so rashly adventured. Whatever may be the limits or modifications of the powers of the Union, it is easy to imagine an endless train of possible dangers; and by indulging an excess of jealousy and timidity, we may bring ourselves to a state of absolute scepticism and irresolution. I repeat here what I have observed in substance in another place, that all observations founded upon the danger of usurpation ought to be referred to the composition and structure of the government, not to the nature or extent of its powers. The State governments, by their original constitutions, are invested with complete sovereignty. In what does our security consist against usurpation from that quarter? Doubtless in the manner of their formation, and in a due dependence of those who are to administer them upon the people. If the proposed construction of the federal government be found, upon an impartial examination of it, to be such as to afford, to a proper extent, the same species of security, all apprehensions on the score of usurpation ought to be discarded.</p>
+<p>It should not be forgotten that a disposition in the State governments to encroach upon the rights of the Union is quite as probable as a disposition in the Union to encroach upon the rights of the State governments. What side would be likely to prevail in such a conflict, must depend on the means which the contending parties could employ toward insuring success. As in republics strength is always on the side of the people, and as there are weighty reasons to induce a belief that the State governments will commonly possess most influence over them, the natural conclusion is that such contests will be most apt to end to the disadvantage of the Union; and that there is greater probability of encroachments by the members upon the federal head, than by the federal head upon the members. But it is evident that all conjectures of this kind must be extremely vague and fallible: and that it is by far the safest course to lay them altogether aside, and to confine our attention wholly to the nature and extent of the powers as they are delineated in the Constitution. Every thing beyond this must be left to the prudence and firmness of the people; who, as they will hold the scales in their own hands, it is to be hoped, will always take care to preserve the constitutional equilibrium between the general and the State governments. Upon this ground, which is evidently the true one, it will not be difficult to obviate the objections which have been made to an indefinite power of taxation in the United States.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 31</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 31: The Same Subject Continued (Concerning the General Power of Taxation). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 31…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 31 &bull; Alexander Hamilton &bull; January 1, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-31";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 31 (Taxation: Maxims). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

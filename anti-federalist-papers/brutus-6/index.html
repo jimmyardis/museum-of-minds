@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay VI — On the Power of Taxation — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay VI — On the Power of Taxation, December 27, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 6
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 6 · Published in New-York Journal</p>
+  <h1>Essay VI — On the Power of Taxation</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; December 27, 1787 &bull; 3,521 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-5/" class="nav-btn">← Brutus 5</a>
+    <a href="/anti-federalist-papers/brutus-7/" class="nav-btn">Brutus 7 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">3,521 words &bull; Taxation &bull; December 27, 1787</p>
+
+<p>Anti-Federalist Papers: Brutus #6</p>
+<h3 class="paper-section-head">VI</h3>
+<p>27 December 1787</p>
+<p>It is an important question, whether the general government of the United States should be so framed, as to absorb and swallow up the state governments? or whether, on the contrary, the former ought not to be confined to certain defined national objects, while the latter should retain all the powers which concern the internal police of the states?</p>
+<p>I have, in my former papers, offered a variety of arguments to prove, that a simple free government could not be exercised over this whole continent, and that therefore we must either give up our liberties and submit to an arbitrary one, or frame a constitution on the plan of confederation. Further reasons might be urged to prove this point &amp;#151; but it seems unnecessary, because the principal advocates of the new constitution admit of the position. The question therefore between us, this being admitted, is, whether or not this system is so formed as either directly to annihilate the state governments, or that in its operation it will certainly effect it. If this is answered in the affirmative, then the system ought not to be adopted, without such amendments as will avoid this consequence. If on the contrary it can be shewn, that the state governments are secured in their rights to manage the internal police of the respective states, we must confine ourselves in our enquiries to the organization of the government and the guards and provisions it contains to prevent a misuse or abuse of power. To determine this question, it is requisite, that we fully investigate the nature, and the extent of the powers intended to be granted by this constitution to the rulers.</p>
+<p>In my last number I called your attention to this subject, and proved, as I think, uncontrovertibly, that the powers given the legislature under the 8th section of the 1st article, had no other limitation than the discretion of the Congress. It was shewn, that even if the most favorable construction was given to this paragraph, that the advocates for the new constitution could wish, it will convey a power to lay and collect taxes, imposts, duties, and excises, according to the discretion of the legislature, and to make all laws which they shall judge proper and necessary to carry this power into execution. This I shewed would totally destroy all the power of the state governments. To confirm this, it is worth while to trace the operation of the government in some particular instances.</p>
+<p>The general government is to be vested with authority to levy and collect taxes, duties, and excises; the separate states have also power to impose taxes, duties, and excises, except that they cannot lay duties on exports and imports without the consent of Congress. Here then the two governments have concurrent jurisdiction; both may lay impositions of this kind. But then the general government have supperadded to this power, authority to make all laws which shall be necessary and proper for carrying the foregoing power into execution. Suppose then that both governments should lay taxes, duties, and excises, and it should fall so heavy on the people that they would be unable, or be so burdensome that they would refuse to pay them both &amp;#151; would it not be necessary that the general legislature should suspend the collection of the state tax? It certainly would. For, if the people could not, or would not pay both, they must be discharged from the tax to the state, or the tax to the general government could not be collected. &amp;#151; The conclusion therefore is inevitable, that the respective state governments will not have the power to raise one shilling in any way, but by the permission of the Congress. I presume no one will pretend, that the states can exercise legislative authority, or administer justice among their citizens for any length of time, without being able to raise a sufficiency to pay those who administer their governments.</p>
+<p>If this be true, and if the states can raise money only by permission of the general government, it follows that the state governments will be dependent on the will of the general government for their existence.</p>
+<p>What will render this power in Congress effectual and sure in its operation is, that the government will have complete judicial and executive authority to carry all their laws into effect, which will be paramount to the judicial and executive authority of the individual states: in vain therefore will be all interference of the legislatures, courts, or magistrates of any of the states on the subject; for they will be subordinate to the general government, and engaged by oath to support it, and will be constitutionally bound to submit to their decisions.</p>
+<p>The general legislature will be empowered to lay any tax they chuse, to annex any penalties they please to the breach of their revenue laws; and to appoint as many officers as they may think proper to collect the taxes. They will have authority to farm the revenues and to vest the farmer general, with his subalterns, with plenary powers to collect them, in any way which to them may appear eligible. And the courts of law, which they will be authorized to institute, will have cognizance of every case arising under the revenue laws, the conduct of all the officers employed in collecting them; and the officers of these courts will execute their judgments. There is no way, therefore, of avoiding the destruction of the state governments, whenever the Congress please to do it, unless the people rise up, and, with a strong hand, resist and prevent the execution of constitutional laws. The fear of this, will, it is presumed, restrain the general government, for some time, within proper bounds; but it will not be many years before they will have a revenue, and force, at their command, which will place them above any apprehensions on that score.</p>
+<p>How far the power to lay and collect duties and excises, may operate to dissolve the state governments, and oppress the people, it is impossible to say. It would assist us much in forming a just opinion on this head, to consider the various objects to which this kind of taxes extend, in European nations, and the infinity of laws they have passed respecting them. Perhaps, if leisure will permit, this may be essayed in some future paper.</p>
+<p>It was observed in my last number, that the power to lay and collect duties and excises, would invest the Congress with authority to impose a duty and excise on every necessary and convenience of life. As the principal object of the government, in laying a duty or excise, will be, to raise money, it is obvious, that they will fix on such articles as are of the most general use and consumption; because, unless great quantities of the article, on which the duty is laid, is used, the revenue cannot be considerable. We may therefore presume, that the articles which will be the object of this species of taxes will be either the real necessaries of life; or if not these, such as from custom and habit are esteemed so. I will single out a few of the productions of our own country, which may, and probably will, be of the number.</p>
+<p>Cider is an article that most probably will be one of those on which an excise will be laid, because it is one, which this country produces in great abundance, which is in very general use, is consumed in great quantities, and which may be said too not to be a real necessary of life. An excise on this would raise a large sum of money in the United States. How would the power, to lay and collect an excise on cider, and to pass all laws proper and necessary to carry it into execution, operate in its exercise? It might be necessary, in order to collect the excise on cider, to grant to one man, in each county, an exclusive right of building and keeping cider-mills, and oblige him to give bonds and security for payment of the excise; or, if this was not done, it might be necessary to license the mills, which are to make this liquor, and to take from them security, to account for the excise; or, if otherwise, a great number of officers must be employed, to take account of the cider made, and to collect the duties on it.</p>
+<p>Porter, ale, and all kinds of malt-liquors, are articles that would probably be subject also to an excise. It would be necessary, in order to collect such an excise, to regulate the manufactory of these, that the quantity made might be ascertained or otherwise security could not be had for the payment of the excise. Every brewery must then be licensed, and officers appointed, to take account of its product, and to secure the payment of the duty, or excise, before it is sold. Many other articles might be named, which would be objects of this species of taxation, but I refrain from enumerating them. It will probably be said, by those who advocate this system, that the observations already made on this head, are calculated only to inflame the minds of the people, with the apprehension of dangers merely imaginary. That there is not the least reason to apprehend, the general legislature will exercise their power in this manner. To this I would only say, that these kinds of taxes exist in Great Britain, and are severely felt. The excise on cider and perry, was imposed in that nation a few years ago, and it is in the memory of every one, who read the history of the transaction, what great tumults it occasioned.</p>
+<p>This power, exercised without limitation, will introduce itself into every comer of the city, and country &amp;#151; It will wait upon the ladies at their toilett, and will not leave them in any of their domestic concerns; it will accompany them to the ball, the play, and the assembly; it will go with them when they visit, and will, on all occasions, sit beside them in their carriages, nor will it desert them even at church; it will enter the house of every gentleman, watch over his cellar, wait upon his cook in the kitchen, follow the servants into the parlour, preside over the table, and note down all he eats or drinks; it will attend him to his bed-chamber, and watch him while he sleeps; it will take cognizance of the professional man in his office, or his study; it will watch the merchant in the counting-house, or in his store; it will follow the mechanic to his shop, and in his work, and will haunt him in his family, and in his bed; it will be a constant companion of the industrious farmer in all his labour, it will be with him in the house, and in the field, observe the toil of his hands, and the sweat of his brow; it will penetrate into the most obscure cottage; and finally, it will light upon the head of every person in the United States. To all these different classes of people, and in all these circumstances, in which it will attend them, the language in which it will address them, will be GIVE! GIVE!</p>
+<p>A power that has such latitude, which reaches every person in the community in every conceivable circumstance, and lays hold of every species of property they possess, and which has no bounds set to it, but the discretion of those who exercise it[,] I say, such a power must necessarily, from its very nature, swallow up all the power of the state governments.</p>
+<p>I shall add but one other observation on this head, which is this &amp;#151; It appears to me a solecism, for two men, or bodies of men, to have unlimited power respecting the same object. It contradicts the scripture maxim, which saith, &amp;quot;no man can serve two masters,&amp;quot; the one power or the other must prevail, or else they will destroy each other, and neither of them effect their purpose. It may be compared to two mechanic powers, acting upon the same body in opposite directions, the consequence would be, if the powers were equal, the body would remain in a state of rest, or if the force of the one was superior to that of the other, the stronger would prevail, and overcome the resistance of the weaker.</p>
+<p>But it is said, by some of the advocates of this system, &amp;quot;That the idea that Congress can levy taxes at pleasure, is false, and the suggestion wholly unsupported: that the preamble to the constitution is declaratory of the purposes of the union, and the assumption of any power not necessary to establish justice, &amp;c. to provide for the common defence, &amp;c. will be unconstitutional. Besides, in the very clause which gives the power of levying duties and taxes, the purposes to which the money shall be appropriated, are specified, viz. to pay the debts, and provide for the common defence and general welfare.&amp;quot; 1 I would ask those, who reason thus, to define what ideas are included under the terms, to provide for the common defence and general welfare? Are these terms definite, and will they be understood in the same manner, and to apply to the same cases by every one? No one will pretend they will. It will then be matter of opinion, what tends to the general welfare; and the Congress will be the only judges in the matter. To provide for the general welfare, is an abstract proposition, which mankind differ in the explanation of, as much as they do on any political or moral proposition that can be proposed; the most opposite measures may be pursued by different parties, and both may profess, that they have in view the general welfare; and both sides may be honest in their professions, or both may have sinister views. Those who advocate this new constitution declare, they are influenced by a regard to the general welfare; those who oppose it, declare they are moved by the same principle; and I have no doubt but a number on both sides are honest in their professions; and yet nothing is more certain than this, that to adopt this constitution, and not to adopt it, cannot both of them be promotive of the general welfare.</p>
+<p>It is as absurd to say, that the power of Congress is limited by these general expressions, &amp;quot;to provide for the common safety, and general welfare,&amp;quot; as it would be to say, that it would be limited, had the constitution said they should have power to lay taxes, &amp;c. at will and pleasure. Were this authority given, it might be said, that under it the legislature could not do injustice, or pursue any measures, but such as were calculated to promote the public good, and happiness. For every man, rulers as well as others, are bound by the immutable laws of God and reason, always to will what is right. It is certainly right and fit, that the governors of every people should provide for the common defence and general welfare; every government, therefore, in the world, even the greatest despot, is limited in the exercise of his power. But however just this reasoning may be, it would be found, in practice, a most pitiful restriction. The government would always say, their measures were designed and calculated to promote the public good; and there being no judge between them and the people, the rulers themselves must, and would always, judge for themselves.</p>
+<p>There are others of the favourers of this system, who admit, that the power of the Congress under it, with respect to revenue, will exist without limitation, and contend, that so it ought to be.</p>
+<p>It is said, &amp;quot;The power to raise armies, to build and equip fleets, and to provide for their support, ought to exist without limitation, because it is impossible to foresee, or to define, the extent and variety of national exigencies, or the correspondent extent and variety of the means which may be necessary to satisfy them.[&amp;quot;]</p>
+<p>This, it is said, &amp;quot;is one of those truths which, to correct and unprejudiced minds, carries its own evidence along with it. It rests upon axioms as simple as they are universal: the means ought to be proportioned to the end; the person, from whose agency the attainment of any end is expected, ought to possess the means by which it is to be attained.&amp;quot; 2</p>
+<p>This same writer insinuates, that the opponents to the plan promulgated by the convention, manifests a want of candor, in objecting to the extent of the powers proposed to be vested in this government; because he asserts, with an air of confidence, that the powers ought to be unlimited as to the object to which they extend; and that this position, if not self-evident, is at least clearly demonstrated by the foregoing mode of reasoning. But with submission to this author&#x27;s better judgment, I humbly conceive his reasoning will appear, upon examination, more specious than solid. The means, says the gentleman, ought to be proportioned to the end: admit the proposition to be true it is then necessary to enquire, what is the end of the government of the United States, in order to draw any just conclusions from it. Is this end simply to preserve the general government, and to provide for the common defence and general welfare of the union only? certainly not: for beside this, the state governments are to be supported, and provision made for the managing such of their internal concerns as are allotted to them. It is admitted, &amp;quot;that the circumstances of our country are such, as to demand a compound, instead of a simple, a confederate, instead of a sole government,&amp;quot; that the objects of each ought to be pointed out, and that each ought to possess ample authority to execute the powers committed to them. The government then, being complex in its nature, the end it has in view is so also; and it is as necessary, that the state governments should possess the means to attain the ends expected from them, as for the general government. Neither the general government, nor the state governments, ought to be vested with all the powers proper to be exercised for promoting the ends of government. The powers are divided between them &amp;#151; certain ends are to be attained by the one, and other certain ends by the other; and these, taken together, include all the ends of good government. This being the case, the conclusion follows, that each should be furnished with the means, to attain the ends, to which they are designed.</p>
+<p>To apply this reasoning to the case of revenue; the general government is charged with the care of providing for the payment of the debts of the United States; supporting the general government, and providing for the defence of the union. To obtain these ends, they should be furnished with means. But does it thence follow, that they should command all the revenues of the United States! Most certainly it does not. For if so, it will follow, that no means will be left to attain other ends, as necessary to the happiness of the country, as those committed to their care. The individual states have debts to discharge; their legislatures and executives are to be supported, and provision is to be made for the administration of justice in the respective states. For these objects the general government has no authority to provide; nor is it proper it should. It is clear then. that the states should have the command of such revenues, as to answer the ends they have to obtain. To say, &amp;quot;that the circumstances that endanger the safety of nations are infinite,&amp;quot; and from hence to infer, that all the sources of revenue in the states should be yielded to the general government, is not conclusive reasoning: for the Congress are authorized only to controul in general concerns, and not regulate local and internal ones; and these are as essentially requisite to be provided for as those. The peace and happiness of a community is as intimately connected with the prudent direction of their domestic affairs, and the due administration of justice among themselves, as with a competent provision for their defence against foreign invaders, and indeed more so.</p>
+<p>Upon the whole, I conceive, that there cannot be a clearer position than this, that the state governments ought to have an uncontroulable power to raise a revenue, adequate to the exigencies of their governments; and, I presume, no such power is left them by this constitution.</p>
+<p>Brutus.</p>
+<p>1 . Vide an examination into the leading principles of the federal constitution, printed in Philadelphia, Page 34.</p>
+<p>2 . Vide the Federalist, No. 23.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-30/" class="cross-ref cross-ref-opp">On general power of taxation</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay VI — On the Power of Taxation. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 6 &bull; December 27, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-6";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay VI — On the Power of Taxation. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

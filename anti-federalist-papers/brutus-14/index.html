@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay XIV — On Appellate Jurisdiction — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay XIV — On Appellate Jurisdiction, February 28, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 14
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 14 · Published in New-York Journal</p>
+  <h1>Essay XIV — On Appellate Jurisdiction</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; February 28, 1788 &bull; 3,481 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-13/" class="nav-btn">← Brutus 13</a>
+    <a href="/anti-federalist-papers/brutus-15/" class="nav-btn">Brutus 15 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">3,481 words &bull; Judiciary &bull; February 28, 1788</p>
+
+<p>Anti-Federalist Papers: Brutus #14</p>
+<h3 class="paper-section-head">XIV</h3>
+<p>28 February 1788</p>
+<p>The second paragraph of sect. 2d. art. 3, is in these words: &amp;quot;In all cases affecting ambassadors, other public ministers and consuls, and those in which a state shall be a party, the supreme court shall have original jurisdiction. In all the other cases before mentioned, the supreme court shall have appellate jurisdiction, both as to law and fact, with such exceptions, and under such regulations as the Congress shall make.[&amp;quot;]</p>
+<p>Although it is proper that the courts of the general government should have cognizance of all matters affecting ambassadors, foreign ministers, and consuls; yet I question much the propriety of giving the supreme court original jurisdiction in all cases of this kind.</p>
+<p>Ambassadors, and other public ministers, claim, and are entitled by the law of nations, to certain privileges, and exemptions, both for their persons and their servants.</p>
+<p>The meanest servant of an ambassador is exempted by the law of nations from being sued for debt. Should a suit be brought against such an one by a citizen, through inadvertency or want of information, he will be subject to an action in the supreme court. All the officers concerned in issuing or executing the process will be liable to like actions. Thus may a citizen of a state be compelled, at great expence and inconveniency, to defend himself against a suit, brought against him in the supreme court, for inadvertently commencing an action against the most menial servant of an ambassador for a just debt.</p>
+<p>The appellate jurisdiction granted to the supreme court, in this paragraph, has justly been considered as one of the most objectionable parts of the constitution: under this power, appeals may be had from the inferior courts to the supreme, in every case to which the judicial power extends, except in the few instances in which the supreme court will have original jurisdiction.</p>
+<p>By this article, appeals will lie to the supreme court, in all criminal as well as civil causes. This I know, has been disputed by some; but I presume the point will appear clear to any one, who will attend to the connection of this paragraph with the one that precedes it. In the former, all the cases, to which the power of the judicial shall extend, whether civil or criminal, are enumerated. There is no criminal matter, to which the judicial power of the United States will extend; but such as are included under some one of the cases specified in this section. For this section is intended to define all the cases, of every description, to which the power of the judicial shall reach. But in all these cases it is declared, the supreme court shall have appellate jurisdiction, except in those which affect ambassadors, other public ministers and consuls, and those in which a state shall be a party. If then this section extends the power of the judicial, to criminal cases, it allows appeals in such cases. If the power of the judicial is not extended to criminal matters by this section, I ask, by what part of this system does it appear, that they have any cognizance of them?</p>
+<p>I believe it is a new and unusual thing to allow appeals in criminal matters. It is contrary to the sense of our laws, and dangerous to the lives and liberties of the citizen. As our law now stands, a person charged with a crime has a right to a fair and impartial trial by a jury of his country [county?], and their verdict is final. If he is acquitted no other court can call upon him to answer for the same crime. But by this system, a man may have had ever so fair a trial, have been acquitted by ever so respectable a jury of his country; and still the officer of the government who prosecutes, may appeal to the supreme court. The whole matter may have a second hearing. By this means, persons who may have disobliged those who execute the general government, may be subjected to intolerable oppression. They may be kept in long and ruinous confinement, and exposed to heavy and insupportable charges, to procure the attendence of witnesses, and provide the means of their defence, at a great distance from their places of residence.</p>
+<p>I can scarcely believe there can be a considerate citizen of the United States, that will approve of this appellate jurisdiction, as extending to criminal cases, if they will give themselves time for reflection.</p>
+<p>Whether the appellate jurisdiction as it respects civil matters, will not prove injurious to the rights of the citizens, and destructive of those privileges which have ever been held sacred by Americans, and whether it will not render the administration of justice intolerably burthensome, intricate, and dilatory, will best appear, when we have considered the nature and operation of this power.</p>
+<p>It has been the fate of this clause, as it has of most of those, against which unanswerable objections have been offered, to be explained different ways, by the advocates and opponents to the constitution. I confess I do not know what the advocates of the system, would make it mean, for I have not been fortunate enough to see in any publication this clause taken up and considered. It is certain however, they do not admit the explanation which those who oppose the constitution give it, or otherwise they would not so frequently charge them with want of candor, for alledging that it takes away the trial by jury[;] appeals from an inferior to a superior court, as practised in the civil law courts, are well understood. In these courts, the judges determine both on the law and the fact; and appeals are allowed from the inferior to the superior courts, on the whole merits: the superior tribunal will re-examine all the facts as well as the law, and frequently new facts will be introduced, so as many times to render the cause in the court of appeals very different from what it was in the court below.</p>
+<p>If the appellate jurisdiction of the supreme court, be understood in the above sense, the term is perfectly intelligible. The meaning then is, that in all the civil causes enumerated, the supreme court shall have authority to re-examine the whole merits of the case, both with respect to the facts and the law which may arise under it, without the intervention of a jury; that this is the sense of this part of the system appears to me clear, from the express words of it, &amp;quot;in all the other cases before mentioned, the supreme court shall have appellate jurisdiction, both as to law and fact, &amp;c.&amp;quot; Who are the supreme court? Does it not consist of the judges? and they are to have the same jurisdiction of the fact as they are to have of the law. They will therefore have the same authority to determine the fact as they will have to determine the law, and no room is left for a jury on appeals to the supreme court.</p>
+<p>If we understand the appellate jurisdiction in any other way, we shall be left utterly at a loss to give it a meaning; the common law is a stranger to any such jurisdiction: no appeals can lie from any of our common law courts, upon the merits of the case; the only way in which they can go up from an inferior to a superior tribunal is by habeas corpus before a hearing, or by certiorari, or writ of error, after they are determined in the subordinate courts; but in no case, when they are carried up, are the facts re-examined, but they are always taken as established in the inferior courts.</p>
+<p>( To be continued. )</p>
+<h3 class="paper-section-head">XIV</h3>
+<p>6 March 1788</p>
+<p>( Continued. )</p>
+<p>It may still be insisted that this clause does not take away the trial by jury on appeals, but that this may be provided for by the legislature, under that paragraph which authorises them to form regulations and restrictions for the court in the exercise of this power.</p>
+<p>The natural meaning of this paragraph seems to be no more than this, that Congress may declare, that certain cases shall not be subject to the appellate jurisdiction, and they may point out the mode in which the court shall proceed in bringing up the causes before them, the manner of their taking evidence to establish the facts, and the method of the courts proceeding. But I presume they cannot take from the court the right of deciding on the fact, any more than they can deprive them of the right of determining on the law, when a cause is once before them; for they have the same jurisdiction as to fact, as they have as to the law. But supposing the Congress may under this clause establish the trial by jury on appeals, it does not seem to me that it will render this article much less exceptionable. An appeal from one court and jury, to another court and jury, is a thing altogether unknown in the laws of our state, and in most of the states in the union. A practice of this kind prevails in the eastern states; actions are there commenced in the inferior courts, and an appeal lies from them on the whole merits to the superior courts: the consequence is well known, very few actions are determined in the lower courts; it is rare that a case of any importance is not carried by appeal to the supreme court, and the jurisdiction of the inferior courts is merely nominal; this has proved so burthensome to the people in Massachusetts, that it was one of the principal causes which excited the insurrection in that state, in the year past; very few sensible and moderate men in that state but what will admit, that the inferior courts are almost entirely useless, and answer very little purpose, save only to accumulate costs against the poor debtors who are already unable to pay their just debts.</p>
+<p>But the operation of the appellate power in the supreme judicial of the United States, would work infinitely more mischief than any such power can do in a single state.</p>
+<p>The trouble and expence to the parties would be endless and intolerable. No man can say where the supreme court are to hold their sessions, the presumption is, however, that it must be at the seat of the general government: in this case parties must travel many hundred miles, with their witnesses and lawyers, to prosecute or defend a suit; no man of midling fortune, can sustain the expence of such a law suit, and therefore the poorer and midling class of citizens will be under the necessity of submitting to the demands of the rich and the lordly, in cases that will come under the cognizance of this court. If it be said, that to prevent this oppression, the supreme court will set in different parts of the union, it may be replied, that this would only make the oppression somewhat more tolerable, but by no means so much as to give a chance of justice to the poor and midling class. It is utterly impossible that the supreme court can move into so many different parts of the Union, as to make it convenient or even tolerable to attend before them with witnesses to try causes from every part of the United states; if to avoid the expence and inconvenience of calling witnesses from a great distance, to give evidence before the supreme court, the expedient of taking the deposition of witnesses in writing should be adopted, it would not help the matter. It is of great importance in the distribution of justice that witnesses should be examined face to face, that the parties should have the fairest opportunity of cross examining them in order to bring out the whole truth; there is something in the manner in which a witness delivers his testimony which cannot be committed to paper, and which yet very frequently gives a complexion to his evidence, very different from what it would bear if committed to writing, besides the expence of taking written testimony would be enormous; those who are acquainted with the costs that arise in the courts, where all the evidence is taken in writing, well know that they exceed beyond all comparison those of the common law courts, where witnesses are examined viva voce.</p>
+<p>The costs accruing in courts generally advance with the grade of the court; thus the charges attending a suit in our common pleas, is much less than those in the supreme court, and these are much lower than those in the court of chancery; indeed the costs in the last mentioned court, are in many cases so exorbitant and the proceedings so dilatory that the suitor had almost as well give up his demand as to prosecute his suit. We have just reason to suppose, that the costs in the supreme general court will exceed either of our courts; the officers of the general court will be more dignified than those of the states, the lawyers of the most ability will practice in them, and the trouble and expence of attending them will be greater. From all these considerations, it appears, that the expence attending suits in the supreme court will be so great, as to put it out of the power of the poor and midling class of citizens to contest a suit in it.</p>
+<p>From these remarks it appears, that the administration of justice under the powers of the judicial will be dilatory; that it will be attended with such an heavy expence as to amount to little short of a denial of justice to the poor and middling class of people who in every government stand most in need of the protection of the law; and that the trial by jury, which has so justly been the boast of our fore fathers as well as ourselves is taken away under them.</p>
+<p>These extraordinary powers in this court are the more objectionable, because there does not appear the least necessity for them, in order to secure a due and impartial distribution of justice.</p>
+<p>The want of ability or integrity, or a disposition to render justice to every suitor, has not been objected against the courts of the respective states: so far as I have been informed, the courts of justice in all the states, have ever been found ready, to administer justice with promptitude and impartiality according to the laws of the land; It is true in some of the states, paper money has been made, and the debtor authorised to discharge his debts with</p>
+<p>it, at a depreciated value, in orders, tender laws have been passed, obliging the creditor to receive on execution other property than money in discharge of his demand, and in several of the states laws have been made unfavorable to the creditor and tending to render property insecure.</p>
+<p>But these evils have not happened from any defect in the judicial departments of the states; the courts indeed are bound to take notice of these laws, and so will the courts of the general government be under obligation to observe the laws made by the general legislature not repugnant to the constitution; but so far have the judicial been from giving undue latitude of construction to laws of this kind, that they have invariably strongly inclined to the other side. All the acts of our legislature, which have been charged with being of this complexion, have uniformly received the strictest construction by the judges, and have been extended to no cases but to such as came within the strict letter of the law. In this way, have our courts, I will not say evaded the law, but so limited it in its operation as to work the least possible injustice: the same thing has taken place in Rhode-Island, which has justly rendered herself infamous, by her tenaciously adhering to her paper money system. The judges there gave a decision, in opposition to the words of the Statute, on this principle, that a construction according to the words of it, would contradict the fundamental maxims of their laws and constitution.</p>
+<p>No pretext therefore, can be formed, from the conduct of the judicial courts which will justify giving such powers to the supreme general court, for their decisions have been such as to give just ground of confidence in them, that they will firmly adhere to the principles of rectitude, and there is no necessity of lodging these powers in the courts, in order to guard against the evils justly complained of, on the subject of security of property under this constitution. For it has provided, &amp;quot;that no state shall emit bills of credit, or make any thing but gold and silver coin a tender in payment of debts.&amp;quot; It has also declared, that &amp;quot;no state shall pass any law impairing the obligation of contracts.&amp;quot; &amp;#8212; These prohibitions give the most perfect security against those attacks upon property which I am sorry to say some of the states have but too wantonly made, by passing laws sanctioning fraud in the debtor against his creditor. For &amp;quot;this constitution will be the supreme law of the land, and the judges in every state will be bound thereby; any thing in the constitution and laws of any state to the contrary notwithstanding.&amp;quot;</p>
+<p>The courts of the respective states might therefore have been securely trusted, with deciding all cases between man and man, whether citizens of the same state or of different states, or between foreigners and citizens, and indeed for ought I see every case that can arise under the constitution or laws of the United States, ought in the first instance to be tried in the court of the state, except those which might arise between states, such as respect ambassadors, or other public ministers, and perhaps such as call in question the claim of lands under grants from different states. The state courts would be under sufficient controul, if writs of error were allowed from the state courts to the supreme court of the union, according to the practice of the courts in England and of this state, on all cases in which the laws of the union are concerned, and perhaps to all cases in which a foreigner is a party.</p>
+<p>This method would preserve the good old way of administering justice, would bring justice to every man&#x27;s door, and preserve the inestimable right of trial by jury. It would be following, as near as our circumstances will admit, the practice of the courts in England, which is almost the only thing I would wish to copy in their government.</p>
+<p>But as this system now stands, there is to be as many inferior courts as Congress may see fit to appoint, who are to be authorised to originate and in the first instance to try all the cases falling under the description of this article; there is no security that a trial by jury shall be had in these courts, but the trial here will soon become, as it is in Massachusetts&#x27; inferior courts, mere matter of form; for an appeal may be had to the supreme court on the whole merits. This court is to have power to determine in law and in equity, on the law and the fact, and this court is exalted above all other power in the government, subject to no controul, and so fixed as not to be removeable, but upon impeachment, which I shall hereafter shew, is much the same thing as not to be removeable at all.</p>
+<p>To obviate the objections made to the judicial power it has been said, that the Congress, in forming the regulations and exceptions which they are authorised to make respecting the appellate jurisdiction, will make provision against all the evils which are apprehended from this article. On this I would remark, that this way of answering the objection made to the power, implies an admission that the power is in itself improper without restraint, and if so, why not restrict it in the first instance.</p>
+<p>The just way of investigating any power given to a government, is to examine its operation supposing it to be put in exercise. If upon enquiry, it appears that the power, if exercised, would be prejudicial, it ought not to be given. For to answer objections made to a power given to a government, by saying it will never be exercised, is really admitting that the power ought not to be exercised, and therefore ought not to be granted.</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-81/" class="cross-ref cross-ref-opp">On appellate jurisdiction</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay XIV — On Appellate Jurisdiction. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 14 &bull; February 28, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-14";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay XIV — On Appellate Jurisdiction. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

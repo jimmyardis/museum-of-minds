@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 82 — State Courts and Federal Jurisdiction — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 82: The Judiciary Continued by Alexander Hamilton, May 28, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '82'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;82
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 82 · Published by McLEAN&#x27;s Edition, New York</p>
+  <h1>The Judiciary Continued</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; May 28, 1788 &bull; 1,540 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-81/" class="nav-btn">← No.&thinsp;81</a>
+    <a href="/federalist-papers/federalist-83/" class="nav-btn">No.&thinsp;83 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,540 words &bull; Judiciary &bull; May 28, 1788</p>
+
+<p>THE erection of a new government, whatever care or wisdom may distinguish the work, cannot fail to originate questions of intricacy and nicety; and these may, in a particular manner, be expected to flow from the establishment of a constitution founded upon the total or partial incorporation of a number of distinct sovereignties. &#x27;Tis time only that can mature and perfect so compound a system, can liquidate the meaning of all the parts, and can adjust them to each other in a harmonious and consistent WHOLE.</p>
+<p>Such questions, accordingly, have arisen upon the plan proposed by the convention, and particularly concerning the judiciary department. The principal of these respect the situation of the State courts in regard to those causes which are to be submitted to federal jurisdiction. Is this to be exclusive, or are those courts to possess a concurrent jurisdiction? If the latter, in what relation will they stand to the national tribunals? These are inquiries which we meet with in the mouths of men of sense, and which are certainly entitled to attention.</p>
+<p>The principles established in a former paper(1) teach us that the States will retain all pre-existing authorities which may not be exclusively delegated to the federal head; and that this exclusive delegation can only exist in one of three cases: where an exclusive authority is, in express terms, granted to the Union; or where a particular authority is granted to the Union, and the exercise of a like authority is prohibited to the States; or where an authority is granted to the Union, with which a similar authority in the States would be utterly incompatible. Though these principles may not apply with the same force to the judiciary as to the legislative power, yet I am inclined to think that they are, in the main, just with respect to the former, as well as the latter. And under this impression, I shall lay it down as a rule, that the State courts will retain the jurisdiction they now have, unless it appears to be taken away in one of the enumerated modes.</p>
+<p>The only thing in the proposed Constitution, which wears the appearance of confining the causes of federal cognizance to the federal courts, is contained in this passage: &quot;THE JUDICIAL POWER of the United States shall be vested in one Supreme Court, and in such inferior courts as the Congress shall from time to time ordain and establish.&quot; This might either be construed to signify, that the supreme and subordinate courts of the Union should alone have the power of deciding those causes to which their authority is to extend; or simply to denote, that the organs of the national judiciary should be one Supreme Court, and as many subordinate courts as Congress should think proper to appoint; or in other words, that the United States should exercise the judicial power with which they are to be invested, through one supreme tribunal, and a certain number of inferior ones, to be instituted by them. The first excludes, the last admits, the concurrent jurisdiction of the State tribunals; and as the first would amount to an alienation of State power by implication, the last appears to me the most natural and the most defensible construction.</p>
+<p>But this doctrine of concurrent jurisdiction is only clearly applicable to those descriptions of causes of which the State courts have previous cognizance. It is not equally evident in relation to cases which may grow out of, and be peculiar to, the Constitution to be established; for not to allow the State courts a right of jurisdiction in such cases, can hardly be considered as the abridgment of a pre-existing authority. I mean not therefore to contend that the United States, in the course of legislation upon the objects intrusted to their direction, may not commit the decision of causes arising upon a particular regulation to the federal courts solely, if such a measure should be deemed expedient; but I hold that the State courts will be divested of no part of their primitive jurisdiction, further than may relate to an appeal; and I am even of opinion that in every case in which they were not expressly excluded by the future acts of the national legislature, they will of course take cognizance of the causes to which those acts may give birth. This I infer from the nature of judiciary power, and from the general genius of the system. The judiciary power of every government looks beyond its own local or municipal laws, and in civil cases lays hold of all subjects of litigation between parties within its jurisdiction, though the causes of dispute are relative to the laws of the most distant part of the globe. Those of Japan, not less than of New York, may furnish the objects of legal discussion to our courts. When in addition to this we consider the State governments and the national governments, as they truly are, in the light of kindred systems, and as parts of ONE WHOLE, the inference seems to be conclusive, that the State courts would have a concurrent jurisdiction in all cases arising under the laws of the Union, where it was not expressly prohibited.</p>
+<p>Here another question occurs: What relation would subsist between the national and State courts in these instances of concurrent jurisdiction? I answer, that an appeal would certainly lie from the latter, to the Supreme Court of the United States. The Constitution in direct terms gives an appellate jurisdiction to the Supreme Court in all the enumerated cases of federal cognizance in which it is not to have an original one, without a single expression to confine its operation to the inferior federal courts. The objects of appeal, not the tribunals from which it is to be made, are alone contemplated. From this circumstance, and from the reason of the thing, it ought to be construed to extend to the State tribunals. Either this must be the case, or the local courts must be excluded from a concurrent jurisdiction in matters of national concern, else the judiciary authority of the Union may be eluded at the pleasure of every plaintiff or prosecutor. Neither of these consequences ought, without evident necessity, to be involved; the latter would be entirely inadmissible, as it would defeat some of the most important and avowed purposes of the proposed government, and would essentially embarrass its measures. Nor do I perceive any foundation for such a supposition. Agreeably to the remark already made, the national and State systems are to be regarded as ONE WHOLE. The courts of the latter will of course be natural auxiliaries to the execution of the laws of the Union, and an appeal from them will as naturally lie to that tribunal which is destined to unite and assimilate the principles of national justice and the rules of national decisions. The evident aim of the plan of the convention is, that all the causes of the specified classes shall, for weighty public reasons, receive their original or final determination in the courts of the Union. To confine, therefore, the general expressions giving appellate jurisdiction to the Supreme Court, to appeals from the subordinate federal courts, instead of allowing their extension to the State courts, would be to abridge the latitude of the terms, in subversion of the intent, contrary to every sound rule of interpretation.</p>
+<p>But could an appeal be made to lie from the State courts to the subordinate federal judicatories? This is another of the questions which have been raised, and of greater difficulty than the former. The following considerations countenance the affirmative. The plan of the convention, in the first place, authorizes the national legislature &quot;to constitute tribunals inferior to the Supreme Court.&quot;(2) It declares, in the next place, that &quot;the JUDICIAL POWER of the United States shall be vested in one Supreme Court, and in such inferior courts as Congress shall ordain and establish&quot;; and it then proceeds to enumerate the cases to which this judicial power shall extend. It afterwards divides the jurisdiction of the Supreme Court into original and appellate, but gives no definition of that of the subordinate courts. The only outlines described for them, are that they shall be &quot;inferior to the Supreme Court,&quot; and that they shall not exceed the specified limits of the federal judiciary. Whether their authority shall be original or appellate, or both, is not declared. All this seems to be left to the discretion of the legislature. And this being the case, I perceive at present no impediment to the establishment of an appeal from the State courts to the subordinate national tribunals; and many advantages attending the power of doing it may be imagined. It would diminish the motives to the multiplication of federal courts, and would admit of arrangements calculated to contract the appellate jurisdiction of the Supreme Court. The State tribunals may then be left with a more entire charge of federal causes; and appeals, in most cases in which they may be deemed proper, instead of being carried to the Supreme Court, may be made to lie from the State courts to district courts of the Union.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. No. 31.</p>
+<p>2. Sec. 8, Art. 1.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 82</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 82: The Judiciary Continued. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 82…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 82 &bull; Alexander Hamilton &bull; May 28, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-82";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 82 (State Courts and Federal Jurisdiction). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

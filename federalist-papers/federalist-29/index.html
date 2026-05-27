@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 29 — Concerning the Militia — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 29: Concerning the Militia by Alexander Hamilton, January 9, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '29'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;29
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 29 · Published by New York Packet</p>
+  <h1>Concerning the Militia</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; January 9, 1788 &bull; 2,230 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-28/" class="nav-btn">← No.&thinsp;28</a>
+    <a href="/federalist-papers/federalist-30/" class="nav-btn">No.&thinsp;30 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,230 words &bull; Standing Armies &bull; January 9, 1788</p>
+
+<p>THE power of regulating the militia, and of commanding its services in times of insurrection and invasion are natural incidents to the duties of superintending the common defense, and of watching over the internal peace of the Confederacy.</p>
+<p>It requires no skill in the science of war to discern that uniformity in the organization and discipline of the militia would be attended with the most beneficial effects, whenever they were called into service for the public defense. It would enable them to discharge the duties of the camp and of the field with mutual intelligence and concert an advantage of peculiar moment in the operations of an army; and it would fit them much sooner to acquire the degree of proficiency in military functions which would be essential to their usefulness. This desirable uniformity can only be accomplished by confiding the regulation of the militia to the direction of the national authority. It is, therefore, with the most evident propriety, that the plan of the convention proposes to empower the Union &quot;to provide for organizing, arming, and disciplining the militia, and for governing such part of them as may be employed in the service of the United States, RESERVING TO THE STATES RESPECTIVELY THE APPOINTMENT OF THE OFFICERS, AND THE AUTHORITY OF TRAINING THE MILITIA ACCORDING TO THE DISCIPLINE PRESCRIBED BY CONGRESS.&quot;</p>
+<p>Of the different grounds which have been taken in opposition to the plan of the convention, there is none that was so little to have been expected, or is so untenable in itself, as the one from which this particular provision has been attacked. If a well-regulated militia be the most natural defense of a free country, it ought certainly to be under the regulation and at the disposal of that body which is constituted the guardian of the national security. If standing armies are dangerous to liberty, an efficacious power over the militia, in the body to whose care the protection of the State is committed, ought, as far as possible, to take away the inducement and the pretext to such unfriendly institutions. If the federal government can command the aid of the militia in those emergencies which call for the military arm in support of the civil magistrate, it can the better dispense with the employment of a different kind of force. If it cannot avail itself of the former, it will be obliged to recur to the latter. To render an army unnecessary, will be a more certain method of preventing its existence than a thousand prohibitions upon paper.</p>
+<p>In order to cast an odium upon the power of calling forth the militia to execute the laws of the Union, it has been remarked that there is nowhere any provision in the proposed Constitution for calling out the POSSE COMITATUS, to assist the magistrate in the execution of his duty, whence it has been inferred, that military force was intended to be his only auxiliary. There is a striking incoherence in the objections which have appeared, and sometimes even from the same quarter, not much calculated to inspire a very favorable opinion of the sincerity or fair dealing of their authors. The same persons who tell us in one breath, that the powers of the federal government will be despotic and unlimited, inform us in the next, that it has not authority sufficient even to call out the POSSE COMITATUS. The latter, fortunately, is as much short of the truth as the former exceeds it. It would be as absurd to doubt, that a right to pass all laws NECESSARY AND PROPER to execute its declared powers, would include that of requiring the assistance of the citizens to the officers who may be intrusted with the execution of those laws, as it would be to believe, that a right to enact laws necessary and proper for the imposition and collection of taxes would involve that of varying the rules of descent and of the alienation of landed property, or of abolishing the trial by jury in cases relating to it. It being therefore evident that the supposition of a want of power to require the aid of the POSSE COMITATUS is entirely destitute of color, it will follow, that the conclusion which has been drawn from it, in its application to the authority of the federal government over the militia, is as uncandid as it is illogical. What reason could there be to infer, that force was intended to be the sole instrument of authority, merely because there is a power to make use of it when necessary? What shall we think of the motives which could induce men of sense to reason in this manner? How shall we prevent a conflict between charity and conviction?</p>
+<p>By a curious refinement upon the spirit of republican jealousy, we are even taught to apprehend danger from the militia itself, in the hands of the federal government. It is observed that select corps may be formed, composed of the young and ardent, who may be rendered subservient to the views of arbitrary power. What plan for the regulation of the militia may be pursued by the national government, is impossible to be foreseen. But so far from viewing the matter in the same light with those who object to select corps as dangerous, were the Constitution ratified, and were I to deliver my sentiments to a member of the federal legislature from this State on the subject of a militia establishment, I should hold to him, in substance, the following discourse:</p>
+<p>&quot;The project of disciplining all the militia of the United States is as futile as it would be injurious, if it were capable of being carried into execution. A tolerable expertness in military movements is a business that requires time and practice. It is not a day, or even a week, that will suffice for the attainment of it. To oblige the great body of the yeomanry, and of the other classes of the citizens, to be under arms for the purpose of going through military exercises and evolutions, as often as might be necessary to acquire the degree of perfection which would entitle them to the character of a well-regulated militia, would be a real grievance to the people, and a serious public inconvenience and loss. It would form an annual deduction from the productive labor of the country, to an amount which, calculating upon the present numbers of the people, would not fall far short of the whole expense of the civil establishments of all the States. To attempt a thing which would abridge the mass of labor and industry to so considerable an extent, would be unwise: and the experiment, if made, could not succeed, because it would not long be endured. Little more can reasonably be aimed at, with respect to the people at large, than to have them properly armed and equipped; and in order to see that this be not neglected, it will be necessary to assemble them once or twice in the course of a year.</p>
+<p>&quot;But though the scheme of disciplining the whole nation must be abandoned as mischievous or impracticable; yet it is a matter of the utmost importance that a well-digested plan should, as soon as possible, be adopted for the proper establishment of the militia. The attention of the government ought particularly to be directed to the formation of a select corps of moderate extent, upon such principles as will really fit them for service in case of need. By thus circumscribing the plan, it will be possible to have an excellent body of well-trained militia, ready to take the field whenever the defense of the State shall require it. This will not only lessen the call for military establishments, but if circumstances should at any time oblige the government to form an army of any magnitude that army can never be formidable to the liberties of the people while there is a large body of citizens, little, if at all, inferior to them in discipline and the use of arms, who stand ready to defend their own rights and those of their fellow-citizens. This appears to me the only substitute that can be devised for a standing army, and the best possible security against it, if it should exist.&quot;</p>
+<p>Thus differently from the adversaries of the proposed Constitution should I reason on the same subject, deducing arguments of safety from the very sources which they represent as fraught with danger and perdition. But how the national legislature may reason on the point, is a thing which neither they nor I can foresee.</p>
+<p>There is something so far-fetched and so extravagant in the idea of danger to liberty from the militia, that one is at a loss whether to treat it with gravity or with raillery; whether to consider it as a mere trial of skill, like the paradoxes of rhetoricians; as a disingenuous artifice to instil prejudices at any price; or as the serious offspring of political fanaticism. Where in the name of common-sense, are our fears to end if we may not trust our sons, our brothers, our neighbors, our fellow-citizens? What shadow of danger can there be from men who are daily mingling with the rest of their countrymen and who participate with them in the same feelings, sentiments, habits and interests? What reasonable cause of apprehension can be inferred from a power in the Union to prescribe regulations for the militia, and to command its services when necessary, while the particular States are to have the SOLE AND EXCLUSIVE APPOINTMENT OF THE OFFICERS? If it were possible seriously to indulge a jealousy of the militia upon any conceivable establishment under the federal government, the circumstance of the officers being in the appointment of the States ought at once to extinguish it. There can be no doubt that this circumstance will always secure to them a preponderating influence over the militia.</p>
+<p>In reading many of the publications against the Constitution, a man is apt to imagine that he is perusing some ill-written tale or romance, which instead of natural and agreeable images, exhibits to the mind nothing but frightful and distorted shapes--</p>
+<p>&quot;Gorgons, hydras, and chimeras dire&quot;;</p>
+<p>discoloring and disfiguring whatever it represents, and transforming everything it touches into a monster.</p>
+<p>A sample of this is to be observed in the exaggerated and improbable suggestions which have taken place respecting the power of calling for the services of the militia. That of New Hampshire is to be marched to Georgia, of Georgia to New Hampshire, of New York to Kentucky, and of Kentucky to Lake Champlain. Nay, the debts due to the French and Dutch are to be paid in militiamen instead of louis d&#x27;ors and ducats. At one moment there is to be a large army to lay prostrate the liberties of the people; at another moment the militia of Virginia are to be dragged from their homes five or six hundred miles, to tame the republican contumacy of Massachusetts; and that of Massachusetts is to be transported an equal distance to subdue the refractory haughtiness of the aristocratic Virginians. Do the persons who rave at this rate imagine that their art or their eloquence can impose any conceits or absurdities upon the people of America for infallible truths?</p>
+<p>If there should be an army to be made use of as the engine of despotism, what need of the militia? If there should be no army, whither would the militia, irritated by being called upon to undertake a distant and hopeless expedition, for the purpose of riveting the chains of slavery upon a part of their countrymen, direct their course, but to the seat of the tyrants, who had meditated so foolish as well as so wicked a project, to crush them in their imagined intrenchments of power, and to make them an example of the just vengeance of an abused and incensed people? Is this the way in which usurpers stride to dominion over a numerous and enlightened nation? Do they begin by exciting the detestation of the very instruments of their intended usurpations? Do they usually commence their career by wanton and disgustful acts of power, calculated to answer no end, but to draw upon themselves universal hatred and execration? Are suppositions of this sort the sober admonitions of discerning patriots to a discerning people? Or are they the inflammatory ravings of incendiaries or distempered enthusiasts? If we were even to suppose the national rulers actuated by the most ungovernable ambition, it is impossible to believe that they would employ such preposterous means to accomplish their designs.</p>
+<p>In times of insurrection, or invasion, it would be natural and proper that the militia of a neighboring State should be marched into another, to resist a common enemy, or to guard the republic against the violence of faction or sedition. This was frequently the case, in respect to the first object, in the course of the late war; and this mutual succor is, indeed, a principal end of our political association. If the power of affording it be placed under the direction of the Union, there will be no danger of a supine and listless inattention to the dangers of a neighbor, till its near approach had superadded the incitements of self-preservation to the too feeble impulses of duty and sympathy.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 29</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 29: Concerning the Militia. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 29…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 29 &bull; Alexander Hamilton &bull; January 9, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-29";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 29 (Concerning the Militia). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

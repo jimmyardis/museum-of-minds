@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 23 — Necessity of National Defense — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 23: The Necessity of a Government as Energetic as the One Proposed to the Preservation of the Union by Alexander Hamilton, December 18, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '23'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;23
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 23 · Published by New York Packet</p>
+  <h1>The Necessity of a Government as Energetic as the One Proposed to the Preservation of the Union</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; December 18, 1787 &bull; 1,794 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-22/" class="nav-btn">← No.&thinsp;22</a>
+    <a href="/federalist-papers/federalist-24/" class="nav-btn">No.&thinsp;24 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,794 words &bull; Standing Armies &bull; December 18, 1787</p>
+
+<p>THE necessity of a Constitution, at least equally energetic with the one proposed, to the preservation of the Union, is the point at the examination of which we are now arrived.</p>
+<p>This inquiry will naturally divide itself into three branches--the objects to be provided for by the federal government, the quantity of power necessary to the accomplishment of those objects, the persons upon whom that power ought to operate. Its distribution and organization will more properly claim our attention under the succeeding head.</p>
+<p>The principal purposes to be answered by union are these--the common defense of the members; the preservation of the public peace as well against internal convulsions as external attacks; the regulation of commerce with other nations and between the States; the superintendence of our intercourse, political and commercial, with foreign countries.</p>
+<p>The authorities essential to the common defense are these: to raise armies; to build and equip fleets; to prescribe rules for the government of both; to direct their operations; to provide for their support. These powers ought to exist without limitation, BECAUSE IT IS IMPOSSIBLE TO FORESEE OR DEFINE THE EXTENT AND VARIETY OF NATIONAL EXIGENCIES, OR THE CORRESPONDENT EXTENT AND VARIETY OF THE MEANS WHICH MAY BE NECESSARY TO SATISFY THEM. The circumstances that endanger the safety of nations are infinite, and for this reason no constitutional shackles can wisely be imposed on the power to which the care of it is committed. This power ought to be coextensive with all the possible combinations of such circumstances; and ought to be under the direction of the same councils which are appointed to preside over the common defense.</p>
+<p>This is one of those truths which, to a correct and unprejudiced mind, carries its own evidence along with it; and may be obscured, but cannot be made plainer by argument or reasoning. It rests upon axioms as simple as they are universal; the MEANS ought to be proportioned to the END; the persons, from whose agency the attainment of any END is expected, ought to possess the MEANS by which it is to be attained.</p>
+<p>Whether there ought to be a federal government intrusted with the care of the common defense, is a question in the first instance, open for discussion; but the moment it is decided in the affirmative, it will follow, that that government ought to be clothed with all the powers requisite to complete execution of its trust. And unless it can be shown that the circumstances which may affect the public safety are reducible within certain determinate limits; unless the contrary of this position can be fairly and rationally disputed, it must be admitted, as a necessary consequence, that there can be no limitation of that authority which is to provide for the defense and protection of the community, in any matter essential to its efficacy that is, in any matter essential to the FORMATION, DIRECTION, or SUPPORT of the NATIONAL FORCES.</p>
+<p>Defective as the present Confederation has been proved to be, this principle appears to have been fully recognized by the framers of it; though they have not made proper or adequate provision for its exercise. Congress have an unlimited discretion to make requisitions of men and money; to govern the army and navy; to direct their operations. As their requisitions are made constitutionally binding upon the States, who are in fact under the most solemn obligations to furnish the supplies required of them, the intention evidently was that the United States should command whatever resources were by them judged requisite to the &quot;common defense and general welfare.&quot; It was presumed that a sense of their true interests, and a regard to the dictates of good faith, would be found sufficient pledges for the punctual performance of the duty of the members to the federal head.</p>
+<p>The experiment has, however, demonstrated that this expectation was ill-founded and illusory; and the observations, made under the last head, will, I imagine, have sufficed to convince the impartial and discerning, that there is an absolute necessity for an entire change in the first principles of the system; that if we are in earnest about giving the Union energy and duration, we must abandon the vain project of legislating upon the States in their collective capacities; we must extend the laws of the federal government to the individual citizens of America; we must discard the fallacious scheme of quotas and requisitions, as equally impracticable and unjust. The result from all this is that the Union ought to be invested with full power to levy troops; to build and equip fleets; and to raise the revenues which will be required for the formation and support of an army and navy, in the customary and ordinary modes practiced in other governments.</p>
+<p>If the circumstances of our country are such as to demand a compound instead of a simple, a confederate instead of a sole, government, the essential point which will remain to be adjusted will be to discriminate the OBJECTS, as far as it can be done, which shall appertain to the different provinces or departments of power; allowing to each the most ample authority for fulfilling the objects committed to its charge. Shall the Union be constituted the guardian of the common safety? Are fleets and armies and revenues necessary to this purpose? The government of the Union must be empowered to pass all laws, and to make all regulations which have relation to them. The same must be the case in respect to commerce, and to every other matter to which its jurisdiction is permitted to extend. Is the administration of justice between the citizens of the same State the proper department of the local governments? These must possess all the authorities which are connected with this object, and with every other that may be allotted to their particular cognizance and direction. Not to confer in each case a degree of power commensurate to the end, would be to violate the most obvious rules of prudence and propriety, and improvidently to trust the great interests of the nation to hands which are disabled from managing them with vigor and success.</p>
+<p>Who is likely to make suitable provisions for the public defense, as that body to which the guardianship of the public safety is confided; which, as the centre of information, will best understand the extent and urgency of the dangers that threaten; as the representative of the WHOLE, will feel itself most deeply interested in the preservation of every part; which, from the responsibility implied in the duty assigned to it, will be most sensibly impressed with the necessity of proper exertions; and which, by the extension of its authority throughout the States, can alone establish uniformity and concert in the plans and measures by which the common safety is to be secured? Is there not a manifest inconsistency in devolving upon the federal government the care of the general defense, and leaving in the State governments the EFFECTIVE powers by which it is to be provided for? Is not a want of co-operation the infallible consequence of such a system? And will not weakness, disorder, an undue distribution of the burdens and calamities of war, an unnecessary and intolerable increase of expense, be its natural and inevitable concomitants? Have we not had unequivocal experience of its effects in the course of the revolution which we have just accomplished?</p>
+<p>Every view we may take of the subject, as candid inquirers after truth, will serve to convince us, that it is both unwise and dangerous to deny the federal government an unconfined authority, as to all those objects which are intrusted to its management. It will indeed deserve the most vigilant and careful attention of the people, to see that it be modeled in such a manner as to admit of its being safely vested with the requisite powers. If any plan which has been, or may be, offered to our consideration, should not, upon a dispassionate inspection, be found to answer this description, it ought to be rejected. A government, the constitution of which renders it unfit to be trusted with all the powers which a free people ought to delegate to any government, would be an unsafe and improper depositary of the NATIONAL INTERESTS. Wherever THESE can with propriety be confided, the coincident powers may safely accompany them. This is the true result of all just reasoning upon the subject. And the adversaries of the plan promulgated by the convention ought to have confined themselves to showing, that the internal structure of the proposed government was such as to render it unworthy of the confidence of the people. They ought not to have wandered into inflammatory declamations and unmeaning cavils about the extent of the powers. The POWERS are not too extensive for the OBJECTS of federal administration, or, in other words, for the management of our NATIONAL INTERESTS; nor can any satisfactory argument be framed to show that they are chargeable with such an excess. If it be true, as has been insinuated by some of the writers on the other side, that the difficulty arises from the nature of the thing, and that the extent of the country will not permit us to form a government in which such ample powers can safely be reposed, it would prove that we ought to contract our views, and resort to the expedient of separate confederacies, which will move within more practicable spheres. For the absurdity must continually stare us in the face of confiding to a government the direction of the most essential national interests, without daring to trust it to the authorities which are indispensable to their proper and efficient management. Let us not attempt to reconcile contradictions, but firmly embrace a rational alternative.</p>
+<p>I trust, however, that the impracticability of one general system cannot be shown. I am greatly mistaken, if any thing of weight has yet been advanced of this tendency; and I flatter myself, that the observations which have been made in the course of these papers have served to place the reverse of that position in as clear a light as any matter still in the womb of time and experience can be susceptible of. This, at all events, must be evident, that the very difficulty itself, drawn from the extent of the country, is the strongest argument in favor of an energetic government; for any other can certainly never preserve the Union of so large an empire. If we embrace the tenets of those who oppose the adoption of the proposed Constitution, as the standard of our political creed, we cannot fail to verify the gloomy doctrines which predict the impracticability of a national system pervading entire limits of the present Confederacy.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 23</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 23: The Necessity of a Government as Energetic as the One Proposed to the Preservation of the Union. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 23…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 23 &bull; Alexander Hamilton &bull; December 18, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-23";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 23 (Necessity of National Defense). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

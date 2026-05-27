@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brutus Essay X — On Standing Armies — Museum of Minds</title>
+  <meta name="description" content="Brutus: Essay X — On Standing Armies, January 24, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'BRUTUS'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Brutus 10
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Brutus · Letter 10 · Published in New-York Journal</p>
+  <h1>Essay X — On Standing Armies</h1>
+  <p class="paper-hero-meta">By Brutus <span style='font-size:0.88em;opacity:0.75;'>(Robert Yates (probable))</span> &bull; January 24, 1788 &bull; 2,514 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/brutus-9/" class="nav-btn">← Brutus 9</a>
+    <a href="/anti-federalist-papers/brutus-11/" class="nav-btn">Brutus 11 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,514 words &bull; Standing Armies &bull; January 24, 1788</p>
+
+<h3 class="paper-section-head">X</h3>
+<p>24 January 1788</p>
+<p>To the People of the State of New-York.</p>
+<p>The liberties of a people are in danger from a large standing army, not only because the rulers may employ them for the purposes of supporting themselves in any usurpations of power, which they may see proper to exercise, but there is great hazard, that an army will subvert the forms of the government, under whose authority, they are raised, and establish one, according to the pleasure of their leader.</p>
+<p>We are informed, in the faithful pages of history, of such events frequently happening. — Two instances have been mentioned in a former paper. They are so remarkable, that they are worthy of the most careful attention of every lover of freedom. — They are taken from the history of the two most powerful nations that have ever existed in the world; and who are the most renowned, for the freedom they enjoyed, and the excellency of their constitutions: — I mean Rome and Britain.</p>
+<p>In the first, the liberties of the commonwealth was destroyed, and the constitution overturned, by an army, lead by Julius Cesar, who was appointed to the command, by the constitutional authority of that commonwealth. He changed it from a free republic, whose fame had sounded, and is still celebrated by all the world, into that of the most absolute despotism. A standing army effected this change, and a standing army supported it through a succession of ages, which are marked in the annals of history, with the most horrid cruelties, bloodshed, and carnage; — The most devilish, beastly, and unnatural vices, that ever punished or disgraced human nature.</p>
+<p>The same army, that in Britain, vindicated the liberties of that people from the encroachments and despotism of a tyrant king, assisted Cromwell, their General, in wresting from the people, that liberty they had so dearly earned.</p>
+<p>You may be told, these instances will not apply to our case: — But those who would persuade you to believe this, either mean to deceive you, or have not themselves considered the subject.</p>
+<p>I firmly believe, no country in the world had ever a more patriotic army, than the one which so ably served this country, in the late war.</p>
+<p>But had the General who commanded them, been possessed of the spirit of a Julius Cesar or a Cromwell, the liberties of this country, had in all probability, terminated with the war; or had they been maintained, might have cost more blood and treasure, than was expended in the conflict with Great-Britain. When an anonimous writer addressed the officers of the army at the close of the war, advising them not to part with their arms, until justice was done them — the effect it had is well known. It affected them like an electric shock. He wrote like Cesar; and had the commander in chief, and a few more officers of rank, countenanced the measure, the desperate resolution had been taken, to refuse to disband. What the consequences of such a determination would have been, heaven only knows. — The army were in the full vigor of health and spirits, in the habit of discipline, and possessed of all our military stores and apparatus. They would have acquired great accessions of strength from the country. — Those who were disgusted at our republican forms of government (for such there then were, of high rank among us) would have lent them all their aid. — We should in all probability have seen a constitution and laws, dictated to us, at the head of an army, and at the point of a bayonet, and the liberties for which we had so severely struggled, snatched from us in a moment. It remains a secret, yet to be revealed, whether this measure was not suggested, or at least countenanced, by some, who have had great influence in producing the present system. — Fortunately indeed for this country, it had at the head of the army, a patriot as well as a general; and many of our principal officers, had not abandoned the characters of citizens, by assuming that of soldiers, and therefore, the scheme proved abortive. But are we to expect, that this will always be the case? Are we so much better than the people of other ages and of other countries, that the same allurements of power and greatness, which led them aside from their duty, will have no influence upon men in our country? Such an idea, is wild and extravagant. — Had we indulged such a delusion, enough has appeared in a little time past, to convince the most credulous, that the passion for pomp, power and greatness, works as powerfully in the hearts of many of our better sort, as it ever did in any country under heaven. — Were the same opportunity again to offer, we should very probably be grossly disappointed, if we made dependence, that all who then rejected the overture, would do it again.</p>
+<p>From these remarks, it appears, that the evil to be feared from a large standing army in time of peace, does not arise solely from the apprehension, that the rulers may employ them for the purpose of promoting their own ambitious views, but that equal, and perhaps greater danger, is to be apprehended from their overturning the constitutional powers of the government, and assuming the power to dictate any form they please.</p>
+<p>The advocates for power, in support of this right in the proposed government, urge that a restraint upon the discretion of the legislatures, in respect to military establishments in time of peace, would be improper to be imposed, because they say, it will be necessary to maintain small garrisons on the frontiers, to guard against the depredations of the Indians, and to be prepared to repel any encroachments or invasions that may be made by Spain or Britain.</p>
+<p>The amount of this argument striped of the abundant verbages with which the author has dressed it, is this:</p>
+<p>It will probably be necessary to keep up a small body of troops to garrison a few posts, which it will be necessary to maintain, in order to guard against the sudden encroachments of the Indians, or of the Spaniards and British; and therefore, the general government ought to be invested with power to raise and keep up a standing army in time of peace, without restraint; at their discretion.</p>
+<p>I confess, I cannot perceive that the conclusion follows from the premises. Logicians say, it is not good reasoning to infer a general conclusion from particular premises: though I am not much of a Logician, it seems to me, this argument is very like that species of reasoning.</p>
+<p>When the patriots in the parliament in Great-Britain, contended with such force of argument, and all the powers of eloquence, against keeping up standing armies in time of peace, it is obvious, they never entertained an idea, that small garrisons on their frontiers, or in the neighbourhood of powers, from whom they were in danger of encroachments, or guards, to take care of public arsenals would thereby be prohibited.</p>
+<p>The advocates for this power farther urge that it is necessary, because it may, and probably will happen, that circumstances will render it requisite to raise an army to be prepared to repel attacks of an enemy, before a formal declaration of war, which in modern times has fallen into disuse. If the constitution prohibited the raising an army, until a war actually commenced, it would deprive the government of the power of providing for the defence of the country, until the enemy were within our territory. If the restriction is not to extend to the raising armies in cases of emergency, but only to the keeping them up, this would leave the matter to the discretion of the legislature; and they might, under the pretence that there was danger of an invasion, keep up the army as long as they judged proper — and hence it is inferred, that the legislature should have authority to raise and keep up an army without any restriction. But from these premises nothing more will follow than this, that the legislature should not be so restrained, as to put it out of their power to raise an army, when such exigencies as are instanced shall arise. But it does not thence follow, that the government should be empowered to raise and maintain standing armies at their discretion as well in peace as in war. If indeed, it is impossible to vest the general government with the power of raising troops to garrison the frontier posts, to guard arsenals, or to be prepared to repel an attack, when we saw a power preparing to make one, without giving them a general and indefinite authority, to raise and keep up armies, without any restriction or qualification, then this reasoning might have weight; but this has not been proved nor can it be.</p>
+<p>It is admitted that to prohibit the general government, from keeping up standing armies, while yet they were authorised to raise them in case of exigency, would be an insufficient guard against the danger. A discretion of such latitude would give room to elude the force of the provision.</p>
+<p>It is also admitted that an absolute prohibition against raising troops, except in cases of actual war, would be improper; because it will be requisite to raise and support a small number of troops to garrison the important frontier posts, and to guard arsenals; and it may happen, that the danger of an attack from a foreign power may be so imminent, as to render it highly proper we should raise an army, in order to be prepared to resist them. But to raise and keep up forces for such purposes and on such occasions, is not included in the idea, of keeping up standing armies in times of peace.</p>
+<p>It is a thing very practicable to give the government sufficient authority to provide for these cases, and at the same time to provide a reasonable and competent security against the evil of a standing army — a clause to the following purpose would answer the end:</p>
+<p>As standing armies in time of peace are dangerous to liberty, and have often been the means of overturning the best constitutions of government, no standing army, or troops of any description whatsoever, shall be raised or kept up by the legislature, except so many as shall be necessary for guards to the arsenals of the United States, or for garrisons to such posts on the frontiers, as it shall be deemed absolutely necessary to hold, to secure the inhabitants, and facilitate the trade with the Indians: unless when the United States are threatened with an attack or invasion from some foreign power, in which case the legislature shall be authorised to raise an army to be prepared to repel the attack; provided that no troops whatsoever shall be raised in time of peace, without the assent of two thirds of the members, composing both houses of the legislature.</p>
+<p>A clause similar to this would afford sufficient latitude to the legislature to raise troops in all cases that were really necessary, and at the same time competent security against the establishment of that dangerous engine of despotism a standing army.</p>
+<p>The same writer who advances the arguments I have noticed, makes a number of other observations with a view to prove that the power to raise and keep up armies, ought to be discretionary in the general legislature; some of them are curious; he instances the raising of troops in Massachusetts and Pennsylvania, to shew the necessity of keeping a standing army in time of peace; the least reflection must convince every candid mind that both these cases are totally foreign to his purpose — Massachusetts raised a body of troops for six months, at the expiration of which they were to disband of course; this looks very little like a standing army. But beside, was that commonwealth in a state of peace at that time? So far from it that they were in the most violent commotions and contents, and their legislature had formally declared that an unnatural rebellion existed within the state. The situation of Pennsylvania was similar; a number of armed men had levied war against the authority of the state, and openly avowed their intention of withdrawing their allegiance from it. To what purpose examples are brought, of states raising troops for short periods in times of war or insurrections, on a question concerning the propriety of keeping up standing armies in times of peace, the public must judge.</p>
+<p>It is farther said, that no danger can arise from this power being lodged in the hands of the general government, because the legislatures will be a check upon them, to prevent their abusing it.</p>
+<p>This is offered, as what force there is in it will hereafter receive a more particular examination. At present, I shall only remark, that it is difficult to conceive how the state legislatures can, in any case, hold a check over the general legislature, in a constitutional way. The latter has, in every instance to which their powers extend, complete controul over the former. The state legislatures can, in no case, by law, resolution, or otherwise, of right, prevent or impede the general government, from enacting any law, or executing it, which this constitution authorizes them to enact or execute. If then the state legislatures check the general legislatures [ sic ], it must be by exciting the people to resist constitutional laws. In this way every individual, or every body of men, may check any government, in proportion to the influence they may have over the body of the people. But such kinds of checks as these, though they sometimes correct the abuses of government, oftner destroy all government.</p>
+<p>It is further said, that no danger is to be apprehended from the exercise of this power, because it is lodged in the hands of representatives of the people; if they abuse it, it is in the power of the people to remove them, and chuse others who will pursue their interests. Not to repeat what has been said before, That it is unwise in any people, to authorize their rulers to do, what, if done, would prove injurious — I have, in some former numbers, shewn, that the representation in the proposed government will be a mere shadow without the substance. I am so confident that I am well founded in this opinion, that I am persuaded, if it was to be adopted or rejected, upon a fair discussion of its merits, without taking into contemplation circumstances extraneous to it, as reasons for its adoption, nineteen-twentieths of the sensible men in the union would reject it on this account alone; unless its powers were confined to much fewer objects than it embraces.</p>
+<p>Brutus.</p>
+<p>Next | Previous | Text Version | Brutus Contents | Anti-Federalist Papers | Liberty Library | Home | Constitution Society</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-23/" class="cross-ref cross-ref-opp">On national defense</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Brutus</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Brutus&#x27;s Essay X — On Standing Armies. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Brutus's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Brutus 10 &bull; January 24, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "brutus-10";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Brutus considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Brutus's Essay X — On Standing Armies. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 71 — Duration of Executive — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 71: The Duration in Office of the Executive by Alexander Hamilton, March 18, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '71'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;71
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 71 · Published by New York Packet</p>
+  <h1>The Duration in Office of the Executive</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; March 18, 1788 &bull; 1,740 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-70/" class="nav-btn">← No.&thinsp;70</a>
+    <a href="/federalist-papers/federalist-72/" class="nav-btn">No.&thinsp;72 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,740 words &bull; Executive Power &bull; March 18, 1788</p>
+
+<p>DURATION in office has been mentioned as the second requisite to the energy of the Executive authority. This has relation to two objects: to the personal firmness of the executive magistrate, in the employment of his constitutional powers; and to the stability of the system of administration which may have been adopted under his auspices. With regard to the first, it must be evident, that the longer the duration in office, the greater will be the probability of obtaining so important an advantage. It is a general principle of human nature, that a man will be interested in whatever he possesses, in proportion to the firmness or precariousness of the tenure by which he holds it; will be less attached to what he holds by a momentary or uncertain title, than to what he enjoys by a durable or certain title; and, of course, will be willing to risk more for the sake of the one, than for the sake of the other. This remark is not less applicable to a political privilege, or honor, or trust, than to any article of ordinary property. The inference from it is, that a man acting in the capacity of chief magistrate, under a consciousness that in a very short time he MUST lay down his office, will be apt to feel himself too little interested in it to hazard any material censure or perplexity, from the independent exertion of his powers, or from encountering the ill-humors, however transient, which may happen to prevail, either in a considerable part of the society itself, or even in a predominant faction in the legislative body. If the case should only be, that he MIGHT lay it down, unless continued by a new choice, and if he should be desirous of being continued, his wishes, conspiring with his fears, would tend still more powerfully to corrupt his integrity, or debase his fortitude. In either case, feebleness and irresolution must be the characteristics of the station.</p>
+<p>There are some who would be inclined to regard the servile pliancy of the Executive to a prevailing current, either in the community or in the legislature, as its best recommendation. But such men entertain very crude notions, as well of the purposes for which government was instituted, as of the true means by which the public happiness may be promoted. The republican principle demands that the deliberate sense of the community should govern the conduct of those to whom they intrust the management of their affairs; but it does not require an unqualified complaisance to every sudden breeze of passion, or to every transient impulse which the people may receive from the arts of men, who flatter their prejudices to betray their interests. It is a just observation, that the people commonly INTEND the PUBLIC GOOD. This often applies to their very errors. But their good sense would despise the adulator who should pretend that they always REASON RIGHT about the MEANS of promoting it. They know from experience that they sometimes err; and the wonder is that they so seldom err as they do, beset, as they continually are, by the wiles of parasites and sycophants, by the snares of the ambitious, the avaricious, the desperate, by the artifices of men who possess their confidence more than they deserve it, and of those who seek to possess rather than to deserve it. When occasions present themselves, in which the interests of the people are at variance with their inclinations, it is the duty of the persons whom they have appointed to be the guardians of those interests, to withstand the temporary delusion, in order to give them time and opportunity for more cool and sedate reflection. Instances might be cited in which a conduct of this kind has saved the people from very fatal consequences of their own mistakes, and has procured lasting monuments of their gratitude to the men who had courage and magnanimity enough to serve them at the peril of their displeasure.</p>
+<p>But however inclined we might be to insist upon an unbounded complaisance in the Executive to the inclinations of the people, we can with no propriety contend for a like complaisance to the humors of the legislature. The latter may sometimes stand in opposition to the former, and at other times the people may be entirely neutral. In either supposition, it is certainly desirable that the Executive should be in a situation to dare to act his own opinion with vigor and decision.</p>
+<p>The same rule which teaches the propriety of a partition between the various branches of power, teaches us likewise that this partition ought to be so contrived as to render the one independent of the other. To what purpose separate the executive or the judiciary from the legislative, if both the executive and the judiciary are so constituted as to be at the absolute devotion of the legislative? Such a separation must be merely nominal, and incapable of producing the ends for which it was established. It is one thing to be subordinate to the laws, and another to be dependent on the legislative body. The first comports with, the last violates, the fundamental principles of good government; and, whatever may be the forms of the Constitution, unites all power in the same hands. The tendency of the legislative authority to absorb every other, has been fully displayed and illustrated by examples in some preceding numbers. In governments purely republican, this tendency is almost irresistible. The representatives of the people, in a popular assembly, seem sometimes to fancy that they are the people themselves, and betray strong symptoms of impatience and disgust at the least sign of opposition from any other quarter; as if the exercise of its rights, by either the executive or judiciary, were a breach of their privilege and an outrage to their dignity. They often appear disposed to exert an imperious control over the other departments; and as they commonly have the people on their side, they always act with such momentum as to make it very difficult for the other members of the government to maintain the balance of the Constitution.</p>
+<p>It may perhaps be asked, how the shortness of the duration in office can affect the independence of the Executive on the legislature, unless the one were possessed of the power of appointing or displacing the other. One answer to this inquiry may be drawn from the principle already remarked that is, from the slender interest a man is apt to take in a short-lived advantage, and the little inducement it affords him to expose himself, on account of it, to any considerable inconvenience or hazard. Another answer, perhaps more obvious, though not more conclusive, will result from the consideration of the influence of the legislative body over the people; which might be employed to prevent the re-election of a man who, by an upright resistance to any sinister project of that body, should have made himself obnoxious to its resentment.</p>
+<p>It may be asked also, whether a duration of four years would answer the end proposed; and if it would not, whether a less period, which would at least be recommended by greater security against ambitious designs, would not, for that reason, be preferable to a longer period, which was, at the same time, too short for the purpose of inspiring the desired firmness and independence of the magistrate.</p>
+<p>It cannot be affirmed, that a duration of four years, or any other limited duration, would completely answer the end proposed; but it would contribute towards it in a degree which would have a material influence upon the spirit and character of the government. Between the commencement and termination of such a period, there would always be a considerable interval, in which the prospect of annihilation would be sufficiently remote, not to have an improper effect upon the conduct of a man indued with a tolerable portion of fortitude; and in which he might reasonably promise himself, that there would be time enough before it arrived, to make the community sensible of the propriety of the measures he might incline to pursue. Though it be probable that, as he approached the moment when the public were, by a new election, to signify their sense of his conduct, his confidence, and with it his firmness, would decline; yet both the one and the other would derive support from the opportunities which his previous continuance in the station had afforded him, of establishing himself in the esteem and good-will of his constituents. He might, then, hazard with safety, in proportion to the proofs he had given of his wisdom and integrity, and to the title he had acquired to the respect and attachment of his fellow-citizens. As, on the one hand, a duration of four years will contribute to the firmness of the Executive in a sufficient degree to render it a very valuable ingredient in the composition; so, on the other, it is not enough to justify any alarm for the public liberty. If a British House of Commons, from the most feeble beginnings, FROM THE MERE POWER OF ASSENTING OR DISAGREEING TO THE IMPOSITION OF A NEW TAX, have, by rapid strides, reduced the prerogatives of the crown and the privileges of the nobility within the limits they conceived to be compatible with the principles of a free government, while they raised themselves to the rank and consequence of a coequal branch of the legislature; if they have been able, in one instance, to abolish both the royalty and the aristocracy, and to overturn all the ancient establishments, as well in the Church as State; if they have been able, on a recent occasion, to make the monarch tremble at the prospect of an innovation(1) attempted by them, what would be to be feared from an elective magistrate of four years&#x27; duration, with the confined authorities of a President of the United States? What, but that he might be unequal to the task which the Constitution assigns him? I shall only add, that if his duration be such as to leave a doubt of his firmness, that doubt is inconsistent with a jealousy of his encroachments.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. This was the case with respect to Mr. Fox&#x27;s India bill, which was carried in the House of Commons, and rejected in the House of Lords, to the entire satisfaction, as it is said, of the people.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 71</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 71: The Duration in Office of the Executive. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 71…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 71 &bull; Alexander Hamilton &bull; March 18, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-71";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 71 (Duration of Executive). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

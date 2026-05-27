@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 7 — State Rivalries and Commercial Disputes — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 7: The Same Subject Continued (Concerning Dangers from Dissensions Between the States) by Alexander Hamilton, November 15, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '7'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;7
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 7 · Published by Independent Journal</p>
+  <h1>The Same Subject Continued (Concerning Dangers from Dissensions Between the States)</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; November 15, 1787 &bull; 2,298 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-6/" class="nav-btn">← No.&thinsp;6</a>
+    <a href="/federalist-papers/federalist-8/" class="nav-btn">No.&thinsp;8 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,298 words &bull; Federalism &bull; November 15, 1787</p>
+
+<p>IT IS sometimes asked, with an air of seeming triumph, what inducements could the States have, if disunited, to make war upon each other? It would be a full answer to this question to say--precisely the same inducements which have, at different times, deluged in blood all the nations in the world. But, unfortunately for us, the question admits of a more particular answer. There are causes of differences within our immediate contemplation, of the tendency of which, even under the restraints of a federal constitution, we have had sufficient experience to enable us to form a judgment of what might be expected if those restraints were removed.</p>
+<p>Territorial disputes have at all times been found one of the most fertile sources of hostility among nations. Perhaps the greatest proportion of wars that have desolated the earth have sprung from this origin. This cause would exist among us in full force. We have a vast tract of unsettled territory within the boundaries of the United States. There still are discordant and undecided claims between several of them, and the dissolution of the Union would lay a foundation for similar claims between them all. It is well known that they have heretofore had serious and animated discussion concerning the rights to the lands which were ungranted at the time of the Revolution, and which usually went under the name of crown lands. The States within the limits of whose colonial governments they were comprised have claimed them as their property, the others have contended that the rights of the crown in this article devolved upon the Union; especially as to all that part of the Western territory which, either by actual possession, or through the submission of the Indian proprietors, was subjected to the jurisdiction of the king of Great Britain, till it was relinquished in the treaty of peace. This, it has been said, was at all events an acquisition to the Confederacy by compact with a foreign power. It has been the prudent policy of Congress to appease this controversy, by prevailing upon the States to make cessions to the United States for the benefit of the whole. This has been so far accomplished as, under a continuation of the Union, to afford a decided prospect of an amicable termination of the dispute. A dismemberment of the Confederacy, however, would revive this dispute, and would create others on the same subject. At present, a large part of the vacant Western territory is, by cession at least, if not by any anterior right, the common property of the Union. If that were at an end, the States which made the cession, on a principle of federal compromise, would be apt when the motive of the grant had ceased, to reclaim the lands as a reversion. The other States would no doubt insist on a proportion, by right of representation. Their argument would be, that a grant, once made, could not be revoked; and that the justice of participating in territory acquired or secured by the joint efforts of the Confederacy, remained undiminished. If, contrary to probability, it should be admitted by all the States, that each had a right to a share of this common stock, there would still be a difficulty to be surmounted, as to a proper rule of apportionment. Different principles would be set up by different States for this purpose; and as they would affect the opposite interests of the parties, they might not easily be susceptible of a pacific adjustment.</p>
+<p>In the wide field of Western territory, therefore, we perceive an ample theatre for hostile pretensions, without any umpire or common judge to interpose between the contending parties. To reason from the past to the future, we shall have good ground to apprehend, that the sword would sometimes be appealed to as the arbiter of their differences. The circumstances of the dispute between Connecticut and Pennsylvania, respecting the land at Wyoming, admonish us not to be sanguine in expecting an easy accommodation of such differences. The articles of confederation obliged the parties to submit the matter to the decision of a federal court. The submission was made, and the court decided in favor of Pennsylvania. But Connecticut gave strong indications of dissatisfaction with that determination; nor did she appear to be entirely resigned to it, till, by negotiation and management, something like an equivalent was found for the loss she supposed herself to have sustained. Nothing here said is intended to convey the slightest censure on the conduct of that State. She no doubt sincerely believed herself to have been injured by the decision; and States, like individuals, acquiesce with great reluctance in determinations to their disadvantage.</p>
+<p>Those who had an opportunity of seeing the inside of the transactions which attended the progress of the controversy between this State and the district of Vermont, can vouch the opposition we experienced, as well from States not interested as from those which were interested in the claim; and can attest the danger to which the peace of the Confederacy might have been exposed, had this State attempted to assert its rights by force. Two motives preponderated in that opposition: one, a jealousy entertained of our future power; and the other, the interest of certain individuals of influence in the neighboring States, who had obtained grants of lands under the actual government of that district. Even the States which brought forward claims, in contradiction to ours, seemed more solicitous to dismember this State, than to establish their own pretensions. These were New Hampshire, Massachusetts, and Connecticut. New Jersey and Rhode Island, upon all occasions, discovered a warm zeal for the independence of Vermont; and Maryland, till alarmed by the appearance of a connection between Canada and that State, entered deeply into the same views. These being small States, saw with an unfriendly eye the perspective of our growing greatness. In a review of these transactions we may trace some of the causes which would be likely to embroil the States with each other, if it should be their unpropitious destiny to become disunited.</p>
+<p>The competitions of commerce would be another fruitful source of contention. The States less favorably circumstanced would be desirous of escaping from the disadvantages of local situation, and of sharing in the advantages of their more fortunate neighbors. Each State, or separate confederacy, would pursue a system of commercial policy peculiar to itself. This would occasion distinctions, preferences, and exclusions, which would beget discontent. The habits of intercourse, on the basis of equal privileges, to which we have been accustomed since the earliest settlement of the country, would give a keener edge to those causes of discontent than they would naturally have independent of this circumstance. WE SHOULD BE READY TO DENOMINATE INJURIES THOSE THINGS WHICH WERE IN REALITY THE JUSTIFIABLE ACTS OF INDEPENDENT SOVEREIGNTIES CONSULTING A DISTINCT INTEREST. The spirit of enterprise, which characterizes the commercial part of America, has left no occasion of displaying itself unimproved. It is not at all probable that this unbridled spirit would pay much respect to those regulations of trade by which particular States might endeavor to secure exclusive benefits to their own citizens. The infractions of these regulations, on one side, the efforts to prevent and repel them, on the other, would naturally lead to outrages, and these to reprisals and wars.</p>
+<p>The opportunities which some States would have of rendering others tributary to them by commercial regulations would be impatiently submitted to by the tributary States. The relative situation of New York, Connecticut, and New Jersey would afford an example of this kind. New York, from the necessities of revenue, must lay duties on her importations. A great part of these duties must be paid by the inhabitants of the two other States in the capacity of consumers of what we import. New York would neither be willing nor able to forego this advantage. Her citizens would not consent that a duty paid by them should be remitted in favor of the citizens of her neighbors; nor would it be practicable, if there were not this impediment in the way, to distinguish the customers in our own markets. Would Connecticut and New Jersey long submit to be taxed by New York for her exclusive benefit? Should we be long permitted to remain in the quiet and undisturbed enjoyment of a metropolis, from the possession of which we derived an advantage so odious to our neighbors, and, in their opinion, so oppressive? Should we be able to preserve it against the incumbent weight of Connecticut on the one side, and the co-operating pressure of New Jersey on the other? These are questions that temerity alone will answer in the affirmative.</p>
+<p>The public debt of the Union would be a further cause of collision between the separate States or confederacies. The apportionment, in the first instance, and the progressive extinguishment afterward, would be alike productive of ill-humor and animosity. How would it be possible to agree upon a rule of apportionment satisfactory to all? There is scarcely any that can be proposed which is entirely free from real objections. These, as usual, would be exaggerated by the adverse interest of the parties. There are even dissimilar views among the States as to the general principle of discharging the public debt. Some of them, either less impressed with the importance of national credit, or because their citizens have little, if any, immediate interest in the question, feel an indifference, if not a repugnance, to the payment of the domestic debt at any rate. These would be inclined to magnify the difficulties of a distribution. Others of them, a numerous body of whose citizens are creditors to the public beyond proportion of the State in the total amount of the national debt, would be strenuous for some equitable and effective provision. The procrastinations of the former would excite the resentments of the latter. The settlement of a rule would, in the meantime, be postponed by real differences of opinion and affected delays. The citizens of the States interested would clamour; foreign powers would urge for the satisfaction of their just demands, and the peace of the States would be hazarded to the double contingency of external invasion and internal contention.</p>
+<p>Suppose the difficulties of agreeing upon a rule surmounted, and the apportionment made. Still there is great room to suppose that the rule agreed upon would, upon experiment, be found to bear harder upon some States than upon others. Those which were sufferers by it would naturally seek for a mitigation of the burden. The others would as naturally be disinclined to a revision, which was likely to end in an increase of their own incumbrances. Their refusal would be too plausible a pretext to the complaining States to withhold their contributions, not to be embraced with avidity; and the non-compliance of these States with their engagements would be a ground of bitter discussion and altercation. If even the rule adopted should in practice justify the equality of its principle, still delinquencies in payments on the part of some of the States would result from a diversity of other causes--the real deficiency of resources; the mismanagement of their finances; accidental disorders in the management of the government; and, in addition to the rest, the reluctance with which men commonly part with money for purposes that have outlived the exigencies which produced them, and interfere with the supply of immediate wants. Delinquencies, from whatever causes, would be productive of complaints, recriminations, and quarrels. There is, perhaps, nothing more likely to disturb the tranquillity of nations than their being bound to mutual contributions for any common object that does not yield an equal and coincident benefit. For it is an observation, as true as it is trite, that there is nothing men differ so readily about as the payment of money.</p>
+<p>Laws in violation of private contracts, as they amount to aggressions on the rights of those States whose citizens are injured by them, may be considered as another probable source of hostility. We are not authorized to expect that a more liberal or more equitable spirit would preside over the legislations of the individual States hereafter, if unrestrained by any additional checks, than we have heretofore seen in too many instances disgracing their several codes. We have observed the disposition to retaliation excited in Connecticut in consequence of the enormities perpetrated by the Legislature of Rhode Island; and we reasonably infer that, in similar cases, under other circumstances, a war, not of PARCHMENT, but of the sword, would chastise such atrocious breaches of moral obligation and social justice.</p>
+<p>The probability of incompatible alliances between the different States or confederacies and different foreign nations, and the effects of this situation upon the peace of the whole, have been sufficiently unfolded in some preceding papers. From the view they have exhibited of this part of the subject, this conclusion is to be drawn, that America, if not connected at all, or only by the feeble tie of a simple league, offensive and defensive, would, by the operation of such jarring alliances, be gradually entangled in all the pernicious labyrinths of European politics and wars; and by the destructive contentions of the parts into which she was divided, would be likely to become a prey to the artifices and machinations of powers equally the enemies of them all. Divide et impera(1) must be the motto of every nation that either hates or fears us.(2)</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. Divide and command.</p>
+<p>2. In order that the whole subject of these papers may as soon as possible be laid before the public, it is proposed to publish them four times a week--on Tuesday in the New York Packet and on Thursday in the Daily Advertiser.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 7</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 7: The Same Subject Continued (Concerning Dangers from Dissensions Between the States). Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 7…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 7 &bull; Alexander Hamilton &bull; November 15, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-7";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 7 (State Rivalries and Commercial Disputes). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

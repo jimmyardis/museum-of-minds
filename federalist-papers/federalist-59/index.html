@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 59 — Congressional Control of Elections — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 59: Concerning the Power of Congress to Regulate the Election of Members by Alexander Hamilton, February 22, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '59'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;59
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 59 · Published by New York Packet</p>
+  <h1>Concerning the Power of Congress to Regulate the Election of Members</h1>
+  <p class="paper-hero-meta">By Alexander Hamilton &bull; February 22, 1788 &bull; 1,909 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-58/" class="nav-btn">← No.&thinsp;58</a>
+    <a href="/federalist-papers/federalist-60/" class="nav-btn">No.&thinsp;60 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,909 words &bull; Legislature &bull; February 22, 1788</p>
+
+<p>THE natural order of the subject leads us to consider, in this place, that provision of the Constitution which authorizes the national legislature to regulate, in the last resort, the election of its own members. It is in these words: &quot;The TIMES, PLACES, and MANNER of holding elections for senators and representatives shall be prescribed in each State by the legislature thereof; but the Congress may, at any time, by law, make or alter SUCH REGULATIONS, except as to the PLACES of choosing senators.&quot;(1) This provision has not only been declaimed against by those who condemn the Constitution in the gross, but it has been censured by those who have objected with less latitude and greater moderation; and, in one instance it has been thought exceptionable by a gentleman who has declared himself the advocate of every other part of the system.</p>
+<p>I am greatly mistaken, notwithstanding, if there be any article in the whole plan more completely defensible than this. Its propriety rests upon the evidence of this plain proposition, that EVERY GOVERNMENT OUGHT TO CONTAIN IN ITSELF THE MEANS OF ITS OWN PRESERVATION. Every just reasoner will, at first sight, approve an adherence to this rule, in the work of the convention; and will disapprove every deviation from it which may not appear to have been dictated by the necessity of incorporating into the work some particular ingredient, with which a rigid conformity to the rule was incompatible. Even in this case, though he may acquiesce in the necessity, yet he will not cease to regard and to regret a departure from so fundamental a principle, as a portion of imperfection in the system which may prove the seed of future weakness, and perhaps anarchy.</p>
+<p>It will not be alleged, that an election law could have been framed and inserted in the Constitution, which would have been always applicable to every probable change in the situation of the country; and it will therefore not be denied, that a discretionary power over elections ought to exist somewhere. It will, I presume, be as readily conceded, that there were only three ways in which this power could have been reasonably modified and disposed: that it must either have been lodged wholly in the national legislature, or wholly in the State legislatures, or primarily in the latter and ultimately in the former. The last mode has, with reason, been preferred by the convention. They have submitted the regulation of elections for the federal government, in the first instance, to the local administrations; which, in ordinary cases, and when no improper views prevail, may be both more convenient and more satisfactory; but they have reserved to the national authority a right to interpose, whenever extraordinary circumstances might render that interposition necessary to its safety.</p>
+<p>Nothing can be more evident, than that an exclusive power of regulating elections for the national government, in the hands of the State legislatures, would leave the existence of the Union entirely at their mercy. They could at any moment annihilate it, by neglecting to provide for the choice of persons to administer its affairs. It is to little purpose to say, that a neglect or omission of this kind would not be likely to take place. The constitutional possibility of the thing, without an equivalent for the risk, is an unanswerable objection. Nor has any satisfactory reason been yet assigned for incurring that risk. The extravagant surmises of a distempered jealousy can never be dignified with that character. If we are in a humor to presume abuses of power, it is as fair to presume them on the part of the State governments as on the part of the general government. And as it is more consonant to the rules of a just theory, to trust the Union with the care of its own existence, than to transfer that care to any other hands, if abuses of power are to be hazarded on the one side or on the other, it is more rational to hazard them where the power would naturally be placed, than where it would unnaturally be placed.</p>
+<p>Suppose an article had been introduced into the Constitution, empowering the United States to regulate the elections for the particular States, would any man have hesitated to condemn it, both as an unwarrantable transposition of power, and as a premeditated engine for the destruction of the State governments? The violation of principle, in this case, would have required no comment; and, to an unbiased observer, it will not be less apparent in the project of subjecting the existence of the national government, in a similar respect, to the pleasure of the State governments. An impartial view of the matter cannot fail to result in a conviction, that each, as far as possible, ought to depend on itself for its own preservation.</p>
+<p>As an objection to this position, it may be remarked that the constitution of the national Senate would involve, in its full extent, the danger which it is suggested might flow from an exclusive power in the State legislatures to regulate the federal elections. It may be alleged, that by declining the appointment of Senators, they might at any time give a fatal blow to the Union; and from this it may be inferred, that as its existence would be thus rendered dependent upon them in so essential a point, there can be no objection to intrusting them with it in the particular case under consideration. The interest of each State, it may be added, to maintain its representation in the national councils, would be a complete security against an abuse of the trust.</p>
+<p>This argument, though specious, will not, upon examination, be found solid. It is certainly true that the State legislatures, by forbearing the appointment of senators, may destroy the national government. But it will not follow that, because they have a power to do this in one instance, they ought to have it in every other. There are cases in which the pernicious tendency of such a power may be far more decisive, without any motive equally cogent with that which must have regulated the conduct of the convention in respect to the formation of the Senate, to recommend their admission into the system. So far as that construction may expose the Union to the possibility of injury from the State legislatures, it is an evil; but it is an evil which could not have been avoided without excluding the States, in their political capacities, wholly from a place in the organization of the national government. If this had been done, it would doubtless have been interpreted into an entire dereliction of the federal principle; and would certainly have deprived the State governments of that absolute safeguard which they will enjoy under this provision. But however wise it may have been to have submitted in this instance to an inconvenience, for the attainment of a necessary advantage or a greater good, no inference can be drawn from thence to favor an accumulation of the evil, where no necessity urges, nor any greater good invites.</p>
+<p>It may be easily discerned also that the national government would run a much greater risk from a power in the State legislatures over the elections of its House of Representatives, than from their power of appointing the members of its Senate. The senators are to be chosen for the period of six years; there is to be a rotation, by which the seats of a third part of them are to be vacated and replenished every two years; and no State is to be entitled to more than two senators; a quorum of the body is to consist of sixteen members. The joint result of these circumstances would be, that a temporary combination of a few States to intermit the appointment of senators, could neither annul the existence nor impair the activity of the body; and it is not from a general and permanent combination of the States that we can have any thing to fear. The first might proceed from sinister designs in the leading members of a few of the State legislatures; the last would suppose a fixed and rooted disaffection in the great body of the people, which will either never exist at all, or will, in all probability, proceed from an experience of the inaptitude of the general government to the advancement of their happiness in which event no good citizen could desire its continuance.</p>
+<p>But with regard to the federal House of Representatives, there is intended to be a general election of members once in two years. If the State legislatures were to be invested with an exclusive power of regulating these elections, every period of making them would be a delicate crisis in the national situation, which might issue in a dissolution of the Union, if the leaders of a few of the most important States should have entered into a previous conspiracy to prevent an election.</p>
+<p>I shall not deny, that there is a degree of weight in the observation, that the interests of each State, to be represented in the federal councils, will be a security against the abuse of a power over its elections in the hands of the State legislatures. But the security will not be considered as complete, by those who attend to the force of an obvious distinction between the interest of the people in the public felicity, and the interest of their local rulers in the power and consequence of their offices. The people of America may be warmly attached to the government of the Union, at times when the particular rulers of particular States, stimulated by the natural rivalship of power, and by the hopes of personal aggrandizement, and supported by a strong faction in each of those States, may be in a very opposite temper. This diversity of sentiment between a majority of the people, and the individuals who have the greatest credit in their councils, is exemplified in some of the States at the present moment, on the present question. The scheme of separate confederacies, which will always multiply the chances of ambition, will be a never failing bait to all such influential characters in the State administrations as are capable of preferring their own emolument and advancement to the public weal. With so effectual a weapon in their hands as the exclusive power of regulating elections for the national government, a combination of a few such men, in a few of the most considerable States, where the temptation will always be the strongest, might accomplish the destruction of the Union, by seizing the opportunity of some casual dissatisfaction among the people (and which perhaps they may themselves have excited), to discontinue the choice of members for the federal House of Representatives. It ought never to be forgotten, that a firm union of this country, under an efficient government, will probably be an increasing object of jealousy to more than one nation of Europe; and that enterprises to subvert it will sometimes originate in the intrigues of foreign powers, and will seldom fail to be patronized and abetted by some of them. Its preservation, therefore ought in no case that can be avoided, to be committed to the guardianship of any but those whose situation will uniformly beget an immediate interest in the faithful and vigilant performance of the trust.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+<p>1. 1st clause, 4th section, of the 1st article.</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 59</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 59: Concerning the Power of Congress to Regulate the Election of Members. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 59…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 59 &bull; Alexander Hamilton &bull; February 22, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-59";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 59 (Congressional Control of Elections). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

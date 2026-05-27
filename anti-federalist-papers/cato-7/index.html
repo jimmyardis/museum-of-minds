@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cato Letter VII — On the House and Taxation — Museum of Minds</title>
+  <meta name="description" content="Cato: Letter VII — On the House and Taxation, January 3, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'CATO'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Cato 7
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Cato · Letter 7 · Published in New-York Journal</p>
+  <h1>Letter VII — On the House and Taxation</h1>
+  <p class="paper-hero-meta">By Cato <span style='font-size:0.88em;opacity:0.75;'>(George Clinton (probable))</span> &bull; January 3, 1788 &bull; 1,373 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/cato-6/" class="nav-btn">← Cato 6</a>
+    <a href="/anti-federalist-papers/federal-farmer-1/" class="nav-btn">Federal Farmer 1 →</a>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">1,373 words &bull; Legislature &bull; January 3, 1788</p>
+
+<h3 class="paper-section-head">THE  NEW  YORK  JOURNAL.</h3>
+<p>(ISTuinber  2181)</p>
+<p>Thursday,  January  3,  1788.</p>
+<p>For  the  New  York  Journal,  &amp;c.</p>
+<p>To  THE  Citizens  op-  the  State  of  New  York.</p>
+<p>That  the  president  and  senate  are  further  improperly  connected will  appear,  if  it  is  considered  that  their  dependence  on  each  other will  prevent  either  from  being  a  check  upon  the  other;  they  must act  in  concert,  and  whether  the  power  and  intluence  of  the  one or  the  other  is  to  prevail,  will  depend  on  the  character  and  abili- ties of  the  men  who  hold  those  offices  at  the  time.  The  senate is  vested  with  such  a  proportion  of  the  executive  that  it  would  be found  necessary  that  they  should  be  constantly  sitting.  This circumstance  did  not  escape  the  convention,  and  they  have  pro- vided for  the  event,  in  the  2d  article,  which  declares  that  the executive  may,  on  extraordinary  occasions,  convcJic  hoik  house&#x27;s  or eitlicr  of  them.  No  occasion  can  exist  for  calling  the  assembly without  the  senate;  the  words  or  cither  of  them  must  have  been intended  to  apply  only  to  the  senate.  Their  wages  are  already provided  for,  and  it  will  be  therefore  readily  observed  that  the partition  between  a  perpetuation  of  their  sessions,  and  a  perpetu- ation of  offices  in  the  progress  of  the  government,  will  be  found to  be  but  thin  and  feeble.  Besides,  the  senate,  who  have  the  sole power  to  try  all  impeachments,  in  case  of  the  impeachment  of  the president  are  to  determine,  as  judges,  the  propriety  of  the  advice they  gave  him  as  senators.</p>
+<p>Can  the  senate  in  this,  therefore,  be</p>
+<p>(275)</p>
+<h3 class="paper-section-head">2/6  LETTERS</h3>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">CATO.</h3>
+<p>an  impartial  judicature?</p>
+<p>And  will  they  not  rather  serve  as  a screen  to  great  public  defaulters?</p>
+<p>Among  the  many  evils  that  are  incorporated  in  this  new  sys- tem of  government  is  that  of  congress  having  the  power  of  mak- ing or  altering  the  regulations  prescribed  by  the  different  legisla- tures respecting  the  time,  place  and  manner  of  holding  elections for  representatives,  and  the  time  and  manner  of  choosing  senators. If  it  is  enquired  in  what  manner  this  regulation  may  be  exercised to  your  injury,  the  answer  is  easy.  By  the  first  article  the  house of  representatives  shall  consist  of  members,  chosen  every  second year  by  the  people  of  the  several  states  who  are  qualified  to  vote for  members  of  their  several  state  assemblies;  it  can  therefore readily  be  believed,  that  the  different  state  legislatures,  provided such  can  exist  after  the  adoption  of  this  government,  will  con- tinue those  easy  and  convenient  modes  for  the  election  of  repre- sentatives for  the  national  legislature  that  are  in  use  for  the  elec- tion of  members  of  assembly  for  their  own  states;  but  the congress  have,  by  the  constitution,  a  power  to  make  other  regu- lations or  alter  those  in  practice,  prescribed  by  your  own  state legislatures;  hence,  instead  of  having  the  places  of  elections  in the  precincts  and  brought  home  almost  to  your  own  doors,  con- gress may  establish  a  place,  or  places,  at  either  the  extremes, center  or  outer  parts  of  the  states;  at  a  time  and  season,  too, when  it  may  be  very  inconvenient  to  attend ;  and  by  these  means destroy  the  rights  of  election.  But  in  opposition  to  this  reasoning, it  is  asserted,  that  it  is  a  necessary  power,  because  the  states  might omit  making  rules  for  the  purpose,  and  thereby  defeat  the  ex- istence of  that  branch  of  the  government;  this  is  what  logicians call  arguincntinn  absurd7(in\  for  the  different  states,  if  they  will have  any  security  at  all  in  this  government,  will  find  it  in  the house  of  representatives,  and  they,  therefore,  would  be  very  ready to  eradicate  a  principle  in  which  it  dwells,  or  involve  their  country in  an  instantaneous  revolution.  Besides,  if  this  was  the  appre- hension of  the  framers,  and  the  ground  of  that  provision,  why  did not  they  extend  this  controlling  power  to  the  other  duties  of  the several  state  legislatures?  To  exemplify  this,  the  states  are  to appoint  senators  and  electors  for  choosing  of  a  president;  but  the</p>
+<h3 class="paper-section-head">LKTTF.KS</h3>
+<p>or</p>
+<h3 class="paper-section-head">CATO.  2/7</h3>
+<p>time  is  to  be  under  the  direction  of  con&lt;:;[ress.  Now,  suppose  they were  to  omit  the  appointment  of  senators  and  electors,  thoup^li congress  was  to  appoint  the  time,  which  might  well  be  appre- hended, as  the  omission  of  regulations  for  the  election  of  mem- bers of  the  house  of  representatives,  provided  they  had  that power;  or  suppose  they  were  not  to  meet  at  all;  of  course,  the government  cannot  proceed  in  its  exercise.  And  from  this  motive or  apprehension,  congress  ought  to  have  taken  these  duties  en- tirely in  their  own  hands,  and,  by  a  decisive  declaration,  annihi- lated them,  which  they  in  fact  have  done  by  leaving  them  with- out the  means  of  support,  or  at  least  resting  on  their  bounty.  To this  the  advocates  for  this  system  oppose  the  common,  empty declamation,  that  there  is  no  danger  that  congress  will  abuse  this power ;  but  such  language,  as  relative  to  so  important  a  subject, is  mere  vapor,  and  formed  without  sense.  Is  it  not  in  their  power, however,  to  make  such  regulations  as  may  be  inconvenient  to you?  It  must  be  admitted,  because  the  words  are  unlimited  in their  sense.  It  is  a  good  rule,  in  the  construction  of  a  contract, to  suppose  that  what  may  be  done  will  be;  therefore,  in  consider- ing this  subject,  you  are  to  suppose  that  in  the  exercise  of  this government,  a  regulation  of  congress  will  be  made  for  holding  an election  for  the  whole  state  at  Poughkeepsie,  at  New  York,  or, perhaps,  at  Fort  Stanwix ;  who  will  then  be  the  actual  electors for  the  house  of  representatives?  You  ought  certainly  to  have as  much  or  more  distrust  with  respect  to  the  exercise  of  these powers  by  congress,  than  congress  ought  to  have  with  respect  to the  exercise  of  those  duties  which  ought  to  be  entrusted  to  the several  states,  because  over  them  congress  can  have  a  legislative controlling  power.</p>
+<p>Hitherto  we  have  tied  up  our  rulers  in  the  exercise  of  their duties  by  positive  restrictions;  if  tlie  cord  has  been  drawn  too tight,  loosen  it  to  the  necessary  extent,  but  do  not  entirely  un- bind them.  I  am  no  enemy  to  placing  a  reasonable  confidence in  them,  but  such  an  unbounded  one  as  the  advocates  and  framers of  this  new  .system  advise  you  to,  would  be  dangerous  to  your liberties;  it  has  been  the  ruin  of  other  governments,  and  will  be yours,  if  you  adopt  with  all  its  latitudinal  power.</p>
+<p>Unlimited  power</p>
+<h3 class="paper-section-head">2/8  LETTERS</h3>
+<h3 class="paper-section-head">OF</h3>
+<h3 class="paper-section-head">CATO.</h3>
+<p>in  governors  as  well  as  individuals  is  frequently  the  parent  of  de- ception. What  facilitated  the  corrupt  designs  of  Philip  of  Mace- don  and  caused  the  ruin  of  Athens,  but  the  unbounded  confidence in  their  statesmen  and  rulers  ?  Such  improper  confidence  De- mosthenes was  so  well  convinced  had  ruined  his  country,  that  in his  second  Philippic  oration  he  remarks  &quot;  that  there  is  one  com- mon bulwark  with  which  men  of  prudence  are  naturally  provided, the  guard  and  security  of  all  people,  particularly  of  free  states, against  the  assaults  of  t}Tants.  What  is  this  ?  Distrust.  Of  this be  mindful ;  to  this  adhere;  preserve  this  carefully,  and  no  calam- ity can  affect  you.&quot;  Montesquieu  observes  that  &quot;  the  course  of government  is  attended  with  an  insensible  descent  to  evil,  and there  is  no  reascending  to  good  without  very  great  efforts.&quot;  The plain  influence  from  this  doctrine  is,  that  rulers  in  all  governments will  erect  an  interest  separate  from  the  ruled,  which  will  have  a tendency  to  enslave  them.  There  is,  therefore,  no  other  way  of interrupting  this  insensible  descent  and  warding  off  the  evil  as long  as  possible,  than  by  establishing  principles  of  distrust  on your  constituents,  and  cultivating  the  sentiment  among  your- selves. But  let  me  inquire  of  you,  my  countrymen,  whether  the freedom  and  independence  of  elections  is  a  point  of  magnitude  ? If  it  is,  what  kind  of  a  spirit  of  amity,  deference  and  concession is  that  which  has  put  in  the  power  of  congress,  at  one  stroke,  to prevent  your  interference  in  government,  and  do  away  your  liber- ties forever?  Does  either  the  situation  or  circumstances  of  things warrant  it  ?  Cato.</p>
+
+      <div class="cross-refs">
+        
+        <p class='cross-refs-section-label'>Federalist Response</p><div class='cross-refs-grid'><a href="/federalist-papers/federalist-54/" class="cross-ref cross-ref-opp">On apportionment</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Cato</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Cato&#x27;s Letter VII — On the House and Taxation. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Cato's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Cato 7 &bull; January 3, 1788</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "cato-7";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Cato considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Cato's Letter VII — On the House and Taxation. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

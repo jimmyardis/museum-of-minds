@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 14 — Objections to the Extended Republic — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 14: Objections to the Proposed Constitution From Extent of Territory Answered by James Madison, November 30, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '14'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;14
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 14 · Published by New York Packet</p>
+  <h1>Objections to the Proposed Constitution From Extent of Territory Answered</h1>
+  <p class="paper-hero-meta">By James Madison &bull; November 30, 1787 &bull; 2,138 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-13/" class="nav-btn">← No.&thinsp;13</a>
+    <a href="/federalist-papers/federalist-15/" class="nav-btn">No.&thinsp;15 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,138 words &bull; Republican Government &bull; November 30, 1787</p>
+
+<p>WE HAVE seen the necessity of the Union, as our bulwark against foreign danger, as the conservator of peace among ourselves, as the guardian of our commerce and other common interests, as the only substitute for those military establishments which have subverted the liberties of the Old World, and as the proper antidote for the diseases of faction, which have proved fatal to other popular governments, and of which alarming symptoms have been betrayed by our own. All that remains, within this branch of our inquiries, is to take notice of an objection that may be drawn from the great extent of country which the Union embraces. A few observations on this subject will be the more proper, as it is perceived that the adversaries of the new Constitution are availing themselves of the prevailing prejudice with regard to the practicable sphere of republican administration, in order to supply, by imaginary difficulties, the want of those solid objections which they endeavor in vain to find.</p>
+<p>The error which limits republican government to a narrow district has been unfolded and refuted in preceding papers. I remark here only that it seems to owe its rise and prevalence chiefly to the confounding of a republic with a democracy, applying to the former reasonings drawn from the nature of the latter. The true distinction between these forms was also adverted to on a former occasion. It is, that in a democracy, the people meet and exercise the government in person; in a republic, they assemble and administer it by their representatives and agents. A democracy, consequently, will be confined to a small spot. A republic may be extended over a large region.</p>
+<p>To this accidental source of the error may be added the artifice of some celebrated authors, whose writings have had a great share in forming the modern standard of political opinions. Being subjects either of an absolute or limited monarchy, they have endeavored to heighten the advantages, or palliate the evils of those forms, by placing in comparison the vices and defects of the republican, and by citing as specimens of the latter the turbulent democracies of ancient Greece and modern Italy. Under the confusion of names, it has been an easy task to transfer to a republic observations applicable to a democracy only; and among others, the observation that it can never be established but among a small number of people, living within a small compass of territory.</p>
+<p>Such a fallacy may have been the less perceived, as most of the popular governments of antiquity were of the democratic species; and even in modern Europe, to which we owe the great principle of representation, no example is seen of a government wholly popular, and founded, at the same time, wholly on that principle. If Europe has the merit of discovering this great mechanical power in government, by the simple agency of which the will of the largest political body may be concentred, and its force directed to any object which the public good requires, America can claim the merit of making the discovery the basis of unmixed and extensive republics. It is only to be lamented that any of her citizens should wish to deprive her of the additional merit of displaying its full efficacy in the establishment of the comprehensive system now under her consideration.</p>
+<p>As the natural limit of a democracy is that distance from the central point which will just permit the most remote citizens to assemble as often as their public functions demand, and will include no greater number than can join in those functions; so the natural limit of a republic is that distance from the centre which will barely allow the representatives to meet as often as may be necessary for the administration of public affairs. Can it be said that the limits of the United States exceed this distance? It will not be said by those who recollect that the Atlantic coast is the longest side of the Union, that during the term of thirteen years, the representatives of the States have been almost continually assembled, and that the members from the most distant States are not chargeable with greater intermissions of attendance than those from the States in the neighborhood of Congress.</p>
+<p>That we may form a juster estimate with regard to this interesting subject, let us resort to the actual dimensions of the Union. The limits, as fixed by the treaty of peace, are: on the east the Atlantic, on the south the latitude of thirty-one degrees, on the west the Mississippi, and on the north an irregular line running in some instances beyond the forty-fifth degree, in others falling as low as the forty-second. The southern shore of Lake Erie lies below that latitude. Computing the distance between the thirty-first and forty-fifth degrees, it amounts to nine hundred and seventy-three common miles; computing it from thirty-one to forty-two degrees, to seven hundred and sixty-four miles and a half. Taking the mean for the distance, the amount will be eight hundred and sixty-eight miles and three-fourths. The mean distance from the Atlantic to the Mississippi does not probably exceed seven hundred and fifty miles. On a comparison of this extent with that of several countries in Europe, the practicability of rendering our system commensurate to it appears to be demonstrable. It is not a great deal larger than Germany, where a diet representing the whole empire is continually assembled; or than Poland before the late dismemberment, where another national diet was the depositary of the supreme power. Passing by France and Spain, we find that in Great Britain, inferior as it may be in size, the representatives of the northern extremity of the island have as far to travel to the national council as will be required of those of the most remote parts of the Union.</p>
+<p>Favorable as this view of the subject may be, some observations remain which will place it in a light still more satisfactory.</p>
+<p>In the first place it is to be remembered that the general government is not to be charged with the whole power of making and administering laws. Its jurisdiction is limited to certain enumerated objects, which concern all the members of the republic, but which are not to be attained by the separate provisions of any. The subordinate governments, which can extend their care to all those other subjects which can be separately provided for, will retain their due authority and activity. Were it proposed by the plan of the convention to abolish the governments of the particular States, its adversaries would have some ground for their objection; though it would not be difficult to show that if they were abolished the general government would be compelled, by the principle of self-preservation, to reinstate them in their proper jurisdiction.</p>
+<p>A second observation to be made is that the immediate object of the federal Constitution is to secure the union of the thirteen primitive States, which we know to be practicable; and to add to them such other States as may arise in their own bosoms, or in their neighborhoods, which we cannot doubt to be equally practicable. The arrangements that may be necessary for those angles and fractions of our territory which lie on our northwestern frontier, must be left to those whom further discoveries and experience will render more equal to the task.</p>
+<p>Let it be remarked, in the third place, that the intercourse throughout the Union will be facilitated by new improvements. Roads will everywhere be shortened, and kept in better order; accommodations for travelers will be multiplied and meliorated; an interior navigation on our eastern side will be opened throughout, or nearly throughout, the whole extent of the thirteen States. The communication between the Western and Atlantic districts, and between different parts of each, will be rendered more and more easy by those numerous canals with which the beneficence of nature has intersected our country, and which art finds it so little difficult to connect and complete.</p>
+<p>A fourth and still more important consideration is, that as almost every State will, on one side or other, be a frontier, and will thus find, in regard to its safety, an inducement to make some sacrifices for the sake of the general protection; so the States which lie at the greatest distance from the heart of the Union, and which, of course, may partake least of the ordinary circulation of its benefits, will be at the same time immediately contiguous to foreign nations, and will consequently stand, on particular occasions, in greatest need of its strength and resources. It may be inconvenient for Georgia, or the States forming our western or northeastern borders, to send their representatives to the seat of government; but they would find it more so to struggle alone against an invading enemy, or even to support alone the whole expense of those precautions which may be dictated by the neighborhood of continual danger. If they should derive less benefit, therefore, from the Union in some respects than the less distant States, they will derive greater benefit from it in other respects, and thus the proper equilibrium will be maintained throughout.</p>
+<p>I submit to you, my fellow-citizens, these considerations, in full confidence that the good sense which has so often marked your decisions will allow them their due weight and effect; and that you will never suffer difficulties, however formidable in appearance, or however fashionable the error on which they may be founded, to drive you into the gloomy and perilous scene into which the advocates for disunion would conduct you. Hearken not to the unnatural voice which tells you that the people of America, knit together as they are by so many cords of affection, can no longer live together as members of the same family; can no longer continue the mutual guardians of their mutual happiness; can no longer be fellow citizens of one great, respectable, and flourishing empire. Hearken not to the voice which petulantly tells you that the form of government recommended for your adoption is a novelty in the political world; that it has never yet had a place in the theories of the wildest projectors; that it rashly attempts what it is impossible to accomplish. No, my countrymen, shut your ears against this unhallowed language. Shut your hearts against the poison which it conveys; the kindred blood which flows in the veins of American citizens, the mingled blood which they have shed in defense of their sacred rights, consecrate their Union, and excite horror at the idea of their becoming aliens, rivals, enemies. And if novelties are to be shunned, believe me, the most alarming of all novelties, the most wild of all projects, the most rash of all attempts, is that of rendering us in pieces, in order to preserve our liberties and promote our happiness. But why is the experiment of an extended republic to be rejected, merely because it may comprise what is new? Is it not the glory of the people of America, that, whilst they have paid a decent regard to the opinions of former times and other nations, they have not suffered a blind veneration for antiquity, for custom, or for names, to overrule the suggestions of their own good sense, the knowledge of their own situation, and the lessons of their own experience? To this manly spirit, posterity will be indebted for the possession, and the world for the example, of the numerous innovations displayed on the American theatre, in favor of private rights and public happiness. Had no important step been taken by the leaders of the Revolution for which a precedent could not be discovered, no government established of which an exact model did not present itself, the people of the United States might, at this moment have been numbered among the melancholy victims of misguided councils, must at best have been laboring under the weight of some of those forms which have crushed the liberties of the rest of mankind. Happily for America, happily, we trust, for the whole human race, they pursued a new and more noble course. They accomplished a revolution which has no parallel in the annals of human society. They reared the fabrics of governments which have no model on the face of the globe. They formed the design of a great Confederacy, which it is incumbent on their successors to improve and perpetuate. If their works betray imperfections, we wonder at the fewness of them. If they erred most in the structure of the Union, this was the work most difficult to be executed; this is the work which has been new modelled by the act of your convention, and it is that act on which you are now to deliberate and to decide.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 14</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 14: Objections to the Proposed Constitution From Extent of Territory Answered. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 14…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 14 &bull; James Madison &bull; November 30, 1787</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-14";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 14 (Objections to the Extended Republic). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

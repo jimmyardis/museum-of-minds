@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federalist No. 44 — Restrictions on State Authority — Museum of Minds</title>
+  <meta name="description" content="Federalist No. 44: Restrictions on the Authority of the Several States by James Madison, January 25, 1788. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0D1B2A;
+      --deep:      #162130;
+      --wall:      #1E2E3E;
+      --wall-mid:  #253648;
+      --parchment: #F0E4C8;
+      --text:      #D4C8A8;
+      --text-dim:  #9A8E78;
+      --gold:      #A88425;
+      --gold-pale: #D4B870;
+      --gold-dim:  #6A5218;
+      --dim:       #5A6070;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    /* HEADER */
+    header { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.2);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--parchment); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--gold); opacity: 0.88; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold-pale); }
+
+    /* PAPER HERO */
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(168,132,37,0.15);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: '44'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 12rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(168,132,37,0.04); pointer-events: none; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--gold); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--parchment); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(168,132,37,0.35);
+              color: var(--gold); border-radius: 2px; background: rgba(168,132,37,0.07); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .chip-std { border-color: rgba(168,132,37,0.3); color: var(--text-dim); background: transparent; font-size: 0.55rem; }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(168,132,37,0.3); color: var(--gold);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(168,132,37,0.15); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--parchment); opacity: 1; }
+
+    /* MAIN LAYOUT */
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    /* PAPER TEXT */
+    .paper-text-col { border-right: 1px solid rgba(168,132,37,0.12); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(168,132,37,0.2); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    /* CROSS REFERENCES */
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(168,132,37,0.15); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(168,132,37,0.15); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(168,132,37,0.08); border-color: rgba(168,132,37,0.35); color: var(--parchment); }
+    .cross-ref-opp { border-color: rgba(180,40,40,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(180,40,40,0.06); border-color: rgba(180,40,40,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    /* CHAT PANEL */
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(168,132,37,0.15);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(168,132,37,0.08); border-left: 2px solid var(--gold-dim);
+                       color: var(--parchment); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.05); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(168,132,37,0.15); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(168,132,37,0.2); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(168,132,37,0.1); border-color: var(--gold); color: var(--parchment); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(168,132,37,0.15);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--parchment); border: 1px solid rgba(168,132,37,0.25);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--gold); color: var(--void);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* FOOTER */
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(168,132,37,0.15);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--gold); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(168,132,37,0.15); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/federalist-papers/">The Federalist Papers</a> &rsaquo;
+      No.&thinsp;44
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federalist No. 44 · Published by New York Packet</p>
+  <h1>Restrictions on the Authority of the Several States</h1>
+  <p class="paper-hero-meta">By James Madison &bull; January 25, 1788 &bull; 2,901 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/federalist-papers/federalist-43/" class="nav-btn">← No.&thinsp;43</a>
+    <a href="/federalist-papers/federalist-45/" class="nav-btn">No.&thinsp;45 →</a>
+    <a href="/federalist-papers/" class="nav-back">↑ All Papers</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <!-- PAPER TEXT -->
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,901 words &bull; Federalism &bull; January 25, 1788</p>
+
+<p>A FIFTH class of provisions in favor of the federal authority consists of the following restrictions on the authority of the several States:</p>
+<p>1. &quot;No State shall enter into any treaty, alliance, or confederation; grant letters of marque and reprisal; coin money; emit bills of credit; make any thing but gold and silver a legal tender in payment of debts; pass any bill of attainder, ex post facto law, or law impairing the obligation of contracts; or grant any title of nobility.&quot;</p>
+<p>The prohibition against treaties, alliances, and confederations makes a part of the existing articles of Union; and for reasons which need no explanation, is copied into the new Constitution. The prohibition of letters of marque is another part of the old system, but is somewhat extended in the new. According to the former, letters of marque could be granted by the States after a declaration of war; according to the latter, these licenses must be obtained, as well during war as previous to its declaration, from the government of the United States. This alteration is fully justified by the advantage of uniformity in all points which relate to foreign powers; and of immediate responsibility to the nation in all those for whose conduct the nation itself is to be responsible.</p>
+<p>The right of coining money, which is here taken from the States, was left in their hands by the Confederation, as a concurrent right with that of Congress, under an exception in favor of the exclusive right of Congress to regulate the alloy and value. In this instance, also, the new provision is an improvement on the old. Whilst the alloy and value depended on the general authority, a right of coinage in the particular States could have no other effect than to multiply expensive mints and diversify the forms and weights of the circulating pieces. The latter inconveniency defeats one purpose for which the power was originally submitted to the federal head; and as far as the former might prevent an inconvenient remittance of gold and silver to the central mint for recoinage, the end can be as well attained by local mints established under the general authority.</p>
+<p>The extension of the prohibition to bills of credit must give pleasure to every citizen, in proportion to his love of justice and his knowledge of the true springs of public prosperity. The loss which America has sustained since the peace, from the pestilent effects of paper money on the necessary confidence between man and man, on the necessary confidence in the public councils, on the industry and morals of the people, and on the character of republican government, constitutes an enormous debt against the States chargeable with this unadvised measure, which must long remain unsatisfied; or rather an accumulation of guilt, which can be expiated no otherwise than by a voluntary sacrifice on the altar of justice, of the power which has been the instrument of it. In addition to these persuasive considerations, it may be observed, that the same reasons which show the necessity of denying to the States the power of regulating coin, prove with equal force that they ought not to be at liberty to substitute a paper medium in the place of coin. Had every State a right to regulate the value of its coin, there might be as many different currencies as States, and thus the intercourse among them would be impeded; retrospective alterations in its value might be made, and thus the citizens of other States be injured, and animosities be kindled among the States themselves. The subjects of foreign powers might suffer from the same cause, and hence the Union be discredited and embroiled by the indiscretion of a single member. No one of these mischiefs is less incident to a power in the States to emit paper money, than to coin gold or silver. The power to make any thing but gold and silver a tender in payment of debts, is withdrawn from the States, on the same principle with that of issuing a paper currency.</p>
+<p>Bills of attainder, ex post facto laws, and laws impairing the obligation of contracts, are contrary to the first principles of the social compact, and to every principle of sound legislation. The two former are expressly prohibited by the declarations prefixed to some of the State constitutions, and all of them are prohibited by the spirit and scope of these fundamental charters. Our own experience has taught us, nevertheless, that additional fences against these dangers ought not to be omitted. Very properly, therefore, have the convention added this constitutional bulwark in favor of personal security and private rights; and I am much deceived if they have not, in so doing, as faithfully consulted the genuine sentiments as the undoubted interests of their constituents. The sober people of America are weary of the fluctuating policy which has directed the public councils. They have seen with regret and indignation that sudden changes and legislative interferences, in cases affecting personal rights, become jobs in the hands of enterprising and influential speculators, and snares to the more-industrious and less-informed part of the community. They have seen, too, that one legislative interference is but the first link of a long chain of repetitions, every subsequent interference being naturally produced by the effects of the preceding. They very rightly infer, therefore, that some thorough reform is wanting, which will banish speculations on public measures, inspire a general prudence and industry, and give a regular course to the business of society. The prohibition with respect to titles of nobility is copied from the articles of Confederation and needs no comment.</p>
+<p>2. &quot;No State shall, without the consent of the Congress, lay any imposts or duties on imports or exports, except what may be absolutely necessary for executing its inspection laws, and the net produce of all duties and imposts laid by any State on imports or exports, shall be for the use of the treasury of the United States; and all such laws shall be subject to the revision and control of the Congress. No State shall, without the consent of Congress, lay any duty on tonnage, keep troops or ships of war in time of peace, enter into any agreement or compact with another State, or with a foreign power, or engage in war unless actually invaded, or in such imminent danger as will not admit of delay.&quot;</p>
+<p>The restraint on the power of the States over imports and exports is enforced by all the arguments which prove the necessity of submitting the regulation of trade to the federal councils. It is needless, therefore, to remark further on this head, than that the manner in which the restraint is qualified seems well calculated at once to secure to the States a reasonable discretion in providing for the conveniency of their imports and exports, and to the United States a reasonable check against the abuse of this discretion. The remaining particulars of this clause fall within reasonings which are either so obvious, or have been so fully developed, that they may be passed over without remark.</p>
+<p>The SIXTH and last class consists of the several powers and provisions by which efficacy is given to all the rest.</p>
+<p>1. Of these the first is, the &quot;power to make all laws which shall be necessary and proper for carrying into execution the foregoing powers, and all other powers vested by this Constitution in the government of the United States, or in any department or officer thereof.&quot;</p>
+<p>Few parts of the Constitution have been assailed with more intemperance than this; yet on a fair investigation of it, no part can appear more completely invulnerable. Without the SUBSTANCE of this power, the whole Constitution would be a dead letter. Those who object to the article, therefore, as a part of the Constitution, can only mean that the FORM of the provision is improper. But have they considered whether a better form could have been substituted?</p>
+<p>There are four other possible methods which the Constitution might have taken on this subject. They might have copied the second article of the existing Confederation, which would have prohibited the exercise of any power not EXPRESSLY delegated; they might have attempted a positive enumeration of the powers comprehended under the general terms &quot;necessary and proper&quot;; they might have attempted a negative enumeration of them, by specifying the powers excepted from the general definition; they might have been altogether silent on the subject, leaving these necessary and proper powers to construction and inference.</p>
+<p>Had the convention taken the first method of adopting the second article of Confederation, it is evident that the new Congress would be continually exposed, as their predecessors have been, to the alternative of construing the term &quot;EXPRESSLY&quot; with so much rigor, as to disarm the government of all real authority whatever, or with so much latitude as to destroy altogether the force of the restriction. It would be easy to show, if it were necessary, that no important power, delegated by the articles of Confederation, has been or can be executed by Congress, without recurring more or less to the doctrine of CONSTRUCTION or IMPLICATION. As the powers delegated under the new system are more extensive, the government which is to administer it would find itself still more distressed with the alternative of betraying the public interests by doing nothing, or of violating the Constitution by exercising powers indispensably necessary and proper, but, at the same time, not EXPRESSLY granted.</p>
+<p>Had the convention attempted a positive enumeration of the powers necessary and proper for carrying their other powers into effect, the attempt would have involved a complete digest of laws on every subject to which the Constitution relates; accommodated too, not only to the existing state of things, but to all the possible changes which futurity may produce; for in every new application of a general power, the PARTICULAR POWERS, which are the means of attaining the OBJECT of the general power, must always necessarily vary with that object, and be often properly varied whilst the object remains the same.</p>
+<p>Had they attempted to enumerate the particular powers or means not necessary or proper for carrying the general powers into execution, the task would have been no less chimerical; and would have been liable to this further objection, that every defect in the enumeration would have been equivalent to a positive grant of authority. If, to avoid this consequence, they had attempted a partial enumeration of the exceptions, and described the residue by the general terms, NOT NECESSARY OR PROPER, it must have happened that the enumeration would comprehend a few of the excepted powers only; that these would be such as would be least likely to be assumed or tolerated, because the enumeration would of course select such as would be least necessary or proper; and that the unnecessary and improper powers included in the residuum, would be less forcibly excepted, than if no partial enumeration had been made.</p>
+<p>Had the Constitution been silent on this head, there can be no doubt that all the particular powers requisite as means of executing the general powers would have resulted to the government, by unavoidable implication. No axiom is more clearly established in law, or in reason, than that wherever the end is required, the means are authorized; wherever a general power to do a thing is given, every particular power necessary for doing it is included. Had this last method, therefore, been pursued by the convention, every objection now urged against their plan would remain in all its plausibility; and the real inconveniency would be incurred of not removing a pretext which may be seized on critical occasions for drawing into question the essential powers of the Union.</p>
+<p>If it be asked what is to be the consequence, in case the Congress shall misconstrue this part of the Constitution, and exercise powers not warranted by its true meaning, I answer, the same as if they should misconstrue or enlarge any other power vested in them; as if the general power had been reduced to particulars, and any one of these were to be violated; the same, in short, as if the State legislatures should violate the irrespective constitutional authorities. In the first instance, the success of the usurpation will depend on the executive and judiciary departments, which are to expound and give effect to the legislative acts; and in the last resort a remedy must be obtained from the people who can, by the election of more faithful representatives, annul the acts of the usurpers. The truth is, that this ultimate redress may be more confided in against unconstitutional acts of the federal than of the State legislatures, for this plain reason, that as every such act of the former will be an invasion of the rights of the latter, these will be ever ready to mark the innovation, to sound the alarm to the people, and to exert their local influence in effecting a change of federal representatives. There being no such intermediate body between the State legislatures and the people interested in watching the conduct of the former, violations of the State constitutions are more likely to remain unnoticed and unredressed.</p>
+<p>2. &quot;This Constitution and the laws of the United States which shall be made in pursuance thereof, and all treaties made, or which shall be made, under the authority of the United States, shall be the supreme law of the land, and the judges in every State shall be bound thereby, any thing in the constitution or laws of any State to the contrary notwithstanding.&quot;</p>
+<p>The indiscreet zeal of the adversaries to the Constitution has betrayed them into an attack on this part of it also, without which it would have been evidently and radically defective. To be fully sensible of this, we need only suppose for a moment that the supremacy of the State constitutions had been left complete by a saving clause in their favor.</p>
+<p>In the first place, as these constitutions invest the State legislatures with absolute sovereignty, in all cases not excepted by the existing articles of Confederation, all the authorities contained in the proposed Constitution, so far as they exceed those enumerated in the Confederation, would have been annulled, and the new Congress would have been reduced to the same impotent condition with their predecessors.</p>
+<p>In the next place, as the constitutions of some of the States do not even expressly and fully recognize the existing powers of the Confederacy, an express saving of the supremacy of the former would, in such States, have brought into question every power contained in the proposed Constitution.</p>
+<p>In the third place, as the constitutions of the States differ much from each other, it might happen that a treaty or national law, of great and equal importance to the States, would interfere with some and not with other constitutions, and would consequently be valid in some of the States, at the same time that it would have no effect in others.</p>
+<p>In fine, the world would have seen, for the first time, a system of government founded on an inversion of the fundamental principles of all government; it would have seen the authority of the whole society every where subordinate to the authority of the parts; it would have seen a monster, in which the head was under the direction of the members.</p>
+<p>3. &quot;The Senators and Representatives, and the members of the several State legislatures, and all executive and judicial officers, both of the United States and the several States, shall be bound by oath or affirmation to support this Constitution.&quot;</p>
+<p>It has been asked why it was thought necessary, that the State magistracy should be bound to support the federal Constitution, and unnecessary that a like oath should be imposed on the officers of the United States, in favor of the State constitutions.</p>
+<p>Several reasons might be assigned for the distinction. I content myself with one, which is obvious and conclusive. The members of the federal government will have no agency in carrying the State constitutions into effect. The members and officers of the State governments, on the contrary, will have an essential agency in giving effect to the federal Constitution. The election of the President and Senate will depend, in all cases, on the legislatures of the several States. And the election of the House of Representatives will equally depend on the same authority in the first instance; and will, probably, forever be conducted by the officers, and according to the laws, of the States.</p>
+<p>4. Among the provisions for giving efficacy to the federal powers might be added those which belong to the executive and judiciary departments: but as these are reserved for particular examination in another place, I pass them over in this.</p>
+<p>We have now reviewed, in detail, all the articles composing the sum or quantity of power delegated by the proposed Constitution to the federal government, and are brought to this undeniable conclusion, that no part of the power is unnecessary or improper for accomplishing the necessary objects of the Union. The question, therefore, whether this amount of power shall be granted or not, resolves itself into another question, whether or not a government commensurate to the exigencies of the Union shall be established; or, in other words, whether the Union itself shall be preserved.</p>
+<h3 class="paper-section-head">PUBLIUS</h3>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Publius — Federalist No. 44</div>
+      <div class="chat-panel-desc">Ask Hamilton, Madison, and Jay about this paper's argument, its sources, or how it compares to the Anti-Federalist response.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">I am Publius — the collective voice of Hamilton, Madison, and Jay. This is Federalist No. 44: Restrictions on the Authority of the Several States. Ask me anything about this paper&#x27;s argument, its sources, or how it relates to the broader case for ratification.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this paper?</button>
+<button class="starter" onclick="sendStarter(this)">How does this relate to the Anti-Federalist objections?</button>
+<button class="starter" onclick="sendStarter(this)">What is the most important passage here?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federalist No. 44…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federalist No. 44 &bull; James Madison &bull; January 25, 1788</span>
+  <span><a href="/federalist-papers/">← All Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "federalist-papers";
+const PAPER_SLUG = "federalist-44";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Publius considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federalist No. 44 (Restrictions on State Authority). " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>

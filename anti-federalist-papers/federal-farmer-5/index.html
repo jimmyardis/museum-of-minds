@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federal Farmer Letter V — On the Federal System — Museum of Minds</title>
+  <meta name="description" content="Federal Farmer: Letter V — On the Federal System, October 13, 1787. Full text with AI discussion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void:      #0E0A06;
+      --deep:      #140E08;
+      --wall:      #1C1410;
+      --wall-mid:  #241A14;
+      --newsprint: #E8DFD0;
+      --text:      #C8B898;
+      --text-dim:  #7A6A58;
+      --crimson:   #7A1C1C;
+      --crimson-pale: #B04040;
+      --crimson-dim: #4A1010;
+      --dim:       #5A4A3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+             font-size: 1.125rem; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+    header { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.3);
+              padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .hdr-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .hdr-brand-name { font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.08em; color: var(--newsprint); opacity: 0.9; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+                   text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; }
+    .breadcrumb a { color: var(--crimson-pale); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--newsprint); }
+
+    .paper-hero { background: var(--deep); border-bottom: 1px solid rgba(122,28,28,0.2);
+                   padding: 2.5rem 2.5rem 2rem; position: relative; overflow: hidden; }
+    .paper-hero::before {
+      content: 'FEDERAL FARMER'; position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 900; letter-spacing: 0.02em;
+      color: rgba(122,28,28,0.06); pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .paper-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em;
+                       text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.7rem; }
+    .paper-num { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em;
+                   color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.3rem; }
+    .paper-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2.1rem);
+                      font-weight: 900; color: var(--newsprint); line-height: 1.2; margin-bottom: 0.6rem; max-width: 700px; }
+    .paper-hero-meta { font-size: 1rem; color: var(--text); opacity: 0.88; margin-bottom: 1.1rem; font-weight: 400; }
+    .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+    .chip { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+              text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(122,28,28,0.4);
+              color: var(--crimson-pale); border-radius: 2px; background: rgba(122,28,28,0.08); white-space: nowrap; }
+    .chip-ap { border-color: rgba(60,120,220,0.5); color: #7AABFF; background: rgba(60,120,220,0.1); }
+    .chip-sc { border-color: rgba(60,160,80,0.5); color: #88D488; background: rgba(60,160,80,0.1); }
+    .paper-nav { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+    .nav-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 padding: 0.3rem 0.75rem; border: 1px solid rgba(122,28,28,0.35); color: var(--crimson-pale);
+                 border-radius: 2px; text-decoration: none; transition: all .15s; opacity: 0.88; }
+    .nav-btn:hover { background: rgba(122,28,28,0.12); opacity: 1; }
+    .nav-btn-disabled { opacity: 0.3; pointer-events: none; }
+    .nav-back { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+                 color: var(--text-dim); text-decoration: none; opacity: 0.88; }
+    .nav-back:hover { color: var(--newsprint); opacity: 1; }
+
+    .main-grid { display: grid; grid-template-columns: 58fr 42fr; min-height: 80vh; }
+
+    .paper-text-col { border-right: 1px solid rgba(122,28,28,0.15); overflow-y: auto;
+                        max-height: calc(100vh - 200px); padding: 2.5rem 3rem; }
+    .paper-text { max-width: 68ch; margin: 0 auto; }
+    .paper-text p { margin-bottom: 1.15rem; color: var(--text); font-size: 1.1rem; font-weight: 400; }
+    .paper-text h3.paper-section-head {
+      font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88;
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(122,28,28,0.25); padding-bottom: 0.5rem;
+    }
+    .paper-word-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+                          text-transform: uppercase; color: var(--dim); opacity: 0.88; margin-bottom: 2rem; }
+
+    .cross-refs { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(122,28,28,0.2); }
+    .cross-refs-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.8rem; }
+    .cross-refs-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cross-ref { font-size: 0.95rem; color: var(--text); text-decoration: none; padding: 0.4rem 0.6rem;
+                   border: 1px solid rgba(122,28,28,0.2); border-radius: 2px; transition: all .15s;
+                   display: block; font-weight: 400; }
+    .cross-ref:hover { background: rgba(122,28,28,0.08); border-color: rgba(122,28,28,0.45); color: var(--newsprint); }
+    .cross-ref-opp { border-color: rgba(168,132,37,0.2); color: var(--text-dim); }
+    .cross-ref-opp:hover { background: rgba(168,132,37,0.06); border-color: rgba(168,132,37,0.4); }
+    .cross-refs-section-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+                                   text-transform: uppercase; color: var(--dim); opacity: 0.88;
+                                   margin-top: 1rem; margin-bottom: 0.4rem; }
+
+    .chat-panel { display: flex; flex-direction: column; background: var(--wall); min-height: 80vh; }
+    .chat-panel-header { padding: 1.2rem 1.5rem 1rem; border-bottom: 1px solid rgba(122,28,28,0.2);
+                           background: var(--wall-mid); }
+    .chat-panel-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em;
+                          text-transform: uppercase; color: var(--crimson-pale); opacity: 0.88; margin-bottom: 0.4rem; }
+    .chat-panel-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column;
+                       gap: 0.9rem; min-height: 300px; }
+    .msg { padding: 0.65rem 0.9rem; border-radius: 2px; font-size: 1rem; line-height: 1.55;
+             max-width: 94%; font-weight: 400; }
+    .msg-assistant { background: rgba(122,28,28,0.1); border-left: 2px solid var(--crimson-dim);
+                       color: var(--newsprint); align-self: flex-start; }
+    .msg-user { background: rgba(255,255,255,0.04); border-left: 2px solid var(--dim);
+                  color: var(--text); align-self: flex-end; }
+    .msg-thinking { opacity: 0.6; font-style: italic; color: var(--text-dim); }
+    .msg-sources { margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-dim); opacity: 0.88;
+                    border-top: 1px solid rgba(122,28,28,0.2); padding-top: 0.4rem; }
+    .chat-starters { padding: 0 1.2rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .starter { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--text);
+                 background: transparent; border: 1px solid rgba(122,28,28,0.25); border-radius: 2px;
+                 padding: 0.4rem 0.75rem; cursor: pointer; text-align: left; transition: all .15s;
+                 opacity: 0.88; line-height: 1.4; }
+    .starter:hover { background: rgba(122,28,28,0.1); border-color: var(--crimson-pale); color: var(--newsprint); opacity: 1; }
+    .chat-input-row { padding: 0.8rem 1.2rem; border-top: 1px solid rgba(122,28,28,0.2);
+                        display: flex; gap: 0.5rem; background: var(--wall-mid); }
+    .chat-input { flex: 1; font-family: 'EB Garamond', serif; font-size: 1rem;
+                    background: var(--wall); color: var(--newsprint); border: 1px solid rgba(122,28,28,0.3);
+                    padding: 0.5rem 0.75rem; border-radius: 2px; outline: none; resize: none; line-height: 1.4; }
+    .chat-input:focus { border-color: var(--crimson-pale); }
+    .chat-send { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+                  text-transform: uppercase; background: var(--crimson); color: var(--newsprint);
+                  border: none; padding: 0.5rem 1rem; border-radius: 2px; cursor: pointer;
+                  font-weight: 700; opacity: 0.95; transition: opacity .15s; white-space: nowrap; }
+    .chat-send:hover { opacity: 1; }
+    .chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    footer { padding: 1.8rem 2.5rem; border-top: 1px solid rgba(122,28,28,0.2);
+               display: flex; justify-content: space-between; align-items: center;
+               font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.1em;
+               text-transform: uppercase; color: var(--dim); opacity: 0.88; }
+    footer a { color: var(--crimson-pale); text-decoration: none; opacity: 0.88; }
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .chat-panel { min-height: 480px; border-top: 1px solid rgba(122,28,28,0.2); }
+      .paper-text-col { max-height: none; padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0.8rem 1rem; }
+      .paper-hero { padding: 1.8rem 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="hdr-brand">
+    <span class="hdr-brand-name">Museum of Minds</span>
+  </a>
+  <nav>
+    <span class="breadcrumb">
+      <a href="/">Museum</a> &rsaquo;
+      <a href="/halls/founding-documents/">Founding Documents</a> &rsaquo;
+      <a href="/anti-federalist-papers/">The Anti-Federalist Papers</a> &rsaquo;
+      Federal Farmer 5
+    </span>
+  </nav>
+</header>
+
+<section class="paper-hero">
+  <p class="paper-eyebrow">The Anti-Federalist Papers · 1787–1788</p>
+  <p class="paper-num">Federal Farmer · Letter 5 · Published in Pamphlet</p>
+  <h1>Letter V — On the Federal System</h1>
+  <p class="paper-hero-meta">By Federal Farmer <span style='font-size:0.88em;opacity:0.75;'>(Richard Henry Lee (probable))</span> &bull; October 13, 1787 &bull; 2,894 words</p>
+  <div class="chips">
+    
+  </div>
+  <div class="paper-nav">
+    <a href="/anti-federalist-papers/federal-farmer-4/" class="nav-btn">← Federal Farmer 4</a>
+    <span class="nav-btn nav-btn-disabled">Last →</span>
+    <a href="/anti-federalist-papers/" class="nav-back">↑ All Essays</a>
+  </div>
+</section>
+
+<div class="main-grid">
+
+  <div class="paper-text-col">
+    <div class="paper-text">
+      <p class="paper-word-count">2,894 words &bull; Federalism &bull; October 13, 1787</p>
+
+<p>October  15  th,  1787. Dear  Sir,</p>
+<p>Thus  I  have  examined  the  federal  constitution  as  far  as  a few  days  leisure  would  permit.  It  opens  to  my  mind  a  new scene ;  instead  of  seeing  powers  cautiously  lodged  in  the hands  of  numerous  legislators,  and  many  magistrates,  we  see all  important  powers  collecting  in  one  centre,  where  a  few men  will  possess  them  almost  at  discretion.  And  instead  of checks  in  the  formation  of  the  government,  to  secure  the rights  of  the  people  against  the  usurpations  of  those  they appoint  to  govern,  we  are  to  understand  the  equal  division  of lands  among  our  people,  and  the  strong  arm  furnished  them by  nature  and  situation,  are  to  secure  them  against  those usurpations.  If  there  are  advantages  in  the  equal  division  of our  lands,  and  the  strong  and  manly  habits  of  our  people,  we ought  to  establish  governments  calculated  to  give  duration  to them,  and  not  governments  which  never  can  work  naturally^</p>
+<p>i</p>
+<h3 class="paper-section-head">LETTERS  OF  A  FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>319.</p>
+<p>till  that  equality  of  property,  and  those  free  and  manly  habits shall  be  destroyed  ;  these  evidently  are  not  the  natural  basis of  the  proposed  constitution.  No  man  of  reflection,  and skilled  in  the  science  of  goverment,  can  suppose  these  will move  on  harmoniously  together  for  ages,  or  even  for  fifty years.  As  to  the  little  circumstances  commented  upon,  hy some  writers,  with  applause — as  the  age  of  a  representative,  of the  president,  &amp;c. — they  have,  in  my  mind,  no  weight  in  the general  tendency  of  the  system.</p>
+<p>There  are,  however,  in  my  opinion,  many  good  things  in the  proposed  system.</p>
+<p>It</p>
+<p>is  founded  on  elective  principles,</p>
+<p>.;  and  the  deposits  of  powers  in  different  hands,  is  essentially</p>
+<p>&#x27;  right.  The  guards  against  those  evils  we  have  experienced  in some  states  in  legislation  are  valuable  indeed ;  but  the  value of  every  feature  in  this  system  is  vastly  lessened  for  the  want of  that  one  important  feature  in  a  free  government,  a  repre- sentation of  the  people.  Because  we  have  sometimes  abused democracy,  I  am  not  among  those  men  who  think  a  democratic branch  a  nuisance ;  which  branch  shall  be  sufficiently  numer-</p>
+<p>.ous  to  admit  some  of  the  best  informed  men  of  each  order  in the  community  into  the  administration  of  government.</p>
+<p>While  the  radical  defects  in  the  proposed  system  are  not  so soon  discovered,  some  temptations  to  each  state,  and  to  many classes  of  men  to  adopt  it,  are  very  visible.  It  uses  the  demo- cratic language  of  several  of  the  state  constitutions,  particularly that  of  Massachusetts ;  the  eastern  states  will  receive  advan- tages so  far  as  the  regulation  of  trade,  by  a  bare  majority,  is committed  to  it:  Connecticut  and  New  Jersey  will  receive their  share  of  a  [36]  general  impost :</p>
+<p>The  middle  states  will</p>
+<p>.  receive  the  advantages  surrounding  the  seat  of  government ; The  southern  states  will  receive  protection,  and  have  their negroes  represented  in  the  legislature,  and  large  back  coun- tries will  soon  have  a  majority  in  it.  This  system  promises  a large  field  of  employment  to  military  gentlemen,  and  gentle- men of  the  law ;  and  in  case  the  government  shall  be  executed without  convulsions,  it  will  afford  security  to  creditors,  to  the clergy,  salary-men  and  others  depending  on  money  payments. So  far  as  the</p>
+<p>system</p>
+<p>promises  justice  and</p>
+<p>reasonable</p>
+<p>ad-</p>
+<h3 class="paper-section-head">LETTERS</h3>
+<h3 class="paper-section-head">OF  A  FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>vantages,  in  these  respects,  it  ought  to  be  supported  by  all honest  men ;  but  whenever  it  promises  unequal  and  improper advantages  to  any  particular  states,  or  orders  of  men,  it  ought to  be  opposed.</p>
+<p>I  have,  in  the  course  of  these  letters  observed,  that  there are  many  good  things  in  the  proposed  constitution,  and  I  have endeavored  to  point  out  many  important  defects  in  it.  I  have admitted  that  we  want  a  federal  system — that  we  have  a system  presented,  which,  with  several  alterations  may  be made  a  tolerable  good  one — I  have  admitted  there  is  a  well founded  uneasiness  among  creditors  and  mercantile  men.  In this  situation  of  things,  you  ask  me  what  I  think  ought  to  be done  ?  My  opinion  in  this  case  is  only  the  opinion  of  an  indi- vidual, and  so  far  only  as  it  corresponds  with  the  opinions  of the  honest  and  substantial  part  of  the  community,  is  it  en- titled to  consideration.  Though  I  am  fully  satisfied  that  the state  conventions  ought  most  seriously  to  direct  their  exer- tions to  altering  and  amending  the  system  proposed  before they  shall  adopt  it — yet  I  have  not  sufficiently  examined  the subject,  or  formed  an  opinion,  how  far  it  will  be  practicable for  those  conventions  to  carry  their  amendments.  As  to  the idea,  that  it  will  be  in  vain  for  those  conventions  to  attempt amendments,  it  cannot  be  admitted  ;  it  is  impossible  to  say whether  they  can  or  not  until  the  attempt  shall  be  made ;  and -when  it  shall  be  determined,  by  experience,  that  the  conven- tions cannot  agree  in  amendments,  it  will  then  be  an  import- ant question  before  the  people  of  the  United  States,  whether they  will  adopt  or  not  the  system  proposed  in  its  present form.  This  subject  of  consolidating  the  states  is  new:  and because  forty  or  fifty  men  have  agreed  in  a  system,  to  suppose the  good  sense  of  this  country,  an  enlightened  nation,  must adopt  it  without  examination,  and  though  in  a  state  of  pro- found peace,  without  endeavouring  to  amend  those  parts  they perceive  are  defective,  dangerous  to  freedom,  and  destructive of  the  valuable  principles  of  republican  government — is  truly humiliating.  It  is  true  there  may  be  danger  in  delay ;  but there  is  danger  in  adopting  the  system  in  its  present  form ; and  I  see  the  danger  in  either  case  will  arise  principally  from</p>
+<h3 class="paper-section-head">LETTERS</h3>
+<h3 class="paper-section-head">OF  A</h3>
+<h3 class="paper-section-head">FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>32 1</p>
+<p>the  conduct  and  views  of  [37]  two  very  unprincipled  parties in  the  United  States — two  fires,  between  which  the  honest and  substantial  people  have  long  found  themselves  situated. One  party  is  composed  of  little  insurgents,  men  in  debt,  who want  no  law,  and  who  want  a  share  of  the  property  of  others ; these  are  called  levellers,  Shayites,  &amp;c.  The  other  party  is composed  of  a  few,  but  more  dangerous  men,  with  their  servile dependents  ;  these  avariciously  grasp  at  all  power  and  prop- erty ;  you  may  discover  in  all  the  actions  of  these  men,  an evident  dislike  to  free  and  equal  government,  and  they  will  go systematically  to  work  to  change,  essentially,  the  forms  of government</p>
+<p>in</p>
+<p>this</p>
+<p>country  ;</p>
+<p>these</p>
+<p>are</p>
+<p>called</p>
+<p>aristocrats,</p>
+<p>m ites,  &amp;c.  &amp;c.</p>
+<p>Between</p>
+<p>these  two  parties  is  the  weight</p>
+<p>of  the  community ;  the  men  of  middling  property,  men  not  in debt  on  the  one  hand,  and  men,  on  the  other,  content  with republican  governments,  and  not  aiming  at  immense  fortunes, offices,  and  power.  In  1786,  the  little  insurgents,  the  levellers, came  forth,  invaded  the  rights  of  others,  and  attempted  to establish  governments  according  to  their  wills.  Their  move- ments evidently  gave  encouragement  to  the  other „.party, which,  in  1787,  has  taken  the  political  field,  and  with  its fashionable  dependants,  and  the  tongue  and  the  pen,  is  en- deavoring to  establish  in  a  great  haste,  a  politer  kind  of  gov- ernment. These  two  parties,  which  will  probably  be  opposed or  united  as  it  may  suit  their  interests  and  views,  are  really insignificant,  compared  with  the  solid,  free,  and  independent part  of  the  community.  It  is  not  my  intention  to  suggest, that  either  of  these  parties,  and  the  real  friends  of  the  pro- posed constitution,  are  the  same  men.  The  fact  is,  these aristocrats  support  and  hasten  the  adoption  of  the  proposed- constitution,  merely  because  they  think  it  is  a  stepping  stone to  their  favorite  object.  I  think  I  am  well  founded  in  this idea  ;  I  think  the  general  politics  of  these  men  support  it,  as well  as  the  common  observation  among  them.  That  the proffered  plan  is  the  best  that  can  be  got  at  present,  it  will  do for  a  few  years,  and  lead  to  something  better.  The  sensible and  judicious  part  of  the  community  will  carefully  weigh  all these  circumstances;  they  will  view  the  late  convention  as</p>
+<h3 class="paper-section-head">LETTERS  OF  A  FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>a  respectable  body  of  men — America  probably  never  will  see an  assembly  of  men,  of  a  like  number,  more  respectable.</p>
+<p>But the</p>
+<p>members  of</p>
+<p>the  convention  met</p>
+<p>without</p>
+<p>knowing</p>
+<p>the sentiments  of  one  man  in  ten  thousand  in  these  states  respect- ing the  new  ground</p>
+<p>taken.</p>
+<p>Their  doings  are  but  the  first attempts  in  the  most  important  scene  ever  opened.</p>
+<p>Though each  individual  in  the  state  conventions  will  not,  probably,  be so  respectable  as  each</p>
+<p>individual  in</p>
+<p>the</p>
+<p>federal  convention, yet  as  the  state  conventions  will  probably  consist  of  fifteen hundred  or  two  thousand  men  of  abilities,  and  versed  in  the science  of</p>
+<p>government,  [38]  collected  from  all  parts  of</p>
+<p>the community  and  from  all  orders  of  men,  it  must  be  acknowl- edged that  the  weight  of  respectability  will  be  in  them — In them  will  be  collected  the  solid</p>
+<p>sense  and</p>
+<p>the</p>
+<p>real  political character  of  the  country.</p>
+<p>Being  revisers  of  the  subject,  they will  possess  peculiar  advantages.</p>
+<p>To  say  that  these  conven- tions ought  not  to  attempt,  coolly  and  deliberately,  the  re- vision of  the</p>
+<p>system,  or  that  they  cannot</p>
+<p>amend</p>
+<p>it,  is  very foolish  or  very  assuming.</p>
+<p>If  these  conventions,  after  examin- ing the</p>
+<p>system,</p>
+<p>adopt  it,  I  shall  be  perfectly  satisfied,  and wish  to  see  men  make  the  administration  of  the  government an  equal  blessing  to  all  orders  of</p>
+<p>men.</p>
+<p>I  believe  the  great body  of  our  people  to  be  virtuous  and  friendly  to  good  gov- ernment, to  the  protection  of  liberty  and  property;  and  it  is the  duty  of  all  good  men,  especially  of  those  who  are  placed as  sentinels  to  guard  their  rights — it  is  their  duty  to  examine into  the  prevailing  politics  of</p>
+<p>parties,  and  to  disclose  them — while  they  avoid  exciting  undue  suspicions,  to  lay  facts  before the  people,  which  will  enable  them  to</p>
+<p>form  a  proper  judg- ment.</p>
+<p>Men  who  wish  the  people  of  this  country  to  determine for  themselves,  and  deliberately  to  fit  the  government  to  their situation,</p>
+<p>must</p>
+<p>feel</p>
+<p>some</p>
+<p>degree</p>
+<p>of</p>
+<p>indignation</p>
+<p>at</p>
+<p>those attempts  to  hurry  the  adoption  of  a  system,  and</p>
+<p>to  shut  the door  against  examination.</p>
+<p>The  very  attempts  create  suspi- cions, that  those  who  make  them  have  secret  views,  or  see some  defects  in  the  system,  which,  in  the  hurry  of  affairs,  they expect  will  escape  the  eye  of  a  free  people.</p>
+<p>What  can  be  the  views  of  those  gentlemen  in  Pennsylvania,</p>
+<h3 class="paper-section-head">LETTERS  OF  A  FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>-who  precipitated  decisions  on  this  subject  ?  What  can  be  the views  of  those  gentlemen  in  Boston,  who  countenanced  the Printers  in  shutting  up  the  press  against  a  fair  and  free  investi- gation of  this  important  system  in  the  usual  way.</p>
+<p>The  mem-</p>
+<p>&#x27;  bers  of  the  convention  have  done  their  duty why  should</p>
+<p>some  of  them  fly  to  their  states — almost  forget  a  propriety  of behaviour,  and</p>
+<p>precipitate</p>
+<p>measures</p>
+<p>for</p>
+<p>the  adoption  of</p>
+<p>a system  of  their  own</p>
+<p>making?</p>
+<p>I  confess  candidly,  when</p>
+<p>I consider</p>
+<p>these</p>
+<p>circumstances</p>
+<p>in</p>
+<p>connection</p>
+<p>with</p>
+<p>the</p>
+<p>un- guarded parts  of  the  system  I  have  mentioned,  I  feel  disposed to  proceed  with  very  great  caution,  and  to  pay  more  attention than  usual  to  the  conduct  of</p>
+<p>particular  characters.</p>
+<p>If  the constitution  presented  be  a  good  one,  it  will  stand  the  test with  a  well  informed  people :  all  are  agreed  that  there  shall be  state  conventions  to  examine  it ;  and  we  must  believe  it will  be  adopted,  unless  we  suppose  it  is  a  bad  one,  or  that those  conventions  will  make  false  divisions  respecting  it.</p>
+<p>I admit  improper  measures  are  taken  against  the  adoption  of the  system  as  well  for  it all  who  object  to  the  plan  pro- posed ought  to  point  out  the  defects  [39]  objected  to,  and  to propose  those  amendments  with  which  they  can  accept  it,  or to  propose  some  other  system  of  government,  that  the  public mind  may  be  known,  and  that  we  may  be  brought  to  agree in  some  system  of  government,  to  strengthen  and</p>
+<p>execute the  present,  or  to  provide  a  substitute.</p>
+<p>I  consider  the  field of  enquiry  just  opened,  and  that  we  are</p>
+<p>to  look  to  the  state conventions  for  ultimate  decisions  on  the  subject  before  us;  it is  not  to  be  presumed,  that  they  will  differ  about  small  amend- ments, and  lose  a  system  when  they  shall  have  made  it  sub- stantially good  ;  but  touching  the  essential  amendments,  it  is to  be  presumed  the  several  conventions  will  pursue  the  most rational  measures  to  agree  in  and  obtain  them ;  and  such  de- fects as  they  shall  discover  and  not  remove,  they  will  probably notice,  keep</p>
+<p>them</p>
+<p>in  view</p>
+<p>as</p>
+<p>the</p>
+<p>ground</p>
+<p>work  of</p>
+<p>future amendments,  and  in  the  firm  and  manly  language  which  every free  people  ought  to  use,  will  suggest  to  those  who  may  here- after administer  the  government,  that  it  is  their  expectation, that  the  system  will  be  so  organized  by  legislative  acts,  and  the</p>
+<h3 class="paper-section-head">LETTERS</h3>
+<h3 class="paper-section-head">OF  A  FEDERAL  FARMER  BY  R.  H.  LEE.</h3>
+<p>government  so  administered,  as  to  render  those  defects  as little  injurious  as  possible.  Our  countrymen  are  entitled  to an  honest  and  faithful  government ;  to  a  government  of  laws and  not  of  men  ;  and  also  to  one  of  their  chusing — as  a  citizen of  the  country,  I  wish  to  see  these  objects  secured,  and licentious,  assuming,  and  overbearing  men  restrained ;  if  the constitution  or  social  compact  be  vague  and  unguarded,  then ,.we  depend  wholly  upon  the  prudence,  wisdom  and  moder- ation of  those  who  manage  the  affairs  of  government ;  or on  what,  probably,  is  equally  uncertain  and  precarious,  the success  of  the  people  oppressed  by  the  abuse  of  government, in  receiving  it  from  the  hands  of  those  who  abuse  it,  and placing  it  in  the  hands  of  those  who  will  use  it  well.</p>
+<p>In  every  point  of  view,  therefore,  in  which  I  have  been able,  as  yet,  to  contemplate  this  subject,  I  can  discern  but  one rational  mode  of  proceeding  relative  to  it :  and  that  is  to  ex- amine it  with  freedom  and  candour,  to  have  state  conventions some  months  hence,  which  shall  examine  coolly  every  article, clause,  and  word  in  the  system  proposed,  and  to  adopt  it  with such  amendments  as  they  shall  think  fit.  How  far  the  state conventions  ought  to  pursue  the  mode  prescribed  by  the federal  convention  of  adopting  or  rejecting  the  plan  in  toto,  I leave  it  to  them  to  determine.  Our  examination  of  the  sub- ject hitherto  has  been  rather  of  a  general  nature.  The  re- publican characters  in  the  several  states,  who  wish  to  make this  plan  more  adequate  to  security  of  liberty  and  property, and  to  the  duration  of  the  principles  of  a  free  government, will,  no  doubt,  collect  their  opinions  to  certain  points,  and accurately  define  those  [40]  alterations  and  amendments  they wish ;  if  it  shall  be  found  they  essentially  disagree  in  them, the  conventions  will  then  be  able  to  determine  whether  to adopt  the  plan  as  it  is,  or  what  will  be  proper  to  be  done.</p>
+<p>Under  these  impressions,  and  keeping  in  view  the  improper</p>
+<p>\</p>
+<p>and  unadvisable  lodgment  of  powers  in  the  general  govern-</p>
+<p>\</p>
+<p>ment,  organized  as  it  at  present  is,  touching  internal  taxes,</p>
+<p>\  armies  and  militia,  the  elections  of  its  own  members,  causes</p>
+<p>\  between  citizens  of</p>
+<p>different</p>
+<p>states,  &amp;c.  and  the  want  of  a</p>
+<p>&#x27;more</p>
+<p>perfect  bill  of  rights,  &amp;c.</p>
+<p>I  drop  the  subject  for</p>
+<p>the</p>
+<h3 class="paper-section-head">LETTERS</h3>
+<h3 class="paper-section-head">OF  A</h3>
+<h3 class="paper-section-head">FEDERAL  FARMER</h3>
+<h3 class="paper-section-head">BY  R.  H.  LEE.</h3>
+<p>present,  and  when  I  shall  have  leisure  to  revise  and  correct my  ideas  respecting  it,  and  to  collect  into  points  the  opinions of  those  who  wish  to  make  the  system  more  secure  and  safe, perhaps  I  may  proceed  to  point  out  particularly  for  your consideration,  the  amendments  which  ought  to  be  ingrafted into  this  system,  not  only  in  conformity  to  my  own,  but  the deliberate  opinions  of  others — you  will  with  me  perceive,  that the  objections  to  the  plan  proposed  may,  by  a  more  leisure examination  be  set  in  a  stronger  point  of  view,  especially  the important  one,  that  there  is  no  substantial  representation  of the  people  provided  for  in  a  government  in  which  the  most essential  powers,  even  as  to  the  internal  police  of  the  country, is  proposed  to  be  lodged.</p>
+<p>I  think  the  honest  and  substantial  part  of  the  community will  wish  to  see  this  system  altered,  permanency  and  consist- ency given  to  the  constitution  we  shall  adopt;  and  therefore they  will  be  anxious  to  apportion  the  powers  to  the  features and  organizations  of  the  government,  and  to  see  abuse  in  the exercise  of  power  more  effectually  guarded  against.  It  is suggested,  that</p>
+<p>state  officers,</p>
+<p>from</p>
+<p>interested</p>
+<p>motives  will</p>
+<p>oppose  the  constitution  presented 1  see  no  reason  for  this,</p>
+<p>their  places  in  general  will  not  be  effected,  but  new  openings to  offices  and  places  of  profit  must  evidently  be  made  by  the adoption  of  the  constitution  in  its  present  form.</p>
+<p>Your&#x27;s,  &amp;c.</p>
+<p>THE  FEDERAL  FARMER. To  the  Republican,</p>
+<h3 class="paper-section-head">I</h3>
+<p>The</p>
+
+      <div class="cross-refs">
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">Ask Federal Farmer</div>
+      <div class="chat-panel-desc">Ask the Anti-Federalists about this essay's warnings — and how they were (or weren't) answered by the Federalists.</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-assistant">We wrote to warn you. This is Federal Farmer&#x27;s Letter V — On the Federal System. Ask us about the argument, the specific constitutional provisions we objected to, or how our warnings shaped the Bill of Rights.</div>
+    </div>
+    <div class="chat-starters" id="chat-starters">
+      <button class="starter" onclick="sendStarter(this)">What is the central argument of this essay?</button>
+<button class="starter" onclick="sendStarter(this)">Which specific constitutional provision does this essay object to?</button>
+<button class="starter" onclick="sendStarter(this)">How did the Federalists respond to this objection?</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chat-input" rows="2"
+        placeholder="Ask about Federal Farmer's argument…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+      <button class="chat-send" id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Federal Farmer 5 &bull; October 13, 1787</span>
+  <span><a href="/anti-federalist-papers/">← All Anti-Federalist Papers</a> &bull; <a href="/halls/founding-documents/">Founding Documents</a></span>
+</footer>
+
+<script>
+const API = "https://museum-api-production-8ce6.up.railway.app";
+const PERSONA_ID = "anti-federalist-papers";
+const PAPER_SLUG = "federal-farmer-5";
+let convId = null;
+
+async function sendMessage(text) {
+  const input = document.getElementById("chat-input");
+  const msg = text || input.value.trim();
+  if (!msg) return;
+  if (!text) input.value = "";
+
+  document.getElementById("chat-starters").style.display = "none";
+  const msgs = document.getElementById("chat-messages");
+
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg msg-user";
+  userDiv.textContent = msg;
+  msgs.appendChild(userDiv);
+
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "msg msg-assistant msg-thinking";
+  thinkDiv.textContent = "Federal Farmer considers…";
+  msgs.appendChild(thinkDiv);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById("chat-send").disabled = true;
+
+  try {
+    const body = {
+      message: "Re: Federal Farmer's Letter V — On the Federal System. " + msg,
+      conversation_id: convId,
+      mode: "modern",
+      length: "detailed",
+      reading_level: "general",
+    };
+    const resp = await fetch(API + "/persona/" + PERSONA_ID + "/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    convId = data.conversation_id;
+
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = data.response;
+
+    if (data.sources && data.sources.length) {
+      const srcDiv = document.createElement("div");
+      srcDiv.className = "msg-sources";
+      srcDiv.textContent = "Sources: " + data.sources.map(s => s.title + (s.year ? " (" + s.year + ")" : "")).join("; ");
+      thinkDiv.appendChild(srcDiv);
+    }
+  } catch(e) {
+    thinkDiv.className = "msg msg-assistant";
+    thinkDiv.textContent = "Unable to reach the API. Please try again.";
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById("chat-send").disabled = false;
+}
+
+function sendStarter(btn) {
+  sendMessage(btn.textContent);
+}
+</script>
+</body>
+</html>
