@@ -10,7 +10,7 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 53 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-27 |
+| **Last Active** | 2026-05-28 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
@@ -37,6 +37,15 @@ Phase 8: Educator portal paper-level integration — assignment generator (`/edu
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-28
+
+- **Bill of Rights removed from Republic Room**: portrait card stripped from `halls/republic-room/index.html` — it lives in Founding Documents hall now
+- **Federalist/Anti-Federalist chatbot fixed**: root cause was both `persona.json` files using old flat schema — `PersonaManager` requires nested `metadata`, `corpus`, `persona`, and `widget.ui.header_title` fields; without them every chat request returned 404 and left a blank box. Both files rewritten to full schema and committed to `jane-jacobs-bot` repo (`836a8bd`)
+- **Chatbot blank-square guard added**: both collection pages now show a readable error message instead of a blank box if the API returns empty/error
+- **Founding Documents portrait cards**: already existed for both Federalist and Anti-Federalist Papers (gallery-section, lines 638–677) — no changes needed
+- Railway `museum-api` redeploy triggered to pick up persona.json fixes
+- Both repos pushed to GitHub
 
 ### 2026-05-27 (session 2)
 
