@@ -402,6 +402,11 @@
         body: JSON.stringify({ message: text, conversation_id: convId, mode: 'historical', length: 'conversational' })
       });
       const data = await res.json();
+      if (!res.ok || !data.response) {
+        thinking.textContent = data.detail || 'Unable to reach the API. Please try again.';
+        thinking.classList.remove('msg-thinking');
+        return;
+      }
       convId = data.conversation_id;
       thinking.textContent = data.response;
       thinking.classList.remove('msg-thinking');
