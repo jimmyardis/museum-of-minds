@@ -10,18 +10,18 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 53 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-28 |
+| **Last Active** | 2026-05-29 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-53 personas + 2 document collections live. Federalist/Anti-Federalist build through Phase 7: 85 individual Federalist paper pages, 32 Anti-Federalist paper pages, a cross-collection Debate View (4 topic pairs), and 8 SC USG-aligned Topic Cluster pages at `/federalist-papers/topics/`. Educator mode live on multi-tenant API with SC/AP standards alignment. SC Curriculum Alignment Brief at `/educator/alignment/`.
+5 personas now have live 3D knowledge graph sections (Jefferson, Hamilton, Madison, Paine, Smith). Full pipeline automated: `build_kg_chain.sh` runs Phases 0–4 then `kg_add_page_section.py` (Phase 5) auto-injects the themed KG visualization into the persona page. Batch 1 complete and deployed. Batch 2 goal set (Washington, Marx, Hayek, Mencken, Lovelace) — bootstrap seeds needed before building.
 
 ## Next Action
 
-Phase 8: Educator portal paper-level integration — assignment generator (`/educator/assign`) and compare-papers endpoint to let teachers pull two papers side-by-side with discussion questions.
+Start Batch 2 KG builds: add bootstrap seeds for `george-washington`, `karl-marx`, `friedrich-hayek`, `hl-mencken`, `ada-lovelace` to `kg_bootstrap.py`, then run `bash execution/build_kg_chain.sh` for all five.
 
 ## Blockers
 
@@ -37,6 +37,16 @@ Phase 8: Educator portal paper-level integration — assignment generator (`/edu
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-29
+
+- **Batch 1 KG builds complete**: James Madison (1,266 nodes / 1,326 edges), Thomas Paine (737 / 782), Adam Smith (729 / 621) — all phases 0–5 done
+- **Hamilton KG page section added**: Hamilton's page now has 3D KG section (1,134 nodes); also fixed stale git index that had trapped Phase 4 result at 691 nodes
+- **kg_add_page_section.py** built: auto-injects themed KG CSS + HTML + 3D force-graph script into any persona page. Themes defined for Jefferson, Hamilton, Madison, Paine, Smith + generic dark fallback
+- **build_kg_chain.sh** built: sequential pipeline runner (Phases 1–5) with phase-skip logic
+- **kg_bootstrap.py** extended: full seed graphs for Madison, Paine, Smith added to `SUPPORTED_PERSONAS`
+- **Batch 2 goal set**: Washington, Marx, Hayek, Mencken, Lovelace — picked for cross-link density (Washington), domain diversity (Mencken/Lovelace), and completing the economic thought triangle (Marx + Hayek)
+- All three persona pages (madison, paine, smith) have KG sections committed and pushed; Railway redeployed
 
 ### 2026-05-28 (session 2)
 
