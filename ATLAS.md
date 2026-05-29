@@ -32,18 +32,24 @@ Phase 8: Educator portal paper-level integration — assignment generator (`/edu
 
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
-- Anti-Federalist Papers portrait card image: currently uses inline SVG. Worth finding a real period document scan?
+- Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
 
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
 
-### 2026-05-28
+### 2026-05-28 (session 2)
+
+- **Founding Documents portrait card images fixed**: Federalist Papers card was using a broken Wikimedia URL; Anti-Federalist Papers SVG was too small for the 3/4 aspect card frame. Both replaced with styled inline SVGs at proper dimensions (150×195). Committed `a188164`, pushed to `museum-of-minds`.
+- **Federalist/Anti-Federalist chatbots fixed**: API was returning "Persona not found" because Railway `redeploy` reuses the same Docker image (doesn't pull latest GitHub). Required `serviceInstanceDeployV2(commitSha=...)` via Railway GraphQL API to trigger a fresh build from the latest commit (`cc1a5ce`). Both chatbots now respond correctly (tested).
+- Both chatbots verified working: Federalist Papers returns Publius voice; Anti-Federalist returns Brutus voice.
+- `alexander-hamilton/index.html` has uncommitted KG section CSS from a prior session — needs commit before next push.
+
+### 2026-05-28 (session 1)
 
 - **Bill of Rights removed from Republic Room**: portrait card stripped from `halls/republic-room/index.html` — it lives in Founding Documents hall now
 - **Federalist/Anti-Federalist chatbot fixed**: root cause was both `persona.json` files using old flat schema — `PersonaManager` requires nested `metadata`, `corpus`, `persona`, and `widget.ui.header_title` fields; without them every chat request returned 404 and left a blank box. Both files rewritten to full schema and committed to `jane-jacobs-bot` repo (`836a8bd`)
 - **Chatbot blank-square guard added**: both collection pages now show a readable error message instead of a blank box if the API returns empty/error
-- **Founding Documents portrait cards**: already existed for both Federalist and Anti-Federalist Papers (gallery-section, lines 638–677) — no changes needed
 - Railway `museum-api` redeploy triggered to pick up persona.json fixes
 - Both repos pushed to GitHub
 
