@@ -17,11 +17,11 @@
 
 ## Current State
 
-**25-persona expansion complete (2026-05-30).** Museum now has 78 total personas deployed. 25 new figures added across all halls: Republic Room (Burke, Tocqueville, Rousseau, Roosevelt, Voltaire), Press Room (Twain, Emerson, Thoreau, Wells, Stowe), Counting House (Mill, Ricardo, Bastiat, George, Veblen), Trailblazers (Washington, Stanton, Truth, Nightingale, Wollstonecraft), Observatory (Galileo, Descartes, Babbage, Curie, Tesla). Pinecone index ~145,000 vectors. All pages committed and live on GitHub Pages. Known thin corpora: Sojourner Truth (23v), Tesla (101v), Marie Curie (discourse-only). 20 personas have 3D KG sections from prior work.
+**25-persona expansion debugged and fully live (2026-05-30).** Museum has 78 personas. All 25 new chatbots now respond: Railway API redeployed with new persona configs (76 total), portrait images fixed in all hall cards (52 broken Wikipedia thumbnail URLs converted to direct URLs), Sojourner Truth corpus expanded from 11 to 304 vectors. Ten stub pages remain (< 200 lines, no SVG hero) — chatbots work but pages are minimal. ChromaDB not updated for new personas (production uses Pinecone; ChromaDB is local-dev only). PERSONA.md updated with 6-step deployment checklist including portrait URL validation, page quality check, and Railway redeploy procedure.
 
 ## Next Action
 
-Prioritize enriching thin new corpora: Sojourner Truth (more speech transcripts), Tesla (more articles), Marie Curie (find accessible English primary texts). Also: Sherlock Holmes voice still unfinalized.
+Rebuild the 10 stub pages using full BUILD.md template (sojourner-truth, descartes, wollstonecraft, marie-curie, nightingale, tesla, henry-george, babbage, h-b-stowe, veblen). Each is a full page build — do them in a focused batch session.
 
 ## Blockers
 
@@ -37,6 +37,16 @@ Prioritize enriching thin new corpora: Sojourner Truth (more speech transcripts)
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-30 — 25-persona expansion debug + portrait fix session
+
+- **Root-cause audit** of overnight /goal run: all 25 chatbots returned 404 because Railway API was not redeployed after persona.json push (no webhook). All 25 Pinecone embeddings confirmed present (100+ vectors each). Portrait cards all blank because Wikipedia thumbnail URL format (`440px-`) returns HTTP 400 — only direct Commons URLs work.
+- **Railway API redeployed** using minimal-upload method (3MB package from temp dir vs. 1GB from /home/wner). API now serves 76 personas. All 25 new chatbots verified responding.
+- **52 portrait URL fixes** across 31 files (5 hall pages + 26 persona pages). Committed and pushed to museum-of-minds.
+- **Sojourner Truth corpus expanded**: was 11 chunks (1850 Narrative only). Added 1875 expanded edition (Archive.org `narrativeofsojou7231gilb`): 304 total corpus vectors after re-embed.
+- **PERSONA.md updated** with 6-step Deployment Pipeline section (portrait URL rule, page quality standard, Pinecone vector thresholds, Railway deploy procedure, chatbot spot-check, commit procedure). Post-mortem failure table included.
+- **PLATFORM_STATUS.md updated**: vector count, P0 stub-page bug tracker for 10 thin pages.
+- **Stray files cleaned**: removed accidental `museum-of-minds/personas/alexis-de-tocqueville/` and `john-stuart-mill/` corpus directories (wrong repo).
 
 ### 2026-05-30 — 25-persona expansion complete
 
