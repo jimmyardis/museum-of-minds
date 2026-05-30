@@ -17,11 +17,11 @@
 
 ## Current State
 
-5 personas now have live 3D knowledge graph sections (Jefferson, Hamilton, Madison, Paine, Smith). Full pipeline automated: `build_kg_chain.sh` runs Phases 0–4 then `kg_add_page_section.py` (Phase 5) auto-injects the themed KG visualization into the persona page. Batch 1 complete and deployed. Batch 2 goal set (Washington, Marx, Hayek, Mencken, Lovelace) — bootstrap seeds needed before building.
+20 personas now have live 3D KG sections (Batches 1–3 complete). `kg_bootstrap.py` contains full seed graphs for all 20. All persona pages updated with Phase 5 KG injections and pushed to GitHub Pages; Railway redeployed. Helen Keller's KG is small (216n/189e) due to mid-pipeline credit exhaustion — a re-run of her Phase 4 would enrich it. KG build paused at 20 figures by user request.
 
 ## Next Action
 
-Start Batch 2 KG builds: add bootstrap seeds for `george-washington`, `karl-marx`, `friedrich-hayek`, `hl-mencken`, `ada-lovelace` to `kg_bootstrap.py`, then run `bash execution/build_kg_chain.sh` for all five.
+Re-run Helen Keller Phase 4 when ready to enrich her KG (216 nodes is thin vs. typical 500–800+): `bash execution/build_kg_chain.sh helen-keller` — phases 1–3 will skip, only Phase 4 re-runs.
 
 ## Blockers
 
@@ -38,7 +38,18 @@ Start Batch 2 KG builds: add bootstrap seeds for `george-washington`, `karl-marx
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
 
-### 2026-05-29
+### 2026-05-29 (session 2)
+
+- **Batch 2 + 3 KG builds complete** (15 new personas across two sessions):
+  - Batch 2: Washington (824n/741e), Marx (490n/380e), Hayek (712n/506e), Mencken (959n/618e), Lovelace (686n/506e), Jay (862n/837e), Montesquieu (554n/557e), Taylor (504n/433e), Holmes (653n/618e), Keller (216n/189e — short due to mid-pipeline credit exhaustion)
+  - Batch 3: Lincoln (491n/523e), Franklin (865n/811e), Mason (651n/642e), Douglass (410n/378e), Darwin (616n/598e)
+- **Jefferson Phase 5 refreshed** with `--force` (1,215n/1,374e — was stale from prior session)
+- **`kg_bootstrap.py`** extended to 20 personas with full seed graphs for all Batch 2+3 figures
+- **15 persona pages updated** with 3D KG sections via Phase 5 auto-injection; committed to museum-of-minds
+- **Both repos pushed** to GitHub; Railway museum-api redeployed
+- **KG build paused** at 20 figures by user request — Helen Keller Phase 4 re-run flagged as future task
+
+### 2026-05-29 (session 1)
 
 - **Batch 1 KG builds complete**: James Madison (1,266 nodes / 1,326 edges), Thomas Paine (737 / 782), Adam Smith (729 / 621) — all phases 0–5 done
 - **Hamilton KG page section added**: Hamilton's page now has 3D KG section (1,134 nodes); also fixed stale git index that had trapped Phase 4 result at 691 nodes
