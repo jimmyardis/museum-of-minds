@@ -576,90 +576,62 @@
     .kg-header { text-align: center; max-width: 680px; margin: 0 auto 2.5rem; }
     .kg-eyebrow {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 0.75rem;
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 0.75rem;
     }
     .kg-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 1rem;
+      font-size: 2rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 1rem;
     }
     .kg-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      color: var(--ink-light);
-      line-height: 1.7;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem; color: var(--ink-light); line-height: 1.7;
     }
     .kg-canvas-wrap {
-      position: relative;
-      height: 580px;
-      background: #1A1208;
-      border-radius: 4px;
+      position: relative; height: 580px;
+      background: #1A1208; border-radius: 4px;
       border: 1px solid var(--parchment-dark);
       overflow: hidden;
-      box-shadow: inset 0 0 80px rgba(0,0,0,0.6), 0 4px 24px rgba(44,31,14,0.3);
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.6), 0 4px 24px rgba(0,0,0,0.4);
     }
     #kg-canvas { width: 100%; height: 100%; }
-
-    /* Node detail panel */
     .kg-panel {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 300px;
+      position: absolute; top: 1rem; right: 1rem; width: 300px;
       background: rgba(232,222,184,0.96);
       border: 1px solid var(--parchment-dark);
-      border-radius: 3px;
-      padding: 1.25rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      display: none;
-      max-height: calc(100% - 2rem);
-      overflow-y: auto;
+      border-radius: 3px; padding: 1.25rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: none; max-height: calc(100% - 2rem); overflow-y: auto;
     }
     .kg-panel.visible { display: block; }
     .kg-panel-close {
       position: absolute; top: 0.6rem; right: 0.75rem;
       background: none; border: none; cursor: pointer;
-      font-size: 0.85rem; color: var(--ink-faint);
-      font-family: inherit;
+      font-size: 0.85rem; color: var(--ink-faint); font-family: inherit;
     }
-    .kg-panel-close:hover { color: var(--ink); }
     .kg-panel-type {
       font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--ink-faint); margin-bottom: 0.35rem;
     }
     .kg-panel-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem; color: var(--ink);
-      margin-bottom: 0.75rem; line-height: 1.3;
-      padding-right: 1.5rem;
+      font-size: 1.1rem; color: var(--ink);
+      margin-bottom: 0.75rem; line-height: 1.3; padding-right: 1.5rem;
     }
     .kg-panel-meta {
-      font-size: 0.82rem; color: var(--ink-light);
-      line-height: 1.5; margin-bottom: 1rem;
+      font-size: 0.82rem; color: var(--ink-light); line-height: 1.5; margin-bottom: 1rem;
     }
     .kg-panel-edges { border-top: 1px solid var(--parchment-dark); padding-top: 0.75rem; }
-    .kg-edge-item {
-      margin-bottom: 0.9rem;
-    }
+    .kg-edge-item { margin-bottom: 0.9rem; }
     .kg-edge-rel {
-      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--verdigris); font-weight: 600; margin-bottom: 0.2rem;
     }
-    .kg-edge-target {
-      font-size: 0.88rem; color: var(--ink); margin-bottom: 0.25rem;
-    }
+    .kg-edge-target { font-size: 0.88rem; color: var(--ink); margin-bottom: 0.25rem; }
     .kg-edge-excerpt {
-      font-size: 0.78rem; color: var(--ink-faint);
-      font-style: italic; line-height: 1.5;
+      font-size: 0.78rem; color: var(--ink-light); font-style: italic; line-height: 1.5;
     }
-
-    /* Legend + hint */
     .kg-legend {
       display: flex; flex-wrap: wrap; gap: 1rem;
       justify-content: center; margin-top: 1.5rem;
@@ -667,19 +639,19 @@
     .kg-legend-item {
       display: flex; align-items: center; gap: 0.4rem;
       font-size: 0.78rem; color: var(--ink-faint);
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 0.05em;
+      font-family: 'Cormorant Garamond', serif; letter-spacing: 0.05em;
     }
-    .kg-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      flex-shrink: 0;
-    }
+    .kg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .kg-hint {
       text-align: center; margin-top: 0.75rem;
       font-size: 0.72rem; color: var(--ink-faint);
       letter-spacing: 0.12em; text-transform: uppercase;
     }
-
+    @media (max-width: 900px) {
+      .kg-section { padding: 4rem 1.5rem; }
+      .kg-canvas-wrap { height: 420px; }
+      .kg-panel { width: 100%; position: static; margin-top: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -1031,46 +1003,40 @@
     </blockquote>
     <cite>— Declaration of Independence · 4 July 1776</cite>
   </div>
-
+<!-- CORPUS STRIP -->
+  
   <!-- KNOWLEDGE GRAPH -->
   <section class="kg-section" id="knowledge-graph">
     <div class="kg-header">
-      <div class="kg-eyebrow">Knowledge Architecture &nbsp;·&nbsp; Phase I</div>
+      <div class="kg-eyebrow">Knowledge Architecture &nbsp;·&nbsp; All Phases</div>
       <h2 class="kg-title">The Network of Ideas</h2>
       <p class="kg-subtitle">
-        Every relationship, influence, and controversy in Jefferson's life —
-        drawn from 133 source passages across his writings and historical record.
-        Click any node to explore.
+        1,215 nodes, 1,374 edges — every relationship, influence, and controversy
+        in Jefferson's life, drawn from 1,412 source passages
+        across writings and historical record. Click any node to explore.
       </p>
     </div>
-
     <div class="kg-canvas-wrap">
       <div id="kg-canvas"></div>
-
-      <!-- Node detail panel -->
       <div class="kg-panel" id="kg-panel">
-        <button class="kg-panel-close" id="kg-panel-close">✕</button>
+        <button class="kg-panel-close" id="kg-panel-close">&#x2715;</button>
         <div class="kg-panel-type" id="kg-panel-type"></div>
         <div class="kg-panel-name" id="kg-panel-name"></div>
         <div class="kg-panel-meta" id="kg-panel-meta"></div>
         <div class="kg-panel-edges" id="kg-panel-edges"></div>
       </div>
     </div>
-
-    <!-- Legend -->
     <div class="kg-legend">
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#4A7B6F"></span>Person</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#8B3A2A"></span>Concept</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#8B7035"></span>Event</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#6B4E2A"></span>Place</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#2E5048"></span>Institution</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#7A2020"></span>Controversy</span>
-      <span class="kg-legend-item"><span class="kg-dot" style="background:#B8A878"></span>Work</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#5A9E8F"></span>Person</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#C05A3A"></span>Concept</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#A8903A"></span>Event</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#8A6B40"></span>Place</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#3E6B5C"></span>Institution</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#9A2A2A"></span>Controversy</span>
+      <span class="kg-legend-item"><span class="kg-dot" style="background:#C0B488"></span>Work</span>
     </div>
     <div class="kg-hint">Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Click any node</div>
   </section>
-
-  <!-- CORPUS STRIP -->
   <div class="corpus-strip">
     <div class="corpus-label">Corpus Sources</div>
     <div class="corpus-list">
@@ -1094,10 +1060,7 @@
     <span class="footer-text">Powered by His Own Words</span>
     <span class="footer-text">Accession No. TJ–1743–2026</span>
   </footer>
-
-  <!-- 3D KNOWLEDGE GRAPH SCRIPT -->
-  <script src="https://unpkg.com/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
-  <script>
+<script>
   (function() {
     const API = 'https://museum-api-production-8ce6.up.railway.app';
     const PERSONA = 'thomas-jefferson';
@@ -1252,6 +1215,109 @@
       document.getElementById('kg-panel').classList.remove('visible');
     }
 
+    document.getElementById('kg-panel-close').addEventListener('click', hidePanel);
+  })();
+  </script>
+
+
+  <!-- 3D KNOWLEDGE GRAPH SCRIPT -->
+  <script src="https://unpkg.com/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
+  <script>
+  (function() {
+    const API    = 'https://museum-api-production-8ce6.up.railway.app';
+    const PERSONA = 'thomas-jefferson';
+    const NODE_COLORS = {"Person": "#5A9E8F", "Concept": "#C05A3A", "Event": "#A8903A", "Place": "#8A6B40", "Institution": "#3E6B5C", "Controversy": "#9A2A2A", "Work": "#C0B488"};
+    const NODE_SIZES  = {"Person": 6, "Concept": 5, "Event": 4, "Place": 4, "Institution": 4, "Controversy": 5, "Work": 3};
+    const REL_COLORS  = {"opposed": "#C05A3A", "allied_with": "#5A9E8F", "influenced_by": "#A8903A", "corresponded_with": "#8A6B40", "developed": "#7A5A9E", "involved_in": "#9A2A2A", "collaborated_with": "#3E6B5C"};
+    const REL_DEFAULT = 'rgba(200,185,150,0.25)';
+
+    fetch(`${API}/persona/${PERSONA}/kg`)
+      .then(r => r.json())
+      .then(data => {
+        const gData = {
+          nodes: data.nodes.map(n => ({
+            id: n.id, name: n.name || n.id, type: n.type || 'Work',
+            val:   NODE_SIZES[n.type] || 3,
+            color: NODE_COLORS[n.type] || '#A8A8C0',
+            _raw:  n,
+          })),
+          links: data.edges.map(e => ({
+            source: e.source, target: e.target, rel: e.relationship,
+            passages: e.source_passages || [], _raw: e,
+            color: REL_COLORS[e.relationship] || REL_DEFAULT,
+          })),
+        };
+
+        const el   = document.getElementById('kg-canvas');
+        const wrap = document.querySelector('.kg-canvas-wrap');
+        const Graph = ForceGraph3D()(el)
+          .width(wrap.offsetWidth).height(wrap.offsetHeight)
+          .backgroundColor('#1A1208')
+          .nodeColor(n => n.color).nodeVal(n => n.val)
+          .nodeLabel(n => `<span style="font-family:serif;font-size:13px;color:#E8DEB8">${n.name}</span>`)
+          .nodeOpacity(0.92)
+          .linkColor(l => l.color)
+          .linkWidth(l => Math.max(0.5, Math.min(3, l.passages.length * 0.6)))
+          .linkOpacity(0.5)
+          .linkDirectionalParticles(l => l.passages.length > 0 ? 1 : 0)
+          .linkDirectionalParticleWidth(1.2)
+          .linkDirectionalParticleColor(l => l.color)
+          .linkDirectionalParticleSpeed(0.005)
+          .graphData(gData)
+          .onNodeClick(node => showPanel(node, gData))
+          .onBackgroundClick(() => hidePanel());
+
+        let angle = 0;
+        const rotTimer = setInterval(() => {
+          Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
+          angle += 0.003;
+        }, 30);
+        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
+        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
+        window.addEventListener('resize', () => Graph.width(wrap.offsetWidth).height(wrap.offsetHeight));
+      })
+      .catch(err => {
+        console.error('KG load error:', err);
+        document.querySelector('.kg-canvas-wrap').style.display = 'none';
+      });
+
+    function showPanel(node, gData) {
+      document.getElementById('kg-panel-type').textContent = node.type;
+      document.getElementById('kg-panel-name').textContent = node.name;
+      const r = node._raw, meta = [];
+      if (r.birth_year && r.death_year) meta.push(`${r.birth_year} – ${r.death_year}`);
+      else if (r.birth_year) meta.push(`b. ${r.birth_year}`);
+      if (r.domain) meta.push(r.domain);
+      if (r.location) meta.push(r.location);
+      if (r.notes) meta.push(r.notes);
+      document.getElementById('kg-panel-meta').textContent = meta.join(' · ');
+
+      const connected = gData.links.filter(l => {
+        const s = typeof l.source === 'object' ? l.source.id : l.source;
+        const t = typeof l.target === 'object' ? l.target.id : l.target;
+        return s === node.id || t === node.id;
+      });
+      const nodeMap = gData.nodes.reduce((m, n) => { m[n.id] = n; return m; }, {});
+      document.getElementById('kg-panel-edges').innerHTML = connected.slice(0, 6).map(l => {
+        const s = typeof l.source === 'object' ? l.source.id : l.source;
+        const t = typeof l.target === 'object' ? l.target.id : l.target;
+        const otherId = s === node.id ? t : s;
+        const other = nodeMap[otherId];
+        const dir = s === node.id ? '→' : '←';
+        const best = l.passages.length > 0
+          ? l.passages.reduce((a, b) => (a.score||0) > (b.score||0) ? a : b) : null;
+        return `<div class="kg-edge-item">
+          <div class="kg-edge-rel">${dir} ${l.rel.replace(/_/g,' ')}</div>
+          <div class="kg-edge-target">${other ? other.name : otherId}</div>
+          ${best && best.excerpt ? `<div class="kg-edge-excerpt">&#8220;${best.excerpt.slice(0,160)}…&#8221;</div>` : ''}
+        </div>`;
+      }).join('');
+      document.getElementById('kg-panel').classList.add('visible');
+    }
+
+    function hidePanel() {
+      document.getElementById('kg-panel').classList.remove('visible');
+    }
     document.getElementById('kg-panel-close').addEventListener('click', hidePanel);
   })();
   </script>
