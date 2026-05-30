@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mark Twain — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --mud:         #180E06;
+      --mud-mid:     #2A1A0A;
+      --mud-light:   #3E2814;
+      --bark:        #5A3E22;
+      --amber:       #C07820;
+      --amber-bright:#E09840;
+      --amber-dim:   #7A4C10;
+      --straw:       #F0E4C0;
+      --straw-mid:   #C8B888;
+      --text:        #E8D8B0;
+      --text-dim:    #9A8050;
+      --river:       #1A2030;
+      --mist:        #8A8070;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--mud);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── HEADER ── */
+    header {
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,120,32,0.25);
+      background: rgba(24,14,6,0.96);
+      animation: fadeDown 0.8s ease both;
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--amber);
+      opacity: 0.92;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      border-bottom: 1px solid rgba(192,120,32,0.2);
+      overflow: hidden;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .hall-panel {
+      position: relative;
+      background: var(--river);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .hall-panel svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-title {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      right: 3rem;
+      z-index: 10;
+    }
+
+    .hero-title h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--straw);
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-title h1 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+      display: block;
+      font-size: 0.75em;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title .years {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--amber);
+      margin-top: 0.8rem;
+      display: block;
+      opacity: 0.92;
+    }
+
+    /* ── BIO PANEL ── */
+    .bio-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 2.5rem;
+      border-left: 1px solid rgba(192,120,32,0.2);
+      background: var(--mud-mid);
+      position: relative;
+    }
+
+    .bio-panel::before {
+      content: '';
+      position: absolute;
+      left: 3.5rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(192,120,32,0.12);
+    }
+
+    .exhibit-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.28em;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      opacity: 0.90;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(192,120,32,0.35);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 1px solid rgba(192,120,32,0.12);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      filter: sepia(0.25) contrast(1.05);
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: var(--amber);
+      border-style: solid;
+      opacity: 0.6;
+      z-index: 2;
+    }
+    .frame-corner.tl { top: -6px;    left: -6px;    border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -6px;    right: -6px;   border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -6px; left: -6px;    border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -6px; right: -6px;   border-width: 0 2px 2px 0; }
+
+    .placard-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--straw);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .placard-dates {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.22em;
+      color: var(--amber);
+      opacity: 0.90;
+      margin-bottom: 1.4rem;
+    }
+
+    .placard-bio {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .placard-bio strong { color: var(--straw); font-weight: 500; }
+
+    /* ── SECTION RULE ── */
+    .section-rule {
+      text-align: center;
+      padding: 1.4rem 3rem;
+      border-bottom: 1px solid rgba(192,120,32,0.2);
+      background: var(--mud-mid);
+    }
+
+    .section-rule span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.38em;
+      color: var(--amber);
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    /* ── CHATBOT SECTION ── */
+    .chatbot-section {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      min-height: 680px;
+      background: var(--mud);
+    }
+
+    .chatbot-intro {
+      padding: 4rem 3.5rem;
+      border-right: 1px solid rgba(192,120,32,0.18);
+    }
+
+    .chatbot-intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 900;
+      color: var(--straw);
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+    }
+
+    .chatbot-intro h2 em {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+    }
+
+    .chatbot-intro p {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.72;
+      margin-bottom: 1.2rem;
+    }
+
+    .domain-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.8rem;
+    }
+
+    .domain-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--amber);
+      border: 1px solid rgba(192,120,32,0.3);
+      padding: 0.28rem 0.75rem;
+      text-transform: uppercase;
+      opacity: 0.90;
+    }
+
+    /* ── CHATBOT EMBED ── */
+    .chatbot-embed {
+      position: relative;
+      background: var(--mud-mid);
+      min-height: 580px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      padding: 5rem 8rem;
+      text-align: center;
+      background: var(--mud-mid);
+      border-top: 1px solid rgba(192,120,32,0.18);
+      border-bottom: 1px solid rgba(192,120,32,0.18);
+    }
+
+    .pull-quote::before,
+    .pull-quote::after {
+      content: '— ✦ —';
+      display: block;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--amber);
+      opacity: 0.55;
+      margin: 0 auto 2rem;
+    }
+
+    .pull-quote::after { margin: 2rem auto 0; }
+
+    .pull-quote blockquote {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+      font-weight: 400;
+      color: var(--straw);
+      line-height: 1.6;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .pull-quote blockquote::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--amber);
+      opacity: 0.35;
+      display: block;
+      line-height: 0.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-style: normal;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--amber);
+      opacity: 0.80;
+      margin-top: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    /* ── CORPUS STRIP ── */
+    .corpus-strip {
+      padding: 3.5rem 5rem;
+      background: var(--mud);
+      border-top: 1px solid rgba(192,120,32,0.18);
+    }
+
+    .corpus-strip h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.35em;
+      color: var(--amber);
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-bottom: 1.8rem;
+    }
+
+    .corpus-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.6rem;
+      list-style: none;
+    }
+
+    .corpus-list li {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      opacity: 0.90;
+      padding-left: 1rem;
+      border-left: 1px solid rgba(192,120,32,0.28);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 2rem 3.5rem;
+      border-top: 1px solid rgba(192,120,32,0.2);
+      background: var(--mud-mid);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+      opacity: 0.88;
+    }
+
+    footer .col.center { text-align: center; line-height: 1.6; }
+    footer .col.right  { text-align: right; }
+    footer .name-line  { font-size: 0.75rem; color: var(--amber); margin-bottom: 0.3rem; opacity: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hall-panel { min-height: 55vw; }
+      .bio-panel { border-left: none; border-top: 1px solid rgba(192,120,32,0.18); padding: 2.5rem 2rem; }
+      .chatbot-section { grid-template-columns: 1fr; }
+      .chatbot-intro { border-right: none; border-bottom: 1px solid rgba(192,120,32,0.18); padding: 3rem 2rem; }
+      .pull-quote { padding: 3.5rem 2rem; }
+      .corpus-strip { padding: 2.5rem 2rem; }
+      footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+      footer .col.right { text-align: center; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-label">In Conversation With &nbsp;·&nbsp; Museum of Minds</div>
+    <div class="header-right">MT–1835–2026 &nbsp;·&nbsp; Press Room</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- LEFT: Mississippi Steamboat Scene -->
+    <div class="hall-panel">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#0A0806" />
+            <stop offset="30%"  stop-color="#1E1408" />
+            <stop offset="60%"  stop-color="#3A2210" />
+            <stop offset="80%"  stop-color="#5A3818" />
+            <stop offset="100%" stop-color="#2A1A0A" />
+          </linearGradient>
+          <linearGradient id="sun-glow" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stop-color="#E09840" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#C07820" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="sunball" cx="65%" cy="42%" r="18%">
+            <stop offset="0%"   stop-color="#F0C060" stop-opacity="0.9"/>
+            <stop offset="40%"  stop-color="#C07820" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#2A1A0A" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="river-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#1A2830" />
+            <stop offset="100%" stop-color="#0E1418" />
+          </linearGradient>
+          <radialGradient id="sun-reflect" cx="65%" cy="5%" r="80%">
+            <stop offset="0%"   stop-color="#C07820" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#1A2830" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="smoke-blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+          </filter>
+          <filter id="soft">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+          </filter>
+        </defs>
+
+        <!-- Sky -->
+        <rect width="700" height="900" fill="url(#sunset)" />
+
+        <!-- Sun glow -->
+        <ellipse cx="455" cy="380" rx="220" ry="140" fill="url(#sun-glow)" opacity="0.6"/>
+        <!-- Sun disc -->
+        <circle cx="455" cy="380" r="52" fill="#E09840" opacity="0.85"/>
+        <circle cx="455" cy="380" r="38" fill="#F0C060" opacity="0.9"/>
+
+        <!-- Sun halo rings -->
+        <circle cx="455" cy="380" r="65" fill="none" stroke="#C07820" stroke-width="1" opacity="0.3"/>
+        <circle cx="455" cy="380" r="80" fill="none" stroke="#C07820" stroke-width="0.5" opacity="0.18"/>
+
+        <!-- Horizon haze -->
+        <rect x="0" y="530" width="700" height="40" fill="#3A2210" opacity="0.45"/>
+
+        <!-- ── RIVER ── -->
+        <rect x="0" y="560" width="700" height="340" fill="url(#river-grad)" />
+
+        <!-- Sun reflection on water -->
+        <ellipse cx="455" cy="580" rx="180" ry="20" fill="url(#sun-reflect)" opacity="0.8"/>
+        <!-- Reflection shimmer lines -->
+        <g stroke="rgba(192,120,32,0.25)" stroke-width="0.8" fill="none">
+          <path d="M340,575 Q400,570 460,575 Q520,580 580,575"/>
+          <path d="M370,588 Q425,583 480,588 Q535,593 590,588"/>
+          <path d="M355,600 Q415,595 475,600 Q535,605 595,600"/>
+          <path d="M310,615 Q380,610 450,615 Q520,620 590,615"/>
+          <path d="M330,630 Q400,625 470,630 Q540,635 610,630"/>
+        </g>
+
+        <!-- River current ripples -->
+        <g stroke="rgba(30,40,50,0.6)" stroke-width="1" fill="none">
+          <path d="M50,650 Q120,642 190,650"/>
+          <path d="M100,668 Q175,660 250,668"/>
+          <path d="M30,690 Q100,682 170,690"/>
+          <path d="M500,655 Q570,647 640,655"/>
+          <path d="M540,675 Q610,667 680,675"/>
+        </g>
+
+        <!-- Near shore — dark mudbank -->
+        <path d="M0,820 Q100,810 200,818 Q300,826 400,820 Q500,814 600,820 Q650,823 700,820 L700,900 L0,900 Z" fill="#1A1006"/>
+        <path d="M0,835 Q80,828 160,835 Q240,842 320,835 Q400,828 480,835 L480,900 L0,900 Z" fill="#140C04"/>
+
+        <!-- Far shore — tree line silhouette -->
+        <path d="M0,540 Q30,510 60,540 Q70,520 90,540 Q110,505 130,538 Q145,515 165,540 Q180,508 200,537 Q215,520 235,538 Q250,510 270,538 Q290,520 310,540 Q330,512 350,540 Q360,524 375,540 Q390,515 410,540 L410,570 L0,570 Z" fill="#0E0A06"/>
+        <path d="M380,538 Q400,515 420,540 Q440,518 460,540 Q475,520 490,540 Q505,512 520,540 Q535,520 550,538 Q565,510 580,540 L580,570 L380,570 Z" fill="#0E0A06"/>
+
+        <!-- ── STEAMBOAT ── -->
+        <!-- Hull -->
+        <path d="M130,560 L570,560 L590,590 L580,610 L120,610 L110,590 Z" fill="#2A1808"/>
+        <path d="M130,560 L570,560 L580,575 L120,575 Z" fill="#3A2210"/>
+        <!-- Hull waterline -->
+        <path d="M112,608 L588,608 Q595,615 590,622 L580,630 L120,630 Q112,622 110,615 Z" fill="#1A1008"/>
+        <!-- Water-cut wave at bow -->
+        <path d="M110,616 Q105,625 112,635 Q105,628 100,618 Z" fill="#1A2830"/>
+        <path d="M590,616 Q595,625 588,635 Q595,628 600,618 Z" fill="#1A2830"/>
+
+        <!-- Main deck structure -->
+        <rect x="140" y="500" width="420" height="62" fill="#3A2814"/>
+        <!-- Deck railing -->
+        <line x1="140" y1="502" x2="560" y2="502" stroke="#5A4020" stroke-width="1.5"/>
+        <line x1="140" y1="558" x2="560" y2="558" stroke="#5A4020" stroke-width="1.5"/>
+        <!-- Deck posts -->
+        <g stroke="#5A4020" stroke-width="1" fill="none">
+          <line x1="155" y1="502" x2="155" y2="558"/>
+          <line x1="180" y1="502" x2="180" y2="558"/>
+          <line x1="205" y1="502" x2="205" y2="558"/>
+          <line x1="230" y1="502" x2="230" y2="558"/>
+          <line x1="255" y1="502" x2="255" y2="558"/>
+          <line x1="280" y1="502" x2="280" y2="558"/>
+          <line x1="305" y1="502" x2="305" y2="558"/>
+          <line x1="330" y1="502" x2="330" y2="558"/>
+          <line x1="355" y1="502" x2="355" y2="558"/>
+          <line x1="380" y1="502" x2="380" y2="558"/>
+          <line x1="405" y1="502" x2="405" y2="558"/>
+          <line x1="430" y1="502" x2="430" y2="558"/>
+          <line x1="455" y1="502" x2="455" y2="558"/>
+          <line x1="480" y1="502" x2="480" y2="558"/>
+          <line x1="505" y1="502" x2="505" y2="558"/>
+          <line x1="530" y1="502" x2="530" y2="558"/>
+          <line x1="548" y1="502" x2="548" y2="558"/>
+        </g>
+
+        <!-- Cabin structure -->
+        <rect x="170" y="420" width="360" height="82" fill="#3A2414"/>
+        <!-- Cabin windows -->
+        <g fill="#C07820" opacity="0.7">
+          <rect x="185" y="430" width="22" height="28" rx="3"/>
+          <rect x="220" y="430" width="22" height="28" rx="3"/>
+          <rect x="255" y="430" width="22" height="28" rx="3"/>
+          <rect x="290" y="430" width="22" height="28" rx="3"/>
+          <rect x="325" y="430" width="22" height="28" rx="3"/>
+          <rect x="360" y="430" width="22" height="28" rx="3"/>
+          <rect x="395" y="430" width="22" height="28" rx="3"/>
+          <rect x="430" y="430" width="22" height="28" rx="3"/>
+          <rect x="465" y="430" width="22" height="28" rx="3"/>
+          <rect x="500" y="430" width="22" height="28" rx="3"/>
+        </g>
+        <!-- Cabin window glows -->
+        <g fill="none" filter="url(#soft)">
+          <rect x="185" y="430" width="22" height="28" rx="3" fill="rgba(192,120,32,0.3)"/>
+          <rect x="255" y="430" width="22" height="28" rx="3" fill="rgba(192,120,32,0.3)"/>
+          <rect x="325" y="430" width="22" height="28" rx="3" fill="rgba(192,120,32,0.3)"/>
+          <rect x="395" y="430" width="22" height="28" rx="3" fill="rgba(192,120,32,0.3)"/>
+          <rect x="465" y="430" width="22" height="28" rx="3" fill="rgba(192,120,32,0.3)"/>
+        </g>
+        <g stroke="#7A5020" stroke-width="0.5" fill="none">
+          <rect x="185" y="430" width="22" height="28" rx="3"/>
+          <rect x="220" y="430" width="22" height="28" rx="3"/>
+          <rect x="255" y="430" width="22" height="28" rx="3"/>
+          <rect x="290" y="430" width="22" height="28" rx="3"/>
+          <rect x="325" y="430" width="22" height="28" rx="3"/>
+          <rect x="360" y="430" width="22" height="28" rx="3"/>
+          <rect x="395" y="430" width="22" height="28" rx="3"/>
+          <rect x="430" y="430" width="22" height="28" rx="3"/>
+          <rect x="465" y="430" width="22" height="28" rx="3"/>
+          <rect x="500" y="430" width="22" height="28" rx="3"/>
+        </g>
+        <!-- Cabin door -->
+        <rect x="330" y="460" width="40" height="42" fill="#1A1008" rx="2"/>
+
+        <!-- Pilot house (top) -->
+        <rect x="285" y="360" width="130" height="62" fill="#2A1A0A" rx="2"/>
+        <g fill="rgba(192,120,32,0.6)">
+          <rect x="294" y="368" width="26" height="32" rx="2"/>
+          <rect x="334" y="368" width="26" height="32" rx="2"/>
+          <rect x="374" y="368" width="26" height="32" rx="2"/>
+        </g>
+        <g stroke="#5A3A10" stroke-width="0.7" fill="none">
+          <rect x="294" y="368" width="26" height="32" rx="2"/>
+          <rect x="334" y="368" width="26" height="32" rx="2"/>
+          <rect x="374" y="368" width="26" height="32" rx="2"/>
+        </g>
+        <!-- Pilot house roof -->
+        <rect x="278" y="354" width="144" height="10" fill="#1A1008" rx="1"/>
+
+        <!-- Twin smokestacks -->
+        <!-- Left stack -->
+        <rect x="248" y="230" width="28" height="132" fill="#1A1008"/>
+        <rect x="244" y="224" width="36" height="12" fill="#2A1808" rx="2"/>
+        <!-- Right stack -->
+        <rect x="424" y="218" width="28" height="144" fill="#1A1008"/>
+        <rect x="420" y="212" width="36" height="12" fill="#2A1808" rx="2"/>
+
+        <!-- Stack supports / pipes -->
+        <line x1="262" y1="235" x2="350" y2="355" stroke="#2A1808" stroke-width="3"/>
+        <line x1="438" y1="225" x2="350" y2="355" stroke="#2A1808" stroke-width="3"/>
+
+        <!-- Smoke -->
+        <g fill="#1A1008" opacity="0.7" filter="url(#smoke-blur)">
+          <ellipse cx="262" cy="195" rx="22" ry="30"/>
+          <ellipse cx="278" cy="155" rx="28" ry="35"/>
+          <ellipse cx="258" cy="115" rx="35" ry="40"/>
+          <ellipse cx="280" cy="75"  rx="42" ry="45"/>
+          <ellipse cx="260" cy="40"  rx="50" ry="38"/>
+        </g>
+        <g fill="#0A0806" opacity="0.55" filter="url(#smoke-blur)">
+          <ellipse cx="438" cy="182" rx="24" ry="32"/>
+          <ellipse cx="450" cy="140" rx="30" ry="38"/>
+          <ellipse cx="435" cy="98"  rx="38" ry="42"/>
+          <ellipse cx="445" cy="58"  rx="45" ry="40"/>
+        </g>
+
+        <!-- Stern paddlewheel (partially visible) -->
+        <rect x="520" y="550" width="72" height="65" fill="#1A1008" rx="2"/>
+        <g stroke="#2A1808" stroke-width="2.5" fill="none">
+          <line x1="556" y1="555" x2="556" y2="610"/>
+          <line x1="536" y1="560" x2="576" y2="608"/>
+          <line x1="522" y1="583" x2="590" y2="583"/>
+          <line x1="536" y1="608" x2="576" y2="558"/>
+        </g>
+        <circle cx="556" cy="583" r="32" fill="none" stroke="#3A2010" stroke-width="1.5"/>
+
+        <!-- Flagpole -->
+        <line x1="350" y1="350" x2="350" y2="270" stroke="#3A2010" stroke-width="2"/>
+        <!-- Flag -->
+        <path d="M350,270 L390,278 L350,286 Z" fill="#8B1A1A" opacity="0.8"/>
+
+        <!-- Boat name on hull -->
+        <text x="350" y="542" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="rgba(192,120,32,0.55)" letter-spacing="2">MISSISSIPPI QUEEN</text>
+
+        <!-- ── ANNOTATIONS ── -->
+        <g font-family="Cormorant Garamond, serif" font-style="italic" font-size="9" fill="rgba(192,120,32,0.38)">
+          <text x="350" y="760" text-anchor="middle" letter-spacing="1.5">Mississippi River · Upper Reaches · c. 1860</text>
+        </g>
+
+        <!-- Title cartouche -->
+        <g transform="translate(30,50)">
+          <rect width="205" height="82" fill="rgba(10,6,3,0.75)" stroke="rgba(192,120,32,0.3)" stroke-width="0.6"/>
+          <text x="102" y="22"  text-anchor="middle" font-family="Cinzel, serif" font-size="7.5" fill="rgba(192,120,32,0.7)" letter-spacing="2.5">RIVER STUDY</text>
+          <text x="102" y="40"  text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" fill="rgba(240,228,192,0.6)">The Mississippi Valley</text>
+          <text x="102" y="55"  text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8.5" fill="rgba(192,120,32,0.4)" letter-spacing="0.5">St. Louis to New Orleans</text>
+          <text x="102" y="68"  text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7.5" fill="rgba(192,120,32,0.28)">Where Clemens learned to see</text>
+        </g>
+
+        <!-- Stars beginning to appear -->
+        <g fill="rgba(240,220,160,0.5)">
+          <circle cx="80"  cy="60"  r="1.2"/>
+          <circle cx="120" cy="40"  r="1.0"/>
+          <circle cx="170" cy="75"  r="1.3"/>
+          <circle cx="55"  cy="90"  r="0.9"/>
+          <circle cx="620" cy="55"  r="1.1"/>
+          <circle cx="650" cy="80"  r="1.3"/>
+          <circle cx="595" cy="35"  r="1.0"/>
+          <circle cx="660" cy="30"  r="0.8"/>
+        </g>
+
+        <!-- Firefly on near shore -->
+        <circle cx="85" cy="830" r="2" fill="rgba(192,160,32,0.6)"/>
+        <circle cx="180" cy="845" r="1.5" fill="rgba(192,160,32,0.5)"/>
+        <circle cx="620" cy="840" r="2" fill="rgba(192,160,32,0.55)"/>
+
+        <!-- Outer border -->
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(192,120,32,0.15)" stroke-width="0.5"/>
+      </svg>
+
+      <!-- Title overlay -->
+      <div class="hero-title">
+        <h1>Mark<br/><em>Twain</em></h1>
+        <span class="years">1835 &nbsp;—&nbsp; 1910</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Bio Panel -->
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Mark_Twain_by_AF_Bradley.jpg/440px-Mark_Twain_by_AF_Bradley.jpg" alt="Mark Twain" onerror="this.style.display='none'" />
+      </div>
+
+      <div class="placard">
+        <div class="placard-name">Mark Twain</div>
+        <div class="placard-dates">Florida, Missouri, 1835 &nbsp;·&nbsp; Redding, Connecticut, 1910</div>
+        <p class="placard-bio">
+          <strong>Riverboat pilot, prospector, travel writer, and the closest thing America produced to a national conscience in a funny hat.</strong>
+          He grew up in Hannibal, Missouri, with the Mississippi River and slavery as facts of life.
+          He turned both of them into literature that is still argued about today.
+          <br/><br/>
+          <em>Adventures of Huckleberry Finn</em> (1884) is the most contested novel in American
+          high school syllabi and probably the most honest book ever written about what
+          American freedom meant when it was built on enslavement. The ending is a disaster.
+          He knew it. He said so.
+          <br/><br/>
+          He outlived most of the people he loved, went bankrupt and paid every cent back,
+          and spent his final years writing things too dark to publish. He left instructions
+          that some of it should wait a hundred years. He has been watching what you did
+          with the country in the meantime.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION RULE -->
+  <div class="section-rule">
+    <span>Consultation</span>
+  </div>
+
+  <!-- CHATBOT SECTION -->
+  <section class="chatbot-section">
+
+    <div class="chatbot-intro">
+      <h2>Talk to the man who<br/><em>turned America into a joke.</em></h2>
+      <p>
+        Twain speaks from 3,000+ chunks of his own words across seven major works —
+        <em>Adventures of Huckleberry Finn,</em> <em>Life on the Mississippi,</em>
+        <em>The Innocents Abroad,</em> <em>Roughing It,</em>
+        <em>A Connecticut Yankee in King Arthur's Court,</em>
+        <em>The Adventures of Tom Sawyer,</em> and <em>What Is Man?</em>
+      </p>
+      <p>
+        His discourse collection holds Harriet Beecher Stowe's <em>Uncle Tom's Cabin</em>,
+        Emerson's <em>Essays,</em> and Mencken's <em>Prejudices.</em>
+        He knows the writers who came before and after him. He has opinions.
+      </p>
+      <p>
+        Ask him about Huck Finn's moral decision. Ask him about the ending.
+        Ask him what it was like to grow up surrounded by slavery and think it was normal.
+        Ask him about God, the human race, or the funniest thing that happened on
+        the Mississippi in 1857.
+      </p>
+      <p>
+        He will not be solemn about it. He never was. That is how he told the truth.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">American Literature</span>
+        <span class="domain-tag">Race and Slavery</span>
+        <span class="domain-tag">Huckleberry Finn</span>
+        <span class="domain-tag">Mississippi River</span>
+        <span class="domain-tag">Political Satire</span>
+        <span class="domain-tag">The American West</span>
+        <span class="domain-tag">Travel Writing</span>
+        <span class="domain-tag">The Human Condition</span>
+        <span class="domain-tag">Progress and Irony</span>
+        <span class="domain-tag">American Hypocrisy</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/mark-twain/widget/mark-twain-widget.css">
+      <script src="https://museumofminds.com/mark-twain/widget/mark-twain-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="mark-twain"></script>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="pull-quote">
+    <blockquote>
+      All right, then, I'll go to hell.
+    </blockquote>
+    <cite>Adventures of Huckleberry Finn &nbsp;·&nbsp; 1884 &nbsp;·&nbsp; The most important sentence in American literature</cite>
+  </section>
+
+  <!-- CORPUS STRIP -->
+  <section class="corpus-strip">
+    <h3>Drawn From the Corpus</h3>
+    <ul class="corpus-list">
+      <li>Adventures of Huckleberry Finn (1884)</li>
+      <li>Life on the Mississippi (1883)</li>
+      <li>The Innocents Abroad (1869)</li>
+      <li>Roughing It (1872)</li>
+      <li>A Connecticut Yankee in King Arthur's Court (1889)</li>
+      <li>The Adventures of Tom Sawyer (1876)</li>
+      <li>What Is Man? and Other Essays (1906)</li>
+      <li>Discourse: Stowe — Uncle Tom's Cabin (1852)</li>
+      <li>Discourse: Emerson — Essays (1841)</li>
+      <li>Discourse: Mencken — Prejudices: First Series (1919)</li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="col left">
+      <div class="name-line">Mark Twain</div>
+      <div>1835 — 1910 &nbsp;·&nbsp; Hannibal, Missouri</div>
+    </div>
+    <div class="col center">
+      The Museum of Minds<br>
+      A Project in Conversational History
+    </div>
+    <div class="col right">
+      Powered by His Own Words
+    </div>
+  </footer>
+
+</body>
+</html>
