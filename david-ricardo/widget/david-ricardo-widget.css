@@ -16,7 +16,7 @@
 }
 
 /* ── Container ────────────────────────────────────────────────────────────── */
-#george-mason-widget {
+#david-ricardo-widget {
     font-family: var(--persona-font-primary);
     position: fixed;
     bottom: 24px;
@@ -619,7 +619,7 @@
         bottom: 96px;
     }
     .jj-chat-window.jj-size-medium { width: calc(100vw - 32px); }
-    #george-mason-widget { bottom: 20px; right: 20px; }
+    #david-ricardo-widget { bottom: 20px; right: 20px; }
     .jj-trigger { width: 56px; height: 56px; }
     .jj-message-content { font-size: 13px; }
     .jj-starter-btn { font-size: 12px; padding: 12px 14px; }
@@ -638,7 +638,7 @@
     outline-offset: 2px;
 }
 
-@media print { #george-mason-widget { display: none !important; } }
+@media print { #david-ricardo-widget { display: none !important; } }
 
 /* ── Corpus Stats (static page element, outside widget) ──────────────────── */
 #jj-corpus-stats {
