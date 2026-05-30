@@ -10,18 +10,18 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 78 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-30 |
+| **Last Active** | 2026-05-30 (session 2) |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-**25-persona expansion debugged and fully live (2026-05-30).** Museum has 78 personas. All 25 new chatbots now respond: Railway API redeployed with new persona configs (76 total), portrait images fixed in all hall cards (52 broken Wikipedia thumbnail URLs converted to direct URLs), Sojourner Truth corpus expanded from 11 to 304 vectors. Ten stub pages remain (< 200 lines, no SVG hero) — chatbots work but pages are minimal. ChromaDB not updated for new personas (production uses Pinecone; ChromaDB is local-dev only). PERSONA.md updated with 6-step deployment checklist including portrait URL validation, page quality check, and Railway redeploy procedure.
+**Museum fully operational with 78 personas (2026-05-30).** All portrait cards fixed: 32 more broken Wikipedia thumbnail URLs removed in 2nd pass (previous fix covered only 25 new personas; this pass covered observatory, republic-room, trailblazers, press-room, founding-documents halls + 9 older persona pages). Bill of Rights card removed from press-room (wrong hall, wrong image — belongs in founding-documents). Railway API confirmed running (deployed 16:17 UTC, all chatbots serving 200s). The 10 "stub" pages are complete — they have full SVG heroes, bio sections, chatbots, pullquotes, and corpus lists; the P0 bug tracker entry was outdated. CLAUDE.md updated with portrait URL rule (step 9 in pre-commit checklist) and routing bug entries cleared.
 
 ## Next Action
 
-Rebuild the 10 stub pages using full BUILD.md template (sojourner-truth, descartes, wollstonecraft, marie-curie, nightingale, tesla, henry-george, babbage, h-b-stowe, veblen). Each is a full page build — do them in a focused batch session.
+Choose next sprint: (a) Sprint 3 personas (Abigail Adams, Gadsden, Rutledge), (b) Sherlock Holmes voice finalization, or (c) Federalist Phase 6 (filterable indexes).
 
 ## Blockers
 
@@ -37,6 +37,16 @@ Rebuild the 10 stub pages using full BUILD.md template (sojourner-truth, descart
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-30 (session 2) — Portrait URL 2nd pass + process documentation
+
+- **Root-cause investigation**: previous portrait fix covered only the 25 new personas. 32 additional broken `/thumb/` URLs remained in observatory, republic-room, trailblazers, press-room, founding-documents halls + 9 older persona pages (FDR, Cleveland, George Mason, Montesquieu, Helen Keller, James Baldwin, Carl Jung, John Adams, John Locke, Patrick Henry, Bill of Rights, Declaration, Constitution) + main index.html.
+- **Portrait URL fixes (32 more)**: all `/thumb/` → direct Commons URLs. Special cases: Carl Jung (TIF → `Carl_Jung_Photo.jpg` alt), Banneker (TIF mural → `BenjaminBanneker.jpg` alt), Charles Drew (en/thumb → direct en URL). Also fixed `data-portrait-url` in widget `<script>` tags for john-locke, carl-jung, john-adams.
+- **Bill of Rights card removed from press-room**: was linking correctly to /bill-of-rights/ but using a photo of Bill Adair (a journalist) as the portrait image — clearly a copy-paste accident. Bill of Rights is correctly in founding-documents hall.
+- **Railway API confirmed healthy**: deployed 16:17 UTC, all new personas returning HTTP 200 for config and chat. No 404s in recent HTTP logs.
+- **"P0 stub pages" resolved**: confirmed all 10 alleged stubs have full SVG heroes, bio sections, chatbot widgets, pullquotes, and corpus lists. PLATFORM_STATUS.md P0 entry was outdated — removed.
+- **CLAUDE.md updated**: added portrait URL rule as step 9 in pre-commit checklist; cleared outdated routing bug entries (turing/einstein/earhart all confirmed correct as of today).
+- **PLATFORM_STATUS.md updated**: removed P0 section, updated press-room roster (12 personas), added CRITICAL portrait URL rule documentation.
 
 ### 2026-05-30 — 25-persona expansion debug + portrait fix session
 

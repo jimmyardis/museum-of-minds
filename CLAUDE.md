@@ -53,17 +53,21 @@ When making design or readability changes, follow these rules unless explicitly 
 
 If a problem can't be fixed within these rules, flag it for human review rather than expanding scope.
 
-## Known content routing bugs (as of May 2026)
+## Portrait image URL rule — CRITICAL
 
-**Three persona files currently contain content for the wrong figure.** Verify accession IDs match directory names before applying CSS changes:
+**Wikipedia thumbnail URLs break on external sites (HTTP 400).** Always use direct Commons URLs:
+- ✅ `https://upload.wikimedia.org/wikipedia/commons/A/AB/filename.jpg`
+- ❌ `https://upload.wikimedia.org/wikipedia/commons/thumb/A/AB/filename.jpg/500px-filename.jpg`
+- ❌ `.tif` files (not browser-renderable) — find a `.jpg` or `.png` alternative
+- ❌ `wikipedia/en/thumb/...` — use `wikipedia/en/A/AB/filename.jpg` instead
 
-| File | Should contain | Actually contains | Accession ID found in file |
-|---|---|---|---|
-| `alan-turing/index.html` | Alan Turing | John Taylor of Caroline | JTC–1753–2026 |
-| `albert-einstein/index.html` | Albert Einstein | Karl Marx | KM–1818–2026 |
-| `amelia-earhart/index.html` | Amelia Earhart | Jane Jacobs | JJ–1916–2026 |
+Also check `data-portrait-url` attributes on widget `<script>` tags — these have the same URL and fail the same way.
 
-These need content-routing fixes (a separate task, not part of CSS readability work). Before generating or editing any of those three files, confirm the actual content first.
+Run `grep -rl '/thumb/' . --include="*.html"` before committing to verify no violations.
+
+## Known content routing bugs
+
+~~Three persona files had wrong content — RESOLVED 2026-05-30~~: alan-turing (`AT–1912`), albert-einstein (`AE–1879`), amelia-earhart (`AE–1897`) all now contain correct figures. No routing bugs remain as of this date.
 
 ## Persona naming conventions
 
@@ -87,5 +91,6 @@ Before committing any HTML/CSS work, verify:
 6. No `--cream-dim` references on body text — use `--cream` instead
 7. New persona pages mirror the `alexander-hamilton/index.html` template
 8. Accession ID in the file matches the directory name
+9. **No `/thumb/` or `.tif` portrait URLs** — run `grep -rl '/thumb/' . --include="*.html"` to verify zero violations
 
 For the full verification checklist and decision framework, see `DESIGN_SYSTEM.md`.
