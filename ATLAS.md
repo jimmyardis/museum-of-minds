@@ -8,20 +8,20 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 53 historical figures, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 78 historical figures, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-29 |
+| **Last Active** | 2026-05-30 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-20 personas now have live 3D KG sections (Batches 1–3 complete). `kg_bootstrap.py` contains full seed graphs for all 20. All persona pages updated with Phase 5 KG injections and pushed to GitHub Pages; Railway redeployed. Helen Keller's KG is small (216n/189e) due to mid-pipeline credit exhaustion — a re-run of her Phase 4 would enrich it. KG build paused at 20 figures by user request.
+**25-persona expansion complete (2026-05-30).** Museum now has 78 total personas deployed. 25 new figures added across all halls: Republic Room (Burke, Tocqueville, Rousseau, Roosevelt, Voltaire), Press Room (Twain, Emerson, Thoreau, Wells, Stowe), Counting House (Mill, Ricardo, Bastiat, George, Veblen), Trailblazers (Washington, Stanton, Truth, Nightingale, Wollstonecraft), Observatory (Galileo, Descartes, Babbage, Curie, Tesla). Pinecone index ~145,000 vectors. All pages committed and live on GitHub Pages. Known thin corpora: Sojourner Truth (23v), Tesla (101v), Marie Curie (discourse-only). 20 personas have 3D KG sections from prior work.
 
 ## Next Action
 
-Re-run Helen Keller Phase 4 when ready to enrich her KG (216 nodes is thin vs. typical 500–800+): `bash execution/build_kg_chain.sh helen-keller` — phases 1–3 will skip, only Phase 4 re-runs.
+Prioritize enriching thin new corpora: Sojourner Truth (more speech transcripts), Tesla (more articles), Marie Curie (find accessible English primary texts). Also: Sherlock Holmes voice still unfinalized.
 
 ## Blockers
 
@@ -37,6 +37,20 @@ Re-run Helen Keller Phase 4 when ready to enrich her KG (216 nodes is thin vs. t
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-05-30 — 25-persona expansion complete
+
+- **25 new personas built end-to-end in a single session** (corpus download → clean → embed → HTML page → widget → hall card → commit → push):
+  - Republic Room: Edmund Burke, Jean-Jacques Rousseau, Alexis de Tocqueville, Theodore Roosevelt, Voltaire
+  - Press Room: Mark Twain, Ralph Waldo Emerson, Henry David Thoreau, Ida B. Wells, Harriet Beecher Stowe
+  - Counting House: John Stuart Mill, David Ricardo, Frédéric Bastiat, Henry George, Thorstein Veblen
+  - Trailblazers: Booker T. Washington, Elizabeth Cady Stanton, Sojourner Truth, Florence Nightingale, Mary Wollstonecraft
+  - Observatory: Galileo Galilei, René Descartes, Charles Babbage, Marie Curie, Nikola Tesla
+- **All 25 personas have**: persona.json + sources.json + corpus/discourse cleaned + Pinecone vectors + HTML page + widget + hall card
+- **Museum total: 78 personas** deployed on museumofminds.com
+- **Pinecone total: ~145,000 vectors** (+37,000 from this session)
+- **Known thin corpora**: Sojourner Truth (23 vectors — only Narrative), Tesla (101v — thin), Marie Curie (discourse-only, primary texts access-restricted on Archive.org)
+- Both repos (jane-jacobs-bot configs + museum-of-minds pages) pushed to GitHub
 
 ### 2026-05-29 (session 2)
 
