@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elizabeth Cady Stanton — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate:      #14121E;
+      --slate-mid:  #1E1C2C;
+      --slate-lt:   #2C2A3C;
+      --violet:     #3C3A5C;
+      --gold:       #B89040;
+      --cream:      #F2ECD8;
+      --cream-mid:  #C4BAA0;
+      --text:       #D8D0C0;
+      --text-dim:   #8A8478;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--slate); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    header { padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(184,144,64,0.25); background: rgba(20,18,30,0.96); animation: fadeDown 0.8s ease both; position: relative; z-index: 10; }
+    .header-label { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.32em; color: var(--gold); opacity: 0.92; text-transform: uppercase; }
+    .header-right { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--text-dim); }
+    .hero { position: relative; min-height: 92vh; display: grid; grid-template-columns: 1.25fr 0.75fr; border-bottom: 1px solid rgba(184,144,64,0.2); overflow: hidden; animation: fadeIn 1s ease 0.2s both; }
+    .hall-panel { position: relative; background: var(--slate); overflow: hidden; min-height: 500px; }
+    .hall-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-title { position: absolute; bottom: 3rem; left: 3rem; right: 3rem; z-index: 10; }
+    .hero-title h1 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3.4vw, 3.8rem); font-weight: 900; color: var(--cream); line-height: 1.0; letter-spacing: 0.06em; }
+    .hero-title h1 em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--gold); display: block; font-size: 0.75em; letter-spacing: 0.02em; }
+    .hero-title .years { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.4em; color: var(--gold); margin-top: 0.8rem; display: block; opacity: 0.92; }
+    .bio-panel { display: flex; flex-direction: column; padding: 3.5rem 2.5rem; border-left: 1px solid rgba(184,144,64,0.2); background: var(--slate-mid); position: relative; }
+    .bio-panel::before { content: ''; position: absolute; left: 3.5rem; top: 0; bottom: 0; width: 1px; background: rgba(184,144,64,0.12); }
+    .exhibit-tag { font-family: 'Cinzel', serif; font-size: 0.70rem; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 2.5rem; text-transform: uppercase; opacity: 0.90; }
+    .photo-frame { position: relative; width: 100%; max-width: 260px; margin: 0 auto 2.5rem; }
+    .photo-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(184,144,64,0.35); }
+    .photo-frame::after { content: ''; position: absolute; inset: -10px; border: 1px solid rgba(184,144,64,0.12); }
+    .photo-frame img { width: 100%; display: block; filter: sepia(0.2) contrast(1.05); }
+    .frame-corner { position: absolute; width: 12px; height: 12px; border-color: var(--gold); border-style: solid; opacity: 0.6; z-index: 2; }
+    .frame-corner.tl { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -6px; right: -6px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -6px; left: -6px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
+    .placard-name { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+    .placard-dates { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--gold); opacity: 0.90; margin-bottom: 1.4rem; }
+    .placard-bio { font-size: 1rem; font-weight: 400; color: var(--text); line-height: 1.7; }
+    .placard-bio strong { color: var(--cream); font-weight: 500; }
+    .section-rule { text-align: center; padding: 1.4rem 3rem; border-bottom: 1px solid rgba(184,144,64,0.2); background: var(--slate-mid); }
+    .section-rule span { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.38em; color: var(--gold); opacity: 0.75; text-transform: uppercase; }
+    .chatbot-section { display: grid; grid-template-columns: 1fr 1.05fr; min-height: 680px; background: var(--slate); }
+    .chatbot-intro { padding: 4rem 3.5rem; border-right: 1px solid rgba(184,144,64,0.18); }
+    .chatbot-intro h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 900; color: var(--cream); line-height: 1.15; letter-spacing: 0.04em; margin-bottom: 1.8rem; }
+    .chatbot-intro h2 em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--gold); }
+    .chatbot-intro p { font-size: 1.05rem; font-weight: 400; color: var(--text); line-height: 1.72; margin-bottom: 1.2rem; }
+    .domain-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
+    .domain-tag { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); border: 1px solid rgba(184,144,64,0.3); padding: 0.28rem 0.75rem; text-transform: uppercase; opacity: 0.90; }
+    .chatbot-embed { position: relative; background: var(--slate-mid); min-height: 580px; display: flex; align-items: stretch; }
+    .pull-quote { padding: 5rem 8rem; text-align: center; background: var(--slate-mid); border-top: 1px solid rgba(184,144,64,0.18); border-bottom: 1px solid rgba(184,144,64,0.18); }
+    .pull-quote::before, .pull-quote::after { content: '— ✦ —'; display: block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); opacity: 0.55; margin: 0 auto 2rem; }
+    .pull-quote::after { margin: 2rem auto 0; }
+    .pull-quote blockquote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 400; color: var(--cream); line-height: 1.55; max-width: 780px; margin: 0 auto; }
+    .pull-quote blockquote::before { content: '\201C'; font-size: 4rem; color: var(--gold); opacity: 0.35; display: block; line-height: 0.6; margin-bottom: 0.8rem; }
+    .pull-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 0.68rem; letter-spacing: 0.28em; color: var(--gold); opacity: 0.80; margin-top: 1.6rem; text-transform: uppercase; }
+    .corpus-strip { padding: 3.5rem 5rem; background: var(--slate); border-top: 1px solid rgba(184,144,64,0.18); }
+    .corpus-strip h3 { font-family: 'Cinzel', serif; font-size: 0.70rem; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; opacity: 0.88; margin-bottom: 1.8rem; }
+    .corpus-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; list-style: none; }
+    .corpus-list li { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; font-weight: 400; color: var(--text); opacity: 0.90; padding-left: 1rem; border-left: 1px solid rgba(184,144,64,0.28); }
+    footer { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 2rem 3.5rem; border-top: 1px solid rgba(184,144,64,0.2); background: var(--slate-mid); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.22em; color: var(--text-dim); opacity: 0.88; }
+    footer .col.center { text-align: center; line-height: 1.6; }
+    footer .col.right { text-align: right; }
+    footer .name-line { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.3rem; opacity: 1; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hall-panel { min-height: 55vw; } .bio-panel { border-left: none; border-top: 1px solid rgba(184,144,64,0.18); padding: 2.5rem 2rem; } .chatbot-section { grid-template-columns: 1fr; } .chatbot-intro { border-right: none; border-bottom: 1px solid rgba(184,144,64,0.18); padding: 3rem 2rem; } .pull-quote { padding: 3.5rem 2rem; } .corpus-strip { padding: 2.5rem 2rem; } footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; } footer .col.right { text-align: center; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-label">In Conversation With &nbsp;·&nbsp; Museum of Minds</div>
+    <div class="header-right">ECS–1815–2026 &nbsp;·&nbsp; Trailblazers</div>
+  </header>
+
+  <section class="hero">
+    <div class="hall-panel">
+      <!-- SVG: Declaration of Sentiments as illuminated document — parchment, quill, candle -->
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="doc-bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#060408"/>
+            <stop offset="40%" stop-color="#100C18"/>
+            <stop offset="80%" stop-color="#181428"/>
+            <stop offset="100%" stop-color="#1C1830"/>
+          </linearGradient>
+          <radialGradient id="desk-light" cx="50%" cy="55%" r="55%">
+            <stop offset="0%"  stop-color="#D0A840" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#100C18" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="doc-glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+          </filter>
+        </defs>
+
+        <rect width="700" height="900" fill="url(#doc-bg)"/>
+
+        <!-- Desk light glow -->
+        <ellipse cx="350" cy="500" rx="320" ry="220" fill="url(#desk-light)"/>
+
+        <!-- Dark writing table surface -->
+        <rect x="0" y="620" width="700" height="280" fill="#0C0A14"/>
+        <rect x="0" y="618" width="700" height="5" fill="#181428"/>
+
+        <!-- THE DOCUMENT — Declaration of Sentiments -->
+        <!-- Large parchment sheet, slightly angled -->
+        <g transform="rotate(-1 350 450)">
+          <rect x="130" y="220" width="440" height="580" rx="3" fill="rgba(240,228,200,0.92)" filter="url(#doc-glow)"/>
+          <rect x="130" y="220" width="440" height="580" rx="3" fill="rgba(240,228,200,0.88)"/>
+          <!-- Document text lines -->
+          <g fill="rgba(20,15,30,0.75)" font-family="Cormorant Garamond, serif">
+            <!-- Title -->
+            <text x="350" y="266" text-anchor="middle" font-size="18" font-weight="600" letter-spacing="1">Declaration of Sentiments</text>
+            <text x="350" y="285" text-anchor="middle" font-size="10" letter-spacing="2">Seneca Falls Convention · July 1848</text>
+            <!-- Body text lines -->
+            <g font-size="7.5" font-style="italic">
+              <text x="155" y="310">When, in the course of human events, it becomes necessary</text>
+              <text x="155" y="322">for one portion of the family of man to assume among the</text>
+              <text x="155" y="334">people of the earth a position different from that which they</text>
+              <text x="155" y="346">have hitherto occupied, but one to which the laws of nature</text>
+              <text x="155" y="358">and of nature's God entitle them, a decent respect to the</text>
+              <text x="155" y="370">opinions of mankind requires that they should declare the</text>
+              <text x="155" y="382">causes that impel them to such a course.</text>
+              <text x="155" y="402">We hold these truths to be self-evident: that all men</text>
+              <text x="155" y="414">and women are created equal; that they are endowed by</text>
+              <text x="155" y="426">their Creator with certain inalienable rights; that among</text>
+              <text x="155" y="438">these are life, liberty, and the pursuit of happiness...</text>
+              <text x="155" y="462">The history of mankind is a history of repeated injuries</text>
+              <text x="155" y="474">and usurpations on the part of man toward woman, having</text>
+              <text x="155" y="486">in direct object the establishment of an absolute tyranny</text>
+              <text x="155" y="498">over her. To prove this, let facts be submitted to a candid</text>
+              <text x="155" y="510">world...</text>
+            </g>
+          </g>
+          <!-- Signature area -->
+          <line x1="155" y1="680" x2="545" y2="680" stroke="rgba(20,15,30,0.3)" stroke-width="0.7"/>
+          <text x="155" y="698" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="rgba(20,15,30,0.6)">Elizabeth Cady Stanton</text>
+          <text x="330" y="698" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="rgba(20,15,30,0.55)">Lucretia Mott</text>
+          <text x="155" y="718" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" fill="rgba(20,15,30,0.5)">Frederick Douglass</text>
+          <text x="310" y="718" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" fill="rgba(20,15,30,0.5)">Charlotte Woodward</text>
+          <text x="155" y="736" font-family="Cormorant Garamond, serif" font-size="8" fill="rgba(20,15,30,0.4)">and 65 other signatories</text>
+          <!-- Document seal/flourish -->
+          <ellipse cx="500" cy="750" rx="32" ry="32" fill="none" stroke="rgba(20,15,30,0.25)" stroke-width="1.5"/>
+          <text x="500" y="746" text-anchor="middle" font-family="Cinzel, serif" font-size="6" fill="rgba(20,15,30,0.35)" letter-spacing="1">SENECA</text>
+          <text x="500" y="756" text-anchor="middle" font-family="Cinzel, serif" font-size="6" fill="rgba(20,15,30,0.35)" letter-spacing="1">FALLS</text>
+          <text x="500" y="766" text-anchor="middle" font-family="Cinzel, serif" font-size="6" fill="rgba(20,15,30,0.3)" letter-spacing="1">1848</text>
+        </g>
+
+        <!-- Quill pen resting on document edge -->
+        <path d="M100,560 Q160,490 200,450 Q215,435 225,430" stroke="rgba(200,180,100,0.6)" stroke-width="3" fill="none"/>
+        <path d="M225,430 Q230,425 228,420 Q222,425 225,430" fill="rgba(200,180,100,0.5)"/>
+        <!-- Quill feather -->
+        <path d="M100,560 Q95,550 102,545 Q115,555 100,560" fill="rgba(200,180,100,0.5)"/>
+        <path d="M110,555 Q105,540 115,538 Q120,548 110,555" fill="rgba(180,160,80,0.4)"/>
+
+        <!-- Inkwell -->
+        <ellipse cx="95" cy="600" rx="22" ry="12" fill="#1A1830"/>
+        <ellipse cx="95" cy="598" rx="18" ry="10" fill="#252040"/>
+        <ellipse cx="95" cy="597" rx="14" ry="7" fill="rgba(40,35,65,0.9)"/>
+        <circle cx="95" cy="597" r="8" fill="rgba(20,15,30,0.95)"/>
+
+        <!-- Candlelight upper left -->
+        <line x1="95" y1="620" x2="95" y2="500" stroke="#3A3050" stroke-width="3"/>
+        <rect x="82" y="618" width="26" height="8" fill="#2E2848" rx="1"/>
+        <circle cx="95" cy="497" r="7" fill="rgba(220,180,60,0.75)" filter="url(#doc-glow)"/>
+        <circle cx="95" cy="497" r="3.5" fill="#F0D060"/>
+
+        <!-- Title cartouche -->
+        <g transform="translate(430,55)">
+          <rect width="218" height="78" fill="rgba(6,4,10,0.88)" stroke="rgba(184,144,64,0.28)" stroke-width="0.6"/>
+          <text x="109" y="20" text-anchor="middle" font-family="Cinzel, serif" font-size="7.5" fill="rgba(184,144,64,0.7)" letter-spacing="2.5">DOCUMENT STUDY</text>
+          <text x="109" y="38" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" fill="rgba(242,234,218,0.6)">Declaration of Sentiments</text>
+          <text x="109" y="53" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8.5" fill="rgba(184,144,64,0.4)">Seneca Falls, New York · 1848</text>
+          <text x="109" y="66" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7.5" fill="rgba(184,144,64,0.28)">Written by Elizabeth Cady Stanton</text>
+        </g>
+
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(184,144,64,0.15)" stroke-width="0.5"/>
+      </svg>
+
+      <div class="hero-title">
+        <h1>Elizabeth<br/><em>Cady Stanton</em></h1>
+        <span class="years">1815 &nbsp;—&nbsp; 1902</span>
+      </div>
+    </div>
+
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Elizabeth_Cady_Stanton.jpg/440px-Elizabeth_Cady_Stanton.jpg" alt="Elizabeth Cady Stanton" onerror="this.style.display='none'"/>
+      </div>
+      <div class="placard">
+        <div class="placard-name">Elizabeth Cady Stanton</div>
+        <div class="placard-dates">Johnstown, New York, 1815 &nbsp;·&nbsp; New York City, 1902</div>
+        <p class="placard-bio">
+          <strong>She wrote the Declaration of Sentiments in 1848, modeled it on Jefferson's Declaration of Independence, and spent the next fifty years arguing with the movement she founded about how radical to be.</strong>
+          The answer, in her judgment, was always: more radical.
+          <br/><br/>
+          <em>Eighty Years and More</em> (1898). <em>The Woman's Bible</em> (1895). She co-founded the suffrage movement with Susan B. Anthony, drove it harder than anyone, and was more radical on divorce, religion, and women's autonomy than the movement could comfortably follow. She was right about almost everything — usually a generation too early.
+          <br/><br/>
+          She died in 1902. The Nineteenth Amendment she initiated was ratified in 1920. She never voted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule"><span>Consultation</span></div>
+
+  <section class="chatbot-section">
+    <div class="chatbot-intro">
+      <h2>The author of the<br/><em>Declaration of Sentiments.</em></h2>
+      <p>
+        Stanton speaks from 2,000+ chunks across three works —
+        <em>Eighty Years and More,</em> <em>The Woman's Bible,</em>
+        and <em>History of Woman Suffrage, Volume I.</em>
+      </p>
+      <p>
+        Her discourse holds Mill's <em>Subjection of Women</em>
+        and Wollstonecraft's <em>Vindication of the Rights of Woman</em>
+        — her two most important predecessors in the feminist tradition.
+      </p>
+      <p>
+        Ask her about the Fourteenth Amendment and what she did that she regretted. Ask her about The Woman's Bible and why her own movement condemned it. Ask her about Susan B. Anthony and what they were actually fighting about. Ask her what she would make of 2026.
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Declaration of Sentiments</span>
+        <span class="domain-tag">Women's Suffrage</span>
+        <span class="domain-tag">The Woman's Bible</span>
+        <span class="domain-tag">Seneca Falls</span>
+        <span class="domain-tag">Stanton and Anthony</span>
+        <span class="domain-tag">Feminist Political Theory</span>
+        <span class="domain-tag">Marriage and Divorce Law</span>
+        <span class="domain-tag">Religious Patriarchy</span>
+        <span class="domain-tag">The Fourteenth Amendment</span>
+        <span class="domain-tag">Radicalism and Tactics</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/elizabeth-cady-stanton/widget/elizabeth-cady-stanton-widget.css">
+      <script src="https://museumofminds.com/elizabeth-cady-stanton/widget/elizabeth-cady-stanton-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="elizabeth-cady-stanton"></script>
+    </div>
+  </section>
+
+  <section class="pull-quote">
+    <blockquote>
+      We hold these truths to be self-evident: that all men and women are created equal.
+    </blockquote>
+    <cite>Declaration of Sentiments &nbsp;·&nbsp; Seneca Falls Convention &nbsp;·&nbsp; July 19, 1848</cite>
+  </section>
+
+  <section class="corpus-strip">
+    <h3>Drawn From the Corpus</h3>
+    <ul class="corpus-list">
+      <li>Eighty Years and More: Reminiscences 1815–1897 (1898)</li>
+      <li>The Woman's Bible (1895)</li>
+      <li>History of Woman Suffrage, Volume I (1881)</li>
+      <li>Discourse: Mill — The Subjection of Women (1869)</li>
+      <li>Discourse: Wollstonecraft — A Vindication of the Rights of Woman (1792)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="col left">
+      <div class="name-line">Elizabeth Cady Stanton</div>
+      <div>1815 — 1902 &nbsp;·&nbsp; Johnstown, New York</div>
+    </div>
+    <div class="col center">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="col right">Powered by Her Own Words</div>
+  </footer>
+</body>
+</html>
