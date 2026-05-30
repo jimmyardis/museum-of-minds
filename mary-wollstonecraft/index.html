@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mary Wollstonecraft — In Conversation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#141028;--mid:#1C1A38;--lt:#282448;--gold:#B89040;--cream:#F2ECD8;--text:#D4CCC8;--dim:#8A8490}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(184,144,64,.25);background:rgba(20,16,40,.96);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(184,144,64,.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}.ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.6vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}.ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}.ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(184,144,64,.2);background:var(--mid);position:relative}.bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(184,144,64,.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(184,144,64,.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(184,144,64,.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(184,144,64,.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}.ci{padding:4rem 3.5rem;border-right:1px solid rgba(184,144,64,.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(184,144,64,.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(184,144,64,.18);border-bottom:1px solid rgba(184,144,64,.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(184,144,64,.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(184,144,64,.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(184,144,64,.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.hp{min-height:55vw}.bp{border-left:none;border-top:1px solid rgba(184,144,64,.18);padding:2.5rem 2rem}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(184,144,64,.18);padding:3rem 2rem}.pq{padding:3.5rem 2rem}.cst{padding:2.5rem 2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">MW–1759–2026 &nbsp;·&nbsp; Trailblazers</div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="london-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#060410"/><stop offset="40%" stop-color="#0C0818"/><stop offset="80%" stop-color="#141028"/><stop offset="100%" stop-color="#1A1438"/></linearGradient>
+          <radialGradient id="candle-mw" cx="45%" cy="50%" r="45%"><stop offset="0%" stop-color="#C08030" stop-opacity=".5"/><stop offset="100%" stop-color="#060410" stop-opacity="0"/></radialGradient>
+          <filter id="mw-glow"><feGaussianBlur in="SourceGraphic" stdDeviation="5"/></filter>
+        </defs>
+        <rect width="700" height="900" fill="url(#london-bg)"/>
+        <ellipse cx="315" cy="480" rx="280" ry="200" fill="url(#candle-mw)"/>
+        <!-- Stars -->
+        <g fill="rgba(200,200,240,.4)"><circle cx="80" cy="50" r="1"/><circle cx="200" cy="30" r=".9"/><circle cx="400" cy="45" r="1.1"/><circle cx="600" cy="35" r=".9"/><circle cx="660" cy="60" r="1"/></g>
+        <!-- London street 1790 -->
+        <!-- Terraced houses back -->
+        <g fill="#0A0814">
+          <rect x="0" y="350" width="80" height="400"/><rect x="84" y="360" width="75" height="390"/>
+          <rect x="163" y="345" width="80" height="405"/><rect x="247" y="355" width="75" height="395"/>
+          <rect x="490" y="350" width="80" height="400"/><rect x="574" y="360" width="75" height="390"/>
+          <rect x="653" y="345" width="80" height="405"/>
+        </g>
+        <!-- Sash windows with candlelight -->
+        <g fill="rgba(192,144,40,.5)">
+          <rect x="10" y="370" width="28" height="36" rx="2"/><rect x="46" y="370" width="28" height="36" rx="2"/>
+          <rect x="10" y="428" width="28" height="36" rx="2"/>
+          <rect x="170" y="365" width="28" height="36" rx="2"/><rect x="206" y="380" width="28" height="36" rx="2"/>
+          <rect x="500" y="370" width="28" height="36" rx="2"/><rect x="536" y="380" width="28" height="36" rx="2"/>
+          <rect x="660" y="365" width="28" height="36" rx="2"/>
+        </g>
+        <!-- Johnson's Court / publishing district -->
+        <!-- Street cobblestones -->
+        <rect x="0" y="750" width="700" height="150" fill="#080810"/>
+        <path d="M0,750 Q200,738 400,748 Q550,756 700,745 L700,765 L0,765 Z" fill="#0C0C18"/>
+        <g stroke="rgba(40,40,60,.3)" stroke-width=".5">
+          <line x1="0" y1="770" x2="700" y2="770"/><line x1="0" y1="790" x2="700" y2="790"/>
+        </g>
+        <!-- Paving stones -->
+        <g stroke="rgba(40,40,60,.2)" stroke-width=".4" fill="none">
+          <line x1="0" y1="808" x2="700" y2="808"/><line x1="0" y1="825" x2="700" y2="825"/>
+          <line x1="100" y1="750" x2="100" y2="850"/><line x1="200" y1="750" x2="200" y2="850"/>
+          <line x1="300" y1="750" x2="300" y2="850"/><line x1="400" y1="750" x2="400" y2="850"/>
+          <line x1="500" y1="750" x2="500" y2="850"/><line x1="600" y1="750" x2="600" y2="850"/>
+        </g>
+        <!-- Gas lamp post -->
+        <line x1="200" y1="750" x2="200" y2="580" stroke="#2A2040" stroke-width="4"/>
+        <rect x="190" y="747" width="20" height="8" fill="#1E1838" rx="1"/>
+        <path d="M200,595 Q215,580 235,585" stroke="#2A2040" stroke-width="2.5" fill="none"/>
+        <circle cx="238" cy="585" r="8" fill="rgba(200,160,40,.65)" filter="url(#mw-glow)"/>
+        <circle cx="238" cy="585" r="4" fill="#F0D060"/>
+        <!-- Wollstonecraft's desk/writing scene suggestion -->
+        <!-- Book publisher's sign -->
+        <rect x="280" y="500" width="140" height="220" fill="#0C0818"/>
+        <g stroke="rgba(100,90,120,.3)" stroke-width=".6" fill="none">
+          <rect x="292" y="512" width="30" height="40" rx="2"/><rect x="332" y="512" width="30" height="40" rx="2"/>
+          <rect x="372" y="512" width="30" height="40" rx="2"/>
+          <rect x="292" y="570" width="30" height="40" rx="2"/><rect x="332" y="570" width="30" height="40" rx="2"/>
+          <rect x="372" y="570" width="30" height="40" rx="2"/>
+        </g>
+        <!-- Door with sign -->
+        <rect x="325" y="650" width="50" height="70" fill="#060410" rx="2"/>
+        <text x="350" y="670" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="7.5" fill="rgba(184,144,64,.35)">Johnson</text>
+        <text x="350" y="680" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="7.5" fill="rgba(184,144,64,.35)">Publisher</text>
+        <!-- Title text above shop -->
+        <text x="350" y="490" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(184,144,64,.35)">A Vindication of the Rights of Woman</text>
+        <text x="350" y="504" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8" fill="rgba(184,144,64,.25)">Mary Wollstonecraft · 1792</text>
+        <!-- Title cartouche -->
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(6,4,16,.88)" stroke="rgba(184,144,64,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(184,144,64,.7)" letter-spacing="2.5">STREET STUDY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Johnson's Court, London</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(184,144,64,.4)">St. Paul's Churchyard · c. 1792</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(184,144,64,.28)">Where Vindication was published</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(184,144,64,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Mary<br/><em>Wollstonecraft</em></h1><span class="yr">1759 &nbsp;—&nbsp; 1797</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Mary_Wollstonecraft_by_John_Opie_%28c._1797%29.jpg/440px-Mary_Wollstonecraft_by_John_Opie_%28c._1797%29.jpg" alt="Mary Wollstonecraft" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Mary Wollstonecraft</div>
+      <div class="pd">London, England, 1759 &nbsp;·&nbsp; London, England, 1797</div>
+      <p class="pb"><strong>The woman who wrote the first major feminist treatise in English — and whose life was used against it for a century.</strong><br/><br/>A Vindication of the Rights of Woman (1792). She died at thirty-eight from childbirth fever. Her husband published her secrets a year later. Her work was discredited for a century. Her daughter became Mary Shelley.<br/><br/>She argued from consistency: if human rights rest on reason, they must apply to women. It is a simple argument. She held it when no one else would.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>A Vindication of<br/><em>the Rights of Woman.</em></h2>
+      <p>Wollstonecraft speaks from 435 chunks across four works — <em>A Vindication of the Rights of Woman,</em> <em>A Vindication of the Rights of Men,</em> <em>Mary, A Fiction,</em> and <em>An Historical and Moral View of the French Revolution.</em></p>
+      <p>Her discourse holds Burke's <em>Reflections</em> — her immediate target — and Mill's <em>Subjection of Women</em> — the feminist argument 77 years later.</p>
+      <p>Ask her about the damage Godwin's Memoir did. Ask her about her daughter Mary Shelley. Ask her about the French Revolution and the Terror. Ask her whether education for women has changed.</p>
+      <div class="dt"><span class="dg">Vindication of Rights</span><span class="dg">Women's Education</span><span class="dg">Feminist Argument</span><span class="dg">Burke and Wollstonecraft</span><span class="dg">The French Revolution</span><span class="dg">Godwin's Memoir</span><span class="dg">Mary Shelley</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/mary-wollstonecraft/widget/mary-wollstonecraft-widget.css">
+      <script src="https://museumofminds.com/mary-wollstonecraft/widget/mary-wollstonecraft-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="mary-wollstonecraft"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>I wish to persuade women to endeavour to acquire strength, both of mind and body, and to convince them that the soft phrases, susceptibility of heart, delicacy of sentiment, and refinement of taste, are almost synonymous with epithets of weakness.</blockquote>
+    <cite>A Vindication of the Rights of Woman &nbsp;·&nbsp; Introduction &nbsp;·&nbsp; 1792</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>A Vindication of the Rights of Woman (1792)</li><li>A Vindication of the Rights of Men (1790)</li><li>Mary, A Fiction (1788)</li><li>An Historical and Moral View of the French Revolution (1794)</li><li>Discourse: Burke — Reflections on the Revolution in France (1790)</li><li>Discourse: Mill — The Subjection of Women (1869)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Mary Wollstonecraft</div><div>1759 — 1797 &nbsp;·&nbsp; London, England</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr">Powered by Her Own Words</div>
+  </footer>
+</body>
+</html>
