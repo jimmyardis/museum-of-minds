@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ralph Waldo Emerson — In Conversation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest:     #0E1A10;
+      --forest-mid: #182A1A;
+      --forest-lt:  #243828;
+      --green:      #2E5030;
+      --sage:       #6A8060;
+      --gold:       #B89040;
+      --gold-dim:   #7A6030;
+      --cream:      #F2ECD8;
+      --cream-mid:  #C8C0A0;
+      --text:       #DED4B0;
+      --text-dim:   #8A8060;
+      --leaf:       #4A7038;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--forest); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    header { padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(184,144,64,0.25); background: rgba(14,26,16,0.96); animation: fadeDown 0.8s ease both; position: relative; z-index: 10; }
+    .header-label { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.32em; color: var(--gold); opacity: 0.92; text-transform: uppercase; }
+    .header-right { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--text-dim); }
+    .hero { position: relative; min-height: 92vh; display: grid; grid-template-columns: 1.25fr 0.75fr; border-bottom: 1px solid rgba(184,144,64,0.2); overflow: hidden; animation: fadeIn 1s ease 0.2s both; }
+    .hall-panel { position: relative; background: var(--forest); overflow: hidden; min-height: 500px; }
+    .hall-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-title { position: absolute; bottom: 3rem; left: 3rem; right: 3rem; z-index: 10; }
+    .hero-title h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3.8vw, 4.2rem); font-weight: 900; color: var(--cream); line-height: 1.0; letter-spacing: 0.06em; }
+    .hero-title h1 em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--gold); display: block; font-size: 0.78em; letter-spacing: 0.02em; }
+    .hero-title .years { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.4em; color: var(--gold); margin-top: 0.8rem; display: block; opacity: 0.92; }
+    .bio-panel { display: flex; flex-direction: column; padding: 3.5rem 2.5rem; border-left: 1px solid rgba(184,144,64,0.2); background: var(--forest-mid); position: relative; }
+    .bio-panel::before { content: ''; position: absolute; left: 3.5rem; top: 0; bottom: 0; width: 1px; background: rgba(184,144,64,0.12); }
+    .exhibit-tag { font-family: 'Cinzel', serif; font-size: 0.70rem; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 2.5rem; text-transform: uppercase; opacity: 0.90; }
+    .photo-frame { position: relative; width: 100%; max-width: 260px; margin: 0 auto 2.5rem; }
+    .photo-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(184,144,64,0.35); }
+    .photo-frame::after { content: ''; position: absolute; inset: -10px; border: 1px solid rgba(184,144,64,0.12); }
+    .photo-frame img { width: 100%; display: block; filter: sepia(0.2) contrast(1.05); }
+    .frame-corner { position: absolute; width: 12px; height: 12px; border-color: var(--gold); border-style: solid; opacity: 0.6; z-index: 2; }
+    .frame-corner.tl { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: -6px; right: -6px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: -6px; left: -6px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
+    .placard-name { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+    .placard-dates { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--gold); opacity: 0.90; margin-bottom: 1.4rem; }
+    .placard-bio { font-size: 1rem; font-weight: 400; color: var(--text); line-height: 1.7; }
+    .placard-bio strong { color: var(--cream); font-weight: 500; }
+    .section-rule { text-align: center; padding: 1.4rem 3rem; border-bottom: 1px solid rgba(184,144,64,0.2); background: var(--forest-mid); }
+    .section-rule span { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.38em; color: var(--gold); opacity: 0.75; text-transform: uppercase; }
+    .chatbot-section { display: grid; grid-template-columns: 1fr 1.05fr; min-height: 680px; background: var(--forest); }
+    .chatbot-intro { padding: 4rem 3.5rem; border-right: 1px solid rgba(184,144,64,0.18); }
+    .chatbot-intro h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 900; color: var(--cream); line-height: 1.15; letter-spacing: 0.04em; margin-bottom: 1.8rem; }
+    .chatbot-intro h2 em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--gold); }
+    .chatbot-intro p { font-size: 1.05rem; font-weight: 400; color: var(--text); line-height: 1.72; margin-bottom: 1.2rem; }
+    .domain-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
+    .domain-tag { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); border: 1px solid rgba(184,144,64,0.3); padding: 0.28rem 0.75rem; text-transform: uppercase; opacity: 0.90; }
+    .chatbot-embed { position: relative; background: var(--forest-mid); min-height: 580px; display: flex; align-items: stretch; }
+    .pull-quote { padding: 5rem 8rem; text-align: center; background: var(--forest-mid); border-top: 1px solid rgba(184,144,64,0.18); border-bottom: 1px solid rgba(184,144,64,0.18); }
+    .pull-quote::before, .pull-quote::after { content: '— ✦ —'; display: block; text-align: center; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); opacity: 0.55; margin: 0 auto 2rem; }
+    .pull-quote::after { margin: 2rem auto 0; }
+    .pull-quote blockquote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 400; color: var(--cream); line-height: 1.55; max-width: 780px; margin: 0 auto; }
+    .pull-quote blockquote::before { content: '\201C'; font-size: 4rem; color: var(--gold); opacity: 0.35; display: block; line-height: 0.6; margin-bottom: 0.8rem; }
+    .pull-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 0.68rem; letter-spacing: 0.28em; color: var(--gold); opacity: 0.80; margin-top: 1.6rem; text-transform: uppercase; }
+    .corpus-strip { padding: 3.5rem 5rem; background: var(--forest); border-top: 1px solid rgba(184,144,64,0.18); }
+    .corpus-strip h3 { font-family: 'Cinzel', serif; font-size: 0.70rem; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; opacity: 0.88; margin-bottom: 1.8rem; }
+    .corpus-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; list-style: none; }
+    .corpus-list li { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; font-weight: 400; color: var(--text); opacity: 0.90; padding-left: 1rem; border-left: 1px solid rgba(184,144,64,0.28); }
+    footer { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 2rem 3.5rem; border-top: 1px solid rgba(184,144,64,0.2); background: var(--forest-mid); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.22em; color: var(--text-dim); opacity: 0.88; }
+    footer .col.center { text-align: center; line-height: 1.6; }
+    footer .col.right { text-align: right; }
+    footer .name-line { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.3rem; opacity: 1; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hall-panel { min-height: 55vw; } .bio-panel { border-left: none; border-top: 1px solid rgba(184,144,64,0.18); padding: 2.5rem 2rem; } .chatbot-section { grid-template-columns: 1fr; } .chatbot-intro { border-right: none; border-bottom: 1px solid rgba(184,144,64,0.18); padding: 3rem 2rem; } .pull-quote { padding: 3.5rem 2rem; } .corpus-strip { padding: 2.5rem 2rem; } footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; } footer .col.right { text-align: center; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-label">In Conversation With &nbsp;·&nbsp; Museum of Minds</div>
+    <div class="header-right">RWE–1803–2026 &nbsp;·&nbsp; Press Room</div>
+  </header>
+
+  <section class="hero">
+    <div class="hall-panel">
+      <!-- SVG: Concord forest — tall birch/oak trees, dappled light, evening -->
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="concord-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#060C06"/>
+            <stop offset="35%" stop-color="#0E1A10"/>
+            <stop offset="70%" stop-color="#182E18"/>
+            <stop offset="100%" stop-color="#243824"/>
+          </linearGradient>
+          <radialGradient id="moon-glow" cx="60%" cy="18%" r="25%">
+            <stop offset="0%"  stop-color="#D4C890" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#182E18" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="tree-blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+          </filter>
+          <filter id="soft-leaf">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+          </filter>
+        </defs>
+
+        <rect width="700" height="900" fill="url(#concord-sky)"/>
+
+        <!-- Moon glow -->
+        <ellipse cx="420" cy="160" rx="240" ry="130" fill="url(#moon-glow)"/>
+        <!-- Moon disc -->
+        <circle cx="420" cy="130" r="38" fill="#E4DC9C" opacity="0.7"/>
+        <circle cx="420" cy="130" r="28" fill="#F0EAC0" opacity="0.75"/>
+
+        <!-- Background trees (far) -->
+        <g fill="#0A1008" opacity="0.8">
+          <rect x="20"  y="320" width="18" height="600"/>
+          <rect x="50"  y="280" width="22" height="640"/>
+          <rect x="85"  y="300" width="16" height="620"/>
+          <rect x="110" y="250" width="24" height="670"/>
+          <rect x="150" y="270" width="20" height="650"/>
+          <rect x="185" y="290" width="18" height="630"/>
+          <rect x="220" y="260" width="22" height="660"/>
+          <rect x="260" y="280" width="16" height="640"/>
+          <rect x="290" y="240" width="28" height="680"/>
+          <rect x="335" y="260" width="20" height="660"/>
+          <rect x="370" y="220" width="24" height="700"/>
+          <rect x="410" y="250" width="18" height="670"/>
+          <rect x="445" y="270" width="22" height="650"/>
+          <rect x="480" y="240" width="20" height="680"/>
+          <rect x="515" y="260" width="24" height="660"/>
+          <rect x="555" y="280" width="18" height="640"/>
+          <rect x="585" y="250" width="22" height="670"/>
+          <rect x="620" y="270" width="20" height="650"/>
+          <rect x="655" y="290" width="18" height="630"/>
+        </g>
+
+        <!-- Canopy foliage (far) -->
+        <g fill="#0E1A0C" opacity="0.7" filter="url(#tree-blur)">
+          <ellipse cx="31" cy="280" rx="40" ry="55"/>
+          <ellipse cx="61" cy="240" rx="48" ry="65"/>
+          <ellipse cx="93" cy="260" rx="36" ry="50"/>
+          <ellipse cx="122" cy="210" rx="52" ry="70"/>
+          <ellipse cx="160" cy="230" rx="44" ry="62"/>
+          <ellipse cx="302" cy="200" rx="56" ry="75"/>
+          <ellipse cx="382" cy="180" rx="50" ry="68"/>
+          <ellipse cx="666" cy="250" rx="42" ry="58"/>
+        </g>
+
+        <!-- Middle-ground trees (larger, brighter) -->
+        <g fill="#121E10">
+          <rect x="70"  y="400" width="30" height="500"/>
+          <rect x="180" y="380" width="35" height="520"/>
+          <rect x="310" y="360" width="32" height="540"/>
+          <rect x="450" y="375" width="30" height="525"/>
+          <rect x="580" y="390" width="28" height="510"/>
+        </g>
+
+        <!-- Middle-ground canopy -->
+        <g fill="#182A14" filter="url(#soft-leaf)">
+          <ellipse cx="85"  cy="360" rx="65" ry="85"/>
+          <ellipse cx="197" cy="335" rx="72" ry="95"/>
+          <ellipse cx="326" cy="310" rx="78" ry="100"/>
+          <ellipse cx="465" cy="330" rx="70" ry="92"/>
+          <ellipse cx="594" cy="348" rx="64" ry="82"/>
+        </g>
+
+        <!-- Foreground birch trunks (distinctive white bark) -->
+        <g>
+          <rect x="140" y="500" width="14" height="400" fill="#2A3820" rx="4"/>
+          <rect x="140" y="500" width="14" height="400" fill="#E8E0C8" opacity="0.12" rx="4"/>
+          <!-- Birch knot marks -->
+          <ellipse cx="147" cy="580" rx="5" ry="3" fill="#1A2810" opacity="0.5"/>
+          <ellipse cx="147" cy="650" rx="4" ry="2.5" fill="#1A2810" opacity="0.4"/>
+          <ellipse cx="147" cy="720" rx="5" ry="3" fill="#1A2810" opacity="0.45"/>
+        </g>
+        <g>
+          <rect x="490" y="480" width="16" height="420" fill="#2E4020" rx="4"/>
+          <rect x="490" y="480" width="16" height="420" fill="#E8E0C8" opacity="0.10" rx="4"/>
+          <ellipse cx="498" cy="570" rx="5" ry="3" fill="#1A2810" opacity="0.45"/>
+          <ellipse cx="498" cy="660" rx="4" ry="2.5" fill="#1A2810" opacity="0.4"/>
+        </g>
+
+        <!-- Ground / forest floor -->
+        <rect x="0" y="840" width="700" height="60" fill="#0A1008"/>
+        <path d="M0,840 Q100,825 200,840 Q300,855 400,840 Q500,825 600,840 Q650,848 700,840 L700,900 L0,900 Z" fill="#0E1410"/>
+
+        <!-- Undergrowth / ferns -->
+        <g fill="#162014" opacity="0.7">
+          <ellipse cx="50"  cy="858" rx="45" ry="15"/>
+          <ellipse cx="160" cy="855" rx="55" ry="18"/>
+          <ellipse cx="300" cy="852" rx="60" ry="20"/>
+          <ellipse cx="500" cy="855" rx="55" ry="17"/>
+          <ellipse cx="640" cy="858" rx="50" ry="15"/>
+        </g>
+
+        <!-- Moonlight path through forest -->
+        <path d="M300,700 Q320,780 340,900 L360,900 Q340,780 360,700 Z" fill="rgba(212,200,144,0.06)"/>
+
+        <!-- Stars through canopy gaps -->
+        <g fill="rgba(240,230,180,0.5)">
+          <circle cx="200" cy="100" r="1.1"/>
+          <circle cx="350" cy="75"  r="0.9"/>
+          <circle cx="550" cy="95"  r="1.2"/>
+          <circle cx="650" cy="65"  r="0.9"/>
+          <circle cx="100" cy="150" r="0.8"/>
+        </g>
+
+        <!-- Title cartouche -->
+        <g transform="translate(430,55)">
+          <rect width="215" height="78" fill="rgba(6,12,6,0.82)" stroke="rgba(184,144,64,0.28)" stroke-width="0.6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel, serif" font-size="7.5" fill="rgba(184,144,64,0.7)" letter-spacing="2.5">NATURE STUDY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" fill="rgba(242,236,216,0.6)">Concord Forest</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8.5" fill="rgba(184,144,64,0.4)">Middlesex County · Massachusetts</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7.5" fill="rgba(184,144,64,0.28)">Where Emerson walked and thought</text>
+        </g>
+
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(184,144,64,0.15)" stroke-width="0.5"/>
+      </svg>
+
+      <div class="hero-title">
+        <h1>Ralph Waldo<br/><em>Emerson</em></h1>
+        <span class="years">1803 &nbsp;—&nbsp; 1882</span>
+      </div>
+    </div>
+
+    <div class="bio-panel">
+      <div class="exhibit-tag">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="photo-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ralph_Waldo_Emerson_ca1857_retouched.jpg/440px-Ralph_Waldo_Emerson_ca1857_retouched.jpg" alt="Ralph Waldo Emerson" onerror="this.style.display='none'"/>
+      </div>
+      <div class="placard">
+        <div class="placard-name">Ralph Waldo Emerson</div>
+        <div class="placard-dates">Boston, Massachusetts, 1803 &nbsp;·&nbsp; Concord, Massachusetts, 1882</div>
+        <p class="placard-bio">
+          <strong>The preacher who quit the pulpit to preach a harder sermon: that the universe resides in each individual soul, and that trust in oneself is the only true religion.</strong>
+          He gave Thoreau his first journal. He coined the phrase "self-reliance." He built the intellectual framework for American Transcendentalism and watched the country misunderstand it for the rest of his life.
+          <br/><br/>
+          <em>Essays: First Series</em> (1841): Self-Reliance, Compensation, The Over-Soul. <em>Essays: Second Series</em> (1844). <em>Nature</em> (1836). Representative Men (1850). He lectured across America and was the most famous American intellectual of his century.
+          <br/><br/>
+          He is more interesting than his slogans. He is also harder to live by than his followers admitted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule"><span>Consultation</span></div>
+
+  <section class="chatbot-section">
+    <div class="chatbot-intro">
+      <h2>The philosopher who<br/><em>invented American self-reliance.</em></h2>
+      <p>
+        Emerson speaks from 1,100+ chunks across six works —
+        <em>Essays: First Series,</em> <em>Essays: Second Series,</em>
+        <em>Nature,</em> <em>The Conduct of Life,</em>
+        <em>Representative Men,</em> and <em>English Traits.</em>
+      </p>
+      <p>
+        His discourse holds Thoreau's <em>Walden</em> — the student who lived the philosophy harder than the teacher — and Mill's <em>On Liberty</em> as a transatlantic counterpart.
+      </p>
+      <p>
+        Ask him what self-reliance means in a world of interdependence. Ask him about the Over-Soul. Ask him whether Thoreau found something in the woods that he missed in Concord. Ask him what he actually meant by "a foolish consistency."
+      </p>
+
+      <div class="domain-tags">
+        <span class="domain-tag">Self-Reliance</span>
+        <span class="domain-tag">The Over-Soul</span>
+        <span class="domain-tag">Transcendentalism</span>
+        <span class="domain-tag">Nature</span>
+        <span class="domain-tag">Compensation</span>
+        <span class="domain-tag">American Scholar</span>
+        <span class="domain-tag">Representative Men</span>
+        <span class="domain-tag">Individualism</span>
+        <span class="domain-tag">The American Mind</span>
+        <span class="domain-tag">Emerson and Thoreau</span>
+      </div>
+    </div>
+
+    <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/ralph-waldo-emerson/widget/ralph-waldo-emerson-widget.css">
+      <script src="https://museumofminds.com/ralph-waldo-emerson/widget/ralph-waldo-emerson-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="ralph-waldo-emerson"></script>
+    </div>
+  </section>
+
+  <section class="pull-quote">
+    <blockquote>
+      A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines.
+    </blockquote>
+    <cite>Self-Reliance &nbsp;·&nbsp; Essays: First Series &nbsp;·&nbsp; 1841</cite>
+  </section>
+
+  <section class="corpus-strip">
+    <h3>Drawn From the Corpus</h3>
+    <ul class="corpus-list">
+      <li>Essays: First Series (1841)</li>
+      <li>Essays: Second Series (1844)</li>
+      <li>Nature (1836)</li>
+      <li>The Conduct of Life (1860)</li>
+      <li>Representative Men (1850)</li>
+      <li>English Traits (1856)</li>
+      <li>Discourse: Thoreau — Walden (1854)</li>
+      <li>Discourse: Mill — On Liberty (1859)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="col left">
+      <div class="name-line">Ralph Waldo Emerson</div>
+      <div>1803 — 1882 &nbsp;·&nbsp; Concord, Massachusetts</div>
+    </div>
+    <div class="col center">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="col right">Powered by His Own Words</div>
+  </footer>
+</body>
+</html>
