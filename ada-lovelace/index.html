@@ -1258,16 +1258,19 @@
           .linkDirectionalParticleColor(l => l.color)
           .linkDirectionalParticleSpeed(0.005)
           .graphData(gData)
+          .warmupTicks(150)
+          .cooldownTime(3000)
+          .onEngineStop(() => {
+            let angle = 0;
+            const rotTimer = setInterval(() => {
+              Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
+              angle += 0.003;
+            }, 30);
+            el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
+            el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
+          })
           .onNodeClick(node => showPanel(node, gData))
           .onBackgroundClick(() => hidePanel());
-
-        let angle = 0;
-        const rotTimer = setInterval(() => {
-          Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
-          angle += 0.003;
-        }, 30);
-        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
-        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
         window.addEventListener('resize', () => Graph.width(wrap.offsetWidth).height(wrap.offsetHeight));
       })
       .catch(err => {

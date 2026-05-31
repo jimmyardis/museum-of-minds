@@ -1131,107 +1131,6 @@
     Powered by Her Own Words
   </div>
 </footer>
-<script>
-  (function() {
-    const API    = 'https://museum-api-production-8ce6.up.railway.app';
-    const PERSONA = 'helen-keller';
-    const NODE_COLORS = {"Person": "#5A9E8F", "Concept": "#C8A84C", "Event": "#8B6B34", "Place": "#4A8888", "Institution": "#3E6480", "Controversy": "#9A2A2A", "Work": "#A8A8C0"};
-    const NODE_SIZES  = {"Person": 6, "Concept": 5, "Event": 4, "Place": 4, "Institution": 4, "Controversy": 5, "Work": 3};
-    const REL_COLORS  = {"opposed": "#9A2A2A", "allied_with": "#5A9E8F", "influenced_by": "#C8A84C", "corresponded_with": "#4A8888", "developed": "#7A5A9E", "involved_in": "#8B6B34", "collaborated_with": "#3E6480"};
-    const REL_DEFAULT = 'rgba(180,160,120,0.2)';
-
-    fetch(`${API}/persona/${PERSONA}/kg`)
-      .then(r => r.json())
-      .then(data => {
-        const gData = {
-          nodes: data.nodes.map(n => ({
-            id: n.id, name: n.name || n.id, type: n.type || 'Work',
-            val:   NODE_SIZES[n.type] || 3,
-            color: NODE_COLORS[n.type] || '#A8A8C0',
-            _raw:  n,
-          })),
-          links: data.edges.map(e => ({
-            source: e.source, target: e.target, rel: e.relationship,
-            passages: e.source_passages || [], _raw: e,
-            color: REL_COLORS[e.relationship] || REL_DEFAULT,
-          })),
-        };
-
-        const el   = document.getElementById('kg-canvas');
-        const wrap = document.querySelector('.kg-canvas-wrap');
-        const Graph = ForceGraph3D()(el)
-          .width(wrap.offsetWidth).height(wrap.offsetHeight)
-          .backgroundColor('#080808')
-          .nodeColor(n => n.color).nodeVal(n => n.val)
-          .nodeLabel(n => `<span style="font-family:serif;font-size:13px;color:#D0C8B8">${n.name}</span>`)
-          .nodeOpacity(0.92)
-          .linkColor(l => l.color)
-          .linkWidth(l => Math.max(0.5, Math.min(3, l.passages.length * 0.6)))
-          .linkOpacity(0.5)
-          .linkDirectionalParticles(l => l.passages.length > 0 ? 1 : 0)
-          .linkDirectionalParticleWidth(1.2)
-          .linkDirectionalParticleColor(l => l.color)
-          .linkDirectionalParticleSpeed(0.005)
-          .graphData(gData)
-          .onNodeClick(node => showPanel(node, gData))
-          .onBackgroundClick(() => hidePanel());
-
-        let angle = 0;
-        const rotTimer = setInterval(() => {
-          Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
-          angle += 0.003;
-        }, 30);
-        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
-        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
-        window.addEventListener('resize', () => Graph.width(wrap.offsetWidth).height(wrap.offsetHeight));
-      })
-      .catch(err => {
-        console.error('KG load error:', err);
-        document.querySelector('.kg-canvas-wrap').style.display = 'none';
-      });
-
-    function showPanel(node, gData) {
-      document.getElementById('kg-panel-type').textContent = node.type;
-      document.getElementById('kg-panel-name').textContent = node.name;
-      const r = node._raw, meta = [];
-      if (r.birth_year && r.death_year) meta.push(`${r.birth_year} – ${r.death_year}`);
-      else if (r.birth_year) meta.push(`b. ${r.birth_year}`);
-      if (r.domain) meta.push(r.domain);
-      if (r.location) meta.push(r.location);
-      if (r.notes) meta.push(r.notes);
-      document.getElementById('kg-panel-meta').textContent = meta.join(' · ');
-
-      const connected = gData.links.filter(l => {
-        const s = typeof l.source === 'object' ? l.source.id : l.source;
-        const t = typeof l.target === 'object' ? l.target.id : l.target;
-        return s === node.id || t === node.id;
-      });
-      const nodeMap = gData.nodes.reduce((m, n) => { m[n.id] = n; return m; }, {});
-      document.getElementById('kg-panel-edges').innerHTML = connected.slice(0, 6).map(l => {
-        const s = typeof l.source === 'object' ? l.source.id : l.source;
-        const t = typeof l.target === 'object' ? l.target.id : l.target;
-        const otherId = s === node.id ? t : s;
-        const other = nodeMap[otherId];
-        const dir = s === node.id ? '→' : '←';
-        const best = l.passages.length > 0
-          ? l.passages.reduce((a, b) => (a.score||0) > (b.score||0) ? a : b) : null;
-        return `<div class="kg-edge-item">
-          <div class="kg-edge-rel">${dir} ${l.rel.replace(/_/g,' ')}</div>
-          <div class="kg-edge-target">${other ? other.name : otherId}</div>
-          ${best && best.excerpt ? `<div class="kg-edge-excerpt">&#8220;${best.excerpt.slice(0,160)}…&#8221;</div>` : ''}
-        </div>`;
-      }).join('');
-      document.getElementById('kg-panel').classList.add('visible');
-    }
-
-    function hidePanel() {
-      document.getElementById('kg-panel').classList.remove('visible');
-    }
-    document.getElementById('kg-panel-close').addEventListener('click', hidePanel);
-  })();
-  </script>
-
-
   <!-- KNOWLEDGE GRAPH -->
   <section class="kg-section" id="knowledge-graph">
     <div class="kg-header">
@@ -1309,16 +1208,19 @@
           .linkDirectionalParticleColor(l => l.color)
           .linkDirectionalParticleSpeed(0.005)
           .graphData(gData)
+          .warmupTicks(150)
+          .cooldownTime(3000)
+          .onEngineStop(() => {
+            let angle = 0;
+            const rotTimer = setInterval(() => {
+              Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
+              angle += 0.003;
+            }, 30);
+            el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
+            el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
+          })
           .onNodeClick(node => showPanel(node, gData))
           .onBackgroundClick(() => hidePanel());
-
-        let angle = 0;
-        const rotTimer = setInterval(() => {
-          Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
-          angle += 0.003;
-        }, 30);
-        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
-        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
         window.addEventListener('resize', () => Graph.width(wrap.offsetWidth).height(wrap.offsetHeight));
       })
       .catch(err => {

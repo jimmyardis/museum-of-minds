@@ -1060,166 +1060,6 @@
     <span class="footer-text">Powered by His Own Words</span>
     <span class="footer-text">Accession No. TJ–1743–2026</span>
   </footer>
-<script>
-  (function() {
-    const API = 'https://museum-api-production-8ce6.up.railway.app';
-    const PERSONA = 'thomas-jefferson';
-
-    const NODE_COLORS = {
-      'Person':       '#5A9E8F',
-      'Concept':      '#C05A3A',
-      'Event':        '#A8903A',
-      'Place':        '#8A6B40',
-      'Institution':  '#3E6B5C',
-      'Controversy':  '#9A2A2A',
-      'Work':         '#C0B488',
-    };
-    const NODE_SIZES = {
-      'Person': 6, 'Concept': 5, 'Event': 4,
-      'Place': 4, 'Institution': 4, 'Controversy': 5, 'Work': 3,
-    };
-    const REL_COLORS = {
-      'opposed':        '#C05A3A',
-      'allied_with':    '#5A9E8F',
-      'influenced_by':  '#A8903A',
-      'corresponded_with': '#8A6B40',
-      'developed':      '#7A5A9E',
-      'involved_in':    '#9A2A2A',
-      'collaborated_with': '#3E6B5C',
-    };
-
-    fetch(`${API}/persona/${PERSONA}/kg`)
-      .then(r => r.json())
-      .then(data => {
-        const nodeMap = {};
-        data.nodes.forEach(n => { nodeMap[n.id] = n; });
-
-        // Build graph data
-        const gData = {
-          nodes: data.nodes.map(n => ({
-            id: n.id,
-            name: n.name || n.id,
-            type: n.type || 'Work',
-            val:  NODE_SIZES[n.type] || 3,
-            color: NODE_COLORS[n.type] || '#C0B488',
-            _raw: n,
-          })),
-          links: data.edges.map(e => ({
-            source: e.source,
-            target: e.target,
-            rel:    e.relationship,
-            passages: e.source_passages || [],
-            _raw: e,
-            color: REL_COLORS[e.relationship] || 'rgba(200,185,150,0.25)',
-          })),
-        };
-
-        const el = document.getElementById('kg-canvas');
-        const wrap = document.querySelector('.kg-canvas-wrap');
-
-        const Graph = ForceGraph3D()(el)
-          .width(wrap.offsetWidth)
-          .height(wrap.offsetHeight)
-          .backgroundColor('#1A1208')
-          .nodeColor(n => n.color)
-          .nodeVal(n => n.val)
-          .nodeLabel(n => `<span style="font-family:serif;font-size:13px;color:#E8DEB8">${n.name}</span>`)
-          .nodeOpacity(0.92)
-          .linkColor(l => l.color)
-          .linkWidth(l => Math.max(0.5, Math.min(3, l.passages.length * 0.6)))
-          .linkOpacity(0.5)
-          .linkDirectionalParticles(l => l.passages.length > 0 ? 1 : 0)
-          .linkDirectionalParticleWidth(1.2)
-          .linkDirectionalParticleColor(l => l.color)
-          .linkDirectionalParticleSpeed(0.005)
-          .graphData(gData)
-          .onNodeClick(node => showPanel(node, gData))
-          .onBackgroundClick(() => hidePanel());
-
-        // Gentle auto-rotation
-        let angle = 0;
-        const rotTimer = setInterval(() => {
-          Graph.cameraPosition({
-            x: 280 * Math.sin(angle),
-            z: 280 * Math.cos(angle),
-          });
-          angle += 0.003;
-        }, 30);
-
-        // Stop rotation on user interaction
-        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
-        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-          Graph.width(wrap.offsetWidth).height(wrap.offsetHeight);
-        });
-      })
-      .catch(err => {
-        console.error('KG load error:', err);
-        document.querySelector('.kg-canvas-wrap').style.display = 'none';
-      });
-
-    // ── Panel ──────────────────────────────────────────────────────────
-
-    function showPanel(node, gData) {
-      const panel     = document.getElementById('kg-panel');
-      const typeEl    = document.getElementById('kg-panel-type');
-      const nameEl    = document.getElementById('kg-panel-name');
-      const metaEl    = document.getElementById('kg-panel-meta');
-      const edgesEl   = document.getElementById('kg-panel-edges');
-
-      typeEl.textContent  = node.type;
-      nameEl.textContent  = node.name;
-
-      // Meta: birth/death, domain, temporal_scope, notes
-      const r = node._raw;
-      const meta = [];
-      if (r.birth_year && r.death_year) meta.push(`${r.birth_year} – ${r.death_year}`);
-      else if (r.birth_year) meta.push(`b. ${r.birth_year}`);
-      if (r.domain) meta.push(r.domain);
-      if (r.location) meta.push(r.location);
-      if (r.notes) meta.push(r.notes);
-      metaEl.textContent = meta.join(' · ');
-
-      // Edges connected to this node
-      const connected = gData.links.filter(l => {
-        const sid = typeof l.source === 'object' ? l.source.id : l.source;
-        const tid = typeof l.target === 'object' ? l.target.id : l.target;
-        return sid === node.id || tid === node.id;
-      });
-
-      edgesEl.innerHTML = connected.length === 0 ? '' : connected.slice(0, 6).map(l => {
-        const sid = typeof l.source === 'object' ? l.source.id : l.source;
-        const tid = typeof l.target === 'object' ? l.target.id : l.target;
-        const otherMap = gData.nodes.reduce((m, n) => { m[n.id] = n; return m; }, {});
-        const otherId = sid === node.id ? tid : sid;
-        const other = otherMap[otherId];
-        const otherName = other ? other.name : otherId;
-        const dir = sid === node.id ? '→' : '←';
-        const relLabel = l.rel.replace(/_/g, ' ');
-        const best = l.passages.length > 0
-          ? l.passages.reduce((a, b) => (a.score||0) > (b.score||0) ? a : b)
-          : null;
-        return `<div class="kg-edge-item">
-          <div class="kg-edge-rel">${dir} ${relLabel}</div>
-          <div class="kg-edge-target">${otherName}</div>
-          ${best && best.excerpt ? `<div class="kg-edge-excerpt">"${best.excerpt.slice(0,160)}…"</div>` : ''}
-        </div>`;
-      }).join('');
-
-      panel.classList.add('visible');
-    }
-
-    function hidePanel() {
-      document.getElementById('kg-panel').classList.remove('visible');
-    }
-
-    document.getElementById('kg-panel-close').addEventListener('click', hidePanel);
-  })();
-  </script>
-
-
   <!-- 3D KNOWLEDGE GRAPH SCRIPT -->
   <script src="https://unpkg.com/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
   <script>
@@ -1264,16 +1104,19 @@
           .linkDirectionalParticleColor(l => l.color)
           .linkDirectionalParticleSpeed(0.005)
           .graphData(gData)
+          .warmupTicks(150)
+          .cooldownTime(3000)
+          .onEngineStop(() => {
+            let angle = 0;
+            const rotTimer = setInterval(() => {
+              Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
+              angle += 0.003;
+            }, 30);
+            el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
+            el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
+          })
           .onNodeClick(node => showPanel(node, gData))
           .onBackgroundClick(() => hidePanel());
-
-        let angle = 0;
-        const rotTimer = setInterval(() => {
-          Graph.cameraPosition({ x: 280 * Math.sin(angle), z: 280 * Math.cos(angle) });
-          angle += 0.003;
-        }, 30);
-        el.addEventListener('mousedown', () => clearInterval(rotTimer), { once: true });
-        el.addEventListener('touchstart', () => clearInterval(rotTimer), { once: true });
         window.addEventListener('resize', () => Graph.width(wrap.offsetWidth).height(wrap.offsetHeight));
       })
       .catch(err => {
