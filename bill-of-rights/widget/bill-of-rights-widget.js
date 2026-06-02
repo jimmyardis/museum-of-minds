@@ -104,7 +104,7 @@
         const starters = config.widget.conversation_starters;
 
         const container = document.createElement('div');
-        container.id = 'george-mason-widget';
+        container.id = 'bill-of-rights-widget';
         container.innerHTML = `
             <div id="jj-trigger" class="jj-trigger">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
