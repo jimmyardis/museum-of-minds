@@ -21,7 +21,7 @@
 
 ## Next Action
 
-Choose next: (a) Track 2 decommission (dead Railway services, old 384-dim Pinecone index, dead dirs/scripts), (b) Track 3 auto-generated PLATFORM_STATUS to end doc drift, (c) Sherlock voice finalization, or (d) Federalist Phase 6 (filterable indexes).
+Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
 
 ## Blockers
 
