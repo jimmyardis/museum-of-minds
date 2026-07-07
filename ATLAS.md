@@ -8,20 +8,20 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 78 historical figures, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 80 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-05-30 (session 2) |
+| **Last Active** | 2026-07-07 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-**Museum fully operational with 78 personas (2026-05-30).** All portrait cards fixed: 32 more broken Wikipedia thumbnail URLs removed in 2nd pass (previous fix covered only 25 new personas; this pass covered observatory, republic-room, trailblazers, press-room, founding-documents halls + 9 older persona pages). Bill of Rights card removed from press-room (wrong hall, wrong image — belongs in founding-documents). Railway API confirmed running (deployed 16:17 UTC, all chatbots serving 200s). The 10 "stub" pages are complete — they have full SVG heroes, bio sections, chatbots, pullquotes, and corpus lists; the P0 bug tracker entry was outdated. CLAUDE.md updated with portrait URL rule (step 9 in pre-commit checklist) and routing bug entries cleared.
+**Museum fully operational with 80 persona pages (2026-07-07).** Sprint 3 batch shipped: Abigail Adams, Christopher Gadsden, John Rutledge, Roger Sherman (Republic Room, now 26 cards) and the Articles of Confederation (Founding Documents hall, now 4 document personas) — full pages with hand-drafted hero SVGs, self-hosted WebP portraits, widgets on the multi-tenant API, ~15k new Pinecone vectors, all five chatbots verified grounded in production. Sherlock chat repaired: its dedicated Railway service had been silently deleted; page repointed to the multi-tenant API. Full platform audit run same session — PLATFORM_STATUS.md roster/hall counts corrected against reality.
 
 ## Next Action
 
-Choose next sprint: (a) Sprint 3 personas (Abigail Adams, Gadsden, Rutledge), (b) Sherlock Holmes voice finalization, or (c) Federalist Phase 6 (filterable indexes).
+Choose next: (a) Track 2 decommission (dead Railway services, old 384-dim Pinecone index, dead dirs/scripts), (b) Track 3 auto-generated PLATFORM_STATUS to end doc drift, (c) Sherlock voice finalization, or (d) Federalist Phase 6 (filterable indexes).
 
 ## Blockers
 
@@ -38,6 +38,15 @@ Choose next sprint: (a) Sprint 3 personas (Abigail Adams, Gadsden, Rutledge), (b
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
 
+### 2026-07-07 — Platform audit + Sprint 3 completion + Sherlock fix
+
+- **Full platform audit** (4 parallel audits: site repo, backend/pipeline repo, orchestration harness, stray dirs + live service checks). Key finds: Sherlock's dedicated Railway service deleted (chat silently broken); 5 Sprint 3 personas live on API with zero Pinecone vectors (hollow chatbots); PLATFORM_STATUS.md stale in both directions (/batch exists but documented as missing, hall counts wrong, Sprint 3 marked "planned"); museum-orchestration never ran a job and duplicates (rather than calls) the execution/ pipeline — recommendation: retire.
+- **Sherlock fixed**: `sherlock/index.html` repointed from dead `sherlock-holmes-production-5185` to multi-tenant API `/persona/sherlock-holmes/chat`. Verified live in production.
+- **Sprint 3 root cause**: generated sources.json files contained hallucinated Archive.org identifiers → downloads all failed silently. Identifiers corrected against archive.org metadata API (9 fixes + Abigail Vol. 2 added).
+- **5 personas built end-to-end**: corpus download → clean → voyage-3-large embed (+14,957 vectors, index now 161,402) → trust scores → self-hosted WebP portraits (all 5 visually verified) → full pages via 5 parallel builder agents (george-mason/bill-of-rights templates) → hall cards (republic-room ×4 + founding-documents portrait grid + documents wing) → local playwright render check → pushed, GitHub Pages live, all 5 chatbots verified grounded (5 sources, high confidence).
+- **Gadsden factual fix**: system prompt falsely claimed he was a 1787 Philadelphia Convention delegate; corrected to SC ratifying convention 1788 (page copy was already right). Verified in production — he now denies attending Philadelphia.
+- **Backend repo**: cleaned corpora committed (~30MB), museum-api auto-deployed via webhook (build SUCCESS).
+- Left for next session: Track 2 decommission list, Track 3 auto-generated status doc, Track 4 bot supervision + smoke test.
 ### 2026-05-30 (session 2) — Portrait URL 2nd pass + process documentation
 
 - **Root-cause investigation**: previous portrait fix covered only the 25 new personas. 32 additional broken `/thumb/` URLs remained in observatory, republic-room, trailblazers, press-room, founding-documents halls + 9 older persona pages (FDR, Cleveland, George Mason, Montesquieu, Helen Keller, James Baldwin, Carl Jung, John Adams, John Locke, Patrick Henry, Bill of Rights, Declaration, Constitution) + main index.html.
