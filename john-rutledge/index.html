@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With John Rutledge — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Upright:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --oxblood: #3A1A18;
+  --deep-oxblood: #1A0B0A;
+  --darker: #0C0506;
+  --gold: #B89040;
+  --gold-bright: #D4AC5C;
+  --gold-dim: #7A6020;
+  --cream: #E8DCC4;
+  --cream-dim: #A89478;
+  --text: #C8B8A0;
+  --text-dim: #847060;
+  --line: rgba(184, 144, 64, 0.25);
+  --line-strong: rgba(184, 144, 64, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep-oxblood);
+  color: var(--text);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+header.museum-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--darker);
+  animation: fadeDown 1.2s ease-out;
+}
+
+.museum-header .left, .museum-header .right {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.museum-header .left::before {
+  content: "✦ ";
+  color: var(--gold-dim);
+}
+
+.museum-header .right {
+  color: var(--cream-dim);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.75fr;
+  min-height: 92vh;
+  background: var(--deep-oxblood);
+  animation: fadeIn 1.6s ease-out;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background: #140a09;
+  border-right: 1px solid var(--line);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bio-panel {
+  padding: 3rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, var(--deep-oxblood) 0%, #140a09 100%);
+  position: relative;
+}
+
+.bio-panel::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem; right: 1.5rem; bottom: 1.5rem; left: 1.5rem;
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-inner { position: relative; z-index: 1; }
+
+.photo-frame {
+  max-width: 280px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--gold-dim);
+  z-index: 0;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(35%) sepia(28%) contrast(1.05) brightness(0.92);
+}
+
+.photo-frame .fallback {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #2e1a18, #1a0b0a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: var(--gold-dim);
+  border: 1px solid var(--line);
+}
+
+.placard {
+  text-align: center;
+}
+
+.placard .label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-bottom: 0.8rem;
+}
+
+.placard h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.placard .dates {
+  font-family: 'Cormorant Upright', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.4rem;
+}
+
+.placard .epithet {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: 0 auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.divider-ornament {
+  text-align: center;
+  margin: 1.4rem auto;
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  letter-spacing: 1em;
+  padding-left: 1em;
+}
+
+/* TRUST BADGE */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.4rem auto 0;
+  border: 1px solid var(--line-strong);
+  padding: 0.45rem 0.95rem;
+  background: rgba(184, 144, 64, 0.07);
+}
+
+.trust-score {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  color: var(--gold-bright);
+  letter-spacing: 0.1em;
+}
+
+.trust-label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  opacity: 0.92;
+}
+
+.trust-note {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.88;
+  line-height: 1.5;
+  max-width: 34ch;
+  margin: 0.8rem auto 0;
+}
+
+/* HALL BACKLINK */
+.hall-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.25rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.hall-link:hover {
+  color: var(--gold-bright);
+  border-color: var(--line-strong);
+}
+
+/* TRANSITION BAND */
+.transition-band {
+  position: relative;
+  z-index: 3;
+  background: var(--darker);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--gold);
+  font-family: 'Cormorant Upright', serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.transition-band .rule {
+  flex: 0 0 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.transition-band .ornament {
+  color: var(--gold-bright);
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+/* CHATBOT SECTION */
+.chatbot-section {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  padding: 4rem 3rem;
+  background: var(--deep-oxblood);
+  min-height: 70vh;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.chatbot-intro .kicker {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.chatbot-intro p {
+  margin-bottom: 1.1rem;
+  color: var(--text);
+  font-size: 1.125rem;
+}
+
+.featured-quote {
+  margin: 1.8rem 0;
+  padding: 1.4rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(184, 144, 64, 0.05);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--cream);
+  line-height: 1.55;
+}
+
+.featured-quote .attrib {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.domain-tags {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  background: rgba(26, 11, 10, 0.5);
+}
+
+.chatbot-embed {
+  background: var(--darker);
+  border: 1px solid var(--line);
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+  background: var(--darker);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pull-quote::before, .pull-quote::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 auto 2.2rem;
+}
+
+.pull-quote::after { margin: 2.2rem auto 0; }
+
+.pull-quote blockquote {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  line-height: 1.55;
+  color: var(--cream);
+}
+
+.pull-quote blockquote::before {
+  content: "“";
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* CORPUS STRIP */
+.corpus-strip {
+  position: relative;
+  z-index: 2;
+  background: var(--darker);
+  padding: 3rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.corpus-strip h3 {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.corpus-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  list-style: none;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.corpus-list li {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  position: relative;
+}
+
+.corpus-list li::before {
+  content: "✦";
+  color: var(--gold-dim);
+  margin-right: 0.7em;
+  font-style: normal;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  background: var(--deep-oxblood);
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+
+footer .col {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+footer .col.left { text-align: left; color: var(--gold); }
+footer .col.center { text-align: center; }
+footer .col.right { text-align: right; font-style: italic; }
+
+footer .col.center a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+footer .col.center a:hover { color: var(--gold-bright); }
+
+footer .name-line {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-svg-panel {
+    min-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .bio-panel {
+    padding: 2rem 1.5rem;
+  }
+  .chatbot-section {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+  .corpus-strip { padding: 2rem 1.5rem; }
+  .corpus-list { gap: 1rem 2rem; }
+  footer {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  footer .col.left, footer .col.right { text-align: center; }
+  .pull-quote { padding: 3rem 1.5rem; }
+  header.museum-header { padding: 1rem 1.2rem; }
+  .museum-header .left, .museum-header .right { font-size: 0.6rem; letter-spacing: 0.25em; }
+  .transition-band { padding: 1rem; gap: 1rem; font-size: 0.6rem; letter-spacing: 0.3em; }
+  .transition-band .rule { flex-basis: 30px; }
+}
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div class="left">In Conversation With</div>
+  <div class="right">Accession № JR–1739–2026</div>
+</header>
+
+<section class="hero">
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a1614"/>
+          <stop offset="50%" stop-color="#1d0e0c"/>
+          <stop offset="100%" stop-color="#140a09"/>
+        </linearGradient>
+        <linearGradient id="stuccoGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a1c14"/>
+          <stop offset="100%" stop-color="#1a100c"/>
+        </linearGradient>
+        <linearGradient id="harborGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a1a16"/>
+          <stop offset="100%" stop-color="#140a09"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#B89040" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B89040" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Background sky -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- Distant moon glow -->
+      <circle cx="150" cy="130" r="80" fill="url(#moonGlow)"/>
+      <circle cx="150" cy="130" r="14" fill="#B89040" opacity="0.5"/>
+
+      <!-- Distant Charleston rooflines and steeple -->
+      <g opacity="0.45" stroke="#3A1A18" stroke-width="0.5" fill="#1d0e0c">
+        <path d="M 0 385 L 40 385 L 40 370 L 70 370 L 70 385 L 110 385 L 130 365 L 150 385 L 200 385 L 200 372 L 235 372 L 235 385 L 700 385 L 700 400 L 0 400 Z"/>
+        <!-- St. Michael's steeple -->
+        <rect x="560" y="300" width="26" height="85" fill="#1d0e0c"/>
+        <polygon points="560,300 573,255 586,300"/>
+        <line x1="573" y1="255" x2="573" y2="242" stroke="#B89040" stroke-width="0.6" opacity="0.7"/>
+        <circle cx="573" cy="330" r="7" fill="none" stroke="#B89040" stroke-width="0.4" opacity="0.6"/>
+      </g>
+
+      <!-- Charleston Harbour band -->
+      <rect x="0" y="395" width="700" height="38" fill="url(#harborGrad)" opacity="0.7"/>
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.35" fill="none">
+        <line x1="40" y1="408" x2="120" y2="408"/>
+        <line x1="180" y1="412" x2="260" y2="412"/>
+        <line x1="310" y1="406" x2="380" y2="406"/>
+        <line x1="440" y1="414" x2="520" y2="414"/>
+        <line x1="560" y1="409" x2="640" y2="409"/>
+        <line x1="80" y1="420" x2="150" y2="420"/>
+        <line x1="290" y1="423" x2="360" y2="423"/>
+        <line x1="500" y1="421" x2="580" y2="421"/>
+      </g>
+
+      <!-- Street / ground -->
+      <rect x="0" y="430" width="700" height="470" fill="#140a09"/>
+
+      <!-- Title block top -->
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.85">
+        <text x="50" y="48" font-size="11" letter-spacing="5">THE RUTLEDGE HOUSE — BROAD STREET ELEVATION</text>
+        <text x="50" y="64" font-size="9" letter-spacing="3" opacity="0.7" font-style="italic">Seat of John Rutledge, Charles Town, South Carolina · A.D. MDCCLXIII</text>
+        <line x1="50" y1="74" x2="520" y2="74" stroke="#B89040" stroke-width="0.4" opacity="0.4"/>
+      </g>
+
+      <!-- Compass rose top right -->
+      <g transform="translate(620 60)" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.6">
+        <circle r="22"/>
+        <circle r="16"/>
+        <path d="M 0 -22 L 4 0 L 0 22 L -4 0 Z" fill="#B89040" opacity="0.4"/>
+        <path d="M -22 0 L 0 4 L 22 0 L 0 -4 Z" fill="#B89040" opacity="0.2"/>
+        <text x="0" y="-28" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.9">N</text>
+      </g>
+
+      <!-- Cobbled street approach -->
+      <g stroke="#3A1A18" stroke-width="0.5" opacity="0.6" fill="none">
+        <line x1="0" y1="560" x2="700" y2="560" stroke="#7A6020" stroke-width="0.4" opacity="0.5"/>
+        <path d="M 30 600 Q 40 596 50 600 M 80 615 Q 90 611 100 615 M 140 640 Q 152 636 164 640 M 60 680 Q 74 675 88 680 M 570 600 Q 580 596 590 600 M 610 630 Q 622 626 634 630 M 550 665 Q 564 660 578 665"/>
+      </g>
+
+      <!-- Palmetto trees flanking -->
+      <g stroke="#B89040" stroke-width="0.6" opacity="0.7" fill="none">
+        <!-- Left palmetto -->
+        <path d="M 92 560 Q 88 480 95 440" stroke-width="2.2" stroke="#7A6020"/>
+        <path d="M 95 440 Q 60 425 35 435"/>
+        <path d="M 95 440 Q 65 405 45 402"/>
+        <path d="M 95 440 Q 90 395 75 375"/>
+        <path d="M 95 440 Q 105 392 122 378"/>
+        <path d="M 95 440 Q 128 408 148 405"/>
+        <path d="M 95 440 Q 132 428 158 438"/>
+        <!-- Right palmetto -->
+        <path d="M 608 560 Q 612 480 605 440" stroke-width="2.2" stroke="#7A6020"/>
+        <path d="M 605 440 Q 640 425 665 435"/>
+        <path d="M 605 440 Q 635 405 655 402"/>
+        <path d="M 605 440 Q 610 395 625 375"/>
+        <path d="M 605 440 Q 595 392 578 378"/>
+        <path d="M 605 440 Q 572 408 552 405"/>
+        <path d="M 605 440 Q 568 428 542 438"/>
+      </g>
+
+      <!-- ===== THE RUTLEDGE HOUSE — MAIN STRUCTURE ===== -->
+
+      <!-- Foundation -->
+      <rect x="200" y="546" width="300" height="14" fill="#1a100c" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- Main body: three-story Georgian townhouse -->
+      <rect x="200" y="330" width="300" height="216" fill="url(#stuccoGrad)" stroke="#B89040" stroke-width="0.7"/>
+
+      <!-- Stucco coursing lines -->
+      <g stroke="#B89040" stroke-width="0.2" opacity="0.22">
+        <line x1="200" y1="348" x2="500" y2="348"/>
+        <line x1="200" y1="366" x2="500" y2="366"/>
+        <line x1="200" y1="384" x2="500" y2="384"/>
+        <line x1="200" y1="420" x2="500" y2="420"/>
+        <line x1="200" y1="438" x2="500" y2="438"/>
+        <line x1="200" y1="456" x2="500" y2="456"/>
+        <line x1="200" y1="492" x2="500" y2="492"/>
+        <line x1="200" y1="510" x2="500" y2="510"/>
+        <line x1="200" y1="528" x2="500" y2="528"/>
+      </g>
+
+      <!-- Quoins corners -->
+      <g fill="#3a281e" stroke="#B89040" stroke-width="0.4">
+        <rect x="200" y="330" width="10" height="12"/>
+        <rect x="200" y="356" width="10" height="12"/>
+        <rect x="200" y="382" width="10" height="12"/>
+        <rect x="200" y="408" width="10" height="12"/>
+        <rect x="200" y="434" width="10" height="12"/>
+        <rect x="200" y="460" width="10" height="12"/>
+        <rect x="200" y="486" width="10" height="12"/>
+        <rect x="200" y="512" width="10" height="12"/>
+        <rect x="490" y="330" width="10" height="12"/>
+        <rect x="490" y="356" width="10" height="12"/>
+        <rect x="490" y="382" width="10" height="12"/>
+        <rect x="490" y="408" width="10" height="12"/>
+        <rect x="490" y="434" width="10" height="12"/>
+        <rect x="490" y="460" width="10" height="12"/>
+        <rect x="490" y="486" width="10" height="12"/>
+        <rect x="490" y="512" width="10" height="12"/>
+      </g>
+
+      <!-- Hipped roof with parapet -->
+      <polygon points="190,330 260,285 440,285 510,330" fill="#0d0806" stroke="#B89040" stroke-width="0.7"/>
+      <line x1="190" y1="330" x2="510" y2="330" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- Twin chimneys -->
+      <rect x="248" y="252" width="22" height="45" fill="#2a1c14" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="243" y="247" width="32" height="10" fill="#3a281e" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="430" y="252" width="22" height="45" fill="#2a1c14" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="425" y="247" width="32" height="10" fill="#3a281e" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- Cornice under roof -->
+      <line x1="198" y1="328" x2="502" y2="328" stroke="#B89040" stroke-width="0.5"/>
+      <line x1="200" y1="326" x2="500" y2="326" stroke="#B89040" stroke-width="0.3" opacity="0.6"/>
+
+      <!-- ===== FENESTRATION ===== -->
+
+      <!-- Third floor windows (4 across) -->
+      <g>
+        <rect x="222" y="342" width="22" height="30" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="233" y1="342" x2="233" y2="372" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="222" y1="357" x2="244" y2="357" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="286" y="342" width="22" height="30" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="297" y1="342" x2="297" y2="372" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="286" y1="357" x2="308" y2="357" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="392" y="342" width="22" height="30" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="403" y1="342" x2="403" y2="372" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="392" y1="357" x2="414" y2="357" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="456" y="342" width="22" height="30" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="467" y1="342" x2="467" y2="372" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="456" y1="357" x2="478" y2="357" stroke="#B89040" stroke-width="0.3"/>
+        <!-- Center third-floor window -->
+        <rect x="339" y="342" width="22" height="30" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="350" y1="342" x2="350" y2="372" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="339" y1="357" x2="361" y2="357" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- Belt course -->
+      <line x1="200" y1="392" x2="500" y2="392" stroke="#B89040" stroke-width="0.6" opacity="0.7"/>
+
+      <!-- Second floor: tall windows behind the ironwork balcony -->
+      <g>
+        <rect x="222" y="402" width="24" height="44" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="234" y1="402" x2="234" y2="446" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="222" y1="424" x2="246" y2="424" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="286" y="402" width="24" height="44" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="298" y1="402" x2="298" y2="446" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="286" y1="424" x2="310" y2="424" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="338" y="402" width="24" height="44" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="350" y1="402" x2="350" y2="446" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="338" y1="424" x2="362" y2="424" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="390" y="402" width="24" height="44" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="402" y1="402" x2="402" y2="446" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="390" y1="424" x2="414" y2="424" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="454" y="402" width="24" height="44" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="466" y1="402" x2="466" y2="446" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="454" y1="424" x2="478" y2="424" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- The famous wrought-iron balcony across the second floor -->
+      <g stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.9">
+        <line x1="208" y1="452" x2="492" y2="452" stroke-width="0.8"/>
+        <line x1="208" y1="432" x2="492" y2="432" stroke-width="0.6"/>
+        <!-- Scrollwork panels -->
+        <path d="M 216 432 Q 222 442 216 452 M 228 432 Q 222 442 228 452"/>
+        <path d="M 252 432 Q 258 442 252 452 M 264 432 Q 258 442 264 452"/>
+        <path d="M 288 432 Q 294 442 288 452 M 300 432 Q 294 442 300 452"/>
+        <path d="M 324 432 Q 330 442 324 452 M 336 432 Q 330 442 336 452"/>
+        <path d="M 360 432 Q 366 442 360 452 M 372 432 Q 366 442 372 452"/>
+        <path d="M 396 432 Q 402 442 396 452 M 408 432 Q 402 442 408 452"/>
+        <path d="M 432 432 Q 438 442 432 452 M 444 432 Q 438 442 444 452"/>
+        <path d="M 468 432 Q 474 442 468 452 M 480 432 Q 474 442 480 452"/>
+        <!-- Balcony brackets -->
+        <path d="M 220 452 Q 220 462 230 462 M 350 452 Q 350 462 360 462 M 478 452 Q 478 462 488 462"/>
+      </g>
+
+      <!-- Belt course between first and second floors -->
+      <line x1="200" y1="462" x2="500" y2="462" stroke="#B89040" stroke-width="0.6" opacity="0.7"/>
+
+      <!-- First floor windows flanking center door -->
+      <g>
+        <rect x="222" y="476" width="24" height="46" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="234" y1="476" x2="234" y2="522" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="222" y1="499" x2="246" y2="499" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="286" y="476" width="24" height="46" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="298" y1="476" x2="298" y2="522" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="286" y1="499" x2="310" y2="499" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="390" y="476" width="24" height="46" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="402" y1="476" x2="402" y2="522" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="390" y1="499" x2="414" y2="499" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="454" y="476" width="24" height="46" fill="#140a09" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="466" y1="476" x2="466" y2="522" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="454" y1="499" x2="478" y2="499" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- CENTER DOORWAY with fanlight -->
+      <g>
+        <rect x="334" y="470" width="32" height="76" fill="#1a0c08" stroke="#B89040" stroke-width="0.5"/>
+        <!-- Fanlight -->
+        <path d="M 334 484 Q 350 474 366 484" fill="none" stroke="#B89040" stroke-width="0.4"/>
+        <line x1="334" y1="484" x2="366" y2="484" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="350" y1="474" x2="350" y2="484" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="341" y1="477" x2="344" y2="484" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="359" y1="477" x2="356" y2="484" stroke="#B89040" stroke-width="0.2"/>
+        <!-- Door panels -->
+        <line x1="350" y1="484" x2="350" y2="546" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="338" y="490" width="9" height="16" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="490" width="9" height="16" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="338" y="512" width="9" height="15" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="512" width="9" height="15" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="338" y="531" width="9" height="12" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="531" width="9" height="12" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <!-- Pilasters and entablature -->
+        <rect x="326" y="470" width="4" height="76" fill="#3a281e" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="370" y="470" width="4" height="76" fill="#3a281e" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="322" y="464" width="56" height="6" fill="#1a100c" stroke="#B89040" stroke-width="0.4"/>
+        <!-- Steps -->
+        <rect x="326" y="546" width="48" height="3" fill="#2a1c14" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="322" y="549" width="56" height="3" fill="#2a1c14" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="318" y="552" width="64" height="3" fill="#2a1c14" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- ===== ANNOTATION / DIMENSION LINES ===== -->
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.55" fill="none" font-family="Cormorant Upright" font-size="8">
+        <!-- Width dimension -->
+        <line x1="200" y1="576" x2="200" y2="591"/>
+        <line x1="500" y1="576" x2="500" y2="591"/>
+        <line x1="200" y1="586" x2="500" y2="586"/>
+        <polygon points="200,586 208,584 208,588" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="500,586 492,584 492,588" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="350" y="582" text-anchor="middle" fill="#B89040" opacity="0.85" font-style="italic">64 ft. upon Broad Street</text>
+
+        <!-- Height dimension -->
+        <line x1="535" y1="252" x2="550" y2="252"/>
+        <line x1="535" y1="546" x2="550" y2="546"/>
+        <line x1="543" y1="252" x2="543" y2="546"/>
+        <polygon points="543,252 541,260 545,260" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="543,546 541,538 545,538" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="558" y="400" fill="#B89040" opacity="0.85" font-style="italic" transform="rotate(90 558 400)">three stories</text>
+
+        <!-- Leader to ironwork balcony -->
+        <line x1="208" y1="442" x2="140" y2="480" stroke-dasharray="2 2"/>
+        <circle cx="140" cy="480" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="60" y="494" fill="#B89040" opacity="0.85" font-style="italic">wrought-iron</text>
+        <text x="60" y="504" fill="#B89040" opacity="0.85" font-style="italic">balcony, second</text>
+        <text x="60" y="514" fill="#B89040" opacity="0.85" font-style="italic">floor drawing room</text>
+      </g>
+
+      <!-- Plaque / cartouche bottom left -->
+      <g transform="translate(40 800)">
+        <rect width="180" height="64" fill="#140a09" stroke="#B89040" stroke-width="0.5" opacity="0.85"/>
+        <line x1="6" y1="6" x2="174" y2="6" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="6" y1="58" x2="174" y2="58" stroke="#B89040" stroke-width="0.3"/>
+        <text x="90" y="22" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#B89040" letter-spacing="3">THE RUTLEDGE HOUSE</text>
+        <text x="90" y="36" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8B8A0">Where the draftsman of the</text>
+        <text x="90" y="47" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8B8A0">Constitution kept his law books</text>
+      </g>
+
+      <!-- Surveyor's signature bottom right -->
+      <g transform="translate(540 830)" font-family="Cormorant Upright" font-style="italic" fill="#B89040" opacity="0.7">
+        <text font-size="8">drawn from life</text>
+        <text y="11" font-size="8">in Charles Town harbour</text>
+        <text y="22" font-size="7" opacity="0.7">by the hand of J.R.</text>
+      </g>
+
+      <!-- Border frame -->
+      <rect x="20" y="20" width="660" height="860" fill="none" stroke="#B89040" stroke-width="0.6" opacity="0.5"/>
+      <rect x="26" y="26" width="648" height="848" fill="none" stroke="#B89040" stroke-width="0.2" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="bio-panel">
+    <div class="bio-inner">
+      <div class="photo-frame">
+        <img src="/assets/portraits/john-rutledge.webp" alt="John Rutledge" onerror="this.outerHTML='&lt;div class=&quot;fallback&quot;&gt;JR&lt;/div&gt;'">
+      </div>
+      <div class="placard">
+        <div class="label">Museum of Minds</div>
+        <h1>John Rutledge</h1>
+        <div class="dates">1739 — 1800</div>
+        <div class="divider-ornament">✦ ✦ ✦</div>
+        <p class="epithet">He shaped the Constitution — then the Senate refused to confirm him</p>
+        <div class="trust-badge">
+          <span class="trust-score">70 / 100</span>
+          <span class="trust-label">Primary Source · Near-Complete Coverage</span>
+        </div>
+        <p class="trust-note">Much of his record survives through the notes of others — Madison's Convention journal, court reports, and the correspondence of colleagues.</p>
+        <a class="hall-link" href="/halls/republic-room/">← The Republic Room</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="transition-band">
+  <div class="rule"></div>
+  <div>The Gallery</div>
+  <div class="ornament">✦</div>
+  <div>In His Own Words</div>
+  <div class="rule"></div>
+</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <div class="kicker">Curator's Note</div>
+    <h2>The draftsman the Senate refused.</h2>
+
+    <p>John Rutledge was the most powerful man in Revolutionary South Carolina — a Charleston lawyer trained at London's Middle Temple who governed his state through its darkest years. When the British overran South Carolina in 1780, its legislature had already vested him with powers so sweeping that his enemies called him "Dictator John." He fled with the government, kept its constitutional structure alive in exile, and returned after Yorktown to rebuild what the occupation had broken.</p>
+
+    <p>At Philadelphia in 1787 he did the work history mostly forgot. Madison supplied the theory and Hamilton the rhetoric, but it was Rutledge who chaired the Committee of Detail — the five men who took the Convention's agreed principles and turned them into an actual document. The Constitution's first working draft came out of his committee: the structure of Article I, the enumeration of congressional powers, and the Supremacy Clause that binds every state to federal law. He was not the visionary of the Convention. He was its draftsman, and the language he set down is still the language of the republic.</p>
+
+    <div class="featured-quote">
+      He was also the Convention's most unapologetic defender of slavery's protection in the text. He demanded the twenty-year shield for the slave trade as South Carolina's price of union, and he called it what it was — interest, not principle. He does not pretend otherwise, and the document he drafted carries the compromise he insisted upon.
+      <span class="attrib">— On the price he demanded, and never disowned</span>
+    </div>
+
+    <p>Washington named him to the first Supreme Court in 1790, one of the original six justices; he resigned within a year for a better-paying seat as South Carolina's chief justice. In 1795 Washington called him back with a recess appointment as Chief Justice of the United States. He presided over one term. Then, grieving his wife's death, he gave an intemperate speech in Charleston denouncing the Jay Treaty as a betrayal of the Revolution — and the Senate rejected his nomination, 14 to 10. No Chief Justice had ever been refused before. None of his own words could undo it, and few of them survive: his record lives largely in the notes and journals of the men around him.</p>
+
+    <p>He engages all of it directly — the drafting table, the bargain over the slave trade, the resignation for pay, the speech that ended him. Ask him why Madison gets the credit for language he wrote. Ask him whether the twenty-year clause was necessity or failure. Ask him what it costs to be rejected by the government whose charter you drafted.</p>
+
+    <div class="domain-tags">
+      <span class="tag">Committee of Detail</span>
+      <span class="tag">Constitutional Text</span>
+      <span class="tag">The Supremacy Clause</span>
+      <span class="tag">Wartime Governance</span>
+      <span class="tag">South Carolina</span>
+      <span class="tag">The Slave Trade Compromise</span>
+      <span class="tag">Federal Judiciary</span>
+      <span class="tag">The Jay Treaty</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/john-rutledge/widget/john-rutledge-widget.css">
+      <script src="https://museumofminds.com/john-rutledge/widget/john-rutledge-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="john-rutledge"
+              data-portrait-url="/assets/portraits/john-rutledge.webp"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    Religion and humanity have nothing to do with this question. Interest alone is the governing principle with nations.”
+  </blockquote>
+  <cite>On the slave trade · Recorded in Madison's Notes of Debates · August 21, 1787</cite>
+</section>
+
+<section class="corpus-strip">
+  <h3>Drawn From the Corpus</h3>
+  <ul class="corpus-list">
+    <li>Committee of Detail Draft of the Constitution (1787)</li>
+    <li>Convention Speeches, as recorded in Madison's Notes of Debates (1787)</li>
+    <li>Wartime Correspondence as President and Governor of South Carolina (1776–1782)</li>
+    <li>The Jay Treaty Speech at Charleston, as reported (1795)</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="col left">
+    <div class="name-line">John Rutledge</div>
+    <div>1739 — 1800 · Charleston, South Carolina</div>
+  </div>
+  <div class="col center">
+    The Museum of Minds<br>
+    A Project in Conversational History<br>
+    <a href="/halls/republic-room/">The Republic Room</a>
+  </div>
+  <div class="col right">
+    Powered by His Recorded Words
+  </div>
+</footer>
+
+</body>
+</html>

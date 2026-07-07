@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With Roger Sherman — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Upright:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1E2D4A;
+  --deep-navy: #0D1524;
+  --darker: #060A12;
+  --gold: #B89040;
+  --gold-bright: #D4AC5C;
+  --gold-dim: #7A6020;
+  --cream: #E8DFC4;
+  --cream-dim: #A09878;
+  --text: #C4C2AE;
+  --text-dim: #7E8270;
+  --line: rgba(184, 144, 64, 0.25);
+  --line-strong: rgba(184, 144, 64, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep-navy);
+  color: var(--text);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+header.museum-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--darker);
+  animation: fadeDown 1.2s ease-out;
+}
+
+.museum-header .left, .museum-header .right {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.museum-header .left::before {
+  content: "✦ ";
+  color: var(--gold-dim);
+}
+
+.museum-header .right {
+  color: var(--cream-dim);
+}
+
+.museum-header .right a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.museum-header .right a:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold-bright);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.75fr;
+  min-height: 92vh;
+  background: var(--deep-navy);
+  animation: fadeIn 1.6s ease-out;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background: #0a101c;
+  border-right: 1px solid var(--line);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bio-panel {
+  padding: 3rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, var(--deep-navy) 0%, #0a101c 100%);
+  position: relative;
+}
+
+.bio-panel::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem; right: 1.5rem; bottom: 1.5rem; left: 1.5rem;
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-inner { position: relative; z-index: 1; }
+
+.photo-frame {
+  max-width: 280px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--gold-dim);
+  z-index: 0;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(35%) sepia(28%) contrast(1.05) brightness(0.92);
+}
+
+.photo-frame .fallback {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #1a2438, #0d1524);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: var(--gold-dim);
+  border: 1px solid var(--line);
+}
+
+.placard {
+  text-align: center;
+}
+
+.placard .label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-bottom: 0.8rem;
+}
+
+.placard h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.placard .dates {
+  font-family: 'Cormorant Upright', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.4rem;
+}
+
+.placard .epithet {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: 0 auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.divider-ornament {
+  text-align: center;
+  margin: 1.4rem auto;
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  letter-spacing: 1em;
+  padding-left: 1em;
+}
+
+/* TRANSITION BAND */
+.transition-band {
+  position: relative;
+  z-index: 3;
+  background: var(--darker);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--gold);
+  font-family: 'Cormorant Upright', serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.transition-band .rule {
+  flex: 0 0 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.transition-band .ornament {
+  color: var(--gold-bright);
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+/* CHATBOT SECTION */
+.chatbot-section {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  padding: 4rem 3rem;
+  background: var(--deep-navy);
+  min-height: 70vh;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.chatbot-intro .kicker {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.chatbot-intro p {
+  margin-bottom: 1.1rem;
+  color: var(--text);
+  font-size: 1.125rem;
+}
+
+.featured-quote {
+  margin: 1.8rem 0;
+  padding: 1.4rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(184, 144, 64, 0.05);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--cream);
+  line-height: 1.55;
+}
+
+.featured-quote .attrib {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.domain-tags {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  background: rgba(13, 21, 36, 0.5);
+}
+
+.chatbot-embed {
+  background: var(--darker);
+  border: 1px solid var(--line);
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+  background: var(--darker);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pull-quote::before, .pull-quote::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 auto 2.2rem;
+}
+
+.pull-quote::after { margin: 2.2rem auto 0; }
+
+.pull-quote blockquote {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  line-height: 1.55;
+  color: var(--cream);
+}
+
+.pull-quote blockquote::before {
+  content: "“";
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* CORPUS STRIP */
+.corpus-strip {
+  position: relative;
+  z-index: 2;
+  background: var(--darker);
+  padding: 3rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.corpus-strip h3 {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.corpus-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  list-style: none;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.corpus-list li {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  position: relative;
+}
+
+.corpus-list li::before {
+  content: "✦";
+  color: var(--gold-dim);
+  margin-right: 0.7em;
+  font-style: normal;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  background: var(--deep-navy);
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+
+footer .col {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+footer .col.left { text-align: left; color: var(--gold); }
+footer .col.center { text-align: center; }
+footer .col.right { text-align: right; font-style: italic; }
+
+footer .col a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+footer .col a:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold-bright);
+}
+
+footer .name-line {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-svg-panel {
+    min-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .bio-panel {
+    padding: 2rem 1.5rem;
+  }
+  .chatbot-section {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+  .corpus-strip { padding: 2rem 1.5rem; }
+  .corpus-list { gap: 1rem 2rem; }
+  footer {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  footer .col.left, footer .col.right { text-align: center; }
+  .pull-quote { padding: 3rem 1.5rem; }
+  header.museum-header { padding: 1rem 1.2rem; }
+  .museum-header .left, .museum-header .right { font-size: 0.6rem; letter-spacing: 0.25em; }
+  .transition-band { padding: 1rem; gap: 1rem; font-size: 0.6rem; letter-spacing: 0.3em; }
+  .transition-band .rule { flex-basis: 30px; }
+}
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div class="left">In Conversation With</div>
+  <div class="right">Accession № RS–1721–2026 &nbsp;·&nbsp; <a href="/halls/republic-room/">The Republic Room</a></div>
+</header>
+
+<section class="hero">
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#17233a"/>
+          <stop offset="50%" stop-color="#0e1727"/>
+          <stop offset="100%" stop-color="#0a101c"/>
+        </linearGradient>
+        <linearGradient id="brickGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a2018"/>
+          <stop offset="100%" stop-color="#1a1410"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#B89040" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B89040" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soften">
+          <feGaussianBlur stdDeviation="0.4"/>
+        </filter>
+      </defs>
+
+      <!-- Background sky -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- Distant moon glow -->
+      <circle cx="130" cy="150" r="80" fill="url(#moonGlow)"/>
+      <circle cx="130" cy="150" r="14" fill="#B89040" opacity="0.5"/>
+
+      <!-- Distant rooftop line of Chestnut Street -->
+      <g opacity="0.45" stroke="#1E2D4A" stroke-width="0.5" fill="#0e1727">
+        <path d="M 0 420 L 40 420 L 40 400 L 90 400 L 90 415 L 150 415 L 150 395 L 170 395 L 170 420 L 530 420 L 530 398 L 560 398 L 560 412 L 620 412 L 620 402 L 660 402 L 660 420 L 700 420 L 700 440 L 0 440 Z"/>
+      </g>
+
+      <!-- Ground / street -->
+      <rect x="0" y="560" width="700" height="340" fill="#0d1524"/>
+
+      <!-- Title block top -->
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.85">
+        <text x="50" y="48" font-size="11" letter-spacing="5">THE STATE HOUSE AT PHILADELPHIA — SOUTH FRONT</text>
+        <text x="50" y="64" font-size="9" letter-spacing="3" opacity="0.7" font-style="italic">Where the Connecticut Compromise carried · 16 July, A.D. MDCCLXXXVII</text>
+        <line x1="50" y1="74" x2="500" y2="74" stroke="#B89040" stroke-width="0.4" opacity="0.4"/>
+      </g>
+
+      <!-- Compass rose top right -->
+      <g transform="translate(620 60)" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.6">
+        <circle r="22"/>
+        <circle r="16"/>
+        <path d="M 0 -22 L 4 0 L 0 22 L -4 0 Z" fill="#B89040" opacity="0.4"/>
+        <path d="M -22 0 L 0 4 L 22 0 L 0 -4 Z" fill="#B89040" opacity="0.2"/>
+        <text x="0" y="-28" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.9">N</text>
+      </g>
+
+      <!-- ===== STATE HOUSE — MAIN STRUCTURE ===== -->
+
+      <!-- Foundation -->
+      <rect x="180" y="546" width="340" height="14" fill="#1a1410" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- Main body of hall: brick rectangle, two stories -->
+      <rect x="180" y="416" width="340" height="130" fill="url(#brickGrad)" stroke="#B89040" stroke-width="0.7"/>
+
+      <!-- Brick coursing lines -->
+      <g stroke="#B89040" stroke-width="0.2" opacity="0.25">
+        <line x1="180" y1="431" x2="520" y2="431"/>
+        <line x1="180" y1="446" x2="520" y2="446"/>
+        <line x1="180" y1="461" x2="520" y2="461"/>
+        <line x1="180" y1="476" x2="520" y2="476"/>
+        <line x1="180" y1="491" x2="520" y2="491"/>
+        <line x1="180" y1="506" x2="520" y2="506"/>
+        <line x1="180" y1="521" x2="520" y2="521"/>
+        <line x1="180" y1="536" x2="520" y2="536"/>
+      </g>
+
+      <!-- Quoins corners -->
+      <g fill="#3a2a1e" stroke="#B89040" stroke-width="0.4">
+        <rect x="180" y="416" width="10" height="12"/>
+        <rect x="180" y="440" width="10" height="12"/>
+        <rect x="180" y="464" width="10" height="12"/>
+        <rect x="180" y="488" width="10" height="12"/>
+        <rect x="180" y="512" width="10" height="12"/>
+        <rect x="180" y="536" width="10" height="10"/>
+        <rect x="510" y="416" width="10" height="12"/>
+        <rect x="510" y="440" width="10" height="12"/>
+        <rect x="510" y="464" width="10" height="12"/>
+        <rect x="510" y="488" width="10" height="12"/>
+        <rect x="510" y="512" width="10" height="12"/>
+        <rect x="510" y="536" width="10" height="10"/>
+      </g>
+
+      <!-- Hipped roof with balustrade -->
+      <polygon points="172,416 240,386 460,386 528,416" fill="#0a0a08" stroke="#B89040" stroke-width="0.7"/>
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.6">
+        <line x1="240" y1="386" x2="240" y2="378"/>
+        <line x1="270" y1="386" x2="270" y2="378"/>
+        <line x1="300" y1="386" x2="300" y2="378"/>
+        <line x1="400" y1="386" x2="400" y2="378"/>
+        <line x1="430" y1="386" x2="430" y2="378"/>
+        <line x1="460" y1="386" x2="460" y2="378"/>
+        <line x1="236" y1="378" x2="464" y2="378"/>
+      </g>
+
+      <!-- Twin end chimneys -->
+      <rect x="196" y="366" width="20" height="52" fill="#2a2018" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="192" y="360" width="28" height="9" fill="#3a2a1e" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="484" y="366" width="20" height="52" fill="#2a2018" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="480" y="360" width="28" height="9" fill="#3a2a1e" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- ===== TOWER AND STEEPLE ===== -->
+      <!-- Tower shaft -->
+      <rect x="322" y="286" width="56" height="130" fill="url(#brickGrad)" stroke="#B89040" stroke-width="0.7"/>
+      <g stroke="#B89040" stroke-width="0.2" opacity="0.25">
+        <line x1="322" y1="306" x2="378" y2="306"/>
+        <line x1="322" y1="326" x2="378" y2="326"/>
+        <line x1="322" y1="346" x2="378" y2="346"/>
+        <line x1="322" y1="366" x2="378" y2="366"/>
+        <line x1="322" y1="386" x2="378" y2="386"/>
+      </g>
+      <!-- Tower arched window -->
+      <rect x="340" y="330" width="20" height="34" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+      <path d="M 340 338 Q 350 328 360 338" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+      <line x1="350" y1="330" x2="350" y2="364" stroke="#B89040" stroke-width="0.3"/>
+      <!-- Tower cornice -->
+      <rect x="316" y="280" width="68" height="8" fill="#1a1410" stroke="#B89040" stroke-width="0.5"/>
+      <!-- Clock stage -->
+      <rect x="326" y="242" width="48" height="38" fill="#1a1410" stroke="#B89040" stroke-width="0.6"/>
+      <circle cx="350" cy="261" r="12" fill="#0a101c" stroke="#B89040" stroke-width="0.6"/>
+      <line x1="350" y1="261" x2="350" y2="252" stroke="#B89040" stroke-width="0.6"/>
+      <line x1="350" y1="261" x2="357" y2="264" stroke="#B89040" stroke-width="0.5"/>
+      <!-- Belfry: open arches where the bell hangs -->
+      <rect x="330" y="196" width="40" height="46" fill="#0f1626" stroke="#B89040" stroke-width="0.6"/>
+      <path d="M 338 242 L 338 214 Q 350 202 362 214 L 362 242" fill="#060A12" stroke="#B89040" stroke-width="0.5"/>
+      <!-- The bell -->
+      <path d="M 344 228 Q 344 216 350 216 Q 356 216 356 228 L 358 232 L 342 232 Z" fill="#1a1410" stroke="#B89040" stroke-width="0.6"/>
+      <circle cx="350" cy="235" r="1.6" fill="#B89040" opacity="0.8"/>
+      <!-- Balustrade below belfry -->
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.6">
+        <line x1="328" y1="196" x2="328" y2="188"/>
+        <line x1="336" y1="196" x2="336" y2="188"/>
+        <line x1="344" y1="196" x2="344" y2="188"/>
+        <line x1="356" y1="196" x2="356" y2="188"/>
+        <line x1="364" y1="196" x2="364" y2="188"/>
+        <line x1="372" y1="196" x2="372" y2="188"/>
+        <line x1="326" y1="188" x2="374" y2="188"/>
+      </g>
+      <!-- Octagonal lantern and spire -->
+      <polygon points="336,196 342,180 358,180 364,196" fill="#1a1410" stroke="#B89040" stroke-width="0.5"/>
+      <polygon points="342,180 350,120 358,180" fill="#0a0a08" stroke="#B89040" stroke-width="0.6"/>
+      <line x1="350" y1="120" x2="350" y2="104" stroke="#B89040" stroke-width="0.7"/>
+      <!-- Weathervane -->
+      <path d="M 344 108 L 356 108 M 350 104 L 350 112" stroke="#B89040" stroke-width="0.5" opacity="0.8"/>
+      <circle cx="350" cy="104" r="1.5" fill="#B89040" opacity="0.7"/>
+
+      <!-- ===== FENESTRATION ===== -->
+
+      <!-- Upper floor windows (4 — flanking tower) -->
+      <g>
+        <rect x="212" y="428" width="22" height="32" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="223" y1="428" x2="223" y2="460" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="212" y1="444" x2="234" y2="444" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="204" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="236" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="264" y="428" width="22" height="32" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="275" y1="428" x2="275" y2="460" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="264" y1="444" x2="286" y2="444" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="256" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="288" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="414" y="428" width="22" height="32" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="425" y1="428" x2="425" y2="460" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="414" y1="444" x2="436" y2="444" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="406" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="438" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="466" y="428" width="22" height="32" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="477" y1="428" x2="477" y2="460" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="466" y1="444" x2="488" y2="444" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="458" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="490" y="428" width="6" height="32" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+      </g>
+
+      <!-- Belt course between floors -->
+      <line x1="180" y1="481" x2="520" y2="481" stroke="#B89040" stroke-width="0.6" opacity="0.7"/>
+      <line x1="180" y1="483" x2="520" y2="483" stroke="#B89040" stroke-width="0.3" opacity="0.5"/>
+
+      <!-- Lower floor windows (4 — the two chambers, flanking the hall door) -->
+      <g>
+        <rect x="212" y="494" width="22" height="40" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="223" y1="494" x2="223" y2="534" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="212" y1="514" x2="234" y2="514" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="204" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="236" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="264" y="494" width="22" height="40" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="275" y1="494" x2="275" y2="534" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="264" y1="514" x2="286" y2="514" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="256" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="288" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="414" y="494" width="22" height="40" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="425" y1="494" x2="425" y2="534" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="414" y1="514" x2="436" y2="514" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="406" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="438" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+
+        <rect x="466" y="494" width="22" height="40" fill="#0a101c" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="477" y1="494" x2="477" y2="534" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="466" y1="514" x2="488" y2="514" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="458" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+        <rect x="490" y="494" width="6" height="40" fill="#1a1410" stroke="#7A6020" stroke-width="0.3"/>
+      </g>
+
+      <!-- CENTER DOORWAY with pediment -->
+      <g>
+        <polygon points="318,481 350,461 382,481" fill="#1a1410" stroke="#B89040" stroke-width="0.6"/>
+        <line x1="316" y1="481" x2="384" y2="481" stroke="#B89040" stroke-width="0.4"/>
+        <line x1="318" y1="484" x2="382" y2="484" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="320" y="484" width="3" height="62" fill="#3a2a1e" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="377" y="484" width="3" height="62" fill="#3a2a1e" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="332" y="491" width="36" height="55" fill="#1a0f08" stroke="#B89040" stroke-width="0.5"/>
+        <path d="M 332 503 Q 350 494 368 503" fill="none" stroke="#B89040" stroke-width="0.4"/>
+        <line x1="332" y1="503" x2="368" y2="503" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="350" y1="494" x2="350" y2="503" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="340" y1="496" x2="343" y2="503" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="360" y1="496" x2="357" y2="503" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="350" y1="503" x2="350" y2="546" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="336" y="508" width="11" height="15" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="508" width="11" height="15" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="336" y="528" width="11" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="528" width="11" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="318" y="546" width="64" height="3" fill="#2a2018" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="314" y="549" width="72" height="3" fill="#2a2018" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="310" y="552" width="80" height="3" fill="#2a2018" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- Cornice line under roof -->
+      <line x1="178" y1="414" x2="522" y2="414" stroke="#B89040" stroke-width="0.5"/>
+      <line x1="180" y1="412" x2="520" y2="412" stroke="#B89040" stroke-width="0.3" opacity="0.6"/>
+
+      <!-- ===== ANNOTATION / DIMENSION LINES ===== -->
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.55" fill="none" font-family="Cormorant Upright" font-size="8">
+        <!-- Width dimension -->
+        <line x1="180" y1="576" x2="180" y2="591"/>
+        <line x1="520" y1="576" x2="520" y2="591"/>
+        <line x1="180" y1="586" x2="520" y2="586"/>
+        <polygon points="180,586 188,584 188,588" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="520,586 512,584 512,588" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="350" y="582" text-anchor="middle" fill="#B89040" opacity="0.85" font-style="italic">107 ft. even</text>
+
+        <!-- Height dimension to the vane -->
+        <line x1="555" y1="104" x2="570" y2="104"/>
+        <line x1="555" y1="546" x2="570" y2="546"/>
+        <line x1="563" y1="104" x2="563" y2="546"/>
+        <polygon points="563,104 561,112 565,112" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="563,546 561,538 565,538" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="578" y="325" fill="#B89040" opacity="0.85" font-style="italic" transform="rotate(90 578 325)">to the vane above the bell</text>
+
+        <!-- Leader to belfry -->
+        <line x1="370" y1="220" x2="440" y2="180" stroke-dasharray="2 2"/>
+        <circle cx="440" cy="180" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="446" y="178" fill="#B89040" opacity="0.85" font-style="italic">the bell that rang</text>
+        <text x="446" y="188" fill="#B89040" opacity="0.85" font-style="italic">for independence</text>
+
+        <!-- Leader to lower chamber window -->
+        <line x1="234" y1="514" x2="140" y2="480" stroke-dasharray="2 2"/>
+        <circle cx="140" cy="480" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="60" y="466" fill="#B89040" opacity="0.85" font-style="italic">the Assembly Room —</text>
+        <text x="60" y="476" fill="#B89040" opacity="0.85" font-style="italic">where the Declaration and</text>
+        <text x="60" y="486" fill="#B89040" opacity="0.85" font-style="italic">the Constitution were signed</text>
+      </g>
+
+      <!-- The four instruments — a drafted row of signed documents -->
+      <g transform="translate(190 640)">
+        <text x="160" y="-12" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="9" fill="#B89040" opacity="0.8" letter-spacing="2">THE FOUR INSTRUMENTS · EACH BEARING HIS NAME</text>
+        <!-- 1774 Association -->
+        <g>
+          <rect x="0" y="0" width="56" height="74" fill="#0f1626" stroke="#B89040" stroke-width="0.5"/>
+          <g stroke="#B89040" stroke-width="0.3" opacity="0.5">
+            <line x1="8" y1="12" x2="48" y2="12"/><line x1="8" y1="20" x2="48" y2="20"/>
+            <line x1="8" y1="28" x2="48" y2="28"/><line x1="8" y1="36" x2="42" y2="36"/>
+            <line x1="8" y1="44" x2="48" y2="44"/><line x1="8" y1="52" x2="38" y2="52"/>
+          </g>
+          <path d="M 10 62 Q 20 58 30 62 T 46 62" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.8"/>
+          <text x="28" y="90" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.85">Association</text>
+          <text x="28" y="100" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.7" font-style="italic">1774</text>
+        </g>
+        <!-- 1776 Declaration -->
+        <g transform="translate(88 0)">
+          <rect x="0" y="0" width="56" height="74" fill="#0f1626" stroke="#B89040" stroke-width="0.5"/>
+          <g stroke="#B89040" stroke-width="0.3" opacity="0.5">
+            <line x1="8" y1="12" x2="48" y2="12"/><line x1="8" y1="20" x2="48" y2="20"/>
+            <line x1="8" y1="28" x2="44" y2="28"/><line x1="8" y1="36" x2="48" y2="36"/>
+            <line x1="8" y1="44" x2="40" y2="44"/><line x1="8" y1="52" x2="48" y2="52"/>
+          </g>
+          <path d="M 10 62 Q 20 58 30 62 T 46 62" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.8"/>
+          <text x="28" y="90" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.85">Declaration</text>
+          <text x="28" y="100" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.7" font-style="italic">1776</text>
+        </g>
+        <!-- 1777 Confederation -->
+        <g transform="translate(176 0)">
+          <rect x="0" y="0" width="56" height="74" fill="#0f1626" stroke="#B89040" stroke-width="0.5"/>
+          <g stroke="#B89040" stroke-width="0.3" opacity="0.5">
+            <line x1="8" y1="12" x2="48" y2="12"/><line x1="8" y1="20" x2="44" y2="20"/>
+            <line x1="8" y1="28" x2="48" y2="28"/><line x1="8" y1="36" x2="48" y2="36"/>
+            <line x1="8" y1="44" x2="42" y2="44"/><line x1="8" y1="52" x2="48" y2="52"/>
+          </g>
+          <path d="M 10 62 Q 20 58 30 62 T 46 62" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.8"/>
+          <text x="28" y="90" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.85">Confederation</text>
+          <text x="28" y="100" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.7" font-style="italic">1777</text>
+        </g>
+        <!-- 1787 Constitution -->
+        <g transform="translate(264 0)">
+          <rect x="0" y="0" width="56" height="74" fill="#0f1626" stroke="#B89040" stroke-width="0.5"/>
+          <g stroke="#B89040" stroke-width="0.3" opacity="0.5">
+            <line x1="8" y1="12" x2="48" y2="12"/><line x1="8" y1="20" x2="48" y2="20"/>
+            <line x1="8" y1="28" x2="48" y2="28"/><line x1="8" y1="36" x2="44" y2="36"/>
+            <line x1="8" y1="44" x2="48" y2="44"/><line x1="8" y1="52" x2="40" y2="52"/>
+          </g>
+          <path d="M 10 62 Q 20 58 30 62 T 46 62" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.8"/>
+          <circle cx="46" cy="64" r="4" fill="none" stroke="#B89040" stroke-width="0.4" opacity="0.7"/>
+          <text x="28" y="90" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.85">Constitution</text>
+          <text x="28" y="100" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.7" font-style="italic">1787</text>
+        </g>
+      </g>
+
+      <!-- Plaque / cartouche bottom left -->
+      <g transform="translate(40 800)">
+        <rect width="180" height="64" fill="#0f1626" stroke="#B89040" stroke-width="0.5" opacity="0.85"/>
+        <line x1="6" y1="6" x2="174" y2="6" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="6" y1="58" x2="174" y2="58" stroke="#B89040" stroke-width="0.3"/>
+        <text x="90" y="22" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#B89040" letter-spacing="3">THE STATE HOUSE</text>
+        <text x="90" y="36" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C4C2AE">Where the Great Compromise</text>
+        <text x="90" y="47" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C4C2AE">carried, and the Senate was born</text>
+      </g>
+
+      <!-- Surveyor's signature bottom right -->
+      <g transform="translate(540 830)" font-family="Cormorant Upright" font-style="italic" fill="#B89040" opacity="0.7">
+        <text font-size="8">measured plainly,</text>
+        <text y="11" font-size="8">after the surveyor's manner,</text>
+        <text y="22" font-size="7" opacity="0.7">by the hand of R.S.</text>
+      </g>
+
+      <!-- Border frame -->
+      <rect x="20" y="20" width="660" height="860" fill="none" stroke="#B89040" stroke-width="0.6" opacity="0.5"/>
+      <rect x="26" y="26" width="648" height="848" fill="none" stroke="#B89040" stroke-width="0.2" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="bio-panel">
+    <div class="bio-inner">
+      <div class="photo-frame">
+        <img src="/assets/portraits/roger-sherman.webp" alt="Roger Sherman" onerror="this.outerHTML='&lt;div class=&quot;fallback&quot;&gt;RS&lt;/div&gt;'">
+      </div>
+      <div class="placard">
+        <div class="label">Museum of Minds</div>
+        <h1>Roger Sherman</h1>
+        <div class="dates">1721 — 1793</div>
+        <div class="divider-ornament">✦ ✦ ✦</div>
+        <p class="epithet">The only man to sign all four founding documents — the cobbler who built the republic</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="transition-band">
+  <div class="rule"></div>
+  <div>The Gallery</div>
+  <div class="ornament">✦</div>
+  <div>In His Own Words</div>
+  <div class="rule"></div>
+</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <div class="kicker">Curator's Note</div>
+    <h2>The man who signed everything.</h2>
+
+    <p>Roger Sherman had no formal education past childhood. He learned his father's trade — making shoes — in Newton, Massachusetts, and taught himself surveying and law from books bought with the money the cobbler's bench earned him. By the time he settled in New Milford, Connecticut, he was a storekeeper; then a justice of the peace; then a judge of the Connecticut Superior Court; then treasurer of Yale, mayor of New Haven, and a delegate to the Continental Congress. He was fifty-two when he signed the Declaration of Independence. He is the only American to sign all four founding documents: the Articles of Association in 1774, the Declaration in 1776, the Articles of Confederation in 1777, and the Constitution in 1787. That record is not a coincidence — it is fourteen years of steady, practical presence at every moment the republic was assembled.</p>
+
+    <p>His largest work has no title page. In the summer of 1787, the Constitutional Convention was deadlocked over representation: the large states demanded proportional suffrage in both houses of Congress, the small states demanded equality, and neither side would yield. Sherman — who had first proposed the arrangement in June, as a member of the Committee of Five that had drafted the Declaration eleven years earlier — put forward the plain solution everyone had been too proud to accept: a House apportioned by population, a Senate in which every state stood equal. The Connecticut Compromise carried on July 16. Without it, the Convention would almost certainly have dissolved, and there would have been no Constitution to sign.</p>
+
+    <div class="featured-quote">
+      That is Mr. Sherman of Connecticut, a man who never said a foolish thing in his life.
+      <span class="attrib">— Thomas Jefferson, pointing him out to a visitor in Congress</span>
+    </div>
+
+    <p>He was a Calvinist of the old New England kind — blunt, plain-spoken, suspicious of eloquence, and certain that institutions must restrain human nature rather than hope it away. He is also candid about the concession that shadows his record: he thought slavery wrong and compromised on it anyway, judging that a union which failed would fix nothing. Ask him whether that trade was worth it. Ask him how close the Convention came to collapse, why he thought the Bill of Rights unnecessary and helped draft it anyway in the First Congress, and what it feels like to be the least famous indispensable founder. He died in office, a Senator from Connecticut, in 1793.</p>
+
+    <div class="domain-tags">
+      <span class="tag">Constitutional Design</span>
+      <span class="tag">The Connecticut Compromise</span>
+      <span class="tag">Bicameral Legislature</span>
+      <span class="tag">Founding Documents</span>
+      <span class="tag">Connecticut Politics</span>
+      <span class="tag">Calvinist Political Theory</span>
+      <span class="tag">Practical Governance</span>
+      <span class="tag">The First Congress</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/roger-sherman/widget/roger-sherman-widget.css">
+      <script src="https://museumofminds.com/roger-sherman/widget/roger-sherman-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="roger-sherman"
+              data-portrait-url="/assets/portraits/roger-sherman.webp"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    That the proportion of suffrage in the first branch should be according to the respective numbers of free inhabitants; and that in the second branch, or Senate, each State should have one vote and no more.”
+  </blockquote>
+  <cite>Motion Before the Federal Convention · Recorded by James Madison · June 11, 1787</cite>
+</section>
+
+<section class="corpus-strip">
+  <h3>Drawn From the Corpus</h3>
+  <ul class="corpus-list">
+    <li>Articles of Association (1774)</li>
+    <li>Declaration of Independence (1776)</li>
+    <li>Articles of Confederation (1777)</li>
+    <li>Constitution of the United States (1787)</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="col left">
+    <div class="name-line">Roger Sherman</div>
+    <div>1721 — 1793 · New Haven, Connecticut</div>
+  </div>
+  <div class="col center">
+    The Museum of Minds<br>
+    A Project in Conversational History<br>
+    <a href="/halls/republic-room/">Return to the Republic Room</a>
+  </div>
+  <div class="col right">
+    Powered by His Own Words
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With Christopher Gadsden — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Upright:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field: #33290E;
+  --deep-field: #17120A;
+  --darker: #0B0804;
+  --gold: #B89040;
+  --gold-bright: #D4AC5C;
+  --gold-dim: #7A6020;
+  --cream: #E8DFC4;
+  --cream-dim: #A09878;
+  --text: #C8C4A8;
+  --text-dim: #808468;
+  --line: rgba(184, 144, 64, 0.25);
+  --line-strong: rgba(184, 144, 64, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep-field);
+  color: var(--text);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+header.museum-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--darker);
+  animation: fadeDown 1.2s ease-out;
+}
+
+.museum-header .left, .museum-header .right {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.museum-header .left::before {
+  content: "✦ ";
+  color: var(--gold-dim);
+}
+
+.museum-header .right {
+  color: var(--cream-dim);
+}
+
+.museum-header .right a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.museum-header .right a:hover {
+  color: var(--gold-bright);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.75fr;
+  min-height: 92vh;
+  background: var(--deep-field);
+  animation: fadeIn 1.6s ease-out;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background: #14100a;
+  border-right: 1px solid var(--line);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bio-panel {
+  padding: 3rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, var(--deep-field) 0%, #14100a 100%);
+  position: relative;
+}
+
+.bio-panel::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem; right: 1.5rem; bottom: 1.5rem; left: 1.5rem;
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-inner { position: relative; z-index: 1; }
+
+.photo-frame {
+  max-width: 280px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--gold-dim);
+  z-index: 0;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(35%) sepia(28%) contrast(1.05) brightness(0.92);
+}
+
+.photo-frame .fallback {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #2e2410, #17120a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: var(--gold-dim);
+  border: 1px solid var(--line);
+}
+
+.placard {
+  text-align: center;
+}
+
+.placard .label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-bottom: 0.8rem;
+}
+
+.placard h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.placard .dates {
+  font-family: 'Cormorant Upright', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.4rem;
+}
+
+.placard .epithet {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: 0 auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.divider-ornament {
+  text-align: center;
+  margin: 1.4rem auto;
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  letter-spacing: 1em;
+  padding-left: 1em;
+}
+
+/* TRANSITION BAND */
+.transition-band {
+  position: relative;
+  z-index: 3;
+  background: var(--darker);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--gold);
+  font-family: 'Cormorant Upright', serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.transition-band .rule {
+  flex: 0 0 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.transition-band .ornament {
+  color: var(--gold-bright);
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+/* CHATBOT SECTION */
+.chatbot-section {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  padding: 4rem 3rem;
+  background: var(--deep-field);
+  min-height: 70vh;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.chatbot-intro .kicker {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.chatbot-intro p {
+  margin-bottom: 1.1rem;
+  color: var(--text);
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.featured-quote {
+  margin: 1.8rem 0;
+  padding: 1.4rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(184, 144, 64, 0.05);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.55;
+}
+
+.featured-quote .attrib {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.domain-tags {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  background: rgba(23, 18, 10, 0.5);
+}
+
+.chatbot-embed {
+  background: var(--darker);
+  border: 1px solid var(--line);
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+  background: var(--darker);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pull-quote::before, .pull-quote::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 auto 2.2rem;
+}
+
+.pull-quote::after { margin: 2.2rem auto 0; }
+
+.pull-quote blockquote {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  line-height: 1.55;
+  color: var(--cream);
+}
+
+.pull-quote blockquote::before {
+  content: "“";
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* CORPUS STRIP */
+.corpus-strip {
+  position: relative;
+  z-index: 2;
+  background: var(--darker);
+  padding: 3rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.corpus-strip h3 {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.corpus-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  list-style: none;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.corpus-list li {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.88;
+  position: relative;
+}
+
+.corpus-list li::before {
+  content: "✦";
+  color: var(--gold-dim);
+  margin-right: 0.7em;
+  font-style: normal;
+}
+
+.corpus-trust {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.88;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  background: var(--deep-field);
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+
+footer .col {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+footer .col.left { text-align: left; color: var(--gold); }
+footer .col.center { text-align: center; }
+footer .col.right { text-align: right; font-style: italic; }
+
+footer .col a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer .col a:hover { color: var(--gold-bright); }
+
+footer .name-line {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-svg-panel {
+    min-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .bio-panel {
+    padding: 2rem 1.5rem;
+  }
+  .chatbot-section {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+  .corpus-strip { padding: 2rem 1.5rem; }
+  .corpus-list { gap: 1rem 2rem; }
+  footer {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  footer .col.left, footer .col.right { text-align: center; }
+  .pull-quote { padding: 3rem 1.5rem; }
+  header.museum-header { padding: 1rem 1.2rem; }
+  .museum-header .left, .museum-header .right { font-size: 0.6rem; letter-spacing: 0.25em; }
+  .transition-band { padding: 1rem; gap: 1rem; font-size: 0.6rem; letter-spacing: 0.3em; }
+  .transition-band .rule { flex-basis: 30px; }
+}
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div class="left">In Conversation With</div>
+  <div class="right">Accession № CG–1724–2026 &nbsp;·&nbsp; <a href="/halls/republic-room/">Republic Room</a></div>
+</header>
+
+<section class="hero">
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a2210"/>
+          <stop offset="50%" stop-color="#1d1709"/>
+          <stop offset="100%" stop-color="#14100a"/>
+        </linearGradient>
+        <linearGradient id="flagGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2e2508"/>
+          <stop offset="100%" stop-color="#211a06"/>
+        </linearGradient>
+        <linearGradient id="harborGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#242a1a"/>
+          <stop offset="100%" stop-color="#14100a"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#B89040" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B89040" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soften">
+          <feGaussianBlur stdDeviation="0.4"/>
+        </filter>
+      </defs>
+
+      <!-- Background sky -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- Low sun over the harbor -->
+      <circle cx="560" cy="130" r="80" fill="url(#sunGlow)"/>
+      <circle cx="560" cy="130" r="14" fill="#B89040" opacity="0.5"/>
+
+      <!-- Title block top -->
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.85">
+        <text x="50" y="48" font-size="11" letter-spacing="5">THE GADSDEN STANDARD — AS PRESENTED TO THE NAVY</text>
+        <text x="50" y="64" font-size="9" letter-spacing="3" opacity="0.7" font-style="italic">Devised by Col. Christopher Gadsden, Charles Town, South Carolina · A.D. MDCCLXXV</text>
+        <line x1="50" y1="74" x2="520" y2="74" stroke="#B89040" stroke-width="0.4" opacity="0.4"/>
+      </g>
+
+      <!-- Compass rose top right -->
+      <g transform="translate(620 60)" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.6">
+        <circle r="22"/>
+        <circle r="16"/>
+        <path d="M 0 -22 L 4 0 L 0 22 L -4 0 Z" fill="#B89040" opacity="0.4"/>
+        <path d="M -22 0 L 0 4 L 22 0 L 0 -4 Z" fill="#B89040" opacity="0.2"/>
+        <text x="0" y="-28" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.9">N</text>
+      </g>
+
+      <!-- ===== THE FLAG PLATE ===== -->
+
+      <!-- Halyard and hoist -->
+      <line x1="120" y1="120" x2="120" y2="560" stroke="#7A6020" stroke-width="3"/>
+      <circle cx="120" cy="120" r="5" fill="none" stroke="#B89040" stroke-width="0.8"/>
+      <line x1="120" y1="170" x2="132" y2="176" stroke="#B89040" stroke-width="0.5" opacity="0.7"/>
+      <line x1="120" y1="502" x2="132" y2="496" stroke="#B89040" stroke-width="0.5" opacity="0.7"/>
+
+      <!-- Flag field -->
+      <rect x="132" y="172" width="448" height="330" fill="url(#flagGrad)" stroke="#B89040" stroke-width="0.8"/>
+      <rect x="140" y="180" width="432" height="314" fill="none" stroke="#B89040" stroke-width="0.3" opacity="0.5"/>
+
+      <!-- Field weave lines (engraver's shading) -->
+      <g stroke="#B89040" stroke-width="0.2" opacity="0.18">
+        <line x1="132" y1="200" x2="580" y2="200"/>
+        <line x1="132" y1="228" x2="580" y2="228"/>
+        <line x1="132" y1="256" x2="580" y2="256"/>
+        <line x1="132" y1="284" x2="580" y2="284"/>
+        <line x1="132" y1="312" x2="580" y2="312"/>
+        <line x1="132" y1="340" x2="580" y2="340"/>
+        <line x1="132" y1="368" x2="580" y2="368"/>
+        <line x1="132" y1="396" x2="580" y2="396"/>
+        <line x1="132" y1="424" x2="580" y2="424"/>
+        <line x1="132" y1="452" x2="580" y2="452"/>
+        <line x1="132" y1="480" x2="580" y2="480"/>
+      </g>
+
+      <!-- Grass mound -->
+      <g stroke="#7A6020" stroke-width="0.6" fill="none" opacity="0.8">
+        <path d="M 240 400 Q 290 384 356 384 Q 422 384 472 400"/>
+        <path d="M 258 398 L 254 388 M 276 393 L 273 383 M 296 389 L 294 379 M 318 387 L 317 377 M 342 385 L 342 375 M 368 385 L 369 375 M 392 387 L 394 377 M 416 389 L 419 379 M 438 393 L 442 383 M 456 397 L 461 388"/>
+      </g>
+
+      <!-- ===== THE RATTLESNAKE ===== -->
+      <g fill="none" stroke="#B89040">
+        <!-- Coil: three loops -->
+        <path d="M 356 372
+                 C 306 372 282 352 282 330
+                 C 282 306 316 292 356 292
+                 C 398 292 424 308 424 330
+                 C 424 350 396 364 356 364
+                 C 322 364 300 350 300 330
+                 C 300 312 326 300 356 300
+                 C 388 300 408 312 408 328
+                 C 408 344 386 354 356 354"
+              stroke-width="7" stroke-linecap="round"/>
+        <!-- Coil shading strokes -->
+        <g stroke-width="0.5" opacity="0.55">
+          <path d="M 300 318 Q 356 306 412 320"/>
+          <path d="M 292 340 Q 356 356 420 340"/>
+          <path d="M 310 302 Q 356 294 402 304"/>
+        </g>
+        <!-- Neck rising from coil to head -->
+        <path d="M 356 354 C 400 354 428 336 434 306 C 440 278 428 258 408 250"
+              stroke-width="7" stroke-linecap="round"/>
+        <!-- Head -->
+        <path d="M 408 250 C 396 244 384 246 378 254 C 372 262 374 272 384 276 C 394 280 406 276 412 266 C 416 259 414 253 408 250 Z"
+              fill="#B89040" opacity="0.9" stroke-width="1"/>
+        <!-- Eye -->
+        <circle cx="392" cy="258" r="2.2" fill="#17120A" stroke="none"/>
+        <!-- Forked tongue -->
+        <path d="M 378 262 L 358 258 M 358 258 L 348 250 M 358 258 L 347 262" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- Tail and rattle (thirteen segments) -->
+        <path d="M 356 372 C 322 372 296 380 288 394" stroke-width="5" stroke-linecap="round"/>
+        <g stroke-width="0.8" fill="#17120A">
+          <rect x="270" y="392" width="6" height="9" rx="1.5"/>
+          <rect x="263" y="394" width="6" height="8" rx="1.5"/>
+          <rect x="256" y="396" width="5.5" height="7.5" rx="1.5"/>
+          <rect x="250" y="397" width="5" height="7" rx="1.5"/>
+          <rect x="244" y="398" width="4.6" height="6.6" rx="1.4"/>
+          <rect x="239" y="399" width="4.2" height="6.2" rx="1.4"/>
+          <rect x="234" y="400" width="3.9" height="5.8" rx="1.3"/>
+          <rect x="229" y="401" width="3.6" height="5.4" rx="1.3"/>
+          <rect x="225" y="402" width="3.3" height="5" rx="1.2"/>
+          <rect x="221" y="402" width="3" height="4.7" rx="1.2"/>
+          <rect x="217" y="403" width="2.8" height="4.3" rx="1.1"/>
+          <rect x="214" y="403" width="2.5" height="4" rx="1"/>
+          <rect x="211" y="404" width="2.2" height="3.6" rx="1"/>
+        </g>
+      </g>
+
+      <!-- Motto -->
+      <g font-family="Cinzel, serif" fill="#B89040" text-anchor="middle">
+        <text x="356" y="448" font-size="26" letter-spacing="6" opacity="0.95">DONT TREAD ON ME</text>
+        <line x1="216" y1="462" x2="496" y2="462" stroke="#B89040" stroke-width="0.4" opacity="0.5"/>
+      </g>
+
+      <!-- ===== CHARLESTON HARBOR BELOW ===== -->
+
+      <!-- Water band -->
+      <rect x="0" y="640" width="700" height="60" fill="url(#harborGrad)" opacity="0.75"/>
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.35" fill="none">
+        <line x1="40" y1="656" x2="120" y2="656"/>
+        <line x1="180" y1="662" x2="260" y2="662"/>
+        <line x1="310" y1="654" x2="380" y2="654"/>
+        <line x1="440" y1="666" x2="520" y2="666"/>
+        <line x1="560" y1="658" x2="640" y2="658"/>
+        <line x1="80" y1="676" x2="150" y2="676"/>
+        <line x1="290" y1="680" x2="360" y2="680"/>
+        <line x1="500" y1="674" x2="580" y2="674"/>
+      </g>
+
+      <!-- City line: Charles Town with St. Michael's spire -->
+      <g stroke="#B89040" stroke-width="0.5" fill="#17120a" opacity="0.85">
+        <rect x="40" y="614" width="60" height="26"/>
+        <rect x="106" y="608" width="44" height="32"/>
+        <rect x="156" y="618" width="70" height="22"/>
+        <!-- St. Michael's church and spire -->
+        <rect x="238" y="592" width="26" height="48"/>
+        <rect x="244" y="566" width="14" height="26"/>
+        <polygon points="244,566 251,540 258,566"/>
+        <line x1="251" y1="540" x2="251" y2="532"/>
+        <!-- More rooflines -->
+        <rect x="274" y="612" width="54" height="28"/>
+        <rect x="334" y="606" width="40" height="34"/>
+        <rect x="380" y="616" width="66" height="24"/>
+      </g>
+
+      <!-- Continental squadron at anchor -->
+      <g stroke="#B89040" stroke-width="0.7" fill="none" opacity="0.8">
+        <!-- Ship 1: the Alfred -->
+        <path d="M 500 636 L 512 646 L 566 646 L 576 636 Z" fill="#17120a"/>
+        <line x1="522" y1="646" x2="522" y2="596"/>
+        <line x1="514" y1="606" x2="534" y2="606"/>
+        <line x1="512" y1="616" x2="536" y2="616"/>
+        <line x1="552" y1="646" x2="552" y2="602"/>
+        <line x1="545" y1="612" x2="561" y2="612"/>
+        <path d="M 522 596 L 538 600 L 522 604 Z" fill="#B89040" opacity="0.6"/>
+        <!-- Ship 2, distant -->
+        <path d="M 620 634 L 628 641 L 662 641 L 668 634 Z" fill="#17120a"/>
+        <line x1="636" y1="641" x2="636" y2="610"/>
+        <line x1="630" y1="618" x2="644" y2="618"/>
+        <line x1="654" y1="641" x2="654" y2="616"/>
+      </g>
+
+      <!-- Foreground ground -->
+      <rect x="0" y="700" width="700" height="200" fill="#14100a"/>
+
+      <!-- ===== ANNOTATION / DIMENSION LINES ===== -->
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.55" fill="none" font-family="Cormorant Upright" font-size="9">
+        <!-- Fly dimension -->
+        <line x1="132" y1="518" x2="132" y2="533"/>
+        <line x1="580" y1="518" x2="580" y2="533"/>
+        <line x1="132" y1="528" x2="580" y2="528"/>
+        <polygon points="132,528 140,526 140,530" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="580,528 572,526 572,530" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="356" y="544" text-anchor="middle" fill="#B89040" opacity="0.85" font-style="italic">a field of yellow silk</text>
+
+        <!-- Leader to the rattle -->
+        <line x1="240" y1="404" x2="180" y2="356" stroke-dasharray="2 2"/>
+        <circle cx="180" cy="356" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="150" y="336" fill="#B89040" opacity="0.85" font-style="italic">thirteen rattles —</text>
+        <text x="150" y="347" fill="#B89040" opacity="0.85" font-style="italic">one for each colony</text>
+
+        <!-- Leader to the head -->
+        <line x1="412" y1="248" x2="470" y2="222" stroke-dasharray="2 2"/>
+        <circle cx="470" cy="222" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="476" y="218" fill="#B89040" opacity="0.85" font-style="italic">she never strikes first,</text>
+        <text x="476" y="229" fill="#B89040" opacity="0.85" font-style="italic">nor ever surrenders</text>
+
+        <!-- Leader to the Alfred -->
+        <line x1="538" y1="600" x2="490" y2="574" stroke-dasharray="2 2"/>
+        <circle cx="490" cy="574" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="400" y="570" fill="#B89040" opacity="0.85" font-style="italic">hoisted aboard the Alfred</text>
+      </g>
+
+      <!-- Plaque / cartouche bottom left -->
+      <g transform="translate(40 780)">
+        <rect width="190" height="76" fill="#17120a" stroke="#B89040" stroke-width="0.5" opacity="0.85"/>
+        <line x1="6" y1="6" x2="184" y2="6" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="6" y1="70" x2="184" y2="70" stroke="#B89040" stroke-width="0.3"/>
+        <text x="95" y="24" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#B89040" letter-spacing="3">CHARLES TOWN</text>
+        <text x="95" y="40" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8C4A8">Where the Sons of Liberty</text>
+        <text x="95" y="51" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8C4A8">gathered beneath the Liberty Tree</text>
+        <text x="95" y="62" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8C4A8">and the standard was devised</text>
+      </g>
+
+      <!-- Surveyor's signature bottom right -->
+      <g transform="translate(530 810)" font-family="Cormorant Upright" font-style="italic" fill="#B89040" opacity="0.7">
+        <text font-size="8">drawn from life</text>
+        <text y="11" font-size="8">in the harbor of Charles Town</text>
+        <text y="22" font-size="7" opacity="0.7">by the hand of C.G.</text>
+      </g>
+
+      <!-- Border frame -->
+      <rect x="20" y="20" width="660" height="860" fill="none" stroke="#B89040" stroke-width="0.6" opacity="0.5"/>
+      <rect x="26" y="26" width="648" height="848" fill="none" stroke="#B89040" stroke-width="0.2" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="bio-panel">
+    <div class="bio-inner">
+      <div class="photo-frame">
+        <img src="/assets/portraits/christopher-gadsden.webp" alt="Christopher Gadsden" onerror="this.outerHTML='&lt;div class=&quot;fallback&quot;&gt;CG&lt;/div&gt;'">
+      </div>
+      <div class="placard">
+        <div class="label">Museum of Minds</div>
+        <h1>Christopher Gadsden</h1>
+        <div class="dates">(1724–1805)</div>
+        <div class="divider-ornament">✦ ✦ ✦</div>
+        <p class="epithet">Don't Tread on Me — South Carolina's most dangerous patriot</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="transition-band">
+  <div class="rule"></div>
+  <div>The Gallery</div>
+  <div class="ornament">✦</div>
+  <div>In His Own Words</div>
+  <div class="rule"></div>
+</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <div class="kicker">Curator's Note</div>
+    <h2>The man who said "Americans" first.</h2>
+
+    <p>Christopher Gadsden was a Charleston merchant with a wharf on the Cooper River and no patience whatsoever for petitioning kings. Sent to the Stamp Act Congress in New York in 1765, he made an argument no other delegate was making: that the colonies should ground their resistance not in their rights as Englishmen but in a common American identity that did not yet officially exist. "There ought to be no New England man, no New Yorker, known on the continent," he insisted, "but all of us Americans." He was calling for independence, in everything but the word, eleven years before the Declaration.</p>
+
+    <p>He came home and built the movement to match the rhetoric. Under a live oak in Charleston that came to be called the Liberty Tree, Gadsden organized the city's mechanics and artisans into South Carolina's Sons of Liberty — the radical core of resistance in the southern colonies. A decade later, as a delegate to the Continental Congress, he distilled the cause into a single image: a coiled timber rattlesnake on a yellow field above the words "Don't Tread on Me." He presented the flag to Commodore Esek Hopkins, and it flew as the first standard of the Continental Navy. The symbolism was deliberate. The rattlesnake is native to America, it never strikes first, it gives fair warning — and when it strikes, it does not miss.</p>
+
+    <p>The war tested whether he meant it. Commissioned a brigadier general, he helped defend Charleston until the city fell to the British in 1780 — he was its lieutenant governor when it surrendered. Offered parole if he would swear never again to take up arms, he refused, and was shipped to the Castillo de San Marcos at St. Augustine, where he spent forty-two weeks in a dungeon, much of it in solitary confinement, a man in his late fifties held in conditions designed to break him. They did not break him. When his exchange was finally arranged, he refused to leave until his fellow prisoners were included. He returned to help govern the state he had freed, argued — remarkably, for so unforgiving a man — for clemency toward Loyalists, supported ratification of the Constitution at South Carolina's convention in 1788, and died in Charleston in 1805.</p>
+
+    <div class="featured-quote">
+      He was also a slaveholder, and his wharf became one of the busiest points of entry for enslaved Africans in North America. The man who demanded "Don't Tread on Me" trod on others his entire life, knew it, and never resolved it.
+      <span class="attrib">— On the contradiction he never closed</span>
+    </div>
+
+    <p>He engages these questions directly — the gap between the liberty he demanded and the bondage he practiced is where his most honest conversations happen. Ask him what the rattlesnake actually meant, and what it has been made to mean since. Ask him what forty-two weeks in a Spanish fortress dungeon taught him about the price of a signature. Ask him why he refused the parole that would have sent him home.</p>
+
+    <div class="domain-tags">
+      <span class="tag">American Revolution</span>
+      <span class="tag">Sons of Liberty</span>
+      <span class="tag">The Gadsden Flag</span>
+      <span class="tag">Colonial Resistance</span>
+      <span class="tag">South Carolina Politics</span>
+      <span class="tag">Maritime Trade</span>
+      <span class="tag">Constitutional Ratification</span>
+      <span class="tag">Slavery and Liberty</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/christopher-gadsden/widget/christopher-gadsden-widget.css">
+      <script src="https://museumofminds.com/christopher-gadsden/widget/christopher-gadsden-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="christopher-gadsden"
+              data-portrait-url="/assets/portraits/christopher-gadsden.webp"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    There ought to be no New England man, no New Yorker, known on the continent, but all of us Americans.”
+  </blockquote>
+  <cite>At the Stamp Act Congress · New York · 1765</cite>
+</section>
+
+<section class="corpus-strip">
+  <h3>Drawn From the Corpus</h3>
+  <ul class="corpus-list">
+    <li>The Writings of Christopher Gadsden, 1746–1805</li>
+    <li>The Gadsden Flag (1775)</li>
+    <li>Revolutionary Speeches and Pamphlets (1765–1784)</li>
+  </ul>
+  <div class="corpus-trust">Trust Score 100 · Primary Source · Near-Complete Coverage — 1,850 passages</div>
+</section>
+
+<footer>
+  <div class="col left">
+    <div class="name-line">Christopher Gadsden</div>
+    <div>(1724–1805) · Charleston, South Carolina</div>
+  </div>
+  <div class="col center">
+    The Museum of Minds<br>
+    A Project in Conversational History
+  </div>
+  <div class="col right">
+    <a href="/halls/republic-room/">← The Republic Room</a><br>
+    Powered by His Own Words
+  </div>
+</footer>
+
+</body>
+</html>

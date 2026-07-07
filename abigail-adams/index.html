@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Conversation With Abigail Adams — Museum of Minds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Upright:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --federal: #2B4070;
+  --deep-navy: #0E1929;
+  --darker: #060A12;
+  --gold: #B89040;
+  --gold-bright: #D4AC5C;
+  --gold-dim: #7A6020;
+  --cream: #E8DFC4;
+  --cream-dim: #A09878;
+  --text: #C8C4A8;
+  --text-dim: #808468;
+  --line: rgba(184, 144, 64, 0.25);
+  --line-strong: rgba(184, 144, 64, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep-navy);
+  color: var(--text);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+header.museum-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--darker);
+  animation: fadeDown 1.2s ease-out;
+}
+
+.museum-header .left, .museum-header .right {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.museum-header .left::before {
+  content: "✦ ";
+  color: var(--gold-dim);
+}
+
+.museum-header .right {
+  color: var(--cream-dim);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.75fr;
+  min-height: 92vh;
+  background: var(--deep-navy);
+  animation: fadeIn 1.6s ease-out;
+}
+
+.hero-svg-panel {
+  position: relative;
+  overflow: hidden;
+  background: #0a1220;
+  border-right: 1px solid var(--line);
+}
+
+.hero-svg-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bio-panel {
+  padding: 3rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, var(--deep-navy) 0%, #0a1220 100%);
+  position: relative;
+}
+
+.bio-panel::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem; right: 1.5rem; bottom: 1.5rem; left: 1.5rem;
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bio-inner { position: relative; z-index: 1; }
+
+.photo-frame {
+  max-width: 280px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--gold-dim);
+  z-index: 0;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(35%) sepia(28%) contrast(1.05) brightness(0.92);
+}
+
+.photo-frame .fallback {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #1a2a44, #0e1929);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: var(--gold-dim);
+  border: 1px solid var(--line);
+}
+
+.placard {
+  text-align: center;
+}
+
+.placard .label {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-bottom: 0.8rem;
+}
+
+.placard h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.placard .dates {
+  font-family: 'Cormorant Upright', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.4rem;
+}
+
+.placard .epithet {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: 0 auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.placard .hall-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.25rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.placard .hall-link:hover {
+  color: var(--gold-bright);
+  border-color: var(--line-strong);
+}
+
+.divider-ornament {
+  text-align: center;
+  margin: 1.4rem auto;
+  color: var(--gold-dim);
+  font-size: 0.9rem;
+  letter-spacing: 1em;
+  padding-left: 1em;
+}
+
+/* TRANSITION BAND */
+.transition-band {
+  position: relative;
+  z-index: 3;
+  background: var(--darker);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--gold);
+  font-family: 'Cormorant Upright', serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.transition-band .rule {
+  flex: 0 0 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.transition-band .ornament {
+  color: var(--gold-bright);
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+/* CHATBOT SECTION */
+.chatbot-section {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  padding: 4rem 3rem;
+  background: var(--deep-navy);
+  min-height: 70vh;
+}
+
+.chatbot-intro h2 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.chatbot-intro .kicker {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.chatbot-intro p {
+  margin-bottom: 1.1rem;
+  color: var(--text);
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.featured-quote {
+  margin: 1.8rem 0;
+  padding: 1.4rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(184, 144, 64, 0.05);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--cream);
+  line-height: 1.55;
+}
+
+.featured-quote .attrib {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.domain-tags {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  background: rgba(14, 25, 41, 0.5);
+}
+
+.chatbot-embed {
+  background: var(--darker);
+  border: 1px solid var(--line);
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+  background: var(--darker);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pull-quote::before, .pull-quote::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 auto 2.2rem;
+}
+
+.pull-quote::after { margin: 2.2rem auto 0; }
+
+.pull-quote blockquote {
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  line-height: 1.55;
+  color: var(--cream);
+}
+
+.pull-quote blockquote::before {
+  content: "“";
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-style: normal;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* CORPUS STRIP */
+.corpus-strip {
+  position: relative;
+  z-index: 2;
+  background: var(--darker);
+  padding: 3rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.corpus-strip h3 {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.corpus-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  list-style: none;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.corpus-list li {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.88;
+  position: relative;
+}
+
+.corpus-list li::before {
+  content: "✦";
+  color: var(--gold-dim);
+  margin-right: 0.7em;
+  font-style: normal;
+}
+
+.corpus-trust {
+  text-align: center;
+  margin-top: 1.8rem;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  opacity: 0.88;
+}
+
+.corpus-trust .score {
+  color: var(--gold);
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  background: var(--deep-navy);
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+
+footer .col {
+  font-family: 'Cormorant Upright', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+footer .col.left { text-align: left; color: var(--gold); }
+footer .col.center { text-align: center; }
+footer .col.right { text-align: right; font-style: italic; }
+
+footer .col a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s;
+}
+
+footer .col a:hover { color: var(--gold-bright); }
+
+footer .name-line {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-svg-panel {
+    min-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .bio-panel {
+    padding: 2rem 1.5rem;
+  }
+  .chatbot-section {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+  .corpus-strip { padding: 2rem 1.5rem; }
+  .corpus-list { gap: 1rem 2rem; }
+  footer {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  footer .col.left, footer .col.right { text-align: center; }
+  .pull-quote { padding: 3rem 1.5rem; }
+  header.museum-header { padding: 1rem 1.2rem; }
+  .museum-header .left, .museum-header .right { font-size: 0.6rem; letter-spacing: 0.25em; }
+  .transition-band { padding: 1rem; gap: 1rem; font-size: 0.6rem; letter-spacing: 0.3em; }
+  .transition-band .rule { flex-basis: 30px; }
+}
+</style>
+</head>
+<body>
+
+<header class="museum-header">
+  <div class="left">In Conversation With</div>
+  <div class="right">Accession № AA–1744–2026</div>
+</header>
+
+<section class="hero">
+  <div class="hero-svg-panel">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#16243c"/>
+          <stop offset="50%" stop-color="#101c30"/>
+          <stop offset="100%" stop-color="#0a1220"/>
+        </linearGradient>
+        <linearGradient id="clapboardGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#241e14"/>
+          <stop offset="100%" stop-color="#16110c"/>
+        </linearGradient>
+        <linearGradient id="bayGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a2a40"/>
+          <stop offset="100%" stop-color="#0e1929"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stop-color="#B89040" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#B89040" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soften">
+          <feGaussianBlur stdDeviation="0.4"/>
+        </filter>
+      </defs>
+
+      <!-- Background sky -->
+      <rect width="700" height="900" fill="url(#skyGrad)"/>
+
+      <!-- Distant moon glow -->
+      <circle cx="150" cy="130" r="80" fill="url(#moonGlow)"/>
+      <circle cx="150" cy="130" r="14" fill="#B89040" opacity="0.5"/>
+
+      <!-- Penn's Hill horizon line -->
+      <g opacity="0.5" stroke="#2B4070" stroke-width="0.5" fill="#101c30">
+        <path d="M 0 360 Q 60 330 140 340 Q 220 315 300 335 Q 380 320 460 338 Q 540 322 620 340 Q 670 332 700 342 L 700 400 L 0 400 Z"/>
+      </g>
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.6">
+        <line x1="470" y1="318" x2="510" y2="290" stroke="#B89040" stroke-width="0.3" stroke-dasharray="2 2"/>
+        <circle cx="470" cy="318" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="514" y="288" font-size="8" font-style="italic">Penn's Hill — from whose summit</text>
+        <text x="514" y="298" font-size="8" font-style="italic">she watched Charlestown burn,</text>
+        <text x="514" y="308" font-size="8" font-style="italic">17 June 1775</text>
+      </g>
+
+      <!-- Massachusetts Bay band -->
+      <rect x="0" y="395" width="700" height="38" fill="url(#bayGrad)" opacity="0.7"/>
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.35" fill="none">
+        <line x1="40" y1="408" x2="120" y2="408"/>
+        <line x1="180" y1="412" x2="260" y2="412"/>
+        <line x1="310" y1="406" x2="380" y2="406"/>
+        <line x1="440" y1="414" x2="520" y2="414"/>
+        <line x1="560" y1="409" x2="640" y2="409"/>
+        <line x1="80" y1="420" x2="150" y2="420"/>
+        <line x1="290" y1="423" x2="360" y2="423"/>
+        <line x1="500" y1="421" x2="580" y2="421"/>
+      </g>
+
+      <!-- Ground -->
+      <rect x="0" y="430" width="700" height="470" fill="#0a1220"/>
+
+      <!-- Title block top -->
+      <g font-family="Cormorant Upright, serif" fill="#B89040" opacity="0.85">
+        <text x="50" y="48" font-size="11" letter-spacing="5">THE ADAMS FARMSTEAD — NORTH ELEVATION</text>
+        <text x="50" y="64" font-size="9" letter-spacing="3" opacity="0.7" font-style="italic">Foot of Penn's Hill, Braintree, Massachusetts Bay · A.D. MDCCLXXVI</text>
+        <line x1="50" y1="74" x2="500" y2="74" stroke="#B89040" stroke-width="0.4" opacity="0.4"/>
+      </g>
+
+      <!-- Compass rose top right -->
+      <g transform="translate(620 60)" stroke="#B89040" stroke-width="0.5" fill="none" opacity="0.6">
+        <circle r="22"/>
+        <circle r="16"/>
+        <path d="M 0 -22 L 4 0 L 0 22 L -4 0 Z" fill="#B89040" opacity="0.4"/>
+        <path d="M -22 0 L 0 4 L 22 0 L 0 -4 Z" fill="#B89040" opacity="0.2"/>
+        <text x="0" y="-28" text-anchor="middle" font-family="Cormorant Upright" font-size="8" fill="#B89040" opacity="0.9">N</text>
+      </g>
+
+      <!-- Stone walls and lane -->
+      <g stroke="#2B4070" stroke-width="1" fill="#101c30" opacity="0.75">
+        <!-- Coast road / lane -->
+        <polygon points="280,900 420,900 380,560 320,560" fill="#16110c" opacity="0.5"/>
+        <line x1="320" y1="560" x2="280" y2="900" stroke="#7A6020" stroke-width="0.4" opacity="0.5"/>
+        <line x1="380" y1="560" x2="420" y2="900" stroke="#7A6020" stroke-width="0.4" opacity="0.5"/>
+        <!-- Fieldstone wall left -->
+        <g stroke="#7A6020" stroke-width="0.4" fill="#141c2c" opacity="0.8">
+          <ellipse cx="220" cy="640" rx="12" ry="6"/>
+          <ellipse cx="196" cy="644" rx="12" ry="6"/>
+          <ellipse cx="172" cy="650" rx="12" ry="6"/>
+          <ellipse cx="146" cy="658" rx="13" ry="7"/>
+          <ellipse cx="118" cy="668" rx="14" ry="7"/>
+          <ellipse cx="88" cy="680" rx="15" ry="8"/>
+          <ellipse cx="56" cy="694" rx="16" ry="8"/>
+          <ellipse cx="24" cy="710" rx="17" ry="9"/>
+        </g>
+        <!-- Fieldstone wall right -->
+        <g stroke="#7A6020" stroke-width="0.4" fill="#141c2c" opacity="0.8">
+          <ellipse cx="480" cy="640" rx="12" ry="6"/>
+          <ellipse cx="504" cy="644" rx="12" ry="6"/>
+          <ellipse cx="528" cy="650" rx="12" ry="6"/>
+          <ellipse cx="554" cy="658" rx="13" ry="7"/>
+          <ellipse cx="582" cy="668" rx="14" ry="7"/>
+          <ellipse cx="612" cy="680" rx="15" ry="8"/>
+          <ellipse cx="644" cy="694" rx="16" ry="8"/>
+          <ellipse cx="676" cy="710" rx="17" ry="9"/>
+        </g>
+        <!-- Orchard mounds -->
+        <ellipse cx="150" cy="760" rx="55" ry="20"/>
+        <ellipse cx="90" cy="830" rx="70" ry="26"/>
+        <ellipse cx="550" cy="760" rx="55" ry="20"/>
+        <ellipse cx="610" cy="830" rx="70" ry="26"/>
+      </g>
+
+      <!-- Flanking elms -->
+      <g fill="#0a1220" stroke="#2B4070" stroke-width="0.5" opacity="0.85">
+        <ellipse cx="60" cy="490" rx="50" ry="115"/>
+        <line x1="60" y1="585" x2="60" y2="630" stroke="#7A6020" stroke-width="2"/>
+        <ellipse cx="640" cy="490" rx="50" ry="115"/>
+        <line x1="640" y1="585" x2="640" y2="630" stroke="#7A6020" stroke-width="2"/>
+      </g>
+
+      <!-- ===== THE SALTBOX FARMHOUSE — MAIN STRUCTURE ===== -->
+
+      <!-- Foundation of granite -->
+      <rect x="200" y="510" width="300" height="14" fill="#16110c" stroke="#B89040" stroke-width="0.5"/>
+
+      <!-- Main body: clapboard rectangle -->
+      <rect x="200" y="400" width="300" height="110" fill="url(#clapboardGrad)" stroke="#B89040" stroke-width="0.7"/>
+
+      <!-- Clapboard coursing lines -->
+      <g stroke="#B89040" stroke-width="0.2" opacity="0.25">
+        <line x1="200" y1="410" x2="500" y2="410"/>
+        <line x1="200" y1="420" x2="500" y2="420"/>
+        <line x1="200" y1="430" x2="500" y2="430"/>
+        <line x1="200" y1="440" x2="500" y2="440"/>
+        <line x1="200" y1="450" x2="500" y2="450"/>
+        <line x1="200" y1="460" x2="500" y2="460"/>
+        <line x1="200" y1="470" x2="500" y2="470"/>
+        <line x1="200" y1="480" x2="500" y2="480"/>
+        <line x1="200" y1="490" x2="500" y2="490"/>
+        <line x1="200" y1="500" x2="500" y2="500"/>
+      </g>
+
+      <!-- Corner boards -->
+      <g fill="#2a2218" stroke="#B89040" stroke-width="0.4">
+        <rect x="200" y="400" width="7" height="110"/>
+        <rect x="493" y="400" width="7" height="110"/>
+      </g>
+
+      <!-- Saltbox roof: short steep front pitch, long rear slope -->
+      <polygon points="190,400 330,308 510,400" fill="#0a0a08" stroke="#B89040" stroke-width="0.7"/>
+      <line x1="330" y1="308" x2="190" y2="400" stroke="#B89040" stroke-width="0.4" opacity="0.7"/>
+      <!-- Rear lean-to slope suggestion -->
+      <polygon points="190,400 330,308 250,352 150,412" fill="#0f1410" stroke="#B89040" stroke-width="0.4" opacity="0.7"/>
+
+      <!-- Massive central chimney -->
+      <rect x="316" y="270" width="30" height="60" fill="#241e14" stroke="#B89040" stroke-width="0.5"/>
+      <rect x="311" y="264" width="40" height="10" fill="#2a2218" stroke="#B89040" stroke-width="0.5"/>
+      <!-- Hearth smoke -->
+      <g stroke="#B89040" stroke-width="0.4" fill="none" opacity="0.35">
+        <path d="M 331 260 Q 340 248 332 236 Q 324 224 334 210"/>
+        <path d="M 338 258 Q 346 246 340 234"/>
+      </g>
+
+      <!-- ===== FENESTRATION — 12/12 sashes ===== -->
+
+      <!-- Upper (chamber) floor windows: 3 across -->
+      <g>
+        <!-- UW1 -->
+        <rect x="234" y="410" width="24" height="30" fill="#0a1220" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="246" y1="410" x2="246" y2="440" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="234" y1="425" x2="258" y2="425" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="240" y1="410" x2="240" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="252" y1="410" x2="252" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="234" y1="417" x2="258" y2="417" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="234" y1="433" x2="258" y2="433" stroke="#B89040" stroke-width="0.15"/>
+
+        <!-- UW2 (lit — the chamber where she wrote) -->
+        <rect x="338" y="410" width="24" height="30" fill="#3a2c10" stroke="#B89040" stroke-width="0.6"/>
+        <line x1="350" y1="410" x2="350" y2="440" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="338" y1="425" x2="362" y2="425" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="344" y1="410" x2="344" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="356" y1="410" x2="356" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="338" y1="417" x2="362" y2="417" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="338" y1="433" x2="362" y2="433" stroke="#B89040" stroke-width="0.15"/>
+        <rect x="336" y="408" width="28" height="34" fill="none" stroke="#D4AC5C" stroke-width="0.3" opacity="0.5"/>
+
+        <!-- UW3 -->
+        <rect x="442" y="410" width="24" height="30" fill="#0a1220" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="454" y1="410" x2="454" y2="440" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="442" y1="425" x2="466" y2="425" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="448" y1="410" x2="448" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="460" y1="410" x2="460" y2="440" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="442" y1="417" x2="466" y2="417" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="442" y1="433" x2="466" y2="433" stroke="#B89040" stroke-width="0.15"/>
+      </g>
+
+      <!-- Belt line between floors -->
+      <line x1="200" y1="452" x2="500" y2="452" stroke="#B89040" stroke-width="0.6" opacity="0.7"/>
+
+      <!-- Lower floor windows: 2 flanking the door -->
+      <g>
+        <!-- LW1 -->
+        <rect x="232" y="462" width="26" height="38" fill="#0a1220" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="245" y1="462" x2="245" y2="500" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="232" y1="481" x2="258" y2="481" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="238" y1="462" x2="238" y2="500" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="251" y1="462" x2="251" y2="500" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="232" y1="471" x2="258" y2="471" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="232" y1="491" x2="258" y2="491" stroke="#B89040" stroke-width="0.15"/>
+
+        <!-- LW2 -->
+        <rect x="442" y="462" width="26" height="38" fill="#0a1220" stroke="#B89040" stroke-width="0.5"/>
+        <line x1="455" y1="462" x2="455" y2="500" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="442" y1="481" x2="468" y2="481" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="448" y1="462" x2="448" y2="500" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="461" y1="462" x2="461" y2="500" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="442" y1="471" x2="468" y2="471" stroke="#B89040" stroke-width="0.15"/>
+        <line x1="442" y1="491" x2="468" y2="491" stroke="#B89040" stroke-width="0.15"/>
+      </g>
+
+      <!-- CENTER DOORWAY: plank door, plain frame, granite step -->
+      <g>
+        <rect x="330" y="458" width="40" height="52" fill="#160d06" stroke="#B89040" stroke-width="0.5"/>
+        <!-- Transom lights -->
+        <rect x="332" y="460" width="36" height="8" fill="#0a1220" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="341" y1="460" x2="341" y2="468" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="350" y1="460" x2="350" y2="468" stroke="#B89040" stroke-width="0.2"/>
+        <line x1="359" y1="460" x2="359" y2="468" stroke="#B89040" stroke-width="0.2"/>
+        <!-- Door panels -->
+        <line x1="350" y1="470" x2="350" y2="510" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="335" y="474" width="12" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="474" width="12" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="335" y="492" width="12" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <rect x="353" y="492" width="12" height="14" fill="none" stroke="#B89040" stroke-width="0.2"/>
+        <!-- Granite steps -->
+        <rect x="324" y="510" width="52" height="3" fill="#241e14" stroke="#B89040" stroke-width="0.3"/>
+        <rect x="320" y="513" width="60" height="3" fill="#241e14" stroke="#B89040" stroke-width="0.3"/>
+      </g>
+
+      <!-- Cornice line under roof -->
+      <line x1="198" y1="398" x2="502" y2="398" stroke="#B89040" stroke-width="0.5"/>
+      <line x1="200" y1="396" x2="500" y2="396" stroke="#B89040" stroke-width="0.3" opacity="0.6"/>
+
+      <!-- ===== ANNOTATION / DIMENSION LINES ===== -->
+      <g stroke="#B89040" stroke-width="0.3" opacity="0.55" fill="none" font-family="Cormorant Upright" font-size="8">
+        <!-- Width dimension -->
+        <line x1="200" y1="540" x2="200" y2="555"/>
+        <line x1="500" y1="540" x2="500" y2="555"/>
+        <line x1="200" y1="550" x2="500" y2="550"/>
+        <polygon points="200,550 208,548 208,552" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="500,550 492,548 492,552" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="350" y="546" text-anchor="middle" fill="#B89040" opacity="0.85" font-style="italic">42 ft. even</text>
+
+        <!-- Height dimension -->
+        <line x1="545" y1="270" x2="560" y2="270"/>
+        <line x1="545" y1="510" x2="560" y2="510"/>
+        <line x1="553" y1="270" x2="553" y2="510"/>
+        <polygon points="553,270 551,278 555,278" fill="#B89040" opacity="0.7" stroke="none"/>
+        <polygon points="553,510 551,502 555,502" fill="#B89040" opacity="0.7" stroke="none"/>
+        <text x="568" y="392" fill="#B89040" opacity="0.85" font-style="italic" transform="rotate(90 568 392)">story and a half</text>
+
+        <!-- Leader to the lit chamber window -->
+        <line x1="362" y1="410" x2="430" y2="352" stroke-dasharray="2 2"/>
+        <circle cx="430" cy="352" r="1.5" fill="#B89040" stroke="none"/>
+        <text x="436" y="350" fill="#B89040" opacity="0.85" font-style="italic">the chamber where</text>
+        <text x="436" y="360" fill="#B89040" opacity="0.85" font-style="italic">the letters were written,</text>
+        <text x="436" y="370" fill="#B89040" opacity="0.85" font-style="italic">by candle, after the day's work</text>
+      </g>
+
+      <!-- Plaque / cartouche bottom left -->
+      <g transform="translate(40 800)">
+        <rect width="180" height="64" fill="#0a1220" stroke="#B89040" stroke-width="0.5" opacity="0.85"/>
+        <line x1="6" y1="6" x2="174" y2="6" stroke="#B89040" stroke-width="0.3"/>
+        <line x1="6" y1="58" x2="174" y2="58" stroke="#B89040" stroke-width="0.3"/>
+        <text x="90" y="22" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#B89040" letter-spacing="3">THE ADAMS FARM</text>
+        <text x="90" y="36" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8C4A8">Where the Revolution</text>
+        <text x="90" y="47" text-anchor="middle" font-family="Cormorant Upright" font-style="italic" font-size="8" fill="#C8C4A8">was written home</text>
+      </g>
+
+      <!-- Surveyor's signature bottom right -->
+      <g transform="translate(540 830)" font-family="Cormorant Upright" font-style="italic" fill="#B89040" opacity="0.7">
+        <text font-size="8">drawn from life</text>
+        <text y="11" font-size="8">in the County of Suffolk</text>
+        <text y="22" font-size="7" opacity="0.7">by the hand of A.A.</text>
+      </g>
+
+      <!-- Border frame -->
+      <rect x="20" y="20" width="660" height="860" fill="none" stroke="#B89040" stroke-width="0.6" opacity="0.5"/>
+      <rect x="26" y="26" width="648" height="848" fill="none" stroke="#B89040" stroke-width="0.2" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="bio-panel">
+    <div class="bio-inner">
+      <div class="photo-frame">
+        <img src="/assets/portraits/abigail-adams.webp" alt="Abigail Adams" onerror="this.outerHTML='&lt;div class=&quot;fallback&quot;&gt;AA&lt;/div&gt;'">
+      </div>
+      <div class="placard">
+        <div class="label">Museum of Minds</div>
+        <h1>Abigail Adams</h1>
+        <div class="dates">(1744–1818)</div>
+        <div class="divider-ornament">✦ ✦ ✦</div>
+        <p class="epithet">She asked them to remember the ladies — and they forgot</p>
+        <a class="hall-link" href="/halls/republic-room/">← The Republic Room</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="transition-band">
+  <div class="rule"></div>
+  <div>The Gallery</div>
+  <div class="ornament">✦</div>
+  <div>In Her Own Words</div>
+  <div class="rule"></div>
+</div>
+
+<section class="chatbot-section">
+  <div class="chatbot-intro">
+    <div class="kicker">Curator's Note</div>
+    <h2>The voice they would not let into the room.</h2>
+
+    <p>Abigail Adams never held office, never cast a vote, and never sat in a single assembly of the founding era — and she may be its most complete witness. From a farmhouse at the foot of Penn's Hill in Braintree, Massachusetts, she wrote thousands of letters to her husband John Adams in Philadelphia, Paris, London, and finally the presidency. Read together, they form the great primary record of the Revolution as it was actually lived: troop movements and grain prices, smallpox inoculations and constitutional theory, the smoke of Bunker Hill rising within sight of her doorstep while she managed a farm, four children, and the family's survival alone.</p>
+
+    <p>On March 31, 1776, while the Continental Congress moved toward independence, she wrote the letter that history remembers: <em>Remember the Ladies</em>. It was the first explicit demand for women's political representation in American correspondence — a warning that women would "foment a Rebelion" against laws in which they had no voice. John wrote back that he could not but laugh. She put her answer, and her prediction, on the record, and the record has vindicated her. She argued as fiercely for women's education, insisting that a republic resting on the virtue of its citizens could not neglect the minds of half of them, and she condemned slavery decades before it was safe to do so, calling it an iniquitous scheme to fight for freedom while daily robbing others of theirs.</p>
+
+    <p>As First Lady from 1797 to 1801 — the first to live in the unfinished President's House — she was the most politically engaged woman in America: attending Senate debates, feeding John intelligence and counsel he took seriously even when he claimed otherwise. And she raised a son, John Quincy Adams, whom she educated by candlelight and correspondence into a sixth president of the United States. The founding she was locked out of, she shaped anyway — from the household, which she understood to be where revolutions actually happen.</p>
+
+    <div class="featured-quote">
+      I wish most sincerely there was not a slave in the province. It always appeared a most iniquitous scheme to me — to fight ourselves for what we are daily robbing and plundering from those who have as good a right to freedom as we have.
+      <span class="attrib">— To John Adams · September 22, 1774</span>
+    </div>
+
+    <p>She engages these questions directly — the distance between the equality the founders proclaimed and the equality they practiced is where her sharpest conversations happen. Ask her about the letter John laughed at. Ask her what it cost to run the Revolution at the household level. Ask her about Jefferson, whom she loved as a friend and never quite forgave.</p>
+
+    <div class="domain-tags">
+      <span class="tag">Women's Rights</span>
+      <span class="tag">Revolutionary Correspondence</span>
+      <span class="tag">Founding-Era Politics</span>
+      <span class="tag">Women's Education</span>
+      <span class="tag">Slavery and Liberty</span>
+      <span class="tag">Federalist Thought</span>
+      <span class="tag">The First Ladyship</span>
+      <span class="tag">Domestic Economy</span>
+    </div>
+  </div>
+
+  <div class="chatbot-embed" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/abigail-adams/widget/abigail-adams-widget.css">
+      <script src="https://museumofminds.com/abigail-adams/widget/abigail-adams-widget.js"
+              data-api-url="https://museum-api-production-8ce6.up.railway.app"
+              data-persona-id="abigail-adams"></script>
+    </div>
+</section>
+
+<section class="pull-quote">
+  <blockquote>
+    Remember the Ladies, and be more generous and favourable to them than your ancestors. Do not put such unlimited power into the hands of the Husbands. Remember all men would be tyrants if they could.”
+  </blockquote>
+  <cite>Letter to John Adams · Braintree · March 31, 1776</cite>
+</section>
+
+<section class="corpus-strip">
+  <h3>Drawn From the Corpus</h3>
+  <ul class="corpus-list">
+    <li>Letters of Mrs. Adams, Wife of John Adams (1840)</li>
+    <li>Familiar Letters of John Adams and His Wife Abigail Adams, During the Revolution (1876)</li>
+    <li>The Adams–Jefferson Correspondence (1785–1817)</li>
+    <li>The "Remember the Ladies" Letter (March 31, 1776)</li>
+    <li>New Letters of Abigail Adams, 1788–1801</li>
+  </ul>
+  <div class="corpus-trust">Trust Score <span class="score">100</span> · Primary Source · Near-Complete Coverage · 1,947 passages across 5 primary works</div>
+</section>
+
+<footer>
+  <div class="col left">
+    <div class="name-line">Abigail Adams</div>
+    <div>(1744–1818) · Braintree, Massachusetts</div>
+  </div>
+  <div class="col center">
+    The Museum of Minds<br>
+    On display in <a href="/halls/republic-room/">The Republic Room</a>
+  </div>
+  <div class="col right">
+    Powered by Her Own Words
+  </div>
+</footer>
+
+</body>
+</html>
