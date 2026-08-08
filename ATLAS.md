@@ -10,14 +10,16 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 80 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-07-07 |
+| **Last Active** | 2026-08-08 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
 
-**Museum fully operational with 80 persona pages (2026-07-07).** Sprint 3 batch shipped: Abigail Adams, Christopher Gadsden, John Rutledge, Roger Sherman (Republic Room, now 26 cards) and the Articles of Confederation (Founding Documents hall, now 4 document personas) — full pages with hand-drafted hero SVGs, self-hosted WebP portraits, widgets on the multi-tenant API, ~15k new Pinecone vectors, all five chatbots verified grounded in production. Sherlock chat repaired: its dedicated Railway service had been silently deleted; page repointed to the multi-tenant API. Full platform audit run same session — PLATFORM_STATUS.md roster/hall counts corrected against reality.
+**William Moultrie unpublished 2026-08-08 — 79 live persona pages, Republic Room now 25 cards.** His page, widget, and portrait were archived to `/home/wner/museum-archive/william-moultrie-2026-08-07/` (with RESTORE.md) and removed from the site along with every inbound reference. He remains registered on museum-api and his Pinecone vectors are intact, so republication is a file-restore with no re-ingest.
+
+**Museum otherwise fully operational (as of 2026-07-07).** Sprint 3 batch shipped: Abigail Adams, Christopher Gadsden, John Rutledge, Roger Sherman (Republic Room, now 26 cards) and the Articles of Confederation (Founding Documents hall, now 4 document personas) — full pages with hand-drafted hero SVGs, self-hosted WebP portraits, widgets on the multi-tenant API, ~15k new Pinecone vectors, all five chatbots verified grounded in production. Sherlock chat repaired: its dedicated Railway service had been silently deleted; page repointed to the multi-tenant API. Full platform audit run same session — PLATFORM_STATUS.md roster/hall counts corrected against reality.
 
 ## Next Action
 
@@ -37,6 +39,16 @@ Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision)
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-08-08
+
+- **Archived and unpublished the William Moultrie persona page.** Archive at `/home/wner/museum-archive/william-moultrie-2026-08-07/` — 22 files, 48 MB, all sha256-verified: page + widget JS/CSS + portrait, the inbound-reference snippets, the full `personas/william-moultrie/` source corpus, and a `RESTORE.md` with republication steps.
+- Verified fidelity before removing: the live-served `index.html`, widget JS, and widget CSS were fetched from museumofminds.com and diffed against the repo copies — byte-identical.
+- Takedown (commit `4a5a0cd`) removed the page dir, the portrait, the republic-room card + its `.card-wm` rule, the homepage figure chip, two FEATURES.md rows, and three `educator/alignment/` curriculum rows that had named him as a chattable figure. Live-verified: page 404, portrait 404, zero references on the homepage, republic-room, and educator pages.
+- **Decision:** unpublish the page only, leaving the persona registered on museum-api with its ~39 Pinecone vectors intact. Rationale — republication then costs nothing but a file restore; deregistering would have forced a paid re-ingest to bring him back.
+- **Left deliberately:** dead `.card-moultrie` CSS rules in counting-house, trailblazers, press-room, and observatory. They are unused copy-paste boilerplate in halls he was never in, unrelated to this takedown.
+- **Left for review:** two educator-alignment rows now read "Chat with Hamilton and Washington on Revolution" and "Chat with Jefferson and Hamilton on SC's role in independence"; a third dropped "(Moultrie)" as the colonial-SC example. Gadsden or Rutledge would be the natural SC substitutes, but that is an editorial call, so his name was only removed, not replaced.
+- Note: `PLATFORM_STATUS.md` still lists him — accurate for the backend (he is still a registered persona), but its hall roster and page counts are now stale. Re-run `python execution/platform_snapshot.py` to refresh.
 
 ### 2026-07-07 — Platform audit + Sprint 3 completion + Sherlock fix
 
