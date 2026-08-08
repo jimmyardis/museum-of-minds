@@ -26,7 +26,7 @@
 ### Republic Room (`/halls/republic-room/`)
 Portrait grid of 8 figures, each linking to their persona page:
 - Alexander Hamilton · Thomas Jefferson · James Madison · George Washington
-- Abraham Lincoln · John Taylor of Caroline · Thomas Paine · William Moultrie
+- Abraham Lincoln · John Taylor of Caroline · Thomas Paine
 
 ### Observatory (`/halls/observatory/`)
 Portrait grid of 7 figures:
@@ -63,7 +63,6 @@ Portrait grid of 4 figures:
 | Abraham Lincoln | republic-room | ✓ | Adam (pNInz6obpgDQGcFmaJgB) | ✓ | ✓ |
 | John Taylor of Caroline | republic-room | ✓ | Arnold (VR6AewLTigWG4xSOukaG) | ✓ | ✓ |
 | Thomas Paine | republic-room | ✓ | Bill (pqHfZKP75CvOlQylNhV4) | ✓ | ✓ |
-| William Moultrie | republic-room | ✓ | Bill (pqHfZKP75CvOlQylNhV4) | ✓ | ✓ |
 | Albert Einstein | observatory | ✓ | TBD | ✗ | ✓ |
 | Charles Darwin | observatory | ✓ | TBD | ✗ | ✓ |
 | Isaac Newton | observatory | ✓ | TBD | ✗ | ✓ |
