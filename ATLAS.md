@@ -10,12 +10,14 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 80 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-08-08 |
+| **Last Active** | 2026-08-21 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
+
+**Milton Friedman build held 2026-08-21 on a copyright finding — no files created, nothing shipped.** He is the first Counting House candidate whose entire body of work is in copyright, so he cannot meet the platform's "Powered by His Own Words" standard. See the session log for the full source audit. Roster unchanged: 80 live persona pages.
 
 **William Moultrie unpublished 2026-08-08 — 79 live persona pages, Republic Room now 25 cards.** His page, widget, and portrait were archived to `/home/wner/museum-archive/william-moultrie-2026-08-07/` (with RESTORE.md) and removed from the site along with every inbound reference. He remains registered on museum-api and his Pinecone vectors are intact, so republication is a file-restore with no re-ingest.
 
@@ -23,7 +25,7 @@
 
 ## Next Action
 
-Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
+Pick the next persona from a candidate whose primary works are public domain (pre-1930 publication) — the Friedman hold showed the pipeline has no path for in-copyright figures. Otherwise resume feature work: Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
 
 ## Blockers
 
@@ -32,6 +34,7 @@ Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision)
 
 ## Open Questions
 
+- **Does the museum want a policy for in-copyright figures at all?** Friedman, Keynes-era successors, and most 20th-century thinkers are blocked by the same wall. Options are a "tradition corpus + authored dossier" tier (visibly different trust label), licensed text, or a hard pre-1930 cutoff. Unresolved — this gates every modern persona, not just Friedman.
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
 - Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
@@ -39,6 +42,20 @@ Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision)
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-08-21 — Milton Friedman create cycle: HELD (no build)
+
+- **Requested**: full create cycle on Milton Friedman. **Outcome**: stopped before Stage 1 by user decision. No `personas/milton-friedman/` dir, no page, no vectors, no deploy — nothing to roll back.
+- **Blocking finding — the corpus does not exist in the public domain.** Friedman (1912–2006) is the first Counting House candidate with zero public-domain primary works. Verified directly against the Archive.org advancedsearch/metadata APIs and Gutenberg search (not from memory):
+  - *Capitalism and Freedom*, *A Monetary History of the United States*, *Essays in Positive Economics*, *A Theory of the Consumption Function*, *The Great Contraction*, *Monetary Trends* — all on Archive.org with `access-restricted-item: true` (DRM lending only, no extractable text).
+  - *Free to Choose* (1980 PBS, all 10 episodes) and the "Milton Friedman Speaks" lectures are present as **video with no subtitle/transcript files** — nothing for the pipeline to harvest.
+  - Gutenberg has no Friedman texts at all.
+  - A handful of unrestricted uploads of *Capitalism and Freedom* exist — **pirated copies of an in-copyright book; deliberately excluded.**
+  - The only legitimately downloadable Friedman primary text is *Roofs or Ceilings?* (Friedman & Stigler, FEE 1946, identifier `1946-roofs-or-ceilings`, 39 KB, explicit reprint permission, heavy OCR noise) — roughly 25 chunks against the 200-vector minimum in PERSONA.md Step 3.
+- **Options put to the user**: (1) Hayek-precedent tradition corpus (Fisher, Hume, Marshall, Thornton, Mises) + a hand-authored context dossier; (2) tradition corpus alone; (3) hold. **Decision: hold.**
+- **Rationale**: a Nobel monetarist who cannot quote himself fails the museum's "Powered by His Own Words" premise. The Hayek precedent works because Hayek's *tradition* is his argument; Friedman's contribution is specific empirical claims (the k-percent rule, the 1929–33 monetary contraction thesis, the natural rate) that a 1911 quantity-theory corpus would misrepresent rather than approximate. An empty slot beats a persona that sounds like a generic monetarist wearing his name.
+- **Not attempted**: no config was authored, so nothing needs deleting if this is revisited. Reviving him requires licensed text or a new trust tier — see Open Questions.
+- Side effect: ran `execution/platform_snapshot.py` at session start (per the 2026-08-08 note that it was stale). It corrected the Moultrie drift — republic-room 26→25 cards, 81→80 pages — and now flags `william-moultrie` as "on the API but has no site page," which is the intended post-unpublish state. `PLATFORM_STATUS.md` is modified and uncommitted in the jane-jacobs-bot repo.
 
 ### 2026-08-08
 
