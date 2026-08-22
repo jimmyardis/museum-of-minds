@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Press Room — Museum of Minds</title>
+  <title>The Engine Room — Museum of Minds</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cormorant+Upright:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     
@@ -63,16 +63,16 @@
     .portrait-card:hover .nameplate-enter { opacity: 1; transform: translateX(0); color: var(--brass); }
     .nameplate-enter::after { content: ' →'; }
     /* Card colors */
+    .card-jacobs   { --card-wash: #F5E8B0; --card-accent: #C8A830; --card-plate: #1A1A14; --card-glow: rgba(200,168,48,0.10); }
     .card-jung     { --card-wash: #8B2020; --card-accent: #C89040; --card-plate: #1E1010; --card-glow: rgba(200,144,64,0.10); }
     .card-jefferson{ --card-wash: #608040; --card-accent: #8BAA60; --card-plate: #141A10; --card-glow: rgba(96,128,64,0.10); }
     .card-hamilton { --card-wash: #2040A0; --card-accent: #B8C5D0; --card-plate: #0E1520; --card-glow: rgba(32,64,160,0.12); }
+    .card-mencken  { --card-wash: #204030; --card-accent: #B89040; --card-plate: #101A14; --card-glow: rgba(32,64,48,0.12); }
     .card-taylor   { --card-wash: #802018; --card-accent: #A85038; --card-plate: #180E08; --card-glow: rgba(128,32,24,0.12); }
-    .card-smith    { --card-wash: #1A4040; --card-accent: #C88820; --card-plate: #101A1A; --card-glow: rgba(26,64,64,0.12); }
     .card-moultrie { --card-wash: #002868; --card-accent: #B89040; --card-plate: #000E20; --card-glow: rgba(0,40,104,0.20); }
     .card-washington{--card-wash: #1A2E4A; --card-accent: #B89040; --card-plate: #0E1A2E; --card-glow: rgba(26,46,74,0.20); }
     .card-paine    { --card-wash: #6B1A1A; --card-accent: #C49A3C; --card-plate: #1F1B18; --card-glow: rgba(107,26,26,0.15); }
     .card-keller   { --card-wash: #4A3728; --card-accent: #C17F3A; --card-plate: #2C1F14; --card-glow: rgba(74,55,40,0.15); }
-    .card-marx     { --card-wash: #8B1A1A; --card-accent: #C0392B; --card-plate: #1C1C1C; --card-glow: rgba(139,26,26,0.15); }
     .card-einstein { --card-wash: #1B3A5C; --card-accent: #C4922A; --card-plate: #1A1F2E; --card-glow: rgba(27,58,92,0.15); }
     .card-earhart  { --card-wash: #2B4C7E; --card-accent: #C9873A; --card-plate: #1C2B3A; --card-glow: rgba(43,76,126,0.15); }
 
@@ -220,44 +220,17 @@
     }
 
     /* Hall-specific accent color */
-    html { --hall-accent: #C8A050; --hall-glow: rgba(200,160,80,0.07); }
+    html { --hall-accent: #7AA898; --hall-glow: rgba(122,168,152,0.09); }
 
     @media (max-width: 760px) {
       .back-link { top: 1.2rem; left: 1.5rem; }
       .hall-hero { padding: 4rem 1.5rem 3rem; min-height: 44vh; }
     }
-  
-    .card-hm { --card-wash: #8B1A1A; --card-accent: #5C1A1A; --card-plate: #1A1612; --card-glow: rgba(139,26,26,0.15); }
-  
-    .card-jj { --card-wash: #b8554a; --card-accent: #C49A3C; --card-plate: #2a2a2a; --card-glow: rgba(184,85,74,0.15); }
-  
+    .card-babbage   { --card-wash: #10101C; --card-accent: #B89040; --card-plate: #080814; --card-glow: rgba(16,16,28,0.18); }
     .card-turing { --card-wash: #1B3A5C; --card-accent: #2E7D9A; --card-plate: #1A1F2E; --card-glow: rgba(27,58,92,0.15); }
-  
-    .card-turing { --card-wash: #1B3A5C; --card-accent: #2E7D9A; --card-plate: #1A1F2E; --card-glow: rgba(27,58,92,0.15); }
-  
-    .card-darwin { --card-wash: #3B5E45; --card-accent: #8B6914; --card-plate: #1E2A1F; --card-glow: rgba(59,94,69,0.15); }
-  
-    .card-du { --card-wash: #1C3A5E; --card-accent: #C4882A; --card-plate: #1A1A2E; --card-glow: rgba(28,58,94,0.15); }
-  
-    .card-douglass { --card-wash: #2C1810; --card-accent: #8B1A1A; --card-plate: #1A1008; --card-glow: rgba(44,24,16,0.15); }
-  
-    .card-orwell { --card-wash: #2C3E2D; --card-accent: #8B1A1A; --card-plate: #1A1F1B; --card-glow: rgba(44,62,45,0.15); }
-  
-    .card-tubman { --card-wash: #2C4A2E; --card-accent: #B5732A; --card-plate: #1A2B1B; --card-glow: rgba(44,74,46,0.15); }
-  
-    .card-heisenberg { --card-wash: #1B2A4A; --card-accent: #5B8DB8; --card-plate: #0F1A2E; --card-glow: rgba(27,42,74,0.15); }
-  
-    .card-newton { --card-wash: #1B2A3B; --card-accent: #C8922A; --card-plate: #0F1A24; --card-glow: rgba(27,42,59,0.15); }
-  
-    .card-baldwin { --card-wash: #1C1A2E; --card-accent: #C49A3C; --card-plate: #1A1A1A; --card-glow: rgba(28,26,46,0.15); }
-    .card-olmsted { --card-wash: #2D5016; --card-accent: #7A9B3A; --card-plate: #1A2A12; --card-glow: rgba(45,80,22,0.15); }
-    .card-twain { --card-wash: #2A1A0A; --card-accent: #C07820; --card-plate: #1A1008; --card-glow: rgba(42,26,10,0.18); }
-    .card-emerson { --card-wash: #182A1A; --card-accent: #B89040; --card-plate: #0E1A10; --card-glow: rgba(24,42,26,0.18); }
-    .card-thoreau { --card-wash: #142430; --card-accent: #B89040; --card-plate: #0A1A20; --card-glow: rgba(20,36,48,0.18); }
-    .card-wells  { --card-wash: #1E1010; --card-accent: #B89040; --card-plate: #100808; --card-glow: rgba(30,16,16,0.18); }
-    .card-stowe  { --card-wash: #1A0E0A; --card-accent: #B89040; --card-plate: #100806; --card-glow: rgba(26,14,10,0.18); }
-
-    .card-of { --card-wash: #1A2E4A; --card-accent: #B89040; --card-plate: #1A1612; --card-glow: rgba(26,46,74,0.15); }
+    .card-shannon { --card-wash: #1B2A3B; --card-accent: #C49A3C; --card-plate: #1A1A1A; --card-glow: rgba(27,42,59,0.15); }
+    .card-johnson { --card-wash: #1B2A4A; --card-accent: #C49A3C; --card-plate: #1A1A2E; --card-glow: rgba(27,42,74,0.15); }
+    .card-ada { --card-wash: #2C1F5E; --card-accent: #A88CC8; --card-plate: #171034; --card-glow: rgba(44,31,94,0.20); }
   </style>
 </head>
 <body>
@@ -265,12 +238,12 @@
   <section class="hall-hero">
     <a href="/" class="back-link">← Museum of Minds</a>
     <div class="hall-hero-content">
-      <span class="hall-num">Hall IV</span>
-      <h1 class="hall-title">The Press Room</h1>
-      <span class="hall-era">1803 — 2006</span>
+      <span class="hall-num">Hall VII</span>
+      <h1 class="hall-title">The Engine Room</h1>
+      <span class="hall-era">1791 — 2020</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">A satirist who skewered democracy from the right. An urbanist who fought city hall from the sidewalk. Their weapons were sentences. Their targets were the comfortable, the credulous, and the expert who had never walked the block they were redesigning.</p>
-      <span class="hall-figure-count">Figures in Residence</span>
+      <p class="hall-desc">A machine that was never built. A footnote to it that became the first program. A question — can machines think? — asked by a man his own government destroyed for answering it. A theory that turned meaning into bits. And the mathematician NASA asked to check the computer's arithmetic before it would trust a man's life to it. One idea, handed forward five times.</p>
+      <span class="hall-figure-count">5 Figures in Residence</span>
     </div>
   </section>
 
@@ -278,196 +251,103 @@
     <div class="gallery-header">
       <span class="gallery-instruction">Select any portrait to enter that figure's room and begin a conversation &nbsp;↘</span>
     </div>
-    <div class="collection-note">
-      <span class="room-tag" style="display:inline-block;margin:0">Collection Growing</span>
-      <p>Additional voices are being prepared for this hall. Each new figure requires months of corpus ingestion and persona research before joining the collection.</p>
-    </div>
-
     <div class="portrait-grid">
-      
-      <a href="https://museumofminds.com/hl-mencken/" class="portrait-card card-hm">
+
+
+      <a href="https://museumofminds.com/charles-babbage/" class="portrait-card card-babbage">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/charles-babbage.webp" alt="Charles Babbage" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Charles Babbage</div>
+            <div class="nameplate-dates">1791 — 1871</div>
+            <div class="nameplate-desc">He designed a computer 150 years before one was built. Ada Lovelace understood his Analytical Engine better than he did in some ways. He never finished it. The computers you're reading this on trace to his designs.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+      <a href="https://museumofminds.com/ada-lovelace/" class="portrait-card card-ada">
         <div class="card-light"></div>
         <div class="card-frame">
           <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/hl-mencken.webp"
-                 alt="H.L. Mencken"
+            <img loading="lazy" src="/assets/portraits/ada-lovelace.webp"
+                 alt="Ada Lovelace"
                  onerror="this.style.display='none'" />
           </div>
           <div class="card-nameplate">
             <div class="nameplate-accent"></div>
-            <div class="nameplate-name">H.L. Mencken</div>
-            <div class="nameplate-dates">1880 — 1956</div>
-            <div class="nameplate-desc">H.L. Mencken (1880–1956) — reporter and editorial writer for the Baltimore Sun for four decades, co-editor of The Smart Set, founder and editor of The American Mercury, author of The American Language…</div>
+            <div class="nameplate-name">Ada Lovelace</div>
+            <div class="nameplate-dates">1815 — 1852</div>
+            <div class="nameplate-desc">The mathematician who translated Babbage&#39;s Analytical Engine and, in her annotations, described what a machine could do that its inventor had not imagined — writing the first algorithm a century before the first computer.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
       </a>
 
       
-      <a href="https://museumofminds.com/jane-jacobs/" class="portrait-card card-jj">
+      <a href="https://museumofminds.com/alan-turing/" class="portrait-card card-turing">
         <div class="card-light"></div>
         <div class="card-frame">
           <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/jane-jacobs.webp"
-                 alt="Jane Jacobs"
+            <img loading="lazy" src="/assets/portraits/alan-turing.webp"
+                 alt="Alan Turing"
                  onerror="this.style.display='none'" />
           </div>
           <div class="card-nameplate">
             <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Jane Jacobs</div>
-            <div class="nameplate-dates">1916 — 2006</div>
-            <div class="nameplate-desc">The legendary urbanist and author of The Death and Life of Great American Cities</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-      
-      <a href="https://museumofminds.com/george-orwell/" class="portrait-card card-orwell">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/george-orwell.webp"
-                 alt="George Orwell"
-                 onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">George Orwell</div>
-            <div class="nameplate-dates">1903 — 1950</div>
-            <div class="nameplate-desc">George Orwell was a British journalist, essayist, and novelist who made truth-telling under political pressure into the defining act of his life, producing work that cut through the propaganda of both…</div>
+            <div class="nameplate-name">Alan Turing</div>
+            <div class="nameplate-dates">1912 — 1954</div>
+            <div class="nameplate-desc">Alan Turing was the British mathematician and logician who cracked the Enigma cipher, shortened World War II by years, and laid the theoretical foundations for the computer and artificial intelligence…</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
       </a>
 
       
-      <a href="https://museumofminds.com/james-baldwin/" class="portrait-card card-baldwin">
+      <a href="https://museumofminds.com/claude-shannon/" class="portrait-card card-shannon">
         <div class="card-light"></div>
         <div class="card-frame">
           <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/james-baldwin.webp"
-                 alt="James Baldwin"
+            <img loading="lazy" src="/assets/portraits/claude-shannon.webp"
+                 alt="Claude Shannon"
                  onerror="this.style.display='none'" />
           </div>
           <div class="card-nameplate">
             <div class="nameplate-accent"></div>
-            <div class="nameplate-name">James Baldwin</div>
-            <div class="nameplate-dates">1924–1987</div>
-            <div class="nameplate-desc">James Baldwin was a novelist, essayist, and playwright who wrote from the intersection of race, sexuality, and national identity with a precision that still feels like an accusation and a love letter …</div>
+            <div class="nameplate-name">Claude Shannon</div>
+            <div class="nameplate-dates">1916–2001</div>
+            <div class="nameplate-desc">Claude Shannon invented the mathematical theory of communication in 1948, single-handedly founding the field of information theory and making the digital age possible. A Bell Labs polymath who built c…</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
       </a>
 
-
-      <a href="https://museumofminds.com/frederick-law-olmsted/" class="portrait-card card-olmsted">
+      
+      <a href="https://museumofminds.com/katherine-johnson/" class="portrait-card card-johnson">
         <div class="card-light"></div>
         <div class="card-frame">
           <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/frederick-law-olmsted.webp"
-                 alt="Frederick Law Olmsted"
+            <img loading="lazy" src="/assets/portraits/katherine-johnson.webp"
+                 alt="Katherine Johnson"
                  onerror="this.style.display='none'" />
           </div>
           <div class="card-nameplate">
             <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Frederick Law Olmsted</div>
-            <div class="nameplate-dates">1822 — 1903</div>
-            <div class="nameplate-desc">The father of American landscape architecture and designer of Central Park — who believed that shared public green space was a democratic necessity, not a luxury.</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://museumofminds.com/ralph-waldo-emerson/" class="portrait-card card-emerson">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/ralph-waldo-emerson.webp"
-                 alt="Ralph Waldo Emerson"
-                 onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Ralph Waldo Emerson</div>
-            <div class="nameplate-dates">1803 — 1882</div>
-            <div class="nameplate-desc">The philosopher who quit the pulpit to preach a harder sermon: trust yourself, even when every institution tells you not to. He gave Thoreau his first journal and invented American self-reliance. He is more interesting than his slogans suggest.</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://museumofminds.com/henry-david-thoreau/" class="portrait-card card-thoreau">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/henry-david-thoreau.webp"
-                 alt="Henry David Thoreau"
-                 onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Henry David Thoreau</div>
-            <div class="nameplate-dates">1817 — 1862</div>
-            <div class="nameplate-desc">He built a cabin at Walden Pond, lived simply for two years, refused to pay his poll tax, spent a night in jail, and wrote the books that became the theory of the good life and the foundation of nonviolent resistance. He was also, by his own measure, impatient with nearly everything.</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://museumofminds.com/ida-b-wells/" class="portrait-card card-wells">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/ida-b-wells.webp"
-                 alt="Ida B. Wells"
-                 onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Ida B. Wells</div>
-            <div class="nameplate-dates">1862 — 1931</div>
-            <div class="nameplate-desc">She investigated every lynching she could document, compiled the statistics, and proved the stated justifications were false. Then she published the evidence. Her newspaper was destroyed and she was driven from Memphis. She kept writing.</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://museumofminds.com/mark-twain/" class="portrait-card card-twain">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/mark-twain.webp"
-                 alt="Mark Twain"
-                 onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Mark Twain</div>
-            <div class="nameplate-dates">1835 — 1910</div>
-            <div class="nameplate-desc">Riverboat pilot, prospector, satirist, and America's most dangerous humorist. He turned Huck Finn's moral crisis into the most important sentence in American literature. He spent his last years writing things too dark to publish. He's ready now.</div>
-            <span class="nameplate-enter">Enter Room</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://museumofminds.com/harriet-beecher-stowe/" class="portrait-card card-stowe">
-        <div class="card-light"></div>
-        <div class="card-frame">
-          <div class="card-image">
-            <img loading="lazy" src="/assets/portraits/harriet-beecher-stowe.webp"
-                 alt="Harriet Beecher Stowe" onerror="this.style.display='none'" />
-          </div>
-          <div class="card-nameplate">
-            <div class="nameplate-accent"></div>
-            <div class="nameplate-name">Harriet Beecher Stowe</div>
-            <div class="nameplate-dates">1811 — 1896</div>
-            <div class="nameplate-desc">She wrote the novel Lincoln reportedly called the book that started the Civil War. Uncle Tom's Cabin sold 300,000 copies in its first year. She is honest about what it got wrong. She believed narrative had a power that argument alone could not match.</div>
+            <div class="nameplate-name">Katherine Johnson</div>
+            <div class="nameplate-dates">1918–2020</div>
+            <div class="nameplate-desc">Katherine Johnson was a mathematician at NACA and NASA whose orbital mechanics calculations were so trusted that John Glenn refused to launch until she personally verified the computer's numbers. Work…</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
       </a>
 
       <!-- PORTRAIT_CARDS_END -->
+    </div>
+
+    <div class="collection-note">
+      <span class="room-tag" style="display:inline-block;margin:0">Collection Growing</span>
+      <p>Additional voices are being prepared for this hall. Each new figure requires months of corpus ingestion and persona research before joining the collection.</p>
     </div>
   </section>
 
@@ -476,12 +356,6 @@
     <span class="footer-center"><a href="/" style="color:inherit;text-decoration:none">← Return to the Museum</a></span>
     <span class="footer-right">museumofminds.com</span>
   </footer>
-
-  <script>
-    const n = document.querySelectorAll('.portrait-card').length;
-    const el = document.querySelector('.hall-figure-count');
-    if (el && n > 0) el.textContent = n + ' Figures in Residence';
-  </script>
 
 </body>
 </html>

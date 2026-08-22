@@ -298,6 +298,10 @@
     .door-observatory { --df:#2A4060; --da:#C07848; --di:rgba(80,100,140,0.2); --da-dim:rgba(192,120,72,0.28); --dg:rgba(192,120,72,0.18); --dh:rgba(42,64,96,0.5); --dw:#1B3A5C; }
     .door-press       { --df:#3C3022; --da:#C8A050; --di:rgba(150,120,40,0.18); --da-dim:rgba(200,160,80,0.28); --dg:rgba(200,160,80,0.15); --dh:rgba(60,48,34,0.5); --dw:#204030; }
     .door-trailblazers{ --df:#2A4258; --da:#8AB8D0; --di:rgba(80,120,160,0.2); --da-dim:rgba(138,184,208,0.28); --dg:rgba(138,184,208,0.18); --dh:rgba(42,66,88,0.5); --dw:#2B4C7E; }
+    /* The Archive holds one door — keep it centred rather than left-stranded */
+    #archive .halls-grid { grid-template-columns: minmax(0, 273px); justify-content: center; }
+    .door-salon       { --df:#3A2A4A; --da:#A88CC8; --di:rgba(140,110,180,0.20); --da-dim:rgba(168,140,200,0.28); --dg:rgba(168,140,200,0.18); --dh:rgba(58,42,74,0.5); --dw:#2C1F3E; }
+    .door-engine      { --df:#24423C; --da:#7AA898; --di:rgba(90,150,130,0.20); --da-dim:rgba(122,168,152,0.28); --dg:rgba(122,168,152,0.18); --dh:rgba(36,66,60,0.5); --dw:#16302A; }
     .door-documents   { --df:#6B5530; --da:#C8A050; --di:rgba(160,130,60,0.22); --da-dim:rgba(200,160,80,0.3); --dg:rgba(200,160,80,0.18); --dh:rgba(107,85,48,0.55); --dw:#3D2B0E; }
 
     /* ── ARENA ── */
@@ -407,7 +411,7 @@
       <span class="room-tag">The Collection</span>
       <h2>The Halls of History</h2>
       <p class="halls-intro">
-        The collection is organized into six halls, each gathering figures by era,
+        The collection is organized into seven halls, each gathering figures by era,
         discipline, and disposition. Choose a hall to enter — every portrait inside
         is a door into a world built entirely from their own words.
       </p>
@@ -431,9 +435,9 @@
             <span class="door-num">Hall I</span>
             <h3 class="door-name">The Republic<br>Room</h3>
             <div class="door-rule"></div>
-            <p class="door-era">1743 — 1826</p>
+            <p class="door-era">1706 — 1945</p>
             <p class="door-tagline">The architects of the American experiment — debated in fire.</p>
-            <span class="door-count">17 Figures</span>
+            <span class="door-count">20 Figures</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
@@ -452,9 +456,9 @@
             <span class="door-num">Hall II</span>
             <h3 class="door-name">The Counting<br>House</h3>
             <div class="door-rule"></div>
-            <p class="door-era">1723 — 1883</p>
+            <p class="door-era">1723 — 1992</p>
             <p class="door-tagline">On capital, labor, and what happens when wealth goes unquestioned.</p>
-            <span class="door-count">4 Figures</span>
+            <span class="door-count">9 Figures</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
@@ -473,9 +477,9 @@
             <span class="door-num">Hall III</span>
             <h3 class="door-name">The<br>Observatory</h3>
             <div class="door-rule"></div>
-            <p class="door-era">1875 — 1961</p>
+            <p class="door-era">1564 — 2019</p>
             <p class="door-tagline">Those who rewrote the architecture of mind and matter.</p>
-            <span class="door-count">11 Figures</span>
+            <span class="door-count">14 Figures</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
@@ -494,9 +498,9 @@
             <span class="door-num">Hall IV</span>
             <h3 class="door-name">The Press<br>Room</h3>
             <div class="door-rule"></div>
-            <p class="door-era">1880 — 2006</p>
+            <p class="door-era">1803 — 2006</p>
             <p class="door-tagline">Those who wrote when writing still had the power to disturb the peace.</p>
-            <span class="door-count">5 Figures</span>
+            <span class="door-count">10 Figures</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
@@ -515,15 +519,75 @@
             <span class="door-num">Hall V</span>
             <h3 class="door-name">The Trailblazers'<br>Wing</h3>
             <div class="door-rule"></div>
-            <p class="door-era">1880 — 1968</p>
+            <p class="door-era">1759 — 1968</p>
             <p class="door-tagline">First through doors that hadn't been opened yet.</p>
-            <span class="door-count">4 Figures</span>
+            <span class="door-count">11 Figures</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
       </a>
 
-      <!-- Hall VI: Founding Documents -->
+      <!-- Hall VI: The Salon — Voltaire -->
+      <a href="/halls/salon/" class="portal-link">
+        <div class="portal-door door-salon">
+          <img class="door-portrait"
+               src="/assets/portraits/voltaire.webp"
+               alt="Voltaire"
+               onerror="this.style.display='none'" />
+          <div class="door-wash"></div>
+          <div class="door-frame"></div>
+          <div class="door-inner">
+            <span class="door-num">Hall VI</span>
+            <h3 class="door-name">The<br>Salon</h3>
+            <div class="door-rule"></div>
+            <p class="door-era">1596 — 1797</p>
+            <p class="door-tagline">The Enlightenment argued out what a person is owed — and disagreed.</p>
+            <span class="door-count">6 Figures</span>
+            <span class="door-cta">Enter Hall</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Hall VII: The Engine Room — Ada Lovelace -->
+      <a href="/halls/engine-room/" class="portal-link">
+        <div class="portal-door door-engine">
+          <img class="door-portrait"
+               src="/assets/portraits/ada-lovelace.webp"
+               alt="Ada Lovelace"
+               onerror="this.style.display='none'" />
+          <div class="door-wash"></div>
+          <div class="door-frame"></div>
+          <div class="door-inner">
+            <span class="door-num">Hall VII</span>
+            <h3 class="door-name">The Engine<br>Room</h3>
+            <div class="door-rule"></div>
+            <p class="door-era">1791 — 2020</p>
+            <p class="door-tagline">From an engine that was never built to the arithmetic that reached the moon.</p>
+            <span class="door-count">5 Figures</span>
+            <span class="door-cta">Enter Hall</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ══ THE ARCHIVE ══ -->
+  <section class="halls-section" id="archive" style="padding-top:0">
+    <div class="halls-header">
+      <span class="room-tag">The Archive</span>
+      <h2>Founding Documents</h2>
+      <p class="halls-intro">
+        The halls hold people. This wing holds paper. Six founding texts, each
+        answerable in its own words — and each with the arguments that produced it
+        kept alongside, clause by clause.
+      </p>
+    </div>
+
+    <div class="halls-grid">
+
+<!-- The Archive: Founding Documents -->
       <a href="/halls/founding-documents/" class="portal-link">
         <div class="portal-door door-documents">
           <img class="door-portrait"
@@ -533,17 +597,16 @@
           <div class="door-wash"></div>
           <div class="door-frame"></div>
           <div class="door-inner">
-            <span class="door-num">Hall VI</span>
+            <span class="door-num">The Archive</span>
             <h3 class="door-name">Founding<br>Documents</h3>
             <div class="door-rule"></div>
             <p class="door-era">1776 — 1791</p>
             <p class="door-tagline">The Constitution, the Declaration, the Bill of Rights — each one a voice.</p>
-            <span class="door-count">3 Documents</span>
+            <span class="door-count">6 Documents</span>
             <span class="door-cta">Enter Hall</span>
           </div>
         </div>
       </a>
-
     </div>
   </section>
 
