@@ -17,6 +17,8 @@
 
 ## Current State
 
+**Hall reorganization shipped 2026-08-21 — the museum now has seven halls plus a separate Archive.** The Republic Room had accumulated three unrelated populations and the Observatory buried a computing lineage; both were split. New: **The Salon** (Hall VI — Descartes, Locke, Montesquieu, Voltaire, Rousseau, Burke) and **The Engine Room** (Hall VII — Babbage, Lovelace, Turing, Shannon, Katherine Johnson). Du Bois moved to Trailblazers to sit with Booker T. Washington. Founding Documents lifted out of the numbered halls into its own homepage "Archive" section. All live and verified on www.museumofminds.com.
+
 **Milton Friedman build held 2026-08-21 on a copyright finding — no files created, nothing shipped.** He is the first Counting House candidate whose entire body of work is in copyright, so he cannot meet the platform's "Powered by His Own Words" standard. See the session log for the full source audit. Roster unchanged: 80 live persona pages.
 
 **William Moultrie unpublished 2026-08-08 — 79 live persona pages, Republic Room now 25 cards.** His page, widget, and portrait were archived to `/home/wner/museum-archive/william-moultrie-2026-08-07/` (with RESTORE.md) and removed from the site along with every inbound reference. He remains registered on museum-api and his Pinecone vectors are intact, so republication is a file-restore with no re-ingest.
@@ -25,7 +27,7 @@
 
 ## Next Action
 
-Pick the next persona from a candidate whose primary works are public domain (pre-1930 publication) — the Friedman hold showed the pipeline has no path for in-copyright figures. Otherwise resume feature work: Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
+Decide whether Carl Jung gets a home — he is now the most isolated figure in the museum (Descartes' departure left him the only mind-and-consciousness figure among the Observatory's physicists), and there is nobody to pair him with yet. Otherwise: pick the next persona from a candidate whose primary works are public domain (pre-1930 publication) — the Friedman hold showed the pipeline has no path for in-copyright figures. Otherwise resume feature work: Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
 
 ## Blockers
 
@@ -34,6 +36,9 @@ Pick the next persona from a candidate whose primary works are public domain (pr
 
 ## Open Questions
 
+- **Most persona pages are navigational dead-ends.** Only 4 of ~80 (the Sprint-3 batch: Rutledge, Sherman, Gadsden, Abigail Adams) carry a hall back-link; older pages like `john-locke/` contain no links at all. A visitor who enters a figure's room has no way back to their hall. Discovered during the hall migration, deliberately not fixed — it is a ~76-page templating job, not a hall change.
+- **Hall numbering is creation-order, not chronological.** The Salon (1596–1797) is Hall VI, after Trailblazers. Renumbering so a tour reads chronologically would touch all seven hall pages plus the homepage; left alone for now.
+- **A future "mind" room** would home Carl Jung, who has no natural neighbours post-migration. Needs at least 3–4 more figures (William James, early Freud) to be worth a room.
 - **Does the museum want a policy for in-copyright figures at all?** Friedman, Keynes-era successors, and most 20th-century thinkers are blocked by the same wall. Options are a "tradition corpus + authored dossier" tier (visibly different trust label), licensed text, or a hard pre-1930 cutoff. Unresolved — this gates every modern persona, not just Friedman.
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
@@ -42,6 +47,19 @@ Pick the next persona from a candidate whose primary works are public domain (pr
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-08-21 — Hall reorganization: two new halls, Archive split out
+
+- **Diagnosis first.** Audited every hall roster against each persona's actual `domain` field. The Republic Room (25 cards) held four distinct populations: 15 American founders, 5 European Enlightenment figures, 4 post-founding presidents, and Tocqueville. The Observatory (20) buried a self-contained computing lineage. Press Room had two figures who aren't press (Jacobs, Olmsted). Counting House and Founding Documents were clean.
+- **Rejected the user's initial "Presidential Hall" idea, with reasons.** `hall_primary` is single-valued — there is no `hall_secondary` anywhere in the codebase — so a Presidential Hall would have *removed* Washington, Jefferson, Madison and John Adams from the Republic Room. It would also have been the only hall organized by an office rather than a domain of thought. User agreed and dropped it.
+- **Also argued against a "Philosopher Room"**: philosophy is a method, not a domain of action, so that hall would leak permanently across Counting House (Marx, Mill, Smith), Observatory (Descartes) and Press Room (Emerson). Proposed cutting by **era and geography** instead, which is bounded and doesn't leak.
+- **Shipped**: **The Salon** (Hall VI, 1596–1797, violet #A88CC8) and **The Engine Room** (Hall VII, 1791–2020, verdigris #7AA898). 12 figures re-shelved. Du Bois → Trailblazers to reunite him with Booker T. Washington, whose argument with him is the point.
+- **Founding Documents lifted out of the numbered halls** into its own `#archive` homepage section with its own heading and copy. It was already a wing rather than a room (per-item sub-pages, no hall number on its own page). No URLs changed. Freeing its old "Hall VI" slot is what let The Salon take it.
+- **Found and fixed pervasive counter drift**: *every* homepage door count was wrong (Republic Room read "17 Figures" against an actual 20; Trailblazers "4" against 11; Counting House "4" against 9). Three hall-page era lines were wrong too, some predating this work. All now computed from the hall pages and persona.json rather than hand-typed. **These numbers are hand-maintained and will drift again** — worth generating.
+- **Key technical finding: hall membership is display-only.** It never reaches the API, nothing filters on it, and although `reembed_voyage3.py` stamps it into Pinecone vector metadata, no query reads it. So re-shelving needs no redeploy and no re-embedding. Verified by chatting Locke, Lovelace and Du Bois in production after the move — all answered with grounded sources.
+- **Task #12 was a no-op**: none of the 12 moved figures' pages had hall back-links to repoint. Only 4 persona pages sitewide have them; the rest have no navigation at all (logged as an open question).
+- Verified with headless Chromium locally (Salon's 6 cards were orphaning one card in the 5-column grid → scoped 3×2 override; Archive's single door was left-stranded → centred), then re-verified on the live site after push. `platform_snapshot.py` independently confirms all 8 halls.
+- Commits: `efa6d57` (museum-of-minds), `24691db` (jane-jacobs-bot). Also set `hall_primary` on `the-constitution`, the one persona that had no hall key.
 
 ### 2026-08-21 — Milton Friedman create cycle: HELD (no build)
 
