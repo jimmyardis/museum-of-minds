@@ -10,12 +10,14 @@
 | **Project** | Museum of Minds |
 | **One-liner** | Immersive AI chatbot museum with 80 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-08-21 |
+| **Last Active** | 2026-09-01 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
+
+**John Calvin shipped 2026-09-01 — 81 live persona pages, The Salon now 7 figures (1509–1797).** Full page with hand-drawn Geneva-study hero SVG (Saint-Pierre through the lancet window, his flaming-heart-on-open-hand seal), self-hosted WebP portrait (Catharijneconvent), widget on the multi-tenant API, Salon hall card, homepage door updated. 6,197 vectors; smoke test 6/6; live chat verified grounded (Servetus probe answered in-voice citing Letters + Tracts).
 
 **Hall reorganization shipped 2026-08-21 — the museum now has seven halls plus a separate Archive.** The Republic Room had accumulated three unrelated populations and the Observatory buried a computing lineage; both were split. New: **The Salon** (Hall VI — Descartes, Locke, Montesquieu, Voltaire, Rousseau, Burke) and **The Engine Room** (Hall VII — Babbage, Lovelace, Turing, Shannon, Katherine Johnson). Du Bois moved to Trailblazers to sit with Booker T. Washington. Founding Documents lifted out of the numbered halls into its own homepage "Archive" section. All live and verified on www.museumofminds.com.
 
@@ -47,6 +49,14 @@ Decide whether Carl Jung gets a home — he is now the most isolated figure in t
 ## Session Log
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
+
+### 2026-09-01 — John Calvin joins The Salon
+- New persona page `/john-calvin/` from the Descartes-era template: Geneva study hero SVG, portrait study panel, consultation split-pane, pull quote (Institutes I.i), corpus list. Accession JC–1509–2026.
+- Widget cloned from rene-descartes with full slug substitution (container-ID bug from the BQ log avoided — verified `#john-calvin-widget` in both JS and CSS).
+- Salon hall updated: Calvin card first (chronological), `.card-calvin` palette, era 1509–1797, count 6→7; homepage Salon door era + count updated to match.
+- Portrait: `find_portrait.py` candidates all failed URL checks (non-200s); fell back to `portrait_webp.py --url` with Special:FilePath — Catharijneconvent anonymous portrait, 600×832 WebP, 79 KB.
+- Decision: Calvin shelved in The Salon — pre-Enlightenment, but he's the theological answer the Salon's philosophers argued against, and no better hall exists; era range widened rather than creating a one-man hall.
+- Repo fix: origin URL had an expired embedded PAT breaking pushes; stripped to plain URL so the gh credential helper is used.
 
 ### 2026-08-21 — Hall reorganization: two new halls, Archive split out
 
