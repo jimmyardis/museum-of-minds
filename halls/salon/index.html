@@ -233,8 +233,11 @@
     .card-rousseau    { --card-wash: #1A1838; --card-accent: #B89040; --card-plate: #12102C; --card-glow: rgba(26,24,56,0.18); }
     .card-burke       { --card-wash: #5C1A2E; --card-accent: #B89040; --card-plate: #2E0B18; --card-glow: rgba(92,26,46,0.18); }
     .card-mtq { --card-wash: #1E2A40; --card-accent: #B89040; --card-plate: #101828; --card-glow: rgba(30,42,64,0.18); }
-    /* Six figures read better as 3x2 than 5+1 */
+    /* Ten figures: 3 columns keeps the portraits large */
     @media (min-width: 1101px) { .portrait-grid { grid-template-columns: repeat(3, 1fr); max-width: 800px; } }
+    .card-machiavelli { --card-wash: #7A2E1E; --card-accent: #C8A050; --card-plate: #3A150E; --card-glow: rgba(122,46,30,0.18); }
+    .card-hobbes { --card-wash: #33403A; --card-accent: #B8A468; --card-plate: #171B18; --card-glow: rgba(51,64,58,0.18); }
+    .card-hume { --card-wash: #5A2330; --card-accent: #C09A5A; --card-plate: #2A1016; --card-glow: rgba(90,35,48,0.18); }
   </style>
 </head>
 <body>
@@ -244,10 +247,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall VI</span>
       <h1 class="hall-title">The Salon</h1>
-      <span class="hall-era">1509 — 1797</span>
+      <span class="hall-era">1469 — 1797</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">Calvin answered the great questions from Scripture before the others thought to ask them of reason — and built a city on the answers. Descartes asked what can be known at all. The others asked what follows for how we ought to live together — and gave answers that cannot all be true at once. Locke's consent. Rousseau's general will. Montesquieu's divided powers. Burke's inherited wisdom. Voltaire's refusal to let any of it pass unmocked. The American founders read every one of them, and had to choose.</p>
-      <span class="hall-figure-count">7 Figures in Residence</span>
+      <p class="hall-desc">Machiavelli described power as it is, not as it ought to be. Calvin answered the great questions from Scripture and built a city on the answers. Hobbes asked what life would be with no power over us at all. Descartes asked what can be known; Hume answered, less than we think — and slept soundly anyway. The rest asked what follows for how we ought to live together, and gave answers that cannot all be true at once. Locke's consent. Rousseau's general will. Montesquieu's divided powers. Burke's inherited wisdom. Voltaire's refusal to let any of it pass unmocked. The American founders read every one of them, and had to choose.</p>
+      <span class="hall-figure-count">10 Figures in Residence</span>
     </div>
   </section>
 
@@ -258,6 +261,20 @@
     <div class="portrait-grid">
 
 
+      <a href="https://museumofminds.com/niccolo-machiavelli/" class="portrait-card card-machiavelli">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/niccolo-machiavelli.webp" alt="Niccolò Machiavelli" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Niccolò Machiavelli</div>
+            <div class="nameplate-dates">1469 — 1527</div>
+            <div class="nameplate-desc">The Florentine civil servant who described power as it is rather than as it ought to be. Dismissed, tortured, and exiled by the Medici, he wrote a handbook for princes to win back their favour — and a longer book for free republics. He will tell you which one he meant.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
       <a href="https://museumofminds.com/john-calvin/" class="portrait-card card-calvin">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -267,6 +284,20 @@
             <div class="nameplate-name">John Calvin</div>
             <div class="nameplate-dates">1509 — 1564</div>
             <div class="nameplate-desc">The lawyer-turned-reformer who wrote the most systematic theology of the Reformation at twenty-six and spent the rest of his life building Geneva to embody it. His doctrine of God's absolute sovereignty crossed oceans and built nations. He consented to the burning of Servetus, and he will not pretend otherwise.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/thomas-hobbes/" class="portrait-card card-hobbes">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/thomas-hobbes.webp" alt="Thomas Hobbes" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Thomas Hobbes</div>
+            <div class="nameplate-dates">1588 — 1679</div>
+            <div class="nameplate-desc">Born in the year of the Armada — fear and he, he said, were twins. He asked what life would be like with no government at all, answered in the grimmest sentence in English, and built the modern theory of the state on it. Leviathan offended the King's men and the bishops alike.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
@@ -336,6 +367,20 @@
             <div class="nameplate-name">Voltaire</div>
             <div class="nameplate-dates">1694 — 1778</div>
             <div class="nameplate-desc">The most dangerous wit in Europe — imprisoned in the Bastille, exiled from France, and the most famous man in the world. He wrote Candide in three days. He got an innocent man posthumously rehabilitated. He argues by reduction to absurdity. His most famous quotes are probably not his.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/david-hume/" class="portrait-card card-hume">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/david-hume.webp" alt="David Hume" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">David Hume</div>
+            <div class="nameplate-dates">1711 — 1776</div>
+            <div class="nameplate-desc">The cheerful sceptic of Edinburgh who showed that no argument proves the future will resemble the past, that reason is the slave of the passions, and that no testimony can establish a miracle. Adam Smith's closest friend. Rousseau's most bewildered benefactor. He woke Kant.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>

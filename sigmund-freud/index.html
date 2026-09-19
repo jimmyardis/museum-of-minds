@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigmund Freud — In Conversation</title>
+  <meta name="description" content="The neurologist who put the unconscious on the couch — and spent his life defending the discoveries others called fantasies." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#120807;--mid:#1C0E0C;--lt:#2A1512;--gold:#C4935A;--cream:#EFE6D8;--text:#DCCFC0;--dim:#97847A;--line:196,147,90}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">SF–1856–2026 &nbsp;·&nbsp; <a href="/halls/observatory/">The Observatory</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sf-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#090404"/><stop offset="100%" stop-color="#180B09"/></linearGradient>
+          <radialGradient id="sf-lamp" cx="60%" cy="45%" r="48%"><stop offset="0%" stop-color="#C4935A" stop-opacity=".35"/><stop offset="100%" stop-color="#090404" stop-opacity="0"/></radialGradient>
+          <pattern id="sf-rug" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="#5A1A14"/><path d="M 12 2 L 22 12 L 12 22 L 2 12 Z" fill="#7A2A1A"/><path d="M 12 7 L 17 12 L 12 17 L 7 12 Z" fill="#2A1A2A"/><circle cx="12" cy="12" r="1.6" fill="#C4935A"/></pattern>
+        </defs>
+        <rect width="700" height="900" fill="url(#sf-bg)"/>
+        <ellipse cx="400" cy="420" rx="300" ry="280" fill="url(#sf-lamp)"/>
+        <!-- Glass cabinet of antiquities -->
+        <rect x="470" y="190" width="170" height="250" fill="#120806" stroke="#2A1812" stroke-width="4"/>
+        <g stroke="#2A1812" stroke-width="2"><line x1="470" y1="270" x2="640" y2="270"/><line x1="470" y1="350" x2="640" y2="350"/></g>
+        <g fill="rgba(196,147,90,.55)">
+          <path d="M 490 268 L 494 236 Q 498 228 502 236 L 506 268 Z"/><rect x="520" y="244" width="14" height="24"/><circle cx="527" cy="240" r="5"/>
+          <path d="M 555 268 Q 552 244 566 240 Q 580 244 577 268 Z"/><path d="M 598 268 L 603 230 L 608 268 Z"/>
+          <ellipse cx="500" cy="340" rx="10" ry="8"/><rect x="530" y="318" width="10" height="30"/><path d="M 565 348 Q 562 322 574 318 Q 586 322 583 348 Z"/><rect x="605" y="326" width="18" height="22"/>
+          <circle cx="498" cy="420" r="9"/><rect x="530" y="400" width="30" height="28"/><path d="M 585 428 L 592 395 L 600 428 Z"/>
+        </g>
+        <!-- The couch, draped with a Qashqai rug, cushions heaped at its head -->
+        <path d="M 70 560 L 70 470 Q 70 440 100 438 L 150 436 L 150 520 L 420 520 L 420 560 Z" fill="#3A140E"/>
+        <rect x="70" y="500" width="360" height="62" fill="url(#sf-rug)" opacity=".92"/>
+        <path d="M 70 500 L 70 460 Q 72 440 100 440 L 150 440 L 150 500 Z" fill="url(#sf-rug)" opacity=".92"/>
+        <ellipse cx="130" cy="492" rx="40" ry="16" fill="#6A3A22"/><ellipse cx="170" cy="498" rx="30" ry="12" fill="#4A2A1A"/>
+        <g fill="#1E0C08"><rect x="80" y="562" width="12" height="40"/><rect x="408" y="562" width="12" height="40"/></g>
+        <!-- The green armchair behind the head of the couch, out of sight -->
+        <path d="M 40 470 L 40 380 Q 40 360 60 360 L 88 360 Q 100 362 100 380 L 100 440 Z" fill="#2A3222"/>
+        <!-- Desk lamp and cigar smoke -->
+        <line x1="420" y1="440" x2="420" y2="380" stroke="#3A2A1A" stroke-width="3"/>
+        <path d="M 398 382 L 442 382 L 432 360 L 408 360 Z" fill="#6A4A22"/>
+        <path d="M 330 480 Q 322 450 338 430 Q 352 410 340 385 Q 330 360 346 340" fill="none" stroke="rgba(220,210,200,.14)" stroke-width="5"/>
+        <rect x="50" y="620" width="600" height="160" fill="#100606"/>
+        <text x="350" y="690" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="14" fill="rgba(196,147,90,.45)" letter-spacing="1.5">Flectere si nequeo superos, Acheronta movebo.</text>
+        <text x="350" y="710" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="rgba(196,147,90,.3)" letter-spacing="1.5">If I cannot bend the powers above, I will move the underworld · epigraph, 1900</text>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(196,147,90,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(196,147,90,.7)" letter-spacing="2.5">CONSULTING ROOM</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Berggasse 19, Vienna</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(196,147,90,.4)">1891–1938 · The couch</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(196,147,90,.28)">Where the talking cure was practised</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(196,147,90,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Sigmund<br/><em>Freud</em></h1><span class="yr">1856 &nbsp;—&nbsp; 1939</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/sigmund-freud.webp" alt="Sigmund Freud" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Sigmund Freud</div>
+      <div class="pd">Freiberg, Moravia, 1856 &nbsp;·&nbsp; London, 1939</div>
+      <p class="pb"><strong>The neurologist who put the unconscious on the couch — and spent his life defending the discoveries others called fantasies.</strong><br/><br/>He studied the nerves of crayfish, recommended cocaine to a friend with ruinous results, learned from Charcot that hysteria was real, and built the talking cure from his patients and his own dreams. The Interpretation of Dreams sold 351 copies in six years. He broke with Adler, then with Jung. Cancer of the jaw took thirty operations and not his cigars.<br/><br/>In 1938 he fled the Nazis to London. Four of his sisters, left behind, were murdered in the camps.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>The royal road<br/><em>to the unconscious.</em></h2>
+      <p>Freud speaks from 2,150 chunks across eight works — <em>The Interpretation of Dreams,</em> <em>A General Introduction to Psychoanalysis,</em> <em>Three Contributions to the Theory of Sex,</em> <em>Psychopathology of Everyday Life,</em> <em>Totem and Taboo,</em> <em>Group Psychology and the Analysis of the Ego,</em> <em>Beyond the Pleasure Principle,</em> and <em>Civilization and Its Discontents.</em></p>
+      <p>His discourse holds Carl Jung's <em>Psychology of the Unconscious</em> — the book that ended their friendship. Jung's own room is down the hall.</p>
+      <p>Ask him what your dream means. Ask him whether psychoanalysis is science at all. Ask him what happened with Jung. Ask him about his theories of women — he will call them his weakest.</p>
+      <div class="dt"><span class="dg">The Unconscious</span><span class="dg">Dreams</span><span class="dg">Repression</span><span class="dg">Id · Ego · Superego</span><span class="dg">Transference</span><span class="dg">The Death Drive</span><span class="dg">Civilization</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/sigmund-freud/widget/sigmund-freud-widget.css">
+      <script src="https://museumofminds.com/sigmund-freud/widget/sigmund-freud-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="sigmund-freud"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>At any rate the interpretation of dreams is the via regia to a knowledge of the unconscious in the psychic life.</blockquote>
+    <cite>The Interpretation of Dreams &nbsp;·&nbsp; Chapter VII &nbsp;·&nbsp; 1900 (Brill tr.)</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>The Interpretation of Dreams (1900; Brill tr.)</li><li>A General Introduction to Psychoanalysis (1920)</li><li>Three Contributions to the Theory of Sex (1905)</li><li>Psychopathology of Everyday Life (1901)</li><li>Totem and Taboo (1913)</li><li>Group Psychology and the Analysis of the Ego (1921)</li><li>Beyond the Pleasure Principle (1920)</li><li>Civilization and Its Discontents (1930)</li><li>Discourse: Jung — Psychology of the Unconscious (1912)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Sigmund Freud</div><div>1856 — 1939 &nbsp;·&nbsp; Vienna, Austria</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/observatory/">← The Observatory</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>
