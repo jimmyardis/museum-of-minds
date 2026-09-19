@@ -8,14 +8,16 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 80 persona pages, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 90 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-09-01 |
+| **Last Active** | 2026-09-19 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
+
+**Batch 4 shipped 2026-09-19: eight personas and the Magna Carta, 90 live persona pages.** The Salon (now 10, 1469–1797) gained David Hume, Machiavelli and Hobbes. The Observatory (16) gained William James and Sigmund Freud, so Carl Jung now has neighbours. Counting House gained Thomas Malthus, Trailblazers Jane Addams and the Engine Room George Boole. The Magna Carta's "coming soon" card in Founding Documents is live (1215–1791). All nine pages have hero SVGs, self-hosted portraits, widgets and hall back-links. All nine chatbots answered in character with high confidence against the live API, and every page, portrait, widget and hall link was verified on museumofminds.com.
 
 **John Calvin shipped 2026-09-01 — 81 live persona pages, The Salon now 7 figures (1509–1797).** Full page with hand-drawn Geneva-study hero SVG (Saint-Pierre through the lancet window, his flaming-heart-on-open-hand seal), self-hosted WebP portrait (Catharijneconvent), widget on the multi-tenant API, Salon hall card, homepage door updated. 6,197 vectors; smoke test 6/6; live chat verified grounded (Servetus probe answered in-voice citing Letters + Tracts).
 
@@ -29,7 +31,7 @@
 
 ## Next Action
 
-Decide whether Carl Jung gets a home — he is now the most isolated figure in the museum (Descartes' departure left him the only mind-and-consciousness figure among the Observatory's physicists), and there is nobody to pair him with yet. Otherwise: pick the next persona from a candidate whose primary works are public domain (pre-1930 publication) — the Friedman hold showed the pipeline has no path for in-copyright figures. Otherwise resume feature work: Tracks 2–4 completed 2026-07-07 (decommission, auto-snapshot, bot supervision). Next: feature work — candidates: link /sherlock/ from a hall or homepage nav (snapshot flags it as orphaned), Sherlock voice finalization, Federalist Phase 6 (filterable indexes), or the next persona sprint.
+Decide whether the Observatory's mind figures (Jung, Freud, William James) should split into their own "mind" room now that there are three. Otherwise pick the next public-domain batch (pre-1930 works only; see the Friedman hold) or resume feature work: link /sherlock/ from a hall, Sherlock voice finalization, Federalist Phase 6, or the back-link templating pass for older pages.
 
 ## Blockers
 
@@ -40,13 +42,19 @@ Decide whether Carl Jung gets a home — he is now the most isolated figure in t
 
 - **Most persona pages are navigational dead-ends.** Only 4 of ~80 (the Sprint-3 batch: Rutledge, Sherman, Gadsden, Abigail Adams) carry a hall back-link; older pages like `john-locke/` contain no links at all. A visitor who enters a figure's room has no way back to their hall. Discovered during the hall migration, deliberately not fixed — it is a ~76-page templating job, not a hall change.
 - **Hall numbering is creation-order, not chronological.** The Salon (1596–1797) is Hall VI, after Trailblazers. Renumbering so a tour reads chronologically would touch all seven hall pages plus the homepage; left alone for now.
-- **A future "mind" room** would home Carl Jung, who has no natural neighbours post-migration. Needs at least 3–4 more figures (William James, early Freud) to be worth a room.
+- **A future "mind" room**: William James and Freud joined Jung in the Observatory on 2026-09-19. Three figures now; is that enough for a room of their own?
 - **Does the museum want a policy for in-copyright figures at all?** Friedman, Keynes-era successors, and most 20th-century thinkers are blocked by the same wall. Options are a "tradition corpus + authored dossier" tier (visibly different trust label), licensed text, or a hard pre-1930 cutoff. Unresolved — this gates every modern persona, not just Friedman.
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
 - Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
 
 ## Session Log
+
+### 2026-09-19 — Batch 4 (eight personas + the Magna Carta)
+- Picked overnight at the user's request (judgement call on figures and halls): Hume, Machiavelli, Hobbes (Salon); William James, Freud (Observatory); Malthus (Counting House); Jane Addams (Trailblazers); Boole (Engine Room); Magna Carta (Founding Documents).
+- Built overnight: sources verified against the live APIs, corpora cleaned and OCR-checked, persona pages, widgets, portraits, hall and homepage edits. Dropped the 1741 Anti-Machiavel scan (unusable OCR) and Mary Boole's book (audio-only).
+- The terminal crashed about 03:20 mid-embed, with nothing committed. Resumed the same afternoon: embedded Machiavelli's discourse texts plus James, Malthus, Addams and Boole. Upserts use deterministic IDs, so the re-runs were safe.
+- Shipped: 25,125 new vectors (index 192,724). Pushed both repos, verified the API deploy and all nine chats live, and verified the pages, portraits, widgets and hall links on museumofminds.com.
 
 <!-- Append-only. Most recent session on top. Claude Code adds an entry at the end of each work session. -->
 
