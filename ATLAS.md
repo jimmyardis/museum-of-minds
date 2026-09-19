@@ -17,6 +17,8 @@
 
 ## Current State
 
+**The Consulting Room shipped 2026-09-19 — Hall VIII, the museum's eighth hall.** Jung, Freud and William James left the Observatory (16 → 13), which had been holding two unrelated populations: the figures who mapped the outside world, and three who turned the instrument on the mind. The new hall runs 1842–1961 and uses a centred three-column grid with equal card heights rather than the six-wide grid the larger halls use. Jung's portrait was recropped from the same public-domain 1910 photograph (he had read as a figure beside a building), his stub card blurb was rewritten, and his page finally has a hall back-link.
+
 **Batch 4 shipped 2026-09-19: eight personas and the Magna Carta, 90 live persona pages.** The Salon (now 10, 1469–1797) gained David Hume, Machiavelli and Hobbes. The Observatory (16) gained William James and Sigmund Freud, so Carl Jung now has neighbours. Counting House gained Thomas Malthus, Trailblazers Jane Addams and the Engine Room George Boole. The Magna Carta's "coming soon" card in Founding Documents is live (1215–1791). All nine pages have hero SVGs, self-hosted portraits, widgets and hall back-links. All nine chatbots answered in character with high confidence against the live API, and every page, portrait, widget and hall link was verified on museumofminds.com.
 
 **John Calvin shipped 2026-09-01 — 81 live persona pages, The Salon now 7 figures (1509–1797).** Full page with hand-drawn Geneva-study hero SVG (Saint-Pierre through the lancet window, his flaming-heart-on-open-hand seal), self-hosted WebP portrait (Catharijneconvent), widget on the multi-tenant API, Salon hall card, homepage door updated. 6,197 vectors; smoke test 6/6; live chat verified grounded (Servetus probe answered in-voice citing Letters + Tracts).
@@ -31,7 +33,7 @@
 
 ## Next Action
 
-Decide whether the Observatory's mind figures (Jung, Freud, William James) should split into their own "mind" room now that there are three. Otherwise pick the next public-domain batch (pre-1930 works only; see the Friedman hold) or resume feature work: link /sherlock/ from a hall, Sherlock voice finalization, Federalist Phase 6, or the back-link templating pass for older pages.
+Pick the next public-domain batch (pre-1930 works only; see the Friedman hold) or resume feature work: link /sherlock/ from a hall, Sherlock voice finalization, Federalist Phase 6, or the back-link templating pass for older pages.
 
 ## Blockers
 
@@ -42,13 +44,20 @@ Decide whether the Observatory's mind figures (Jung, Freud, William James) shoul
 
 - **Most persona pages are navigational dead-ends.** Only 4 of ~80 (the Sprint-3 batch: Rutledge, Sherman, Gadsden, Abigail Adams) carry a hall back-link; older pages like `john-locke/` contain no links at all. A visitor who enters a figure's room has no way back to their hall. Discovered during the hall migration, deliberately not fixed — it is a ~76-page templating job, not a hall change.
 - **Hall numbering is creation-order, not chronological.** The Salon (1596–1797) is Hall VI, after Trailblazers. Renumbering so a tour reads chronologically would touch all seven hall pages plus the homepage; left alone for now.
-- **A future "mind" room**: William James and Freud joined Jung in the Observatory on 2026-09-19. Three figures now; is that enough for a room of their own?
+- **The Consulting Room has three figures and room for more.** Candidates whose work is public domain: William Wundt, Alfred Adler (some early work), Pierre Janet, Havelock Ellis. Adler and Janet need a copyright check before promising either.
 - **Does the museum want a policy for in-copyright figures at all?** Friedman, Keynes-era successors, and most 20th-century thinkers are blocked by the same wall. Options are a "tradition corpus + authored dossier" tier (visibly different trust label), licensed text, or a hard pre-1930 cutoff. Unresolved — this gates every modern persona, not just Friedman.
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
 - Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
 
 ## Session Log
+
+### 2026-09-19 — Hall VIII, The Consulting Room
+- Split Jung, Freud and William James out of the Observatory into a new hall, at the user's request, after batch 4 left three mind figures sitting among the physicists.
+- Named The Consulting Room over "The Psyche" to hold the museum's concrete-place naming (The Salon, The Engine Room, Counting House). Roster kept to the three: Descartes and Hume were considered and left in The Salon, since both anchor it and Hume had been placed there the same day.
+- Built from the Engine Room template. Three-column centred grid, equal card heights (a 5-wide grid left three cards ragged and left-aligned). Hall accent #C08A72.
+- Jung's portrait recropped from the same PD 1910 photograph; the CC BY-SA ETH interview portraits were rejected because the site carries no attribution page. His card blurb was a one-line stub and now matches the others.
+- Verified live: hall page, homepage door, both counts (Observatory 13, Consulting Room 3), all three back-links, and the responsive grid at 390/768/1280.
 
 ### 2026-09-19 — Batch 4 (eight personas + the Magna Carta)
 - Picked overnight at the user's request (judgement call on figures and halls): Hume, Machiavelli, Hobbes (Salon); William James, Freud (Observatory); Malthus (Counting House); Jane Addams (Trailblazers); Boole (Engine Room); Magna Carta (Founding Documents).
