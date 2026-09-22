@@ -8,14 +8,16 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 90 persona pages, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 95 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-09-19 |
+| **Last Active** | 2026-09-22 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
+
+**The Consulting Room grew to eight on 2026-09-22 — 95 live persona pages.** Wilhelm Wundt, Ivan Pavlov, Pierre Janet, Hugo Münsterberg and Alfred Adler joined Jung, Freud and William James. Cards are in birth order on a four-column grid (two rows of four), and the era is now 1832–1961. Each new page has a hero SVG, a public-domain portrait, a widget and a hall back-link. The homepage door reads 8 Figures, and the stale 'seven halls' intro line now says eight. Everything was verified live on www.museumofminds.com, and all five chatbots answer in character.
 
 **The Consulting Room shipped 2026-09-19 — Hall VIII, the museum's eighth hall.** Jung, Freud and William James left the Observatory (16 → 13), which had been holding two unrelated populations: the figures who mapped the outside world, and three who turned the instrument on the mind. The new hall runs 1842–1961 and uses a centred three-column grid with equal card heights rather than the six-wide grid the larger halls use. Jung's portrait was recropped from the same public-domain 1910 photograph (he had read as a figure beside a building), his stub card blurb was rewritten, and his page finally has a hall back-link.
 
@@ -51,6 +53,13 @@ Pick the next public-domain batch (pre-1930 works only; see the Friedman hold) o
 - Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
 
 ## Session Log
+
+### 2026-09-22 — Five figures join the Consulting Room
+- Added Wundt, Pavlov, Janet, Münsterberg and Adler (commit 0e16c42). The user asked for 3–5 Consulting Room personas and picked all five from a public-domain shortlist.
+- Hall page: 8 cards in birth order. The grid is now 4 columns at max-width 1080px (3 at ≤1100px, 2 at ≤760px, 1 at ≤480px) instead of the three-card layout. The description is rewritten for eight, and the era is 1832–1961.
+- Homepage: the Hall VIII door is 8 Figures, 1832–1961. The 'organized into seven halls' intro was stale since Hall VIII and now says eight.
+- Portraits are all public domain. Adler's is the Sonoma State public-domain pencil drawing, because every photograph of him on Commons is CC BY-SA.
+- Pavlov's hero dog was first drawn with a pointed ear and a curled tail and read as a cat. It was redrawn with a muzzle, a floppy ear and a hanging tail. No horizontal overflow at 390px on any new page or the hall.
 
 ### 2026-09-19 — Hall VIII, The Consulting Room
 - Split Jung, Freud and William James out of the Observatory into a new hall, at the user's request, after batch 4 left three mind figures sitting among the physicists.
