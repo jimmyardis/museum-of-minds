@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wilhelm Wundt — In Conversation</title>
+  <meta name="description" content="The founder of the first psychology laboratory, who believed the higher mind could never be caught in one." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0A0E14;--mid:#10161E;--lt:#18202C;--gold:#9CB0C8;--cream:#F0EEE8;--text:#D6D8DA;--dim:#848C98;--line:156,176,200}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">WW–1832–2026 &nbsp;·&nbsp; <a href="/halls/consulting-room/">The Consulting Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="ww-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080C12"/><stop offset="100%" stop-color="#121A24"/></linearGradient>
+          <linearGradient id="ww-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3A4E66"/><stop offset="100%" stop-color="#1A2636"/></linearGradient>
+          <radialGradient id="ww-glow" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#9CB0C8" stop-opacity=".22"/><stop offset="100%" stop-color="#080C12" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#ww-bg)"/>
+        <!-- Tall laboratory windows of the Konvikt -->
+        <g>
+          <rect x="90" y="170" width="120" height="300" fill="url(#ww-win)"/><rect x="290" y="170" width="120" height="300" fill="url(#ww-win)"/>
+          <g stroke="#0C121A" stroke-width="5"><line x1="150" y1="170" x2="150" y2="470"/><line x1="90" y1="270" x2="210" y2="270"/><line x1="90" y1="370" x2="210" y2="370"/>
+            <line x1="350" y1="170" x2="350" y2="470"/><line x1="290" y1="270" x2="410" y2="270"/><line x1="290" y1="370" x2="410" y2="370"/></g>
+          <path d="M 90 170 Q 150 130 210 170 Z M 290 170 Q 350 130 410 170 Z" fill="#26364A"/>
+        </g>
+        <ellipse cx="330" cy="560" rx="300" ry="220" fill="url(#ww-glow)"/>
+        <!-- Workbench -->
+        <rect x="40" y="560" width="620" height="18" fill="#2A3444"/>
+        <g fill="#18202C"><rect x="70" y="578" width="14" height="150"/><rect x="616" y="578" width="14" height="150"/></g>
+        <!-- Hipp chronoscope: glass bell over clockwork, two dials -->
+        <rect x="110" y="520" width="110" height="40" fill="#3A4658"/>
+        <path d="M 120 520 L 120 420 Q 165 385 210 420 L 210 520 Z" fill="rgba(156,176,200,.10)" stroke="rgba(156,176,200,.45)" stroke-width="1.2"/>
+        <circle cx="145" cy="470" r="18" fill="#E8E4DA" opacity=".85"/><circle cx="187" cy="470" r="18" fill="#E8E4DA" opacity=".85"/>
+        <g stroke="#1A2636" stroke-width="1.5"><line x1="145" y1="470" x2="145" y2="456"/><line x1="187" y1="470" x2="198" y2="462"/></g>
+        <g fill="#1A2636"><circle cx="145" cy="470" r="2"/><circle cx="187" cy="470" r="2"/></g>
+        <text x="165" y="544" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="rgba(232,228,218,.55)" letter-spacing="1.5">1/1000 SEC</text>
+        <!-- Metronome -->
+        <path d="M 300 560 L 318 440 L 342 440 L 360 560 Z" fill="#4A3A2A"/>
+        <line x1="330" y1="545" x2="352" y2="455" stroke="#D8C8A0" stroke-width="2"/><rect x="346" y="478" width="10" height="8" fill="#D8C8A0"/>
+        <!-- Reaction key and sound hammer -->
+        <rect x="410" y="540" width="70" height="20" fill="#2E3A4C"/><rect x="430" y="528" width="34" height="10" fill="#9CB0C8" opacity=".7"/>
+        <line x1="520" y1="560" x2="520" y2="470" stroke="#5A6A80" stroke-width="4"/><line x1="520" y1="480" x2="575" y2="505" stroke="#5A6A80" stroke-width="3"/><circle cx="578" cy="507" r="9" fill="#8A98AC"/>
+        <rect x="560" y="530" width="44" height="30" fill="#2A3444"/>
+        <!-- Observer's chair and wire to the key -->
+        <path d="M 440 560 Q 460 610 520 640 Q 590 670 640 700" fill="none" stroke="rgba(156,176,200,.3)" stroke-width="1.5"/>
+        <rect x="50" y="760" width="600" height="60" fill="#0C1118"/>
+        <text x="350" y="792" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="13" fill="rgba(156,176,200,.5)" letter-spacing="1.5">an attempt to mark out a new domain of science</text>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(156,176,200,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(156,176,200,.7)" letter-spacing="2.5">LABORATORY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">The Konvikt, Leipzig</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(156,176,200,.4)">1879 · Institute for Experimental Psychology</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(156,176,200,.28)">The first room of its kind</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(156,176,200,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Wilhelm<br/><em>Wundt</em></h1><span class="yr">1832 &nbsp;—&nbsp; 1920</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/wilhelm-wundt.webp" alt="Wilhelm Wundt" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Wilhelm Wundt</div>
+      <div class="pd">Neckarau, Baden, 1832 &nbsp;·&nbsp; Grossbothen, Saxony, 1920</div>
+      <p class="pb"><strong>The founder of the first psychology laboratory, who believed the higher mind could never be caught in one.</strong><br/><br/>A pastor's son who failed a year of school, he trained in medicine, served as Helmholtz's assistant, and in 1879 began the experiments at Leipzig that made psychology a laboratory science. Kraepelin, Cattell, Titchener, Hall, Münsterberg and Spearman trained with him. He measured reaction times to the thousandth of a second, then spent his last twenty years on ten volumes about language, myth and custom, which he said no laboratory could reach.<br/><br/>In 1914 he signed the German professors' manifesto for the war. He will not pretend otherwise.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>A new domain<br/><em>of science.</em></h2>
+      <p>Wundt speaks from 2,353 chunks across five works — the first volume of the <em>Principles of Physiological Psychology</em> in Titchener's translation, the <em>Outlines of Psychology,</em> the <em>Lectures on Human and Animal Psychology,</em> <em>An Introduction to Psychology,</em> and the <em>Elements of Folk Psychology.</em></p>
+      <p>His discourse holds two Americans who knew him: G. Stanley Hall's portrait in <em>Founders of Modern Psychology,</em> written by a former student, and the first volume of William James's <em>Principles of Psychology,</em> with its impatience at the German laboratories. James's room is down the hall.</p>
+      <p>Ask him what really happened in Leipzig in 1879. Ask him whether a machine can apperceive. Ask him why the laboratory could not study language. Ask him about the manifesto.</p>
+      <div class="dt"><span class="dg">Experimental Psychology</span><span class="dg">Reaction Time</span><span class="dg">Apperception</span><span class="dg">Creative Synthesis</span><span class="dg">Feeling</span><span class="dg">Völkerpsychologie</span><span class="dg">Leipzig</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/wilhelm-wundt/widget/wilhelm-wundt-widget.css">
+      <script src="https://museumofminds.com/wilhelm-wundt/widget/wilhelm-wundt-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="wilhelm-wundt"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>The work which I here present to the public is an attempt to mark out a new domain of science.</blockquote>
+    <cite>Principles of Physiological Psychology &nbsp;·&nbsp; Preface to the First Edition &nbsp;·&nbsp; 1874 (Titchener tr.)</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Principles of Physiological Psychology, Vol. I (1874; Titchener tr. 1904)</li><li>Outlines of Psychology (Judd tr., 1907)</li><li>Lectures on Human and Animal Psychology (1896)</li><li>An Introduction to Psychology (Pintner tr., 1912)</li><li>Elements of Folk Psychology (Schaub tr., 1916)</li><li>Discourse: G. Stanley Hall — Founders of Modern Psychology (1912)</li><li>Discourse: William James — The Principles of Psychology, Vol. I (1890)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Wilhelm Wundt</div><div>1832 — 1920 &nbsp;·&nbsp; Leipzig, Saxony</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/consulting-room/">← The Consulting Room</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

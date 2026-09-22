@@ -34,12 +34,13 @@
       font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.15em;
       color: var(--brass); opacity: 0.9; text-transform: uppercase; display: block; margin-top: 1rem;
     }
-    .portrait-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem 1.2rem; max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .portrait-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem 1.2rem; max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
     .portrait-card { position: relative; display: block; height: 100%; text-decoration: none; cursor: pointer; animation: cardReveal 0.8s ease both; }
     @keyframes cardReveal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .portrait-card:nth-child(1){animation-delay:0.1s} .portrait-card:nth-child(2){animation-delay:0.2s}
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
+    .portrait-card:nth-child(7){animation-delay:0.7s} .portrait-card:nth-child(8){animation-delay:0.8s}
     .card-frame { position: relative; height: 100%; display: flex; flex-direction: column; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
     .portrait-card:hover .card-frame { border-color: rgba(196,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px var(--card-glow, rgba(196,168,76,0.08)); }
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
@@ -228,6 +229,11 @@
     }
     .card-cj { --card-wash: #6b1c23; --card-accent: #C49A3C; --card-plate: #2a2a2a; --card-glow: rgba(107,28,35,0.15); }
     .card-freud { --card-wash: #4A1F1A; --card-accent: #C4935A; --card-plate: #1C0F0C; --card-glow: rgba(74,31,26,0.18); }
+    .card-wundt { --card-wash: #1E2A38; --card-accent: #9CB0C8; --card-plate: #10161E; --card-glow: rgba(156,176,200,0.14); }
+    .card-pavlov { --card-wash: #3A2A1C; --card-accent: #D8A860; --card-plate: #17110C; --card-glow: rgba(216,168,96,0.14); }
+    .card-janet { --card-wash: #2C2440; --card-accent: #B8A8D8; --card-plate: #14111C; --card-glow: rgba(184,168,216,0.14); }
+    .card-munst { --card-wash: #2E1F2A; --card-accent: #C8A0B4; --card-plate: #170F14; --card-glow: rgba(200,160,180,0.14); }
+    .card-adler { --card-wash: #23403A; --card-accent: #D8C088; --card-plate: #101816; --card-glow: rgba(216,192,136,0.14); }
     .card-wjames { --card-wash: #6E4B2A; --card-accent: #C89A5A; --card-plate: #1E1711; --card-glow: rgba(110,75,42,0.18); }
   </style>
 </head>
@@ -238,10 +244,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall VIII</span>
       <h1 class="hall-title">The Consulting Room</h1>
-      <span class="hall-era">1842 — 1961</span>
+      <span class="hall-era">1832 — 1961</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">Three men who turned the instrument on itself. A Harvard physician who asked what consciousness is for and answered that it streams. A Viennese neurologist who listened to what people said when they weren't trying to say it, and found the cellar under the house. A Swiss psychiatrist who broke with him over what the cellar contains — a personal history, or something older and shared. They disagreed about nearly everything except the premise: that the mind has depths, and they can be reached by asking.</p>
-      <span class="hall-figure-count">3 Figures in Residence</span>
+      <p class="hall-desc">Eight who turned the instrument on the mind. A Leipzig professor who timed it in a laboratory, and a Harvard physician who said it streams. A Russian physiologist who read it in a dog's saliva. A Viennese neurologist who found the cellar under the house, a Paris professor who found it first, and a Swiss psychiatrist who broke with Vienna over what the cellar holds. A Harvard émigré who took psychology into the courtroom, and the Viennese doctor who walked out of Freud's circle to ask what our symptoms are for. They disagreed about nearly everything except the premise: that the mind can be studied, and that the study can help.</p>
+      <span class="hall-figure-count">8 Figures in Residence</span>
     </div>
   </section>
 
@@ -250,6 +256,20 @@
       <span class="gallery-instruction">Select any portrait to enter that figure's room and begin a conversation &nbsp;↘</span>
     </div>
     <div class="portrait-grid">
+
+      <a href="https://museumofminds.com/wilhelm-wundt/" class="portrait-card card-wundt">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/wilhelm-wundt.webp" alt="Wilhelm Wundt" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Wilhelm Wundt</div>
+            <div class="nameplate-dates">1832 — 1920</div>
+            <div class="nameplate-desc">The Leipzig professor who opened the first psychology laboratory in 1879 and trained its first generation. He timed the mind to the thousandth of a second, then spent twenty years arguing that language, myth and custom lie beyond any laboratory. He signed the German professors' war manifesto of 1914.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
 
       <a href="https://museumofminds.com/william-james/" class="portrait-card card-wjames">
         <div class="card-light"></div>
@@ -265,6 +285,20 @@
         </div>
       </a>
 
+      <a href="https://museumofminds.com/ivan-pavlov/" class="portrait-card card-pavlov">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/ivan-pavlov.webp" alt="Ivan Pavlov" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Ivan Pavlov</div>
+            <div class="nameplate-dates">1849 — 1936</div>
+            <div class="nameplate-desc">The Russian physiologist who won the Nobel Prize for digestion and then discovered the conditioned reflex in dogs that drooled before the food came. Blunt, exacting and fearless with the Bolsheviks, he still took their money for his laboratories.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
       <a href="https://museumofminds.com/sigmund-freud/" class="portrait-card card-freud">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -274,6 +308,48 @@
             <div class="nameplate-name">Sigmund Freud</div>
             <div class="nameplate-dates">1856 — 1939</div>
             <div class="nameplate-desc">The Viennese neurologist who put the unconscious on the couch. Dreams, slips, repression, the Oedipus complex, id and ego — he gave the twentieth century the words it uses for itself, and broke with Jung over them. Driven out by the Nazis in 1938, he died in London. His science is still on trial.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/pierre-janet/" class="portrait-card card-janet">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/pierre-janet.webp" alt="Pierre Janet" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Pierre Janet</div>
+            <div class="nameplate-dates">1859 — 1947</div>
+            <div class="nameplate-desc">The Paris philosopher-physician who studied hysteria at the Salpêtrière, coined the word 'subconscious', and described how traumatic memories split off from the rest of the mind. He said psychoanalysis was built on his work; Freud never forgave him.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/hugo-munsterberg/" class="portrait-card card-munst">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/hugo-munsterberg.webp" alt="Hugo Münsterberg" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Hugo Münsterberg</div>
+            <div class="nameplate-dates">1863 — 1916</div>
+            <div class="nameplate-desc">Wundt's student and William James's choice to run the Harvard laboratory, he took psychology into the courtroom, the factory and the cinema. He defended Germany in 1914, was shunned as a suspected spy, and died on the lecture platform.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/alfred-adler/" class="portrait-card card-adler">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/alfred-adler.webp" alt="Alfred Adler" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Alfred Adler</div>
+            <div class="nameplate-dates">1870 — 1937</div>
+            <div class="nameplate-desc">The Viennese doctor who walked out of Freud's circle in 1911 and founded Individual Psychology. He gave us the inferiority complex, birth order and social interest, ran child-guidance clinics in the schools of Red Vienna, and died on a lecture tour in Aberdeen.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>
