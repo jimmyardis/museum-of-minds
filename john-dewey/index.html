@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Dewey — In Conversation</title>
+  <meta name="description" content="The philosopher of democracy who built a school in a kitchen, backed a war he came to regret, and spent fifty years refusing every either/or he was offered." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0A0E0A;--mid:#121A14;--lt:#1A261E;--gold:#C8B878;--cream:#F2EFE6;--text:#D8D8CC;--dim:#86907E;--line:200,184,120}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">JD–1859–2026 &nbsp;·&nbsp; <a href="/halls/consulting-room/">The Consulting Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="jd-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0A0E0A"/><stop offset="100%" stop-color="#16201A"/></linearGradient>
+          <linearGradient id="jd-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8AA07A"/><stop offset="100%" stop-color="#3A4A36"/></linearGradient>
+          <radialGradient id="jd-glow" cx="50%" cy="60%" r="55%"><stop offset="0%" stop-color="#C8B878" stop-opacity=".20"/><stop offset="100%" stop-color="#0A0E0A" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#jd-bg)"/>
+        <!-- Three tall schoolroom windows, winter light -->
+        <g>
+          <rect x="70" y="150" width="130" height="320" fill="url(#jd-win)"/><rect x="285" y="150" width="130" height="320" fill="url(#jd-win)"/><rect x="500" y="150" width="130" height="320" fill="url(#jd-win)"/>
+          <g stroke="#0C120E" stroke-width="5">
+            <line x1="135" y1="150" x2="135" y2="470"/><line x1="70" y1="260" x2="200" y2="260"/><line x1="70" y1="370" x2="200" y2="370"/>
+            <line x1="350" y1="150" x2="350" y2="470"/><line x1="285" y1="260" x2="415" y2="260"/><line x1="285" y1="370" x2="415" y2="370"/>
+            <line x1="565" y1="150" x2="565" y2="470"/><line x1="500" y1="260" x2="630" y2="260"/><line x1="500" y1="370" x2="630" y2="370"/>
+          </g>
+          <g fill="#1E2A20"><rect x="60" y="470" width="150" height="12"/><rect x="275" y="470" width="150" height="12"/><rect x="490" y="470" width="150" height="12"/></g>
+        </g>
+        <ellipse cx="350" cy="600" rx="320" ry="220" fill="url(#jd-glow)"/>
+        <!-- Long workbench -->
+        <rect x="40" y="560" width="620" height="20" fill="#5A4428"/><rect x="40" y="580" width="620" height="8" fill="#3A2C18"/>
+        <g fill="#3A2C18"><rect x="70" y="588" width="18" height="150"/><rect x="612" y="588" width="18" height="150"/><rect x="340" y="588" width="18" height="150"/></g>
+        <!-- A small hand loom on the bench -->
+        <g stroke="#B89A5A" stroke-width="3" fill="none">
+          <rect x="90" y="480" width="150" height="80"/><line x1="90" y1="500" x2="240" y2="500"/>
+          <g stroke-width="1" opacity=".7"><line x1="100" y1="500" x2="100" y2="560"/><line x1="115" y1="500" x2="115" y2="560"/><line x1="130" y1="500" x2="130" y2="560"/><line x1="145" y1="500" x2="145" y2="560"/><line x1="160" y1="500" x2="160" y2="560"/><line x1="175" y1="500" x2="175" y2="560"/><line x1="190" y1="500" x2="190" y2="560"/><line x1="205" y1="500" x2="205" y2="560"/><line x1="220" y1="500" x2="220" y2="560"/></g>
+          <rect x="94" y="520" width="142" height="30" fill="#6A3A2A" stroke="none" opacity=".8"/>
+        </g>
+        <!-- Cooking pot on a spirit stove, and a plate with the weighed flour -->
+        <g>
+          <rect x="300" y="536" width="60" height="24" fill="#1A1A1A"/><ellipse cx="330" cy="536" rx="30" ry="6" fill="#2A2A2A"/>
+          <path d="M 318 536 Q 330 510 342 536" fill="none" stroke="#D8D0B8" stroke-width="1.5" opacity=".5"/>
+          <rect x="310" y="560" width="40" height="6" fill="#7A6A3A"/>
+          <ellipse cx="420" cy="556" rx="34" ry="7" fill="#E8E0CC"/><ellipse cx="420" cy="553" rx="16" ry="4" fill="#F4ECD8"/>
+        </g>
+        <!-- A balance scale -->
+        <g stroke="#B89A5A" stroke-width="2.5" fill="none">
+          <line x1="540" y1="470" x2="540" y2="560"/><line x1="480" y1="486" x2="600" y2="486"/>
+          <path d="M 480 486 L 468 520 L 492 520 Z M 600 486 L 588 520 L 612 520 Z"/><rect x="520" y="548" width="40" height="12" fill="#3A2C18"/>
+        </g>
+        <!-- Children's stools -->
+        <g fill="#2A2018">
+          <rect x="120" y="640" width="60" height="10"/><rect x="126" y="650" width="8" height="70"/><rect x="166" y="650" width="8" height="70"/>
+          <rect x="400" y="640" width="60" height="10"/><rect x="406" y="650" width="8" height="70"/><rect x="446" y="650" width="8" height="70"/>
+          <rect x="540" y="640" width="60" height="10"/><rect x="546" y="650" width="8" height="70"/><rect x="586" y="650" width="8" height="70"/>
+        </g>
+        <!-- Floorboards -->
+        <g stroke="#1A2018" stroke-width="1" opacity=".7"><line x1="18" y1="760" x2="682" y2="760"/><line x1="18" y1="800" x2="682" y2="800"/><line x1="18" y1="840" x2="682" y2="840"/></g>
+        <rect x="18" y="740" width="664" height="142" fill="#0E140F" opacity=".55"/>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(200,184,120,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(200,184,120,.7)" letter-spacing="2.5">THE LABORATORY SCHOOL</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">University of Chicago</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(200,184,120,.4)">1896 – 1904</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(200,184,120,.28)">Learning by doing</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(200,184,120,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>John<br/><em>Dewey</em></h1><span class="yr">1859 &nbsp;—&nbsp; 1952</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/john-dewey.webp" alt="John Dewey" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">John Dewey</div>
+      <div class="pd">Burlington, Vermont, 1859 &nbsp;·&nbsp; New York City, 1952</div>
+      <p class="pb"><strong>The philosopher of democracy who built a school in a kitchen, backed a war he came to regret, and spent fifty years refusing every either/or he was offered.</strong><br/><br/>A grocer's son from Vermont, he read Hegel at Johns Hopkins, married a woman who turned his philosophy toward real people, and in 1896 opened the Laboratory School in Chicago, where children learned arithmetic by cooking and history by weaving. At Columbia he wrote Democracy and Education, Human Nature and Conduct and The Public and Its Problems, helped found the AAUP, the NAACP and the ACLU, and taught a revolution in China. He outlived nearly everyone he argued with.<br/><br/>In 1917 he argued for war. His student Randolph Bourne answered him, and died. He did not reply, and later thought Bourne was right.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>Democracy is more than<br/><em>a form of government.</em></h2>
+      <p>Dewey speaks from thousands of chunks across sixteen works — <em>Democracy and Education,</em> <em>How We Think,</em> <em>Human Nature and Conduct,</em> <em>The Public and Its Problems,</em> <em>Reconstruction in Philosophy,</em> <em>The School and Society,</em> <em>Essays in Experimental Logic,</em> <em>The Influence of Darwin on Philosophy,</em> the <em>Ethics</em> written with Tufts, <em>German Philosophy and Politics,</em> the <em>Letters from China and Japan,</em> and five shorter books on schooling and conduct.</p>
+      <p>His discourse holds his two great answerers: Walter Lippmann's <em>Public Opinion</em> and <em>The Phantom Public,</em> which argue that the citizen cannot know enough to govern, and Randolph Bourne's <em>Untimely Papers,</em> with 'Twilight of Idols', the essay his own student wrote against him in the summer of 1917.</p>
+      <p>Ask him what thinking is. Ask him whether a school can be run without subject matter, and whether he ever said it could. Ask him if a public can form at all on a screen. Ask him about the war.</p>
+      <div class="dt"><span class="dg">Instrumentalism</span><span class="dg">The Laboratory School</span><span class="dg">Experience</span><span class="dg">Habit</span><span class="dg">The Public</span><span class="dg">Inquiry</span><span class="dg">Growth</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/john-dewey/widget/john-dewey-widget.css">
+      <script src="https://museumofminds.com/john-dewey/widget/john-dewey-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="john-dewey"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>Democracy is more than a form of government; it is primarily a mode of associated living, of conjoint communicated experience.</blockquote>
+    <cite>Democracy and Education &nbsp;·&nbsp; Chapter VII &nbsp;·&nbsp; 1916</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Democracy and Education (1916)</li><li>How We Think (1910)</li><li>Human Nature and Conduct (1922)</li><li>The Public and Its Problems (1927)</li><li>Reconstruction in Philosophy (1920)</li><li>The School and Society (1899)</li><li>Essays in Experimental Logic (1916)</li><li>The Influence of Darwin on Philosophy (1910)</li><li>Moral Principles in Education (1909)</li><li>The Child and the Curriculum (1902)</li><li>Ethics, with James H. Tufts (1908)</li><li>Psychology and Social Practice (1900)</li><li>German Philosophy and Politics (1915)</li><li>Letters from China and Japan (1920)</li><li>Outlines of a Critical Theory of Ethics (1891)</li><li>Schools of To-morrow, with Evelyn Dewey (1915)</li><li>Discourse: Lippmann — Public Opinion (1922)</li><li>Discourse: Lippmann — The Phantom Public (1925)</li><li>Discourse: Bourne — Untimely Papers (1919)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">John Dewey</div><div>1859 — 1952 &nbsp;·&nbsp; Chicago and New York</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/consulting-room/">← The Consulting Room</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

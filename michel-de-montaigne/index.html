@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michel de Montaigne — In Conversation</title>
+  <meta name="description" content="The Gascon lord who retired to a tower to study himself, and found that an honest account of one man was an account of everyone." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#120A0C;--mid:#1A1012;--lt:#261619;--gold:#C9A35A;--cream:#F2ECE2;--text:#D6CEC8;--dim:#8E8286;--line:201,163,90}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">MM–1533–2026 &nbsp;·&nbsp; <a href="/halls/salon/">The Salon</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="mm-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A1012"/><stop offset="100%" stop-color="#2C1A20"/></linearGradient>
+          <linearGradient id="mm-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4A3020"/><stop offset="100%" stop-color="#2A1A10"/></linearGradient>
+          <linearGradient id="mm-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5A6A80"/><stop offset="100%" stop-color="#2A3242"/></linearGradient>
+          <radialGradient id="mm-glow" cx="50%" cy="60%" r="55%"><stop offset="0%" stop-color="#C9A35A" stop-opacity=".2"/><stop offset="100%" stop-color="#1A1012" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#mm-wall)"/>
+        <!-- The curved wall of the round tower -->
+        <path d="M 0 120 Q 350 60 700 120 L 700 900 L 0 900 Z" fill="#221418"/>
+        <ellipse cx="350" cy="560" rx="340" ry="260" fill="url(#mm-glow)"/>
+        <!-- Ceiling beams with painted sentences -->
+        <g fill="url(#mm-beam)">
+          <path d="M 0 120 Q 350 70 700 120 L 700 150 Q 350 100 0 150 Z"/><path d="M 0 170 Q 350 120 700 170 L 700 200 Q 350 150 0 200 Z"/><path d="M 0 220 Q 350 170 700 220 L 700 250 Q 350 200 0 250 Z"/><path d="M 0 270 Q 350 220 700 270 L 700 300 Q 350 250 0 300 Z"/>
+        </g>
+        <g font-family="Cormorant Garamond,serif" font-size="9.5" fill="rgba(201,163,90,.6)" letter-spacing=".6">
+          <text x="40" y="142" transform="rotate(-4 40 142)">SOLVM CERTVM NIHIL ESSE CERTI ET HOMINE NIHIL MISERIVS AVT SVPERBIVS</text>
+          <text x="420" y="192" transform="rotate(4 420 192)">QVE SÇAY-IE?</text>
+          <text x="60" y="242" transform="rotate(-4 60 242)">HOMO SVM, HVMANI A ME NIHIL ALIENVM PVTO</text>
+          <text x="330" y="292" transform="rotate(4 330 292)">COGNOSCENDI STVDIVM HOMINI DEDIT DEVS EIVS TORQVENDI GRATIA</text>
+        </g>
+        <!-- Shelves curving with the wall -->
+        <g>
+          <path d="M 40 340 Q 350 300 660 340 L 660 350 Q 350 310 40 350 Z" fill="#3A2418"/><path d="M 40 420 Q 350 380 660 420 L 660 430 Q 350 390 40 430 Z" fill="#3A2418"/><path d="M 40 500 Q 350 460 660 500 L 660 510 Q 350 470 40 510 Z" fill="#3A2418"/>
+          <g fill="#6A3A2A"><rect x="50" y="300" width="14" height="42"/><rect x="66" y="296" width="10" height="46"/><rect x="80" y="304" width="16" height="38"/><rect x="100" y="298" width="12" height="44"/><rect x="118" y="302" width="18" height="40"/></g>
+          <g fill="#8A6A3A"><rect x="150" y="296" width="12" height="42"/><rect x="166" y="290" width="16" height="48"/><rect x="186" y="298" width="10" height="40"/><rect x="200" y="294" width="14" height="44"/></g>
+          <g fill="#4A4A5A"><rect x="500" y="300" width="14" height="44"/><rect x="518" y="296" width="12" height="48"/><rect x="534" y="304" width="18" height="40"/><rect x="556" y="300" width="10" height="44"/><rect x="570" y="298" width="16" height="46"/><rect x="590" y="304" width="12" height="40"/></g>
+          <g fill="#6A3A2A"><rect x="60" y="380" width="16" height="40"/><rect x="80" y="376" width="12" height="44"/><rect x="96" y="384" width="14" height="36"/></g>
+          <g fill="#8A6A3A"><rect x="540" y="384" width="14" height="40"/><rect x="558" y="378" width="18" height="46"/><rect x="580" y="386" width="10" height="38"/><rect x="594" y="380" width="14" height="44"/></g>
+          <g fill="#4A4A5A"><rect x="70" y="462" width="12" height="40"/><rect x="86" y="458" width="18" height="44"/><rect x="108" y="464" width="10" height="38"/><rect x="560" y="462" width="12" height="40"/><rect x="576" y="458" width="18" height="44"/></g>
+        </g>
+        <!-- The window onto the Périgord -->
+        <path d="M 290 330 L 410 330 L 410 500 L 290 500 Z" fill="url(#mm-win)"/><path d="M 290 330 Q 350 290 410 330 Z" fill="#2A3242"/>
+        <g stroke="#1A1012" stroke-width="5"><line x1="350" y1="330" x2="350" y2="500"/><line x1="290" y1="415" x2="410" y2="415"/></g>
+        <path d="M 290 470 Q 330 450 350 462 Q 380 440 410 455 L 410 500 L 290 500 Z" fill="#2E3A2A" opacity=".8"/>
+        <!-- Writing table, book, inkpot, the cat -->
+        <rect x="200" y="620" width="300" height="14" fill="#4A3020"/><rect x="215" y="634" width="12" height="110" fill="#3A2418"/><rect x="473" y="634" width="12" height="110" fill="#3A2418"/>
+        <rect x="260" y="600" width="90" height="22" fill="#E8DCC4" transform="rotate(-6 305 611)"/><rect x="340" y="606" width="60" height="16" fill="#D8CCB0" transform="rotate(5 370 614)"/>
+        <rect x="430" y="596" width="22" height="26" fill="#1A1A22"/><line x1="441" y1="596" x2="452" y2="560" stroke="#E8DCC4" stroke-width="2"/>
+        <ellipse cx="236" cy="606" rx="30" ry="14" fill="#2A2A2E"/><circle cx="214" cy="598" r="11" fill="#2A2A2E"/><path d="M 206 590 L 208 580 L 214 588 Z M 218 588 L 224 580 L 226 590 Z" fill="#2A2A2E"/>
+        <rect x="40" y="840" width="620" height="40" fill="#0E0A0A"/>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(201,163,90,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(201,163,90,.7)" letter-spacing="2.5">THE TOWER LIBRARY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Château de Montaigne, the third floor of the tower</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(201,163,90,.4)">Périgord, 1571–1592</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(201,163,90,.28)">A thousand books · sentences on the beams · a cat</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(201,163,90,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Michel de<br/><em>Montaigne</em></h1><span class="yr">1533 &nbsp;—&nbsp; 1592</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/michel-de-montaigne.webp" alt="Michel de Montaigne" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Michel de Montaigne</div>
+      <div class="pd">Château de Montaigne, Périgord, 1533 &nbsp;·&nbsp; Château de Montaigne, 1592</div>
+      <p class="pb"><strong>The Gascon lord who retired to a tower to study himself, and found that an honest account of one man was an account of everyone.</strong><br/><br/>His father had him woken by music and raised to speak only Latin. He sat thirteen years as a magistrate, lost the friend of his life to the plague, and at thirty-eight retired to a round tower with a thousand books and sentences painted on the beams. He wrote attempts, essais, at understanding one subject, himself, through the wars of religion. He travelled to Italy for his kidney stones and learned at Lucca that Bordeaux had made him mayor. He served two terms through civil war and plague.<br/><br/>When the plague reached Bordeaux he did not go back to hand over his office. He has called it prudence.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>Others form man;<br/><em>I only report him.</em></h2>
+      <p>Montaigne speaks from thousands of chunks across four works — all three books of the <em>Essays</em> with his later additions, in Charles Cotton's translation as revised by Hazlitt, and the three volumes of the <em>Journal</em> of his travels through Germany, Switzerland and Italy in 1580 and 1581.</p>
+      <p>His discourse holds his two great readers: Pascal's <em>Pensées,</em> which found him fascinating and dangerous and said he spoke too much of himself, and Emerson's <em>Representative Men,</em> whose essay on him says it seemed Emerson had written the book himself in a former life. Emerson's room is in the Press Room.</p>
+      <p>Ask him about his cat. Ask him what the Brazilians taught him about the French. Ask him what kidney stones taught him that Seneca could not. Ask him why his wife is not in the book, and why he left Bordeaux to the plague.</p>
+      <div class="dt"><span class="dg">Que Sais-Je?</span><span class="dg">The Essay</span><span class="dg">Custom</span><span class="dg">Scepticism</span><span class="dg">Friendship</span><span class="dg">Of Cannibals</span><span class="dg">Dying Well</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/michel-de-montaigne/widget/michel-de-montaigne-widget.css">
+      <script src="https://museumofminds.com/michel-de-montaigne/widget/michel-de-montaigne-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="michel-de-montaigne"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>Others form man; I only report him: and represent a particular one, ill fashioned enough, and whom, if I had to model him anew, I should certainly make something else than what he is.</blockquote>
+    <cite>Essays &nbsp;·&nbsp; Book III, Chapter 2, Of Repentance &nbsp;·&nbsp; 1588 (Cotton tr.)</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Essays, Books I–III (1580–88; Cotton tr., Hazlitt ed.)</li><li>The Journal of Montaigne's Travels in Italy, Vols. I–III (1580–81; Waters tr. 1903)</li><li>Discourse: Pascal — Pensées (1670)</li><li>Discourse: Emerson — Representative Men (1850)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Michel de Montaigne</div><div>1533 — 1592 &nbsp;·&nbsp; Périgord, France</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/salon/">← The Salon</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

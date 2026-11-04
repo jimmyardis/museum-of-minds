@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ulysses S. Grant — In Conversation</title>
+  <meta name="description" content="The failed farmer and leather clerk who won the war, broke the Klan, trusted the wrong men, and wrote his way out of ruin while dying." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0B0E14;--mid:#121722;--lt:#1B2230;--gold:#B8A070;--cream:#EEEAE0;--text:#D4D2CC;--dim:#868C96;--line:184,160,112}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">USG–1822–2026 &nbsp;·&nbsp; <a href="/halls/republic-room/">The Republic Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="ug-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#070A10"/><stop offset="100%" stop-color="#121722"/></linearGradient>
+          <linearGradient id="ug-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0C1220"/><stop offset="100%" stop-color="#36404E"/></linearGradient>
+          <linearGradient id="ug-board" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1A1C20"/><stop offset="50%" stop-color="#262A30"/><stop offset="100%" stop-color="#1A1C20"/></linearGradient>
+          <radialGradient id="ug-dusk" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#B8A070" stop-opacity=".30"/><stop offset="100%" stop-color="#0B0E14" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#ug-bg)"/>
+        <rect x="0" y="0" width="700" height="520" fill="url(#ug-sky)"/>
+        <ellipse cx="350" cy="420" rx="320" ry="160" fill="url(#ug-dusk)"/>
+        <!-- Adirondack ridges -->
+        <path d="M 0 440 L 90 390 L 180 420 L 280 360 L 380 410 L 470 350 L 560 400 L 640 370 L 700 400 L 700 520 L 0 520 Z" fill="#141A24"/>
+        <path d="M 0 480 L 120 440 L 230 470 L 340 430 L 450 465 L 560 440 L 700 475 L 700 520 L 0 520 Z" fill="#0E131A"/>
+        <!-- Pines -->
+        <g fill="#0B1016"><path d="M 40 520 L 60 400 L 80 520 Z M 48 480 L 60 430 L 72 480 Z"/><path d="M 600 520 L 625 380 L 650 520 Z"/><path d="M 650 520 L 668 420 L 686 520 Z"/></g>
+        <!-- Porch roof and posts -->
+        <rect x="0" y="60" width="700" height="40" fill="#1C1E24"/><rect x="0" y="100" width="700" height="8" fill="#2A2C32"/>
+        <g fill="#2C2E36" stroke="#3A3C44" stroke-width="1"><rect x="40" y="108" width="22" height="430"/><rect x="638" y="108" width="22" height="430"/></g>
+        <g fill="#34363E"><rect x="34" y="108" width="34" height="18"/><rect x="632" y="108" width="34" height="18"/></g>
+        <!-- Railing -->
+        <rect x="40" y="520" width="620" height="10" fill="#34363E"/><rect x="40" y="600" width="620" height="8" fill="#2A2C32"/>
+        <g stroke="#2E3038" stroke-width="5"><line x1="80" y1="530" x2="80" y2="600"/><line x1="116" y1="530" x2="116" y2="600"/><line x1="152" y1="530" x2="152" y2="600"/><line x1="188" y1="530" x2="188" y2="600"/><line x1="224" y1="530" x2="224" y2="600"/><line x1="260" y1="530" x2="260" y2="600"/><line x1="296" y1="530" x2="296" y2="600"/><line x1="332" y1="530" x2="332" y2="600"/><line x1="368" y1="530" x2="368" y2="600"/><line x1="404" y1="530" x2="404" y2="600"/><line x1="440" y1="530" x2="440" y2="600"/><line x1="476" y1="530" x2="476" y2="600"/><line x1="512" y1="530" x2="512" y2="600"/><line x1="548" y1="530" x2="548" y2="600"/><line x1="584" y1="530" x2="584" y2="600"/><line x1="620" y1="530" x2="620" y2="600"/></g>
+        <!-- Porch floor -->
+        <rect x="0" y="608" width="700" height="292" fill="url(#ug-board)"/>
+        <g stroke="#121418" stroke-width="1.2"><line x1="0" y1="640" x2="700" y2="640"/><line x1="0" y1="674" x2="700" y2="674"/><line x1="0" y1="708" x2="700" y2="708"/><line x1="0" y1="742" x2="700" y2="742"/><line x1="0" y1="776" x2="700" y2="776"/><line x1="0" y1="810" x2="700" y2="810"/><line x1="0" y1="844" x2="700" y2="844"/><line x1="0" y1="878" x2="700" y2="878"/></g>
+        <!-- Wicker chair -->
+        <g fill="none" stroke="#6E6650" stroke-width="3"><path d="M 220 500 Q 220 420 300 420 Q 380 420 380 500 L 380 640 M 220 500 L 220 640"/><path d="M 220 500 L 380 500 M 240 640 L 240 700 M 360 640 L 360 700"/></g>
+        <g stroke="#56503E" stroke-width="1.2" fill="none" opacity=".8"><path d="M 232 440 L 368 440 M 228 460 L 372 460 M 226 480 L 374 480"/><path d="M 250 424 L 250 500 M 280 420 L 280 500 M 320 420 L 320 500 M 350 424 L 350 500"/></g>
+        <rect x="222" y="590" width="156" height="48" rx="6" fill="#4A3E30"/>
+        <!-- Shawl -->
+        <path d="M 236 500 Q 300 540 364 500 L 370 560 Q 300 600 230 560 Z" fill="#3A2A2A" opacity=".9"/>
+        <!-- Writing board and pad, pencil -->
+        <rect x="260" y="560" width="120" height="70" fill="#1E1A14" transform="rotate(-8 320 595)"/><rect x="268" y="566" width="100" height="56" fill="#E8E2D2" transform="rotate(-8 318 594)"/>
+        <g stroke="#3E3A32" stroke-width="1" opacity=".55" transform="rotate(-8 318 594)"><line x1="276" y1="580" x2="356" y2="580"/><line x1="276" y1="590" x2="350" y2="590"/><line x1="276" y1="600" x2="340" y2="600"/><line x1="276" y1="610" x2="300" y2="610"/></g>
+        <line x1="330" y1="606" x2="372" y2="624" stroke="#C8A850" stroke-width="2.4"/>
+        <!-- Cigar in a saucer, and a small table -->
+        <rect x="430" y="560" width="110" height="6" fill="#2A2C32"/><rect x="480" y="566" width="10" height="90" fill="#24262C"/>
+        <ellipse cx="485" cy="558" rx="26" ry="6" fill="#D8D4C8"/><line x1="470" y1="554" x2="500" y2="552" stroke="#3A2414" stroke-width="4" stroke-linecap="round"/>
+        <path d="M 500 548 Q 506 530 498 514 Q 490 498 502 480" fill="none" stroke="rgba(200,190,170,.3)" stroke-width="1.5"/>
+        <!-- A folded flag over the rail, muted -->
+        <path d="M 560 520 L 630 520 L 630 580 L 560 580 Z" fill="#2A2E44"/><g stroke="#4A2A30" stroke-width="4"><line x1="560" y1="534" x2="630" y2="534"/><line x1="560" y1="550" x2="630" y2="550"/><line x1="560" y1="566" x2="630" y2="566"/></g>
+
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(184,160,112,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(184,160,112,.7)" letter-spacing="2.5">MOUNT McGREGOR</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">The cottage porch, Saratoga County</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(184,160,112,.4)">June 1885 · the Memoirs, last chapters</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(184,160,112,.28)">Let us have peace</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(184,160,112,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Ulysses S.<br/><em>Grant</em></h1><span class="yr">1822 &nbsp;—&nbsp; 1885</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/ulysses-s-grant.webp" alt="Ulysses S. Grant" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Ulysses S. Grant</div>
+      <div class="pd">Point Pleasant, Ohio, 1822 &nbsp;·&nbsp; Mount McGregor, New York, 1885</div>
+      <p class="pb"><strong>The failed farmer and leather clerk who won the war, broke the Klan, trusted the wrong men, and wrote his way out of ruin while dying.</strong><br/><br/>A tanner's son who hated the tannery, he went to West Point under the wrong name, fought a Mexican War he thought unjust, resigned amid drinking rumours, failed at farming and bill-collecting, and was clerking in his father's leather store when the war came. Then Donelson, Shiloh, Vicksburg, the Wilderness, Appomattox, where he wrote the terms himself and stopped the salutes. As president he pushed through the Fifteenth Amendment and sent troops into nine South Carolina counties to break the Ku Klux Klan.<br/><br/>Black Friday, the Whiskey Ring, and the Black Hills happened on his watch. Bankrupt and dying of throat cancer, he finished the Memoirs four days before the end.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>I have never advocated war<br/><em>except as a means of peace.</em></h2>
+      <p>Grant speaks from thousands of chunks across four works — the <em>Personal Memoirs,</em> written on a porch at Mount McGregor against the cancer in his throat; his <em>Letters to His Father and His Youngest Sister;</em> <em>General Grant's Letters to a Friend,</em> the wartime correspondence with Elihu Washburne; and his eight annual messages to Congress as president.</p>
+      <p>His discourse holds the war from beside him and across from him: Sherman's <em>Memoirs,</em> Longstreet's <em>From Manassas to Appomattox</em> — the old friend who stood up at his wedding and surrendered to him at Appomattox — and <em>The Education of Henry Adams,</em> which called his presidency evidence against Darwin. Lincoln, who made him lieutenant general, is down the hall.</p>
+      <p>Ask him when a president may suspend habeas corpus. Ask him the truth about the drinking. Ask him why a man who judged soldiers so well misjudged Babcock, Corbin and Ward. Ask him about a war he fought and thought wicked.</p>
+      <div class="dt"><span class="dg">Vicksburg</span><span class="dg">Appomattox</span><span class="dg">Unconditional Surrender</span><span class="dg">The Fifteenth Amendment</span><span class="dg">The Ku Klux Klan Act</span><span class="dg">The Whiskey Ring</span><span class="dg">The Memoirs</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/ulysses-s-grant/widget/ulysses-s-grant-widget.css">
+      <script src="https://museumofminds.com/ulysses-s-grant/widget/ulysses-s-grant-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="ulysses-s-grant"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>I felt like anything rather than rejoicing at the downfall of a foe who had fought so long and valiantly, and had suffered so much for a cause, though that cause was, I believe, one of the worst for which a people ever fought, and one for which there was the least excuse.</blockquote>
+    <cite>Personal Memoirs &nbsp;·&nbsp; Chapter LXVII, Appomattox &nbsp;·&nbsp; 1885</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Personal Memoirs of U. S. Grant (1885)</li><li>Letters of Ulysses S. Grant to His Father and His Youngest Sister, 1857–78 (1912)</li><li>General Grant's Letters to a Friend, 1861–1880 (1897)</li><li>State of the Union Addresses, 1869–1876</li><li>Discourse: Sherman — Memoirs of General William T. Sherman (1875)</li><li>Discourse: Longstreet — From Manassas to Appomattox (1896)</li><li>Discourse: Adams — The Education of Henry Adams (1907)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Ulysses S. Grant</div><div>1822 — 1885 &nbsp;·&nbsp; Galena, Illinois</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/republic-room/">← The Republic Room</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

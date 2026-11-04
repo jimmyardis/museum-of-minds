@@ -40,6 +40,7 @@
     .portrait-card:nth-child(1){animation-delay:0.1s} .portrait-card:nth-child(2){animation-delay:0.2s}
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
+    .portrait-card:nth-child(7){animation-delay:0.7s} .portrait-card:nth-child(8){animation-delay:0.8s} .portrait-card:nth-child(9){animation-delay:0.9s} .portrait-card:nth-child(10){animation-delay:1.0s} .portrait-card:nth-child(11){animation-delay:1.1s} .portrait-card:nth-child(12){animation-delay:1.2s} .portrait-card:nth-child(13){animation-delay:1.3s} .portrait-card:nth-child(14){animation-delay:1.4s} .portrait-card:nth-child(15){animation-delay:1.5s}
     .card-frame { position: relative; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
     .portrait-card:hover .card-frame { border-color: rgba(196,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px var(--card-glow, rgba(196,168,76,0.08)); }
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
@@ -258,6 +259,11 @@
     .card-stowe  { --card-wash: #1A0E0A; --card-accent: #B89040; --card-plate: #100806; --card-glow: rgba(26,14,10,0.18); }
 
     .card-of { --card-wash: #1A2E4A; --card-accent: #B89040; --card-plate: #1A1612; --card-glow: rgba(26,46,74,0.15); }
+    .card-oscar-wilde { --card-wash: #2E1E3A; --card-accent: #C8A050; --card-plate: #140E1A; --card-glow: rgba(200,160,80,0.14); }
+    .card-charles-dickens { --card-wash: #2A2018; --card-accent: #E8B860; --card-plate: #12100A; --card-glow: rgba(232,184,96,0.14); }
+    .card-walt-whitman { --card-wash: #3A3A2A; --card-accent: #D8C488; --card-plate: #14140E; --card-glow: rgba(216,196,136,0.14); }
+    .card-ida-tarbell { --card-wash: #16262C; --card-accent: #D4A24C; --card-plate: #0A1216; --card-glow: rgba(212,162,76,0.14); }
+    .card-gk-chesterton { --card-wash: #3A1A1E; --card-accent: #D9A845; --card-plate: #180C0E; --card-glow: rgba(217,168,69,0.14); }
   </style>
 </head>
 <body>
@@ -269,8 +275,8 @@
       <h1 class="hall-title">The Press Room</h1>
       <span class="hall-era">1803 — 2006</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">A satirist who skewered democracy from the right. An urbanist who fought city hall from the sidewalk. Their weapons were sentences. Their targets were the comfortable, the credulous, and the expert who had never walked the block they were redesigning.</p>
-      <span class="hall-figure-count">Figures in Residence</span>
+      <p class="hall-desc">A satirist who skewered democracy from the right. An urbanist who fought city hall from the sidewalk. A novelist who made Victorian England weep over its own workhouses, and a poet who contained multitudes. A wit who went to prison for being himself. A reporter who took apart Standard Oil one document at a time, and an essayist who argued with everyone and stayed friends with all of them. Their weapons were sentences. Their targets were the comfortable, the credulous, and the expert who had never walked the block they were redesigning.</p>
+      <span class="hall-figure-count">15 Figures in Residence</span>
     </div>
   </section>
 
@@ -462,6 +468,76 @@
             <div class="nameplate-name">Harriet Beecher Stowe</div>
             <div class="nameplate-dates">1811 — 1896</div>
             <div class="nameplate-desc">She wrote the novel Lincoln reportedly called the book that started the Civil War. Uncle Tom's Cabin sold 300,000 copies in its first year. She is honest about what it got wrong. She believed narrative had a power that argument alone could not match.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/oscar-wilde/" class="portrait-card card-oscar-wilde">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/oscar-wilde.webp" alt="Oscar Wilde" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Oscar Wilde</div>
+            <div class="nameplate-dates">1854 — 1900</div>
+            <div class="nameplate-desc">The Dublin wit who made aestheticism a public performance, wrote the perfect comedy, and in the same month of 1895 brought the libel suit that put him in Reading Gaol for two years. He wrote De Profundis inside and the Ballad on the way out, and died exiled and bankrupt in Paris at forty-six. He wronged his wife and lost his sons' name, and he knows it.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/charles-dickens/" class="portrait-card card-charles-dickens">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/charles-dickens.webp" alt="Charles Dickens" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Charles Dickens</div>
+            <div class="nameplate-dates">1812 — 1870</div>
+            <div class="nameplate-desc">The blacking-factory boy who became the most famous writer alive at twenty-four and built the workhouse, the Marshalsea, Chancery and Coketown into the English imagination, in parts a nation waited for at the docks. He ran two magazines and a home for fallen women, fought America over copyright, and read himself to death. In 1858 he left his wife of twenty-two years and printed a statement about her in his own magazine.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/walt-whitman/" class="portrait-card card-walt-whitman">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/walt-whitman.webp" alt="Walt Whitman" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Walt Whitman</div>
+            <div class="nameplate-dates">1819 — 1892</div>
+            <div class="nameplate-desc">The printer who set the type for his own first edition, invented a line for democracy, and spent three years of the war beside the wounded in Washington with oranges and writing paper. He wrote the elegy for Lincoln and asked in Democratic Vistas whether the republic had a soul to match its wealth. He also reviewed his own book anonymously and invented six children for an Englishman who asked too many questions.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/ida-tarbell/" class="portrait-card card-ida-tarbell">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/ida-tarbell.webp" alt="Ida M. Tarbell" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Ida M. Tarbell</div>
+            <div class="nameplate-dates">1857 — 1944</div>
+            <div class="nameplate-desc">The oil-region daughter who spent five years in court records and legislative testimony to show how Rockefeller built the Standard Oil trust on secret railroad rebates. He never answered her; the Supreme Court did, in 1911. She hated the word muckraker, opposed the vote for women, and came home from Rome in 1926 admiring Mussolini.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/gk-chesterton/" class="portrait-card card-gk-chesterton">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/gk-chesterton.webp" alt="G. K. Chesterton" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">G. K. Chesterton</div>
+            <div class="nameplate-dates">1874 — 1936</div>
+            <div class="nameplate-desc">The twenty-stone Fleet Street journalist who wrote eighty books and four thousand essays, invented Father Brown, debated Shaw and Wells as friends, fought eugenics when it was respectable, and defended small property against plutocrat and state alike. In The New Jerusalem he asked that English Jews wear distinctive dress; he must answer for it.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mary Whiton Calkins — In Conversation</title>
+  <meta name="description" content="The Wellesley professor who passed Harvard's doctoral examination brilliantly, was refused the degree for being a woman, and declined the substitute." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0C0C16;--mid:#14141F;--lt:#1C1E2C;--gold:#D8C8A0;--cream:#F3F0EA;--text:#D8D6D0;--dim:#8A8C9C;--line:216,200,160}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">MC–1863–2026 &nbsp;·&nbsp; <a href="/halls/consulting-room/">The Consulting Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="mc-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0C0C16"/><stop offset="100%" stop-color="#1A1C2C"/></linearGradient>
+          <linearGradient id="mc-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8B8D8"/><stop offset="55%" stop-color="#6A74A0"/><stop offset="100%" stop-color="#3A4260"/></linearGradient>
+          <radialGradient id="mc-glow" cx="48%" cy="60%" r="55%"><stop offset="0%" stop-color="#D8C8A0" stop-opacity=".20"/><stop offset="100%" stop-color="#0C0C16" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#mc-bg)"/>
+        <!-- Arched window on Lake Waban -->
+        <path d="M 200 440 L 200 220 Q 200 110 350 110 Q 500 110 500 220 L 500 440 Z" fill="url(#mc-win)"/>
+        <g stroke="#0A0A14" stroke-width="5"><line x1="350" y1="110" x2="350" y2="440"/><line x1="200" y1="300" x2="500" y2="300"/><path d="M 275 440 L 275 150 M 425 440 L 425 150" stroke-width="3"/></g>
+        <path d="M 200 340 Q 275 330 350 342 Q 425 354 500 344 L 500 440 L 200 440 Z" fill="#2A3454" opacity=".7"/>
+        <g fill="#E8E8F4" opacity=".35"><ellipse cx="300" cy="360" rx="40" ry="2"/><ellipse cx="420" cy="376" rx="50" ry="2"/><ellipse cx="260" cy="392" rx="30" ry="2"/></g>
+        <path d="M 180 440 L 520 440 L 520 458 L 180 458 Z" fill="#242438"/>
+        <ellipse cx="350" cy="600" rx="320" ry="220" fill="url(#mc-glow)"/>
+        <!-- Lecture table -->
+        <rect x="80" y="560" width="540" height="18" fill="#4A3A2C"/><rect x="80" y="578" width="540" height="7" fill="#2E241A"/>
+        <g fill="#2E241A"><rect x="100" y="585" width="16" height="160"/><rect x="584" y="585" width="16" height="160"/></g>
+        <!-- Memory drum: a brass cylinder on a stand with a slit -->
+        <g transform="translate(130,470)">
+          <rect x="30" y="0" width="80" height="90" rx="40" fill="#8A7040"/><rect x="30" y="0" width="80" height="90" rx="40" fill="none" stroke="#D8B870" stroke-width="2"/>
+          <rect x="0" y="36" width="140" height="18" fill="#1A1A24" opacity=".85"/><rect x="60" y="40" width="20" height="10" fill="#F0E8D0"/>
+          <rect x="60" y="90" width="20" height="8" fill="#5A4830"/><rect x="40" y="86" width="60" height="6" fill="#3A2E20"/>
+        </g>
+        <!-- Tray of paired-associate cards: colour and number -->
+        <g transform="translate(320,500)">
+          <rect width="250" height="60" fill="#2A2436" stroke="#B8A880" stroke-width="1.5"/>
+          <g>
+            <rect x="12" y="10" width="28" height="40" fill="#8A3030"/><rect x="44" y="10" width="28" height="40" fill="#EFE8D4"/><text x="58" y="36" text-anchor="middle" font-family="Cinzel,serif" font-size="14" fill="#2A2436">47</text>
+            <rect x="92" y="10" width="28" height="40" fill="#30608A"/><rect x="124" y="10" width="28" height="40" fill="#EFE8D4"/><text x="138" y="36" text-anchor="middle" font-family="Cinzel,serif" font-size="14" fill="#2A2436">12</text>
+            <rect x="172" y="10" width="28" height="40" fill="#8A7A30"/><rect x="204" y="10" width="28" height="40" fill="#EFE8D4"/><text x="218" y="36" text-anchor="middle" font-family="Cinzel,serif" font-size="14" fill="#2A2436">83</text>
+          </g>
+        </g>
+        <!-- Bentwood chair, and a stack of blue examination books -->
+        <g stroke="#B8A880" stroke-width="3" fill="none">
+          <path d="M 220 640 Q 220 600 260 600 L 330 600 Q 370 600 370 640"/><rect x="214" y="640" width="162" height="10" fill="#4A3A2C" stroke="none"/>
+          <line x1="224" y1="650" x2="220" y2="760"/><line x1="366" y1="650" x2="372" y2="760"/><line x1="236" y1="600" x2="232" y2="640"/><line x1="354" y1="600" x2="358" y2="640"/>
+        </g>
+        <g fill="#3A4A7A"><rect x="440" y="610" width="130" height="14"/><rect x="446" y="624" width="130" height="14"/><rect x="438" y="638" width="130" height="14"/></g>
+        <rect x="18" y="770" width="664" height="112" fill="#08081A" opacity=".8"/>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(216,200,160,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(216,200,160,.7)" letter-spacing="2.5">THE PSYCHOLOGICAL LABORATORY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Wellesley College, Massachusetts</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(216,200,160,.4)">Opened 1891</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(216,200,160,.28)">The first at a women's college</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(216,200,160,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Mary Whiton<br/><em>Calkins</em></h1><span class="yr">1863 &nbsp;—&nbsp; 1930</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/mary-whiton-calkins.webp" alt="Mary Whiton Calkins" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Mary Whiton Calkins</div>
+      <div class="pd">Hartford, Connecticut, 1863 &nbsp;·&nbsp; Newton, Massachusetts, 1930</div>
+      <p class="pb"><strong>The Wellesley professor who passed Harvard's doctoral examination brilliantly, was refused the degree for being a woman, and declined the substitute.</strong><br/><br/>A minister's daughter and a classicist, she was sent by Wellesley in 1890 to learn the new psychology, sat as an unofficial guest in William James's seminar when every other student had dropped it, and worked in Hugo Münsterberg's laboratory. She opened the first psychological laboratory at a women's college in 1891, invented the paired-associates method for studying memory, and in 1895 passed an examination her examiners called the most brilliant they had seen. Harvard refused the degree. In 1902 Radcliffe offered its own; she refused that. She was the first woman to preside over the American Psychological Association and the American Philosophical Association.<br/><br/>She argued for forty years that psychology is the science of selves. The field went the other way, and has only lately come back to the question.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>The science of<br/><em>conscious selves.</em></h2>
+      <p>Calkins speaks from thousands of chunks across five works — <em>An Introduction to Psychology,</em> <em>A First Book in Psychology,</em> <em>The Persistent Problems of Philosophy,</em> <em>The Good Man and the Good,</em> and her edition of <em>The Metaphysical System of Hobbes.</em></p>
+      <p>Her discourse holds her two Harvard teachers and her chief rival: Hugo Münsterberg's <em>Psychology, General and Applied,</em> William James's <em>Principles of Psychology,</em> and Edward Titchener's <em>Text-book of Psychology,</em> the structuralism she accused of leaving out the self. Münsterberg and James are both in this hall.</p>
+      <p>Ask her why she refused the Radcliffe degree. Ask her what Watson left out when he threw out consciousness. Ask her what the paired cards showed about forgetting. Ask her whether a machine that answers has a self.</p>
+      <div class="dt"><span class="dg">Self-Psychology</span><span class="dg">Paired Associates</span><span class="dg">Memory</span><span class="dg">Wellesley</span><span class="dg">Harvard</span><span class="dg">Introspection</span><span class="dg">Personalism</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/mary-whiton-calkins/widget/mary-whiton-calkins-widget.css">
+      <script src="https://museumofminds.com/mary-whiton-calkins/widget/mary-whiton-calkins-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="mary-whiton-calkins"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>Psychology is the science of the self as conscious.</blockquote>
+    <cite>A First Book in Psychology &nbsp;·&nbsp; Chapter I &nbsp;·&nbsp; 1910</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>An Introduction to Psychology (1901)</li><li>A First Book in Psychology (1910)</li><li>The Persistent Problems of Philosophy (1907; 3rd ed. 1912)</li><li>The Good Man and the Good: An Introduction to Ethics (1918)</li><li>The Metaphysical System of Hobbes, ed. (1905)</li><li>Discourse: Münsterberg — Psychology, General and Applied (1914)</li><li>Discourse: Titchener — A Text-book of Psychology (1909)</li><li>Discourse: William James — The Principles of Psychology, Vol. I (1890)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Mary Whiton Calkins</div><div>1863 — 1930 &nbsp;·&nbsp; Wellesley, Massachusetts</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/consulting-room/">← The Consulting Room</a><br>Powered by Her Own Words</div>
+  </footer>
+</body>
+</html>

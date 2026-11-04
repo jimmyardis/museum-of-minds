@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ida M. Tarbell — In Conversation</title>
+  <meta name="description" content="The oil-region daughter who took down Standard Oil with court records — and told women their business was the home." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#070C10;--mid:#0E161C;--lt:#16222A;--gold:#D4A24C;--cream:#F3EEE2;--text:#D6D8D4;--dim:#88928E;--line:212,162,76}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">IT–1857–2026 &nbsp;·&nbsp; <a href="/halls/press-room/">The Press Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="it-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#05080A"/><stop offset="55%" stop-color="#0E161C"/><stop offset="100%" stop-color="#070C10"/></linearGradient>
+          <linearGradient id="it-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0A1218"/><stop offset="100%" stop-color="#2A3A3C"/></linearGradient>
+          <radialGradient id="it-lamp" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D4A24C" stop-opacity=".55"/><stop offset="60%" stop-color="#D4A24C" stop-opacity=".10"/><stop offset="100%" stop-color="#070C10" stop-opacity="0"/></radialGradient>
+          <linearGradient id="it-oil" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0C1416"/><stop offset="50%" stop-color="#1C2A2E"/><stop offset="100%" stop-color="#0C1416"/></linearGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#it-bg)"/>
+        <rect x="0" y="0" width="700" height="430" fill="url(#it-sky)"/>
+        <!-- Oil Creek valley: ridge line -->
+        <path d="M 0 430 L 80 400 L 170 418 L 260 388 L 350 410 L 440 380 L 540 404 L 620 386 L 700 410 L 700 470 L 0 470 Z" fill="#0B1114"/>
+        <!-- Derricks on the hill, lattice towers -->
+        <g stroke="#2E3C3E" stroke-width="2.2" fill="none">
+          <path d="M 110 420 L 140 220 L 170 420 M 118 370 L 162 370 M 124 330 L 156 330 M 130 290 L 150 290 M 134 255 L 146 255"/>
+          <path d="M 118 370 L 156 330 M 162 370 L 124 330 M 124 330 L 150 290 M 156 330 L 130 290"/>
+          <path d="M 300 420 L 330 190 L 360 420 M 306 370 L 354 370 M 312 325 L 348 325 M 318 280 L 342 280 M 322 240 L 338 240"/>
+          <path d="M 306 370 L 348 325 M 354 370 L 312 325 M 312 325 L 342 280 M 348 325 L 318 280"/>
+          <path d="M 500 420 L 525 240 L 550 420 M 506 375 L 544 375 M 511 335 L 539 335 M 516 300 L 534 300"/>
+          <path d="M 506 375 L 539 335 M 544 375 L 511 335"/>
+          <path d="M 600 428 L 618 290 L 636 428 M 604 390 L 632 390 M 608 355 L 628 355"/>
+        </g>
+        <g fill="#1A2426"><rect x="126" y="410" width="28" height="22"/><rect x="316" y="410" width="28" height="22"/><rect x="512" y="410" width="26" height="20"/></g>
+        <!-- Walking beams -->
+        <g stroke="#3A4A4C" stroke-width="3"><line x1="140" y1="300" x2="200" y2="330"/><line x1="330" y1="275" x2="400" y2="300"/><line x1="525" y1="320" x2="580" y2="345"/></g>
+        <!-- Tank farm -->
+        <g fill="#0E1618" stroke="#24322E" stroke-width="1.2"><ellipse cx="90" cy="458" rx="48" ry="10"/><rect x="42" y="430" width="96" height="28"/><ellipse cx="90" cy="430" rx="48" ry="10" fill="#18242A"/>
+          <ellipse cx="430" cy="462" rx="40" ry="8"/><rect x="390" y="440" width="80" height="22"/><ellipse cx="430" cy="440" rx="40" ry="8" fill="#18242A"/></g>
+        <!-- Oil on the creek -->
+        <path d="M 0 470 L 700 470 L 700 520 L 0 520 Z" fill="url(#it-oil)"/>
+        <g stroke="#2C3E42" stroke-width=".8" opacity=".7"><path d="M 20 490 Q 120 480 220 492 T 420 488 T 680 494"/><path d="M 40 506 Q 160 498 300 508 T 560 504"/></g>
+        <!-- The reporter's desk, foreground -->
+        <rect x="0" y="560" width="700" height="340" fill="#09100F"/>
+        <rect x="40" y="600" width="620" height="14" fill="#1C1A14"/><rect x="40" y="614" width="620" height="240" fill="#141410"/>
+        <ellipse cx="520" cy="590" rx="190" ry="110" fill="url(#it-lamp)"/>
+        <!-- Green-shaded lamp -->
+        <path d="M 455 560 L 585 560 L 560 530 L 480 530 Z" fill="#1E4A3A"/><rect x="516" y="560" width="8" height="40" fill="#8A7A3C"/><ellipse cx="520" cy="602" rx="24" ry="5" fill="#6E6030"/>
+        <path d="M 462 560 L 578 560 Q 540 574 520 574 Q 500 574 462 560 Z" fill="#E8D08A" opacity=".85"/>
+        <!-- Stacked court records and a ledger -->
+        <g fill="#D8CFB4" stroke="#8C8468" stroke-width=".8"><rect x="90" y="556" width="200" height="48" transform="rotate(-3 190 580)"/><rect x="100" y="548" width="190" height="10" transform="rotate(-3 195 553)"/><rect x="108" y="540" width="180" height="10" transform="rotate(-3 198 545)"/></g>
+        <g stroke="#6E6A58" stroke-width=".6" opacity=".7"><path d="M 120 568 L 260 560 M 122 578 L 262 570 M 124 588 L 240 582" transform="rotate(-3 190 580)"/></g>
+        <rect x="330" y="574" width="120" height="30" fill="#5A1E1A" stroke="#2A0E0C"/><rect x="336" y="578" width="108" height="3" fill="#C8A040" opacity=".6"/>
+        <!-- Pen and a note: 'rebate' -->
+        <line x1="300" y1="628" x2="420" y2="616" stroke="#C8B080" stroke-width="2.4"/><circle cx="421" cy="616" r="2" fill="#2A2A2A"/>
+        <rect x="150" y="640" width="130" height="80" fill="#EDE4CC" transform="rotate(4 215 680)"/>
+        <g stroke="#3C3A30" stroke-width="1" opacity=".55" transform="rotate(4 215 680)"><line x1="160" y1="656" x2="268" y2="656"/><line x1="160" y1="670" x2="250" y2="670"/><line x1="160" y1="684" x2="262" y2="684"/><line x1="160" y1="698" x2="226" y2="698"/></g>
+        <rect x="0" y="856" width="700" height="44" fill="#05080A"/>
+
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(212,162,76,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(212,162,76,.7)" letter-spacing="2.5">THE OIL REGION</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Titusville, Pennsylvania</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(212,162,76,.4)">Oil Creek, c. 1872 · a desk at McClure's, 1902</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(212,162,76,.28)">The record is the argument</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(212,162,76,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Ida M.<br/><em>Tarbell</em></h1><span class="yr">1857 &nbsp;—&nbsp; 1944</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/ida-tarbell.webp" alt="Ida M. Tarbell" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Ida M. Tarbell</div>
+      <div class="pd">Hatch Hollow, Pennsylvania, 1857 &nbsp;·&nbsp; Bridgeport, Connecticut, 1944</div>
+      <p class="pb"><strong>The oil-region daughter who took down Standard Oil with court records — and told women their business was the home.</strong><br/><br/>She grew up among the derricks of Oil Creek, where the South Improvement Company's secret rebates ruined her father. The only woman in her Allegheny College class, she edited the Chautauquan, starved in Paris studying Madame Roland, and was found there by S. S. McClure. Her Lincoln series doubled his magazine's circulation; her nineteen-part History of the Standard Oil Company, built from court records and legislative testimony, showed how Rockefeller built the trust. He never answered her. The Supreme Court broke the trust in 1911.<br/><br/>She opposed the vote for women, and in 1926 she came home from Rome admiring Mussolini. She will answer for both.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>And what are we<br/><em>going to do about it?</em></h2>
+      <p>Tarbell speaks from thousands of chunks across ten works — <em>The History of the Standard Oil Company,</em> <em>All in the Day's Work,</em> <em>The Tariff in Our Times,</em> <em>The Business of Being a Woman,</em> <em>The Ways of Woman,</em> <em>New Ideals in Business,</em> <em>The Early Life of Abraham Lincoln,</em> <em>He Knew Lincoln,</em> <em>Madame Roland,</em> and <em>A Life of Napoleon Bonaparte.</em></p>
+      <p>Her discourse holds the other side: John D. Rockefeller's <em>Random Reminiscences of Men and Events,</em> the only answer he ever gave her, and Gilbert Montague's <em>Rise and Progress of the Standard Oil Company,</em> the Harvard defence of the trust. Lincoln, whose early life she reconstructed from new documents, is in the Republic Room.</p>
+      <p>Ask her what a rebate is and why it matters. Ask her where she would start on a technology platform. Ask her why a woman who never married and paid her own way argued against the vote. Ask her about the despot with a dimple.</p>
+      <div class="dt"><span class="dg">Standard Oil</span><span class="dg">Rebates and Drawbacks</span><span class="dg">The Documentary Method</span><span class="dg">Antitrust</span><span class="dg">McClure's</span><span class="dg">The Tariff</span><span class="dg">Lincoln</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/ida-tarbell/widget/ida-tarbell-widget.css">
+      <script src="https://museumofminds.com/ida-tarbell/widget/ida-tarbell-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="ida-tarbell"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>And what are we going to do about it? for it is our business. We, the people of the United States, and nobody else, must cure whatever is wrong in the industrial situation, typified by this narrative of the growth of the Standard Oil Company.</blockquote>
+    <cite>The History of the Standard Oil Company &nbsp;·&nbsp; Conclusion &nbsp;·&nbsp; 1904</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>The History of the Standard Oil Company (1904)</li><li>All in the Day's Work: An Autobiography (1939)</li><li>The Tariff in Our Times (1911)</li><li>The Business of Being a Woman (1912)</li><li>New Ideals in Business (1916)</li><li>The Early Life of Abraham Lincoln (1896)</li><li>The Ways of Woman (1915)</li><li>Madame Roland: A Biographical Study (1896)</li><li>A Life of Napoleon Bonaparte (1895)</li><li>He Knew Lincoln, and Other Billy Brown Stories (1907)</li><li>Discourse: Rockefeller — Random Reminiscences of Men and Events (1909)</li><li>Discourse: Montague — The Rise and Progress of the Standard Oil Company (1903)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Ida M. Tarbell</div><div>1857 — 1944 &nbsp;·&nbsp; Titusville, Pennsylvania</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/press-room/">← The Press Room</a><br>Powered by Her Own Words</div>
+  </footer>
+</body>
+</html>

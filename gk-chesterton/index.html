@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G. K. Chesterton — In Conversation</title>
+  <meta name="description" content="The twenty-stone journalist who defended the common man, the family and small property by standing every received opinion on its head." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#14090B;--mid:#1E1012;--lt:#2A181A;--gold:#D9A845;--cream:#F4ECDC;--text:#DDD2C6;--dim:#968688;--line:217,168,69}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">GKC–1874–2026 &nbsp;·&nbsp; <a href="/halls/press-room/">The Press Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="gc-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E0608"/><stop offset="100%" stop-color="#1E1012"/></linearGradient>
+          <radialGradient id="gc-gas" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F0C870" stop-opacity=".55"/><stop offset="45%" stop-color="#D9A845" stop-opacity=".14"/><stop offset="100%" stop-color="#14090B" stop-opacity="0"/></radialGradient>
+          <linearGradient id="gc-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3A2018"/><stop offset="100%" stop-color="#1E100C"/></linearGradient>
+          <linearGradient id="gc-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A1C2E"/><stop offset="100%" stop-color="#4A3038"/></linearGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#gc-bg)"/>
+        <!-- Panelled pub wall -->
+        <g fill="#1A0E10" stroke="#2E1A1C" stroke-width="1.4"><rect x="30" y="80" width="150" height="330"/><rect x="200" y="80" width="300" height="330"/><rect x="520" y="80" width="150" height="330"/></g>
+        <!-- Bow window with Fleet Street gaslight -->
+        <rect x="230" y="110" width="240" height="270" fill="url(#gc-win)"/>
+        <g stroke="#120A0C" stroke-width="5"><line x1="310" y1="110" x2="310" y2="380"/><line x1="390" y1="110" x2="390" y2="380"/><line x1="230" y1="200" x2="470" y2="200"/><line x1="230" y1="290" x2="470" y2="290"/></g>
+        <path d="M 230 110 Q 350 70 470 110 Z" fill="#241418"/>
+        <!-- Street lamp outside -->
+        <line x1="420" y1="200" x2="420" y2="290" stroke="#0C0608" stroke-width="3"/><rect x="411" y="178" width="18" height="24" fill="#2A1C14"/><ellipse cx="420" cy="190" rx="40" ry="34" fill="url(#gc-gas)"/>
+        <circle cx="420" cy="190" r="5" fill="#FFE8A8"/>
+        <!-- Dome of St Paul's beyond -->
+        <path d="M 250 200 Q 275 150 300 200 Z" fill="#1A1016"/><path d="M 262 200 L 262 240 L 290 240 L 290 200" fill="#1A1016"/><line x1="276" y1="150" x2="276" y2="134" stroke="#2C1E24" stroke-width="2"/>
+        <!-- Table -->
+        <ellipse cx="350" cy="560" rx="270" ry="54" fill="url(#gc-wood)"/><rect x="330" y="560" width="40" height="150" fill="#2A160E"/><ellipse cx="350" cy="716" rx="80" ry="16" fill="#1E100A"/>
+        <ellipse cx="350" cy="548" rx="200" ry="30" fill="url(#gc-gas)" opacity=".5"/>
+        <!-- Pile of newspapers -->
+        <g fill="#D8CDB6" stroke="#8C8470" stroke-width=".7"><rect x="150" y="520" width="150" height="34" transform="rotate(-6 225 537)"/><rect x="158" y="510" width="150" height="14" transform="rotate(-4 233 517)"/><rect x="166" y="500" width="146" height="12" transform="rotate(-8 239 506)"/></g>
+        <g stroke="#56503E" stroke-width=".6" opacity=".7" transform="rotate(-6 225 537)"><rect x="160" y="526" width="60" height="6" fill="#56503E"/><line x1="160" y1="538" x2="292" y2="538"/><line x1="160" y1="544" x2="292" y2="544"/><line x1="160" y1="550" x2="250" y2="550"/></g>
+        <!-- Tankard and cigar -->
+        <path d="M 420 480 L 420 548 Q 420 556 428 556 L 472 556 Q 480 556 480 548 L 480 480 Z" fill="#8A7A4A" stroke="#4A3A1C" stroke-width="1.2"/><path d="M 480 496 Q 504 500 504 520 Q 504 540 480 544" fill="none" stroke="#8A7A4A" stroke-width="5"/>
+        <path d="M 420 480 L 480 480 Q 468 470 450 470 Q 432 470 420 480 Z" fill="#EFE4C8"/>
+        <line x1="520" y1="552" x2="590" y2="536" stroke="#4A2C1A" stroke-width="5" stroke-linecap="round"/><circle cx="591" cy="535" r="3" fill="#E89040"/>
+        <path d="M 592 530 Q 600 510 592 496 Q 584 482 596 466" fill="none" stroke="rgba(220,200,170,.35)" stroke-width="1.5"/>
+        <!-- Wide-brimmed hat on the table -->
+        <ellipse cx="560" cy="540" rx="70" ry="16" fill="#120A0A"/><path d="M 520 538 Q 520 500 560 500 Q 600 500 600 538 Z" fill="#1C1012"/>
+        <!-- Cape over a chair, swordstick leaning -->
+        <path d="M 60 700 L 70 520 Q 90 500 120 520 L 150 700 Z" fill="#1A0C0E"/><path d="M 72 540 Q 95 530 118 540 L 112 600 L 80 600 Z" fill="#2A1618"/>
+        <line x1="620" y1="470" x2="650" y2="760" stroke="#6E5A30" stroke-width="4"/><rect x="612" y="456" width="18" height="18" rx="3" fill="#A88A3C"/><line x1="628" y1="560" x2="630" y2="575" stroke="#C8C0A8" stroke-width="2"/>
+        <!-- Floorboards -->
+        <rect x="0" y="720" width="700" height="180" fill="#0E0608"/>
+        <g stroke="#1C1012" stroke-width="1"><line x1="0" y1="760" x2="700" y2="760"/><line x1="0" y1="800" x2="700" y2="800"/><line x1="0" y1="840" x2="700" y2="840"/></g>
+
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(217,168,69,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(217,168,69,.7)" letter-spacing="2.5">FLEET STREET</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">A pub table near Ludgate Circus</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(217,168,69,.4)">After the paper went to press, c. 1908</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(217,168,69,.28)">Where ought I to be?</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(217,168,69,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>G. K.<br/><em>Chesterton</em></h1><span class="yr">1874 &nbsp;—&nbsp; 1936</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/gk-chesterton.webp" alt="G. K. Chesterton" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">G. K. Chesterton</div>
+      <div class="pd">Kensington, London, 1874 &nbsp;·&nbsp; Beaconsfield, 1936</div>
+      <p class="pb"><strong>The twenty-stone journalist who defended the common man, the family and small property by standing every received opinion on its head.</strong><br/><br/>An art student who nearly lost his mind to pessimism and climbed out by deciding to be grateful for existence, he became the most prolific journalist in England: eighty books, four thousand essays, a column that ran for thirty years, Father Brown, The Man Who Was Thursday, Orthodoxy. He debated Shaw and Wells across two continents and loved them both, fought eugenics when it was respectable, founded Distributism to spread property widely, and entered the Catholic Church in 1922. He once telegraphed his wife: Am in Market Harborough. Where ought I to be?<br/><br/>In The New Jerusalem he proposed that Jews in England wear distinctive dress. The book is in his corpus. He will not hide behind a paradox.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>The madman has lost everything<br/><em>except his reason.</em></h2>
+      <p>Chesterton speaks from thousands of chunks across twenty-five works — <em>Orthodoxy,</em> <em>Heretics,</em> <em>What's Wrong with the World,</em> <em>The Everlasting Man,</em> <em>Eugenics and Other Evils,</em> <em>Tremendous Trifles,</em> <em>All Things Considered,</em> <em>Alarms and Discursions,</em> <em>What I Saw in America,</em> <em>A Short History of England,</em> <em>St. Francis of Assisi,</em> <em>The Man Who Was Thursday,</em> <em>The Napoleon of Notting Hill,</em> the first two Father Brown collections, <em>The Ballad of the White Horse,</em> his study of Shaw, and <em>The New Jerusalem,</em> among others.</p>
+      <p>His discourse holds the two men who drew his fire: Robert Blatchford's <em>God and My Neighbour,</em> the Clarion attack on Christianity that provoked Heretics and Orthodoxy, and H. G. Wells's <em>A Modern Utopia.</em> Dickens, whom he wrote about better than anyone, has a room in this hall; Shaw and Wells do not, yet.</p>
+      <p>Ask him who owns the tools in a gig economy. Ask him what he would say about embryo selection. Ask him why he is cheerful. Ask him to defend The New Jerusalem — or not.</p>
+      <div class="dt"><span class="dg">Paradox</span><span class="dg">Orthodoxy</span><span class="dg">Distributism</span><span class="dg">Against Eugenics</span><span class="dg">Father Brown</span><span class="dg">Fleet Street</span><span class="dg">Dickens</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/gk-chesterton/widget/gk-chesterton-widget.css">
+      <script src="https://museumofminds.com/gk-chesterton/widget/gk-chesterton-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="gk-chesterton"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>The madman is not the man who has lost his reason. The madman is the man who has lost everything except his reason.</blockquote>
+    <cite>Orthodoxy &nbsp;·&nbsp; Chapter II, The Maniac &nbsp;·&nbsp; 1908</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Orthodoxy (1908)</li><li>Heretics (1905)</li><li>What's Wrong with the World (1910)</li><li>The Everlasting Man (1925)</li><li>Eugenics and Other Evils (1922)</li><li>Tremendous Trifles (1909)</li><li>All Things Considered (1908)</li><li>Alarms and Discursions (1910)</li><li>The Defendant (1901)</li><li>A Miscellany of Men (1912)</li><li>What I Saw in America (1922)</li><li>A Short History of England (1917)</li><li>The Victorian Age in Literature (1913)</li><li>St. Francis of Assisi (1923)</li><li>Utopia of Usurers and Other Essays (1917)</li><li>The Man Who Was Thursday (1908)</li><li>The Napoleon of Notting Hill (1904)</li><li>The Innocence of Father Brown (1911)</li><li>The Wisdom of Father Brown (1914)</li><li>The Ballad of the White Horse (1911)</li><li>George Bernard Shaw (1909)</li><li>The Superstition of Divorce (1920)</li><li>Fancies Versus Fads (1923)</li><li>Twelve Types (1902)</li><li>The New Jerusalem (1920)</li><li>Discourse: Blatchford — God and My Neighbour (1903)</li><li>Discourse: Wells — A Modern Utopia (1905)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">G. K. Chesterton</div><div>1874 — 1936 &nbsp;·&nbsp; Fleet Street &amp; Beaconsfield</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/press-room/">← The Press Room</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

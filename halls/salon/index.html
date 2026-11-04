@@ -40,6 +40,7 @@
     .portrait-card:nth-child(1){animation-delay:0.1s} .portrait-card:nth-child(2){animation-delay:0.2s}
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
+    .portrait-card:nth-child(7){animation-delay:0.7s} .portrait-card:nth-child(8){animation-delay:0.8s} .portrait-card:nth-child(9){animation-delay:0.9s} .portrait-card:nth-child(10){animation-delay:1.0s} .portrait-card:nth-child(11){animation-delay:1.1s} .portrait-card:nth-child(12){animation-delay:1.2s} .portrait-card:nth-child(13){animation-delay:1.3s} .portrait-card:nth-child(14){animation-delay:1.4s}
     .card-frame { position: relative; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
     .portrait-card:hover .card-frame { border-color: rgba(196,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px var(--card-glow, rgba(196,168,76,0.08)); }
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
@@ -238,6 +239,10 @@
     .card-machiavelli { --card-wash: #7A2E1E; --card-accent: #C8A050; --card-plate: #3A150E; --card-glow: rgba(122,46,30,0.18); }
     .card-hobbes { --card-wash: #33403A; --card-accent: #B8A468; --card-plate: #171B18; --card-glow: rgba(51,64,58,0.18); }
     .card-hume { --card-wash: #5A2330; --card-accent: #C09A5A; --card-plate: #2A1016; --card-glow: rgba(90,35,48,0.18); }
+    .card-plato { --card-wash: #1A2430; --card-accent: #C8B07A; --card-plate: #0E141C; --card-glow: rgba(200,176,122,0.14); }
+    .card-aristotle { --card-wash: #4A2E1C; --card-accent: #C89660; --card-plate: #170F0A; --card-glow: rgba(200,150,96,0.14); }
+    .card-friedrich-nietzsche { --card-wash: #1C2838; --card-accent: #D0A858; --card-plate: #0C0E14; --card-glow: rgba(208,168,88,0.14); }
+    .card-michel-de-montaigne { --card-wash: #3A1A22; --card-accent: #C9A35A; --card-plate: #16090D; --card-glow: rgba(201,163,90,0.14); }
   </style>
 </head>
 <body>
@@ -247,10 +252,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall VI</span>
       <h1 class="hall-title">The Salon</h1>
-      <span class="hall-era">1469 — 1797</span>
+      <span class="hall-era">428 BC — 1900</span>
       <div class="hero-rule"></div>
-      <p class="hall-desc">Machiavelli described power as it is, not as it ought to be. Calvin answered the great questions from Scripture and built a city on the answers. Hobbes asked what life would be with no power over us at all. Descartes asked what can be known; Hume answered, less than we think — and slept soundly anyway. The rest asked what follows for how we ought to live together, and gave answers that cannot all be true at once. Locke's consent. Rousseau's general will. Montesquieu's divided powers. Burke's inherited wisdom. Voltaire's refusal to let any of it pass unmocked. The American founders read every one of them, and had to choose.</p>
-      <span class="hall-figure-count">10 Figures in Residence</span>
+      <p class="hall-desc">Plato watched Athens kill the best man he knew and asked what a city would have to be so that it never happened again; Aristotle, his student, answered by looking at the cities that actually existed. Machiavelli described power as it is, not as it ought to be. Calvin answered the great questions from Scripture and built a city on the answers. Montaigne retired to a tower and asked only what he himself was. Hobbes asked what life would be with no power over us at all. Descartes asked what can be known; Hume answered, less than we think — and slept soundly anyway. Locke's consent. Rousseau's general will. Montesquieu's divided powers. Burke's inherited wisdom. Voltaire's refusal to let any of it pass unmocked. And Nietzsche, last in, who said the whole conversation had been built on a morality nobody dared examine. The American founders read most of them, and had to choose.</p>
+      <span class="hall-figure-count">14 Figures in Residence</span>
     </div>
   </section>
 
@@ -259,6 +264,36 @@
       <span class="gallery-instruction">Select any portrait to enter that figure's room and begin a conversation &nbsp;↘</span>
     </div>
     <div class="portrait-grid">
+      <a href="https://museumofminds.com/plato/" class="portrait-card card-plato">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/plato.webp" alt="Plato" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Plato</div>
+            <div class="nameplate-dates">428 BC — 348 BC</div>
+            <div class="nameplate-desc">The Athenian aristocrat who followed Socrates for a decade, watched the city execute him, and spent the rest of his life asking what a just city would be. He founded the Academy, wrote only in dialogue, and never once spoke in his own voice. His ideal republic censors the poets and tells its citizens a noble lie.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+
+      <a href="https://museumofminds.com/aristotle/" class="portrait-card card-aristotle">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/aristotle.webp" alt="Aristotle" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Aristotle</div>
+            <div class="nameplate-dates">384 BC — 322 BC</div>
+            <div class="nameplate-desc">The physician's son from Macedon who studied under Plato for twenty years, tutored Alexander, and founded the Lyceum. He wrote the first systematic works on logic, biology, ethics, politics and poetry, and for two thousand years he was simply the Philosopher. He defended natural slavery and called the female a deformed male.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+
 
 
       <a href="https://museumofminds.com/niccolo-machiavelli/" class="portrait-card card-machiavelli">
@@ -275,6 +310,7 @@
         </div>
       </a>
 
+
       <a href="https://museumofminds.com/john-calvin/" class="portrait-card card-calvin">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -288,6 +324,22 @@
           </div>
         </div>
       </a>
+
+
+      <a href="https://museumofminds.com/michel-de-montaigne/" class="portrait-card card-michel-de-montaigne">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/michel-de-montaigne.webp" alt="Michel de Montaigne" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Michel de Montaigne</div>
+            <div class="nameplate-dates">1533 — 1592</div>
+            <div class="nameplate-desc">The Gascon magistrate and mayor of Bordeaux who retired to a tower with a thousand books and invented the essay by writing about himself: his cat, his kidney stones, his bad memory, his doubts. He made scepticism and tolerance a way of living through the wars of religion. He stayed outside his plague-struck city rather than return to hand over his office.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
 
       <a href="https://museumofminds.com/thomas-hobbes/" class="portrait-card card-hobbes">
         <div class="card-light"></div>
@@ -303,6 +355,7 @@
         </div>
       </a>
 
+
       <a href="https://museumofminds.com/rene-descartes/" class="portrait-card card-descartes">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -316,6 +369,7 @@
           </div>
         </div>
       </a>
+
 
       <a href="https://museumofminds.com/john-locke/" class="portrait-card card-locke">
         <div class="card-light"></div>
@@ -334,6 +388,7 @@
           </div>
         </div>
       </a>
+
 
       <a href="https://museumofminds.com/montesquieu/" class="portrait-card card-mtq">
         <div class="card-light"></div>
@@ -354,6 +409,7 @@
       </a>
 
 
+
       <a href="https://museumofminds.com/voltaire/" class="portrait-card card-voltaire">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -372,6 +428,7 @@
         </div>
       </a>
 
+
       <a href="https://museumofminds.com/david-hume/" class="portrait-card card-hume">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -385,6 +442,7 @@
           </div>
         </div>
       </a>
+
 
       <a href="https://museumofminds.com/jean-jacques-rousseau/" class="portrait-card card-rousseau">
         <div class="card-light"></div>
@@ -404,6 +462,7 @@
         </div>
       </a>
 
+
       <a href="https://museumofminds.com/edmund-burke/" class="portrait-card card-burke">
         <div class="card-light"></div>
         <div class="card-frame">
@@ -417,6 +476,21 @@
             <div class="nameplate-name">Edmund Burke</div>
             <div class="nameplate-dates">1729 — 1797</div>
             <div class="nameplate-desc">The Irish-born statesman and political philosopher who championed American independence, predicted the Terror two years before it happened, and founded modern conservatism with a single pamphlet. Thomas Paine answered him. The argument never ended.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+
+      <a href="https://museumofminds.com/friedrich-nietzsche/" class="portrait-card card-friedrich-nietzsche">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/friedrich-nietzsche.webp" alt="Friedrich Nietzsche" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Friedrich Nietzsche</div>
+            <div class="nameplate-dates">1844 — 1900</div>
+            <div class="nameplate-desc">The Lutheran pastor's son who announced the death of God, read every morality as a symptom, and wrote in aphorisms for readers who did not yet exist. He broke with Wagner, walked the Engadin eight hours a day, and collapsed in Turin in 1889. His sister edited his silence into a book, and then into a creed he would have despised.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>

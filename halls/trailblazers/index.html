@@ -40,6 +40,7 @@
     .portrait-card:nth-child(1){animation-delay:0.1s} .portrait-card:nth-child(2){animation-delay:0.2s}
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
+    .portrait-card:nth-child(7){animation-delay:0.7s} .portrait-card:nth-child(8){animation-delay:0.8s} .portrait-card:nth-child(9){animation-delay:0.9s} .portrait-card:nth-child(10){animation-delay:1.0s} .portrait-card:nth-child(11){animation-delay:1.1s} .portrait-card:nth-child(12){animation-delay:1.2s} .portrait-card:nth-child(13){animation-delay:1.3s} .portrait-card:nth-child(14){animation-delay:1.4s}
     .card-frame { position: relative; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
     .portrait-card:hover .card-frame { border-color: rgba(196,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 40px var(--card-glow, rgba(196,168,76,0.08)); }
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
@@ -237,6 +238,8 @@
     .card-wollstonecraft { --card-wash: #141028; --card-accent: #B89040; --card-plate: #0C0818; --card-glow: rgba(20,16,40,0.18); }
     .card-du { --card-wash: #1C3A5E; --card-accent: #C4882A; --card-plate: #1A1A2E; --card-glow: rgba(28,58,94,0.15); }
     .card-addams { --card-wash: #4F6B55; --card-accent: #D8A060; --card-plate: #1A221C; --card-glow: rgba(79,107,85,0.18); }
+    .card-charlotte-perkins-gilman { --card-wash: #4A3C10; --card-accent: #D2B04A; --card-plate: #16120A; --card-glow: rgba(210,176,74,0.14); }
+    .card-harriet-jacobs { --card-wash: #3A2416; --card-accent: #C8975A; --card-plate: #140E0A; --card-glow: rgba(200,151,90,0.16); }
   </style>
 </head>
 <body>
@@ -249,7 +252,7 @@
       <span class="hall-era">1759 — 1968</span>
       <div class="hero-rule"></div>
       <p class="hall-desc">They did not belong in the rooms they entered. Some forced the door. Others built new rooms entirely. Their work changed what was considered possible — for themselves, and for everyone who came after.</p>
-      <span class="hall-figure-count">Figures in Residence</span>
+      <span class="hall-figure-count">14 Figures in Residence</span>
     
     </div>
   </section>
@@ -464,6 +467,34 @@
             <div class="nameplate-name">W.E.B. Du Bois</div>
             <div class="nameplate-dates">1868 — 1963</div>
             <div class="nameplate-desc">W.E.B. Du Bois was a sociologist, historian, editor, and activist who spent ninety-five years waging an intellectual war against the lie of white supremacy. He contained a famous contradiction: the ma…</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/charlotte-perkins-gilman/" class="portrait-card card-charlotte-perkins-gilman">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/charlotte-perkins-gilman.webp" alt="Charlotte Perkins Gilman" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Charlotte Perkins Gilman</div>
+            <div class="nameplate-dates">1860 — 1935</div>
+            <div class="nameplate-desc">The Beecher great-niece who turned her own breakdown and Weir Mitchell's rest cure into The Yellow Wallpaper, argued in Women and Economics that a wife's dependence on her husband was unknown to any other species, and wrote every word of her own magazine for seven years. Her evolutionary faith carried eugenics and a 1908 proposal for a Black labor army; she will not hide them.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/harriet-jacobs/" class="portrait-card card-harriet-jacobs">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/harriet-jacobs.webp" alt="Harriet Jacobs" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Harriet Jacobs</div>
+            <div class="nameplate-dates">1813 — 1897</div>
+            <div class="nameplate-desc">Born enslaved in Edenton and pursued from fifteen by her master, she hid nearly seven years in a garret three feet high, escaped north, and wrote the only slave narrative by a woman to name the sexual violence of slavery plainly, refusing to let Harriet Beecher Stowe tell it for her. For a century scholars doubted she wrote it. She did.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>

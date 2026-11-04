@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John B. Watson — In Conversation</title>
+  <meta name="description" content="The South Carolina farm boy who banished the mind from psychology, conditioned fear in a baby, and then sold cold cream and coffee with what he learned." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#080C10;--mid:#0E161C;--lt:#162028;--gold:#A8C0D0;--cream:#EEF0EE;--text:#D0D8DC;--dim:#7E8E94;--line:168,192,208}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">JW–1878–2026 &nbsp;·&nbsp; <a href="/halls/consulting-room/">The Consulting Room</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="jw-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080C10"/><stop offset="100%" stop-color="#14202A"/></linearGradient>
+          <linearGradient id="jw-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5A7488"/><stop offset="100%" stop-color="#22323E"/></linearGradient>
+          <radialGradient id="jw-glow" cx="52%" cy="58%" r="52%"><stop offset="0%" stop-color="#A8C0D0" stop-opacity=".18"/><stop offset="100%" stop-color="#080C10" stop-opacity="0"/></radialGradient>
+          <pattern id="jw-brick" width="40" height="20" patternUnits="userSpaceOnUse"><rect width="40" height="20" fill="#121A20"/><rect x="0" y="0" width="38" height="8" fill="#182228"/><rect x="20" y="10" width="38" height="8" fill="#182228"/><rect x="-20" y="10" width="38" height="8" fill="#182228"/></pattern>
+        </defs>
+        <rect width="700" height="900" fill="url(#jw-bg)"/>
+        <rect x="18" y="18" width="664" height="500" fill="url(#jw-brick)" opacity=".5"/>
+        <!-- One high factory window with wire mesh -->
+        <rect x="430" y="90" width="200" height="200" fill="url(#jw-win)"/>
+        <g stroke="#0A1016" stroke-width="2" opacity=".8"><line x1="470" y1="90" x2="470" y2="290"/><line x1="510" y1="90" x2="510" y2="290"/><line x1="550" y1="90" x2="550" y2="290"/><line x1="590" y1="90" x2="590" y2="290"/><line x1="430" y1="130" x2="630" y2="130"/><line x1="430" y1="170" x2="630" y2="170"/><line x1="430" y1="210" x2="630" y2="210"/><line x1="430" y1="250" x2="630" y2="250"/></g>
+        <ellipse cx="360" cy="580" rx="330" ry="230" fill="url(#jw-glow)"/>
+        <!-- Laboratory table -->
+        <rect x="60" y="540" width="580" height="16" fill="#2A3038"/><rect x="60" y="556" width="580" height="6" fill="#181C22"/>
+        <g fill="#181C22"><rect x="80" y="562" width="14" height="170"/><rect x="606" y="562" width="14" height="170"/></g>
+        <!-- The rat maze: a square board with a path -->
+        <g transform="translate(90,400)">
+          <rect width="200" height="140" fill="#1E262E" stroke="#8AA0B0" stroke-width="2"/>
+          <path d="M 10 10 H 150 V 50 H 50 V 90 H 150 V 130 H 10" fill="none" stroke="#A8C0D0" stroke-width="2.5" opacity=".8"/>
+          <circle cx="12" cy="10" r="4" fill="#E8EEF2"/><rect x="178" y="118" width="12" height="12" fill="#C09040"/>
+        </g>
+        <!-- Wire cage with the white rat -->
+        <g transform="translate(330,470)">
+          <rect width="110" height="70" fill="none" stroke="#A8B8C4" stroke-width="2"/>
+          <g stroke="#6A7A86" stroke-width="1"><line x1="14" y1="0" x2="14" y2="70"/><line x1="28" y1="0" x2="28" y2="70"/><line x1="42" y1="0" x2="42" y2="70"/><line x1="56" y1="0" x2="56" y2="70"/><line x1="70" y1="0" x2="70" y2="70"/><line x1="84" y1="0" x2="84" y2="70"/><line x1="98" y1="0" x2="98" y2="70"/></g>
+          <ellipse cx="55" cy="58" rx="22" ry="9" fill="#EEF0EE"/><circle cx="76" cy="54" r="6" fill="#EEF0EE"/><path d="M 33 58 Q 10 50 6 64" fill="none" stroke="#D8C8C0" stroke-width="2"/>
+        </g>
+        <!-- Steel bar and hammer -->
+        <g><rect x="470" y="530" width="140" height="8" fill="#9AA6B0"/><rect x="520" y="470" width="8" height="60" fill="#5A4030"/><rect x="508" y="460" width="32" height="16" fill="#2A2E34"/></g>
+        <!-- The crib, foreground -->
+        <g stroke="#B8A890" stroke-width="3" fill="none">
+          <rect x="200" y="620" width="300" height="110" rx="4"/>
+          <g stroke-width="2" opacity=".8"><line x1="225" y1="620" x2="225" y2="730"/><line x1="250" y1="620" x2="250" y2="730"/><line x1="275" y1="620" x2="275" y2="730"/><line x1="300" y1="620" x2="300" y2="730"/><line x1="400" y1="620" x2="400" y2="730"/><line x1="425" y1="620" x2="425" y2="730"/><line x1="450" y1="620" x2="450" y2="730"/><line x1="475" y1="620" x2="475" y2="730"/></g>
+          <rect x="200" y="730" width="300" height="12" fill="#2A2E34" stroke="none"/><rect x="210" y="742" width="14" height="60" fill="#2A2E34" stroke="none"/><rect x="476" y="742" width="14" height="60" fill="#2A2E34" stroke="none"/>
+        </g>
+        <rect x="18" y="800" width="664" height="82" fill="#06090C"/>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(168,192,208,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(168,192,208,.7)" letter-spacing="2.5">PHIPPS PSYCHIATRIC CLINIC</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">Johns Hopkins University, Baltimore</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(168,192,208,.4)">Winter 1919 – 1920</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(168,192,208,.28)">Conditioned emotional reactions</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(168,192,208,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>John B.<br/><em>Watson</em></h1><span class="yr">1878 &nbsp;—&nbsp; 1958</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/john-b-watson.webp" alt="John B. Watson" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">John B. Watson</div>
+      <div class="pd">Travelers Rest, South Carolina, 1878 &nbsp;·&nbsp; New York City, 1958</div>
+      <p class="pb"><strong>The South Carolina farm boy who banished the mind from psychology, conditioned fear in a baby, and then sold cold cream and coffee with what he learned.</strong><br/><br/>Twice arrested as a boy in Greenville, he talked his way into Furman at sixteen, took his doctorate at Chicago on the learning of white rats, and at thirty was a full professor at Johns Hopkins. In 1913 one lecture made psychology the science of behaviour and threw out consciousness. In the winter of 1919 he and his student Rosalie Rayner taught an eleven-month-old to fear a white rat. The affair ended his career in 1920; he spent the next twenty-five years at the J. Walter Thompson agency, and wrote Behaviorism for the public.<br/><br/>He told American parents never to kiss their children. His own sons paid for it, and he said late in life that he had not known enough to write the book.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>Give me a dozen<br/><em>healthy infants.</em></h2>
+      <p>Watson speaks from thousands of chunks across five works — <em>Behavior: An Introduction to Comparative Psychology,</em> <em>Psychology from the Standpoint of a Behaviorist,</em> <em>Behaviorism,</em> the lectures he wrote for the public in 1925, <em>Psychological Care of Infant and Child,</em> and <em>The Ways of Behaviorism.</em></p>
+      <p>His discourse holds the fight he picked: <em>The Battle of Behaviorism,</em> his 1924 Washington debate with William McDougall, McDougall's <em>Introduction to Social Psychology,</em> the instinct theory he set out to destroy, and the first volume of William James's <em>Principles of Psychology,</em> the introspective method he refused. James's room is down the hall.</p>
+      <p>Ask him what happened to Albert. Ask him whether he believed the dozen-infants boast when he wrote it. Ask him what he learned about fear from selling things. Ask him why he burned his papers.</p>
+      <div class="dt"><span class="dg">Behaviourism</span><span class="dg">Conditioning</span><span class="dg">Little Albert</span><span class="dg">Habit</span><span class="dg">Environment</span><span class="dg">Advertising</span><span class="dg">The 1913 Manifesto</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/john-b-watson/widget/john-b-watson-widget.css">
+      <script src="https://museumofminds.com/john-b-watson/widget/john-b-watson-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="john-b-watson"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>Psychology as the behaviorist views it is a purely objective experimental branch of natural science. Its theoretical goal is the prediction and control of behavior.</blockquote>
+    <cite>Psychology as the Behaviorist Views It &nbsp;·&nbsp; reprinted in Behavior &nbsp;·&nbsp; 1913</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>Behavior: An Introduction to Comparative Psychology (1914)</li><li>Psychology from the Standpoint of a Behaviorist (1919; 2nd ed. 1924)</li><li>Behaviorism (1925)</li><li>Psychological Care of Infant and Child (1928)</li><li>The Ways of Behaviorism (1928)</li><li>Discourse: Watson & McDougall — The Battle of Behaviorism (1928)</li><li>Discourse: McDougall — An Introduction to Social Psychology (1908)</li><li>Discourse: William James — The Principles of Psychology, Vol. I (1890)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">John B. Watson</div><div>1878 — 1958 &nbsp;·&nbsp; Baltimore and New York</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/consulting-room/">← The Consulting Room</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>

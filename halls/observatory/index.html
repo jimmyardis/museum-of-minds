@@ -40,6 +40,7 @@
     .portrait-card:nth-child(1){animation-delay:0.1s} .portrait-card:nth-child(2){animation-delay:0.2s}
     .portrait-card:nth-child(3){animation-delay:0.3s} .portrait-card:nth-child(4){animation-delay:0.4s}
     .portrait-card:nth-child(5){animation-delay:0.5s} .portrait-card:nth-child(6){animation-delay:0.6s}
+    .portrait-card:nth-child(7){animation-delay:0.7s} .portrait-card:nth-child(8){animation-delay:0.8s} .portrait-card:nth-child(9){animation-delay:0.9s} .portrait-card:nth-child(10){animation-delay:1.0s} .portrait-card:nth-child(11){animation-delay:1.1s} .portrait-card:nth-child(12){animation-delay:1.2s} .portrait-card:nth-child(13){animation-delay:1.3s} .portrait-card:nth-child(14){animation-delay:1.4s} .portrait-card:nth-child(15){animation-delay:1.5s} .portrait-card:nth-child(16){animation-delay:1.6s}
     .card-frame { position: relative; border: 1px solid rgba(196,168,76,0.14); transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; background: var(--wall); }
     .portrait-card:hover
     .card-frame::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(196,168,76,0.05); transition: border-color 0.4s ease; pointer-events: none; z-index: 2; }
@@ -254,6 +255,9 @@
     .card-babbage   { --card-wash: #10101C; --card-accent: #B89040; --card-plate: #080814; --card-glow: rgba(16,16,28,0.18); }
     .card-curie     { --card-wash: #0A1018; --card-accent: #40C860; --card-plate: #060C12; --card-glow: rgba(10,16,24,0.18); }
     .card-tesla     { --card-wash: #060810; --card-accent: #4080FF; --card-plate: #040610; --card-glow: rgba(6,8,16,0.18); }
+    .card-leonardo-da-vinci { --card-wash: #2A3328; --card-accent: #C08C5A; --card-plate: #0E120E; --card-glow: rgba(192,140,90,0.14); }
+    .card-michael-faraday { --card-wash: #1A2430; --card-accent: #C89A50; --card-plate: #0E141C; --card-glow: rgba(200,154,80,0.14); }
+    .card-alfred-russel-wallace { --card-wash: #1E3A2E; --card-accent: #D8A020; --card-plate: #0C1812; --card-glow: rgba(216,160,32,0.14); }
   </style>
 </head>
 <body>
@@ -263,10 +267,10 @@
     <div class="hall-hero-content">
       <span class="hall-num">Hall III</span>
       <h1 class="hall-title">The Observatory</h1>
-      <span class="hall-era">1564 — 2019</span>
+      <span class="hall-era">1452 — 2019</span>
       <div class="hero-rule"></div>
       <p class="hall-desc">They mapped the territories no instrument could reach — the structure of matter, the laws of motion, the nature of life and uncertainty. Each left a before and after in what human beings thought possible to know.</p>
-      <span class="hall-figure-count">Figures in Residence</span>
+      <span class="hall-figure-count">16 Figures in Residence</span>
     </div>
   </section>
 
@@ -506,6 +510,48 @@
             <div class="nameplate-name">Galileo Galilei</div>
             <div class="nameplate-dates">1564 — 1642</div>
             <div class="nameplate-desc">He looked through the telescope and saw four moons orbiting Jupiter. Not everything orbits the Earth. The Inquisition put him under house arrest. Under house arrest, nearly blind, he wrote the foundational text of classical mechanics and had it smuggled to Amsterdam.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/leonardo-da-vinci/" class="portrait-card card-leonardo-da-vinci">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/leonardo-da-vinci.webp" alt="Leonardo da Vinci" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Leonardo da Vinci</div>
+            <div class="nameplate-dates">1452 — 1519</div>
+            <div class="nameplate-desc">The Florentine painter, engineer and anatomist who dissected thirty corpses, designed flying machines and war engines, painted the Last Supper and the Mona Lisa, and left seven thousand pages of notes on everything he saw. Most of what he began he never finished. He drew siege engines for Ludovico Sforza and rode with Cesare Borgia, and called war a bestial madness.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/michael-faraday/" class="portrait-card card-michael-faraday">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/michael-faraday.webp" alt="Michael Faraday" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Michael Faraday</div>
+            <div class="nameplate-dates">1791 — 1867</div>
+            <div class="nameplate-desc">The bookbinder's apprentice who discovered electromagnetic rotation, induction, the dynamo and the laws of electrolysis, and invented the field without a line of mathematics. He gave the Christmas Lectures to children, refused a knighthood and the Royal Society's chair, and declined to make poison gas for the Crimea. His memory failed him for twenty years; he kept notebooks because he could not trust it.</div>
+            <span class="nameplate-enter">Enter Room</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://museumofminds.com/alfred-russel-wallace/" class="portrait-card card-alfred-russel-wallace">
+        <div class="card-light"></div>
+        <div class="card-frame">
+          <div class="card-image"><img loading="lazy" src="/assets/portraits/alfred-russel-wallace.webp" alt="Alfred Russel Wallace" onerror="this.style.display='none'" /></div>
+          <div class="card-nameplate">
+            <div class="nameplate-accent"></div>
+            <div class="nameplate-name">Alfred Russel Wallace</div>
+            <div class="nameplate-dates">1823 — 1913</div>
+            <div class="nameplate-desc">The self-taught collector who found natural selection independently of Darwin in a malarial fever on Ternate, mailed it to him, and spent the rest of his life refusing to resent what followed. He drew the line through the East Indies, founded biogeography, and lived on what his specimens fetched. He also defended the mediums and campaigned against vaccination. He is held to both.</div>
             <span class="nameplate-enter">Enter Room</span>
           </div>
         </div>

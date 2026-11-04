@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plato — In Conversation</title>
+  <meta name="description" content="The aristocrat who watched Athens kill the best man he knew, and asked what a city would have to be so that it never happened again." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0B0F14;--mid:#121922;--lt:#1A2430;--gold:#C8B07A;--cream:#F2EEE4;--text:#D6D4CC;--dim:#86908E;--line:200,176,122}
+    html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    header{padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(var(--line),.25);background:var(--bg);animation:fadeDown .8s ease both;position:relative;z-index:10}
+    .hl{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.32em;color:var(--gold);opacity:.92;text-transform:uppercase}.hr{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--dim)}.hr a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(var(--line),.35)}.hr a:hover{border-bottom-color:var(--gold)}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.25fr .75fr;border-bottom:1px solid rgba(var(--line),.2);overflow:hidden;animation:fadeIn 1s ease .2s both}
+    .hp{position:relative;background:var(--bg);overflow:hidden;min-height:500px}.hp svg{position:absolute;inset:0;width:100%;height:100%}
+    .ht{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:10}
+    .ht h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3.8vw,4rem);font-weight:900;color:var(--cream);line-height:1;letter-spacing:.06em}
+    .ht h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold);display:block;font-size:.75em}
+    .ht .yr{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-top:.8rem;display:block;opacity:.92}
+    .bp{display:flex;flex-direction:column;padding:3.5rem 2.5rem;border-left:1px solid rgba(var(--line),.2);background:var(--mid);position:relative}
+    .bp::before{content:'';position:absolute;left:3.5rem;top:0;bottom:0;width:1px;background:rgba(var(--line),.12)}
+    .et{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.28em;color:var(--gold);margin-bottom:2.5rem;text-transform:uppercase;opacity:.90}
+    .pf{position:relative;width:100%;max-width:260px;margin:0 auto 2.5rem}.pf::before{content:'';position:absolute;inset:-5px;border:1px solid rgba(var(--line),.35)}.pf::after{content:'';position:absolute;inset:-10px;border:1px solid rgba(var(--line),.12)}.pf img{width:100%;display:block;filter:sepia(.2) contrast(1.05)}
+    .fc{position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6;z-index:2}.fc.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}.fc.tr{top:-6px;right:-6px;border-width:2px 2px 0 0}.fc.bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px}.fc.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
+    .pn{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--cream);letter-spacing:.04em;margin-bottom:.4rem}.pd{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;color:var(--gold);opacity:.90;margin-bottom:1.4rem}.pb{font-size:1rem;font-weight:400;color:var(--text);line-height:1.7}.pb strong{color:var(--cream);font-weight:500}
+    .sr{text-align:center;padding:1.4rem 3rem;border-bottom:1px solid rgba(var(--line),.2);background:var(--mid)}.sr span{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.38em;color:var(--gold);opacity:.75;text-transform:uppercase}
+    .cs{display:grid;grid-template-columns:1fr 1.05fr;min-height:680px;background:var(--bg)}
+    .ci{padding:4rem 3.5rem;border-right:1px solid rgba(var(--line),.18)}.ci h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;color:var(--cream);line-height:1.15;letter-spacing:.04em;margin-bottom:1.8rem}.ci h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--gold)}.ci p{font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.72;margin-bottom:1.2rem}
+    .dt{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}.dg{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--gold);border:1px solid rgba(var(--line),.3);padding:.28rem .75rem;text-transform:uppercase;opacity:.90}
+    .ce{position:relative;background:var(--mid);min-height:580px;display:flex;align-items:stretch}
+    .pq{padding:5rem 8rem;text-align:center;background:var(--mid);border-top:1px solid rgba(var(--line),.18);border-bottom:1px solid rgba(var(--line),.18)}.pq::before,.pq::after{content:'— ✦ —';display:block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.4em;color:var(--gold);opacity:.55;margin:0 auto 2rem}.pq::after{margin:2rem auto 0}.pq blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;color:var(--cream);line-height:1.55;max-width:780px;margin:0 auto}.pq blockquote::before{content:'\201C';font-size:4rem;color:var(--gold);opacity:.35;display:block;line-height:.6;margin-bottom:.8rem}.pq cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:.68rem;letter-spacing:.28em;color:var(--gold);opacity:.80;margin-top:1.6rem;text-transform:uppercase}
+    .cst{padding:3.5rem 5rem;background:var(--bg);border-top:1px solid rgba(var(--line),.18)}.cst h3{font-family:'Cinzel',serif;font-size:.70rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;opacity:.88;margin-bottom:1.8rem}.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;list-style:none}.cl li{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text);opacity:.90;padding-left:1rem;border-left:1px solid rgba(var(--line),.28)}
+    footer{display:grid;grid-template-columns:1fr 1fr 1fr;padding:2rem 3.5rem;border-top:1px solid rgba(var(--line),.2);background:var(--mid);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--dim);opacity:.88}footer .cc{text-align:center;line-height:1.6}footer .cr{text-align:right}footer .nl{font-size:.75rem;color:var(--gold);margin-bottom:.3rem;opacity:1}footer a{color:var(--gold);text-decoration:none}
+    @media(max-width:900px){header{padding:1rem 1.2rem;flex-wrap:wrap}.hero{grid-template-columns:1fr}.hp{min-height:55vw}.ht{left:1.2rem;right:1.2rem;bottom:1.6rem}.bp{border-left:none;border-top:1px solid rgba(var(--line),.18);padding:2.5rem 1.2rem}.bp::before{display:none}.cs{grid-template-columns:1fr}.ci{border-right:none;border-bottom:1px solid rgba(var(--line),.18);padding:3rem 1.2rem}.pq{padding:3.5rem 1.2rem}.cst{padding:2.5rem 1.2rem}footer{grid-template-columns:1fr;gap:1rem;text-align:center;padding:2rem 1.2rem}footer .cr{text-align:center}}
+  </style>
+</head>
+<body>
+  <header><div class="hl">In Conversation With &nbsp;·&nbsp; Museum of Minds</div><div class="hr">PL–428BC–2026 &nbsp;·&nbsp; <a href="/halls/salon/">The Salon</a></div></header>
+  <section class="hero">
+    <div class="hp">
+      <svg viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="pl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#070A10"/><stop offset="60%" stop-color="#0E1520"/><stop offset="100%" stop-color="#1A2430"/></linearGradient>
+          <linearGradient id="pl-col" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3A3C3A"/><stop offset="45%" stop-color="#8A8880"/><stop offset="100%" stop-color="#2A2C2A"/></linearGradient>
+          <radialGradient id="pl-moon" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F2EEE0"/><stop offset="70%" stop-color="#D8D2C0"/><stop offset="100%" stop-color="#B8B0A0" stop-opacity=".6"/></radialGradient>
+          <radialGradient id="pl-glow" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#C8B07A" stop-opacity=".18"/><stop offset="100%" stop-color="#070A10" stop-opacity="0"/></radialGradient>
+          <radialGradient id="pl-olive" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3E4A3A"/><stop offset="100%" stop-color="#1E261C"/></radialGradient>
+        </defs>
+        <rect width="700" height="900" fill="url(#pl-sky)"/>
+        <g fill="#E8E2D0" opacity=".55"><circle cx="90" cy="80" r="1.2"/><circle cx="210" cy="140" r=".9"/><circle cx="330" cy="60" r="1.1"/><circle cx="560" cy="190" r="1"/><circle cx="640" cy="90" r="1.3"/><circle cx="420" cy="230" r=".8"/><circle cx="150" cy="260" r="1"/></g>
+        <circle cx="150" cy="150" r="42" fill="url(#pl-moon)"/>
+        <ellipse cx="350" cy="420" rx="360" ry="260" fill="url(#pl-glow)"/>
+        <!-- Stylobate and colonnade of the Academy -->
+        <rect x="60" y="470" width="580" height="16" fill="#3A3C38"/><rect x="48" y="486" width="604" height="14" fill="#2A2C28"/>
+        <rect x="80" y="236" width="540" height="22" fill="#4A4C46"/><path d="M 70 236 L 630 236 L 610 212 L 90 212 Z" fill="#3A3C36"/>
+        <g fill="url(#pl-col)">
+          <rect x="100" y="258" width="34" height="212"/><rect x="214" y="258" width="34" height="212"/><rect x="328" y="258" width="34" height="212"/><rect x="442" y="258" width="34" height="212"/><rect x="556" y="258" width="34" height="212"/>
+        </g>
+        <g fill="#5A5C56"><rect x="94" y="252" width="46" height="10"/><rect x="208" y="252" width="46" height="10"/><rect x="322" y="252" width="46" height="10"/><rect x="436" y="252" width="46" height="10"/><rect x="550" y="252" width="46" height="10"/></g>
+        <g stroke="#1E201E" stroke-width="1.2" opacity=".5">
+          <line x1="111" y1="262" x2="111" y2="468"/><line x1="122" y1="262" x2="122" y2="468"/><line x1="225" y1="262" x2="225" y2="468"/><line x1="236" y1="262" x2="236" y2="468"/>
+          <line x1="339" y1="262" x2="339" y2="468"/><line x1="350" y1="262" x2="350" y2="468"/><line x1="453" y1="262" x2="453" y2="468"/><line x1="464" y1="262" x2="464" y2="468"/><line x1="567" y1="262" x2="567" y2="468"/><line x1="578" y1="262" x2="578" y2="468"/>
+        </g>
+        <!-- Olive trees of the grove beyond the walls -->
+        <g>
+          <rect x="166" y="400" width="10" height="70" fill="#2A2420"/><ellipse cx="171" cy="380" rx="58" ry="44" fill="url(#pl-olive)"/><ellipse cx="150" cy="365" rx="30" ry="24" fill="#2C3828" opacity=".8"/>
+          <rect x="396" y="396" width="11" height="74" fill="#2A2420"/><ellipse cx="402" cy="372" rx="64" ry="48" fill="url(#pl-olive)"/><ellipse cx="430" cy="356" rx="30" ry="24" fill="#2C3828" opacity=".8"/>
+          <rect x="510" y="410" width="9" height="60" fill="#2A2420"/><ellipse cx="514" cy="392" rx="44" ry="34" fill="url(#pl-olive)"/>
+        </g>
+        <!-- Sand of the walk, and the divided line drawn in it -->
+        <rect x="0" y="500" width="700" height="400" fill="#141210"/>
+        <path d="M 0 500 L 700 500 L 700 900 L 0 900 Z" fill="#1A1714"/>
+        <ellipse cx="350" cy="560" rx="330" ry="40" fill="#221E1A"/>
+        <g stroke="rgba(200,176,122,.55)" stroke-width="1.4" fill="none">
+          <line x1="150" y1="640" x2="550" y2="640"/><line x1="150" y1="634" x2="150" y2="646"/><line x1="310" y1="634" x2="310" y2="646"/><line x1="550" y1="634" x2="550" y2="646"/><line x1="410" y1="634" x2="410" y2="646"/>
+          <path d="M 250 760 L 350 680 L 450 760 Z"/><line x1="350" y1="680" x2="350" y2="760"/>
+          <circle cx="350" cy="733" r="27"/>
+        </g>
+        <g font-family="Cormorant Garamond,serif" font-style="italic" font-size="11" fill="rgba(200,176,122,.45)">
+          <text x="150" y="625">εἰκασία</text><text x="290" y="625">πίστις</text><text x="395" y="625">διάνοια</text><text x="520" y="625">νόησις</text>
+        </g>
+        <!-- Fire in the cave mouth, far right -->
+        <path d="M 560 700 Q 620 640 680 700 L 680 830 L 560 830 Z" fill="#0A0806"/>
+        <ellipse cx="620" cy="790" rx="26" ry="10" fill="#4A2A10"/><path d="M 606 788 Q 612 760 620 772 Q 626 750 634 776 Q 640 764 640 790 Z" fill="#C8783A" opacity=".85"/>
+        <rect x="40" y="840" width="620" height="40" fill="#0C0A08"/>
+        <g transform="translate(430,55)"><rect width="215" height="78" fill="rgba(5,5,8,.88)" stroke="rgba(200,176,122,.28)" stroke-width=".6"/>
+          <text x="107" y="20" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="rgba(200,176,122,.7)" letter-spacing="2.5">THE ACADEMY</text>
+          <text x="107" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="10" fill="rgba(242,234,218,.6)">The grove of Academus, outside the Dipylon Gate</text>
+          <text x="107" y="53" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="rgba(200,176,122,.4)">Athens, c. 387 BC</text>
+          <text x="107" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="rgba(200,176,122,.28)">Olive grove · colonnade · a line drawn in the sand</text>
+        </g>
+        <rect x="18" y="18" width="664" height="864" fill="none" stroke="rgba(200,176,122,.15)" stroke-width=".5"/>
+      </svg>
+      <div class="ht"><h1>Plato<br/><em>of Athens</em></h1><span class="yr">c. 428 BC &nbsp;—&nbsp; 348 BC</span></div>
+    </div>
+    <div class="bp">
+      <div class="et">Historical Archive &nbsp;·&nbsp; Portrait Study</div>
+      <div class="pf"><div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <img src="/assets/portraits/plato.webp" alt="Plato" onerror="this.style.display='none'"/>
+      </div>
+      <div class="pn">Plato</div>
+      <div class="pd">Athens, c. 428 BC &nbsp;·&nbsp; Athens, 348 BC</div>
+      <p class="pb"><strong>The aristocrat who watched Athens kill the best man he knew, and asked what a city would have to be so that it never happened again.</strong><br/><br/>Born into one of the old families, he followed Socrates for a decade and was twenty-eight when the restored democracy executed him. He gave up politics, travelled to Italy and Sicily, and in 387 BC began teaching in the grove of Academus; Aristotle came at seventeen and stayed twenty years. He went to Syracuse twice to make a philosopher of a tyrant and failed both times. He wrote no treatise, only conversations, and in nearly all of them he wears the mask of a man who wrote nothing.<br/><br/>His ideal city abolishes the family, censors Homer and tells its citizens a noble lie. He will defend some of it.</p>
+    </div>
+  </section>
+  <div class="sr"><span>Consultation</span></div>
+  <section class="cs">
+    <div class="ci">
+      <h2>The unexamined life<br/><em>is not worth living.</em></h2>
+      <p>Plato speaks from thousands of chunks across twenty-three dialogues in Benjamin Jowett's translation — the <em>Republic,</em> the <em>Apology,</em> <em>Crito,</em> <em>Phaedo,</em> <em>Symposium,</em> <em>Phaedrus,</em> <em>Gorgias,</em> <em>Meno,</em> <em>Protagoras,</em> <em>Euthyphro,</em> <em>Theaetetus,</em> <em>Timaeus</em> and the <em>Laws,</em> with the <em>Sophist,</em> <em>Statesman,</em> <em>Parmenides,</em> <em>Philebus</em> and the shorter dialogues behind them.</p>
+      <p>His discourse holds his best student's objections: Aristotle's <em>Politics,</em> whose second book takes the Republic apart, and his <em>Nicomachean Ethics;</em> and Xenophon's <em>Memorabilia,</em> a quite different Socrates. Aristotle's room is next door.</p>
+      <p>Ask him where Socrates ends and he begins. Ask him whether a screen is his cave. Ask him whether the philosophers should rule, and how he thinks that has gone. Ask him about Syracuse.</p>
+      <div class="dt"><span class="dg">The Forms</span><span class="dg">The Cave</span><span class="dg">The Just City</span><span class="dg">The Tripartite Soul</span><span class="dg">Recollection</span><span class="dg">Eros</span><span class="dg">The Noble Lie</span></div>
+    </div>
+    <div class="ce" id="chatbot-container">
+      <link rel="stylesheet" href="https://museumofminds.com/plato/widget/plato-widget.css">
+      <script src="https://museumofminds.com/plato/widget/plato-widget.js" data-api-url="https://museum-api-production-8ce6.up.railway.app" data-persona-id="plato"></script>
+    </div>
+  </section>
+  <section class="pq">
+    <blockquote>Daily to discourse about virtue, and of those other things about which you hear me examining myself and others, is the greatest good of man, and the unexamined life is not worth living.</blockquote>
+    <cite>Apology &nbsp;·&nbsp; 38a &nbsp;·&nbsp; Jowett translation</cite>
+  </section>
+  <section class="cst"><h3>Drawn From the Corpus</h3>
+    <ul class="cl"><li>The Republic (c. 375 BC)</li><li>Apology · Crito · Phaedo (c. 399–380 BC)</li><li>Symposium · Phaedrus (c. 385–370 BC)</li><li>Gorgias · Meno · Protagoras · Euthyphro (c. 399–380 BC)</li><li>Theaetetus · Sophist · Statesman · Parmenides · Philebus (c. 369–360 BC)</li><li>Timaeus · Critias · Laws (c. 360–348 BC)</li><li>Laches · Charmides · Lysis · Ion · Cratylus</li><li>Discourse: Aristotle — Politics (c. 350 BC)</li><li>Discourse: Aristotle — Nicomachean Ethics (c. 340 BC)</li><li>Discourse: Xenophon — Memorabilia (c. 371 BC)</li></ul>
+  </section>
+  <footer>
+    <div><div class="nl">Plato</div><div>c. 428 — 348 BC &nbsp;·&nbsp; Athens</div></div>
+    <div class="cc">The Museum of Minds<br>A Project in Conversational History</div>
+    <div class="cr"><a href="/halls/salon/">← The Salon</a><br>Powered by His Own Words</div>
+  </footer>
+</body>
+</html>
