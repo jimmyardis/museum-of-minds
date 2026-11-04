@@ -8,14 +8,16 @@
 | Field | Value |
 |-------|-------|
 | **Project** | Museum of Minds |
-| **One-liner** | Immersive AI chatbot museum with 95 persona pages, debate platform, and hall-based navigation |
+| **One-liner** | Immersive AI chatbot museum with 115 persona pages, debate platform, and hall-based navigation |
 | **Status** | shipping |
-| **Last Active** | 2026-09-22 |
+| **Last Active** | 2026-11-04 |
 | **Stall Threshold** | 7 days |
 | **Repo** | https://github.com/jimmyardis/museum-of-minds |
 | **Stack** | Static HTML/JS (GitHub Pages), FastAPI + Railway API, Pinecone (voyage-3-large, 2048-dim), Voyage AI, ElevenLabs TTS, ChromaDB |
 
 ## Current State
+
+**Batch 6 shipped overnight 2026-11-04 — twenty figures across seven halls, 115 live persona pages.** The Salon gained Plato, Aristotle, Montaigne and Nietzsche (now 14, 428 BC – 1900, cards re-sorted by birth). The Observatory gained Leonardo, Faraday and Wallace (16). The Consulting Room gained Dewey, John B. Watson and Mary Whiton Calkins (11). The Counting House gained Alfred Marshall and Carnegie (12). The Press Room gained Wilde, Dickens, Whitman, Ida Tarbell and Chesterton (15). Grant joined the Republic Room (21) and Charlotte Perkins Gilman and Harriet Jacobs joined Trailblazers (14). Every page has a hero SVG, public-domain portrait, widget, hall back-link and a real corpus chunk count; hall descriptions, figure counts, eras and homepage doors were updated. All twenty chatbots passed the full smoke test on the live API (five sources each), and the platform-wide quick test is 113/113. Pinecone now holds 293,205 vectors.
 
 **The Consulting Room grew to eight on 2026-09-22 — 95 live persona pages.** Wilhelm Wundt, Ivan Pavlov, Pierre Janet, Hugo Münsterberg and Alfred Adler joined Jung, Freud and William James. Cards are in birth order on a four-column grid (two rows of four), and the era is now 1832–1961. Each new page has a hero SVG, a public-domain portrait, a widget and a hall back-link. The homepage door reads 8 Figures, and the stale 'seven halls' intro line now says eight. Everything was verified live on www.museumofminds.com, and all five chatbots answer in character.
 
@@ -35,7 +37,7 @@
 
 ## Next Action
 
-Pick the next public-domain batch (pre-1930 works only; see the Friedman hold) or resume feature work: link /sherlock/ from a hall, Sherlock voice finalization, Federalist Phase 6, or the back-link templating pass for older pages.
+Pick batch 7 from the public-domain shortlist (the Engine Room is still at 6 and the Observatory and Consulting Room have obvious pre-1930 candidates), or resume feature work: link /sherlock/ from a hall, Sherlock voice finalization, Federalist Phase 6, or the back-link templating pass for pre-batch-3 pages.
 
 ## Blockers
 
@@ -46,13 +48,22 @@ Pick the next public-domain batch (pre-1930 works only; see the Friedman hold) o
 
 - **Most persona pages are navigational dead-ends.** Only 4 of ~80 (the Sprint-3 batch: Rutledge, Sherman, Gadsden, Abigail Adams) carry a hall back-link; older pages like `john-locke/` contain no links at all. A visitor who enters a figure's room has no way back to their hall. Discovered during the hall migration, deliberately not fixed — it is a ~76-page templating job, not a hall change.
 - **Hall numbering is creation-order, not chronological.** The Salon (1596–1797) is Hall VI, after Trailblazers. Renumbering so a tour reads chronologically would touch all seven hall pages plus the homepage; left alone for now.
-- **The Consulting Room has three figures and room for more.** Candidates whose work is public domain: William Wundt, Alfred Adler (some early work), Pierre Janet, Havelock Ellis. Adler and Janet need a copyright check before promising either.
+- **The Consulting Room is at eleven (Wundt, Pavlov, Janet, Münsterberg, Adler in batch 5; Dewey, Watson, Calkins in batch 6).** Remaining public-domain candidates: Havelock Ellis, G. Stanley Hall, Edward Thorndike (pre-1930 works only).
 - **Does the museum want a policy for in-copyright figures at all?** Friedman, Keynes-era successors, and most 20th-century thinkers are blocked by the same wall. Options are a "tradition corpus + authored dossier" tier (visibly different trust label), licensed text, or a hard pre-1930 cutoff. Unresolved — this gates every modern persona, not just Friedman.
 - Teacher dashboard / classroom passcode system — scoped and discussed, not yet built. Prioritize relative to Federalist Phase 2?
 - AI literacy "How It Works" page — scoped and designed, not yet built. Prioritize?
 - Portrait cards for Federalist/Anti-Federalist now use polished inline SVGs — could upgrade to period document scans if found.
 
 ## Session Log
+
+### 2026-11-04 — Batch 6: twenty figures overnight (autonomous run)
+- The user asked for "the next 20 or so personas and pages overnight" with full discretion on who. Chose twenty public-domain-rich figures to balance halls and visitor draw: Plato, Aristotle, Nietzsche, Montaigne (Salon); Leonardo, Faraday, Wallace (Observatory); Dewey, Watson, Calkins (Consulting Room); Marshall, Carnegie (Counting House); Wilde, Dickens, Whitman, Tarbell, Chesterton (Press Room); Grant (Republic Room); Gilman, Harriet Jacobs (Trailblazers).
+- Site commits 236e714 (pages, widgets, portraits, hall cards), 4cbecda and 220bf9e (chunk counts filled once embedding finished). Pages built by `execution/build_batch6_pages.py`, which loads four `batch6_parts/part_N.py` data files and reuses the batch-4 template; `--cards` injects hall cards and recomputes figure counts and eras (BC-aware) from nameplate dates.
+- Salon and Consulting Room cards were re-sorted into birth order; hall descriptions rewritten for Salon, Consulting Room, Counting House and Press Room; homepage doors updated.
+- Portraits: all public domain via direct Commons FilePath URLs. Watson's is small (304×437) and Calkins's is square (514×514); both acceptable but candidates for better scans.
+- Verified live on www.museumofminds.com: 20 pages, 40 widget files, 20 portraits, all hall cards, door counts. Smoke test 20/20 full, 113/113 quick. Plato and Harriet Jacobs chat probes answered in voice with high confidence.
+- Decision: Harriet Jacobs ships with a lean 273-chunk corpus (one book) backed by 1,162 discourse chunks (Child, Stowe's Key, Douglass). Trust score 98, labelled Near-Complete by the tool because the index count includes discourse.
+- Left mid-stream: nothing. Next batch should check the Engine Room (still 6).
 
 ### 2026-09-22 — Five figures join the Consulting Room
 - Added Wundt, Pavlov, Janet, Münsterberg and Adler (commit 0e16c42). The user asked for 3–5 Consulting Room personas and picked all five from a public-domain shortlist.
